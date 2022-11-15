@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Head of Household</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="file:///Users/jaymartin/Websites/headofhousehold/css/style.css"
+    type="text/css"
+    rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="file:///Users/jaymartin/Websites/familysecurityact/images/favicon.png">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- load c3.css -->
+  <link href="file:///Users/jaymartin/Websites/c3-0.7.20/c3.css" rel="stylesheet">
+
+</head>
+
+<!--Desktop navbar-->
+<script type="text/javascript" src="file:///Users/jaymartin/Websites/headofhousehold/javascript/dropdown.js"></script>
+<div class="navbar-desktop">
+  <div class="dropdown">
+    <button class="dropbtn" onclick='dropdown()'> &#9776 </button>
+  </div>
+</div> 
+
+<div class="dropdown-content" id='dropdown_content' hidden>
+  <button class="dropbtn" onclick='dropdown()'> &#10005</button>
+  <a href="file:///Users/jaymartin/Websites/familysecurityact/index.html">Family Security Act</a>
+  <a href="file:///Users/jaymartin/Websites/eitcmarriagepenalty/index.html">EITC Marriage Penalties</a>
+</div>
+
+<body>
+<!-- Load d3.js and c3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="file:///Users/jaymartin/Websites/c3-0.7.20/c3.min.js"></script>
+
+<h1 id="top">The Head of Household Filing Status</h1>
+<div class="name">
+  By Jay Martin </br>
+  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+
+</div>
+
+
+<!--div class for chart and highlights box-------------------------------------------->
+<div class = "chart_highlights_container">
+  <!--Left side-------------------------------------------------->
+  <div class="left_side"></div>
+
+  <!--Chart------------------------------------------------------>
+  <div class="chart">
+    <!--Income slider-->
+    <div class="slidecontainer"> 
+      <div class="income-display"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</div>
+
+      <div class="slider-actual">
+        <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
+      </div>
+    </div>
+
+    <!--Itemized deductions slider-->
+    <div class="slidecontainer"> 
+      <div class="income-display"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</div>
+
+      <div class="slider-actual">
+        <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');difference_hoh();modifyGraph_HOH();deductType()">
+      </div>
+    </div>
+
+    <!--Calculate HOH savings-->
+    <div class="explanation_values"> <!--Subcontainter for eitc values-->
+      <p id="item_or_stand"></p>
+      <p id="HOH_savings"></p>
+
+      <p id="explanation_line1"></p>
+      <p id="explanation_line2"></p>
+      <p id="explanation_line3"></p>
+      <p id="explanation_line4"></p>
+      <p id="explanation_line5"></p>
+      <p id="explanation_line6"></p>
+      <p id="explanation_line7"></p>
+      <p id="explanation_line8"></p>
+      <p id="explanation_line9"></p>
+    </div>
+    <script type="text/javascript" src="file:///Users/jaymartin/Websites/headofhousehold/javascript/hoh_outputs.js"></script>
+    <script type="text/javascript" src="file:///Users/jaymartin/Websites/headofhousehold/javascript/hoh_calculate.js"></script>
+
+    <!--Zoom switch-->
+    <label class="switch">
+      Click to zoom:
+      <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
+      <span class="slider round"></span>
+    </label>
+    </br>
+
+    <!--Run HOH Benefit Graph Script-->
+    <div id="HOHchart"></div>
+    <script type="text/javascript" src="file:///Users/jaymartin/Websites/headofhousehold/javascript/hoh_chart.js"></script>
+  </div>
+
+  <!--Highlights-------------------------------------------->
+  <script type="text/javascript" src="file:///Users/jaymartin/Websites/headofhousehold/javascript/animations/marriage_penalty_animation.js"></script>
+  <div class = "right_side">
+
+    <div class = "highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title">Highlights</div>
+      <button type="button" class="top_button" onclick="show_basic_overview()">What is the head of household filing status? </button>
+        <p class="explanation" id="hoh_explanation" hidden>Head of household is a filing status for single parents* who maintain their own household.* People who file as heads of households receive a larger standard deduction and preferential tax brackets compared to single filers.</p>
+        <input type="submit" class="animation_button" id="basic_overview_animation_id" value="Play animation" onclick="show_basic_overview_animation()" hidden />
+      <button type="button" onclick="show_itemized_explanation()">How do itemized deductions affect HOH?</button>
+        <p class="explanation" id="itemized_explanation" hidden>Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="animation_button" id="itemized_explanation_animation_id" value="Play animation"  hidden/>
+      <button type="button" class="bottom_button" onclick="show_mp_explanation()">Does HOH produce marriage penalties?</button>
+        <p class="explanation" id="marriage_penalty_explanation" hidden>Yes. The standard deduction and tax brackets for married joint filers are set at roughly double those of single filers, while heads of households are set about 1.5x times single filers.</p>
+        <input type="submit" class="animation_button" id="marriage_penalty_explanation_animation_id" value="Play animation" onclick="show_mp_explanation_animation()" hidden/>
+    </div>
+
+  </div>
+
+</div> <!--chart, hoh values & highlights container end-->
+
+</body>
+</html>

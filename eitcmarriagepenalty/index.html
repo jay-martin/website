@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>EITC Marriage Penalties</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="file:///Users/jaymartin/Websites/eitcmarriagepenalty/css/style.css"
+    type="text/css"
+    rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="file:///Users/jaymartin/Websites/familysecurityact/images/favicon.png">
+  <!-- load c3.css -->
+  <link href="file:///Users/jaymartin/Websites/c3-0.7.20/c3.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="file:///Users/jaymartin/Websites/c3-0.7.20/c3.min.js"></script>
+
+  <h1 id="top">EITC Marriage Penalties</h1>
+  <div class="name">
+    By Jay Martin </br>
+    <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+  </div>
+
+
+  <!--div class for chart and highlights box-------------------------------------------->
+  <div class = "chart_highlights_container">
+  
+    <!--Chart-------------------------------------------->
+    <div class = "chart">
+      <!--User inputs-->
+
+      <!--Person 1 number of old children-->
+      <label for="numChildrenPerson1">I have</label>
+      <select name="person1Children" id="person1_children" oninput="modify_person2();modify_married();modify_income_marriage_penalty()">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>
+
+      <!--Person 2 number of old children-->
+      <label for="numChildrenPerson2">and my partner has</label>
+      <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_marriage_penalty()" >
+        <option value="none">no children</option>
+        <option value="one" >1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>.
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_marriage_penalty();">
+        </div>
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_marriage_penalty();">
+        </div>
+      </div>
+
+      <!--Calculate marriage penalty-->
+      <div class="eitc_values"> <!--Subcontainter for eitc values-->
+        <p id="individual_eitc_values"></p>
+        <p id="combined_single_eitc"></p>
+        <p id="married_eitc_value"></p>
+        <p id="marriage_penalty_show"></p>
+
+        <p id="explanation_line1"></p>
+        <p id="explanation_line2"></p>
+        <p id="explanation_line3"></p>
+        <p id="explanation_line4"></p>
+        <p id="explanation_line5"></p>
+        <p id="explanation_line6"></p>
+        <p id="explanation_line7"></p>
+        <p id="explanation_line8"></p>
+      </div>
+      <script type="text/javascript" src="file:///Users/jaymartin/Websites/eitcmarriagepenalty/javascript/marriage_penalties_calculate.js"></script>
+      <script type="text/javascript" src="file:///Users/jaymartin/Websites/eitcmarriagepenalty/javascript/marriage_penalties_outputs.js"></script>
+
+      <!--Run Marriage Penalty Script-->
+      <div id="MPchart"></div> <!--Subcontainter for chart-->
+      <script type="text/javascript" src="file:///Users/jaymartin/Websites/eitcmarriagepenalty/javascript/marriage_penalties_chart.js"></script>
+
+    </div> <!--chart end-->
+
+    <!--Highlights-------------------------------------------->
+    <script type="text/javascript" src="file:///Users/jaymartin/Websites/eitcmarriagepenalty/javascript/animations/basic_overview_animation.js"></script>
+    <script type="text/javascript" src="file:///Users/jaymartin/Websites/eitcmarriagepenalty/javascript/animations/marriage_bonus_animation.js"></script>
+    <div class = "highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title">Highlights</div>
+      <input type="submit" id="basic_overview" value="What are marriage penalties?" onclick='show_basic_overview()' />
+        <p class="marriage_penalty_explanation_class" id="basic_overview_explanation" hidden>Marriage penalties occur when the EITC a married couple receives is less than the sum of the EITC's each would receive if they were single</p>
+        <input type="submit" class="animation_button" id="basic_overview_animation" value="Play animation" onclick="show_basic_overview_animation()" hidden/>
+      <input type="submit" id="marriage_penalties" value="Who faces marriage penalties?" />
+      <input type="submit" id="marriage_bonuses" value="Who faces marriage bonuses?" onclick='show_marriage_bonus_explanation()'/>
+        <p class="marriage_penalty_explanation_class" id="marriage_bonus_explanation" hidden>Some very low-income couples incur marriage bonuses. Specifically, a marriage bonus can occur if:</br>(1) both partners are in or just over the phase-in region of their respective individual EITC's, and </br>(2) they have at least one but not more than three children.</p>
+        <input type="submit" class="animation_button" id="marriage_bonus_animation" value="Play animation" onclick="show_marriage_bonus_animation()" hidden/>
+    </div>
+
+  </div> <!--chart, eitc values & highlights container end-->
+
+</body>
+</html>

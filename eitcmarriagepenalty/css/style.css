@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 2em;
+}
+h1 {
+	font-family: 'Zen Antique Soft', serif;
+	text-align: center;
+  margin-bottom: 7px;
+}
+h2 {
+	font-family: 'Zen Antique Soft', serif;
+	line-height: 1em;
+}
+p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 85%;
+	line-height: 1.5em;
+}
+input {
+	color: #5a585;
+}
+.name {
+	font-family: 'Zen Antique Soft', serif;
+	text-align: center;
+	line-height: 2em;
+	font-size: 110%;
+}
+
+/********************************************************/
+/* Container for chart, eitc values & highlights */
+/********************************************************/
+.chart_highlights_container {
+  padding: 0;
+  margin: 0;
+  margin-left: 10%;
+}
+/*****************Subcontainter: eitc values*****************/
+.eitc_values {
+  border: none;
+  overflow: scroll;
+}
+/*****************Subcontainter: Highlight buttons*****************/
+.highlights {
+  border-style: solid;
+  padding-bottom: 10px;
+  width: 20%;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  border-radius: 5px;
+}
+.highlights_title {
+  border-bottom: solid;
+  font-weight: bold;
+  background-color: #e4eaed;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+input[type=submit]{
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  background-color: #e4eaed;
+  border-style: solid;
+  border: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+input[type=submit].animation_button{
+  width: 50%;
+  background-color: #00acee;
+  color: white;
+  border-style: solid;
+  border: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+input[type=submit]:hover {background-color: #d1d1d1;}
+input[type=submit].animation_button:hover {background-color: #0475ba}
+
+p.marriage_penalty_explanation_class {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*****************Subcontainter: Chart****************/
+.chart {
+  border-style: solid;
+  padding: 10px;
+  margin-right: 1%;
+  margin-bottom: 20px;
+  width: 70%;
+  display: inline-block;
+  float: left;
+}
+
+/********************************************************/
+/* Media query for mobile 800px: */
+/********************************************************/
+@media screen and (max-width: 800px) {
+  body {
+    width: 90%; /* The width is 100%, when the viewport is 800px or smaller */
+    font-size: 75%;
+  }
+  .navbar-desktop {
+  	display: none;
+  }
+}
+
+/********************************************************/
+/* Slider; NOTE Slider may cause page to shift left & right on mobile */
+/********************************************************/
+/*Slider */
+.slidecontainer {
+  width: 100%;
+}
+
+/*Display income */
+.income-display {
+	display: inline-block;
+	width: 40%;
+}
+
+.slider-actual {
+	display: inline-block;
+	width: 45%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #1DA1F2;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #1DA1F2;
+  cursor: pointer;
+  border-radius: 50%;
+}
