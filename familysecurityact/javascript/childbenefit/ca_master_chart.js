@@ -24,6 +24,12 @@ var CAchart = c3.generate({
             dif: 'Change in Benefit'
         }
     },
+    padding: {
+        bottom: 0,
+        top: 10,
+        left: 70,
+        right: 20,
+    },
     color: {
         pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
     },
@@ -42,14 +48,16 @@ var CAchart = c3.generate({
             tick: {
                 format: d3.format('$,'),
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000]
-            }
+            },
+            padding: {left: 0},
         },
         y: {
             label: {text: 'Benefit / Benefit Difference', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
                 values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000]
-            }
+            },
+            padding: {bottom: 0},
         }
     },
     grid: {

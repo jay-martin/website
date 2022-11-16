@@ -42,11 +42,15 @@ input {
   border: none;
   overflow: scroll;
 }
+.right_side{
+  float: left;
+  width: 22%;
+}
 /*****************Subcontainter: Highlight buttons*****************/
 .highlights {
   border-style: solid;
-  padding-bottom: 10px;
-  width: 20%;
+  margin-left: 15px;
+  width: 92%;
   display: inline-block;
   float: left;
   text-align: center;
@@ -55,35 +59,47 @@ input {
 .highlights_title {
   border-bottom: solid;
   font-weight: bold;
-  background-color: #e4eaed;
+  /* background-color: #e4eaed; */
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-input[type=submit]{
-  font-family: 'Open Sans', sans-serif;
-  width: 100%;
-  background-color: #e4eaed;
-  border-style: solid;
-  border: 5px;
-  text-decoration: none;
+button{
+  background-color: white;
+  border: none;
+  border-top: solid;
   cursor: pointer;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+button.top_button{
+  border-top: none;
+}
+button.bottom_button{
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 input[type=submit].animation_button{
   width: 50%;
-  background-color: #00acee;
-  color: white;
-  border-style: solid;
-  border: 5px;
+  border: solid;
+  border-color: black;
+  /* background-color: #00acee; */
+  color: black;
   text-decoration: none;
   cursor: pointer;
   border-radius: 3px;
+  margin-bottom: 10px;
 }
-input[type=submit]:hover {background-color: #d1d1d1;}
-input[type=submit].animation_button:hover {background-color: #0475ba}
+button:hover {background-color: #f0efed;}
 
-p.marriage_penalty_explanation_class {
-  padding-left: 10px;
-  padding-right: 10px;
+input[type=submit].animation_button:hover {background-color: #d1d1d1}
+
+p.explanation {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 /*****************Subcontainter: Chart****************/
 .chart {

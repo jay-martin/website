@@ -1,11 +1,11 @@
 /*Default values */
-document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + 862 + '</b>.';
-document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and head of household.';
+document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + 862 + '</b> compared to filing as single.';
+document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';
 
 /* Calculates tax savings from the head of household status*/
 function difference_hoh(){
     user_dif = taxDifferenceatIncomeValue(myRange_HOH.value, myRange_ID.value);
-    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
+    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
 }
 
 /* Writes to page whether user would itemize or use the standard deduction */
@@ -14,7 +14,7 @@ function deductType(){
     hoh_deduct = hoh_deduction(myRange_ID.value);
 
     if(single_deduct===12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and head of household.';
+        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';
     }
     else if(single_deduct>12950 && hoh_deduct===19400){
         document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as a head of household but would <em>itemize</em> as a single filer.';
@@ -35,6 +35,20 @@ function show_basic_overview(){
 	}
 }
 
+function show_regressive_explanation(){
+	console.log("IN SHOW REGRESSIVE");
+	if(regressive_explanation.hidden === true){
+		console.log("IN UNHIDE EXPLANATION");
+		regressive_explanation.hidden = false;
+		regressive_animation.hidden = false;
+	}
+	else{
+		console.log("IN HIDE EXPLANATION");
+		regressive_explanation.hidden = true;
+		regressive_animation.hidden = true;
+	}
+}
+
 function show_itemized_explanation(){
 	if(itemized_explanation.hidden === true){
 		itemized_explanation.hidden = false;
@@ -43,6 +57,17 @@ function show_itemized_explanation(){
 	else{
 		itemized_explanation.hidden = true;
 		itemized_explanation_animation_id.hidden = true;
+	}
+}
+
+function show_tax_credit_explanation(){
+	if(tax_credit_explanation.hidden === true){
+		tax_credit_explanation.hidden = false;
+		tax_credit_animation.hidden = false;
+	}
+	else{
+		tax_credit_explanation.hidden = true;
+		tax_credit_animation.hidden = true;
 	}
 }
 

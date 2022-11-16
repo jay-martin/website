@@ -20,7 +20,6 @@ h2 {
 }
 p {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 85%;
 	line-height: 1.5em;
 }
 input {
@@ -33,9 +32,9 @@ input {
 	font-size: 110%;
   margin-bottom: 10px;
 }
-/********************************************************/
+/********************************************************************************************************/
 /* Media query for mobile 800px: */
-/********************************************************/
+/********************************************************************************************************/
 @media screen and (max-width: 800px) {
   body {
     width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
@@ -51,183 +50,82 @@ input {
     width: 0px;
   }
 }
-/********************************************************/
-/**Droppdown Button */
-/********************************************************/
-/*******Animate expansion***************/
-@keyframes navigation_bar {
-  from: {};
-  to: {};
-}
-
-.navbar-desktop {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 90%;
-  left: 0px;
-  position: fixed; /* Make it stick/fixed */
-  margin-top: 0px;
-}
-.dropbtn {
-  font-family: 'Zen Antique Soft', serif;
-  background-color: white;
-  margin-left: 30px;
-  padding: 0px;
-  margin-top: 13px;
-  font-size: 200%;
-  border: none;
-}
-
-/* Containter needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  /* display: none; */
-  margin-top: 0px;
-  padding-top: 0px;
-  background-color: #F2F2F2;
-  position: absolute;
-  width: 25%;
-  height: 100%;
-  margin-top: 0px;
-  /* background-color: #f1f1f1; */
-  min-width: 180px;
-  z-index: 1;
-  border: solid;
-  border: none;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-/* .dropdown-content a:hover {background-color: #ddd;} */
-
-/* Show the dropdown menu on hover */
-/* .dropdown:hover .dropdown-content {display: block;} */
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: white; color: #454545; cursor: pointer;}
-
-/********************************************************/
-/* Container for chart, eitc values & highlights */
-/********************************************************/
+/********************************************************************************************************/
+/* Container for other pages links, chart, & highlights */
+/********************************************************************************************************/
 .chart_highlights_container {
   padding: 0;
   margin: 0;
 }
+/*
 .chart_highlights_container:after {
   content: "";
   display: table;
   clear: both;
 }
-/*****************Subcontainter: left & right side formatting*****************/
+*/
+/*****************Subcontainter: Other pages (left side)***************************/
 .left_side{
   float: left;
-  width: 15%;
-  height: 500px;
+  width: 18%;
 }
-.right_side{
-  float: left;
-  width: 22%;
+.other_pages {
+  font-size: 90%;
+  margin-left: 30px;
+  margin-right: 30px;
 }
-/*****************Subcontainter: Chart*******************************/
+/* Links */
+.other_pages a {
+  color: black;
+  margin-bottom: 16px;
+  padding-right: 10px;
+  text-decoration: none;
+  display: block;
+  width: max-content;
+}
+.other_pages a:hover {
+  text-decoration: underline;
+}
+/*****************Subcontainter: Chart*********************************************/
 .chart {
   border-style: solid;
+  border-width: 1.5px;
   padding: 10px;
   width: 60%;
   /* display: inline-block; */
   float: left;
   border-radius: 5px;
 }
-/*******Subcontainter in Chart: eitc values*********/
+/*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
-  border: none;
+  border: solid;
+  background-color: #f5f3f2;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  height: 100px;
   overflow: scroll;
 }
-/*****************Subcontainter: Highlight buttons*****************/
-.highlights {
-  border-style: solid;
-  margin-left: 15px;
-  width: 92%;
-  display: inline-block;
-  float: left;
-  text-align: center;
-  border-radius: 5px;
+p.explanation{
+  font-size: 85%;
 }
-.highlights_title {
-  border-bottom: solid;
-  font-weight: bold;
-  /* background-color: #e4eaed; */
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-button{
-  background-color: white;
-  border: none;
-  border-top: solid;
-  cursor: pointer;
-  margin: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-button.top_button{
-  border-top: none;
-}
-button.bottom_button{
-  width: 100%;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-input[type=submit].animation_button{
-  width: 50%;
-  border: solid;
-  border-color: black;
-  /* background-color: #00acee; */
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-button:hover {background-color: #f0efed;}
-
-input[type=submit].animation_button:hover {background-color: #d1d1d1}
-
-p.explanation {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-/********************************************************/
-/* Slider; NOTE Slider may cause page to shift left & right on mobile */
-/********************************************************/
+/*******Subcontainter in Chart: Sliders**************/
 /*Slider */
 .slidecontainer {
   width: 100%;
 }
-
 /*Display income */
 .income-display {
-	display: inline-block;
-	width: 40%;
+  display: inline-block;
+  width: 40%;
 }
-
 .slider-actual {
-	display: inline-block;
-	width: 45%;
+  display: inline-block;
+  width: 45%;
 }
-
 .slider {
   -webkit-appearance: none;
   width: 100%;
@@ -239,11 +137,9 @@ p.explanation {
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
-
 .slider:hover {
   opacity: 1;
 }
-
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -253,7 +149,6 @@ p.explanation {
   cursor: pointer;
   border-radius: 50%;
 }
-
 .slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -261,3 +156,63 @@ p.explanation {
   cursor: pointer;
   border-radius: 50%;
 }
+/*****************Subcontainter: Highlight buttons (right side)***************************/
+.right_side{
+  float: left;
+  width: 20%;
+  margin-right: 0px;
+}
+.highlights {
+  border-style: solid;
+  border-width: 1.5px;
+  margin-left: 10px;
+  width: 91%;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  border-radius: 5px;
+}
+.highlights_title {
+  border-bottom: solid;
+  border-width: 1.5px;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+button{
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-top: solid;
+  border-width: 1.5px;
+  cursor: pointer;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+button.top_button{
+  border-top: none;
+}
+button.bottom_button{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+input[type=submit].animation_button{
+  width: 50%;
+  border: solid;
+  border-width: 1.5px;
+  border-color: black;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+p.explanation {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+button:hover {background-color: #f0efed;}
+input[type=submit].animation_button:hover {background-color: #d1d1d1}

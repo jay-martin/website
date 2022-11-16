@@ -4,8 +4,6 @@ function show_mp_explanation_animation(){
 	timer = 1000;
 	setTimeout(function () {
 		HOHchart.xgrids([]);
-		explanation_style.style.borderRadius = '5px';
-		explanation_style.style.height = '85px';
 		document.getElementById('item_or_stand').innerHTML = '';
 		document.getElementById('HOH_savings').innerHTML = '';
     	HOHchart.axis.max({y: 100});
