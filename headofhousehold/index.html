@@ -94,15 +94,27 @@
 
     <div class = "highlights"> <!--Subcontainter for highlights-->
       <div class = "highlights_title">Highlights</div>
+
       <button type="button" class="top_button" onclick="show_basic_overview()">What is the head of household filing status? </button>
         <p class="explanation" id="hoh_explanation" hidden>Head of household is a filing status for single parents* who maintain their own household.* People who file as heads of households receive a larger standard deduction and preferential tax brackets compared to single filers.</p>
         <input type="submit" class="animation_button" id="basic_overview_animation_id" value="Play animation" onclick="show_basic_overview_animation()" hidden />
+
+      <button type="button" onclick="show_regressive_explanation()">Is HOH regressive?</button>
+        <p class="explanation" id="regressive_explanation" hidden>Basically, yes. The value of the benefit increases with income. However, itemizing reduces HOH tax savings.</p>
+        <input type="submit" class="animation_button" id="regressive_animation" value="Play animation"  hidden/>
+
       <button type="button" onclick="show_itemized_explanation()">How do itemized deductions affect HOH?</button>
-        <p class="explanation" id="itemized_explanation" hidden>Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <p class="explanation" id="itemized_explanation" hidden>Itemized deductions reduce the benefit of the head of household filing status.</p>
         <input type="submit" class="animation_button" id="itemized_explanation_animation_id" value="Play animation"  hidden/>
+
+      <button type="button" onclick="show_tax_credit_explanation()">How do tax credits affect HOH?</button>
+        <p class="explanation" id="tax_credit_explanation" hidden>Explanation here.</p>
+        <input type="submit" class="animation_button" id="tax_credit_animation" value="Play animation" onclick="" hidden />
+
       <button type="button" class="bottom_button" onclick="show_mp_explanation()">Does HOH produce marriage penalties?</button>
         <p class="explanation" id="marriage_penalty_explanation" hidden>Yes. The standard deduction and tax brackets for married joint filers are set at roughly double those of single filers, while heads of households are set about 1.5x times single filers.</p>
         <input type="submit" class="animation_button" id="marriage_penalty_explanation_animation_id" value="Play animation" onclick="show_mp_explanation_animation()" hidden/>
+
     </div>
   </div>
 

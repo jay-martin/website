@@ -35,6 +35,20 @@ function show_basic_overview(){
 	}
 }
 
+function show_regressive_explanation(){
+	console.log("IN SHOW REGRESSIVE");
+	if(regressive_explanation.hidden === true){
+		console.log("IN UNHIDE EXPLANATION");
+		regressive_explanation.hidden = false;
+		regressive_animation.hidden = false;
+	}
+	else{
+		console.log("IN HIDE EXPLANATION");
+		regressive_explanation.hidden = true;
+		regressive_animation.hidden = true;
+	}
+}
+
 function show_itemized_explanation(){
 	if(itemized_explanation.hidden === true){
 		itemized_explanation.hidden = false;
@@ -43,6 +57,17 @@ function show_itemized_explanation(){
 	else{
 		itemized_explanation.hidden = true;
 		itemized_explanation_animation_id.hidden = true;
+	}
+}
+
+function show_tax_credit_explanation(){
+	if(tax_credit_explanation.hidden === true){
+		tax_credit_explanation.hidden = false;
+		tax_credit_animation.hidden = false;
+	}
+	else{
+		tax_credit_explanation.hidden = true;
+		tax_credit_animation.hidden = true;
 	}
 }
 

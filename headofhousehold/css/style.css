@@ -180,6 +180,7 @@ p.explanation{
   border-top-right-radius: 5px;
 }
 button{
+  width: 100%;
   background-color: white;
   border: none;
   border-top: solid;
@@ -193,7 +194,6 @@ button.top_button{
   border-top: none;
 }
 button.bottom_button{
-  width: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
