@@ -98,8 +98,9 @@ input {
 }
 /*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
-  border: dashed;
-  border-width: 1.5px;
+  border: solid;
+  background-color: #f5f3f2;
+  border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 10px;

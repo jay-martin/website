@@ -20,6 +20,12 @@ var chart = c3.generate({
             dif: 'Change in Benefit'
         }
     },
+    padding: {
+        bottom: 0,
+        top: 10,
+        left: 70,
+        right: 20,
+    },
     color: {
         pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
     },
@@ -38,14 +44,16 @@ var chart = c3.generate({
             tick: {
                 format: d3.format('$,'),
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000]
-            }
+            },
+            padding: {left: 0, right: 0},
         },
         y: {
             label: {text: 'Benefit / Benefit Difference', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
                 values: [-4000, -3000, -2000, -1000, 0, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
-            }
+            },
+            padding: {bottom: 10},
         }
     },
     grid: {

@@ -23,6 +23,12 @@ var MPchart = c3.generate({
             penalty: 'Marriage Penalty'
         }
     },
+    padding: {
+        bottom: 0,
+        top: 10,
+        left: 70,
+        right: 22,
+    },
     color: {
         pattern: ['#6ab6fc', '#36D903', '#000000', '#eb3734']
     },
@@ -42,6 +48,7 @@ var MPchart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000]
             },
+            padding: {left: 0, right: 0},
             max: 60000,
         },
         y: {
@@ -49,7 +56,8 @@ var MPchart = c3.generate({
             tick: {
                 format: d3.format('$,'),
                 values: [-4000, -3000, -2000, -1000, 0, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
-            }
+            },
+            padding: {bottom: 0},
         }
     },
     grid: {

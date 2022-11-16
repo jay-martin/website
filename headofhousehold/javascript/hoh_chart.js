@@ -18,6 +18,12 @@ var HOHchart = c3.generate({
             HOH_Savings: 'HOH Tax Savings',
         }
     },
+    padding: {
+        bottom: 0,
+        top: 10,
+        left: 65,
+        right: 15,
+    },
     color: {
         pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
     },
@@ -36,7 +42,8 @@ var HOHchart = c3.generate({
             tick: {
                 format: d3.format('$,'),
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
-            }
+            },
+            padding: {left: 0},
         },
         y: {
             label: {text: 'Tax Savings', position: 'outer-middle'},
