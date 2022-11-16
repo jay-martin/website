@@ -22,18 +22,50 @@ function modify_income_marriage_penalty(){
     document.getElementById('individual_eitc_values').innerHTML = 'Your EITC is worth <b>$' + person1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your partner's EITC is worth <b>$" + person2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined EITC of <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
     document.getElementById('married_eitc_value').innerHTML = "With a combined income of $" + combinedIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ", if you married your EITC would be worth <b>$" + marriedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') +"</b>.";
 
+    /* Print marriage penalty to screen */
+    penalty = combinedEITC - marriedEITC;
+    if(penalty < 0){
+        bonus = penalty * -1;
+        document.getElementById('marriage_penalty_show').innerHTML = 'You face a marriage <em>bonus</em> of <b>$' + bonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+    }
+    else{
+        document.getElementById('marriage_penalty_show').innerHTML = 'You face a marriage <em>penalty</em> of <b>$' + penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+    }
+
     /* Move xgrids */
     MPchart.xgrids([{value: myRange_person1.value, text:'Your income'},{value: myRange_person2.value, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedEITC, text: "Your married EITC"}, {value: combinedEITC, text: "Combined individual EITC's"}]);
 
-    /* Print marriage penalty to screen */
-    penalty = marriedEITC - combinedEITC;
+    /* Move stacked eitc value curves */
+    /* Adjust color of eitc value curves */
+    console.log("penalty: " + penalty);
     if(penalty > 0){
-        document.getElementById('marriage_penalty_show').innerHTML = 'You face a marriage <em>bonus</em> of <b>$' + penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+        MPchart.show(['married_eitc', 'penalty']);
+        MPchart.hide(['combined_eitc', 'bonus']);
+        MPchart.load({
+            columns: [
+                ['x4',            0, 80000],
+                ['married_eitc',  marriedEITC, marriedEITC],
+                ['x5',            0, 80000],
+                ['penalty', penalty,     penalty],
+            ]
+        });
+        MPchart.data.colors({
+            'married_eitc': '#FFFFFF',
+            'penalty': '#eb3734',
+        })
     }
     else{
-    	penalty = penalty * -1;
-        document.getElementById('marriage_penalty_show').innerHTML = 'You face a marriage <em>penalty</em> of <b>$' + penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+        MPchart.hide(['married_eitc', 'penalty']);
+        MPchart.show(['combined_eitc', 'bonus']);
+        MPchart.load({
+            columns: [
+                ['x6',            0, 80000],
+                ['combined_eitc', combinedEITC, combinedEITC],
+                ['x7',            0, 80000],
+                ['bonus',         penalty * -1, penalty * -1],
+            ]
+        });
     }
 
     /* Adjust chart x-axis max in case combined income exceeds current x-axis max */

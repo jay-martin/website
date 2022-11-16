@@ -4,6 +4,7 @@ var HOHchart = c3.generate({
     data: {
         xs: {
             'HOH_Savings' : 'x',
+            'person1' : 'x1',
             'person2' : 'x2',
         },
         columns: [
@@ -12,17 +13,20 @@ var HOHchart = c3.generate({
         ],
         types: {
             HOH_Savings: 'area',
+            person1: 'area',
             person2: 'area',
         },
         names: {
             HOH_Savings: 'HOH Tax Savings',
+            person1: 'Person 1',
+            person2: 'Person 2',
         }
     },
     padding: {
         bottom: 0,
         top: 10,
         left: 65,
-        right: 15,
+        right: 20,
     },
     color: {
         pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
@@ -43,7 +47,7 @@ var HOHchart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
             },
-            padding: {left: 0},
+            padding: {left: 0, right: 0},
         },
         y: {
             label: {text: 'Tax Savings', position: 'outer-middle'},

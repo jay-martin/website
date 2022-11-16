@@ -6,7 +6,12 @@ var MPchart = c3.generate({
             'person1' : 'x1',
             'person2' : 'x2',
             'married' : 'x3',
-            'penalty' : 'x4',
+
+            'married_eitc'  : 'x4',
+            'penalty'       : 'x5',
+
+            'combined_eitc' : 'x6',
+            'bonus'         : 'x7',
         },
         columns: [
             ['x1',       0,             10979,        20131,        43493],
@@ -15,12 +20,29 @@ var MPchart = c3.generate({
             ['person2',  0, 560,  560,         0],
             ['x3',       0,             10979,               26262,        49622],
             ['married',  0,             3733,                3733,         0],
+
+            ['x4',            0,    60000],
+            ['married_eitc',  1548, 1548],
+            ['x5',            0,    60000],
+            ['penalty',       1104, 1104],
+
+            ['x6',],
+            ['combined_eitc',],
+            ['x7',],
+            ['bonus',],
         ],
+        types: {
+            'married_eitc'  : 'area',
+            'penalty'       : 'area',
+            'combined_eitc' : 'area',
+            'bonus'         : 'area',
+        },
+        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus']],
+        order: false,
         names: {
             person1: 'Your EITC',
             person2: "Your partner's EITC",
             married: 'EITC if you get married',
-            penalty: 'Marriage Penalty'
         }
     },
     padding: {
@@ -30,10 +52,11 @@ var MPchart = c3.generate({
         right: 22,
     },
     color: {
-        pattern: ['#6ab6fc', '#36D903', '#000000', '#eb3734']
+        pattern: ['#6ab6fc', '#36D903', '#000000', '#FFFFFF', '#eb3734', '#FFFFFF', '#36D903']
     },
     legend: {
-        position: 'bottom'
+        position: 'bottom',
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus'],
     },
     tooltip: {
         show: false
@@ -68,7 +91,6 @@ var MPchart = c3.generate({
             lines: [{value: 0}, {value: 2652, text: "Combined individual EITC's"}, {value: 1548, text: "Your married EITC"}]
         }
     },
-    regions: [{axis: 'y', start: 1548, end: 2652, class: 'regionY'}]
 });
 
 function modify_person1(){

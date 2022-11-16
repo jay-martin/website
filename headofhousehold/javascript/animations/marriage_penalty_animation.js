@@ -12,11 +12,13 @@ function show_mp_explanation_animation(){
             columns: [
                 ['x',             0, 12950, 12951, 23225, 23226, 54725, 54726, 102025, 102026, 183000, 183001, 228900, 228901, 552850, 552851, 600000],
                 ['HOH_Savings',   0, 0,     10,    10,    12,    12,    22,    22,     24,     24,     32,     32,     35,     35,     37,     37],
+                ['x1', 0, 600000],
+                ['person1', 0, 0],
                 ['x2', 0, 600000],
                 ['person2', 0, 0],
             ]
         });
-        HOHchart.regions.add([{axis: 'x', end: 600000, class: 'person1_region'}]);
+        HOHchart.regions([{axis: 'x', start: 0, end: 600000, class: 'person_1'}]);
 	}, timer);
 
 	timer += 2000;
@@ -39,16 +41,14 @@ function show_mp_explanation_animation(){
 	timer += 2000;
 	setTimeout(function () {
         HOHchart.xgrids([]);
+        HOHchart.regions.remove({classes: ['person_1']});
+        HOHchart.axis.max({x: 100000});
+        HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000];
 	}, timer);
 
 	timer += 2000;
 	setTimeout(function () {
-		HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000];
-        HOHchart.axis.max({x: 50000});
-
-        console.log("Should remove region");
-        HOHchart.regions.remove({classes: ['person1_region']});
-        /* HOHchart.regions.add({axis: 'x', end: 30000}); */
+        HOHchart.regions([{axis: 'x', start: 0, end: 50000}]);
 
         document.getElementById('explanation_line1').style.color = '#7a7a7a';
         document.getElementById('explanation_line2').innerHTML = 'So say you make $50,000.';
@@ -64,16 +64,11 @@ function show_mp_explanation_animation(){
 	setTimeout(function () {
 		HOHchart.load({
             columns: [
-                ['x',             0, 50000],
-                ['HOH_Savings',   8.5, 8.5],
+                ['x1',            0, 50000],
+                ['person1',       8.5, 8.5],
             ]
         });
-        HOHchart.axis.max({x: 50000});
-	}, timer);
-
-	timer += 2000;
-	setTimeout(function () {
-		HOHchart.axis.max({x: 100000});
+        HOHchart.focus('person1');
 	}, timer);
 
 	timer += 2000;
@@ -96,6 +91,7 @@ function show_mp_explanation_animation(){
                 ['person2',       8.5,   8.5]
             ]
         });
+        HOHchart.focus(['person1', 'person2']);
         document.getElementById('explanation_line3').innerHTML = "Say your partner also makes $50,000. So they'd also owe about 8.5% in taxes.";
 	}, timer);
 
@@ -128,13 +124,8 @@ function show_mp_explanation_animation(){
 
 	timer += 2000;
 	setTimeout(function () {
-		HOHchart.load({
-            columns: [
-                ['x',             0, 12950, 12951, 23225, 23226, 54725, 54726, 102025, 102026, 183000, 183001, 228900, 228901, 552850, 552851, 600000],
-                ['HOH_Savings',   0, 0,     10,    10,    12,    12,    22,    22,     24,     24,     32,     32,     35,     35,     37,     37],
-            ]
-        });
-        document.getElementById('explanation_line5').innerHTML = "But imagine what would happen if married people were taxed at the same rates as single people. If you got married, you and your partner would have a combined income of $100,000. And under the single filer tax brackets, that $100,000 would be taxed like this:";
+		HOHchart.focus('HOH_Savings');
+        document.getElementById('explanation_line5').innerHTML = "But imagine what would happen if married people were taxed at the same rates as single people. If you got married, you and your partner would have a combined income of $100,000. But you'd face the single tax brackets on <em>all $100,000</em> of income.";
         explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 
@@ -147,7 +138,7 @@ function show_mp_explanation_animation(){
             ]
         });
 		HOHchart.ygrids([{value: 8.5, text: "You and Your Partner's Single Effective Tax Rate"}, {value: 15, text: "You and Your Partner's Married Effective Tax Rate"}])
-        document.getElementById('explanation_line5').innerHTML = "But imagine what would happen if married people were taxed at the same rates as single people. If you got married, you and your partner would have a combined income of $100,000. And under the single filer tax brackets, that $100,000 would be taxed like this. That's about 15% of your income owed in tax.";
+        document.getElementById('explanation_line5').innerHTML = "But imagine what would happen if married people were taxed at the same rates as single people. If you got married, you and your partner would have a combined income of $100,000. But you'd face the single tax brackets on <em>all $100,000</em> of income. That's about 15% of your income owed in tax.";
         explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 

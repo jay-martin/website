@@ -1,35 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
 body {
-	font-family: 'Open Sans', sans-serif;
-	margin-left: auto;
-	margin-right: auto;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 2em;
   margin-top: 0px;
   padding-top: 0px;
 }
 h1 {
-	font-family: 'Zen Antique Soft', serif;
-	text-align: center;
+  font-family: 'Zen Antique Soft', serif;
+  text-align: center;
   margin-bottom: 7px;
   margin-top: 0px;
   padding-top: 20px;
 }
 h2 {
-	font-family: 'Zen Antique Soft', serif;
-	line-height: 1em;
+  font-family: 'Zen Antique Soft', serif;
+  line-height: 1em;
 }
 p {
-	font-family: 'Open Sans', sans-serif;
-	line-height: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
 }
 input {
-	color: #5a585;
+  color: #5a585;
 }
 .name {
-	font-family: 'Zen Antique Soft', serif;
-	text-align: center;
-	line-height: 2em;
-	font-size: 110%;
+  font-family: 'Zen Antique Soft', serif;
+  text-align: center;
+  line-height: 2em;
+  font-size: 110%;
   margin-bottom: 10px;
 }
 /********************************************************************************************************/
@@ -73,6 +73,7 @@ input {
   font-size: 90%;
   margin-left: 30px;
   margin-right: 30px;
+  line-height: 1.5em;
 }
 /* Links */
 .other_pages a {
