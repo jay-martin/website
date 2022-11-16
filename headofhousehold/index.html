@@ -10,22 +10,7 @@
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- load c3.css -->
   <link href="../c3-0.7.20/c3.css" rel="stylesheet">
-
 </head>
-
-<!--Desktop navbar-->
-<script type="text/javascript" src="./javascript/dropdown.js"></script>
-<div class="navbar-desktop">
-  <div class="dropdown">
-    <button class="dropbtn" onclick='dropdown()'> &#9776 </button>
-  </div>
-</div> 
-
-<div class="dropdown-content" id='dropdown_content' hidden>
-  <button class="dropbtn" onclick='dropdown()'> &#10005</button>
-  <a href="./index.html">Family Security Act</a>
-  <a href="./index.html">EITC Marriage Penalties</a>
-</div>
 
 <body>
 <!-- Load d3.js and c3.js -->
@@ -42,8 +27,15 @@
 
 <!--div class for chart and highlights box-------------------------------------------->
 <div class = "chart_highlights_container">
+  
   <!--Left side-------------------------------------------------->
-  <div class="left_side"></div>
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="./index.html">Home</a>
+      <a href="../familysecurityact/index.html">Family Security Act</a>
+      <a href="../eitcmarriagepenalty/index.html">EITC Marriage Penalties</a>
+    </div>
+  </div>
 
   <!--Chart------------------------------------------------------>
   <div class="chart">
@@ -112,7 +104,6 @@
         <p class="explanation" id="marriage_penalty_explanation" hidden>Yes. The standard deduction and tax brackets for married joint filers are set at roughly double those of single filers, while heads of households are set about 1.5x times single filers.</p>
         <input type="submit" class="animation_button" id="marriage_penalty_explanation_animation_id" value="Play animation" onclick="show_mp_explanation_animation()" hidden/>
     </div>
-
   </div>
 
 </div> <!--chart, hoh values & highlights container end-->
