@@ -80,7 +80,7 @@ var MPchart = c3.generate({
                 format: d3.format('$,'),
                 values: [-4000, -3000, -2000, -1000, 0, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
             },
-            padding: {bottom: 0},
+            padding: {bottom: 0, top: 0},
         }
     },
     grid: {
@@ -92,109 +92,3 @@ var MPchart = c3.generate({
         }
     },
 });
-
-function modify_person1(){
-    if(person1_children.value === "none"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 7320, 9160, 16480],
-                ['person1', 0, 560,  560,  0]
-            ]
-        });
-    }
-    else if(person1_children.value === "one"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 10979, 20131, 43493],
-                ['person1', 0, 3733,  3733,  0]
-            ]
-        });
-    }
-    else if(person1_children.value === "two"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 15290, 20131, 49399],
-                ['person1', 0, 6164,  6164,  0]
-            ]
-        });
-    }
-    else if (person1_children.value === "three"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 15410, 20131, 53057],
-                ['person1', 0, 6935,  6935,  0]
-            ]
-        });
-    }
-}
-
-function modify_person2(){
-    if(person2_children.value === "none"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 7320, 9160, 16480],
-                ['person2', 0, 560,  560,  0]
-            ]
-        });
-    }
-    else if(person2_children.value === "one"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 10979, 20131, 43493],
-                ['person2', 0, 3733,  3733,  0]
-            ]
-        });
-    }
-    else if(person2_children.value === "two"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 15290, 20131, 49399],
-                ['person2', 0, 6164,  6164,  0]
-            ]
-        });
-    }
-    else if (person2_children.value === "three"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 15410, 20131, 53057],
-                ['person2', 0, 6935,  6935,  0]
-            ]
-        });
-    }
-}
-
-function modify_married(){
-    num_children = numChildren();
-    if(num_children===0){
-        MPchart.load({
-            columns: [
-                ['x3',      0, 7320, 15290, 22610, 60000],
-                ['married', 0, 560,  560,   0,     0]
-            ]
-        });
-    }
-    else if(num_children===1){
-        MPchart.load({
-            columns: [
-                ['x3',      0, 10979, 26262, 49622, 60000],
-                ['married', 0, 3733,  3733,  0,     0]
-            ]
-        });
-    }
-    else if(num_children===2){
-        MPchart.load({
-            columns: [
-                ['x3',      0, 15290, 26262, 55529, 60000],
-                ['married', 0, 6164,  6164,  0,     0]
-            ]
-        });
-    }
-    else{
-        MPchart.load({
-            columns: [
-                ['x3',      0, 15410, 26262, 59187, 60000],
-                ['married', 0, 6935,  6935,  0,     0]
-            ]
-        });
-    }    
-}

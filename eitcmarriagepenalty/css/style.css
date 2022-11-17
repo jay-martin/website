@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2em;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+h1 {
+  font-family: 'Zen Antique Soft', serif;
+  text-align: center;
+  margin-bottom: 7px;
+  margin-top: 0px;
+  padding-top: 25px;
+}
+h2 {
+  font-family: 'Zen Antique Soft', serif;
+  line-height: 1em;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
+}
+input {
+  color: #5a585;
+}
+.logo {
+  width: 200px;
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 25px;
+}
+.name {
+  font-family: 'Zen Antique Soft', serif;
+  text-align: center;
+  line-height: 2em;
+  font-size: 110%;
+  margin-bottom: 10px;
+}
+/********************************************************************************************************/
+/* Media query for mobile 800px: */
+/********************************************************************************************************/
+@media screen and (max-width: 800px) {
+  body {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    font-size: 75%;
+  }
+  .navbar-desktop {
+    display: none;
+  }
+  .left_side{
+    width: 0px;
+  }
+  .right_side{
+    width: 0px;
+  }
+}
+/********************************************************************************************************/
+/* Container for other pages links, chart, & highlights */
+/********************************************************************************************************/
+.chart_highlights_container {
+  padding: 0;
+  margin: 0;
+}
+/*
+.chart_highlights_container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
+/*****************Subcontainter: Other pages (left side)***************************/
+.left_side{
+  float: left;
+  width: 18%;
+}
+.other_pages {
+  font-size: 90%;
+  margin-left: 30px;
+  margin-right: 30px;
+  line-height: 1.5em;
+}
+/* Links */
+.other_pages a {
+  color: black;
+  margin-bottom: 16px;
+  padding-right: 10px;
+  text-decoration: none;
+  display: block;
+  width: max-content;
+}
+.other_pages a:hover {
+  text-decoration: underline;
+}
+/*****************Subcontainter: Chart*********************************************/
+.chart {
+  border-style: solid;
+  border-width: 1.5px;
+  padding: 10px;
+  margin-left: 2.5%;
+  width: 55%;
+  /* display: inline-block; */
+  float: left;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+/*******Subcontainter in Chart: Explanation Values****/
+.explanation_values {
+  font-size: 95%;
+  border: solid;
+  background-color: #f5f3f2;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  height: 135px;
+  overflow: scroll;
+}
+p.explanation{
+  font-size: 75%;
+}
+/*******Subcontainter in Chart: Sliders**************/
+/*Slider */
+.slidecontainer {
+  width: 100%;
+}
+/*Display income */
+.income-display {
+  display: inline-block;
+  width: 45%;
+}
+.slider-actual {
+  display: inline-block;
+  margin-left: 0%;
+  margin-right: 0%;
+  width: 53%;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.slider:hover {
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #1DA1F2;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #1DA1F2;
+  cursor: pointer;
+  border-radius: 50%;
+}
+/*****************Subcontainter: Highlight buttons (right side)***************************/
+.right_side{
+  float: left;
+  width: 20%;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+.highlights {
+  border-style: solid;
+  border-width: 1.5px;
+  margin-left: 20px;
+  width: 98%;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  border-radius: 5px;
+}
+.highlights_title {
+  border-bottom: solid;
+  border-width: 1.5px;
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+button{
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-top: solid;
+  border-width: 1.5px;
+  cursor: pointer;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+button.top_button{
+  border-top: none;
+}
+button.bottom_button{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+input[type=submit].animation_button{
+  width: 50%;
+  border: solid;
+  border-width: 1.5px;
+  border-color: black;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+p.explanation {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+button:hover {background-color: #f0efed;}
+input[type=submit].animation_button:hover {background-color: #d1d1d1}

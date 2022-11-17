@@ -12,7 +12,7 @@ h1 {
   text-align: center;
   margin-bottom: 7px;
   margin-top: 0px;
-  padding-top: 20px;
+  padding-top: 25px;
 }
 h2 {
   font-family: 'Zen Antique Soft', serif;
@@ -24,6 +24,12 @@ p {
 }
 input {
   color: #5a585;
+}
+.logo {
+  width: 200px;
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 25px;
 }
 .name {
   font-family: 'Zen Antique Soft', serif;
@@ -92,10 +98,12 @@ input {
   border-style: solid;
   border-width: 1.5px;
   padding: 10px;
-  width: 60%;
+  margin-left: 2.5%;
+  width: 55%;
   /* display: inline-block; */
   float: left;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 /*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
@@ -111,7 +119,7 @@ input {
   overflow: scroll;
 }
 p.explanation{
-  font-size: 85%;
+  font-size: 75%;
 }
 /*******Subcontainter in Chart: Sliders**************/
 /*Slider */
@@ -121,11 +129,13 @@ p.explanation{
 /*Display income */
 .income-display {
   display: inline-block;
-  width: 40%;
+  width: 45%;
 }
 .slider-actual {
   display: inline-block;
-  width: 45%;
+  margin-left: 0%;
+  margin-right: 0%;
+  width: 53%;
 }
 .slider {
   -webkit-appearance: none;
@@ -162,12 +172,13 @@ p.explanation{
   float: left;
   width: 20%;
   margin-right: 0px;
+  margin-bottom: 20px;
 }
 .highlights {
   border-style: solid;
   border-width: 1.5px;
-  margin-left: 10px;
-  width: 91%;
+  margin-left: 20px;
+  width: 98%;
   display: inline-block;
   float: left;
   text-align: center;

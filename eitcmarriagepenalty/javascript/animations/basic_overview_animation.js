@@ -1,5 +1,5 @@
 function show_basic_overview_animation(){
-	eitc_values_style = document.querySelector('.eitc_values');
+	explanation_values_style = document.querySelector('.explanation_values');
 	
 	timer = 1000;
 	setTimeout(function () {
@@ -7,8 +7,8 @@ function show_basic_overview_animation(){
 		MPchart.xgrids([]);
 		MPchart.ygrids([{value: 0}]);
 		MPchart.regions([]);
-		eitc_values_style.style.borderRadius = '5px';
-		eitc_values_style.style.height = '85px';
+		explanation_values_style.style.borderRadius = '5px';
+		explanation_values_style.style.height = '85px';
 		document.getElementById('individual_eitc_values').innerHTML = '';
 		document.getElementById('married_eitc_value').innerHTML = '';
 		document.getElementById('marriage_penalty_show').innerHTML = '';
@@ -16,6 +16,11 @@ function show_basic_overview_animation(){
 		MPchart.hide('person1');
 		MPchart.hide('person2');
 		MPchart.hide('married');
+		MPchart.hide('married_eitc');
+		MPchart.hide('penalty');
+		MPchart.hide('combined_eitc');
+		MPchart.hide('bonus');
+
 
 	}, timer);
 
@@ -41,8 +46,8 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line1').style.color = '#7a7a7a';
 		document.getElementById('explanation_line2').innerHTML = 'Say you have an income of <b>$' + person1Income + "</b>.";
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -66,8 +71,8 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line2').style.color = '#7a7a7a';
 		document.getElementById('explanation_line3').innerHTML = 'Say your partner also has one child.';
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer+= 2000;
@@ -87,8 +92,8 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line3').style.color = '#7a7a7a';
 		document.getElementById('explanation_line4').innerHTML = 'Say your partner has an income of <b>$' + person2Income + '</b>.';
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -111,16 +116,16 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line4').style.color = '#7a7a7a';
 		document.getElementById('explanation_line5').innerHTML = "Between the two of you, you receive a total of <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> in EITC benefits.';
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
 	setTimeout(function () {
 		document.getElementById('explanation_line5').style.color = '#7a7a7a';
 		document.getElementById('explanation_line6').innerHTML = "If you marry each other,"
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -131,8 +136,8 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line5').style.color = '#7a7a7a';
 		document.getElementById('explanation_line6').innerHTML = "If you marry each other, then with two children you will be eligible for the following, larger EITC:"
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2500;
@@ -141,8 +146,8 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line6').style.color = '#7a7a7a';
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income;
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
-		console.log("scrollTop: " + eitc_values_style.scrollTop);
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -157,6 +162,7 @@ function show_basic_overview_animation(){
 		combinedIncome_formatted = combinedIncome.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.xgrids([{value: combinedIncome, text: ''}, {value: combinedIncome, text: ""}, {value: combinedIncome, text: "Combined income"}]);
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income + " and your partner's income of $" + person2Income + ", you have a combined income of <b>$" + combinedIncome_formatted + "</b>.";
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
 	}, timer);
 
 	timer += 2000;
@@ -167,7 +173,7 @@ function show_basic_overview_animation(){
 
 		document.getElementById('explanation_line7').style.color = '#7a7a7a';
 		document.getElementById('explanation_line8').innerHTML = "That's an EITC of only <b>$" + marriedEITC_formatted + "</b>.";
-		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
 	}, timer);
 
 	timer += 2000;
@@ -181,11 +187,13 @@ function show_basic_overview_animation(){
 		marriagePenalty_formatted = marriagePenalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.regions.add([{axis: 'y', start: marriedEITC, end: combinedEITC, class: 'regionY'}]);
 		document.getElementById('explanation_line8').innerHTML = "That's an EITC of only <b>$" + marriedEITC_formatted + "</b>. You lose <b>$" + marriagePenalty_formatted + "</b> in EITC benefits because you got married.";
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
 	}, timer);
 
 	timer += 2000;
 	setTimeout(function () {
 		document.getElementById('explanation_line8').innerHTML = "That's an EITC of only <b>$" + marriedEITC_formatted + "</b>. You lose <b>$" + marriagePenalty_formatted + "</b> in EITC benefits because you got married. <em>That</em> is a marriage penalty.";
+		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
 	}, timer);
 	
 }

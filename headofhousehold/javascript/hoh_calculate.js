@@ -1,5 +1,5 @@
-function taxDifferenceatIncomeValue(income, itemDeduct){
-	taxDif = taxDifference(itemDeduct);
+function taxDifferenceatIncomeValue(income, itemDeduct, numChildren){
+	taxDif = taxDifference(itemDeduct, numChildren);
 
     i=0;
     while(income > taxDif[0][i]){
@@ -22,17 +22,51 @@ function taxDifferenceatIncomeValue(income, itemDeduct){
 
 /* Calculates the tax difference between a single filer and hoh at a particular deduction amount */
 function taxDifference(itemDeduct){
+	/* Calculate reference tax bracket values */
 	single_tax_brackets = singleNewBrackets(itemDeduct);
 	hoh_tax_brackets    = hohNewBrackets(itemDeduct);
-	combined_brackets = combinedBrackets(single_tax_brackets, hoh_tax_brackets);
+	combined_brackets   = combinedBrackets(single_tax_brackets, hoh_tax_brackets);
 
+	/* Calculate tax owed at reference tax bracket values */
 	single_taxes = singleTaxes(single_tax_brackets, combined_brackets);
 	hoh_taxes = hohTaxes(hoh_tax_brackets, combined_brackets);
 
+	/* Calculate the difference in taxes between single and hoh */
 	tax_difference = [];
 	for (var i = 0; i < single_taxes.length; i++) {
 		tax_difference.push(single_taxes[i] - hoh_taxes[i]);
 	}
+
+	return [combined_brackets, tax_difference];
+}
+
+/* Calculates the tax difference between a single filer and hoh at a particular deduction amount, including the effect of the CTC */
+function tax_difference_with_ctc(itemDeduct, numChildren){
+	/* Calculate reference tax bracket values */
+	single_tax_brackets = singleNewBrackets(itemDeduct);
+	hoh_tax_brackets    = hohNewBrackets(itemDeduct);
+	combined_brackets   = combinedBrackets(single_tax_brackets, hoh_tax_brackets);
+
+	/* Modify combined_brackets to include effects of the CTC */
+	combined_brackets = brackets_after_ctc(combined_brackets, numChildren);
+
+	/* Calculate taxes owed at reference values */
+	single_taxes = singleTaxes(single_tax_brackets, combined_brackets);
+	hoh_taxes = hohTaxes(hoh_tax_brackets, combined_brackets);
+
+	/* Apply CTC to tax owed */
+	single_taxes = taxes_after_ctc(single_taxes, numChildren);
+	hoh_taxes = taxes_after_ctc(hoh_taxes, numChildren);
+
+	/* Calculate the difference in taxes between single and hoh */
+	tax_difference = [];
+	for (var i = 0; i < single_taxes.length; i++) {
+		tax_difference.push(single_taxes[i] - hoh_taxes[i]);
+	}
+
+	console.log("Combined brackets:" + combined_brackets);
+	console.log("Tax dif: " + tax_difference);
+
 	return [combined_brackets, tax_difference];
 }
 
@@ -144,4 +178,57 @@ function hohTaxes(hoh_brackets, combined_brackets){
 		}
 	}
 	return hoh_taxes;
+}
+
+function brackets_after_ctc(combinedBrackets, numChildren){
+	nonRefund = 600 * numChildren;
+	refund = 1400 * numChildren;
+
+	/*Calculate income after standard deduction that single filers end paying $0 */
+	additionalSingle = 0;
+	newValueSingle = 0;
+	if(nonRefund > 1027.5){
+		additionalSingle = (nonRefund - 1027.5) / .12;
+		newValueSingle = 23225 + additionalSingle;
+	}
+	else{
+		additionalSingle = nonRefund / .1;
+		newValueSingle = 12950 + additionalSingle;
+	}
+	/*Calculate income after standard deduction that hoh filers end paying $0 */
+	additionalHOH = 0;
+	newValueHOH = 0;
+	if(nonRefund > 1465){
+		additionalHOH = (nonRefund - 1465) / .12 + 14650;
+		newValueHOH = 34050 + additionalHOH;
+	}
+	else{
+		additionalHOH = nonRefund / .1;
+		newValueHOH = 19400 + additionalHOH;
+	}
+
+	/* add new zero tax values into combinedBrackets array */
+	combinedBrackets.push(newValueSingle);
+	combinedBrackets.push(newValueHOH);
+
+	/* sort new arrays */
+	combinedBrackets.sort(function(a,b){return a-b;});
+
+	return combinedBrackets;
+}
+
+function taxes_after_ctc(taxes, numChildren){
+	for (var i = 0; i < taxes.length; i++) {
+		/* Apply nonrefundable portion of CTC */
+		taxes[i] = taxes[i] - 600 * numChildren;
+		
+		/* Set to zero if nonrefundable portion is greater than taxes owed */
+		if(taxes[i] < 0){
+			taxes[i] = 0;
+		}
+
+		/* Apply refundable portion of CTC */
+		taxes[i] = taxes[i] - 1400 * numChildren;
+	}
+	return taxes;
 }
