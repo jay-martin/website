@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
 body {
-  font-family: 'Open Sans', sans-serif;
   margin-left: auto;
   margin-right: auto;
   line-height: 2em;
@@ -19,7 +18,7 @@ h2 {
   line-height: 1em;
 }
 p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Computer Modern Sans";
   line-height: 1.5em;
 }
 input {
@@ -97,6 +96,7 @@ input {
 }
 /*****************Subcontainter: Chart*********************************************/
 .chart {
+  font-family: "Computer Modern Sans";
   border-style: solid;
   border-width: 1.5px;
   border-color: #adadad;
@@ -124,7 +124,8 @@ input {
   overflow: scroll;
 }
 p.explanation{
-  font-size: 75%;
+  font-family: "Computer Modern Sans";
+  font-size: 95%;
 }
 /*******Subcontainter in Chart: Sliders**************/
 /*Slider */
@@ -180,7 +181,6 @@ p.explanation{
   margin-bottom: 20px;
 }
 .highlights {
-  font-family: 'Libre Baskerville', serif;
   border-style: solid;
   border-width: 1.5px;
   border-color: #adadad;
@@ -192,6 +192,8 @@ p.explanation{
   border-radius: 5px;
 }
 .highlights_title {
+  font-family: "Computer Modern Sans";
+  font-size: 110%;
   border-bottom: solid;
   border-width: 1.5px;
   border-color: #adadad;
@@ -200,7 +202,8 @@ p.explanation{
   border-top-right-radius: 5px;
 }
 button{
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Computer Modern Sans";
+  font-size: 90%;
   width: 100%;
   background-color: white;
   border: none;
