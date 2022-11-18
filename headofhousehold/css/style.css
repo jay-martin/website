@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
 body {
   font-family: 'Open Sans', sans-serif;
   margin-left: auto;
@@ -76,6 +76,8 @@ input {
   width: 18%;
 }
 .other_pages {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
   font-size: 90%;
   margin-left: 30px;
   margin-right: 30px;
@@ -97,6 +99,7 @@ input {
 .chart {
   border-style: solid;
   border-width: 1.5px;
+  border-color: #adadad;
   padding: 10px;
   margin-left: 2.5%;
   width: 55%;
@@ -108,6 +111,7 @@ input {
 /*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
   border: solid;
+  border-color: #adadad;
   background-color: #f5f3f2;
   border-width: 1px;
   margin-top: 10px;
@@ -175,8 +179,10 @@ p.explanation{
   margin-bottom: 20px;
 }
 .highlights {
+  font-family: 'Libre Baskerville', serif;
   border-style: solid;
   border-width: 1.5px;
+  border-color: #adadad;
   margin-left: 20px;
   width: 98%;
   display: inline-block;
@@ -185,18 +191,22 @@ p.explanation{
   border-radius: 5px;
 }
 .highlights_title {
+  font-family: 'Libre Baskerville', serif;
   border-bottom: solid;
   border-width: 1.5px;
+  border-color: #adadad;
   font-weight: bold;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 button{
+  font-family: 'Libre Baskerville', serif;
   width: 100%;
   background-color: white;
   border: none;
   border-top: solid;
   border-width: 1.5px;
+  border-color: #adadad;
   cursor: pointer;
   margin: 0px;
   padding-top: 10px;
