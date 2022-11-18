@@ -9,7 +9,16 @@
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
   <!-- load c3.css -->
   <link href="../c3-0.7.20/c3.css" rel="stylesheet">
+
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Sans/cmun-sans.css"></link>
 </head>
+
+<div class="logo">
+  <a href="../home/index.html">
+    <img src="./images/logo.png" alt="Logo" width="125" height="37.5">
+  </a>
+</div>
 
 <body>
 
@@ -17,111 +26,211 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../c3-0.7.20/c3.min.js"></script>
 
-<div class="page_contents">
-  <h1 id="top">Analysis of the Family Security Act</h1>
-  <div class="name">
-    By Jay Martin </br>
-    <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+<h1 id="top">Analysis of the Family Security Act</h1>
+<div class="name">
+  By Jay Martin </br>
+  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+</div>
+
+
+<!--div class for chart and highlights box-------------------------------------------->
+<div class = "chart_highlights_container">
+
+  <!--Left side-------------------------------------------------->
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="../home/index.html">Home</a>
+      <a href="./index.html">The Exclusion of Poor</br>Children</a>
+      <a href="./index.html">Nonrefundable Tax</br>Credits </a>
+      <a href="./index.html">Near-Poor Marginal</br>Tax Rates</a>
+      <a href="../headofhousehold/index.html">Head of Household</a>
+      <a href="../eitcmarriagepenalty/index.html">EITC Marriage Penalties</a>
+    </div>
   </div>
 
-  <!--Desktop navbar-->
-  <div class="navbar-desktop">
-    <div class="dropdown">
-      <button class="dropbtn">&#9776 Jump to Section 
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content">
-        <a href="#child_allowance">Child allowance</a>
-        <a href="#eitc">Earned income tax credit</a>
-        <a href="#cdcc">Child and dependent care credit</a>
-        <a href="#hoh" id='hoh_section'>Head of household filing status</a>
+  <!--Center------------------------------------------------------->
+  <div class="center">
+    <!--Top Chart---------------------------------------------------->
+    <div class = "chart">
+
+      <!--User inputs-->
+      <!--FSA 1.0 or 2.0-->
+      <label for="fsa1_or_2_all">Show me the </label>
+      <select name="fsa1or2all" id="fsa1_or_2_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+        <option value="one">FSA 1.0</option>
+        <option value="two" selected>FSA 2.0</option>
+      </select>
+
+      <!--Sub chart select-->
+      <label for="subchart_select">and break down by </label>
+      <select name="subchartSelect" id="subchart_select" oninput="all_modify_chart();modify_benefit_outputs_all()">
+        <option value="all">all benefits</option>
+        <option value="ca">child benefit/CTC</option>
+        <option value="eitc">EITC</option>
+        <option value="hoh" id="all_hoh_option" hidden>HOH tax savings</option>
+      </select>
+      .
+      </br>
+
+      <!--Filing status-->
+      <label for="filingstatus">I am a</label>
+      <select name="filingstatus" id="filingstatus_all" oninput="modify_benefit_outputs_all();all_modify_chart();disable_hoh()">
+        <option value="married">married joint filer</option>
+        <option value="hoh">head of household</option>
+        <option value="single">single filer</option>
+      </select>
+
+     <!--Number of old children-->
+      <label for="numOldChildren_all">who has</label>
+      <select name="OldChildren_all" id="numOldChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 6 and 17 and 
+
+      <!--Number of young children-->
+      <label for="numYoungChildren_all"></label>
+      <select name="YoungChildren_all" id="numYoungChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+        <option value="none">no children</option>
+        <option value="one">1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 0 and 5. </br>
+      
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have an income of $<output id="rangeValue_all">20,000</output>.</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="myRange_income_all" oninput="rangeValue_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_income(); modify_benefit_outputs_all()">
+        </div>
       </div>
-    </div>
-  </div> 
 
-  <!--Top Graph------------------------------------------------------------------------->
-  <!--User inputs-->
-  <p>
-    <fieldset>
-    <!--FSA 1.0 or 2.0-->
-    <label for="fsa1_or_2_all">Show me the </label>
-    <select name="fsa1or2all" id="fsa1_or_2_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
-      <option value="one">FSA 1.0</option>
-      <option value="two" selected>FSA 2.0</option>
-    </select>
+      <!--Itemized deductions slider-->
+      <div class="slidecontainer" id="id_container" hidden> 
+        <div class="income-display"> I have $<output id="rangeValue_ID_all">4,000</output> in itemized deductions.</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID_all" oninput="rangeValue_ID_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_chart(); modify_benefit_outputs_all()">
+        </div>
+      </div>
 
-    <!--Sub chart select-->
-    <label for="subchart_select">and break down by </label>
-    <select name="subchartSelect" id="subchart_select" oninput="all_modify_chart();modify_benefit_outputs_all()">
-      <option value="all">all benefits</option>
-      <option value="ca">child benefit/CTC</option>
-      <option value="eitc">EITC</option>
-      <option value="hoh" id="all_hoh_option" hidden>HOH tax savings</option>
-    </select>
-    .
-    </br>
+      <!--Calculate benefits and difference-->
+      <div class="explanation_values">
+        <p id="allFSAtotal"></p>
+        <p id="allCurrent"></p>
+        <p id="allHOH"></p>
+        <div class = "difference_container">
+          <p class="allDifference_class" id="allDifference"></p>
+          <p class="allDifference_color_class" id="allDifference_color"></p>
+        </div>
+      </div>
+      <script type="text/javascript" src="./javascript/all/all_calculate.js"></script>
+      <script type="text/javascript" src="./javascript/all/all_output.js"></script>
 
-    <!--Filing status-->
-    <label for="filingstatus">I am a</label>
-    <select name="filingstatus" id="filingstatus_all" oninput="modify_benefit_outputs_all();all_modify_chart();disable_hoh()">
-      <option value="married">married joint filer</option>
-      <option value="hoh">head of household</option>
-      <option value="single">single filer</option>
-    </select>
+      <div class="switches_all">
+      <!--Zoom switch: Phase-In-->
+        <label class="switch">
+          Click to zoom on lower incomes:
+          <input type="checkbox" name="zoom_phasein_all" id="zoom_switch_all_phasein" oninput='all_zoom_chart()'>
+          <span class="slider round"></span>
+        </label>
+        </br>
 
-   <!--Number of old children-->
-    <label for="numOldChildren_all">who has</label>
-    <select name="OldChildren_all" id="numOldChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
-      <option value="none">no children</option>
-      <option value="one" selected>1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 6 and 17 and 
+        <!--Only change in benefit switch-->
+        <label class="switch">
+          Click to display only the difference in benefits:
+          <input type="checkbox" name="diffInBen_all" id="only_diff_switch_all" oninput="only_dif_function_all()">
+          <span class="slider round"></span>
+        </label>
 
-    <!--Number of young children-->
-    <label for="numYoungChildren_all"></label>
-    <select name="YoungChildren_all" id="numYoungChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
-      <option value="none">no children</option>
-      <option value="one">1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 0 and 5. </br>
+        <!--Hide benefit curve switch-->
+        <label class="switch">
+          Click to hide difference in benefits:
+          <input type="checkbox" name="hideDiff_all" id="hide_diff_switch_all" oninput="hide_dif_function_all()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!--chart placement-->
+      <div id="master_chart_all"></div>
+      <!--Run Top Graph Script-->
+      <script type="text/javascript" src="./javascript/all/all_master_chart.js"></script>
+      <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_eitc.js"></script>
+      <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_ca.js"></script>
+      <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_hoh.js"></script>
+      <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_all.js"></script>
     
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_all">20,000</output>.</div>
+    </div><!-----Top chart------->
 
-      <div class="slider-actual">
-        <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="myRange_income_all" oninput="rangeValue_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_income(); modify_benefit_outputs_all()">
+    <!--Child Allowance --------------------------------------------------------------------------->
+    <h2 id="child_allowance">Child allowance</h2>
+    <!--User inputs-->
+    <div class="chart">
+      <!--FSA 1.0 or 2.0-->
+      <label for="fsa1_or_2_CA">Show me the: </label>
+      <select name="fsa1or2" id="fsa1_or_2_CA" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+        <option value="one">FSA 1.0</option>
+        <option value="two" selected>FSA 2.0</option>
+      </select>
+      </br>
+
+      <!--Filing status-->
+      <label for="filingstatus_ca">I am a</label>
+      <select name="filingstatus_ca" id="filingstatus_ca" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+        <option value="married">married joint filer</option>
+        <option value="hoh">head of household</option>
+        <option value="single">single filer</option>
+      </select>
+      .
+      </br>
+
+      <!--Number of old children-->
+      <label for="numOldChildren">I have</label>
+      <select name="OldChildren" id="numOldChildren" oninput="modifyCAGraph();new_benefits_CA()">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 6 and 17 and 
+
+      <!--Number of young children-->
+      <label for="numYoungChildren"></label>
+      <select name="YoungChildren" id="numYoungChildren" oninput="modifyCAGraph();new_benefits_CA()">
+        <option value="none">no children</option>
+        <option value="one">1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 0 and 5. </br>
+
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have an income of $<output id="rangeValue_CA">60,000</output>.</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="myRange_CA" oninput="rangeValue_CA.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
+        </div>
       </div>
-    </div>
 
-    <!--Itemized deductions slider-->
-    <div class="slidecontainer" id="id_container" hidden> 
-      <div class="income-display"> I have $<output id="rangeValue_ID_all">4,000</output> in itemized deductions.</div>
-      <div class="slider-actual">
-        <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID_all" oninput="rangeValue_ID_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_chart(); modify_benefit_outputs_all()">
+      <!--Calculate change in benefit-->
+      <div class="explanation_values">
+        <p id="fsa_CA_benefit"></p>
+        <p id="CTC_benefit"></p>
+        <p id="CA_benefit_difference"></p>
       </div>
-    </div>
+      <script type="text/javascript" src="./javascript/childbenefit/ca_calculate.js"></script>
 
-    <!--Calculate benefits and difference-->
-    <div class="benefit_outputs">
-      <p id="allFSAtotal"></p>
-      <p id="allCurrent"></p>
-      <p id="allHOH"></p>
-      <div class = "difference_container">
-        <p class="allDifference_class" id="allDifference"></p>
-        <p class="allDifference_color_class" id="allDifference_color"></p>
-      </div>
-    </div>
-    <script type="text/javascript" src="./javascript/all/all_calculate.js"></script>
-    <script type="text/javascript" src="./javascript/all/all_output.js"></script>
-
-    <div class="switches_all">
-    <!--Zoom switch: Phase-In-->
+      <!--Zoom switch: Phase-In-->
       <label class="switch">
-        Click to zoom on lower incomes:
-        <input type="checkbox" name="zoom_phasein_all" id="zoom_switch_all_phasein" oninput='all_zoom_chart()'>
+        Click to zoom on phase-in:
+        <input type="checkbox" name="zoom_phasein" id="zoom_switch_CA_phasein" oninput="zoom_CA_graph_phasein();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Zoom switch: Phase-Out-->
+      <label class="switch">
+        Click to zoom on phase-out:
+        <input type="checkbox" name="zoom_phaseout" id="zoom_switch_CA_phaseout" oninput="zoom_CA_graph_phaseout();">
         <span class="slider round"></span>
       </label>
       </br>
@@ -129,218 +238,147 @@
       <!--Only change in benefit switch-->
       <label class="switch">
         Click to display only the difference in benefits:
-        <input type="checkbox" name="diffInBen_all" id="only_diff_switch_all" oninput="only_dif_function_all()">
+        <input type="checkbox" name="diffInBen_CA" id="diffInBen_CA_switch" oninput="diffInBen_CA_function();">
         <span class="slider round"></span>
       </label>
 
-      <!--Hide benefit curve switch-->
+      <!--Run Child Benefit Graph Script-->
+      <div id="CAchart"></div>
+      <script type="text/javascript" src="./javascript/childbenefit/ca_master_chart.js"></script>
+      <script type="text/javascript" src="./javascript/childbenefit/ca_adjust_chart.js"></script>
+
+    </div> <!-----Child allowance chart------->
+
+    <!--Child and dependent care credit---------------------------------------------------------------->
+    <h2 id="cdcc">Child and dependent care credit</h2>
+    <p> Of the policies Romney wants to eliminate, the child and dependent care credit (CDCC) is easily the most justified.</p>
+
+    <!--Head of household filing status--------------------------------------------------------------->
+    <h2 id="hoh">Head of household filing status</h2>
+    <div class="chart">
+
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
+        </div>
+      </div>
+
+      <!--Itemized deductions slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</div>
+
+        <div class="slider-actual">
+          <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
+        </div>
+      </div>
+
+      <!--Calculate HOH savings-->
+      <div class="explanation_values">
+        <p id="item_or_stand"></p>
+        <p id="HOH_savings"></p>
+      </div>
+      <script type="text/javascript" src="./javascript/hoh/HOH_calculate.js"></script>
+
+      <!--Zoom switch-->
       <label class="switch">
-        Click to hide difference in benefits:
-        <input type="checkbox" name="hideDiff_all" id="hide_diff_switch_all" oninput="hide_dif_function_all()">
+        Click to zoom:
+        <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
         <span class="slider round"></span>
       </label>
-    </div>
+      </br>
 
-    <!--chart placement-->
-    <div id="master_chart_all"></div>
-    <!--Run Top Graph Script-->
-    <script type="text/javascript" src="./javascript/all/all_master_chart.js"></script>
-    <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_eitc.js"></script>
-    <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_ca.js"></script>
-    <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_hoh.js"></script>
-    <script type="text/javascript" src="./javascript/all/subcharts/all_adjust_all.js"></script>
+      <!--Run HOH Benefit Graph Script-->
+      <div id="HOHchart"></div>
+      <script type="text/javascript" src="./javascript/hoh/HOH_chart.js"></script>
 
-  </fieldset>
-
-  <!--Child Allowance --------------------------------------------------------------------------->
-  <h2 id="child_allowance">Child allowance</h2>
-  <!--User inputs-->
-  <fieldset>
-    <!--FSA 1.0 or 2.0-->
-    <label for="fsa1_or_2_CA">Show me the: </label>
-    <select name="fsa1or2" id="fsa1_or_2_CA" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
-      <option value="one">FSA 1.0</option>
-      <option value="two" selected>FSA 2.0</option>
-    </select>
-    </br>
-
-    <!--Filing status-->
-    <label for="filingstatus_ca">I am a</label>
-    <select name="filingstatus_ca" id="filingstatus_ca" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
-      <option value="married">married joint filer</option>
-      <option value="hoh">head of household</option>
-      <option value="single">single filer</option>
-    </select>
-    .
-    </br>
-
-    <!--Number of old children-->
-    <label for="numOldChildren">I have</label>
-    <select name="OldChildren" id="numOldChildren" oninput="modifyCAGraph();new_benefits_CA()">
-      <option value="none">no children</option>
-      <option value="one" selected>1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 6 and 17 and 
-
-    <!--Number of young children-->
-    <label for="numYoungChildren"></label>
-    <select name="YoungChildren" id="numYoungChildren" oninput="modifyCAGraph();new_benefits_CA()">
-      <option value="none">no children</option>
-      <option value="one">1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 0 and 5. </br>
-
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_CA">60,000</output>.</div>
-
-      <div class="slider-actual">
-        <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="myRange_CA" oninput="rangeValue_CA.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
-      </div>
-    </div>
-
-    <!--Calculate change in benefit-->
-    <p id="fsa_CA_benefit"></p>
-    <p id="CTC_benefit"></p>
-    <p id="CA_benefit_difference"></p>
-    <script type="text/javascript" src="./javascript/childbenefit/ca_calculate.js"></script>
-
-    <!--Zoom switch: Phase-In-->
-    <label class="switch">
-      Click to zoom on phase-in:
-      <input type="checkbox" name="zoom_phasein" id="zoom_switch_CA_phasein" oninput="zoom_CA_graph_phasein();">
-      <span class="slider round"></span>
-    </label>
-
-    <!--Zoom switch: Phase-Out-->
-    <label class="switch">
-      Click to zoom on phase-out:
-      <input type="checkbox" name="zoom_phaseout" id="zoom_switch_CA_phaseout" oninput="zoom_CA_graph_phaseout();">
-      <span class="slider round"></span>
-    </label>
-    </br>
-
-    <!--Only change in benefit switch-->
-    <label class="switch">
-      Click to display only the difference in benefits:
-      <input type="checkbox" name="diffInBen_CA" id="diffInBen_CA_switch" oninput="diffInBen_CA_function();">
-      <span class="slider round"></span>
-    </label>
-
-    <!--Run Child Benefit Graph Script-->
-    <div id="CAchart"></div>
-    <script type="text/javascript" src="./javascript/childbenefit/ca_master_chart.js"></script>
-    <script type="text/javascript" src="./javascript/childbenefit/ca_adjust_chart.js"></script>
-
-  </fieldset>
-
-  <!--Child and dependent care credit---------------------------------------------------------------->
-  <h2 id="cdcc">Child and dependent care credit</h2>
-    <p> Of the policies Romney wants to eliminate, the child and dependent care credit (CDCC) is easily the most justified.
-    </p>
-
-  <!--Head of household filing status--------------------------------------------------------------->
-  <h2 id="hoh">Head of household filing status</h2>
-  <p>
-    <fieldset>
-
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</div>
-
-      <div class="slider-actual">
-        <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
-      </div>
-    </div>
-
-    <!--Itemized deductions slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</div>
-
-      <div class="slider-actual">
-        <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
-      </div>
-    </div>
-
-    <!--Calculate HOH savings-->
-    <p id="item_or_stand"></p>
-    <p id="HOH_savings"></p>
-    <script type="text/javascript" src="./javascript/hoh/HOH_calculate.js"></script>
-
-    <!--Zoom switch-->
-    <label class="switch">
-      Click to zoom:
-      <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
-      <span class="slider round"></span>
-    </label>
-    </br>
-
-    <!--Run HOH Benefit Graph Script-->
-    <div id="HOHchart"></div>
-    <script type="text/javascript" src="./javascript/hoh/HOH_chart.js"></script>
-
-  </fieldset>
-
+    </div> <!-----HOH Chart------->
 
     <p> The head of household filing status is a ridiculous, roundabout way of delivering benefits to single parents. Rather than providing a simple cash benefit, it instead introduces a larger standard deduction and preferential tax rates. There are several problems with this. First, the amount of money it saves single parents generally goes up as income increases. Second, it creates marriage penalties. And third, it introduces further complexity into an already complicated tax code.</p>
 
-  <!--EITC-------------------------------------------------------------------------------------------->
-  <h2 id="eitc">Earned income tax credit</h2>
-  <!--User inputs-->
-  <p>
-    <fieldset>
-    <!--Filing status-->
-    <label for="filingstatus_eitc">I am a</label>
-    <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="master_adjust_chart();output_eitc()">
-      <option value="married">married joint filer</option>
-      <option value="hoh">head of household</option>
-      <option value="single">single filer</option>
-    </select>
+    <!--EITC-------------------------------------------------------------------------------------------->
+    <h2 id="eitc">Earned income tax credit</h2>
+    <!--User inputs-->
+    <div class="chart">
+      <!--Filing status-->
+      <label for="filingstatus_eitc">I am a</label>
+      <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="master_adjust_chart();output_eitc()">
+        <option value="married">married joint filer</option>
+        <option value="hoh">head of household</option>
+        <option value="single">single filer</option>
+      </select>
 
-    <!--Number of children-->
-    <label for="numchildren_eitc">who has</label>
-    <select name="children_eitc" id="numchildren_eitc" oninput="master_adjust_chart();output_eitc()">
-      <option value="three">3 or more children</option>
-      <option value="two">2 children</option>
-      <option value="one" selected>1 child</option>
-      <option value="none">no children</option>
-    </select>
-    .
-    </br>
+      <!--Number of children-->
+      <label for="numchildren_eitc">who has</label>
+      <select name="children_eitc" id="numchildren_eitc" oninput="master_adjust_chart();output_eitc()">
+        <option value="three">3 or more children</option>
+        <option value="two">2 children</option>
+        <option value="one" selected>1 child</option>
+        <option value="none">no children</option>
+      </select>
+      .
+      </br>
 
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue">20,000</output>.</div>
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <div class="income-display"> I have an income of $<output id="rangeValue">20,000</output>.</div>
 
-      <div class="slider-actual">
-        <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="myRange" oninput="rangeValue.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output_eitc()">
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="myRange" oninput="rangeValue.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output_eitc()">
+        </div>
       </div>
+
+      <!--Benefit values and the difference between them-->
+      <div class="explanation_values">
+        <p id="fsaEITC"></p>
+        <p id="currEITC"></p>
+        <p id="diffEITC"></p>
+      </div>
+      <script type="text/javascript" src="./javascript/EITC/EITC_calculate.js"></script>
+
+      <!--Only change in benefit switch-->
+      <label class="switch">
+        Click to display only the difference in benefits:
+        <input type="checkbox" name="diffInBen_EITC" id="diffInBen_EITC_switch" oninput="diffInBen_EITC_function();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Run EITC Graph Script-->
+      <div id="chart"></div>
+      <script type="text/javascript" src="./javascript/EITC/EITC_master_chart.js"></script>
+      <script type="text/javascript" src="./javascript/EITC/EITC_adjust_chart.js"></script>
+
+    </div> <!-----EITC Chart------->
+
+    <p><a href="#top">Top</a></p>
+
+  </div> <!-----Center------->
+
+  <!--Right side-------------------------------------------->
+  <script type="text/javascript" src="./javascript/animations/basic_overview_animation.js"></script>
+  <script type="text/javascript" src="./javascript/animations/marriage_bonus_animation.js"></script>
+  <div class = "right_side">
+
+    <div class = "highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title">Highlights</div>
+      
+      <button type="button" class="top_button" onclick="show_basic_overview()">What are marriage penalties? </button>
+        <p class="explanation" id="basic_overview_explanation" hidden>When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+        <input type="submit" class="animation_button" id="basic_overview_animation" value="Play animation" onclick="show_basic_overview_animation()" hidden />
+      
+      <button type="button" >Who faces marriage penalties?</button>
+        <p class="explanation" id="itemized_explanation" hidden>Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="animation_button" id="marriage_penalties_animation" value="Play animation"  hidden/>
+      
+      <button type="button" class="bottom_button" onclick="show_marriage_bonus_explanation()">Who faces marriage bonuses?</button>
+        <p class="explanation" id="marriage_bonus_explanation" hidden>Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC..</p>
+        <input type="submit" class="animation_button" id="marriage_bonus_animation" value="Play animation" onclick="show_marriage_bonus_animation()" hidden/>
+    
     </div>
+  </div>
 
-    <!--Benefit values and the difference between them-->
-    <p id="fsaEITC"></p>
-    <p id="currEITC"></p>
-    <p id="diffEITC"></p>
-    <script type="text/javascript" src="./javascript/EITC/EITC_calculate.js"></script>
-
-    <!--Only change in benefit switch-->
-    <label class="switch">
-      Click to display only the difference in benefits:
-      <input type="checkbox" name="diffInBen_EITC" id="diffInBen_EITC_switch" oninput="diffInBen_EITC_function();">
-      <span class="slider round"></span>
-    </label>
-
-    <!--Run EITC Graph Script-->
-    <div id="chart"></div>
-    <script type="text/javascript" src="./javascript/EITC/EITC_master_chart.js"></script>
-    <script type="text/javascript" src="./javascript/EITC/EITC_adjust_chart.js"></script>
-
-  </fieldset>
-
-  <p><a href="#top">Top</a></p>
-
-</div>
+</div> <!--chart, eitc values & highlights container end-->
 </body>
 </html>

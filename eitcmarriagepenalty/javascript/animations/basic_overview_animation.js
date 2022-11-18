@@ -7,8 +7,6 @@ function show_basic_overview_animation(){
 		MPchart.xgrids([]);
 		MPchart.ygrids([{value: 0}]);
 		MPchart.regions([]);
-		explanation_values_style.style.borderRadius = '5px';
-		explanation_values_style.style.height = '85px';
 		document.getElementById('individual_eitc_values').innerHTML = '';
 		document.getElementById('married_eitc_value').innerHTML = '';
 		document.getElementById('marriage_penalty_show').innerHTML = '';
@@ -185,7 +183,7 @@ function show_basic_overview_animation(){
 	setTimeout(function () {
 		marriagePenalty = combinedEITC - marriedEITC;
 		marriagePenalty_formatted = marriagePenalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		MPchart.regions.add([{axis: 'y', start: marriedEITC, end: combinedEITC, class: 'regionY'}]);
+		MPchart.regions.add([{axis: 'y', start: marriedEITC, end: combinedEITC, class: 'penalty'}]);
 		document.getElementById('explanation_line8').innerHTML = "That's an EITC of only <b>$" + marriedEITC_formatted + "</b>. You lose <b>$" + marriagePenalty_formatted + "</b> in EITC benefits because you got married.";
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
 	}, timer);

@@ -110,7 +110,6 @@ input {
 }
 /*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
-  font-size: 95%;
   border: solid;
   border-color: #adadad;
   background-color: #f5f3f2;
@@ -120,12 +119,12 @@ input {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  height: 135px;
+  height: 140px;
   overflow: scroll;
 }
 p.explanation{
   font-family: "Computer Modern Sans";
-  font-size: 95%;
+  font-size: 80%;
 }
 /*******Subcontainter in Chart: Sliders**************/
 /*Slider */
@@ -223,10 +222,11 @@ button.bottom_button{
   border-bottom-right-radius: 5px;
 }
 input[type=submit].animation_button{
+  font-family: "Computer Modern Sans";
   width: 50%;
   border: solid;
   border-width: 1.5px;
-  border-color: black;
+  border-color: #adadad;
   color: black;
   text-decoration: none;
   cursor: pointer;

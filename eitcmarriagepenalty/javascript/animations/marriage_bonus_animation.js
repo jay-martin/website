@@ -234,7 +234,7 @@ function show_marriage_bonus_animation(){
 	timer += 2000;
 	setTimeout(function () {
 		MPchart.xgrids([]);
-		MPchart.regions.add([{axis: 'y', start: combinedEITC, end: marriedEITC, class: 'regionY'}]);
+		MPchart.regions.add([{axis: 'y', start: combinedEITC, end: marriedEITC, class: 'bonus'}]);
 		marriageBonus = marriedEITC-combinedEITC;
 		marriedBonus_formatted = marriageBonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 

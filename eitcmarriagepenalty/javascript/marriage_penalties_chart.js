@@ -52,7 +52,7 @@ var MPchart = c3.generate({
         right: 22,
     },
     color: {
-        pattern: ['#6ab6fc', '#36D903', '#000000', '#FFFFFF', '#eb3734', '#FFFFFF', '#36D903']
+        pattern: ['#6ab6fc', '#770087', '#000000', '#FFFFFF', '#eb3734', '#FFFFFF', '#36D903']
     },
     legend: {
         position: 'bottom',
