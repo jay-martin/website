@@ -123,14 +123,15 @@ input {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  height: 170px;
+  height: 100%;
   overflow: scroll;
 }
 p.explanation{
   font-family: "Computer Modern Sans";
+  font-size: 80%;
 }
 .difference_container{
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 p.allDifference_class{
   display: table-cell;

@@ -33,7 +33,7 @@ function modify_income_outputs(){
     }
 
     /* Run function to modify chart */
-    modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome);
+    modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome, combined_children);
 }
 
 function show_basic_overview(){

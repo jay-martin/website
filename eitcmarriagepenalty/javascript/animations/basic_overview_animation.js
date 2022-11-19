@@ -1,9 +1,12 @@
 function show_basic_overview_animation(){
 	explanation_values_style = document.querySelector('.explanation_values');
+
+	/* Maintain current height of explanation values box */
+	height = document.getElementById('explanation_values_id').offsetHeight;
+	document.getElementById('explanation_values_id').style.height = height + 'px';
 	
 	timer = 1000;
 	setTimeout(function () {
-		
 		MPchart.xgrids([]);
 		MPchart.ygrids([{value: 0}]);
 		MPchart.regions([]);
@@ -18,8 +21,6 @@ function show_basic_overview_animation(){
 		MPchart.hide('penalty');
 		MPchart.hide('combined_eitc');
 		MPchart.hide('bonus');
-
-
 	}, timer);
 
 	timer += 2000;

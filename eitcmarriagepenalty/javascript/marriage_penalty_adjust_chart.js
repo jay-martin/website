@@ -87,6 +87,7 @@ function modify_married(){
         });
     }
     else if(num_children===2){
+        MPchart.axis.max({y: 7000});
         MPchart.load({
             columns: [
                 ['x3',      0, 15290, 26262, 55529, 60000],
@@ -95,6 +96,7 @@ function modify_married(){
         });
     }
     else{
+        MPchart.axis.max({y: 8000});
         MPchart.load({
             columns: [
                 ['x3',      0, 15410, 26262, 59187, 60000],
@@ -104,7 +106,7 @@ function modify_married(){
     }    
 }
 
-function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome){
+function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome, numChildren){
     /* Move xgrids */
     MPchart.xgrids([{value: myRange_person1.value, text:'Your income'},{value: myRange_person2.value, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedEITC, text: "Your married EITC"}, {value: combinedEITC, text: "Combined individual EITC's"}]);
@@ -153,12 +155,71 @@ function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome)
     else{
         MPchart.axis.max({x: 60000});
     }
+    /* Adjust chart y-axis max in case combined income exceeds current y-axis max */
+    adjust_y_axis();
+}
 
-    /*adjust chart y-axis max in case combined EITC goes above current y-axis max*/
-    if(combinedEITC > 4000){
-        MPchart.axis.max({y: 4500});
+function adjust_y_axis(){
+    person1Children = person1_children.value;
+    person2Children = person2_children.value;
+    
+    /* adjust y-axis labels */
+    if(person1Children === 'none' && person2Children === 'none'){
+        MPchart.internal.config.axis_y_tick_values = [0, 200, 400, 600, 800, 1000];
     }
     else{
-        MPchart.axis.max({y: 4000});
+        MPchart.internal.config.axis_y_tick_values = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000];
+    }
+
+    /* Baseline axis max: $1,000*/
+    if(person1Children === 'none' && person2Children === 'none'){
+        if(combinedEITC > 950){
+        MPchart.axis.max({y: 1200});
+        }
+        else{
+            MPchart.axis.max({y: 1000});
+        }
+    }
+    /* Baseline axis max: $4,000*/
+    else if((person1Children === 'one' && person2Children === 'none') || (person1Children === 'none' && person2Children === 'one')){
+        if(combinedEITC > 3900){
+        MPchart.axis.max({y: 4500});
+        }
+        else{
+            MPchart.axis.max({y: 4000});
+        }
+    }
+    /* Baseline axis max: $4,000 */
+    else if((person1Children === 'two' && person2Children === 'none') || (person1Children === 'none' && person2Children === 'two')){
+        if(combinedEITC > 6500){
+            MPchart.axis.max({y: 7200});
+        }
+        else{
+            MPchart.axis.max({y: 7000});
+        }
+    }
+    /* Basline axis max: $8,000*/
+    else{
+        if(combinedEITC > 7700 && combinedEITC <=8700){
+            MPchart.axis.max({y: 9000});
+        }
+        else if(combinedEITC > 8700 && combinedEITC <= 9700){
+            MPchart.axis.max({y: 10000});
+        }
+        else if(combinedEITC > 9700 && combinedEITC <= 10600){
+            MPchart.axis.max({y: 11000});
+        }
+        else if(combinedEITC > 10600 && combinedEITC <= 11600){
+            MPchart.axis.max({y: 12000});
+        }
+        else if(combinedEITC > 11600 && combinedEITC <= 12600){
+            MPchart.axis.max({y: 13000});
+        }
+        else if(combinedEITC > 12600){
+            MPchart.axis.max({y: 15000});
+        }
+        else{
+            MPchart.axis.max({y: 8000});
+        }
     }
 }

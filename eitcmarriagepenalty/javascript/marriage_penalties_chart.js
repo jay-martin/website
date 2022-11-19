@@ -78,9 +78,10 @@ var MPchart = c3.generate({
             label: {text: 'Benefit / Marriage Penalty', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [-4000, -3000, -2000, -1000, 0, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000]
             },
             padding: {bottom: 0, top: 0},
+            max: 4000,
         }
     },
     grid: {

@@ -1,11 +1,12 @@
 function show_mp_explanation_animation(){
 	explanation_style = document.querySelector('.explanation_values');
 
-	timer = 1000;
+	initialize_animation();
+
+	timer += 0;
 	setTimeout(function () {
+		/*set up chart*/
 		HOHchart.xgrids([]);
-		document.getElementById('item_or_stand').innerHTML = '';
-		document.getElementById('HOH_savings').innerHTML = '';
     	HOHchart.axis.max({y: 100});
 		HOHchart.hide('HOH_Savings');
 		HOHchart.load({
@@ -21,7 +22,7 @@ function show_mp_explanation_animation(){
         HOHchart.regions([{axis: 'x', start: 0, end: 600000, class: 'person_1'}]);
 	}, timer);
 
-	timer += 2000;
+	timer += 1000;
 	setTimeout(function () {
 		document.getElementById('explanation_line1').innerHTML = "Let's think about the way single people are taxed in the United States.";
 	}, timer);

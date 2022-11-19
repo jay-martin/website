@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>EITC Marriage Penalties</title>
+  <title>Marriage Penalties</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./css/style.css"
     type="text/css"
@@ -27,7 +27,7 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../c3-0.7.20/c3.min.js"></script>
 
-<h1 id="top">EITC Marriage Penalties</h1>
+<h1 id="top">Marriage Penalties</h1>
 <div class="name">
   By Jay Martin </br>
   <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
@@ -41,11 +41,18 @@
   <div class="left_side">
     <div class="other_pages" id='other_pages_id'>
       <a href="../home/index.html">Home</a>
-      <a href="../familysecurityact/index.html">Family Security Act</a>
-      <a href="./index.html">The Exclusion of Poor</br>Children</a>
-      <a href="./index.html">Nonrefundable Tax</br>Credits </a>
-      <a href="./index.html">Near-Poor Marginal</br>Tax Rates</a>
-      <a href="../headofhousehold/index.html">Head of Household</a>
+      <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Poverty Reduction</a>
+      <a href="./index.html">The Exclusion of Poor</br>Families</a>
+      <a href="./index.html">Marginal Tax Rates</a>
+      <a href="./index.html">Asset Tests</a>
+      <a href="./index.html">A Better Way</a>
+      <a href="./index.html">The Child Tax Credit</a>
+      <a href="./index.html">The Earned Income Tax</br>Credit</a>
+      <a href="./index.html">The Head of Household</br>Filing Status</a>
+      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
+      <a href="./index.html">SNAP (Food Stamps)</a>
+      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
     </div>
   </div>
 
@@ -90,7 +97,7 @@
     </div>
 
     <!--Calculate marriage penalty-->
-    <div class="explanation_values"> <!--Subcontainter for eitc values-->
+    <div class="explanation_values" id="explanation_values_id"> <!--Subcontainter for eitc values-->
       <p id="individual_eitc_values"></p>
       <p id="combined_single_eitc"></p>
       <p id="married_eitc_value"></p>
@@ -116,6 +123,7 @@
     <div id="MPchart"></div> <!--Subcontainter for chart-->
     <script type="text/javascript" src="./javascript/marriage_penalties_chart.js"></script>
     <script type="text/javascript" src="./javascript/marriage_penalty_adjust_chart.js"></script>
+    <script>MPchart.focus();</script>
 
   </div> <!--chart end-->
 
@@ -142,19 +150,6 @@
     
     </div>
   </div>
-
-<!--
-  <div class = "highlights"> 
-    <div class = "highlights_title">Highlights</div>
-    <input type="submit" id="basic_overview" value="What are marriage penalties?" onclick='show_basic_overview()' />
-      <p class="marriage_penalty_explanation_class" id="basic_overview_explanation" hidden>Marriage penalties occur when the EITC a married couple receives is less than the sum of the EITC's each would receive if they were single</p>
-      <input type="submit" class="animation_button" id="basic_overview_animation" value="Play animation" onclick="show_basic_overview_animation()" hidden/>
-    <input type="submit" id="marriage_penalties" value="Who faces marriage penalties?" />
-    <input type="submit" id="marriage_bonuses" value="Who faces marriage bonuses?" onclick='show_marriage_bonus_explanation()'/>
-      <p class="marriage_penalty_explanation_class" id="marriage_bonus_explanation" hidden>Some very low-income couples incur marriage bonuses. Specifically, a marriage bonus can occur if:</br>(1) both partners are in or just over the phase-in region of their respective individual EITC's, and </br>(2) they have at least one but not more than three children.</p>
-      <input type="submit" class="animation_button" id="marriage_bonus_animation" value="Play animation" onclick="show_marriage_bonus_animation()" hidden/>
-  </div>
--->
 
 </div> <!--chart, eitc values & highlights container end-->
 

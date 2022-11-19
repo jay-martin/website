@@ -119,12 +119,9 @@ input {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  height: 140px;
+  height: 100%;
   overflow: scroll;
-}
-p.explanation{
-  font-family: "Computer Modern Sans";
-  font-size: 80%;
+  font-size: 95%;
 }
 /*******Subcontainter in Chart: Sliders**************/
 /*Slider */
@@ -238,6 +235,7 @@ p.explanation {
   margin-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
+  font-size: 80%;
 }
 button:hover {background-color: #f0efed;}
 input[type=submit].animation_button:hover {background-color: #d1d1d1}

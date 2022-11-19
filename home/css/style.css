@@ -18,6 +18,8 @@ h1 {
 h2 {
   font-family: 'Zen Antique Soft', serif;
   line-height: 1em;
+  margin-top: 0px;
+  text-align: center;
 }
 p {
   font-family: 'Open Sans', sans-serif;
@@ -95,7 +97,7 @@ a {
 /* Remaining boxes ******************************************************/
 .box_level {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 .infobox_left{
   display: inline-block;

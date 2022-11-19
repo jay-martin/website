@@ -37,6 +37,10 @@ input {
   font-size: 110%;
   margin-bottom: 10px;
 }
+.switch_label {
+  -webkit-transition: color .5s linear;
+  -moz-transition: color .5s linear;
+}
 /********************************************************************************************************/
 /* Media query for mobile 800px: */
 /********************************************************************************************************/
@@ -108,6 +112,13 @@ input {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+/*******Subcontainter in Chart: User Inputs****/
+.user_inputs {
+  overflow: hidden;
+  height: 100%;
+  -webkit-transition: height 1s ease; 
+  -moz-transition: height 1s ease; 
+}
 /*******Subcontainter in Chart: Explanation Values****/
 .explanation_values {
   border: solid;
@@ -119,22 +130,56 @@ input {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  height: 100px;
+  height: 100%;
   overflow: scroll;
+  scrollbar-width: none;  /* Firefox */
+  -webkit-transition: height 1s ease; 
+  -moz-transition: height 1s ease; 
 }
-p.explanation{
+.explanation_values::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+p.explanation_text {
+  -webkit-transition: color .5s linear; 
+  -moz-transition: color .5s linear; 
+}
+input[type=submit].end_animation{
   font-family: "Computer Modern Sans";
-  font-size: 80%;
+  float: right;
+  visibility: hidden;
+  border: solid;
+  border-width: 1.5px;
+  border-color: #adadad;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
 }
-/*******Subcontainter in Chart: Sliders**************/
+input[type=submit].end_animation:hover {background-color: #d1d1d1}
+
+/* Lighter colors for when it is disabled */
+input[type=submit].end_animation:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+}
+/* No color change on hove when disabled */
+input[type=submit].end_animation:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+  cursor: default;
+}
+/*******SubSubcontainter in Chart.user_inputs: Sliders**************/
 /*Slider */
 .slidecontainer {
   width: 100%;
 }
 /*Display income */
-.income-display {
+.slider-text {
   display: inline-block;
   width: 45%;
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
 }
 .slider-actual {
   display: inline-block;
@@ -171,6 +216,19 @@ p.explanation{
   background: #1DA1F2;
   cursor: pointer;
   border-radius: 50%;
+}
+/*******Subcontainter in Chart: Number of Children Dropdown**************/
+.ctc_container {
+}
+.ctc_switch {
+  display: inline-block;
+}
+.num_children_container {
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
+}
+.children_dropdown {
+  display: inline-block;
 }
 /*****************Subcontainter: Highlight buttons (right side)***************************/
 .right_side{
@@ -238,6 +296,8 @@ p.explanation {
   margin-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  font-family: "Computer Modern Sans";
+  font-size: 80%;
 }
 button:hover {background-color: #f0efed;}
 input[type=submit].animation_button:hover {background-color: #d1d1d1}

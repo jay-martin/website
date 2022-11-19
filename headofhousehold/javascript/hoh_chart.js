@@ -25,6 +25,9 @@ var HOHchart = c3.generate({
             after_ctc: 'HOH Tax Savings after CTC'
         }
     },
+    transition: {
+        duration: 400,
+    },
     padding: {
         bottom: 0,
         top: 10,
@@ -35,7 +38,7 @@ var HOHchart = c3.generate({
         pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
     },
     legend: {
-        position: 'bottom'
+        position: 'bottom',
     },
     tooltip: {
         show: false
@@ -57,7 +60,9 @@ var HOHchart = c3.generate({
             tick: {
                 format: d3.format('$,'),
                 values: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 6000]
-            }
+            },
+            max: 4000,
+            padding: {top: 0},
         }
     },
     grid: {
@@ -72,19 +77,21 @@ var HOHchart = c3.generate({
 
 /* Zooms graph on lower incomes */
 function zoomHOHGraph(){
-    if(zoom_switch_HOH.checked === true){
+    if(zoom_switch.checked === true){
         myRange_HOH.max = "100000";
-            setTimeout(function () {
-                HOHchart.axis.max({x: 60000});
-        }, );
         HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+        HOHchart.axis.max({x: 60000});
+        setTimeout(function () {
+            HOHchart.axis.max({y: 1500});
+        }, 500);
     }
     else{
         myRange_HOH.max = "600000";
-            setTimeout(function () {
-                HOHchart.axis.max({x: 600000});
-        }, );
         HOHchart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+        HOHchart.axis.max({y: 4000});
+        setTimeout(function () {
+            HOHchart.axis.max({x: 600000});
+        }, 500);
     }
 }
 
@@ -141,4 +148,5 @@ function modifyGraph_HOH(){
             tax_dif
         ]
     });
+    HOHchart.focus();
 }

@@ -8,7 +8,7 @@ function numChildren(){
     if (person1_children.value==='none' && person2_children.value==='none'){return 0;}
     if ((person1_children.value==='one' && person2_children.value==='none') || (person1_children.value==='none' && person2_children.value==='one')){return 1;}
     if ((person1_children.value==='none' && person2_children.value==='two') || (person1_children.value==='one' && person2_children.value==='one') || (person1_children.value==='two' && person2_children.value==='none')){return 2;}
-    if ((person1_children.value==='none' && person2_children.value==='three') || (person1_children.value==='one' && person2_children.value==='two') || (person1_children.value==='two' && person2_children.value==='none') || (person1_children.value==='three' && person2_children.value==='none')){return 3;}
+    if ((person1_children.value==='none' && person2_children.value==='three') || (person1_children.value==='one' && person2_children.value==='two') || (person1_children.value==='two' && person2_children.value==='one') || (person1_children.value==='three' && person2_children.value==='none')){return 3;}
     if ((person1_children.value==='one' && person2_children.value==='three') || (person1_children.value==='two' && person2_children.value==='two') || (person1_children.value==='one '&& person2_children.value==='three')){return 4;}
     if ((person1_children.value==='two' && person2_children.value==='three') || (person1_children.value==='three' && person2_children.value==='two')){return 5;}
     if ((person1_children.value==='three' && person2_children.value==='three')){return 6;}

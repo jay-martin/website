@@ -1,8 +1,11 @@
 function show_poor_people_animation(){
 	explanation_style = document.querySelector('.explanation_values');
 
-	timer = 1000;
+	initialize_animation();
+
+	timer += 0;
 	setTimeout(function () {
+		HOHchart.hide('after_ctc');
 		HOHchart.xgrids([]);
 		document.getElementById('item_or_stand').innerHTML = '';
 		document.getElementById('HOH_savings').innerHTML = '';
@@ -14,7 +17,7 @@ function show_poor_people_animation(){
         });
 	}, timer);
 
-	timer += 2000;
+	timer += 1000;
 	setTimeout(function () {
 		document.getElementById('explanation_line1').innerHTML = "Let's look at the effects of HOH at lower income levels.";
 	}, timer);
@@ -34,13 +37,13 @@ function show_poor_people_animation(){
 	setTimeout(function () {
 		HOHchart.xgrids([{value: 12950, text:'Single Standard Deduction'},]);
 		document.getElementById('explanation_line1').style.color = '#7a7a7a';
-		document.getElementById('explanation_line2').innerHTML = "For children in families making less than single standard deduction ($12,950),";
+		document.getElementById('explanation_line2').innerHTML = "For families making less than the single standard deduction ($12,950),";
 		explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 
 	timer += 2000;
 	setTimeout(function () {
-		document.getElementById('explanation_line2').innerHTML = "For children in families making less than the single standard deduction ($12,950), HOH provides <b>zero</b> benefit.";
+		document.getElementById('explanation_line2').innerHTML = "For families making less than the single standard deduction ($12,950), HOH provides <b>zero</b> benefit.";
 		explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 
@@ -51,7 +54,7 @@ function show_poor_people_animation(){
 		explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 
-	timer += 4000;
+	timer += 2000;
 	setTimeout(function () {
 		document.getElementById('explanation_line3').style.color = '#7a7a7a';
 		document.getElementById('explanation_line4').innerHTML = "Our baseline chart also exagerrates HOH benefits to people with incomes just above the single standard deduction.";
@@ -138,6 +141,11 @@ function show_poor_people_animation(){
 	timer += 2000;
 	setTimeout(function () {
 		HOHchart.ygrids([{value: 650, text:'Benefit of Working Class Person', position: 'middle'}, {value: 3757, text:'Benefit of Wealthy Person', position: 'middle'},]);
+	}, timer);
+
+	timer += 2000;
+	setTimeout(function () {
+		document.getElementById('end_animation_button').disabled = false;
 	}, timer);
 
 }
