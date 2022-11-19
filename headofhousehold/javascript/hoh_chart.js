@@ -54,6 +54,7 @@ var HOHchart = c3.generate({
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
             },
             padding: {left: 0, right: 0},
+            max: 600000,
         },
         y: {
             label: {text: 'Tax Savings', position: 'outer-middle'},

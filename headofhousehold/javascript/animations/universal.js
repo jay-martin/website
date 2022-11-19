@@ -1,5 +1,6 @@
 income = 0;
 itemized = 0;
+axisMax = 0;
 numberChildren = '';
 taxCredit = '';
 restoreInputHeight = '';
@@ -28,6 +29,7 @@ function initialize_animation_currently_closed(){
 	itemized = myRange_ID.value;
 	numberChildren = num_children.value;
 	taxCredit = tax_credit_switch.checked;
+	axisMax = HOHchart.axis.max();
 
 	/* Reset explanation text color to black */
 	document.getElementById('explanation_line1').style.color = 'black';
@@ -207,6 +209,9 @@ function end_animation(){
 		/* reset xgrid and clear ygrids*/
 		HOHchart.xgrids([{value: myRange_HOH.value, text:'Your income'}]);
 		HOHchart.ygrids([]);
+
+		/* reset axis max */
+		HOHchart.axis.max(axisMax);
 
 		/* Fade output values back in */
 		document.getElementById('item_or_stand').style.color = 'black';

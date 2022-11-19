@@ -43,6 +43,73 @@ function deductType(){
 }
 
 function show_basic_overview(){
+	container = document.getElementById('container_overview');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = overviewHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+function show_poor_people_explanation(){
+	container = document.getElementById('container_poor_people');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = poorPeopleHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+function show_regressive_explanation(){
+	container = document.getElementById('container_regressive');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = regressiveHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+function show_itemized_explanation(){
+	container = document.getElementById('container_itemized');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = itemizeHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+function show_tax_credit_explanation(){
+	container = document.getElementById('container_credit');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = creditHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+function show_mp_explanation(){
+	container = document.getElementById('container_mp');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = mpHeight;
+	}
+	else{
+		container.style.height = '0px';
+	}
+}
+
+/*
+function show_basic_overview(){
 	if(hoh_explanation.hidden === true){
 		hoh_explanation.hidden = false;
 		basic_overview_animation_id.hidden = false;
@@ -110,3 +177,4 @@ function show_mp_explanation(){
 		marriage_penalty_explanation_animation_id.hidden = true;
 	}
 }
+*/
