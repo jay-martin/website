@@ -162,7 +162,7 @@ input[type=submit].end_animation:disabled {
   color: #b8b8b8;
   border-color: #b8b8b8;
 }
-/* No color change on hove when disabled */
+/* No color change on hover when disabled */
 input[type=submit].end_animation:disabled:hover {
   color: #b8b8b8;
   border-color: #b8b8b8;
@@ -290,6 +290,18 @@ input[type=submit].animation_button{
   cursor: pointer;
   border-radius: 3px;
   margin-bottom: 15px;
+}
+/* Lighter colors for when it is disabled */
+input[type=submit].animation_button:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+}
+/* No color change on hover when disabled */
+input[type=submit].animation_button:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+  cursor: default;
 }
 p.explanation {
   margin-top: 5px;

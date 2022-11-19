@@ -6,7 +6,6 @@ function show_poor_people_animation(){
 	timer += 0;
 	setTimeout(function () {
 		HOHchart.hide('after_ctc');
-		HOHchart.xgrids([]);
 		document.getElementById('item_or_stand').innerHTML = '';
 		document.getElementById('HOH_savings').innerHTML = '';
 		HOHchart.load({
@@ -145,7 +144,9 @@ function show_poor_people_animation(){
 
 	timer += 2000;
 	setTimeout(function () {
+		/* Enable buttons */
 		document.getElementById('end_animation_button').disabled = false;
+		enable_animation_buttons();
 	}, timer);
 
 }
