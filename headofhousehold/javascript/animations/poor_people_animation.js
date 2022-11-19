@@ -78,7 +78,7 @@ function show_poor_people_animation(){
 		tax_credit_switch.checked = true;
 		modifyGraph_HOH();
 		HOHchart.focus('after_ctc');
-		document.getElementById('explanation_line5').innerHTML = "But if we consider HOH in conjunction with the child tax credit, the income level at which HOH provides no benefit increases (see 'How do tax credits affect HOH?' for more).";
+		document.getElementById('explanation_line5').innerHTML = "But if we consider HOH in conjunction with the child tax credit, the income level at which HOH provides no benefit increases (see 'How do tax credits affect HOH?').";
 		explanation_style.scrollTop = explanation_style.scrollHeight;
 	}, timer);
 
@@ -145,7 +145,6 @@ function show_poor_people_animation(){
 	timer += 2000;
 	setTimeout(function () {
 		/* Enable buttons */
-		document.getElementById('end_animation_button').disabled = false;
 		enable_animation_buttons();
 	}, timer);
 

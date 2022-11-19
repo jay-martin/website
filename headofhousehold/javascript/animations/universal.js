@@ -10,7 +10,8 @@ isClicked = false;
 animationOpen = false;
 
 function initialize_animation(){
-	console.log("Animation Open?: " + animationOpen);
+	/* reset revert animation button to disabled (needed if an earlier animation has already been reverted)*/
+	document.getElementById('end_animation_button').disabled = true;
 	if(animationOpen === false){
 		initialize_animation_currently_closed()
 	}
@@ -221,7 +222,7 @@ function end_animation(){
 		document.getElementById('zoom_label').style.visibility = 'visible';
 		document.getElementById('zoom_label').style.color = 'black';
 
-		/* remove End Animation Button */
+		/* remove End Animation Button and reset its colors */
 		document.getElementById('end_animation_button').style.visibility = 'hidden';
 	}, timer);
 

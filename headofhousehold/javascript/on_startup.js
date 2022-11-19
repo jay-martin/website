@@ -11,7 +11,7 @@ function initialize_page(){
 	/* keep calculations a secret */
 	document.getElementById("highlights_content").style.visibility = 'hidden';
 	
-	timer = 1000;
+	timer = 200;
 	setTimeout(function () {
 		/* calculate heights */
 		overviewHeight = window.getComputedStyle(document.getElementById('container_overview')).height;
@@ -45,7 +45,7 @@ function initialize_page(){
 	document.getElementById("container_mp").style.transitionDuration = ".5s";
 
 	/* make highlights visible */
-	timer += 500;
+	timer += 1000;
 	setTimeout(function () {
 		document.getElementById("highlights").style.border = 'solid';
 		document.getElementById("highlights").style.borderColor = '#adadad';
