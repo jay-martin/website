@@ -49,9 +49,11 @@ function initialize_page(){
 	setTimeout(function () {
 		document.getElementById("highlights").style.border = 'solid';
 		document.getElementById("highlights").style.borderColor = '#adadad';
+		document.getElementById("highlights").style.borderWidth = '1.5px';
 		document.getElementById("highlights_title").style.border = 'none';
 		document.getElementById("highlights_title").style.borderBottom = 'solid';
 		document.getElementById("highlights_title").style.borderColor = '#adadad';
+		document.getElementById("highlights_title").style.borderWidth = '1.5px';
 		document.getElementById("loader_container").style.border = 'none';
 		document.getElementById("loader_container").style.display = 'none';
 		document.getElementById("highlights_content").style.visibility = 'visible';
