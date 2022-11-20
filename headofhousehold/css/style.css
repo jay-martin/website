@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
 body {
+  font-family: "Computer Modern Sans";
   margin-left: auto;
   margin-right: auto;
   line-height: 2em;
@@ -150,6 +151,7 @@ input[type=submit].end_animation{
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
+  background-color: #f5f3f2;
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -160,6 +162,7 @@ input[type=submit].end_animation:hover {background-color: #d1d1d1}
 /* Lighter colors for when it is disabled */
 input[type=submit].end_animation:disabled {
   color: #b8b8b8;
+  background-color: #fafafa;
   border-color: #b8b8b8;
 }
 /* No color change on hover when disabled */
@@ -237,8 +240,33 @@ input[type=submit].end_animation:disabled:hover {
   margin-right: 0px;
   margin-bottom: 20px;
 }
+.loader_container {
+  border: solid;
+  border-top: none;
+  border-color: #adadad;
+  border-width: 1.5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 80%;
+}
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .highlights {
-  border-style: solid;
+  border-style: none;
   border-width: 1.5px;
   border-color: #adadad;
   margin-left: 20px;
@@ -251,7 +279,7 @@ input[type=submit].end_animation:disabled:hover {
 .highlights_title {
   font-family: "Computer Modern Sans";
   font-size: 110%;
-  border-bottom: solid;
+  border: solid;
   border-width: 1.5px;
   border-color: #adadad;
   font-weight: bold;
@@ -279,12 +307,29 @@ button.bottom_button{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.explanation_and_animation_button_container{
+  height: 100%;
+  margin: 0px;
+  overflow: hidden;
+  -webkit-transition: height .5s ease;
+  -moz-transition: height .5s ease;
+}
+p.explanation {
+  margin-top: 0px;
+  padding-top: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Computer Modern Sans";
+  font-size: 80%;
+}
 input[type=submit].animation_button{
   font-family: "Computer Modern Sans";
   width: 50%;
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
+  background-color: #f5f3f2;
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -295,6 +340,7 @@ input[type=submit].animation_button{
 input[type=submit].animation_button:disabled {
   color: #b8b8b8;
   border-color: #b8b8b8;
+  background-color: #fafafa;
 }
 /* No color change on hover when disabled */
 input[type=submit].animation_button:disabled:hover {
@@ -302,14 +348,6 @@ input[type=submit].animation_button:disabled:hover {
   border-color: #b8b8b8;
   background-color: #fafafa;
   cursor: default;
-}
-p.explanation {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family: "Computer Modern Sans";
-  font-size: 80%;
 }
 button:hover {background-color: #f0efed;}
 input[type=submit].animation_button:hover {background-color: #d1d1d1}

@@ -1,4 +1,4 @@
-function show_mp_explanation_animation(){
+function animation6(){
 	explanation_style = document.querySelector('.explanation_values');
 
 	initialize_animation();

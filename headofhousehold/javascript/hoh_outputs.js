@@ -42,71 +42,74 @@ function deductType(){
     }
 }
 
-function show_basic_overview(){
-	if(hoh_explanation.hidden === true){
-		hoh_explanation.hidden = false;
-		basic_overview_animation_id.hidden = false;
+function show_explanation1(){
+	container = document.getElementById('highlights_container1');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation1Height;
 	}
 	else{
-		hoh_explanation.hidden = true;
-		basic_overview_animation_id.hidden = true;
+		container.style.height = '0px';
 	}
 }
 
-function show_poor_people_explanation(){
-	if(poor_people_explanation.hidden === true){
-		poor_people_explanation.hidden = false;
-		poor_people_animation.hidden = false;
+/*
+Function for poor people animation
+*/
+function show_explanation2(){
+	container = document.getElementById('highlights_container2');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation2Height;
 	}
 	else{
-		poor_people_explanation.hidden = true;
-		poor_people_animation.hidden = true;
+		container.style.height = '0px';
 	}
 }
 
-function show_regressive_explanation(){
-	console.log("IN SHOW REGRESSIVE");
-	if(regressive_explanation.hidden === true){
-		console.log("IN UNHIDE EXPLANATION");
-		regressive_explanation.hidden = false;
-		regressive_animation.hidden = false;
+function show_explanation3(){
+	container = document.getElementById('highlights_container3');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation3Height;
 	}
 	else{
-		console.log("IN HIDE EXPLANATION");
-		regressive_explanation.hidden = true;
-		regressive_animation.hidden = true;
+		container.style.height = '0px';
 	}
 }
 
-function show_itemized_explanation(){
-	if(itemized_explanation.hidden === true){
-		itemized_explanation.hidden = false;
-		itemized_explanation_animation_id.hidden = false;
+function show_explanation4(){
+	container = document.getElementById('highlights_container4');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation4Height;
 	}
 	else{
-		itemized_explanation.hidden = true;
-		itemized_explanation_animation_id.hidden = true;
+		container.style.height = '0px';
 	}
 }
 
-function show_tax_credit_explanation(){
-	if(tax_credit_explanation.hidden === true){
-		tax_credit_explanation.hidden = false;
-		tax_credit_animation.hidden = false;
+function show_explanation5(){
+	container = document.getElementById('highlights_container5');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation5Height;
 	}
 	else{
-		tax_credit_explanation.hidden = true;
-		tax_credit_animation.hidden = true;
+		container.style.height = '0px';
 	}
 }
 
-function show_mp_explanation(){
-	if(marriage_penalty_explanation.hidden === true){
-		marriage_penalty_explanation.hidden = false;
-		marriage_penalty_explanation_animation_id.hidden = false;
+/*
+Function for marriage penalties animation
+*/
+function show_explanation6(){
+	container = document.getElementById('highlights_container6');
+	const height = window.getComputedStyle(container).height;
+	if(height === '0px'){
+		container.style.height = explanation6Height;
 	}
 	else{
-		marriage_penalty_explanation.hidden = true;
-		marriage_penalty_explanation_animation_id.hidden = true;
+		container.style.height = '0px';
 	}
 }
