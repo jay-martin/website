@@ -1,5 +1,5 @@
 function animation6(){
-	explanation_style = document.querySelector('.explanation_values');
+	explanation_style = document.querySelector('.center_explanation_box');
 
 	initialize_animation();
 
@@ -156,26 +156,5 @@ function animation6(){
 		document.getElementById('explanation_line6').style.color = '#7a7a7a';
         document.getElementById('explanation_line7').innerHTML = "Fortunately for you, married joint filers don't use the same tax brackets as single filers.";
         explanation_style.scrollTop = explanation_style.scrollHeight;
-	}, timer);
-}
-
-function show_basic_overview_animation(){
-	explanation_style = document.querySelector('.explanation_values');
-
-	timer = 1000;
-	setTimeout(function () {
-		HOHchart.xgrids([]);
-		HOHchart.ygrids([{value: 0}]);
-		explanation_style.style.borderRadius = '5px';
-		explanation_style.style.height = '85px';
-		document.getElementById('item_or_stand').innerHTML = '';
-		document.getElementById('HOH_savings').innerHTML = '';
-    	HOHchart.axis.max({y: 4000});
-		HOHchart.hide('HOH_Savings');
-	}, timer);
-
-	timer += 2000;
-	setTimeout(function () {
-		
 	}, timer);
 }

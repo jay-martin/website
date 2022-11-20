@@ -121,7 +121,7 @@ input {
   -moz-transition: height 1s ease; 
 }
 /*******Subcontainter in Chart: Explanation Values****/
-.explanation_values {
+.center_explanation_box {
   border: solid;
   border-color: #adadad;
   background-color: #f5f3f2;
@@ -137,7 +137,7 @@ input {
   -webkit-transition: height 1s ease; 
   -moz-transition: height 1s ease; 
 }
-.explanation_values::-webkit-scrollbar { 
+.center_explanation_box::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
 }
 p.explanation_text {
