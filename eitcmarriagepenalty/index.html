@@ -135,6 +135,33 @@
 
     <div class = "highlights"> <!--Subcontainter for highlights-->
       <div class = "highlights_title">Highlights</div>
+
+      <div class="loader_container" id="loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content">
+        <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties? </button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
+          <p class="explanation" id="explanation_text1">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+          <input type="submit" class="animation_button" id="basic_overview_animation_id" value="Play animation" onclick="initialize_animation()" />
+        </div>
+
+        <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
+          <p class="explanation" id="explanation_text2">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+          <input type="submit" class="animation_button" id="poor_people_animation" value="Play animation" onclick="animation2()" />
+        </div>
+
+        <button type="button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
+          <p class="explanation" id="explanation_text3">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+          <input type="submit" class="animation_button" id="regressive_animation" value="Play animation" onclick="initialize_animation()"/>
+        </div>
+
+      </div> <!--highlights_content-->
+
       
       <button type="button" class="top_button" onclick="show_basic_overview()">What are marriage penalties? </button>
         <p class="explanation" id="basic_overview_explanation" hidden>When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>

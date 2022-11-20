@@ -1,8 +1,9 @@
 income = 0;
 itemized = 0;
-axisMax = 0;
 numberChildren = '';
 taxCredit = '';
+
+axisMax = 0;
 restoreInputHeight = '';
 restoreExplanationsHeight = '';
 
@@ -43,16 +44,16 @@ function initialize_animation_currently_closed(){
 	document.getElementById('explanation_line9').style.color = 'black';
 
 	/* Disable play animation buttons */
-	document.getElementById("basic_overview_animation_id").disabled = true;
-	document.getElementById("poor_people_animation").disabled = true;
-	document.getElementById("regressive_animation").disabled = true;
-	document.getElementById("itemized_explanation_animation_id").disabled = true;
-	document.getElementById("tax_credit_animation").disabled = true;
-	document.getElementById("marriage_penalty_explanation_animation_id").disabled = true;
+	document.getElementById("animation1_button").disabled = true;
+	document.getElementById("animation2_button").disabled = true;
+	document.getElementById("animation3_button").disabled = true;
+	document.getElementById("animation4_button").disabled = true;
+	document.getElementById("animation5_button").disabled = true;
+	document.getElementById("animation6_button").disabled = true;
 
 	/* Calculate heights of explanation box and input box */
-	explanation = document.getElementById('explanation_values_id');
-	user_inputs = document.getElementById('user_inputs_id');
+	explanation = document.getElementById('center_explanations_container');
+	user_inputs = document.getElementById('user_inputs');
 	const explanationsHeight = window.getComputedStyle(explanation).height;
 	const inputsHeight = window.getComputedStyle(user_inputs).height;
 	const totalHeight = parseFloat(explanationsHeight, 10) + parseFloat(inputsHeight, 10);
@@ -62,14 +63,14 @@ function initialize_animation_currently_closed(){
 	restoreInputHeight = inputsHeight;
 
 	/* Immediately set inputs height & explanation height to calculated height */
-	document.getElementById("user_inputs_id").style.transitionDuration = "0s";
-	document.getElementById("user_inputs_id").style.height = inputsHeight;
-	document.getElementById('explanation_values_id').style.transitionDuration = "0s";
-	document.getElementById('explanation_values_id').style.height = explanationsHeight;
+	document.getElementById("user_inputs").style.transitionDuration = "0s";
+	document.getElementById("user_inputs").style.height = inputsHeight;
+	document.getElementById('center_explanations_container').style.transitionDuration = "0s";
+	document.getElementById('center_explanations_container').style.height = explanationsHeight;
 
 	/* Set transition durations back to 1s */
-	document.getElementById("user_inputs_id").style.transitionDuration = "1s";
-	document.getElementById('explanation_values_id').style.transitionDuration = "1s";
+	document.getElementById("user_inputs").style.transitionDuration = "1s";
+	document.getElementById('center_explanations_container').style.transitionDuration = "1s";
 
 	/*make end animation button visible */
 	document.getElementById('end_animation_button').style.visibility = 'visible';
@@ -77,9 +78,9 @@ function initialize_animation_currently_closed(){
 	timer = 1000;
 	setTimeout(function () {
 		/* Collapse user inputs */
-		document.getElementById("user_inputs_id").style.height = '0px';
+		document.getElementById("user_inputs").style.height = '0px';
 		/* Expand explanation values */
-		document.getElementById('explanation_values_id').style.height = totalHeight + 'px';
+		document.getElementById('center_explanations_container').style.height = totalHeight + 'px';
 		/* Fade out zoom button */
 		document.getElementById('zoom_label').style.color = 'white';
 		document.getElementById('zoom_switch').style.visibility = 'hidden';
@@ -104,12 +105,12 @@ function initialize_animation_already_open(){
 
 	/* Disable play animation buttons */
 	document.getElementById("end_animation_button").disabled = true;
-	document.getElementById("basic_overview_animation_id").disabled = true;
-	document.getElementById("poor_people_animation").disabled = true;
-	document.getElementById("regressive_animation").disabled = true;
-	document.getElementById("itemized_explanation_animation_id").disabled = true;
-	document.getElementById("tax_credit_animation").disabled = true;
-	document.getElementById("marriage_penalty_explanation_animation_id").disabled = true;
+	document.getElementById("animation1_button").disabled = true;
+	document.getElementById("animation2_button").disabled = true;
+	document.getElementById("animation3_button").disabled = true;
+	document.getElementById("animation4_button").disabled = true;
+	document.getElementById("animation5_button").disabled = true;
+	document.getElementById("animation6_button").disabled = true;
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -176,9 +177,9 @@ function end_animation(){
 	timer = 1000;
 	setTimeout(function () {
 		/* Expand user inputs */
-		document.getElementById("user_inputs_id").style.height = restoreInputHeight;
+		document.getElementById("user_inputs").style.height = restoreInputHeight;
 		/* Contract explanation values */
-		document.getElementById('explanation_values_id').style.height = restoreExplanationsHeight;
+		document.getElementById('center_explanations_container').style.height = restoreExplanationsHeight;
 
 		/* eliminate text */
 		document.getElementById('explanation_line1').innerHTML = '';
@@ -238,10 +239,10 @@ function end_animation(){
 
 function enable_animation_buttons(){
 	document.getElementById("end_animation_button").disabled = false;
-	document.getElementById("basic_overview_animation_id").disabled = false;
-	document.getElementById("poor_people_animation").disabled = false;
-	document.getElementById("regressive_animation").disabled = false;
-	document.getElementById("itemized_explanation_animation_id").disabled = false;
-	document.getElementById("tax_credit_animation").disabled = false;
-	document.getElementById("marriage_penalty_explanation_animation_id").disabled = false;
+	document.getElementById("animation1_button").disabled = false;
+	document.getElementById("animation2_button").disabled = false;
+	document.getElementById("animation3_button").disabled = false;
+	document.getElementById("animation4_button").disabled = false;
+	document.getElementById("animation5_button").disabled = false;
+	document.getElementById("animation6_button").disabled = false;
 }
