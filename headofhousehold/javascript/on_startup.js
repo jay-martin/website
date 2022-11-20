@@ -1,9 +1,9 @@
-overviewHeight = 0;
-poorPeopleHeight = 0;
-regressiveHeight = 0;
-itemizeHeight = 0;
-creditHeight = 0;
-mpHeight = 0;
+explanation1Height = 0;
+explanation2Height = 0;
+explanation3Height = 0;
+explanation4Height = 0;
+explanation5Height = 0;
+explanation6Height = 0;
 
 initialize_page();
 
@@ -14,35 +14,28 @@ function initialize_page(){
 	timer = 200;
 	setTimeout(function () {
 		/* calculate heights */
-		overviewHeight = window.getComputedStyle(document.getElementById('container_overview')).height;
-		poorPeopleHeight = window.getComputedStyle(document.getElementById('container_poor_people')).height;
-		regressiveHeight = window.getComputedStyle(document.getElementById('container_regressive')).height;
-		itemizeHeight = window.getComputedStyle(document.getElementById('container_itemized')).height;
-		creditHeight = window.getComputedStyle(document.getElementById('container_credit')).height;
-		mpHeight = window.getComputedStyle(document.getElementById('container_mp')).height;
+		explanation1Height = window.getComputedStyle(document.getElementById('highlights_container1')).height;
+		explanation2Height = window.getComputedStyle(document.getElementById('highlights_container2')).height;
+		explanation3Height = window.getComputedStyle(document.getElementById('highlights_container3')).height;
+		explanation4Height = window.getComputedStyle(document.getElementById('highlights_container4')).height;
+		explanation5Height = window.getComputedStyle(document.getElementById('highlights_container5')).height;
+		explanation6Height = window.getComputedStyle(document.getElementById('highlights_container6')).height;
 
-		console.log("overview: " + overviewHeight);
-		console.log("poor people: " + poorPeopleHeight);
-		console.log("regressive: " + regressiveHeight);
-		console.log("regressive: " + itemizeHeight);
-		console.log("regressive: " + creditHeight);
-		console.log("regressive: " + mpHeight);
-
-		document.getElementById("container_overview").style.height = "0px";
-		document.getElementById("container_poor_people").style.height = "0px";
-		document.getElementById("container_regressive").style.height = "0px";
-		document.getElementById("container_itemized").style.height = "0px";
-		document.getElementById("container_credit").style.height = "0px";
-		document.getElementById("container_mp").style.height = "0px";
+		document.getElementById("highlights_container1").style.height = "0px";
+		document.getElementById("highlights_container2").style.height = "0px";
+		document.getElementById("highlights_container3").style.height = "0px";
+		document.getElementById("highlights_container4").style.height = "0px";
+		document.getElementById("highlights_container5").style.height = "0px";
+		document.getElementById("highlights_container6").style.height = "0px";
 	}, timer);
 
 	/* reset transition duration values */
-	document.getElementById("container_overview").style.transitionDuration = ".5s";
-	document.getElementById("container_poor_people").style.transitionDuration = ".5s";
-	document.getElementById("container_regressive").style.transitionDuration = ".5s";
-	document.getElementById("container_itemized").style.transitionDuration = ".5s";
-	document.getElementById("container_credit").style.transitionDuration = ".5s";
-	document.getElementById("container_mp").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container1").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container2").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container3").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container4").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container5").style.transitionDuration = ".5s";
+	document.getElementById("highlights_container6").style.transitionDuration = ".5s";
 
 	/* make highlights visible */
 	timer += 1000;

@@ -1,4 +1,4 @@
-function show_poor_people_animation(){
+function animation2(){
 	explanation_style = document.querySelector('.explanation_values');
 
 	initialize_animation();

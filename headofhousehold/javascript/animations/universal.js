@@ -6,7 +6,6 @@ taxCredit = '';
 restoreInputHeight = '';
 restoreExplanationsHeight = '';
 
-isClicked = false;
 animationOpen = false;
 
 function initialize_animation(){
@@ -155,7 +154,6 @@ function initialize_animation_already_open(){
 }
 
 function end_animation(){
-	isClicked = true;
 	animationOpen = false;
 
 	/* reset values */

@@ -164,40 +164,40 @@
       </div>
 
       <div class="highlights_content" id="highlights_content">
-        <button type="button" class="top_button" onclick="show_basic_overview()">What is the head of household filing status? </button>
-        <div class="explanation_and_animation_button_container" id="container_overview">
+        <button type="button" class="top_button" onclick="show_explanation1()">What is the head of household filing status? </button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
           <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
-          <input type="submit" class="animation_button" id="basic_overview_animation_id" value="Play animation" onclick="show_basic_overview_animation()" />
+          <input type="submit" class="animation_button" id="basic_overview_animation_id" value="Play animation" onclick="initialize_animation()" />
         </div>
 
-        <button type="button" onclick="show_poor_people_explanation()">Are poor families excluded from benefits?</button>
-        <div class="explanation_and_animation_button_container" id="container_poor_people">
+        <button type="button" onclick="show_explanation2()">Are poor families excluded from benefits?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
           <p class="explanation" id="poor_people_explanation">Yes, poor families are excluded from benefits. The HOH filing status does not provide any benefit to single parents who make less than the single standard deduction ($12,950 in 2022). When considered in conjunction with the child tax credit, HOH provides no benefit to single parents with one child with an income below $18,950, to single parents with two children with an income below $24,662, and to single parents with three children with an income below $29,662 (see "How do tax credits affect HOH?"). Furthermore, benefits for working class people are substantially smaller than those for parents with higher incomes (see "Is HOH regressive?").</p>
-          <input type="submit" class="animation_button" id="poor_people_animation" value="Play animation" onclick="show_poor_people_animation()" />
+          <input type="submit" class="animation_button" id="poor_people_animation" value="Play animation" onclick="animation2()" />
         </div>
 
-        <button type="button" onclick="show_regressive_explanation()">Is HOH regressive?</button>
-        <div class="explanation_and_animation_button_container" id="container_regressive">
+        <button type="button" onclick="show_explanation3()">Is HOH regressive?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
           <p class="explanation" id="regressive_explanation">Basically, yes. By-and-large the benefit increases with income. However, itemizing reduces HOH tax savings because much of HOH's benefit comes from its larger standard deduction. This means that, in practice, upper-middle income people (who largely use the standard deduction) and the small proportion of high income people who use the standard deduction tend to reap the largest benefit from HOH. From their, most high-income people (who itemize their deductions) receive about 40% of the max benefit, middle-class people receive about 22% of the max benefit, and low-income people receive very little benefit, especially when taking into account the child tax credit (see "How do tax credits affect HOH?").</p>
           <input type="submit" class="animation_button" id="regressive_animation" value="Play animation" onclick="initialize_animation()"/>
         </div>
 
-        <button type="button" onclick="show_itemized_explanation()">How do itemized deductions affect HOH?</button>
-        <div class="explanation_and_animation_button_container" id="container_itemized">
+        <button type="button" onclick="show_explanation4()">How do itemized deductions affect HOH?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container4">
           <p class="explanation" id="itemized_explanation">Itemized deductions reduce the benefit of the head of household filing status.</p>
           <input type="submit" class="animation_button" id="itemized_explanation_animation_id" value="Play animation" onclick="initialize_animation()"/>
         </div>
 
-        <button type="button" onclick="show_tax_credit_explanation()">How do tax credits affect HOH?</button>
-        <div class="explanation_and_animation_button_container" id="container_credit">
+        <button type="button" onclick="show_explanation5()">How do tax credits affect HOH?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container5">
           <p class="explanation" id="tax_credit_explanation" >Considering HOH in isolation exaggerates the tax savings received by low-and-working class single parents. This is because, at lower incomes, nonrefundable tax credits like the nonrefundable component of the child tax credit eliminate or reduce the additional taxes faced by single filers. A single parent with $15,000 in income, for instance, would owe $205 in taxes as a single filer and $0 as a head of household, nominally producing an HOH benefit of $205. However, as a single filer they could use $205 of a nonrefundable tax credit to reduce their taxes to $0, while as a head of household they could not use any of the credit, resulting in $0 in taxes under both filing statuses and thus no benefit from the HOH filing status after tax credits.</br></br>Tax credits do not affect HOH savings at higher income levels.</p>
           <input type="submit" class="animation_button" id="tax_credit_animation" value="Play animation" onclick="" />
         </div>
 
-        <button type="button" class="bottom_button" onclick="show_mp_explanation()">Does HOH produce marriage penalties?</button>
-        <div class="explanation_and_animation_button_container" id="container_mp">
+        <button type="button" class="bottom_button" onclick="show_explanation6()">Does HOH produce marriage penalties?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container6">
           <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
-          <input type="submit" class="animation_button" id="marriage_penalty_explanation_animation_id" value="Play animation" onclick="show_mp_explanation_animation()"/>
+          <input type="submit" class="animation_button" id="marriage_penalty_explanation_animation_id" value="Play animation" onclick="animation6()"/>
         </div> 
 
       </div> <!--highlights_content-->

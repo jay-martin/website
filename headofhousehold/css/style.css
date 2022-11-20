@@ -151,6 +151,7 @@ input[type=submit].end_animation{
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
+  background-color: #f5f3f2;
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -328,6 +329,7 @@ input[type=submit].animation_button{
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
+  background-color: #f5f3f2;
   color: black;
   text-decoration: none;
   cursor: pointer;
