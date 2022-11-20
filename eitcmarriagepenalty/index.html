@@ -7,6 +7,7 @@
     type="text/css"
     rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- load c3.css -->
   <link href="./c3-0.7.20/c3.css" rel="stylesheet">
 
@@ -22,7 +23,6 @@
 </div>
 
 <body>
-
 <!-- Load d3.js and c3.js -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../c3-0.7.20/c3.min.js"></script>
@@ -60,64 +60,70 @@
   <div class = "chart">
     
     <!--User inputs-->
-    <!--Person 1 number of old children-->
-    <label for="numChildrenPerson1">I have</label>
-    <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income_outputs()">
-      <option value="none">no children</option>
-      <option value="one" selected>1 child</option>
-      <option value="two">2 children</option>
-      <option value="three">3+ children</option>
-    </select>
+    <div class="user_inputs" id="user_inputs">
+      
+      <!--Person 1 number of old children-->
+      <label for="numChildrenPerson1">I have</label>
+      <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income_outputs()">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>
 
-    <!--Person 2 number of old children-->
-    <label for="numChildrenPerson2">and my partner has</label>
-    <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_outputs()" >
-      <option value="none">no children</option>
-      <option value="one" >1 child</option>
-      <option value="two">2 children</option>
-      <option value="three">3+ children</option>
-    </select>.
+      <!--Person 2 number of old children-->
+      <label for="numChildrenPerson2">and my partner has</label>
+      <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_outputs()" >
+        <option value="none">no children</option>
+        <option value="one" >1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>.
 
-    <!--Person 1 income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
-
-      <div class="slider-actual">
-        <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+        </div>
       </div>
-    </div>
 
-    <!--Person 2 income slider-->
-    <div class="slidecontainer"> 
-      <div class="income-display"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
-
-      <div class="slider-actual">
-        <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+        </div>
       </div>
-    </div>
+
+    </div> <!--user_inputs container-->
 
     <!--Calculate marriage penalty-->
-    <div class="explanation_values" id="explanation_values_id"> <!--Subcontainter for eitc values-->
-      <p id="individual_eitc_values"></p>
-      <p id="combined_single_eitc"></p>
-      <p id="married_eitc_value"></p>
-      <p id="marriage_penalty_show"></p>
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="individual_eitc_values"></p>
+      <p class="explanation_text" id="combined_single_eitc"></p>
+      <p class="explanation_text" id="married_eitc_value"></p>
+      <p class="explanation_text" id="marriage_penalty_show"></p>
 
-      <p id="explanation_line1"></p>
-      <p id="explanation_line2"></p>
-      <p id="explanation_line3"></p>
-      <p id="explanation_line4"></p>
-      <p id="explanation_line5"></p>
-      <p id="explanation_line6"></p>
-      <p id="explanation_line7"></p>
-      <p id="explanation_line8"></p>
-      <p id="explanation_line9"></p>
-      <p id="explanation_line10"></p>
-      <p id="explanation_line11"></p>
-      <p id="explanation_line12"></p>
+      <p class="explanation_text" id="explanation_line1"></p>
+      <p class="explanation_text" id="explanation_line2"></p>
+      <p class="explanation_text" id="explanation_line3"></p>
+      <p class="explanation_text" id="explanation_line4"></p>
+      <p class="explanation_text" id="explanation_line5"></p>
+      <p class="explanation_text" id="explanation_line6"></p>
+      <p class="explanation_text" id="explanation_line7"></p>
+      <p class="explanation_text" id="explanation_line8"></p>
+      <p class="explanation_text" id="explanation_line9"></p>
+      <p class="explanation_text" id="explanation_line10"></p>
+      <p class="explanation_text" id="explanation_line11"></p>
+      <p class="explanation_text" id="explanation_line12"></p>
     </div>
     <script type="text/javascript" src="./javascript/marriage_penalties_calculate.js"></script>
     <script type="text/javascript" src="./javascript/marriage_penalties_outputs.js"></script>
+
+    <!--End animation button-->
+    <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+    </br>
 
     <!--Run Marriage Penalty Script-->
     <div id="MPchart"></div> <!--Subcontainter for chart-->
@@ -128,14 +134,43 @@
   </div> <!--chart end-->
 
   <!--Highlights-------------------------------------------->
+  <script type="text/javascript" src="./javascript/animations/universal.js"></script>
   <script type="text/javascript" src="./javascript/animations/basic_overview_animation.js"></script>
   <script type="text/javascript" src="./javascript/animations/marriage_bonus_animation.js"></script>
 
   <div class = "right_side">
 
-    <div class = "highlights"> <!--Subcontainter for highlights-->
-      <div class = "highlights_title">Highlights</div>
+    <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+      <div class="loader_container" id="loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content">
+        
+        <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
+          <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+          <input type="submit" class="animation_button" id="animation1_button" value="Play animation" onclick="animation1()" />
+        </div>
+
+        <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
+          <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+          <input type="submit" class="animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
+        </div>
+
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
+          <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+          <input type="submit" class="animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
+        </div>
+
+      </div> <!--highlights_content-->
       
+      <!--
       <button type="button" class="top_button" onclick="show_basic_overview()">What are marriage penalties? </button>
         <p class="explanation" id="basic_overview_explanation" hidden>When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
         <input type="submit" class="animation_button" id="basic_overview_animation" value="Play animation" onclick="show_basic_overview_animation()" hidden />
@@ -147,9 +182,14 @@
       <button type="button" class="bottom_button" onclick="show_marriage_bonus_explanation()">Who faces marriage bonuses?</button>
         <p class="explanation" id="marriage_bonus_explanation" hidden>Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC..</p>
         <input type="submit" class="animation_button" id="marriage_bonus_animation" value="Play animation" onclick="show_marriage_bonus_animation()" hidden/>
+      -->
     
-    </div>
-  </div>
+    </div> <!--Highlights box-->
+    
+    <!-- Initialize page -->
+    <script type="text/javascript" src="./javascript/on_startup.js"></script>
+  
+  </div> <!--right_side-->
 
 </div> <!--chart, eitc values & highlights container end-->
 

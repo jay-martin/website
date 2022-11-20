@@ -1,11 +1,9 @@
-function show_marriage_bonus_animation(){
-	eitc_values_style = document.querySelector('.explanation_values');
+function animation3(){
+	eitc_values_style = document.querySelector('.center_explanation_box');
 
-	/* Maintain current height of explanation values box */
-	height = document.getElementById('explanation_values_id').offsetHeight;
-	document.getElementById('explanation_values_id').style.height = height + 'px';
+	initialize_animation();
 	
-	timer = 1000;
+	timer += 1000;
 	setTimeout(function () {		
 		MPchart.xgrids([]);
 		MPchart.ygrids([{value: 0}]);
@@ -608,5 +606,12 @@ function show_marriage_bonus_animation(){
 	setTimeout(function () {
 		MPchart.defocus(['married']);
 	}, timer);
+
+	timer += 2000;
+	setTimeout(function () {
+		/* Enable buttons */
+		enable_animation_buttons();
+	}, timer);
+
 	
 }

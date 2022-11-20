@@ -1,7 +1,8 @@
-income = 0;
-itemized = 0;
-numberChildren = '';
-taxCredit = '';
+p1Income = 0;
+p2Income = 0;
+p1Children = '';
+p2Children = '';
+
 
 axisMax = 0;
 restoreInputHeight = '';
@@ -26,11 +27,11 @@ function initialize_animation_currently_closed(){
 	animationOpen = true;
 
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	income = myRange_HOH.value;
-	itemized = myRange_ID.value;
-	numberChildren = num_children.value;
-	taxCredit = tax_credit_switch.checked;
-	axisMax = HOHchart.axis.max();
+	p1Income = myRange_person1.value;
+	p2Income = myRange_person2.value;
+	p1Children = person1_children.value;
+	p2Children = person2_children.value;
+	axisMax = MPchart.axis.max();
 
 	/* Reset explanation text color to black */
 	document.getElementById('explanation_line1').style.color = 'black';
@@ -42,14 +43,14 @@ function initialize_animation_currently_closed(){
 	document.getElementById('explanation_line7').style.color = 'black';
 	document.getElementById('explanation_line8').style.color = 'black';
 	document.getElementById('explanation_line9').style.color = 'black';
+	document.getElementById('explanation_line10').style.color = 'black';
+	document.getElementById('explanation_line11').style.color = 'black';
+	document.getElementById('explanation_line12').style.color = 'black';
 
 	/* Disable play animation buttons */
 	document.getElementById("animation1_button").disabled = true;
 	document.getElementById("animation2_button").disabled = true;
 	document.getElementById("animation3_button").disabled = true;
-	document.getElementById("animation4_button").disabled = true;
-	document.getElementById("animation5_button").disabled = true;
-	document.getElementById("animation6_button").disabled = true;
 
 	/* Calculate heights of explanation box and input box */
 	explanation = document.getElementById('center_explanations_container');
@@ -81,40 +82,40 @@ function initialize_animation_currently_closed(){
 		document.getElementById("user_inputs").style.height = '0px';
 		/* Expand explanation values */
 		document.getElementById('center_explanations_container').style.height = totalHeight + 'px';
-		/* Fade out zoom button */
-		document.getElementById('zoom_label').style.color = 'white';
-		document.getElementById('zoom_switch').style.visibility = 'hidden';
-		HOHchart.xgrids([]);
+
+		/* Clear xgrids */
+		MPchart.xgrids([]);
+
 		/*fade out text*/
-		document.getElementById('item_or_stand').style.color = '#f5f3f2';
-		document.getElementById('HOH_savings').style.color = '#f5f3f2';
+		document.getElementById('individual_eitc_values').style.color = '#f5f3f2';
+		document.getElementById('combined_single_eitc').style.color = '#f5f3f2';
+		document.getElementById('married_eitc_value').style.color = '#f5f3f2';
+		document.getElementById('marriage_penalty_show').style.color = '#f5f3f2';
 	}, timer);
 
 	timer += 1000;
 	setTimeout(function () {
-		document.getElementById('zoom_label').style.visibility = 'hidden';
 	    /* clear text (currently it has just faded to the background color) */
-		document.getElementById('item_or_stand').innerHTML = '';
-		document.getElementById('HOH_savings').innerHTML = '';
+		document.getElementById('individual_eitc_values').innerHTML = '';
+		document.getElementById('combined_single_eitc').innerHTML = '';
+		document.getElementById('married_eitc_value').innerHTML = '';
+		document.getElementById('marriage_penalty_show').innerHTML = '';
 	}, timer);
 }
 
 function initialize_animation_already_open(){
+
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	income = myRange_HOH.value;
-	itemized = myRange_ID.value;
-	numberChildren = num_children.value;
-	taxCredit = tax_credit_switch.checked;
-	axisMax = HOHchart.axis.max();
+	p1Income = myRange_person1.value;
+	p2Income = myRange_person2.value;
+	p1Children = person1_children.value;
+	p2Children = person2_children.value;
 
 	/* Disable play animation buttons */
 	document.getElementById("end_animation_button").disabled = true;
 	document.getElementById("animation1_button").disabled = true;
 	document.getElementById("animation2_button").disabled = true;
 	document.getElementById("animation3_button").disabled = true;
-	document.getElementById("animation4_button").disabled = true;
-	document.getElementById("animation5_button").disabled = true;
-	document.getElementById("animation6_button").disabled = true;
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -126,10 +127,13 @@ function initialize_animation_already_open(){
 	document.getElementById('explanation_line7').style.color = '#f5f3f2';
 	document.getElementById('explanation_line8').style.color = '#f5f3f2';
 	document.getElementById('explanation_line9').style.color = '#f5f3f2';
+	document.getElementById('explanation_line10').style.color = '#f5f3f2';
+	document.getElementById('explanation_line11').style.color = '#f5f3f2';
+	document.getElementById('explanation_line12').style.color = '#f5f3f2';
 
 	/* clear xgrids and ygrids*/
-	HOHchart.xgrids([]);
-	HOHchart.ygrids([]);
+	MPchart.xgrids([]);
+	MPchart.ygrids([]);
 
 	timer = 1000;
 	setTimeout(function () {
@@ -143,6 +147,9 @@ function initialize_animation_already_open(){
 		document.getElementById('explanation_line7').innerHTML = '';
 		document.getElementById('explanation_line8').innerHTML = '';
 		document.getElementById('explanation_line9').innerHTML = '';
+		document.getElementById('explanation_line10').innerHTML = '';
+		document.getElementById('explanation_line11').innerHTML = '';
+		document.getElementById('explanation_line12').innerHTML = '';
 
 		/* Reset explanation text color to black */
 		document.getElementById('explanation_line1').style.color = 'black';
@@ -154,6 +161,9 @@ function initialize_animation_already_open(){
 		document.getElementById('explanation_line7').style.color = 'black';
 		document.getElementById('explanation_line8').style.color = 'black';
 		document.getElementById('explanation_line9').style.color = 'black';
+		document.getElementById('explanation_line10').style.color = 'black';
+		document.getElementById('explanation_line11').style.color = 'black';
+		document.getElementById('explanation_line12').style.color = 'black';
 	}, timer);
 
 }
@@ -162,10 +172,13 @@ function end_animation(){
 	animationOpen = false;
 
 	/* reset values */
-	myRange_HOH.value = income;
-	myRange_ID.value = itemized;
-	num_children.value = numberChildren;
-	tax_credit_switch.checked = taxCredit;
+	myRange_person1.value = p1Income;
+	myRange_person2.value = p2Income;
+	person1_children.value = p1Children;
+	person2_children.value = p2Children;
+
+	/* remove regions */
+	MPchart.regions.remove({classes: ['penalty']});
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -177,6 +190,9 @@ function end_animation(){
 	document.getElementById('explanation_line7').style.color = '#f5f3f2';
 	document.getElementById('explanation_line8').style.color = '#f5f3f2';
 	document.getElementById('explanation_line9').style.color = '#f5f3f2';
+	document.getElementById('explanation_line10').style.color = '#f5f3f2';
+	document.getElementById('explanation_line11').style.color = '#f5f3f2';
+	document.getElementById('explanation_line12').style.color = '#f5f3f2';
 
 	timer = 1000;
 	setTimeout(function () {
@@ -195,45 +211,43 @@ function end_animation(){
 		document.getElementById('explanation_line7').innerHTML = '';
 		document.getElementById('explanation_line8').innerHTML = '';
 		document.getElementById('explanation_line9').innerHTML = '';
+		document.getElementById('explanation_line10').innerHTML = '';
+		document.getElementById('explanation_line11').innerHTML = '';
+		document.getElementById('explanation_line12').innerHTML = '';
+
+		MPchart.focus();
 	}, timer);
 
 	timer += 1000;
 	setTimeout(function () {
-		/* reset chart */
-		HOHchart.focus();
-		modifyGraph_HOH();
+		modify_person1();
+		modify_person2();
+	}, timer);
 
-		/* Print deduction and difference values */
-		deductType();
-		difference_hoh();
+	timer += 500;
+	setTimeout(function () {
+		modify_married();
+	}, timer);
+
+	timer += 500;
+	setTimeout(function () {
+		/* adjust y axis */
+		adjust_y_axis();
+
+		/* Print output values */
+		modify_income_outputs();
 	}, timer);
 
 	timer += 1000;
 	setTimeout(function () {
-		/* reset xgrid and clear ygrids*/
-		HOHchart.xgrids([{value: myRange_HOH.value, text:'Your income'}]);
-		HOHchart.ygrids([]);
-
-		/* reset axis max */
-		HOHchart.axis.max(axisMax);
-
 		/* Fade output values back in */
-		document.getElementById('item_or_stand').style.color = 'black';
-		document.getElementById('HOH_savings').style.color = 'black';
-
-		/* bring back zoom label */
-		document.getElementById('zoom_label').style.visibility = 'visible';
-		document.getElementById('zoom_label').style.color = 'black';
+		document.getElementById('individual_eitc_values').style.color = 'black';
+		document.getElementById('combined_single_eitc').style.color = 'black';
+		document.getElementById('married_eitc_value').style.color = 'black';
+		document.getElementById('marriage_penalty_show').style.color = 'black';
 
 		/* remove End Animation Button and reset its colors */
 		document.getElementById('end_animation_button').style.visibility = 'hidden';
-	}, timer);
-
-	timer += 1000;
-	setTimeout(function () {
-		/* bring back zoom button */
-		document.getElementById('zoom_switch').style.visibility = 'visible';
-		
 	}, timer);
 }
 
@@ -242,7 +256,4 @@ function enable_animation_buttons(){
 	document.getElementById("animation1_button").disabled = false;
 	document.getElementById("animation2_button").disabled = false;
 	document.getElementById("animation3_button").disabled = false;
-	document.getElementById("animation4_button").disabled = false;
-	document.getElementById("animation5_button").disabled = false;
-	document.getElementById("animation6_button").disabled = false;
 }

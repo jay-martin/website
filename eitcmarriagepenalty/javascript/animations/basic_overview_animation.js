@@ -1,9 +1,7 @@
-function show_basic_overview_animation(){
-	explanation_values_style = document.querySelector('.explanation_values');
+function animation1(){
+	explanation_values_style = document.querySelector('.center_explanation_box');
 
-	/* Maintain current height of explanation values box */
-	height = document.getElementById('explanation_values_id').offsetHeight;
-	document.getElementById('explanation_values_id').style.height = height + 'px';
+	initialize_animation();
 	
 	timer = 1000;
 	setTimeout(function () {
@@ -46,7 +44,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line1').style.color = '#7a7a7a';
 		document.getElementById('explanation_line2').innerHTML = 'Say you have an income of <b>$' + person1Income + "</b>.";
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -71,7 +68,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line2').style.color = '#7a7a7a';
 		document.getElementById('explanation_line3').innerHTML = 'Say your partner also has one child.';
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer+= 2000;
@@ -92,7 +88,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line3').style.color = '#7a7a7a';
 		document.getElementById('explanation_line4').innerHTML = 'Say your partner has an income of <b>$' + person2Income + '</b>.';
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -116,7 +111,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line4').style.color = '#7a7a7a';
 		document.getElementById('explanation_line5').innerHTML = "Between the two of you, you receive a total of <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> in EITC benefits.';
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -124,7 +118,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line5').style.color = '#7a7a7a';
 		document.getElementById('explanation_line6').innerHTML = "If you marry each other,"
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -136,7 +129,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line5').style.color = '#7a7a7a';
 		document.getElementById('explanation_line6').innerHTML = "If you marry each other, then with two children you will be eligible for the following, larger EITC:"
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2500;
@@ -146,7 +138,6 @@ function show_basic_overview_animation(){
 		document.getElementById('explanation_line6').style.color = '#7a7a7a';
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income;
 		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
-		console.log("scrollTop: " + explanation_values_style.scrollTop);
 	}, timer);
 
 	timer += 2000;
@@ -192,7 +183,13 @@ function show_basic_overview_animation(){
 	timer += 2000;
 	setTimeout(function () {
 		document.getElementById('explanation_line8').innerHTML = "That's an EITC of only <b>$" + marriedEITC_formatted + "</b>. You lose <b>$" + marriagePenalty_formatted + "</b> in EITC benefits because you got married. <em>That</em> is a marriage penalty.";
-		explanation_values_style.scrollTop = explanation_values_style.scrollHeight;
+		explanation_values_stylescrollTop = explanation_values_style.scrollHeight;
+	}, timer);
+
+	timer += 2000;
+	setTimeout(function () {
+		/* Enable buttons */
+		enable_animation_buttons();
 	}, timer);
 	
 }

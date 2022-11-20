@@ -36,24 +36,49 @@ function modify_income_outputs(){
     modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome, combined_children);
 }
 
-function show_basic_overview(){
-	if(basic_overview_explanation.hidden){
-		basic_overview_explanation.hidden = false;
-		basic_overview_animation.hidden = false;
-	}
-	else{
-		basic_overview_explanation.hidden = true;
-		basic_overview_animation.hidden = true;
-	}
+/*
+OVERVIEW
+*/
+function show_explanation1(){
+    container = document.getElementById('highlights_container1');
+    const height = window.getComputedStyle(container).height;
+    if(height === '0px'){
+        container.style.height = explanation1Height;
+    }
+    else{
+        container.style.height = '0px';
+    }
 }
 
-function show_marriage_bonus_explanation(){
-	if(marriage_bonus_explanation.hidden){
-		marriage_bonus_explanation.hidden = false;
-		marriage_bonus_animation.hidden = false;
-	}
-	else{
-		marriage_bonus_explanation.hidden = true;
-		marriage_bonus_animation.hidden = true;
-	}
+/*
+MARRIAGE PENALTIES
+*/
+function show_explanation2(){
+    container = document.getElementById('highlights_container2');
+    const height = window.getComputedStyle(container).height;
+    if(height === '0px'){
+        container.style.height = explanation2Height;
+    }
+    else{
+        container.style.height = '0px';
+    }
+}
+/*
+MARRIAGE BONUSES
+*/
+function show_explanation3(){
+    container = document.getElementById('highlights_container3');
+    const height = window.getComputedStyle(container).height;
+    if(height === '0px'){
+        container.style.height = explanation3Height;
+        /* This is the bottom button: the bottom border needs to be straightened out after expanding */
+        document.getElementById('bottom_button').style.borderBottomRightRadius = '0px';
+        document.getElementById('bottom_button').style.borderBottomLeftRadius = '0px';
+    }
+    else{
+        container.style.height = '0px';
+        /* This is the bottom button: the bottom border edges need to be smoothed out after contracting */
+        document.getElementById('bottom_button').style.borderBottomRightRadius = '5px';
+        document.getElementById('bottom_button').style.borderBottomLeftRadius = '5px';
+    }
 }

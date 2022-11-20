@@ -1,5 +1,5 @@
 function animation2(){
-	explanation_style = document.querySelector('.explanation_values');
+	explanation_style = document.querySelector('.center_explanation_box');
 
 	initialize_animation();
 

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;700&family=Zen+Antique+Soft&display=swap');
 body {
+  font-family: "Computer Modern Sans";
   margin-left: auto;
   margin-right: auto;
   line-height: 2em;
@@ -36,6 +37,10 @@ input {
   line-height: 2em;
   font-size: 110%;
   margin-bottom: 10px;
+}
+.switch_label {
+  -webkit-transition: color .5s linear;
+  -moz-transition: color .5s linear;
 }
 /********************************************************************************************************/
 /* Media query for mobile 800px: */
@@ -108,8 +113,16 @@ input {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+/*******Subcontainter in Chart: User Inputs****/
+.user_inputs {
+  overflow: hidden;
+  height: 100%;
+  -webkit-transition: height 1s ease; 
+  -moz-transition: height 1s ease; 
+}
 /*******Subcontainter in Chart: Explanation Values****/
-.explanation_values {
+.center_explanation_box {
+  font-size: 95%;
   border: solid;
   border-color: #adadad;
   background-color: #f5f3f2;
@@ -121,17 +134,56 @@ input {
   border-radius: 5px;
   height: 100%;
   overflow: scroll;
-  font-size: 95%;
+  scrollbar-width: none;  /* Firefox */
+  -webkit-transition: height 1s ease; 
+  -moz-transition: height 1s ease; 
 }
-/*******Subcontainter in Chart: Sliders**************/
+.center_explanation_box::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+p.explanation_text {
+  -webkit-transition: color .5s linear; 
+  -moz-transition: color .5s linear; 
+}
+input[type=submit].end_animation{
+  font-family: "Computer Modern Sans";
+  float: right;
+  visibility: hidden;
+  border: solid;
+  border-width: 1.5px;
+  border-color: #adadad;
+  background-color: #f5f3f2;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+input[type=submit].end_animation:hover {background-color: #d1d1d1}
+
+/* Lighter colors for when it is disabled */
+input[type=submit].end_animation:disabled {
+  color: #b8b8b8;
+  background-color: #fafafa;
+  border-color: #b8b8b8;
+}
+/* No color change on hover when disabled */
+input[type=submit].end_animation:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+  cursor: default;
+}
+/*******SubSubcontainter in Chart.user_inputs: Sliders**************/
 /*Slider */
 .slidecontainer {
   width: 100%;
 }
 /*Display income */
-.income-display {
+.slider-text {
   display: inline-block;
   width: 45%;
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
 }
 .slider-actual {
   display: inline-block;
@@ -169,6 +221,19 @@ input {
   cursor: pointer;
   border-radius: 50%;
 }
+/*******Subcontainter in Chart: Number of Children Dropdown**************/
+.ctc_container {
+}
+.ctc_switch {
+  display: inline-block;
+}
+.num_children_container {
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
+}
+.children_dropdown {
+  display: inline-block;
+}
 /*****************Subcontainter: Highlight buttons (right side)***************************/
 .right_side{
   float: left;
@@ -176,8 +241,33 @@ input {
   margin-right: 0px;
   margin-bottom: 20px;
 }
+.loader_container {
+  border: solid;
+  border-top: none;
+  border-color: #adadad;
+  border-width: 1.5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 80%;
+}
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .highlights {
-  border-style: solid;
+  border-style: none;
   border-width: 1.5px;
   border-color: #adadad;
   margin-left: 20px;
@@ -190,7 +280,7 @@ input {
 .highlights_title {
   font-family: "Computer Modern Sans";
   font-size: 110%;
-  border-bottom: solid;
+  border: solid;
   border-width: 1.5px;
   border-color: #adadad;
   font-weight: bold;
@@ -218,24 +308,47 @@ button.bottom_button{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.explanation_and_animation_button_container{
+  height: 100%;
+  margin: 0px;
+  overflow: hidden;
+  -webkit-transition: height .5s ease;
+  -moz-transition: height .5s ease;
+}
+p.explanation {
+  margin-top: 0px;
+  padding-top: 10px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Computer Modern Sans";
+  font-size: 80%;
+}
 input[type=submit].animation_button{
   font-family: "Computer Modern Sans";
   width: 50%;
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
+  background-color: #f5f3f2;
   color: black;
   text-decoration: none;
   cursor: pointer;
   border-radius: 3px;
   margin-bottom: 15px;
 }
-p.explanation {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 80%;
+/* Lighter colors for when it is disabled */
+input[type=submit].animation_button:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+}
+/* No color change on hover when disabled */
+input[type=submit].animation_button:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+  cursor: default;
 }
 button:hover {background-color: #f0efed;}
 input[type=submit].animation_button:hover {background-color: #d1d1d1}
