@@ -101,7 +101,7 @@ input {
 }
 /*****************Subcontainter: Chart*********************************************/
 .chart {
-  font-family: "Computer Modern Sans";
+  font-family: "Computer Modern Sans" !important;
   border-style: solid;
   border-width: 1.5px;
   border-color: #adadad;

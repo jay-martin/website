@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Marginal Tax Rates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/style.css"
+    type="text/css"
+    rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- load c3.css -->
+  <link href="./c3-0.7.20/c3.css" rel="stylesheet">
+
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Sans/cmun-sans.css"></link>
+
+</head>
+
+<div class="logo">
+  <a href="../home/index.html">
+    <img src="./images/logo.png" alt="Logo" width="125" height="37.5">
+  </a>
+</div>
+
+<body>
+<!-- Load d3.js and c3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../c3-0.7.20/c3.min.js"></script>
+
+<h1 id="top">Marginal Tax Rates</h1>
+<div class="name">
+  By Jay Martin </br>
+  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+</div>
+
+<!--div class for chart and highlights box-------------------------------------------->
+<div class = "chart_highlights_container">
+  
+  <!--Left side-------------------------------------------------->
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="../home/index.html">Home</a>
+      <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Poverty Reduction</a>
+      <a href="./index.html">The Exclusion of Poor</br>Families</a>
+      <a href="../eitcmarriagepenalty/index.html">Marriage Penalties</a>
+      <a href="./index.html">Asinine Asset Tests</a>
+      <a href="./index.html">A Better Way</a>
+      <a href="./index.html">The Child Tax Credit</a>
+      <a href="./index.html">The Earned Income Tax</br>Credit</a>
+      <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
+      <a href="./index.html">SNAP (Food Stamps)</a>
+      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+    </div>
+  </div>
+
+  <!--Chart------------------------------------------------------>
+  <div class="center">
+    
+    <div class="chart">
+      <!--User inputs------------------------------>
+      <div class="user_inputs" id="user_inputs">
+        <!--Benefits selection-->
+        <div class="many_select_container" id="benefits_selection_container">
+          Select which policies to display:
+          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="medicaid_button" value="Medicaid/Premium Tax Credits">
+          <input type="submit" class="benefits_selection_buttons" id="chip_button" value="CHIP">
+          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income">
+        </div>
+
+        <!--Filing status-->
+        <label for="filingstatus">I am a</label>
+        <select name="filingstatus" id="filingstatus_all" oninput="">
+          <option value="married">married joint filer</option>
+          <option value="hoh">head of household</option>
+          <option value="single">single filer</option>
+        </select>
+
+        <!--Number of children-->
+        <div class="dropdown" id="num_children_container">
+          who has
+          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();output1();">
+            <option value="one" selected>1 child</option>
+            <option value="two">2 children</option>
+            <option value="three">3 children</option>
+          </select>.
+        </div>
+
+        <!--Disability Status-->
+        <div class="dropdown" id="disability_container">
+          I am
+          <select class="dropdown" name="disability" id="disability" oninput="">
+            <option value="not_disabled">not disabled</option>
+            <option value="disabled">disabled</option>
+          </select>
+        </div>
+
+        <!--Student-->
+        <div class="dropdown" id="student_container">
+          and
+          <select class="dropdown" id="student" oninput="">
+            <option value="not_student">not a student</option>
+            <option value="student">a student</option>
+          </select>.
+        </div>
+
+        <!--Income slider-->
+        <div class="slidecontainer" id="income_slider_container"> 
+          <div class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">50,000</output> this year:</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+          </div>
+        </div>
+
+        <!--Power Users: Arbitrary income-->
+        <div class="arbitray_income_container" id="arbitray_income_container">
+          <label for="arbitray_income">Input income:</label>
+          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modifyIncome();output1();">
+          (Income slider now moves in dollar increments)
+        </div>
+
+      </div> <!--user_inputs container-->
+
+      <!--Center block values-->
+      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+        <p class="explanation_text" id="marginal_tax_rate"></p>
+
+        <p class="explanation_text" id="explanation_line1"></p>
+        <p class="explanation_text" id="explanation_line2"></p>
+        <p class="explanation_text" id="explanation_line3"></p>
+        <p class="explanation_text" id="explanation_line4"></p>
+        <p class="explanation_text" id="explanation_line5"></p>
+        <p class="explanation_text" id="explanation_line6"></p>
+        <p class="explanation_text" id="explanation_line7"></p>
+        <p class="explanation_text" id="explanation_line8"></p>
+        <p class="explanation_text" id="explanation_line9"></p>
+      </div>
+      <script type="text/javascript" src="./javascript/outputs.js"></script>
+      <script type="text/javascript" src="./javascript/calculate_marginal.js"></script>
+      <script type="text/javascript" src="./javascript/calculate_benefit.js"></script>
+
+      <!--Zoom switch-->
+      <label class="switch_label" id="zoom_label">
+        Click to zoom on lower incomes:
+        <input type="checkbox" name="zoom" id="zoom_switch" oninput="zoom_chart();">
+        <span class="checkmark"></span>
+      </label>
+
+      <!--Only Total Switch-->
+      <label class="switch_label" id="total_checkbox_label">
+        Click to show only the total marginal tax rate:
+        <input type="checkbox" name="total" id="total_switch" oninput="only_total();">
+        <span class="checkmark"></span>
+      </label>
+
+      <!--Type of chart-->
+      <div class="dropdown" id="chart_type_dropdown_container">
+        Show chart as:
+        <select class="dropdown" name="chart_type" id="chart_type" oninput="switch_chart()">
+          <option value="EMTR" selected>effective marginal tax rates</option>
+          <option value="EI">effective income</option>
+        </select>
+        .
+      </div>
+
+      <!--End animation button-->
+      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+      </br>
+
+      <!--Run HOH Benefit Graph Script-->
+      <div class="chart_actual" id="chart"></div>
+      <script type="text/javascript" src="./javascript/chart.js"></script>
+      <script type="text/javascript" src="./javascript/adjust_chart.js"></script>    
+
+      <!--Power users-->
+      <div class="power_users_container">
+        <h3>Power Users</h3>
+        <!--Arbitrary income switch-->
+        <label class="switch_label" id="arbitrary_income_label">
+          Arbitrary income selection:
+          <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
+          <span class="checkmark"></span>
+        </label>
+
+        <!--Arbitrary zoom switch-->
+        <label class="switch_label" id="arbitrary_zoom_label">
+          Arbitrary axis range:
+          <input type="checkbox" id="arbitrary_zoom_switch" oninput="show_arbitrary_zoom();">
+          <span class="checkmark"></span>
+        </label>
+
+        <!--All policies-->
+        <label class="switch_label" id="all_outputs_label">
+          Show values for all policies:
+          <input type="checkbox" id="all_outputs_switch" oninput=";">
+          <span class="checkmark"></span>
+        </label>
+        </br>
+
+        <!--Download excel-->
+        <input type="submit" class="download_button" id="download_data" value="Download Excel Data" onclick="">
+      </div>
+
+      <!--Notes for astericks-->
+      <div class="chart_notes">
+        <h3 class="notes_title">Notes</h3>
+        <ul class="notes_list">
+          <li>It is assumed that all income is labor income.</li>
+          <li>Personal income tax is calculated using the standard deduction.</li>
+          <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. SNAP and SSI both include rather onerous asset tests, though these are waived for people who are both categorically eligible for SNAP and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty</a>. This chart does not show SNAP benefits for the small proportion of recipients who are categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li>
+          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction, and does not include additional deductions that some recipients are eligible for. This calculation results in the benefit for one-member households reaching $0 before the gross income eligibility cap. However, additional deductions that some households are eligible for increase the gross income at which one-member households continue to receive a benefit. Additionally, benefit cliffs increase in size if additional deductions are used. See: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
+          <li>Eligibility for SNAP is based on monthly income (excluding those categorically eligible), whereas eligibility for most other programs considered here are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. See: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
+          <li>This chart shows SNAP benefits for people in the 48 contiguous states. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
+          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. See: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
+          <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
+        </ul>
+    </div>
+
+    </div> <!--chart end-->
+
+    <div class="references" id="appendix_snap">
+      <h2>Appendix: SNAP</h2>
+      SNAP includes both a <em>gross</em> income limit of 130% of the federal poverty line and a <em>net</em> income limit of 100% of the poverty line. Net income is calculated by subtracting from gross income a number of deductions. This chart includes the SNAP standard deduction ($193 for households with 1–4 members) and the earned income deduction (20% of earnings). Not included are the child support deduction, excess shelter deduction, the dependent care deduction (which includes only expenses related to work or training) and deduction alterations for households with an elderly or disabled member. Note that SNAP has different standard deductions for Alaska, Hawaii, Guam, (all larger) and the US Virgin Islands (smaller). Additionally, some people are eligible for SNAP through <em>categorical eligibility</em> (e.g. people who receive cash benefits through TANF are automatically eligible for SNAP), which does not include a gross income limit. This chart does not show marginal tax rates for the small proportion of SNAP recipients who are categorically eligible for SNAP and have gross incomes above 130% of the poverty line.</br>
+
+      maximum benefit (<a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">in 2022</a>, $250/month for a one-person household, $459/month for a two-person household, $658/month for a three-person household, $835/month for a four-person household, and $992/month for a five-person household). </br>
+
+      When gross income increases by $1, the 20% earnings deduction rises by $0.20. Net income thus increases by only $0.80. Benefits thus decrease by .3($0.80)=$0.24. So a $1 increase in income results in a 24 cent benfit loss, producing an additional income of 76 cents. This is a 24% marginal tax rate.
+
+      <a href=https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program target="_blank">2022 SNAP Income Limits</a>
+    </div>
+
+    <div class="references" id="appendix_medicaid">
+      <h2>Appendix: Medicaid & Premium Tax Credits</h2>
+      Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount
+    </div>
+
+    <div class="references" id="references">
+    <h2>References</h2>
+      <ul class="references_list">
+        <li>Altig, David; Auerbach, Alan J.; Kotlikoff, Laurence J.; Ilin, Elias; Ye, Victor (May 2020). <a href=https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">"Marginal Net Taxation of Americans’ Labor Supply"</a> <i class="fa fa-file-pdf-o"></i>. <em>NBER Working Paper No. w27164</em>. <a href=https://web.archive.org/web/20220119103912/https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 19, 2022.</li>
+
+        <li>Aussenberg, Randy Allison (October 4, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">"Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022. </li>
+
+        <li>Chien, Nina; Macartney, Suzanne (March 2019). <a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">"Marginal Tax Rate Series"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
+
+        <li>Fernandez, Bernadette (November 7, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">"Health Insurance Premium Tax Credit and Cost-Sharing Reductions"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20221115222325/https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 15, 2022. </li>
+      </ul>
+  </div>
+
+  </div> <!--Center-->
+
+  <!--Highlights-------------------------------------------->
+  <script type="text/javascript" src="./javascript/animations/universal.js"></script>
+
+  <div class = "right_side">
+
+    <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+      <div class="loader_container" id="loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content">
+        <button type="button" class="top_button" onclick="show_explanation1()">What are effective marginal tax rates? </button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
+          <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
+          <input type="submit" class="animation_button" id="animation1_button" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation2()">Who faces the highest effective marginal tax rates?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
+          <p class="explanation" id="poor_people_explanation">Yes, poor families are excluded from benefits. The HOH filing status does not provide any benefit to single parents who make less than the single standard deduction ($12,950 in 2022). When considered in conjunction with the child tax credit, HOH provides no benefit to single parents with one child with an income below $18,950, to single parents with two children with an income below $24,662, and to single parents with three children with an income below $29,662 (see "How do tax credits affect HOH?"). Furthermore, benefits for working class people are substantially smaller than those for parents with higher incomes (see "Is HOH regressive?").</p>
+          <input type="submit" class="animation_button" id="animation2_button" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation3()">Why do many working class people face such high effective marginal tax rates?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
+          <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
+          <input type="submit" class="animation_button" id="animation6_button" value="Play animation" onclick="animation3()"/>
+        </div> 
+
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation4()">Disclaimer</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container4">
+          <p class="explanation" id="disclaimer_explanation">This chart is for academic and educational purposes. It includes a number of assumptions and simplifications for clarity and brevity (see chart notes). It should not be considered a definitive guide to the benefits you are eligible for, which can differ from what is shown here due to factors like place of residence, household composition, immigration and citizenship status, prior use of benefits, and others.</p>
+        </div> 
+
+      </div> <!--highlights_content-->
+
+    </div> <!--highlights box-->
+    
+    <!-- Initialize page -->
+    <script type="text/javascript" src="./javascript/on_startup.js"></script>
+
+  </div> <!--right_side-->
+
+</div> <!--chart, center explanation & highlights container end-->
+
+</body>
+</html>

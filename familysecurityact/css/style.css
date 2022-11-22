@@ -62,13 +62,6 @@ input {
   padding: 0;
   margin: 0;
 }
-/*
-.chart_highlights_container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-*/
 /*****************Subcontainter: Other pages (left side)***************************/
 .left_side{
   float: left;

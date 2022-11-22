@@ -180,6 +180,9 @@ function end_animation(){
 	/* remove regions */
 	MPchart.regions.remove({classes: ['penalty']});
 
+	/* revert x-axis */
+	MPchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];
+
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
 	document.getElementById('explanation_line2').style.color = '#f5f3f2';
@@ -215,6 +218,8 @@ function end_animation(){
 		document.getElementById('explanation_line11').innerHTML = '';
 		document.getElementById('explanation_line12').innerHTML = '';
 
+		/* show charts */
+		MPchart.show();
 		MPchart.focus();
 	}, timer);
 
