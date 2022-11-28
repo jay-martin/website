@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Exclusion of Poor Families</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/style.css"
+    type="text/css"
+    rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- load c3.css -->
+  <link href="../c3-0.7.20/c3.css" rel="stylesheet">
+
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <!-- Computer Modern Classical Serif Italic -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="../c3-0.7.20/c3.min.js"></script>
+
+</head>
+
+<div class="logo">
+  <a href="../home/index.html">
+    <img src="./images/logo.png" alt="Logo" width="125" height="37.5">
+  </a>
+</div>
+
+<body>
+
+<h1 id="top">The Exclusion of Poor Families</h1>
+<div class="name">
+  By Jay Martin </br>
+  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+</div>
+
+<!--div class for chart and highlights box-------------------------------------------->
+<div class = "chart_highlights_container">
+  
+  <!--Left side-------------------------------------------------->
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="../home/index.html">Home</a>
+      <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Fixing Family Benefits</a>
+      <a href="./index.html">Poverty Reduction</a>
+      <a href="../marginaltax/index.html">Marginal Tax Rates</a>
+      <a href="../eitcmarriagepenalty/index.html">Marriage Penalties</a>
+      <a href="./index.html">Asinine Asset Tests</a>
+      <a href="./index.html">Administrative Burdens</a>
+      <a href="./index.html">The Child Tax Credit</a>
+      <a href="./index.html">The Earned Income Tax</br>Credit</a>
+      <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
+      <a href="./index.html">SNAP (Food Stamps)</a>
+      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+      <a href="./index.html">WIC</a>
+      <a href="./index.html">Medicaid & CHIP</a>
+    </div>
+  </div>
+
+  <!--Chart------------------------------------------------------>
+  <div class="center">
+    
+    <div class="chart">
+      <!--User inputs------------------------------>
+      <div class="user_inputs" id="user_inputs">
+
+        <!--Filing status-->
+        <label for="filingstatus">I am a</label>
+        <select name="filingstatus" id="filingstatus" oninput="adjust_chart()">
+          <option value="married">married joint filer</option>
+          <option value="hoh" id="hoh_status_option">head of household</option>
+          <option value="single" selected>single filer</option>
+        </select>
+
+        <!--Number of children-->
+        <div class="dropdown" id="num_children_container">
+          who has
+          <select class="dropdown" name="num_children" id="num_children" oninput="adjust_chart();output1();adjust_enabled();">
+            <option value="none">no children</option>
+            <option value="one" selected>1 child</option>
+            <option value="two">2 children</option>
+            <option value="three">3 children</option>
+          </select> under the age of 18.
+        </div>
+
+        <!--Income slider-->
+        <div class="slidecontainer" id="income_slider_container"> 
+          <div class="slider-text" id="income_slider_text">I have an income of $<output id="user_income_output">10,000</output>.</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="50000" value="10000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+          </div>
+        </div>
+
+        <!--Power Users: Arbitrary income-->
+        <div class="arbitray_income_container" id="arbitray_income_container">
+          <label for="arbitray_income">Input income:</label>
+          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="60000" oninput="arbitrary_income_input();modifyIncome();output1();">
+          (Income slider now moves in dollar increments)
+        </div>
+
+      </div> <!--user_inputs container-->
+
+      <!--Center block values-->
+      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+        <p class="explanation_text" id="output_line1"></p>
+
+        <p class="explanation_text" id="explanation_line1"></p>
+        <p class="explanation_text" id="explanation_line2"></p>
+        <p class="explanation_text" id="explanation_line3"></p>
+        <p class="explanation_text" id="explanation_line4"></p>
+        <p class="explanation_text" id="explanation_line5"></p>
+        <p class="explanation_text" id="explanation_line6"></p>
+        <p class="explanation_text" id="explanation_line7"></p>
+        <p class="explanation_text" id="explanation_line8"></p>
+        <p class="explanation_text" id="explanation_line9"></p>
+      </div>
+      <script type="text/javascript" src="./javascript/calculate.js"></script>
+      <script type="text/javascript" src="./javascript/outputs.js"></script>
+
+      <!--End animation button-->
+      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+
+      <!--Zoom Button-->
+      <label class="switch_label" id="zoom_label">
+        Zoom on lower incomes:
+        <input type="checkbox" name="zoom" id="zoom_switch" oninput="zoom_chart();">
+        <span class="checkmark"></span>
+      </label>
+
+      <!--Benefit Chart Selector-->
+      <div class="dropdown" id="chart_type_dropdown_container">
+        Break down by:
+        <select class="dropdown" name="chart_type" id="benefit_selector" oninput="adjust_chart();output1();">
+          <option value="all" selected>All Benefits</option>
+          <option value="eitc">EITC</option>
+          <option value="ctc" id="ctc_chart_option">CTC</option>
+          <option value="hoh" id="hoh_chart_option" disabled>HOH</option>
+        </select>
+      </div>
+
+      <!--Chart Type Selector-->
+      <div class="dropdown">
+        Show as:
+        <select class="dropdown" name="chart_type_selector" id="chart_selector" oninput="adjust_chart();output1();">
+          <option value="all" selected>Highlighted Region</option>
+          <option value="eitc">Curve</option>
+        </select>
+      </div>
+
+      <!--Run Chart Script-->
+      <div class="chart_actual" id="chart"></div>
+      <script type="text/javascript" src="./javascript/chart.js"></script>
+      <script type="text/javascript" src="./javascript/adjust_chart.js"></script>    
+
+      <!--Power users-->
+      <div class="power_users_container">
+        <h3>Power Users</h3>
+        <!--Arbitrary income switch-->
+        <label class="switch_label" id="arbitrary_income_label">
+          Arbitrary income selection:
+          <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+    </div> <!--chart end-->
+
+    <div class="notes">
+    <h2 id="notes">Notes</h2>
+      <ol class="notes_list">
+        <li><a class="refs" href="#note1">^</a> Note 1.</li>
+        <li><a class="refs" href="#note2">^</a> Note 2.</li>
+        <li><a class="refs" href="#note3">^</a> Note 3.</li>
+        <li><a class="refs" href="#note4">^</a> Note 4.</li>
+        <li><a class="refs" href="#note5">^</a> Note 5.</li>
+      </ol>
+    </div>
+
+    <div class="references" id="references">
+    <h2>References</h2>
+      <ul class="references_list" id="references_list">
+        <li class="ref_item" id="ref1">Ref 1.</li>
+        <li class="ref_item" id="ref2">Ref 2.</li>
+        <li class="ref_item" id="ref3">Ref 3. </li>
+      </ul>
+    </div>
+
+  </div> <!--Center-->
+
+  <!--Highlights-------------------------------------------->
+  <script type="text/javascript" src="./javascript/animations/universal.js"></script>
+
+  <div class = "right_side">
+
+    <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+      <div class="loader_container" id="loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content">
+        <button type="button" class="top_button" onclick="show_explanation1()">Which family programs exclude poor people?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
+          <p class="explanation" id="highlight_text1">The principal family programs that exclude poor people are the child tax credit, the earned income tax credit, and the head of household filing status. Additionally, nonrefundable tax credits like the child and dependent care credit, as well as itemized deductions broadly, provide little to no benefit to poor people. Even the standard deduction, which ensures that poor people do not owe any income tax, provides less tax savings to poor people than it does to people with higher incomes.</p>
+          <input type="submit" class="animation_button" id="animation1_button" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation2()">What are the consequences of excluding poor people?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
+          <p class="explanation" id="highlight_text2">The primary consequence of excluding poor people is to lessen the poverty reduction effects of welfare programs. Poverty, and in particular <em>child</em> poverty, is substantially higher than it would be if poor people were not excluded.</p>
+          <input type="submit" class="animation_button" id="animation2_button" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation3()">Why are poor people excluded?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
+          <p class="explanation" id="highlight_text3">The exclusion of poor people is typically justified on the basis that it will encourage work.</p>
+          <input type="submit" class="animation_button" id="animation3_button" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation4()">Do all programs exclude the poorest people?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container4">
+          <p class="explanation" id="highlight_text4">No, some programs do not exclude poor people. The Supplemental Nutrition Assistance Program (SNAP) and Temporary Assistance for Needy Families (TANF), for instance, are targeted at poor people. These programs, however, are far more paternalistic and stigmatizing: they require in-person or phone interviews, interrogations of income sources and spending patterns, work requirements, complicated benefit formulas, limitations on what the benefit can be spent on (unlike the EITC and CTC's cash benefit), and onerous restrictions on the amount of money that can be saved. See pages <em><a href="" target="_blank">Administrative Burdens</a></em> and <em><a href="" target="_blank">Asinine Asset Tests</a></em> for more.</p>
+          <input type="submit" class="animation_button" id="animation4_button" value="Play animation" onclick="" />
+        </div> 
+
+      </div> <!--highlights_content-->
+
+    </div> <!--highlights box-->
+    
+    <!-- Initialize page -->
+    <script type="text/javascript" src="./javascript/on_startup.js"></script>
+
+  </div> <!--right_side-->
+
+</div> <!--chart, center explanation & highlights container end-->
+
+</body>
+</html>

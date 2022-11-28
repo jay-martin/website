@@ -1,7 +1,6 @@
 explanation1Height = 0;
 explanation2Height = 0;
 explanation3Height = 0;
-explanation4Height = 0;
 
 const ref_items = document.querySelectorAll('.ref_item');
 
@@ -17,19 +16,16 @@ function initialize_page(){
 		explanation1Height = window.getComputedStyle(document.getElementById('highlights_container1')).height;
 		explanation2Height = window.getComputedStyle(document.getElementById('highlights_container2')).height;
 		explanation3Height = window.getComputedStyle(document.getElementById('highlights_container3')).height;
-		explanation4Height = window.getComputedStyle(document.getElementById('highlights_container4')).height;
 
 		document.getElementById("highlights_container1").style.height = "0px";
 		document.getElementById("highlights_container2").style.height = "0px";
 		document.getElementById("highlights_container3").style.height = "0px";
-		document.getElementById("highlights_container4").style.height = "0px";
 	}, timer);
 
 	/* reset transition duration values */
 	document.getElementById("highlights_container1").style.transitionDuration = ".5s";
 	document.getElementById("highlights_container2").style.transitionDuration = ".5s";
 	document.getElementById("highlights_container3").style.transitionDuration = ".5s";
-	document.getElementById("highlights_container4").style.transitionDuration = ".5s";
 
 	/* make highlights visible */
 	timer += 1000;

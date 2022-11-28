@@ -64,8 +64,8 @@
 }
 
 /*****MY ADDITION*********************/
-.c3-line-total {
-  stroke-width: 2px;
+.c3-line-tangent_line {
+  stroke-width: 1.25px;
 }
 
 /*-- Point --*/
@@ -81,6 +81,11 @@
 .c3-selected-circle {
   fill: white;
   stroke-width: 2px;
+}
+
+/*hide points for all lines except point */
+.c3-circles-total, .c3-circles-personal_income_tax, .c3-circles-fica, .c3-circles-eitc, .c3-circles-ctc, .c3-circles-ctc, .c3-circles-snap, .c3-circles-income_tax_and_transfer, .c3-circles-tangent_line  {
+  display: none;
 }
 
 /*-- Bar --*/

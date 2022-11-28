@@ -280,3 +280,34 @@ function snap_benefit_at_income(income, numChildren){
 	return 0;
 }
 
+function ptc_benefit_at_income(income, numChildren){
+	if(ptc_isActive === true){
+		if(numChildren === "none"){
+			if(income < 20385){return 5256;}  /* 150% of two-person household FPL ($18,310) */
+			else if(income >= 20385 && income < 40770){return (.06 / (40770-20385)) * (2*income - 20384);}  /* 150–300% of two-person household FPL ($18,310) */
+			else if(income >= 40770 && income < 54360){return (.015 / (54360-40770)) * (2*income - 40769); } /* 300–400% of two-person household FPL ($18,310) */
+			else if(income >= 54360 && income < 61835){return 8.5;}
+			else{return 0;}
+		}
+		else if(numChildren === "one"){
+			if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
+			else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
+			else if(income >= 54930 && income < 71465){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
+			else if(income >= 71465){return 0;}
+		}
+		else if(numChildren === "two"){
+			if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
+			else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
+			else if(income >= 69090 && income < 79052){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
+			else if(income >= 79052){return 0;}
+		}
+		else if(numChildren === "three"){
+			if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
+			else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
+			else if(income >= 83250 && income < 85705){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+			else if(income >= 85707){return 0;}
+		}
+	}
+	return 0;
+}
+

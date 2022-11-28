@@ -107,9 +107,17 @@ function modify_married(){
 }
 
 function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome, numChildren){
+    p1Income = myRange_person1.value;
+    p1EITC = EITC_benefit('single', p1Income, person1_children.value);
+    p2Income = myRange_person2.value;
+    p2EITC = EITC_benefit('single', p2Income, person2_children.value);
+
     /* Move xgrids */
-    MPchart.xgrids([{value: myRange_person1.value, text:'Your income'},{value: myRange_person2.value, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
+    MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedEITC, text: "Your married EITC"}, {value: combinedEITC, text: "Combined individual EITC's"}]);
+
+    /* Move points */
+    MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_combined', combinedIncome], ['point_combined', marriedEITC] ] });
 
     /* Move stacked eitc value curves */
     /* Adjust color of eitc value curves */

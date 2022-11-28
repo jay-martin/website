@@ -52,6 +52,20 @@ function get_x_values_marginal(){
 			xVals = xVals.concat([2759, 2760, 34451, 34452, 34453]);
 		}
 	}
+	if(ptc_isActive === true){
+		if(numChildren === 'none'){
+			xVals = xVals.concat([20384, 40769, 40770, 54359, 54360, 74258, 74259]);
+		}
+		else if(numChildren === 'one'){
+			xVals = xVals.concat([27464, 54929, 54930, 73239, 73240, 118023, 118024]);
+		}
+		else if(numChildren === 'two'){
+			xVals = xVals.concat([34544, 69089, 69090, 92119, 92120, 161928, 161929]);
+		}
+		else if(numChildren === 'three'){
+			xVals = xVals.concat([41624, 83249, 83250, 110999, 111000, 205693, 205694]);
+		}
+	}
 
 	/* add 0 and 600,000 */
 	xVals.push(0);
@@ -68,38 +82,49 @@ function slope_at_point(income, numChildren){
 	return (personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, numChildren)) / 100;
 }
 
-function tax_and_transfer_at_income_marginal(income, numChildren){
+function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
+	householdSize = household_size(filingStatus, numChildren);
+
 	personalVal = personal_at_income_marginal(income);
 	ficaVal = fica_at_income_marginal(income);
 	eitcVal = eitc_at_income_marginal(income, numChildren);
 	ctcVal = ctc_at_income_marginal(income, numChildren);
-	snapVal = snap_at_income_marginal(income, numChildren);
-	totalVal = personalVal + ficaVal + eitcVal + ctcVal + snapVal;
+	snapVal = snap_at_income_marginal(income, householdSize);
+	ptcVal = ptc_at_income_marginal(income, numChildren);
+	totalVal = personalVal + ficaVal + eitcVal + ctcVal + snapVal + ptcVal;
 
-	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, totalVal];
+	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, ptcVal, totalVal];
 }
 
 function personal_at_income_marginal(income){
+	single = [12950, 23225, 54725,  102025, 183000, 228900, 552850];
+	hoh =    [19400, 34050, 75300,  108450, 189450, 235350, 559300];
+	married= [25900, 46400, 109450, 204050, 366000, 457800, 673750];
+
+	if(filingstatus.value === 'single'){brack = single;}
+	else if(filingstatus.value === 'hoh'){brack = hoh;}
+	else{brack = married;}
+
 	if(personal_income_tax_isActive === true){
-		if(income < 12950){
+		if(income < brack[0]){
 			return 0;
 		}
-		else if(income >= 12950 && income < 23225){
+		else if(income >= brack[0] && income < brack[1]){
 			return 10;
 		}
-		else if(income >= 23225 && income < 54725){
+		else if(income >= brack[1] && income < brack[2]){
 			return 12;
 		}
-		else if(income >= 54725 && income < 102025){
+		else if(income >= brack[2] && income < brack[3]){
 			return 22;
 		}
-		else if(income >= 102025 && income < 183000){
+		else if(income >= brack[3] && income < brack[4]){
 			return 24;
 		}
-		else if(income >= 183000 && income < 228900){
+		else if(income >= brack[4] && income < brack[5]){
 			return 32;
 		}
-		else if(income >= 228900 && income < 552850){
+		else if(income >= brack[5] && income < brack[6]){
 			return 35;
 		}
 		else{
@@ -127,29 +152,57 @@ function fica_at_income_marginal(income){
 /* Calculates EITC tax rate for the inputed income and filing status*/
 function eitc_at_income_marginal(income, numChildren){
 	if(eitc_isActive === true){
-		if(numChildren ==="three"){
-			if(income < 15410){return -45;}
-			else if(income >= 15410 && income < 20131){return 0;}
-			else if(income >= 20131 && income < 53057){return 21.06;}
-			else{return 0;}
-		}
-		else if(numChildren ==="two"){
-			if(income < 15290){return -40;}
-			else if(income >= 15290 && income < 20131){return 0;}
-			else if(income >= 20131 && income < 49399){return 21.06;}
-			else{return 0;}
-		}
-		else if(numChildren ==="one"){
-			if(income < 10979){return -34;}
-			else if(income >= 10979 && income < 20131){return 0;}
-			else if(income >= 20131 && income < 43492){return 15.98;}
-			else{return 0;}
+		if(filingstatus.value === 'married'){
+			if(numChildren ==="three"){
+				if(income < 15410){return -45;}
+				else if(income >= 15410 && income < 26262){return 0;}
+				else if(income >= 26262 && income < 59187){return 21.06;}
+				else{return 0;}
+			}
+			else if(numChildren ==="two"){
+				if(income < 15290){return -40;}
+				else if(income >= 15290 && income < 26262){return 0;}
+				else if(income >= 26262 && income < 55529){return 21.06;}
+				else{return 0;}
+			}
+			else if(numChildren ==="one"){
+				if(income < 10979){return -34;}
+				else if(income >= 10979 && income < 26262){return 0;}
+				else if(income >= 26262 && income < 49622){return 15.98;}
+				else{return 0;}
+			}
+			else{
+				if(income < 7320){return -7.65;}
+				else if(income >= 7320 && income < 15290){return 0;}
+				else if(income >= 15290 && income < 22610){return 7.65;}
+				else{return 0;}
+			}
 		}
 		else{
-			if(income < 7320){return -7.65;}
-			else if(income >= 7320 && income < 9160){return 0;}
-			else if(income >= 9160 && income < 16480){return 7.65;}
-			else{return 0;}
+			if(numChildren ==="three"){
+				if(income < 15410){return -45;}
+				else if(income >= 15410 && income < 20131){return 0;}
+				else if(income >= 20131 && income < 53057){return 21.06;}
+				else{return 0;}
+			}
+			else if(numChildren ==="two"){
+				if(income < 15290){return -40;}
+				else if(income >= 15290 && income < 20131){return 0;}
+				else if(income >= 20131 && income < 49399){return 21.06;}
+				else{return 0;}
+			}
+			else if(numChildren ==="one"){
+				if(income < 10979){return -34;}
+				else if(income >= 10979 && income < 20131){return 0;}
+				else if(income >= 20131 && income < 43492){return 15.98;}
+				else{return 0;}
+			}
+			else{
+				if(income < 7320){return -7.65;}
+				else if(income >= 7320 && income < 9160){return 0;}
+				else if(income >= 9160 && income < 16480){return 7.65;}
+				else{return 0;}
+			}
 		}
 	}
 	return 0;
@@ -161,7 +214,7 @@ function ctc_at_income_marginal(income, numChildren){
 		if(numChildren ==="three"){
 			if(income < 2500){return 0;}
 			else if(income >= 2500 && income < 12950){return -15;}
-			else if(income >= 12950 && income < 23225){return 25;}
+			else if(income >= 12950 && income < 23225){return -25;}
 			else if(income >= 23225 && income < 30129){return -27;}
 			else if(income >= 30129 && income < 200000){return 0;}
 			else if(income >= 200000 && income < 320000){return 5;}
@@ -193,23 +246,28 @@ function ctc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* Calculates SNAP benefit */
-/* PROBLEM: Currently calculates using number of children when these values are for ~household size~. So they work fine for single but not for married */
-function snap_at_income_marginal(income, numChildren){
+/* Calculates SNAP MTR */
+function snap_at_income_marginal(income, householdSize){
 	if(snap_isActive === true){
-		if(numChildren ==="three"){
+		if(householdSize == 5){
 			if(income < 2760){return 0;}
 			else if(income >= 2760  && income < 34452){return 24;}
 			else if(income == 34452){return 241392;} 
 			else{return 0;}
 		}
-		else if(numChildren ==="two"){
+		else if(householdSize == 4){
+			if(income < 2760){return 0;}
+			else if(income >= 2760  && income < 34452){return 24;}
+			else if(income == 34452){return 241392;} 
+			else{return 0;}
+		}
+		else if(householdSize == 3){
 			if(income < 2655){return  0;}
 			else if(income >= 2655  && income < 28548){return 24;}
 			else if(income == 28548){return 168168;} 
 			else{return 0;}
 		}
-		else if(numChildren ==="one"){
+		else if(householdSize == 2){
 			if(income < 2655){return 0;}
 			else if(income >= 2655  && income < 22656){return 24;}
 			else if(income == 22656){return 70776}
@@ -222,5 +280,101 @@ function snap_at_income_marginal(income, numChildren){
 		}
 	}
 	return 0;
+}
+
+/* Calculates Premium tax credit MTR */
+function ptc_at_income_marginal(income, numChildren){
+	if(ptc_isActive === true){
+		/* married */
+		if(filingstatus.value === 'married'){
+			if(numChildren === "none"){
+				if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 54930 && income < 73240){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 73240 && income < 148541){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "one"){
+				if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 69090 && income < 92120){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 92120 && income < 192282){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "two"){
+				if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 83250 && income < 111000){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 111000 && income < 236188){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "three"){
+				if(income < 48705){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 48705 && income < 97410){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 97410 && income < 129880){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 129880 && income < 279953){return 8.5;}
+				else{return 0;}
+			}
+		}
+		/* single & hoh */
+		else{
+			if(numChildren === "none"){
+				if(income < 20385){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 20385 && income < 40770){return 100 * (.06 / (40770-20385)) * (2*income - 20384);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 40770 && income < 54360){return 100 * (.015 / (54360-40770)) * (2*income - 40769); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 54360 && income < 74259){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "one"){
+				if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 54930 && income < 73240){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 73240 && income < 118024){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "two"){
+				if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 69090 && income < 92120){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 92120 && income < 161929){return 8.5;}
+				else{return 0;}
+			}
+			else if(numChildren === "three"){
+				if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
+				else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
+				else if(income >= 83250 && income < 111000){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 111000 && income < 205694){return 8.5;}
+				else{return 0;}
+			}
+		}	
+	}
+	/* value needed for calculations when ptc is not active */
+	return 0;
+}
+
+function household_size(filingStatus, numChildrenString){
+	/* Calculate the number of adults */
+	if(filingStatus === 'married'){
+		numberAdults = 2;
+	}
+	else{
+		numberAdults = 1;
+	}
+
+	/* calculate the number of children */
+	if(numChildrenString === 'none'){
+		numberChildren = 0;
+	}
+	else if(numChildrenString === 'one'){
+		numberChildren = 1;
+	}
+	else if(numChildrenString === 'two'){
+		numberChildren = 2;
+	}
+	else{
+		numberChildren = 3;
+	}
+
+	return numberAdults + numberChildren;
 }
 

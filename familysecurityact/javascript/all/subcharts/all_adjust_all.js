@@ -1,4 +1,4 @@
-/* Adjusts the eitc chart according to user filing status and number of children inputs */
+/* Adjusts the chart according to user filing status and number of children inputs */
 function all_modify_all_chart(filingStatus, numYoung, numOld, fsa1or2, itemDeduct){
     data = all_modify_all_calculate(filingStatus, numYoung, numOld, fsa1or2, itemDeduct);
     xValues = data[0];
@@ -8,15 +8,6 @@ function all_modify_all_chart(filingStatus, numYoung, numOld, fsa1or2, itemDeduc
     eitc = data[4];
     hoh = data[5];
     dif = data[6];
-
-    console.log("x: " + xValues);
-    console.log("fsa child benefit: " + fsaCA);
-    console.log("fsaEITC: " + fsaEITC);
-    console.log("ctc: " + ctc);
-    console.log("EITC: " + eitc);
-    console.log("HOH: " + hoh);
-    console.log("dif: " + dif);
-
 
     if(filingStatus==='hoh'){
         setTimeout(function () {

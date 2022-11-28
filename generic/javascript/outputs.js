@@ -1,26 +1,10 @@
 /*Default values */
-document.getElementById('marginal_tax_rate').innerHTML = 'You face an effective marginal tax rate of <b>12%</b> on an additional dollar of income.';
+document.getElementById('output_line1').innerHTML = 'Generic output';
 
 /* Outputs to screen the marginal tax rate*/
 function output1(){
 	income = user_income.value;
     numChildren = num_children.value;
-
-    console.log('snap:' + snap_at_income_marginal(income, numChildren));
-    console.log('ptc:' + ptc_at_income_marginal(income, numChildren));
-
-    taxRate = personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, numChildren) + ptc_at_income_marginal(income, numChildren);
-
-    /*format so that there is a decimal if the tax rate is not a whole number, but no decimal if it is a whole number */
-    checker = taxRate.toFixed(2);
-    if(checker - Math.floor(taxRate) !== 0){
-    	taxRate_formatted = taxRate.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
-    else{
-    	taxRate_formatted = taxRate.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
-    
-    document.getElementById('marginal_tax_rate').innerHTML = 'You face an effective marginal tax rate of <b>' + taxRate_formatted + '%</b> on an additional dollar of income.';
 }
 
 function show_explanation1(){
@@ -34,9 +18,6 @@ function show_explanation1(){
 	}
 }
 
-/*
-Function for poor people animation
-*/
 function show_explanation2(){
 	container = document.getElementById('highlights_container2');
 	const height = window.getComputedStyle(container).height;
@@ -48,9 +29,6 @@ function show_explanation2(){
 	}
 }
 
-/*
-Function for marriage penalties animation
-*/
 function show_explanation3(){
 	container = document.getElementById('highlights_container3');
 	const height = window.getComputedStyle(container).height;
@@ -62,9 +40,6 @@ function show_explanation3(){
 	}
 }
 
-/*
-Function for disclaimer
-*/
 function show_explanation4(){
 	container = document.getElementById('highlights_container4');
 	const height = window.getComputedStyle(container).height;

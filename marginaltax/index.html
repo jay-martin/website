@@ -14,6 +14,17 @@
   <!-- Computer Modern Sans -->
   <link rel="stylesheet" href="../fonts/computer_modern/Sans/cmun-sans.css"></link>
 
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Serif/cmun-serif.css"></link>
+
+
+  <!-- Computer Modern Classical Serif Italic -->
+  <link rel="stylesheet" href="../fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 
 <div class="logo">
@@ -27,7 +38,7 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../c3-0.7.20/c3.min.js"></script>
 
-<h1 id="top">Marginal Tax Rates</h1>
+<h1 id="top">Marginal Tax Rates on Labor Income</h1>
 <div class="name">
   By Jay Martin </br>
   <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
@@ -42,7 +53,7 @@
       <a href="../home/index.html">Home</a>
       <a href="../familysecurityact/index.html">The Family Security Act</a>
       <a href="./index.html">Poverty Reduction</a>
-      <a href="./index.html">The Exclusion of Poor</br>Families</a>
+      <a href="../poor_exclusion/index.html">The Exclusion of Poor</br>Families</a>
       <a href="../eitcmarriagepenalty/index.html">Marriage Penalties</a>
       <a href="./index.html">Asinine Asset Tests</a>
       <a href="./index.html">A Better Way</a>
@@ -64,51 +75,52 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="medicaid_button" value="Medicaid/Premium Tax Credits">
-          <input type="submit" class="benefits_selection_buttons" id="chip_button" value="CHIP">
+          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_ptc(); adjust_y_axis(); output1()">
           <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income">
+          <input type="submit" class="benefits_selection_buttons" id="chip_button" value="Cost Sharing Reductions">
+        </div>
+
+        <!--Disability Status-->
+        <div class="dropdown" id="disability_container">
+          I am a
+          <select class="dropdown" name="disability" id="disability" oninput="">
+            <option value="not_disabled">non-disabled</option>
+            <option value="disabled">disabled</option>
+          </select>
         </div>
 
         <!--Filing status-->
-        <label for="filingstatus">I am a</label>
-        <select name="filingstatus" id="filingstatus_all" oninput="">
+        <label for="filingstatus"></label>
+        <select name="filingstatus" id="filingstatus" oninput="">
           <option value="married">married joint filer</option>
           <option value="hoh">head of household</option>
-          <option value="single">single filer</option>
+          <option value="single" selected>single filer</option>
         </select>
 
         <!--Number of children-->
         <div class="dropdown" id="num_children_container">
           who has
-          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();output1();">
+          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();adjust_axes_numChildren();output1();">
+            <option value="none">no children</option>
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
             <option value="three">3 children</option>
-          </select>.
+          </select> under the age of 18 and I
         </div>
 
-        <!--Disability Status-->
+        <!--Employer-sponsored healthcare-->
         <div class="dropdown" id="disability_container">
-          I am
           <select class="dropdown" name="disability" id="disability" oninput="">
-            <option value="not_disabled">not disabled</option>
-            <option value="disabled">disabled</option>
+            <option value="not_disabled">do not have</option>
+            <option value="disabled">have</option>
           </select>
         </div>
-
-        <!--Student-->
-        <div class="dropdown" id="student_container">
-          and
-          <select class="dropdown" id="student" oninput="">
-            <option value="not_student">not a student</option>
-            <option value="student">a student</option>
-          </select>.
-        </div>
+        employer-sponsored health insurance.
 
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
@@ -145,17 +157,23 @@
       <script type="text/javascript" src="./javascript/calculate_marginal.js"></script>
       <script type="text/javascript" src="./javascript/calculate_benefit.js"></script>
 
-      <!--Zoom switch-->
+      <!--Zoom selection-->
+      <!--
+      <div class="dropdown" id="chart_type_dropdown_container">
+        Show chart as:
+        <select class="dropdown" name="zoom_level" id="zoom_dropdown" oninput="zoom_chart()">
+          <option value="40,000">$40,000</option>
+          <option value="80,000">$80,000</option>
+          <option value="120,000">$120,000</option>
+          <option value="150,000">$150,000</option>
+          <option value="200,000">$200,000</option>
+          <option value="600,000" selected>$600,000</option>
+        </select>
+      </div>
+      -->
       <label class="switch_label" id="zoom_label">
         Click to zoom on lower incomes:
         <input type="checkbox" name="zoom" id="zoom_switch" oninput="zoom_chart();">
-        <span class="checkmark"></span>
-      </label>
-
-      <!--Only Total Switch-->
-      <label class="switch_label" id="total_checkbox_label">
-        Click to show only the total marginal tax rate:
-        <input type="checkbox" name="total" id="total_switch" oninput="only_total();">
         <span class="checkmark"></span>
       </label>
 
@@ -164,7 +182,7 @@
         Show chart as:
         <select class="dropdown" name="chart_type" id="chart_type" oninput="switch_chart()">
           <option value="EMTR" selected>effective marginal tax rates</option>
-          <option value="EI">effective income</option>
+          <option value="EI">post-tax-and-transfer income</option>
         </select>
         .
       </div>
@@ -211,14 +229,19 @@
       <div class="chart_notes">
         <h3 class="notes_title">Notes</h3>
         <ul class="notes_list">
-          <li>It is assumed that all income is labor income.</li>
-          <li>Personal income tax is calculated using the standard deduction.</li>
+          <li>This chart shows only federal taxes and benefits. However, many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
+          <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
           <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. SNAP and SSI both include rather onerous asset tests, though these are waived for people who are both categorically eligible for SNAP and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty</a>. This chart does not show SNAP benefits for the small proportion of recipients who are categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li>
-          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction, and does not include additional deductions that some recipients are eligible for. This calculation results in the benefit for one-member households reaching $0 before the gross income eligibility cap. However, additional deductions that some households are eligible for increase the gross income at which one-member households continue to receive a benefit. Additionally, benefit cliffs increase in size if additional deductions are used. See: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
-          <li>Eligibility for SNAP is based on monthly income (excluding those categorically eligible), whereas eligibility for most other programs considered here are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. See: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
-          <li>This chart shows SNAP benefits for people in the 48 contiguous states. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
-          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. See: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
+          <li>It is assumed that all income is labor income. Some forms of non-labor income are taxed at different rates than labor income.</li>
+          <li>It is assumed the modified adjusted gross income (MAGI) equals gross income.
+          <li>Personal income tax is calculated using the standard deduction.</li>
+          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rates to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse, so the amount of FICA tax many dual-worker married couples pay will differ from that shown here. See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
+          <li>Eligibility for several benefits is based on the federal poverty line. This chart shows benefit levels based on the poverty line for the 48 contiguous states and Washington D.C. The poverty line differs in Alaska, Hawaii, and the US territories.
+          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. Additionally, eligibility for SNAP is based on monthly income (except for those categorically eligible), whereas eligibility for most other programs considered here are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
+          <li>This chart shows SNAP benefits for people in the 48 contiguous states and Washington D.C. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
+          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. For instance, the monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
           <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
+          <li>This chart shows uses the premium tax credit formula that is in effect from 2021 through 2025. After 2025, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
         </ul>
     </div>
 
@@ -226,30 +249,496 @@
 
     <div class="references" id="appendix_snap">
       <h2>Appendix: SNAP</h2>
-      SNAP includes both a <em>gross</em> income limit of 130% of the federal poverty line and a <em>net</em> income limit of 100% of the poverty line. Net income is calculated by subtracting from gross income a number of deductions. This chart includes the SNAP standard deduction ($193 for households with 1–4 members) and the earned income deduction (20% of earnings). Not included are the child support deduction, excess shelter deduction, the dependent care deduction (which includes only expenses related to work or training) and deduction alterations for households with an elderly or disabled member. Note that SNAP has different standard deductions for Alaska, Hawaii, Guam, (all larger) and the US Virgin Islands (smaller). Additionally, some people are eligible for SNAP through <em>categorical eligibility</em> (e.g. people who receive cash benefits through TANF are automatically eligible for SNAP), which does not include a gross income limit. This chart does not show marginal tax rates for the small proportion of SNAP recipients who are categorically eligible for SNAP and have gross incomes above 130% of the poverty line.</br>
+      <h3>Considerations</h3>
+      <p>
+         Not included are the child support deduction, excess shelter deduction, the dependent care deduction (which includes only expenses related to work or training) and deduction alterations for households with an elderly or disabled member. Additionally, some people are eligible for SNAP through <em>categorical eligibility</em> (e.g. people who receive cash benefits through TANF are automatically eligible for SNAP), which does not include a gross income limit. This chart does not show marginal tax rates for the small proportion of SNAP recipients who are categorically eligible for SNAP and have gross incomes above 130% of the poverty line.
+      </p>
 
-      maximum benefit (<a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">in 2022</a>, $250/month for a one-person household, $459/month for a two-person household, $658/month for a three-person household, $835/month for a four-person household, and $992/month for a five-person household). </br>
+      <h3>Calculating SNAP Effective Marginal Tax Rates</h3>
+      <p>
+        SNAP is based around the idea that recipients should dedicate 30% of their income towards food purchases, with SNAP making up any shortfall between the 30% contribution and the amount of money needed to purchase a "nutritionally adequate low-cost diet".<a class="refs" id="note1" href="#notes"><sup>1</sup></a> Consequently, the SNAP benefit formula takes a maximum benefit, defined as the amount of money needed to purchase a nutritionally adequete low-cost diet for a particular household size, and then subtracts from that 30% of net income: $$\text{Benefit} = \text{Maximum Benefit} - \text{30% of Net Income} $$
+      </p>
 
-      When gross income increases by $1, the 20% earnings deduction rises by $0.20. Net income thus increases by only $0.80. Benefits thus decrease by .3($0.80)=$0.24. So a $1 increase in income results in a 24 cent benfit loss, producing an additional income of 76 cents. This is a 24% marginal tax rate.
+      <p>
+        In 2022, maximum benefits were:<a class="refs" id="note2" href="#notes"><sup>2</sup></a>
+      </p>
 
-      <a href=https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program target="_blank">2022 SNAP Income Limits</a>
-    </div>
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Maximum Benefit</th>
+          <th>Maximum Possible Annual Benefit</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$250/month</td>
+          <td>$3,000</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$459/month</td>
+          <td>$5,508</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$658/month</td>
+          <td>$7,896</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$835/month</td>
+          <td>$10,020</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$992/month</td>
+          <td>$11,904</td>
+        </tr>
+      </table>
+
+      <p>
+        Note that these are the values for the 48 contiguous states and Washington D.C. They differ for Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, or the Northern Mariana Islands.
+      </p>
+
+      <p>
+        Net income is calculated by subtracting from gross income a number of deductions. I include the two universally-available deductions: the SNAP standard deduction (this is separate from the standard deduction used for personal income tax) and the earned income deduction, which allows recipients to deduct 20% of their gross income. Some recipients can use additional deductions, like the deduction for court-order child support, but we will not consider them here. This results in the following formula for net income: $$ \text{Net Income} = \text{Gross Income} - .2 (\text{Gross Income}) - \text{Standard Deduction} = .8 (\text{Gross Income}) - \text{Standard Deduction}$$
+      </p>
+
+      <p>
+        In 2022, SNAP standard deductions were:<a class="refs" id="note3" href="#notes"><sup>3</sup></a>
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Monthly Standard Deduction</th>
+          <th>Annualized Standard Deduction</th>
+        </tr>
+        <tr>
+          <td>Three or less</td>
+          <td>$177/month</td>
+          <td>$2,124</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$184/month</td>
+          <td>$2,208</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$215/month</td>
+          <td>$2,580</td>
+        </tr>
+      </table>
+
+      <p>
+        Note that these are the values for the 48 contiguous states and Washington D.C. They differ for Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, or the Northern Mariana Islands.
+      </p>
+
+      <p>
+        We can now establish a formula for SNAP benefit values. With \( B_{max} \) the maximum benefit and \(SD\) the standard deduction, a person's SNAP benefit \(B\) at gross income \(I\) equals $$ B(I) = B_{max} - .3 (.8I - SD) $$
+      </p>
+
+      <p>
+        The effective marginal tax rate derives from the reduction in benefits as a result of an additional dollar of gross income, \( \Delta B = B(I+1) - B(I) \). This works out to: $$ \Delta B = B_{max} - .3 (.8(I+1) - SD) - (B_{max} - .3 (.8I - SD)) = -$0.24 $$
+      </p>
+
+      <p>
+        A $1 increase in income thus results in a $0.24 loss in benefits, which means the effective marginal tax rate is 24%. Intuitively, you can think of it this way: when gross income increases by $1, the 20% earnings deduction rises by $0.20, resulting in additional net income of only $0.80. Since recipients are required to dedicate 30% of their net income to food purchases, the overall result of a $1 increase in gross income is a .3($0.80)=$0.24 decrease in benefits. 
+      </p>
+
+      <p>
+        There is one additional consideration we must take into account. While SNAP's benefit formula naturally phases down to $0, SNAP also includes both a gross income max and a net income max. SNAP eligibility abruptly cuts off if gross income exceeds 130% percent of the poverty line <em>or</em> if net income exceeds 100% of the poverty line. These limits are listed by family size in the table below.<a class="refs" id="note4" href="#notes"><sup>4</sup></a>
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Gross Income Limit</th>
+          <th>Maximum Possible Annual Gross Income</th>
+          <th>Net Income Limit</th>
+          <th>Maximum Possible Annual Net Income</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$1,396/month</td>
+          <td>$16,752</td>
+          <td>$1,074/month</td>
+          <td>$12,888</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$1,888/month</td>
+          <td>$22,656</td>
+          <td>$1,452/month</td>
+          <td>$17,424</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$2,379/month</td>
+          <td>$28,548</td>
+          <td>$1,830/month</td>
+          <td>$21,960</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$2,871/month</td>
+          <td>$34,452</td>
+          <td>$2,209/month</td>
+          <td>$26,508</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$3,363/month</td>
+          <td>$40,356</td>
+          <td>$2,587/month</td>
+          <td>$31,044</td>
+        </tr>
+      </table>
+
+      <p>
+        For many recipients, these income maxes result in a benefit cliff (i.e. a point at which their benefit suddenly drops to zero even though their calculated benefit under the benefit formula is positive).
+      </p>
+
+    </div> <!--Appendix: SNAP-->
 
     <div class="references" id="appendix_medicaid">
       <h2>Appendix: Medicaid & Premium Tax Credits</h2>
-      Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount
+      <h3>Including Medicaid & the Premium Tax Credits Together</h3>
+      Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount </br>
+
+      <h3>Shortcomings</h3>
+      <p>
+        The biggest shortcoming of this method is that Medicaid tends to pay for a larger share of people's medical bills than silver plans. Silver plans by definition have high out-of-pocket costs, whereas Medicaid has low out-of-pocket costs. The average silver plan deductible, for instance, is over $4,000 and the copayment is 30% of costs. (EDIT: there are cost-sharing reductions). Medicaid deductibles and copayments vary by state, but in general Medicaid's deductibles and copayments are lower for people just below 150% of the poverty line than silver plan's are for people just above 150% of the poverty line. This means that there's a very real financial penalty for going over the Medicaid income limit, even if the government covers the full cost of your silver plan premium.
+      </p>
+
+      <h3>Calculating Premium Tax Credit Effective Marginal Tax Rates</h3>
+      <p>
+        Under the Inflation Reduction Act, the required contribution percentages instituted by the American Rescue Plan Act were extended through 2025. These are shown in the below left table, obtained from the text of the American Rescue Plan Act.<a class="refs" id="note5" href="#notes"><sup>5</sup></a> They are based on the federal poverty line, shown in the below right table.<a class="refs" id="note6" href="#notes"><sup>6</sup></a>
+      </p>
+
+      <img class="table" src="./images/arp_table.png" alt="Table from the American Rescue Plan Act" style="width:45%;">
+
+      <table class="FPL" style="width:45%">
+        <tr>
+          <th>Family Size</th>
+          <th>2022 Poverty Level</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$13,590</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$18,310</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$23,030</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$27,750</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$32,470</td>
+        </tr>
+      </table>
+
+      <p>
+        Note that here household incomes refers to modified adjusted gross income (MAGI), so income used to determine the required contribution does <em>not</em> include the standard deduction/itemized deductions. Note also that for the purposes of this chart, we assume that users have no untaxed foreign income and no tax-exempt interest, so MAGI equals AGI. We also assume that user's gross income equals their AGI, so the income users input into the chart is assumed to be exactly the income used to calculate the the required contribution.
+      </p>
+
+      <p>
+        Within each group, the premium percentages scale linearly (e.g. at 175% of the poverty line, the required contribution percentage is 1%). That makes the calculation of the required contribution percentage for income in dollars (rather than as a percent of the poverty line) fairly straightforward, since it is just a linear equation. With \(h_1\) denoting the initial household income in dollars of a particular income tier, \(h_2\) the final income in dollars, \(p_1\) the initial premium percentage, and \(p_2\) the final premium percentage, the required contribution as a percent of income at income \(I\) is: $$ C_{\text{%}}(I) =  \frac{p_2 - p_1}{h_2 - h_1} (I - h_1) + p_1$$
+      </p>
+
+      <p>
+        The required contribution in dollars is thus: $$ C(I) = C_{\%}(I) \times I = \left( \frac{p_2 - p_1}{h_2 - h_1} (I - h_1) + p_1 \right) \times I = \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right)$$
+      </p>
+
+      <p>
+        The effective marginal tax rate is the loss in benefits as a result of a $1 increase in income, so the effective marginal tax rate at income \(I\) equals \( \Delta \text{premium contribution in dollars} = C(I+1) - C(I) \) (divided by $1). This works out to: $$EMTR(I) = \frac{p_2 - p_1}{h_2 - h_1} (I+1)^2 + (I+1) \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) - \left( \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) \right) = \frac{p_2 - p_1}{h_2 - h_1} (2I - h_1 +1) + p_1 $$
+      </p>
+
+      <p>
+        (You can confirm that the only difference between this and the derivative is the addition of a constant). 
+     </p>
+
+      <p>
+        So, for instance, a person in a two-member household with an income of $35,000 faces an EMTR of \( \frac{.02}{36,620 - 27,465} (2(35,000) - 27,465 + 1 ) = 9.29 \% \). Recall that this is just another way of saying that if a person in a two-member household who has made $35,000 so far this year were to increases their income by $1, the amount of their health insurance premium that the government covers would decrease by 9.29 cents.
+      </p>
+
+      <p>
+        We can check the correctness of our equation. Since the EMTR tells us by how much the required contribution grows for an additional dollar of income, it stands that we can calculate the required contribution at a particular income by summing the EMTRs up to $1 below that income. And when we check our equation this way, we see that we always get the correct result. For instance, if you plug \( \sum_{i=27,465}^{36619} \frac{.02}{36,620 - 27465}(2i - 27,465 + 1) \) into a scientific calculator, the result is $732.40. The statutorily defined required contribution at $36,620 is 2% of income, or $732.40, exactly as our equation said it would be.
+      </p>
+
+      <p>
+        We can simply things for our income tier above 400% of the poverty line. If you plug into the above equation, you can see that the EMTR above 400% is a constant 8.5%. You can also get an intuiton for this by stripping things back and considering how the required contribution grows for an additional dollar within this income tier. Since the premium contribution percentage above 400% of the poverty line is 8.5%, for an additional dollar of income the required contribution grows by: $$EMTR_{\text{400+%}}(I) = \Delta \text{premium contribution} = .085(I + 1) - .085I = 8.5 \% $$
+      </p>
+
+      <p>
+        In other words, above the 8.5% of income cap, the required contribution grows by 8.5 cents for every additional dollar of income.
+      </p>
+
+      <p>
+        We can also simplify things for the three income tiers from 150% to 300% of the poverty line. If you run the numbers you'll notice that the required contribution percentage for each of these three tiers scale at <em>the same rate</em>. This means we can consider them as one income group, and calculate any premium contribution within them using \( p_2 = .6 \) and \(p_1 = 0 \), as well as the corresponding income tier values for 300% and 150% of the poverty line. That makes our equation for this combined income tier a little simpler: $$EMTR_{ \text{150–300%} }(I) = \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I - h_{\text{150%}} + 1)$$
+      </p>
+
+      <p>
+        It also means that we only have one other equation: for our 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.015}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
+
+      <p>
+        Now we have just have to take into account the cost of the premium. While the required contribition grows indefinitely, the actual amount someone has to pay for their premium does not. Basically, while a person's required contribution is less than their premium, they face an effective marginal tax rate for every additional dollar of income since the share of the premium that they must pay grows with every additional dollar of income. But once their required contribution equals their premium, they are paying the full cost of the premium. The insurers don't increase premiums for people with higher incomes, so once you're required to pay the full premium there's no cost for additional income.
+      </p>
+
+      <p>
+        Premium tax credits are based on the cost of a  silver plan on the ACA exchanges. Costs vary by state and age, so to keep things simple we'll use 2022 national average silver plan premiums for 40 year olds (the median age in the United States is 38). These are shown in the tables below.<a class="refs" id="note7" href="#notes"><sup>7</sup></a>
+      </p>
+
+        <table style="width:45%">
+        <tr>
+          <th>Household Type</th>
+          <th>Average Silver Plan Premium</th>
+        </tr>
+        <tr>
+          <td>Individual, no children</td>
+          <td>$6,312</td>
+        </tr>
+        <tr>
+          <td>Individual + 1 Child</td>
+          <td>$10,032</td>
+        </tr>
+        <tr>
+          <td>Individual + 2 Children</td>
+          <td>$13,764</td>
+        </tr>
+        <tr>
+          <td>Individual + 3 Children</td>
+          <td>$17,484</td>
+        </tr>
+      </table>
+
+      <table style="width:45%">
+        <tr>
+          <th>Household Type</th>
+          <th>Average Silver Plan Premium</th>
+        </tr>
+        <tr>
+          <td>Couple, no children</td>
+          <td>$12,626</td>
+        </tr>
+        <tr>
+          <td>Couple + 1 Child</td>
+          <td>$16,344</td>
+        </tr>
+        <tr>
+          <td>Couple + 2 Children</td>
+          <td>$20,076</td>
+        </tr>
+        <tr>
+          <td>Couple + 3 Children</td>
+          <td>$23,796</td>
+        </tr>
+      </table>
+
+      <p>
+        Once a person's required contribution equals the cost of the premium—meaning they pay the <em>full cost</em> of the premium—their effective marginal tax rate drops to 0% since they face no additional costs for income made after this point. For every household type, this occurs above 400% of the poverty line, so we can calculate each by determining when 8.5% of income equals the cost of the premium. These values are shown in the table below, rounded to the nearest dollar.
+      </p>
+
+      <table style="width:45%">
+        <tr>
+          <th>Household Type</th>
+          <th>Full Premium Income</th>
+        </tr>
+        <tr>
+          <td>Individual, no children</td>
+          <td>$74,259</td>
+        </tr>
+        <tr>
+          <td>Individual + 1 Child</td>
+          <td>$118,024</td>
+        </tr>
+        <tr>
+          <td>Individual + 2 Children</td>
+          <td>$161,929</td>
+        </tr>
+        <tr>
+          <td>Individual + 3 Children</td>
+          <td>$205,694</td>
+        </tr>
+      </table>
+
+      <table style="width:45%">
+        <tr>
+          <th>Household Type</th>
+          <th>Full Premium Income</th>
+        </tr>
+        <tr>
+          <td>Couple, no children</td>
+          <td>$148,541</td>
+        </tr>
+        <tr>
+          <td>Couple + 1 Child</td>
+          <td>$192,282</td>
+        </tr>
+        <tr>
+          <td>Couple + 2 Children</td>
+          <td>$236,188</td>
+        </tr>
+        <tr>
+          <td>Couple + 3 Children</td>
+          <td>$279,953</td>
+        </tr>
+      </table>
+
+      <p>
+        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. Our income tier values (our \(h\)'s)  come from our poverty level table, and our required contribution=premium values come from the table above.
+      </p>
+
+      <table style="width:90%">
+        <tr>
+          <th>Income Tier</th>
+          <th>Effective Marginal Tax Rate</th>
+        </tr>
+        <tr>
+          <td>0–150% of Poverty Line</td>
+          <td>$$ 0\% $$</td>
+        </tr>
+        <tr>
+          <td>150–300% of Poverty Line</td>
+          <td>$$ \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I + h_{\text{150%}} + 1) $$</td>
+        </tr>
+        <tr>
+          <td>300–400% of Poverty Line</td>
+          <td>$$ \frac{.015}{h_{\text{400%}} - h_{\text{300%}}} (2I + h_{\text{300%}} + 1) + .06 $$</td>
+        </tr>
+        <tr>
+          <td>400% of Poverty Line up to Required Contribution=Premium</td>
+          <td>$$ 8.5\% $$</td>
+        </tr>
+        <tr>
+          <td>Required Contribution=Premium and above</td>
+          <td>$$ 0\% $$</td>
+        </tr>
+      </table>
+
+      <p>
+        For those interested in the precise values for each household type of income tiers, marginal tax rates, and when the required contribution equals the premium, this is available for download by here: ____.excel
+      </p>
+
+      <h2>Appendix: Cost Sharing Reductions</h2>
+      <p>
+        The Affordable Care Act includes not only tax credits to help pay the cost of premiums, but also reductions in cost sharing to help cover deductibles and copayments. These, too, phase out with income.
+      </p>
+
+      <p>
+        There are two ways in which cost sharing reductions reduce out-of-pocket costs to those eligible.<a class="refs" id="note8" href="#notes"><sup>8</sup></a> The first caps total out-of-pocket costs, while the second increases the actuarial value of exchange plans. The second is too complicated to try to incorporate into our marginal tax rate chart, so we will only consider the first.
+      </p>
+
+      <p>
+        The basic way that the cap on out-of-pocket expenses work is as follows. When a person signs up for a silver plan, the insurer has in mind some deductible \(D\). However, if the person has an income below 250% of the poverty line, the government ensures that they will never pay out-of-pocket costs greater than \(C_{max}\). If their income is low enough, then their max out-of-pocket expenses will be less than their deductible, and they will have to pay for medical expenses only up to the cap. If the person's income is somewhat higher, then their max out-of-pocket costs will be greater than their deductible. In this situation, they will have to cover the <em>full</em> cost of medical payments up to the deductible. Above the deductible, they will have to pay some co-payment and co-insurance determined by the required actuarial value of the plan, <em>up to</em> the out-of-pocket max. After the out-of-pocket max, they do not pay anything.
+      </p>
+
+      <p>
+        It is also important to note that the cost sharing reductions are not provided as a tax credit. When a person eligible for cost sharing reductions signs up for a plan, they are not advertised the deductible \(D\), with the government reimbursing them for any difference between \(C_{max}\) and the higher amount that they paid. Instead, the government reimburses the insurer directly for the costs. Or rather, that is how it basically appears to insurees and how the ACA intended it to work. However, the actual financing mechanism differs from described as a result of congressional inaction and a 2014 court case by House Republicans. In short, the government doesn't actually pay for the cost sharing reductions, even though insurers are still required to provide them. This has resulted in "silver loading"—the practice of insurers raising silver plan premiums to cover the cost of lower deductibles and copays for those who receive cost sharing reductions—and in turn has produced larger premium tax credits. For now, though, we can dispense with this complication because it doesn't affect the marginal tax rates of cost sharing reductions. See the section below ("<a href="#CSR_considerations">Considerations with Cost Sharing Reductions</a>") for a fuller discussion.
+      </p>
+
+      <p>
+        The capped out-of-pocket expenses are a blunt instrument. They do not scale up continuously, but rather increase abruptly at defined income levels. These are defined in the table below.
+      </p>
+
+      <table style="width:90%">
+        <tr>
+          <th>Income Tier</th>
+          <th>Individual Coverage</th>
+          <th>Family Coverage</th>
+        </tr>
+        <tr>
+          <td>100–200% of Poverty Line</td>
+          <td>$2,900</td>
+          <td>$5,800</td>
+        </tr>
+        <tr>
+          <td>200–250% of Poverty Line</td>
+          <td>$6,950</td>
+          <td>$13,900</td>
+        </tr>
+      </table>
+
+      <p>
+        There are two basic ways we could go about considering the marginal tax rates of capped out-of-pocket expenses. The first is to directly consider the costs of medical expenses in a year. This works well for people who have fairly steady medical expenses, like those with chronic diseases requiring medication or persistent hospitalization. In this case, an increase in income that pushes a person over an out-of-pocket max income tier could directly increase their out-of-pocket medical expenses.
+      </p>
+
+      <p>
+        This method, however, does not do near as well a job of incorporating people who do not have consistent medical expenses. For these people, there is no clearly applicable monetary cost to increased max out-of-pocket costs, since in any given year they are unlikely to have sudden medical expenses that are larger than the out-of-pocket max of the previous income tier. The best we could do in this case would be to assign a monetary value to the utility of having in place a cap on potential future expenses. This would not be a particularly strange thing to incorporate, since this is precisely what a premium is—a monetary value placed on the assurance that potential future medical costs will not have to be paid entirely out-of-pocket.
+      </p>
+
+      <p>
+        However, I think incorporating a monetary value for cost-sharing reductions into the post-tax-and-transfer income chart in this way could be confusing to users. So I have instead simply shown a benefit cliff in the effective marginal tax rate chart when income jumps from one income tier to the next, while leaving cost sharing reductions out of the post-tax-and-transfer chart. This compromise highlights the sudden increase in max out-of-pocket costs (and is fairly safe to include in the EMTR chart as a large vertical line, since any value placed on the out-of-pocket max greater than $1 results in a vertical spike exceeding 100%) while not confusing the post-tax-and-transfer chart with assumptions about the monetary value placed on the utility of cost sharing reductions.
+      </p>
+
+      <h3 id="CSR_considerations">Considerations with Cost Sharing Reductions</h3>
+      <p>
+        There is one peculiar complication with cost sharing reductions.<a class="refs" id="note9" href="#notes"><sup>9</sup></a> They are intended to seamlessly incorporate into the silver plans of eligible people by directly advertising silver plans with lower deductibles and copays than plans for non-eligible people. Consequently, insurers are required by law to provide lower deductibles and copays to those eligible, with the government reimbursing the insurers directly. However, following a series of court cases, the government has not reimbursed insurers since the Obama Administration.</p>
+
+      <p>
+        In short, Congress has never explicitly appropriated funds for cost sharing reductions. As a result, the Obama Administration reimbursed insurers using money appropriated for several tax credits, the premium tax credit among them. The Republican-controlled House of Representatives in 2014 sued the Obama Administration, alleging that this was unconstitutional. The case worked its way through the courts until Trump was elected, at which point Congress had still not allocated funds and the Trump administration announced that it would terminate cost sharing payments.
+      </p>
+
+      <p>
+        Insurers are still required by law, however, to offer lower deductibles and copays to those eligbile for cost sharing reductions. This has resulted in insurers "silver loading"–raising premiums on silver plans to cover the costs of unreimbursed cost sharing reductions. This has certainly been an unwelcome development for anyone who pays for an unsubsidized silver plan (there are likely not very many such people), but mainly this has simply resulted in people receiving larger premium tax credits (recall that for people with moderate incomes, the amount they pay towards their premium is principally determined by their income, not by the size of the premium). As a result, most people on silver plans are not the ones who have paid for the price increases attributable to silver loading—it's the government who has worked itself back into paying the cost of cost sharing reductions. This had some rather unintended consequences for the notoriously ACA-unfriendly Trump Administration: as Aviva Aron-Dine <a href=https://www.healthaffairs.org/do/10.1377/forefront.20190913.296052/full/ target="_blank">has pointed out</a>, silver loading accompanied with premium tax credits has likely <em>increased</em> enrollment in the exchanges.<a class="refs" id="note10" href="#notes"><sup>10</sup></a>
+      </p>
+
+      <p>
+        This has a very direct effect on our post-tax-and-transfer income chart. Since the monetary value we assigned to Medicaid and premium tax credits were based on the premium of a silver plan, silver-loading has the effect of <em>increasing</em> the value we assign to Medicaid and premium tax credits relative to what they would be without it.
+      </p> 
+
+      <p>
+        At the margins, there are also some consequences for our calculations of effective marginal tax rates. While it doesn't change anything when we are thinking about the marginal tax rates people face under <em>current</em> policy—and current policy includes not reimbursing insurers for cost sharing reductions—it means that the income levels at which people continue to receive premium subsidies are <em>higher than they would be if cost sharing reductions were actually reimbursed</em>. Recall that people stop receiving subsidies for their premiums when their premium equals 8.5% of income. This means that the higher the premium is, the higher the income it takes to stop receiving subsides. For our purposes, that means the income ranges at which people continue to face effective marginal tax rates for premium tax credits is extended. And, importantly, silver loading does <em>not</em> affect marginal tax rates for cost reductions. Out-of-pocket maxes under cost sharing reductions are established by law to the dollar value, and eligibility is set at 250% of the poverty line. This means that silver loading has the effect of extending marginal tax rates for premium tax credits while leaving those for cost sharing reductions unchanged.
+      </p>
+    
+    </div>
+
+    <div class="notes">
+    <h2 id="notes">Notes</h2>
+      <ol class="notes_list">
+        <li><a class="refs" href="#note1">^</a> Information on SNAP benefits sourced from <a href="#Aussenberg" onclick="highlight('Aussenberg')">Aussenberg 2022</a>.</li>
+        <li><a class="refs" href="#note2">^</a> SNAP 2022 maximum benefits were obtained from <a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments</a> (<a href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a>).</li>
+
+        <li><a class="refs" href="#note3">^</a> SNAP 2022 standard deductions were obtained from the Texas Health and Human Services Commission's <a href="https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Texas Works Handbook: C-120, Supplemental Nutrition Assistance</a> (<a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Archived</a>).</li>
+
+        <li><a class="refs" href="#note4">^</a> SNAP 2022 maximum gross and net incomes were obtained from the Texas Health and Human Services Commission's <a href="https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Texas Works Handbook: C-120, Supplemental Nutrition Assistance</a> (<a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Archived</a>).</li>
+
+        <li><a class="refs" href="#note5">^</a> <a href="https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf#page=181" target="blank_">Text of the American Rescue Plan Act.</a> The table is on page 181 of the document (page included in hyperlink).</li>
+
+        <li><a class="refs" href="#note6">^</a> These figures were obtained from <a href=https://www.healthcare.gov/glossary/federal-poverty-level-fpl/ target="_blank">healthcare.gov</a> (<a href=https://web.archive.org/web/20221118232338/https://www.healthcare.gov/glossary/federal-poverty-level-fpl/ target="_blank">Archived</a>).</li>
+
+        <li><a class="refs" href="#note7">^</a> <a href="#Masterson" onclick="highlight('Masterson')">Masterson & Megna 2022.</a></li>
+
+        <li><a class="refs" href="#note8">^</a> Information on the way cost-sharing reductions work was obtained from <a href="#Fernandez" onclick="highlight('Fernandez');">Fernandez 2022.</a>
+
+        <li><a class="refs" href="#note9">^</a> Information regarding silver loading, excluding that dealing with marginal tax rates, was sourced from <a href="#Fernandez" onclick="highlight('Fernandez');">Fernandez 2022.</a></li>
+
+        <li><a class="refs" href="#note10">^</a> <a href="#Aron-Dine" onclick="highlight('Aron-Dine')">Aron-Dine 2019.</a></li>
+      </ol>
     </div>
 
     <div class="references" id="references">
     <h2>References</h2>
-      <ul class="references_list">
-        <li>Altig, David; Auerbach, Alan J.; Kotlikoff, Laurence J.; Ilin, Elias; Ye, Victor (May 2020). <a href=https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">"Marginal Net Taxation of Americans’ Labor Supply"</a> <i class="fa fa-file-pdf-o"></i>. <em>NBER Working Paper No. w27164</em>. <a href=https://web.archive.org/web/20220119103912/https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 19, 2022.</li>
+      <ul class="references_list" id="references_list">
+        <li class="ref_item" id="Altig">Altig, David; Auerbach, Alan J.; Kotlikoff, Laurence J.; Ilin, Elias; Ye, Victor (May 2020). "<a href=https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">Marginal Net Taxation of Americans’ Labor Supply</a>" <i class="fa fa-file-pdf-o"></i>. <em>NBER Working Paper No. w27164</em>. <a href=https://web.archive.org/web/20220119103912/https://eml.berkeley.edu/~auerbach/Marginal-Net-Taxation-NBER-PDF.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 19, 2022.</li>
 
-        <li>Aussenberg, Randy Allison (October 4, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">"Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022. </li>
+        <li class="ref_item" id="Aron-Dine">Aron-Dine, Aviva (September 17, 2019). "<a href=https://www.healthaffairs.org/do/10.1377/forefront.20190913.296052/full/ target="_blank">Data: Silver Loading Is Boosting Insurance Coverage</a>". <em>HealthAffairs</em>. <a href=https://web.archive.org/web/20221021204934/https://www.healthaffairs.org/do/10.1377/forefront.20190913.296052/full/ target="_blank">Archived</a> from the original on October 21, 2022.</li>
 
-        <li>Chien, Nina; Macartney, Suzanne (March 2019). <a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">"Marginal Tax Rate Series"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
+        <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison (October 4, 2022). "<a href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022. </li>
 
-        <li>Fernandez, Bernadette (November 7, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">"Health Insurance Premium Tax Credit and Cost-Sharing Reductions"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20221115222325/https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 15, 2022. </li>
+        <li class="ref_item">Chien, Nina; Macartney, Suzanne (March 2019). "<a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">Marginal Tax Rate Series</a>". <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
+
+        <li class="ref_item" id="Fernandez">Fernandez, Bernadette (November 7, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">"Health Insurance Premium Tax Credit and Cost-Sharing Reductions"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20221115222325/https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 15, 2022. </li>
+
+        <li class="ref_item" id="Masterson">Masterson, Les; Megna, Michelle (August 24, 2022). "<a href=https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/ target="_blank">How Much Does Health Insurance Cost In 2022?</a>". <em>Forbes</em>. <a href=https://web.archive.org/web/20221113164009/https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/ target="_blank">Archived</a> from the original on November 13, 2022.</li>
       </ul>
   </div>
 

@@ -12,6 +12,10 @@ var MPchart = c3.generate({
 
             'combined_eitc' : 'x6',
             'bonus'         : 'x7',
+
+            'point1' : 'x_point1',
+            'point2' : 'x_point2',
+            'point_combined' : 'x_point_combined'
         },
         columns: [
             ['x1',       0,             10979,        20131,        43493],
@@ -61,9 +65,11 @@ var MPchart = c3.generate({
     tooltip: {
         show: false
     },
+    /*
     point: {
         show: false
     },
+    */
     axis: {
         x: {
             label: {text: 'Employment Income', position: 'outer-center'},
