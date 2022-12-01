@@ -1,3 +1,9 @@
+/******************************************************************************************
+ * This file contains the function that performs a number of calculations and css manipulations
+ * needed to render the page. It also contains the function that opens and closes the
+ * programs dropdown, and the function to highlight references
+ * ****************************************************************************************/
+
 programsHeight = 0;
 
 explanation1Height = 0;
@@ -59,4 +65,14 @@ function highlight(ref){
 	  ref_items.style.backgroundColor = 'white';
 	});
 	document.getElementById(ref).style.backgroundColor = 'yellow';
+}
+
+function show_programs(){
+	container = document.getElementById('programs');
+	container.style.height = programsHeight;
+}
+
+function hide_programs(){
+	container = document.getElementById('programs');
+	container.style.height = '0px';
 }

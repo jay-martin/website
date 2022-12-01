@@ -1,3 +1,8 @@
+/******************************************************************************************
+ * This file contains the functions that outputs to the screen the benefit exclusion
+ * as well as the function that reveal the highlights when clicked
+ * ****************************************************************************************/
+
 /*Default values */
 document.getElementById('output_line1').innerHTML = 'You are excluded from <b>$1,208</b> in benefits.';
 
@@ -72,16 +77,6 @@ function adjust_enabled(){
 	else{
 		document.getElementById('hoh_status_option').disabled = false;
 	}
-}
-
-function show_programs(){
-	container = document.getElementById('programs');
-	container.style.height = programsHeight;
-}
-
-function hide_programs(){
-	container = document.getElementById('programs');
-	container.style.height = '0px';
 }
 
 function show_explanation1(){

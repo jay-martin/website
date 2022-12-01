@@ -1,3 +1,8 @@
+/******************************************************************************************
+ * This file contains the functions returning the benefit values for each benefit, as
+ * well as the function determining pertinent x-values that c3.js needs to render the EMTR chart
+ * ****************************************************************************************/
+
 function max_benefit_eitc(numChildren){
 	if(numChildren === 'none'){
 		return 560;
@@ -535,3 +540,106 @@ function ctc_value(income, filingStatus, numChildren){
 
 	return benefit;
 }
+
+function all_reference_values(filingStatus, numChildren){
+    eitcReferenceValues = eitc_reference_value(filingStatus, numChildren);
+    ctcReferenceValues = ctc_reference_values(filingStatus, numChildren);
+    hohReferenceValues = hoh_reference_values();
+
+    if(filingStatus === 'hoh'){
+    	fullArray = eitcReferenceValues.concat(ctcReferenceValues).concat(hohReferenceValues);
+    }
+    else{
+    	fullArray = eitcReferenceValues.concat(ctcReferenceValues);
+    }
+
+    refSet = new Set(fullArray); /* prevents duplicate values */
+    combined_brackets = Array.from(refSet).sort(function(a,b){return a-b;});
+
+    return combined_brackets;
+}
+
+function hoh_reference_values(){
+	return [0, 12950, 19400, 23225, 34050, 54725, 75300];
+}
+
+function eitc_reference_value(filingStatus, numChildren){
+    referenceValues = [];
+
+    if(filingStatus==="married"){
+        if(numChildren === 'three') {
+            referenceValues = [0, 15410, 26262, 59187];
+        }
+        if(numChildren === 'two') {
+            referenceValues = [0, 15290, 26262, 55529];
+        }
+        if(numChildren === 'one'){
+            referenceValues = [0, 10979, 26262, 49622];
+        }
+        if(numChildren === 'none') {
+            referenceValues = [0, 7320, 15290, 22610];
+        }
+    }
+    else if(filingStatus==="hoh" || filingStatus==="single"){
+        if(numChildren === 'three') {
+            referenceValues = [0, 15410, 20131, 53057];
+        }
+        if(numChildren === 'two') {
+            referenceValues = [0, 15290, 20131, 49399];
+        }
+        if(numChildren === 'one'){
+            referenceValues = [0, 10979, 20131, 43492];
+        }
+        if(numChildren === 'none') {
+            referenceValues = [0, 7320,  9160, 16480];
+        }
+    }
+    return referenceValues;
+}
+
+function ctc_reference_values(filingStatus, numChildren){
+    referenceValues = [];
+    if (filingStatus==="married"){
+        if(numChildren === 'none') {
+                referenceValues = [];
+        }
+        if(numChildren === 'one') {
+                referenceValues = [0, 2500, 11833, 25900, 31900, 400000, 440000];
+        }
+        if(numChildren === 'two'){
+                referenceValues = [0, 2500, 21167, 25900, 37900, 400000, 480000];
+        }
+        if(numChildren === 'three'){
+                referenceValues = [0, 2500, 25900, 30500, 43900, 400000, 520000];
+        }
+    }
+    else if (filingStatus==="hoh"){
+        if(numChildren === 'none') {
+                referenceValues = [];
+        }
+        if(numChildren === 'one') {
+                referenceValues = [0, 2500, 11833, 19400, 25400, 200000, 240000];
+        }
+        if(numChildren === 'two'){
+                referenceValues = [0, 2500, 19400, 21167, 31397, 200000, 280000];
+        }
+        if(numChildren === 'three'){
+                referenceValues= [0, 2500, 19400, 30500, 34050, 36842, 200000, 320000];
+        }
+    }
+    else if (filingStatus==="single"){
+        if(numChildren === 'none') {
+                referenceValues = [];
+        }
+        if(numChildren === 'one') {
+                referenceValues = [0, 2500, 11833, 12950, 18950, 200000, 240000];
+        }
+        if(numChildren === 'two'){
+                referenceValues = [0, 2500, 12950, 21167, 23225, 24658,  200000, 280000];
+        }
+        if(numChildren === 'three'){
+                referenceValues= [0, 2500, 12950, 23225, 30129, 200000, 320000];
+        }
+    }
+    return referenceValues;
+}  
