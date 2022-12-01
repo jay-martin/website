@@ -1,0 +1,4 @@
+/*hide points for all lines except point */
+.c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus{
+  display: none;
+}
