@@ -1,3 +1,32 @@
+/******************************************************************************************
+ * This file contains the functions returning the benefit values for each benefit, as
+ * well as the function determining pertinent x-values that c3.js needs to render the EI chart
+ * ****************************************************************************************/
+
+/* Returns the benefit values of each benefit, as well as the sum of the benefits
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children)
+Output: array of integers
+Note: Disabled benefits return a value of 0 */
+function tax_and_transfer_at_income(income, numChildren){
+	householdSize = household_size('single', numChildren);
+
+	personalVal = personal_tax_at_income(income);
+	ficaVal = fica_tax_at_income(income);
+	eitcVal = eitc_benefit_at_income(income, numChildren);
+	ctcVal = ctc_benefit_at_income(income, numChildren);
+	snapVal = snap_benefit_at_income(income, householdSize);
+	ptcVal = ptc_benefit_at_income(income, numChildren);
+	ssiVal = ssi_benefit_at_income(income);
+	totalVal = eitcVal + ctcVal + snapVal + ptcVal + ssiVal - personalVal - ficaVal;
+
+	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, totalVal];
+}
+
+/* Returns the x-values needed for c3.js to render the EI chart 
+Inputs: None, determines values by referencing html inputs
+Output: Sorted array of integers */
 function get_x_values_effective_income(){
 	numChildren = num_children.value;
 
@@ -52,10 +81,26 @@ function get_x_values_effective_income(){
 			xVals = xVals.concat([2760, 34452, 34453]);
 		}
 	}
+	if(ptc_isActive === true){
+		if(numChildren === 'none'){
+			xVals = xVals.concat([20385, 40770, 54360, 74259]);
+		}
+		else if(numChildren === 'one'){
+			xVals = xVals.concat([27465, 54930, 73240, 118024]);
+		}
+		else if(numChildren === 'two'){
+			xVals = xVals.concat([34545, 69090, 92120, 161929]);
+		}
+		else if(numChildren === 'three'){
+			xVals = xVals.concat([41626, 83250, 111000, 205694]);
+		}
+	}
+	if(ssi_isActive === true){
+		xVals = xVals.concat([780, 20964]);
+	}
 
-	/* add 0 and 600,000 */
+	/* add 0 */
 	xVals.push(0);
-	xVals.push(600000);
 
 	/* sort xVals */
 	brackSet = new Set(xVals);
@@ -64,17 +109,10 @@ function get_x_values_effective_income(){
 	return xVals;
 }
 
-function tax_and_transfer_at_income(income, numChildren){
-	personalVal = personal_tax_at_income(income);
-	ficaVal = fica_tax_at_income(income);
-	eitcVal = eitc_benefit_at_income(income, numChildren);
-	ctcVal = ctc_benefit_at_income(income, numChildren);
-	snapVal = snap_benefit_at_income(income, numChildren);
-	totalVal = eitcVal + ctcVal + snapVal - personalVal - ficaVal;
-
-	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, totalVal];
-}
-
+/* Returns the personal income tax liability for a given income 
+Inputs: 
+	income: integer of gross income 
+Output: float */
 function personal_tax_at_income(income){
 	if(personal_income_tax_isActive === true){
 		if(income <= 12950){
@@ -105,6 +143,10 @@ function personal_tax_at_income(income){
 	return 0;
 }
 
+/* Returns the FICA tax liability for a given income 
+Inputs: 
+	income: integer of gross income 
+Output: float */
 function fica_tax_at_income(income){
 	if(fica_isActive === true){
 		if(income <= 147000){
@@ -120,7 +162,11 @@ function fica_tax_at_income(income){
 	return 0;
 }
 
-/* Calculates EITC tax rate for the inputed income and filing status*/
+/* Returns EITC benefit value for a given income and number of children
+Inputs: 
+	income: integer of gross income 
+	numChildren: string representing the number of children
+Output: float */
 function eitc_benefit_at_income(income, numChildren){
 	if(eitc_isActive === true){
 		benefit = 0;
@@ -153,7 +199,11 @@ function eitc_benefit_at_income(income, numChildren){
 	return 0;
 }
 
-/* Calculates EITC tax rate for the inputed income and filing status*/
+/* Returns CTC benefit value for given income and number of children
+Inputs: 
+	income: integer of gross income 
+	numChildren: string representing the number of children
+Output: float */
 function ctc_benefit_at_income(income, numChildren){
 	if(ctc_isActive === true){
 		benefit = 0;
@@ -252,21 +302,25 @@ function ctc_benefit_at_income(income, numChildren){
 	return 0;
 }
 
-/* Calculates SNAP benefit */
 /* PROBLEM: Currently calculates using number of children when these values are for ~household size~. So they work fine for single but not for married */
-function snap_benefit_at_income(income, numChildren){
+/* Returns SNAP benefit value at a given income and household size
+Inputs: 
+	income: integer of gross income 
+	householdSize: string representing the number of people in the household (number of adults+number of children)
+Output: float */
+function snap_benefit_at_income(income, householdSize){
 	if(snap_isActive === true){
-		if(numChildren ==="three"){
+		if(householdSize == 4){
 			if(income <= 2760){return 10020;}
 			else if(income > 2760  && income <= 34452){return 10020 - .24 * (income - 2760);}
 			else{return 0;}
 		}
-		else if(numChildren ==="two"){
+		else if(householdSize == 3){
 			if(income <= 2655){return  7896;}
 			else if(income > 2655  && income <= 28548){return 7896 - .24 * (income - 2655);}
 			else{return 0;}
 		}
-		else if(numChildren ==="one"){
+		else if(householdSize == 2){
 			if(income <= 2655){return 5508;}
 			else if(income > 2655  && income <= 22656){return 5508 - .24 * (income - 2655);}
 			else{return 0;}
@@ -280,32 +334,59 @@ function snap_benefit_at_income(income, numChildren){
 	return 0;
 }
 
+/* Returns Medicaid/PTC benefit values at a given income and number of children
+Inputs: 
+	income: integer of gross income 
+	numChildren: string representing the number of children in the household
+Output: float */
 function ptc_benefit_at_income(income, numChildren){
 	if(ptc_isActive === true){
 		if(numChildren === "none"){
-			if(income < 20385){return 5256;}  /* 150% of two-person household FPL ($18,310) */
-			else if(income >= 20385 && income < 40770){return (.06 / (40770-20385)) * (2*income - 20384);}  /* 150–300% of two-person household FPL ($18,310) */
-			else if(income >= 40770 && income < 54360){return (.015 / (54360-40770)) * (2*income - 40769); } /* 300–400% of two-person household FPL ($18,310) */
-			else if(income >= 54360 && income < 61835){return 8.5;}
+			if(income <= 20385){return 6312;}  /* 150% of one-person household FPL ($13,590) */
+			else if(income > 20385 && income <= 40770){return 6312 - ( .06  * income * income / (40770-20385) + income * (-1 *  (20385 * .06  / (40770-20385) ) ) );}  /* 150–300% of one-person household FPL */
+			else if(income > 40770 && income <= 54360){return 6312 - ( .025 * income * income / (54360-40770) + income * (.06 - (40770 * .025 / (54360-40770) ) ) ); } /* 300–400% of one-person household FPL */
+			else if(income > 54360 && income <  74259){return 6312 - .085 * income;} /* 400+% of one-person household FPL ($18,310) up to full premium income */
 			else{return 0;}
 		}
 		else if(numChildren === "one"){
-			if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
-			else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
-			else if(income >= 54930 && income < 71465){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
-			else if(income >= 71465){return 0;}
+			if(income <= 27465){return 10032;}  /* 150% of two-person household FPL ($18,310) */
+			else if(income > 27456 && income <= 54930){return 10032 - ( .06  * income * income / (54930-27465) + income * (-1 *  (27465 * .06  / (54930-27465) ) ) );}  /* 150–300% of two-person household FPL  */
+			else if(income > 54930 && income <= 73240){return 10032 - ( .025 * income * income / (73240-54930) + income * (.06 - (54930 * .025 / (73240-54930) ) ) );} /* 300–400% of two-person household FPL */
+			else if(income > 73240 && income < 118024){return 10032 - .085 * income;} /* 400+% of one-person household FPL ($18,310) up to full premium income */
+			else{return 0;}
 		}
 		else if(numChildren === "two"){
-			if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
-			else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
-			else if(income >= 69090 && income < 79052){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
-			else if(income >= 79052){return 0;}
+			if(income <= 34545){return 13764;}  /* 150% of two-person household FPL ($23,030) */
+			else if(income > 34545 && income <= 69090){return 13764 - ( .06  * income * income / (69090-34545) + income * (-1 *  (34545 * .06  / (69090-34545) ) ) );}  /* 150–300% of three-person household FPL */
+			else if(income > 69090 && income <= 92120){return 13764 - ( .025 * income * income / (92129-69090) + income * (.06 - (69090 * .025 / (92129-69090) ) ) ); } /* 300–400% of three-person household FPL */
+			else if(income > 92120 && income < 161929){return 13764 - .085 * income;} /* 400+% of one-person household FPL ($18,310) up to full premium income */
+			else{return 0;}
 		}
 		else if(numChildren === "three"){
-			if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
-			else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
-			else if(income >= 83250 && income < 85705){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
-			else if(income >= 85707){return 0;}
+			if(income <= 41626){return 17484;}  /* 150% of two-person household FPL ($27,750) */
+			else if(income > 41625 && income <= 83250){return 17484 - ( .06  * income * income / (83250-41626) + income * (-1 *  (41626 * .06  / (83250-41626) ) ) );}  /* 150–300% of four-person household FPL */
+			else if(income > 83250 && income <= 111000){return 17484 - ( .025 * income * income / (111000-83250) + income * (.06 - (83250 * .025 / (111000-83250) ) ) ); } /* 300–400% of four-person household FPL */
+			else if(income > 111000 && income < 205694){return 17484 - .085 * income;} /* 400+% of one-person household FPL ($18,310) up to full premium income */
+			else{return 0;}
+		}
+	}
+	return 0;
+}
+
+/* Returns SSI benefit value at a given income
+Inputs: 
+	income: integer of gross income 
+Output: float */
+function ssi_benefit_at_income(income){
+	if(ssi_isActive === true){
+		if(income <= 780){
+			return 10092;
+		}
+		else if(income > 780 && income < 20964){
+			return 10092 - .5 * (income - 780);
+		}
+		else{
+			return 0;
 		}
 	}
 	return 0;

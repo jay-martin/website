@@ -60,7 +60,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus'],
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_combined'],
     },
     tooltip: {
         show: false

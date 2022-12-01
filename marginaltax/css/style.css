@@ -179,6 +179,16 @@ input.benefits_selection_buttons_top{
 input.benefits_selection_buttons:hover{
   background-color: #d1d1d1
 }
+input.benefits_selection_buttons:disabled {
+  color: #b8b8b8;
+  background-color: #fafafa;
+  border-color: #b8b8b8;
+}
+/* No cursor change on hover when disabled */
+input.benefits_selection_buttons:disabled:hover {
+  cursor: default;
+}
+/*******Power users**********/
 .arbitray_income_container {
   display: none;
 }
@@ -189,6 +199,11 @@ input.arbitrary_income {
   font-size: 80%;
   line-height: 1.5em;
   padding-left: 5%;
+  padding-bottom: 10px;
+}
+.power_users_sliders_container {
+  display: none;
+  padding-right: 20px;
   padding-bottom: 10px;
 }
 input.download_button {

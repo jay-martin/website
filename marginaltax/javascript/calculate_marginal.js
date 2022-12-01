@@ -1,3 +1,42 @@
+/******************************************************************************************
+ * This file contains the functions returning the marginal tax rates for each benefit, as
+ * well as the function determining pertinent x-values that c3.js needs to render the EMTR chart
+ * ****************************************************************************************/
+
+/* Returns the EMTR values of each benefit, as well as the sum of the EMTRs
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children)
+Output: array of floats
+Note: Disabled benefits return a value of 0 */
+function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
+	householdSize = household_size(filingStatus, numChildren);
+
+	personalVal = personal_at_income_marginal(income);
+	ficaVal = fica_at_income_marginal(income);
+	eitcVal = eitc_at_income_marginal(income, numChildren);
+	ctcVal = ctc_at_income_marginal(income, numChildren);
+	snapVal = snap_at_income_marginal(income, householdSize);
+	ptcVal = ptc_at_income_marginal(income, numChildren);
+	ssiVal = ssi_at_income_marginal(income);
+	totalVal = personalVal + ficaVal + eitcVal + ctcVal + snapVal + ptcVal + ssiVal;
+
+	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, ptcVal, totalVal];
+}
+
+/* Returns the EMTR at a particular income 
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children)
+Output: float */
+function slope_at_point(income, numChildren){
+	householdSize = household_size('single', numChildren);
+	return (personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, householdSize) + ptc_at_income_marginal(income, numChildren) + ssi_at_income_marginal(income)) / 100;
+}
+
+/* Returns the x-values needed for c3.js to render the EMTR chart 
+Inputs: None, determines values by referencing html inputs
+Output: Sorted array of integers */
 function get_x_values_marginal(){
 	numChildren = num_children.value;
 
@@ -54,17 +93,20 @@ function get_x_values_marginal(){
 	}
 	if(ptc_isActive === true){
 		if(numChildren === 'none'){
-			xVals = xVals.concat([20384, 40769, 40770, 54359, 54360, 74258, 74259]);
+			xVals = xVals.concat([20384, 20385, 40769, 40770, 54359, 54360, 74258, 74259]);
 		}
 		else if(numChildren === 'one'){
-			xVals = xVals.concat([27464, 54929, 54930, 73239, 73240, 118023, 118024]);
+			xVals = xVals.concat([27464, 27465, 54929, 54930, 73239, 73240, 118023, 118024]);
 		}
 		else if(numChildren === 'two'){
-			xVals = xVals.concat([34544, 69089, 69090, 92119, 92120, 161928, 161929]);
+			xVals = xVals.concat([34544, 34545, 69089, 69090, 92119, 92120, 161928, 161929]);
 		}
 		else if(numChildren === 'three'){
-			xVals = xVals.concat([41624, 83249, 83250, 110999, 111000, 205693, 205694]);
+			xVals = xVals.concat([41624, 41625, 83249, 83250, 110999, 111000, 205693, 205694]);
 		}
+	}
+	if(ssi_isActive === true){
+		xVals = xVals.concat([779, 780, 20963, 20964]);
 	}
 
 	/* add 0 and 600,000 */
@@ -78,24 +120,10 @@ function get_x_values_marginal(){
 	return xVals;
 }
 
-function slope_at_point(income, numChildren){
-	return (personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, numChildren)) / 100;
-}
-
-function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
-	householdSize = household_size(filingStatus, numChildren);
-
-	personalVal = personal_at_income_marginal(income);
-	ficaVal = fica_at_income_marginal(income);
-	eitcVal = eitc_at_income_marginal(income, numChildren);
-	ctcVal = ctc_at_income_marginal(income, numChildren);
-	snapVal = snap_at_income_marginal(income, householdSize);
-	ptcVal = ptc_at_income_marginal(income, numChildren);
-	totalVal = personalVal + ficaVal + eitcVal + ctcVal + snapVal + ptcVal;
-
-	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, ptcVal, totalVal];
-}
-
+/* Returns the personal income tax marginal tax rate for a given income 
+Inputs: 
+	income: integer of gross income 
+Output: integer */
 function personal_at_income_marginal(income){
 	single = [12950, 23225, 54725,  102025, 183000, 228900, 552850];
 	hoh =    [19400, 34050, 75300,  108450, 189450, 235350, 559300];
@@ -134,6 +162,10 @@ function personal_at_income_marginal(income){
 	return 0;
 }
 
+/* Return the marginal tax rate of FICA payroll taxes for a given income
+Inputs: 
+	income: integer of gross income 
+Output: float */
 function fica_at_income_marginal(income){
 	if(fica_isActive === true){
 		if(income < 147000){
@@ -149,7 +181,11 @@ function fica_at_income_marginal(income){
 	return 0;
 }
 
-/* Calculates EITC tax rate for the inputed income and filing status*/
+/* Returns EITC EMTR for the inputed income and filing status
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children)
+Output: integer */
 function eitc_at_income_marginal(income, numChildren){
 	if(eitc_isActive === true){
 		if(filingstatus.value === 'married'){
@@ -208,7 +244,11 @@ function eitc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* Calculates EITC tax rate for the inputed income and filing status*/
+/* Returns the EITC EMTR for the inputed income and filing status
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children)
+Output: integer */
 function ctc_at_income_marginal(income, numChildren){
 	if(ctc_isActive === true){
 		if(numChildren ==="three"){
@@ -246,7 +286,11 @@ function ctc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* Calculates SNAP MTR */
+/* Returns SNAP's EMTR for a given income and household size 
+Inputs: 
+	income: integer of gross income 
+	householdSize: integer of the number of people in the household (number of adults+number of children)
+Output: integer */
 function snap_at_income_marginal(income, householdSize){
 	if(snap_isActive === true){
 		if(householdSize == 5){
@@ -282,7 +326,11 @@ function snap_at_income_marginal(income, householdSize){
 	return 0;
 }
 
-/* Calculates Premium tax credit MTR */
+/* Returns the EMTR of the premium tax credit for a given income and number of children
+Inputs: 
+	income: integer of gross income 
+	numChildren: string denoting the number of children
+Output: float */
 function ptc_at_income_marginal(income, numChildren){
 	if(ptc_isActive === true){
 		/* married */
@@ -290,28 +338,28 @@ function ptc_at_income_marginal(income, numChildren){
 			if(numChildren === "none"){
 				if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
 				else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 54930 && income < 73240){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 54930 && income < 73240){return 100 * (.025 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
 				else if(income >= 73240 && income < 148541){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "one"){
 				if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
 				else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 69090 && income < 92120){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 69090 && income < 92120){return 100 * (.025 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
 				else if(income >= 92120 && income < 192282){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "two"){
 				if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
 				else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 83250 && income < 111000){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 83250 && income < 111000){return 100 * (.025 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
 				else if(income >= 111000 && income < 236188){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "three"){
 				if(income < 48705){return 0;}  /* 150% of two-person household FPL ($18,310) */
 				else if(income >= 48705 && income < 97410){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 97410 && income < 129880){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 97410 && income < 129880){return 100 * (.025 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
 				else if(income >= 129880 && income < 279953){return 8.5;}
 				else{return 0;}
 			}
@@ -319,30 +367,30 @@ function ptc_at_income_marginal(income, numChildren){
 		/* single & hoh */
 		else{
 			if(numChildren === "none"){
-				if(income < 20385){return 0;}  /* 150% of two-person household FPL ($18,310) */
-				else if(income >= 20385 && income < 40770){return 100 * (.06 / (40770-20385)) * (2*income - 20384);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 40770 && income < 54360){return 100 * (.015 / (54360-40770)) * (2*income - 40769); } /* 300–400% of two-person household FPL ($18,310) */
+				if(income < 20385){return 0;}  /* 150% of two-person household FPL ($13,590) */
+				else if(income >= 20385 && income < 40770){return 100 * (.06 / (40770-20385)) * (2*income - 20384);}  /* 150–300% of two-person household FPL  */
+				else if(income >= 40770 && income < 54360){return 100 * (.025 / (54360-40770) * (2*income - 40769) + .06); } /* 300–400% of two-person household FPL */
 				else if(income >= 54360 && income < 74259){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "one"){
 				if(income < 27465){return 0;}  /* 150% of two-person household FPL ($18,310) */
 				else if(income >= 27456 && income < 54930){return 100 * (.06 / (54930-27465)) * (2*income - 27464);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 54930 && income < 73240){return 100 * (.015 / (73240-54930)) * (2*income - 54929); } /* 300–400% of two-person household FPL ($18,310) */
+				else if(income >= 54930 && income < 73240){return 100 * (.025 / (73240-54930) * (2*income - 54929) + .06); } /* 300–400% of two-person household FPL ($18,310) */
 				else if(income >= 73240 && income < 118024){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "two"){
-				if(income < 34545){return 0;}  /* 150% of two-person household FPL ($18,310) */
-				else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 69090 && income < 92120){return 100 * (.015 / (92120-69090)) * (2*income - 69089); } /* 300–400% of two-person household FPL ($18,310) */
+				if(income < 34545){return 0;}  /* 150% of two-person household FPL ($23,030) */
+				else if(income >= 34545 && income < 69090){return 100 * (.06 / (69090-34545)) * (2*income - 34544);}  /* 150–300% of two-person household FPL */
+				else if(income >= 69090 && income < 92120){return 100 * (.025 / (92120-69090) * (2*income - 69089) +.06); } /* 300–400% of two-person household FPL */
 				else if(income >= 92120 && income < 161929){return 8.5;}
 				else{return 0;}
 			}
 			else if(numChildren === "three"){
-				if(income < 41626){return 0;}  /* 150% of two-person household FPL ($18,310) */
-				else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL ($18,310) */
-				else if(income >= 83250 && income < 111000){return 100 * (.015 / (111000-83250)) * (2*income - 83249); } /* 300–400% of two-person household FPL ($18,310) */
+				if(income < 41626){return 0;}  /* 150% of two-person household FPL ($27,750) */
+				else if(income >= 41625 && income < 83250){return 100 * (.06 / (83250-41625)) * (2*income - 41624);}  /* 150–300% of two-person household FPL */
+				else if(income >= 83250 && income < 111000){return 100 * (.025 / (111000-83250) * (2*income - 83249) + .06); } /* 300–400% of two-person household FPL */
 				else if(income >= 111000 && income < 205694){return 8.5;}
 				else{return 0;}
 			}
@@ -352,6 +400,29 @@ function ptc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
+/* PROBLEM: SSI affects SNAP */
+/* Returns the EMTR of SSI at a given income
+Inputs: 
+	income: integer of gross income 
+Output: integer */
+function ssi_at_income_marginal(income){
+	if(ssi_isActive === true){
+		if(income >= 780 && income < 20964){
+			return 50;
+		}
+		else{
+			return 0;
+		}
+	}
+	/* value needed for calculations when ssi is not active */
+	return 0;
+}
+
+/* Returns the number of people in a household given the number of adults (determined from marital status) and the number of children
+Inputs: 
+	filinStatus: string denoting whether the user is single, married or a head of household
+	numChildren: string denoting the number of children)
+Output: integer */
 function household_size(filingStatus, numChildrenString){
 	/* Calculate the number of adults */
 	if(filingStatus === 'married'){
@@ -374,7 +445,6 @@ function household_size(filingStatus, numChildrenString){
 	else{
 		numberChildren = 3;
 	}
-
 	return numberAdults + numberChildren;
 }
 

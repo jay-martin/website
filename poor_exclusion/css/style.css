@@ -124,6 +124,36 @@ table.FPL {
 .other_pages a:hover {
   text-decoration: underline;
 }
+.programs_container {
+  padding-bottom: 10px;
+}
+.programs_title{
+  margin-bottom: 0px;
+}
+.programs_title_symbol {
+  font-style: normal;
+  display: inline-block;
+  font-size: 7.5px;
+}
+.programs {
+  /* display: none; */
+  height: 100%;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 10px;
+  overflow: hidden;
+  -webkit-transition: height 0s ease;
+  -moz-transition: height 0s ease;
+}
+/*
+.programs_container:hover .programs{
+  display: block;
+  height: 100%;
+}
+*/
+.programs_container:hover .programs_title{
+  text-decoration: underline;
+}
 /*****************Subcontainter: Center*********************************************/
 .center{
   width: 56.8%;
@@ -179,9 +209,6 @@ input.benefits_selection_buttons_top{
 input.benefits_selection_buttons:hover{
   background-color: #d1d1d1
 }
-.arbitray_income_container {
-  display: none;
-}
 input.arbitrary_income {
   width: 80px;
 }
@@ -189,6 +216,11 @@ input.arbitrary_income {
   font-size: 80%;
   line-height: 1.5em;
   padding-left: 5%;
+  padding-bottom: 10px;
+}
+.power_users_sliders_container {
+  display: none;
+  padding-right: 20px;
   padding-bottom: 10px;
 }
 input.download_button {

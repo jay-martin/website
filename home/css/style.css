@@ -161,3 +161,14 @@ a {
   width: 100%;
   object-fit: contain;
 }
+.image_container_map {
+  display: inline-block;
+  margin-top: 30px;
+  float: left;
+  width: 57%;
+}
+.image_container_map img {
+  width: 100%;
+  object-fit: contain;
+}
+

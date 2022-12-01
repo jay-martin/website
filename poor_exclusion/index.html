@@ -3,11 +3,19 @@
 <head>
   <title>Exclusion of Poor Families</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./css/style.css"
-    type="text/css"
-    rel="stylesheet" />
+  <link href="./css/style.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- JQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  
   <!-- load c3.css -->
   <link href="../c3-0.7.20/c3.css" rel="stylesheet">
 
@@ -56,14 +64,21 @@
       <a href="../eitcmarriagepenalty/index.html">Marriage Penalties</a>
       <a href="./index.html">Asinine Asset Tests</a>
       <a href="./index.html">Administrative Burdens</a>
-      <a href="./index.html">The Child Tax Credit</a>
-      <a href="./index.html">The Earned Income Tax</br>Credit</a>
-      <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
-      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
-      <a href="./index.html">SNAP (Food Stamps)</a>
-      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
-      <a href="./index.html">WIC</a>
-      <a href="./index.html">Medicaid & CHIP</a>
+      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+      <a href="./index.html">Racial Justice</a>
+      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        <div class="programs" id="programs">
+          <a href="./index.html">The Child Tax Credit</a>
+          <a href="./index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="./index.html">SNAP (Food Stamps)</a>
+          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="./index.html">WIC</a>
+          <a href="./index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
     </div>
   </div>
 
@@ -76,7 +91,7 @@
 
         <!--Filing status-->
         <label for="filingstatus">I am a</label>
-        <select name="filingstatus" id="filingstatus" oninput="adjust_chart()">
+        <select name="filingstatus" id="filingstatus" oninput="chart_master_control()">
           <option value="married">married joint filer</option>
           <option value="hoh" id="hoh_status_option">head of household</option>
           <option value="single" selected>single filer</option>
@@ -85,7 +100,7 @@
         <!--Number of children-->
         <div class="dropdown" id="num_children_container">
           who has
-          <select class="dropdown" name="num_children" id="num_children" oninput="adjust_chart();output1();adjust_enabled();">
+          <select class="dropdown" name="num_children" id="num_children" oninput="chart_master_control();output1();adjust_enabled();">
             <option value="none">no children</option>
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
@@ -102,7 +117,7 @@
         </div>
 
         <!--Power Users: Arbitrary income-->
-        <div class="arbitray_income_container" id="arbitray_income_container">
+        <div class="power_users_sliders_container" id="arbitray_income_container">
           <label for="arbitray_income">Input income:</label>
           <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="60000" oninput="arbitrary_income_input();modifyIncome();output1();">
           (Income slider now moves in dollar increments)
@@ -140,7 +155,7 @@
       <!--Benefit Chart Selector-->
       <div class="dropdown" id="chart_type_dropdown_container">
         Break down by:
-        <select class="dropdown" name="chart_type" id="benefit_selector" oninput="adjust_chart();output1();">
+        <select class="dropdown" name="chart_type" id="benefit_selector" oninput="chart_master_control();output1();">
           <option value="all" selected>All Benefits</option>
           <option value="eitc">EITC</option>
           <option value="ctc" id="ctc_chart_option">CTC</option>
@@ -151,9 +166,9 @@
       <!--Chart Type Selector-->
       <div class="dropdown">
         Show as:
-        <select class="dropdown" name="chart_type_selector" id="chart_selector" oninput="adjust_chart();output1();">
-          <option value="all" selected>Highlighted Region</option>
-          <option value="eitc">Curve</option>
+        <select class="dropdown" name="chart_type_selector" id="chart_selector" oninput="switch_charts();output1();">
+          <option value="highlight" selected>Highlighted Region</option>
+          <option value="curve">Curve</option>
         </select>
       </div>
 
@@ -164,11 +179,30 @@
 
       <!--Power users-->
       <div class="power_users_container">
+        
+        <!--JQuery X-Axis Slider-->
+        <div class="power_users_sliders_container" id="x_axis_slider_container"> 
+          <div class="slider-text" id="axis_slider_text">X-Axis Range: $<output id="x_axis_output_start">0</output>–$<output id="x_axis_output_end">50,000</output>.</div>
+          <div id="x_axis_range" onclick="arbitrary_x_axis()"></div>
+        </div>
+
+        <!--JQuery Y-Axis Slider-->
+        <div class="power_users_sliders_container" id="y_axis_slider_container"> 
+          <div class="slider-text" id="axis_slider_text">Y-Axis Range: $<output id="y_axis_output_start">0</output>–$<output id="y_axis_output_end">7,000</output>.</div>
+          <div id="y_axis_range" onclick="arbitrary_y_axis()"></div>
+        </div>
+
         <h3>Power Users</h3>
         <!--Arbitrary income switch-->
         <label class="switch_label" id="arbitrary_income_label">
           Arbitrary income selection:
           <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="switch_label" id="arbitrary_axes_label">
+          Adjust axes:
+          <input type="checkbox" id="arbitrary_axes_switch" oninput="show_arbitrary_axes();">
           <span class="checkmark"></span>
         </label>
       </div>

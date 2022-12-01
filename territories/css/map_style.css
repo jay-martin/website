@@ -1,0 +1,30 @@
+.maps_container {
+	border: solid;
+	border-radius: 5px;
+	border-width: 1.5px;
+	border-color: #adadad;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
+.map {
+	display: inline-block;
+	width: 35%;
+	height: 30%;
+}
+.nmi_container{
+	display: inline-block;
+	float: right;
+	width: 29%;
+	height: 300px;
+	overflow: hidden;
+}
+.map_nmi {
+	display: block;
+	height: 100%;
+	/* transform: scale(1.5); */
+}
+div.google-visualization-tooltip { 
+	padding: 0px; 
+}

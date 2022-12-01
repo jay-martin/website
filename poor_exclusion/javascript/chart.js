@@ -4,34 +4,48 @@ var chart = c3.generate({
     data: {
         xs: {
             total : 'x',
+            no_exclusion: 'x',
             total_hidden: 'x',
-            max   : 'x',
             ctc   : 'x',
             eitc  : 'x',
             hoh   : 'x',
+
+            no_exclusion_end : 'x2',
+
+            loss_in_benefits: 'x',
         },
         columns: [
             ['x',            0,     2500, 10979,   11833, 12950, 18950, 20131, 43492, 50000],
             ['total_hidden', 0,     850,  5004.85, 5133,  5133,  5733,  5733,  2000,  2000],
             ['total',        0,     850,  5004.85, 5133,  5133,  5733,  5733,  2000,  2000],
-            ['max',          5733,  4883, 728.15,  600,   600,   0,]
+            ['no_exclusion', 5733,  4883, 728.15,  600,   600,   0,],
+
+            ['x2',               18950, 20131, 43492, 50000],
+            ['no_exclusion_end', 5733,  5733,  2000,  2000],
         ],
         types: {
             total: 'line',
             total_hidden: 'area',
-            max:   'area',
+            no_exclusion: 'area',
+            loss_in_benefits: 'line',
         },
         names: {
             total: 'CTC+EITC',
-            max:   'Missing Benefits',
+            no_exclusion: 'Benefit Without Exclusion of Poor Families',
+            loss_in_benefits: 'Loss in Benefits',
         },
         colors: {
             total: 'black',
             total_hidden: 'white',
-            max: 'red',
+            no_exclusion: 'red',
+            no_exclusion_end: 'red',
+            loss_in_benefits: 'red',
+        },
+        regions: {
+            no_exclusion_end: [ {'style': 'dashed'} ],
         },
         groups: [
-            ['total_hidden', 'max'],
+            ['total_hidden', 'no_exclusion'],
         ],
         order: 'none',
     },
@@ -41,12 +55,12 @@ var chart = c3.generate({
     padding: {
         bottom: 0,
         top: 10,
-        left: 60,
+        left: 65,
         right: 20,
     },
     legend: {
         position: 'bottom',
-        hide: 'total_hidden',
+        hide: ['total_hidden', 'no_exclusion_end'],
     },
     tooltip: {
         show: false
@@ -68,10 +82,10 @@ var chart = c3.generate({
             label: {text: 'Benefit', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000]
             },
             max: 7000,
-            padding: {top: 0, bottom: 10},
+            padding: {top: 0, bottom: 0},
         }
     },
     grid: {
@@ -124,4 +138,56 @@ function arbitrary_income_input(){
 function adjust_arbitrary_income(){
     /*adjust arbitrary input box if slider is moved */
     arbitray_income.value = income;
+}
+
+/* JQuery UI slider for x and y axes */
+$( function() {
+    $( "#x_axis_range" ).slider({
+      range: true,
+      min: 0,
+      max: 50000,
+      step: 100,
+      values: [ 0, 50000 ],
+      slide: function( event, ui ) {
+        $( "#x_axis_output_start" ).text(ui.values[ 0 ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        $( "#x_axis_output_end" ).text(ui.values[ 1 ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        arbitrary_x_axis(ui.values[ 0 ], ui.values[ 1 ]);
+      }
+    });
+
+    $( "#y_axis_range" ).slider({
+      range: true,
+      min: 0,
+      max: 14000,
+      step: 100,
+      values: [ 0, 7000 ],
+      slide: function( event, ui ) {
+        $( "#y_axis_output_start" ).text(ui.values[ 0 ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        $( "#y_axis_output_end" ).text(ui.values[ 1 ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        arbitrary_y_axis(ui.values[ 0 ], ui.values[ 1 ]);
+      }
+    });
+} );
+
+function show_arbitrary_axes(){
+    if(arbitrary_axes_switch.checked){
+        x_axis_slider_container.style.display = 'block';
+        y_axis_slider_container.style.display = 'block';
+        zoom_switch.disabled = true;
+    }
+    else{
+        x_axis_slider_container.style.display = 'none';
+        y_axis_slider_container.style.display = 'none';
+        zoom_switch.disabled = false;
+    }
+}
+
+function arbitrary_x_axis(xMin, xMax){
+    chart.axis.min({x: xMin});
+    chart.axis.max({x: xMax});
+}
+
+function arbitrary_y_axis(yMin, yMax){
+    chart.axis.min({y: yMin});
+    chart.axis.max({y: yMax});
 }

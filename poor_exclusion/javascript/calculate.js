@@ -1,49 +1,3 @@
-/* Returns the maximum benefit given inputs: filing status & number of children */
-function max_benefit(filingStatus, numChildren){
-	if(filingStatus === 'single'){
-		if(numChildren === 'none'){
-			return 560;
-		}
-		else if(numChildren === 'one'){
-			return 5733;
-		}
-		else if(numChildren === 'two'){
-			return 9567.38;
-		}
-		else if(numChildren === 'three'){
-			return 10828.63;
-		}
-	}
-	else if(filingStatus === 'hoh'){
-		if(numChildren === 'none'){
-			return 560;
-		}
-		else if(numChildren === 'one'){
-			return 5851.1;
-		}
-		else if(numChildren === 'two'){
-			return 9567.38;
-		}
-		else if(numChildren === 'three'){
-			return 10851;
-		}
-	}
-	else if(filingStatus === 'married'){
-		if(numChildren === 'none'){
-			return 560;
-		}
-		else if(numChildren === 'one'){
-			return 5169.2;
-		}
-		else if(numChildren === 'two'){
-			return 9000.2;
-		}
-		else if(numChildren === 'three'){
-			return 10701.48;
-		}
-	}
-}
-
 function max_benefit_eitc(numChildren){
 	if(numChildren === 'none'){
 		return 560;
@@ -72,6 +26,56 @@ function max_benefit_ctc(numChildren){
 	else if(numChildren === 'three'){
 		return 6000;
 	}
+}
+
+/* Returns the value the eitc would be if it did not include a phase-in*/
+function non_exclude_eitc_value(income, filingStatus, numChildren){
+	benefit = 0
+	if(filingStatus==="married"){
+		if(numChildren === 'three'){
+			if(income <= 26262){benefit = 6935;}
+			else if(income > 26262 && income < 59187){benefit = 12464.78 - income*.2106;}
+			else{benefit = 0;}
+		}
+		else if(numChildren === 'two'){
+			if(income <= 26262){benefit = 6164;}
+			else if(income > 26262 && income < 55529){benefit = 6164 - .2106 * (income - 26262);}
+			else{benefit = 0;}
+		}
+		else if(numChildren === 'one'){
+			if(income <= 26262){benefit = 3733;}
+			else if(income >26262 && income <49622){benefit = 7939.6 - income*.1598;}
+			else{benefit = 0;}
+		}
+		else{
+			if(income <= 15290){benefit = 560;}
+			else if(income >15290 && income <22610){benefit = 1730 - income*.0765;}
+			else{benefit = 0;}
+		}
+	}
+	if(filingStatus==="single" || filingStatus==="hoh"){
+		if(numChildren === 'three'){
+			if(income <= 20131){benefit = 6935;}
+			else if(income >20131 && income <53057){benefit = 11173.8 - income*.2106;}
+			else{benefit = 0;}
+		}
+		else if(numChildren === 'two'){
+			if(income <= 20131){benefit = 6164;}
+			else if(income >20131 && income < 49399){benefit =  6164 - .2106 * (income - 20131);}
+			else{benefit = 0;}
+		}
+		else if(numChildren === 'one'){
+			if(income <= 20131){benefit = 3733;}
+			else if(income >20131 && income < 43492){benefit = 6950 - income*.1598;}
+			else{benefit = 0;}
+		}
+		else{
+			if(income <= 9160){benefit = 560;}
+			else if(income >9160 && income <16480){benefit = 1260.7 - income*.0765;}
+			else{benefit = 0;}
+		}
+	}
+	return benefit;
 }
 
 /* Determines if the maximum benefit has already been reached */

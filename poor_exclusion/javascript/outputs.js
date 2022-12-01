@@ -1,5 +1,5 @@
 /*Default values */
-document.getElementById('output_line1').innerHTML = 'You are excluded from <b>$1,208</b> in benefits because you are too poor.';
+document.getElementById('output_line1').innerHTML = 'You are excluded from <b>$1,208</b> in benefits.';
 
 /* Outputs to screen the difference between max benefits and the benefits at the income the user has selected*/
 function output1(){
@@ -20,21 +20,18 @@ function output1(){
 
 /* Outputs for all benefits chart */
 function output_all(income, filingStatus, numChildren){
-    maxBenefit = max_benefit(filingStatus, numChildren);
+	fullBenefit = non_exclude_eitc_value(income, filingStatus, numChildren) + max_benefit_ctc(numChildren);
     eitc = eitc_value(income, filingStatus, numChildren);
     ctc = ctc_value(income, filingStatus, numChildren);
-    differece = maxBenefit - eitc - ctc;
+    difference = fullBenefit - eitc - ctc;
     if(filingStatus === 'hoh'){
-    	differece -= hoh_value(income);
+    	difference -= hoh_value(income);
     }
 
-    if(above_max(income, filingStatus, numChildren) === true){
-    	document.getElementById('output_line1').innerHTML = "You are excluded from <b>$0</b> in benefits.";
-    }
-    else{
-    	difference_formatted = differece.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	    document.getElementById('output_line1').innerHTML = "You are excluded from <b>$" + difference_formatted + "</b> in benefits because you are too poor.";
-    }
+    if(difference < 0){difference = difference * -1};
+
+	difference_formatted = difference.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    document.getElementById('output_line1').innerHTML = "You are excluded from <b>$" + difference_formatted + "</b> in benefits.";
 }
 
 /* Outputs for eitc benefits chart */
@@ -75,6 +72,16 @@ function adjust_enabled(){
 	else{
 		document.getElementById('hoh_status_option').disabled = false;
 	}
+}
+
+function show_programs(){
+	container = document.getElementById('programs');
+	container.style.height = programsHeight;
+}
+
+function hide_programs(){
+	container = document.getElementById('programs');
+	container.style.height = '0px';
 }
 
 function show_explanation1(){

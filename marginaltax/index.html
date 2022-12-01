@@ -3,27 +3,36 @@
 <head>
   <title>Marginal Tax Rates</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./css/style.css"
-    type="text/css"
-    rel="stylesheet" />
+  <link href="./css/style.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- JQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
   <!-- load c3.css -->
   <link href="./c3-0.7.20/c3.css" rel="stylesheet">
 
   <!-- Computer Modern Sans -->
   <link rel="stylesheet" href="../fonts/computer_modern/Sans/cmun-sans.css"></link>
-
   <!-- Computer Modern Serif -->
   <link rel="stylesheet" href="../fonts/computer_modern/Serif/cmun-serif.css"></link>
-
-
   <!-- Computer Modern Classical Serif Italic -->
   <link rel="stylesheet" href="../fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
 
   <!-- MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="../c3-0.7.20/c3.min.js"></script>
 
 </head>
 
@@ -34,9 +43,6 @@
 </div>
 
 <body>
-<!-- Load d3.js and c3.js -->
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="../c3-0.7.20/c3.min.js"></script>
 
 <h1 id="top">Marginal Tax Rates on Labor Income</h1>
 <div class="name">
@@ -75,20 +81,20 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_ptc(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income">
-          <input type="submit" class="benefits_selection_buttons" id="chip_button" value="Cost Sharing Reductions">
+          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_ptc();modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="cost_sharing_button" value="Cost Sharing Reductions">
+          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_ssi();modifyIncome(); adjust_y_axis();" disabled >
         </div>
 
         <!--Disability Status-->
         <div class="dropdown" id="disability_container">
           I am a
-          <select class="dropdown" name="disability" id="disability" oninput="">
+          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();">
             <option value="not_disabled">non-disabled</option>
             <option value="disabled">disabled</option>
           </select>
@@ -115,9 +121,9 @@
 
         <!--Employer-sponsored healthcare-->
         <div class="dropdown" id="disability_container">
-          <select class="dropdown" name="disability" id="disability" oninput="">
-            <option value="not_disabled">do not have</option>
-            <option value="disabled">have</option>
+          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();">
+            <option value="no_employer">do not have</option>
+            <option value="employer">have</option>
           </select>
         </div>
         employer-sponsored health insurance.
@@ -126,7 +132,7 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <div class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">50,000</output> this year:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+            <input type="range" min="0" max="100000" value="50000" step="1000" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
           </div>
         </div>
 
@@ -158,24 +164,21 @@
       <script type="text/javascript" src="./javascript/calculate_benefit.js"></script>
 
       <!--Zoom selection-->
-      <!--
       <div class="dropdown" id="chart_type_dropdown_container">
-        Show chart as:
+        Show higher/lower income:
         <select class="dropdown" name="zoom_level" id="zoom_dropdown" oninput="zoom_chart()">
-          <option value="40,000">$40,000</option>
-          <option value="80,000">$80,000</option>
-          <option value="120,000">$120,000</option>
-          <option value="150,000">$150,000</option>
-          <option value="200,000">$200,000</option>
-          <option value="600,000" selected>$600,000</option>
+          <option value="default">Default</option>
+          <option value="lower">Lower</option>
+          <option value="higher">Higher</option>
         </select>
       </div>
-      -->
+      <!--
       <label class="switch_label" id="zoom_label">
-        Click to zoom on lower incomes:
+        Show higher incomes:
         <input type="checkbox" name="zoom" id="zoom_switch" oninput="zoom_chart();">
         <span class="checkmark"></span>
       </label>
+    -->
 
       <!--Type of chart-->
       <div class="dropdown" id="chart_type_dropdown_container">
@@ -191,25 +194,47 @@
       <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
       </br>
 
-      <!--Run HOH Benefit Graph Script-->
+      <!--Run Chart Script-->
       <div class="chart_actual" id="chart"></div>
       <script type="text/javascript" src="./javascript/chart.js"></script>
-      <script type="text/javascript" src="./javascript/adjust_chart.js"></script>    
+      <script type="text/javascript" src="./javascript/chart_functionality.js"></script>
+      <script type="text/javascript" src="./javascript/adjust_chart.js"></script> 
+      <script type="text/javascript" src="./javascript/adjust_curves.js"></script> 
+      <script type="text/javascript" src="./javascript/controls.js"></script>
 
       <!--Power users-->
       <div class="power_users_container">
+
+        <!--JQuery X-Axis Slider-->
+        <div class="power_users_sliders_container" id="x_axis_slider_container"> 
+          <div class="slider-text" id="axis_slider_text">X-Axis Range: $<output id="x_axis_output_start">0</output>–$<output id="x_axis_output_end">100,000</output>.</div>
+          <div id="x_axis_range" onclick="arbitrary_x_axis()"></div>
+        </div>
+
+        <!--JQuery Y-Axis Slider: EMTR-->
+        <div class="power_users_sliders_container" id="y_axis_slider_container"> 
+          <div class="slider-text" id="axis_slider_text">Y-Axis Range: <output id="y_axis_output_start">0</output>%–<output id="y_axis_output_end">60</output>%</div>
+          <div id="y_axis_range" onclick="arbitrary_y_axis()"></div>
+        </div>
+
+        <!--JQuery Y-Axis Slider: EI-->
+        <div class="power_users_sliders_container" id="y_axis_slider_container_ei"> 
+          <div class="slider-text" id="axis_slider_text">Y-Axis Range: $<output id="y_axis_output_start_ei">0</output>–$<output id="y_axis_output_end_ei">20,000</output></div>
+          <div id="y_axis_range_ei" onclick="arbitrary_y_axis()"></div>
+        </div>
+
         <h3>Power Users</h3>
         <!--Arbitrary income switch-->
         <label class="switch_label" id="arbitrary_income_label">
-          Arbitrary income selection:
+          Arbitrary income:
           <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
           <span class="checkmark"></span>
         </label>
 
         <!--Arbitrary zoom switch-->
-        <label class="switch_label" id="arbitrary_zoom_label">
-          Arbitrary axis range:
-          <input type="checkbox" id="arbitrary_zoom_switch" oninput="show_arbitrary_zoom();">
+        <label class="switch_label" id="adjust_axes_switch_label">
+          Adjust axes:
+          <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
           <span class="checkmark"></span>
         </label>
 
@@ -229,19 +254,19 @@
       <div class="chart_notes">
         <h3 class="notes_title">Notes</h3>
         <ul class="notes_list">
-          <li>This chart shows only federal taxes and benefits. However, many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
-          <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
-          <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. SNAP and SSI both include rather onerous asset tests, though these are waived for people who are both categorically eligible for SNAP and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty</a>. This chart does not show SNAP benefits for the small proportion of recipients who are categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li>
+          <li>This chart shows only federal taxes and benefits. Many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
           <li>It is assumed that all income is labor income. Some forms of non-labor income are taxed at different rates than labor income.</li>
-          <li>It is assumed the modified adjusted gross income (MAGI) equals gross income.
+          <li>It is assumed the modified adjusted gross income (MAGI) equals gross income.</li>
+          <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
+          <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. Able-bodied adults without dependents (ABAWD) can only receive SNAP for three months every three years unless they satisfy work requirements. SNAP and SSI both include rather onerous asset tests for most recipients (they are waived for people who are both categorically eligible and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty)</a>. This chart does not show SNAP benefits for the small proportion of recipients who are both categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li> 
           <li>Personal income tax is calculated using the standard deduction.</li>
-          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rates to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse, so the amount of FICA tax many dual-worker married couples pay will differ from that shown here. See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
+          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse, so the amount of payroll tax and the marginal tax rates faced by many dual-worker married couples will differ from that shown here. See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
           <li>Eligibility for several benefits is based on the federal poverty line. This chart shows benefit levels based on the poverty line for the 48 contiguous states and Washington D.C. The poverty line differs in Alaska, Hawaii, and the US territories.
           <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. Additionally, eligibility for SNAP is based on monthly income (except for those categorically eligible), whereas eligibility for most other programs considered here are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
           <li>This chart shows SNAP benefits for people in the 48 contiguous states and Washington D.C. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
-          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. For instance, the monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
+          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. The monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
           <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
-          <li>This chart shows uses the premium tax credit formula that is in effect from 2021 through 2025. After 2025, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
+          <li>This chart uses the premium tax credit formula that is in effect from 2021 through 2025. Unless extended, in 2026 the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
         </ul>
     </div>
 
@@ -402,6 +427,173 @@
 
     </div> <!--Appendix: SNAP-->
 
+        <div class="references" id="appendix_SSI">
+      <h2>Appendix: Supplemental Security Income</h2>
+      <h3>Calculating SSI Effective Marginal Tax Rates In Isolation</h3>
+      <p>
+        SSI imposes a very high marginal tax rate. Nominally, it is 100%: every dollar of earned or unearned income (unearned includes in-kind benefits like food and shelter provided by other people) results in a $1 reduction in SSI benefits. However, SSI excludes the first $20 made of any income (earned or unearned) in a month, the first $65 of earned income made in a month plus one-half of earned income above the first $65, and several quarterly exclusions for infrequent or irregular unearned income.(supCRS SSI Long: 17) (Note that these figures are not adjusted for inflation each year—they have been the same since 1972).(supCRS SSI Long: 18) So the gist here is that <em>countable income</em>—income after exclusions–has a 100% marginal tax rate. However, <em>gross income</em>—income before exclusions—does not, because some of it is exempted.
+      </p>
+
+      <p>
+        This chart deals specifically with labor income, so by assumption all of gross income is earned income. This means that, for the purposes of our calculations, the first $65 of monthly income and one-half of additional monthly income is exempted. Additionally, our chart looks at income on an annual basis. This requires some simplifications to make a monthly benefit show as one curve over the year. We'll assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining.
+      </p>
+
+      <p>
+        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets inlclude "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). These asset limits can disqualify people that our chart would show receive an SSI benefit, since we are only considering income. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. If you would like more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
+      </p>
+
+      <p>
+        With these considerations in mind, we can now go about determining the benefit values and effective marginal tax rates of SSI for labor income. SSI has a maximum benefit, adjusted for inflation each year. In 2022, these figures were:<a class="refs" id="note8" href="#notes"><sup>8</sup></a> (fix sup)
+      </p>
+
+      <table style="width:90%">
+        <tr>
+          <th>Household Type</th>
+          <th>Maximum Benefit</th>
+          <th>Annualized Maximum Benefit</th>
+        </tr>
+        <tr>
+          <td>Individual</td>
+          <td>$841/month</td>
+          <td>$10,092</td>
+        </tr>
+        <tr>
+          <td>Married Couple</td>
+          <td>$1,261/month</td>
+          <td>$15,132</td>
+        </tr>
+      </table>
+
+      <p>
+        Note that the married couple maximimum only applies if <em>both</em> spouses are eligible for SSI. A person who is married to someone who is non-SSI-eligible receives the individual benefit. This benefit schedule also has one very bad, probably unintended consequence: it imposes an appreciable marriage penalty on disabled people. It does this in two ways. First, the maximum benefit is not double the individual benefit. Imagine two disabled people who are dating but not married. If they both receive the maximum benefit, then they receive a combined total of \( \$841 \times 2 = \$1682 \). However, if they were to marry, their benefit would drop to \( \$1261\), a $421 decrease. Over the year, that's up to $5,052 of lost income as a result of getting married. The second way SSI imposes a marriage penalty is by not doubling the first-of-the-month exemption. Both individuals and married couples have a $65/month earned income exemption, so getting married halves the exemption the couple receives. While we're on the topic, I'll add that the asset test also imposes a marriage penalty: it is $2,000 for an individual and only $3,000 for a married couple, meaning that a disabled couple would see their asset limit cut by 25% if they were to marry.
+      </p>
+
+      <p>
+        The SSI benefit is calculated by subtracting countable income from the maximum benefit. Since we're assuming that annual income is uniform over the year, we can say that the annual exclusion on labor income is \($65 \times 12 = $780 \). And since 50% of earned income after the first-of-the-month is exempted, i.e. countable income rises by only $0.50 for every dollar of labor income, the benefit \(B\) at gross income \(I\), with \(B_{max}\) denoting the max benefit, is: $$B(I) = B_{max} \text{ if } I \leq \$780 $$ $$B(I) = B_{max} - .5 (I - 780) \text{ if } I> \$780$$
+      </p>
+
+      <p>
+         For our effective marginal tax rates, since the first $780 of income is excluded, there is no decrease in SSI benefits for the first $780 in labor income. That means there is a 0% effective marginal tax rate on the first $779 (at $780, an additional dollar of income results in $781 of income, so there is a non-zero EMTR): $$EMTR_{I < \text{\$780} } = 0\% $$
+      </p>
+
+      <p>
+        Half of labor income above the first $750 is exempted. Clearly, this is a 50% effective marginal tax rate, though I'll still run through the calculation. The EMTR is the loss in benefits as a result of a $1 increase in income. The EMTR is thus: $$EMTR_{I \geq \text{\$780}}(I) = B(I+1)-B(I) = B_{max} - .5((I+1) - 780) - (B_{max} - .5(I-780)) = 50\% $$
+      </p>
+
+      <p>
+        Finally, we have to take into consideration when the benefit equals $0. Once the benefit hits $0, the EMTR drops to 0%, since there is no more benefit to lose as a result of additional income. The calculation is straightforward, we just set \(B(I)\) for income greater than $780 equal to zero and solve: \(I= 2(B_{max} + 390) \). The benefits reach zero at the following values:
+      </p>
+
+      <table style="width:90%">
+        <tr>
+          <th>Household Type</th>
+          <th>Zero Benefit Income</th>
+        </tr>
+        <tr>
+          <td>Individual</td>
+          <td>$20,964</td>
+        </tr>
+        <tr>
+          <td>Married Couple</td>
+          <td>$31,044</td>
+        </tr>
+      </table>
+
+      <p>
+        Now we have a full accounting of our benefits and our effective marginal tax rates. These are shown in the tables below:
+      </p>
+
+      <table style="width:45%">
+        <caption style="font-size:120%;"><b>Individual</b></caption>
+        <tr>
+          <th>Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $780</td>
+          <td>$10,092</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$780–$20,963</td>
+          <td>$10,092\(–\).5(\(I-\)$780)</td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td>Above $20,963</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <table style="width:45%">
+        <caption style="font-size:120%;"><b>Married Couple</b></caption>
+        <tr>
+          <th>Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $780</td>
+          <td>$15,132</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$780–$31,043</td>
+          <td>$15,132\(–\).5(\(I-\)$780)</td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td>Above $31,043</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <p>
+        Recall again that these figures are based on the assumptions that all income is labor (i.e. earned) income and that we have disregarded asset tests. These figures would be <em>lower</em> for people with "unearned" income, including in-kind income, so these figures in-effect represent the <em>maximum</em> benefits people can receive at a given gross income. We do not take into consideration unearned income provided by private individuals. However, in the next section we will account for unearned income received from other federal programs.
+      </p>
+
+      <h3>SSI Effective Marginal Tax Rates Considering Other Programs</h3>
+      <p>
+        The above section shows the benefit values and EMTR's of SSI when considering SSI in isolation from other programs. However, other benefits can affect SSI benefit amounts. We will now consider how SSI interects with the other programs displayed in our chart.
+      </p>
+
+      <p>
+        The simplest programs to consider are those related to taxes: income tax, payroll tax, the earned income tax credit, the child tax credit, and the premium tax credit. These are simple because they have no effect on SSI, and SSI has no effect on them. SSI is not payroll income, so it does not affect payroll taxes. And SSI benefits are not taxable, so they have no effect on income tax. And because they do not count towards taxable income, which is used to determine the tax liability that tax credits subtract from, SSI benefits do not affect tax credits. (The astute reader will notice that "SSI benefits are not taxable" has the counterintuive consequence of <em>raising</em> nearly all SSI recipients' tax liability. This is because the EITC and CTC both phase in with income, and virtually all SSI recipients are in the phase-in region. This means that if SSI benefits were counted towards taxable income, recipients would have a higher taxable income, resulting in a larger EITC and CTC. So they'd actually end up receiving more money if SSI was counted towards taxable income.) In the reverse direction, refunds from tax credits are not counted towards the monthly income used to determine SSI benefits, so they do not affect SSI benefit amounts.
+      </p>
+
+      <p>
+        Additionally, SSI benefits are not counted towards the income levels used to determine eligibilty for Medicaid and cost sharing reductions, so they have no effect these programs. In the reverse direction, Medicaid and cost sharing reductions are not counted towards the monthly income used to determine SSI benefits.
+      </p>
+
+      <p>
+        The program that interacts with SSI in a more complicated way is SNAP. We'll start with the simple aspects and then add on the complications. First, income from SNAP is <em>NOT</em> included in countable income when calculating SSI benefits, i.e. SNAP income is excluded in its entirety.(sup CRS SSI Long: 18) Additionally, income from SSI is <em>NOT</em> counted towards net income when calculating SNAP benefits (as we will see in the next paragraph, SSI also has no effect on the gross income limit because people who are categorically eligible for SNAP do not have a gross income limit).(sup CRS SNAP ) This means that our calculation of SSI benefits based on labor income is unaffected by income received SNAP, and likewise our calculation of SNAP benefits based on labor income is unaffected by income received from SSI. Similarly, our EMTR calculations are unaffacted. (Note that while SSI income is not counted towards SNAP benefits, income from SS<b>D</b>I (Social Security Disability Insurance) is).
+      </p>
+
+      <p>
+        Where we do have to adjust our calculations relates to eligibility determinations. Being eligible for one program automatically makes one <em>categorically eligible</em> for the other. People who are categorically eligible for SNAP (i.e. they are already receiving SSI) do not have to satisfy the requirement that gross income be below 130% of the poverty line, only the requirement that net income be less than 100% of the poverty line. Recall that in our calculations of SNAP benefits and EMTR's in <a href="#appendix_snap">Appendix: SNAP</a>, households with at least 1 child had benefit cliffs when income hit 130% of the poverty line, i.e. at 130% of the poverty line their benefit, calculated based on net income, was still non-zero but they suddenly became ineligible for SNAP as a result of the gross income limit. Under categorical eligibility, however, these people would <em>not</em> face a benefit cliff because they do not have to satisfy the gross income requirement.
+      </p>
+
+      <p>
+        For the purposes of our chart, that means when a user selects <em>both</em> SNAP and SSI, we have to adjust both our SNAP benefits and our SNAP EMTR's above the gross income limit. 
+      </p>
+
+      <p>
+        This actually creates a significant complication, as eligibility becomes path-dependent. Imagine a disabled person who is not currently receiving SSI or SNAP and has a gross income above 130% of the poverty line and a net income less than 100% of the poverty line. If this person were to apply for SNAP, their application would be denied for exceeding the gross income limit. If they were to apply for SSI their application would likewise be denied because their income is too high to receive an SSI benefit. They are ineligible for both SNAP and SSI.
+      </p>
+
+      <p>
+        Now imagine a disabled person with a very low income. They apply for SSI, and their application is accepted. Additionally, they notice that they are now categorically eligible for SNAP, so they also apply for SNAP and their application is again accepted. But say that they start making some earned income, and as a result their gross income rises above 130% of the poverty line while their net income remains below the 100% of the poverty line. Because they are categorically eligible for SNAP, they don't have to bother with the gross income limit: their net income is still below 100% of the poverty line, so they continue to be eligible for SNAP. Additionally, because they are eligible for SNAP, they are categorically eligible for SSI, although they receive no benefit at their income level. 
+      </p>
+
+      <p>
+        Notice that we now have a strange situation where the person in our first example receives no benefits, while the person in our second example receives SNAP benefits, <em>even though they both have identical incomes</em>. Benefits can thus be path-dependent. And notice that, remarkably, the person in our second example remains eligible for SNAP only because they are categorically eligible as a result of their eligibility for SSI; however, they in fact exceed the SSI financial limits and are only eligible for it as a result of their eligibility for SNAP. We have a crazy eligibility feedback loop!
+      </p>
+
+    </div><!--Appendix: SSI-->
+
     <div class="references" id="appendix_medicaid">
       <h2>Appendix: Medicaid & Premium Tax Credits</h2>
       <h3>Including Medicaid & the Premium Tax Credits Together</h3>
@@ -459,11 +651,15 @@
       </p>
 
       <p>
-        The effective marginal tax rate is the loss in benefits as a result of a $1 increase in income, so the effective marginal tax rate at income \(I\) equals \( \Delta \text{premium contribution in dollars} = C(I+1) - C(I) \) (divided by $1). This works out to: $$EMTR(I) = \frac{p_2 - p_1}{h_2 - h_1} (I+1)^2 + (I+1) \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) - \left( \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) \right) = \frac{p_2 - p_1}{h_2 - h_1} (2I - h_1 +1) + p_1 $$
+        The primary consequence of this equation is that it was very tedious for me to type it into Javascript, wasting 15 minutes that could have been spent on more productive activities like wage labor or rewatching Dune. Additionally, there are two important secondary consequences. First, this equation is quadratic: within an income tier, the higher your income, the more dollars you have to contribute to the premium as a result of an additional dollar of income. Intuitevly, this occurs simply because the premium grows by a constant <em>percentage of income</em> for every dollar of additional income; so as income grows, the dollar value of this percentage grows. Second, the equation demonstrates that it is actually quite complicated for people to determine the value of their premium tax credit. This is made more complicated still by the fact that the advance premium tax credits paid out in a given year to insurers on behalf of a recipient is based upon the recipient's <em>expected</em> income in that year. So anyone attempting to plan around the premium tax credit has to compare the benefit they are currently receiving, which the IRS determines by guessing what their income will be that year, with the true value that will be determined at the end of the year when they file their taxes and their precise annual income is known.
       </p>
 
       <p>
-        (You can confirm that the only difference between this and the derivative is the addition of a constant). 
+        The effective marginal tax rate is the loss in benefits as a result of a $1 increase in income, so the effective marginal tax rate at income \(I\) equals \( C(I+1) - C(I) \) (divided by $1). This works out to: $$EMTR(I) = \frac{p_2 - p_1}{h_2 - h_1} (I+1)^2 + (I+1) \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) - \left( \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right) \right) = \frac{p_2 - p_1}{h_2 - h_1} (2I - h_1 +1) + p_1 $$
+      </p>
+
+      <p>
+        (You can confirm that the only difference between this and the derivative of \(C(I)\) is the addition of the constant \(\frac{p_2 - p_1}{h_2 - h_1}\)). 
      </p>
 
       <p>
@@ -487,14 +683,14 @@
       </p>
 
       <p>
-        It also means that we only have one other equation: for our 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.015}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
+        It also means that we only have one other equation: for our 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
 
       <p>
-        Now we have just have to take into account the cost of the premium. While the required contribition grows indefinitely, the actual amount someone has to pay for their premium does not. Basically, while a person's required contribution is less than their premium, they face an effective marginal tax rate for every additional dollar of income since the share of the premium that they must pay grows with every additional dollar of income. But once their required contribution equals their premium, they are paying the full cost of the premium. The insurers don't increase premiums for people with higher incomes, so once you're required to pay the full premium there's no cost for additional income.
+        Now we have just have to take into account the cost of the premium. While the required contribition technically grows indefinitely, the actual amount someone has to pay for their premium does not. Basically, once someone's required contribution equals their premium, they are paying the full cost of the premium, so additional income doesn't impose any additional costs on them.
       </p>
 
       <p>
-        Premium tax credits are based on the cost of a  silver plan on the ACA exchanges. Costs vary by state and age, so to keep things simple we'll use 2022 national average silver plan premiums for 40 year olds (the median age in the United States is 38). These are shown in the tables below.<a class="refs" id="note7" href="#notes"><sup>7</sup></a>
+        Premium tax credits are based on the cost of a silver plan on the ACA exchanges. Costs vary by state and age, so to keep things simple we'll use 2022 national average silver plan premiums for 40 year olds (the median age in the United States is 38). These are shown in the tables below.<a class="refs" id="note7" href="#notes"><sup>7</sup></a>
       </p>
 
         <table style="width:45%">
@@ -544,7 +740,7 @@
       </table>
 
       <p>
-        Once a person's required contribution equals the cost of the premium—meaning they pay the <em>full cost</em> of the premium—their effective marginal tax rate drops to 0% since they face no additional costs for income made after this point. For every household type, this occurs above 400% of the poverty line, so we can calculate each by determining when 8.5% of income equals the cost of the premium. These values are shown in the table below, rounded to the nearest dollar.
+        Once a person's required contribution equals the cost of the premium their effective marginal tax rate drops to 0%, since they face no additional costs for income made after this point. For every household type, this occurs above 400% of the poverty line, so we can calculate each by determining when 8.5% of income equals the cost of the premium. These values are shown in the table below, rounded to the nearest dollar.
       </p>
 
       <table style="width:45%">
@@ -594,7 +790,7 @@
       </table>
 
       <p>
-        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. Our income tier values (our \(h\)'s)  come from our poverty level table, and our required contribution=premium values come from the table above.
+        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. Our income tier values (the \(h\)'s in our equations) come from our poverty level table, and our required contribution=premium values come from the table above.
       </p>
 
       <table style="width:90%">
@@ -612,7 +808,7 @@
         </tr>
         <tr>
           <td>300–400% of Poverty Line</td>
-          <td>$$ \frac{.015}{h_{\text{400%}} - h_{\text{300%}}} (2I + h_{\text{300%}} + 1) + .06 $$</td>
+          <td>$$ \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I + h_{\text{300%}} + 1) + .06 $$</td>
         </tr>
         <tr>
           <td>400% of Poverty Line up to Required Contribution=Premium</td>
@@ -625,9 +821,12 @@
       </table>
 
       <p>
-        For those interested in the precise values for each household type of income tiers, marginal tax rates, and when the required contribution equals the premium, this is available for download by here: ____.excel
+        For those interested in the precise values for each household type of income tiers, marginal tax rates, and when the required contribution equals the premium, this is available for download here: ____.excel
       </p>
 
+    </div>
+
+    <div class="references" id="CSR_SSI">
       <h2>Appendix: Cost Sharing Reductions</h2>
       <p>
         The Affordable Care Act includes not only tax credits to help pay the cost of premiums, but also reductions in cost sharing to help cover deductibles and copayments. These, too, phase out with income.
@@ -734,11 +933,17 @@
 
         <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison (October 4, 2022). "<a href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022. </li>
 
+        <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison; Falk, Gene (February 25, 2022). "<a href=https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">The Supplemental Nutrition Assistance Program (SNAP): Categorical Eligibility</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220704025011/https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 4, 2022. </li>
+
         <li class="ref_item">Chien, Nina; Macartney, Suzanne (March 2019). "<a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">Marginal Tax Rate Series</a>". <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
 
         <li class="ref_item" id="Fernandez">Fernandez, Bernadette (November 7, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">"Health Insurance Premium Tax Credit and Cost-Sharing Reductions"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20221115222325/https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 15, 2022. </li>
 
         <li class="ref_item" id="Masterson">Masterson, Les; Megna, Michelle (August 24, 2022). "<a href=https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/ target="_blank">How Much Does Health Insurance Cost In 2022?</a>". <em>Forbes</em>. <a href=https://web.archive.org/web/20221113164009/https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/ target="_blank">Archived</a> from the original on November 13, 2022.</li>
+
+        <li class="ref_item" id="Morton">Morton, William R. (May 16, 2018). "<a href=https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">Social Security Disability Insurance (SSDI) and Supplemental Security Income (SSI): Eligibility, Benefits, and Financing</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220505081615/https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on May 5, 2022.</li>
+
+        <li class="ref_item" id="Morton">Morton, William R. (November 22, 2022). "<a href=https://crsreports.congress.gov/product/pdf/IF/IF10482 target="_blank">Supplemental Security Income (SSI)</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>.
       </ul>
   </div>
 

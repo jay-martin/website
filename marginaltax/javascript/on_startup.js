@@ -1,3 +1,8 @@
+/******************************************************************************************
+ * This file contains the function that performs a number of calculations and css manipulations
+ * needed to render the page.
+ * ****************************************************************************************/
+
 explanation1Height = 0;
 explanation2Height = 0;
 explanation3Height = 0;

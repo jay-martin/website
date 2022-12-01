@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Exclusion of Poor Families</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/style.css" type="text/css" rel="stylesheet" />
+  <link href="../../c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./css/chart_style.css" type="text/css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="./images/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../../fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../../fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <!-- Computer Modern Classical Serif Italic -->
+  <link rel="stylesheet" href="../../fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="../../c3-0.7.20/c3.min.js"></script>
+
+  <!-- Javascript for CSS Animations -->
+  <script src="./javascript/css_animations.js"></script>
+
+</head>
+
+<body>
+
+  <div class="logo">
+    <a href="../../home/index.html">
+      <img src="./images/logo_white.png" alt="Logo" width="125" height="37.5">
+    </a>
+  </div>
+
+  <div class="blank"></div>
+
+  <section class=section>
+
+    <div class="quote_container">
+      <div class="left_quotes">
+        <div class="quote" id="quote1"> <p class="quote_paragraph"><b>QUOTE 1</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+        <div class="quote" id="quote2"> <p class="quote_paragraph"><b>QUOTE 2</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+        <div class="quote" id="quote3"> <p class="quote_paragraph"><b>QUOTE 3</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+      </div>
+      <div class="right_quotes">
+        <div class="quote" id="quote4"> <p class="quote_paragraph"><b>QUOTE 4</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+        <div class="quote" id="quote5"> <p class="quote_paragraph"><b>QUOTE 5</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+        <div class="quote" id="quote6"> <p class="quote_paragraph"><b>QUOTE 6</b> jcioa eceq cueiww cefewuiq chuepq cuieiqwh buciqiube cbuiowq buichui bcuw hucwui ucieoq buchu uc uiuew uicue. hciew chciucehw cuiw ciew. icew cwew. cniew chiwhiopasn huew opafewi uicnew uicw.</p> </div>
+      </div>
+
+    <div class="intro">
+      <p class="intro_paragraph" id="intro1"><em>Social benefits provide essential assistance to low income families.</em></p>
+      <p class="intro_paragraph" id="intro2"><em>And yet so often aid made available to others is denied to them.</em></p>
+    </div>
+
+    <div class="scroll_prompt" id="scroll_prompt">Scroll <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></div>
+
+  </section>
+
+  <section class="section" id="section2">
+
+    <div class="section2_text">
+      <p class="ctc_text" id="ctc_quote1"><em>The Child Tax Credit is explicitly designed to exclude poor families.</em></p>
+      <p class="ctc_text" id="ctc_quote2"><em>Millions of children are denied benefits simply because they are poor.</em></p>
+    </div>
+
+    <!-- CTC Chart -->
+    <div class="chart_label" id="ctc_chart_label">Child Tax Credit</div>
+    <div class="chart" id="ctc_chart"></div>
+    <script src="./javascript/chart.js"></script>
+
+  </section>
+
+</body>
+</html>
