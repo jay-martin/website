@@ -15,7 +15,7 @@ var MPchart = c3.generate({
 
             'point1' : 'x_point1',
             'point2' : 'x_point2',
-            'point_combined' : 'x_point_combined'
+            'point_married' : 'x_point_married'
         },
         columns: [
             ['x1',       0,             10979,        20131,        43493],
@@ -34,6 +34,13 @@ var MPchart = c3.generate({
             ['combined_eitc',],
             ['x7',],
             ['bonus',],
+
+            ['x_point1', 30000],
+            ['point1',   2156],
+            ['x_point2', 10000],
+            ['point2',   496],
+            ['x_point_married', 40000],
+            ['point_married',   1548],
         ],
         types: {
             'married_eitc'  : 'area',
@@ -60,7 +67,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_combined'],
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married'],
     },
     tooltip: {
         show: false

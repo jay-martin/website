@@ -33,7 +33,6 @@ function initialize_page(){
 	document.getElementById("highlights_container3").style.transitionDuration = ".5s";
 	document.getElementById("highlights_container4").style.transitionDuration = ".5s";
 
-
 	window.addEventListener("load", function() {
 		document.getElementById("highlights").style.border = 'solid';
 		document.getElementById("highlights").style.borderColor = '#adadad';

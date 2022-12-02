@@ -117,7 +117,7 @@ function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome,
     MPchart.ygrids([{value: 0}, {value: marriedEITC, text: "Your married EITC"}, {value: combinedEITC, text: "Combined individual EITC's"}]);
 
     /* Move points */
-    MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_combined', combinedIncome], ['point_combined', marriedEITC] ] });
+    MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_married', combinedIncome], ['point_married', marriedEITC] ] });
 
     /* Move stacked eitc value curves */
     /* Adjust color of eitc value curves */
