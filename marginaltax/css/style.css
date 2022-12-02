@@ -176,9 +176,6 @@ input.benefits_selection_buttons_top{
   cursor: pointer;
   border-radius: 3px;
 }
-input.benefits_selection_buttons:hover{
-  background-color: #d1d1d1
-}
 input.benefits_selection_buttons:disabled {
   color: #b8b8b8;
   background-color: #fafafa;
@@ -187,6 +184,9 @@ input.benefits_selection_buttons:disabled {
 /* No cursor change on hover when disabled */
 input.benefits_selection_buttons:disabled:hover {
   cursor: default;
+}
+input.benefits_selection_buttons:focus {
+  background-color: #d1d1d1;
 }
 /*******Power users**********/
 .arbitray_income_container {

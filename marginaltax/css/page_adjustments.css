@@ -1,0 +1,51 @@
+.center_explanation_box {
+	padding-bottom: 0px;
+}
+.center_explanation_box_text_container {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#marginal_tax_rate {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.tax_and_benefit_breakdown {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 90%;
+}
+#benefits_breakdown {
+	display: none;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.benefits_breakdown_item {
+	display: none;
+}
+.show_all_button{
+	display: none;
+	width: 10%;
+	height: 100%;
+	border: none;
+	text-align: left;
+	background-color: #f5f3f2;
+	margin-left: 10px;
+	color: #636363;
+}
+.show_all_button:hover {
+	background-color: #f5f3f2;
+}
+#benefit_loss_text {
+	display: inline-block;
+}
+#rounding_disclaimer {
+	font-size: 60%;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	display: none;
+}
+.explanation_text {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}

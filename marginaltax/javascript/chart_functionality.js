@@ -121,6 +121,8 @@ function disable_ssi(){
     }
     else{
         ssi_button.disabled = true;
+        ssi_isActive = false;
+        /* document.getElementById('ssi_button').style.backgroundColor = '#fafafa'; */
     }
 }
 
@@ -132,6 +134,8 @@ function disable_healthcare(){
     }
     else{
         ptc_button.disabled = true;
+        document.getElementById('ptc_button').style.backgroundColor = '#fafafa';
+        ptc_isActive = false;
         cost_sharing_button.disabled = true;
     }
 }

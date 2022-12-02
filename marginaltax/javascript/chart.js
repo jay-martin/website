@@ -76,7 +76,7 @@ var chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
+                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,]
             },
             padding: {left: 0, right: 0},
             max: 100000,

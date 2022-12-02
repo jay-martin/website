@@ -4,6 +4,7 @@
   <title>Marginal Tax Rates</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./css/style.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
   <!-- JQuery -->
@@ -89,13 +90,13 @@
           <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); modifyIncome(); adjust_y_axis(); output1()">
           <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_ptc();modifyIncome(); adjust_y_axis(); output1()">
           <input type="submit" class="benefits_selection_buttons" id="cost_sharing_button" value="Cost Sharing Reductions">
-          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_ssi();modifyIncome(); adjust_y_axis();" disabled >
+          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_ssi();modifyIncome(); adjust_y_axis();output1();" disabled >
         </div>
 
         <!--Disability Status-->
         <div class="dropdown" id="disability_container">
           I am a
-          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();">
+          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();load_data();modifyIncome();output1();">
             <option value="not_disabled">non-disabled</option>
             <option value="disabled">disabled</option>
           </select>
@@ -122,7 +123,7 @@
 
         <!--Employer-sponsored healthcare-->
         <div class="dropdown" id="disability_container">
-          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();">
+          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();load_data();modifyIncome();output1();">
             <option value="no_employer">do not have</option>
             <option value="employer">have</option>
           </select>
@@ -133,7 +134,7 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <div class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">50,000</output> this year:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="100000" value="50000" step="1000" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+            <input type="range" min="0" max="100000" value="50000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
           </div>
         </div>
 
@@ -147,19 +148,34 @@
       </div> <!--user_inputs container-->
 
       <!--Center block values-->
-      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-        <p class="explanation_text" id="marginal_tax_rate"></p>
+      <div class="center_explanation_box" id="center_explanations_container"> <!--Center box-->
+        <div class="center_explanation_box_text_container">
+          <p class="explanation_text" id="marginal_tax_rate"></p>
+          <ul class="tax_and_benefit_breakdown">
+            <li id="tax_liability"></li>
+            <li id="benefit_loss"><div id="benefit_loss_text"></div><button class="show_all_button" id="show_all_button" onclick="show_benefits_breakdown();">Show all</button></li>
+              <ul class="tax_and_benefit_breakdown" id="benefits_breakdown">
+                <li class="benefits_breakdown_item" id="eitc_marginal"></li>
+                <li class="benefits_breakdown_item" id="ctc_marginal"></li>
+                <li class="benefits_breakdown_item" id="snap_marginal"></li>
+                <li class="benefits_breakdown_item" id="ptc_marginal"></li>
+                <li class="benefits_breakdown_item" id="ssi_marginal"></li>
+              </ul>
+          </ul>
+          <p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>
 
-        <p class="explanation_text" id="explanation_line1"></p>
-        <p class="explanation_text" id="explanation_line2"></p>
-        <p class="explanation_text" id="explanation_line3"></p>
-        <p class="explanation_text" id="explanation_line4"></p>
-        <p class="explanation_text" id="explanation_line5"></p>
-        <p class="explanation_text" id="explanation_line6"></p>
-        <p class="explanation_text" id="explanation_line7"></p>
-        <p class="explanation_text" id="explanation_line8"></p>
-        <p class="explanation_text" id="explanation_line9"></p>
-      </div>
+          <p class="explanation_text" id="explanation_line1"></p>
+          <p class="explanation_text" id="explanation_line2"></p>
+          <p class="explanation_text" id="explanation_line3"></p>
+          <p class="explanation_text" id="explanation_line4"></p>
+          <p class="explanation_text" id="explanation_line5"></p>
+          <p class="explanation_text" id="explanation_line6"></p>
+          <p class="explanation_text" id="explanation_line7"></p>
+          <p class="explanation_text" id="explanation_line8"></p>
+          <p class="explanation_text" id="explanation_line9"></p>
+        </div> <!--Container for text -->
+      </div> <!--Center box -->
+
       <script type="text/javascript" src="./javascript/outputs.js"></script>
       <script type="text/javascript" src="./javascript/calculate_marginal.js"></script>
       <script type="text/javascript" src="./javascript/calculate_benefit.js"></script>
@@ -248,19 +264,20 @@
       <div class="chart_notes">
         <h3 class="notes_title">Notes</h3>
         <ul class="notes_list">
+          <li>This chart deals only with taxes on labor income. Taxes on consumption (e.g. sales tax) and income from ownership (e.g. capital gains & property tax) are not included.</li>
           <li>This chart shows only federal taxes and benefits. Many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
-          <li>It is assumed that all income is labor income. Some forms of non-labor income are taxed at different rates than labor income.</li>
-          <li>It is assumed the modified adjusted gross income (MAGI) equals gross income.</li>
+          <li>It is assumed that modified adjusted gross income (MAGI) equals gross income.</li>
           <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
+          <li>Eligibility for SNAP and SSI is based on monthly income, whereas eligibility for most other programs considered here, as well as income tax liability, are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#appendix_snap'>Appendix: SNAP</a>. For details on how SSI marginal tax rates are calculated, see: <a href='#appendix_ssi'>Appendix: SSI</a>.</li>
           <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. Able-bodied adults without dependents (ABAWD) can only receive SNAP for three months every three years unless they satisfy work requirements. SNAP and SSI both include rather onerous asset tests for most recipients (they are waived for people who are both categorically eligible and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty)</a>. This chart does not show SNAP benefits for the small proportion of recipients who are both categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li> 
           <li>Personal income tax is calculated using the standard deduction.</li>
-          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse, so the amount of payroll tax and the marginal tax rates faced by many dual-worker married couples will differ from that shown here. See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
+          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse. For most people, this has no effect on their payroll tax liability; however, tax rates will differ for higher income couples in which one parter has earnings exceeding Social Security's maximum taxable earnings ($147,000 in 2022). See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
           <li>Eligibility for several benefits is based on the federal poverty line. This chart shows benefit levels based on the poverty line for the 48 contiguous states and Washington D.C. The poverty line differs in Alaska, Hawaii, and the US territories.
-          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. Additionally, eligibility for SNAP is based on monthly income (except for those categorically eligible), whereas eligibility for most other programs considered here are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#appendix_snap'>Appendix: SNAP</a>.</li>
+          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. See <a href='#appendix_snap'>Appendix: SNAP</a> for details on how SNAP marginal tax rates are calculated.</li>
           <li>This chart shows SNAP benefits for people in the 48 contiguous states and Washington D.C. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
           <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. The monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
           <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
-          <li>This chart uses the premium tax credit formula that is in effect from 2021 through 2025. Unless extended, in 2026 the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
+          <li>This chart uses the premium tax credit formula that is in effect from 2021 through 2025. In 2026, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
         </ul>
     </div>
 
@@ -359,7 +376,7 @@
       </p>
 
       <p>
-        The effective marginal tax rate derives from the reduction in benefits as a result of an additional dollar of gross income, \( \Delta B = B(I+1) - B(I) \). This works out to: $$ \Delta B = B_{max} - .3 (.8(I+1) - SD) - (B_{max} - .3 (.8I - SD)) = -$0.24 $$
+        The effective marginal tax rate is calculated by considering the reduction in benefits as a result of an additional dollar of gross income, \( \Delta B = B(I+1) - B(I) \). This works out to: $$ \Delta B = B_{max} - .3 (.8(I+1) - SD) - (B_{max} - .3 (.8I - SD)) = -$0.24 $$
       </p>
 
       <p>
@@ -429,11 +446,11 @@
       </p>
 
       <p>
-        This chart deals specifically with labor income, so by assumption all of gross income is earned income. This means that, for the purposes of our calculations, the first $65 of monthly income and one-half of additional monthly income is exempted. Additionally, our chart looks at income on an annual basis. This requires some simplifications to make a monthly benefit show as one curve over the year. We'll assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining.
+        This chart deals specifically with labor income, so by assumption all of gross income is earned income. This means that, for the purposes of our calculations, the first $65 of monthly income and one-half of additional monthly income is exempted. Additionally, our chart looks at income on an annual basis. This requires some simplifications to make a monthly benefit show as one curve over the year. We'll assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. In practice, though, these differences are small enough that they hardly register on the chart.
       </p>
 
       <p>
-        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets inlclude "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). These asset limits can disqualify people that our chart would show receive an SSI benefit, since we are only considering income. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. If you would like more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
+        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets include "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). These asset limits can disqualify people that our chart would show receive an SSI benefit, since we are only considering income. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. If you would like more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
       </p>
 
       <p>
@@ -546,7 +563,7 @@
       </table>
 
       <p>
-        Recall again that these figures are based on the assumptions that all income is labor (i.e. earned) income and that we have disregarded asset tests. These figures would be <em>lower</em> for people with "unearned" income, including in-kind income, so these figures in-effect represent the <em>maximum</em> benefits people can receive at a given gross income. We do not take into consideration unearned income provided by private individuals. However, in the next section we will account for unearned income received from other federal programs.
+         Note that these figures would be <em>lower</em> for people with "unearned" income, so these figures in-effect represent the <em>maximum</em> benefits people can receive at a given gross income. We will not take into consideration "unearned" income provided by private individuals. However, in the next section we will account for "unearned" income received from other federal programs.
       </p>
 
       <h3>SSI Effective Marginal Tax Rates Considering Other Programs</h3>
@@ -559,7 +576,7 @@
       </p>
 
       <p>
-        Additionally, SSI benefits are not counted towards the income levels used to determine eligibilty for Medicaid and cost sharing reductions, so they have no effect these programs. In the reverse direction, Medicaid and cost sharing reductions are not counted towards the monthly income used to determine SSI benefits.
+        Additionally, SSI benefits are not counted towards the income levels used to determine eligibilty for Medicaid and cost sharing reductions, so they have no effect on these programs. In the reverse direction, Medicaid and cost sharing reductions are not counted towards the monthly income used to determine SSI benefits.
       </p>
 
       <p>
@@ -857,6 +874,11 @@
           <td>200–250% of Poverty Line</td>
           <td>$6,950</td>
           <td>$13,900</td>
+        </tr>
+        <tr>
+          <td>Above 250% of Poverty Line</td>
+          <td>No Cap</td>
+          <td>No Cap</td>
         </tr>
       </table>
 

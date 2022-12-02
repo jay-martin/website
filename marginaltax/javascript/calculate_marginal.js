@@ -3,12 +3,12 @@
  * well as the function determining pertinent x-values that c3.js needs to render the EMTR chart
  * ****************************************************************************************/
 
-/* Returns the EMTR values of each benefit, as well as the sum of the EMTRs
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children)
-Output: array of floats
-Note: Disabled benefits return a value of 0 */
+/** Returns the EMTR values of each benefit, as well as the sum of the EMTRs **
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @return {array of floats} - array containing the benefit values for each benefit, as well as the sum of all benefit values 
+ * */
 function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
 	householdSize = household_size(filingStatus, numChildren);
 
