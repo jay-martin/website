@@ -7,6 +7,7 @@
 function modifyIncome(){
     income = user_income.value;
     chart.xgrids([{value: income, text:'Your income'}]);
+    load_points();
 }
 
 /* Zooms graph on lower incomes */

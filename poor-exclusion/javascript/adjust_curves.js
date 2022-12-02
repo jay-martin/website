@@ -223,3 +223,59 @@ function load_ctc_curve(){
 	/* load chart */
 	chart.load({ columns: [xVals, benefitLoss] });
 }
+
+/* Loads data for the two points of the highlighted region chart into c3.js */
+function load_points_highlight(){
+	income = user_income.value;
+	filingStatus = filingstatus.value;
+	numChildren = num_children.value;
+
+	if(benefit_selector.value === 'all'){
+		existing = eitc_value(income, filingStatus, numChildren) + ctc_value(income, filingStatus, numChildren);
+		no_exclusion = non_exclude_eitc_value(income, filingStatus, numChildren) + max_benefit_ctc(numChildren);
+	}
+	else if(benefit_selector.value === 'eitc'){
+		existing = eitc_value(income, filingStatus, numChildren);
+		no_exclusion = non_exclude_eitc_value(income, filingStatus, numChildren);
+	}
+	else{
+		existing = ctc_value(income, filingStatus, numChildren);
+		no_exclusion = max_benefit_ctc(numChildren);
+	}
+
+	/* add strings */
+	xPoint = ['x_point', income];
+	existingPoint = ['existing_point', existing];
+	noExclusionPoint = ['no_exclusion_point', no_exclusion];
+
+	/* load to chart */
+	chart.load({ columns: [xPoint, existingPoint, noExclusionPoint] });
+}
+
+/* Loads data for the one points of the curve chart into c3.js */
+function load_point_curve(){
+	income = user_income.value;
+	filingStatus = filingstatus.value;
+	numChildren = num_children.value;
+
+	if(benefit_selector.value === 'all'){
+		benefitLoss = max_benefit_ctc(numChildren) + non_exclude_eitc_value(income, filingStatus, numChildren) - ctc_value(income, filingStatus, numChildren) - eitc_value(income, filingStatus, numChildren);
+	}
+	else if(benefit_selector.value === 'eitc'){
+		benefitLoss = non_exclude_eitc_value(income, filingStatus, numChildren) - eitc_value(income, filingStatus, numChildren);
+	}
+	else{
+		benefitLoss = max_benefit_ctc(numChildren) - ctc_value(income, filingStatus, numChildren);
+	}
+
+	/* add strings */
+	/* no_exclusion_point used since it is red */
+	xPoint = ['x_point', income];
+	benefitLossPoint = ['no_exclusion_point', benefitLoss];
+
+	/* load to chart */
+	chart.load({ columns: [xPoint, benefitLossPoint] });
+}
+
+
+

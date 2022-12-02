@@ -15,6 +15,9 @@ var chart = c3.generate({
             no_exclusion_end : 'x2',
 
             loss_in_benefits: 'x',
+
+            existing_point: 'x_point',
+            no_exclusion_point: 'x_point',
         },
         columns: [
             ['x',            0,     2500, 10979,   11833, 12950, 18950, 20131, 43492, 50000],
@@ -24,6 +27,10 @@ var chart = c3.generate({
 
             ['x2',               18950, 20131, 43492, 50000],
             ['no_exclusion_end', 5733,  5733,  2000,  2000],
+
+            ['x_point', 10000],
+            ['existing_point', 4525],
+            ['no_exclusion_point', 5733],
         ],
         types: {
             total: 'line',
@@ -42,6 +49,9 @@ var chart = c3.generate({
             no_exclusion: 'red',
             no_exclusion_end: 'red',
             loss_in_benefits: 'red',
+            existing_point: 'black',
+            no_exclusion_point: 'red',
+
         },
         regions: {
             no_exclusion_end: [ {'style': 'dashed'} ],
@@ -62,12 +72,9 @@ var chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['total_hidden', 'no_exclusion_end'],
+        hide: ['total_hidden', 'no_exclusion_end', 'existing_point', 'no_exclusion_point'],
     },
     tooltip: {
-        show: false
-    },
-    point: {
         show: false
     },
     axis: {
