@@ -31,6 +31,7 @@ input {
 a {
   text-decoration: none;
   color: black;
+  display: block;
 }
 .name {
   font-family: 'Zen Antique Soft', serif;
@@ -61,7 +62,7 @@ a {
 /* Page boxes */
 /********************************************************************************************************/
 .box_container{
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -72,7 +73,7 @@ a {
   border-radius: 5px;
   height: 100%;
   margin-bottom: 20px;
-  border-color: #adadad;
+  border-color: #cfcfcf;
 }
 .box_title_topbox {
   display: inline-block;
@@ -97,52 +98,49 @@ a {
 /* Remaining boxes ******************************************************/
 .box_level {
   width: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 8px;
 }
-.infobox_left{
-  display: inline-block;
-  width: 49%;
-  height: 200px;
+.infobox_left, .infobox_center, .infobox_right {
+  margin: 5px;
+  flex-basis: 50%;
   border: solid;
   border-width: 1.5px;
   border-radius: 5px;
-  border-color: #adadad;
-
+  border-color: #cfcfcf;
   -webkit-transition: color .2s;
   -moz-transition:    color .2s;
 }
-.infobox_right{
-  display: inline-block;
-  float: right;
-  width: 49%;
-  height: 200px;
-  border: solid;
-  border-width: 1.5px;
+.image_container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 0px;
   border-radius: 5px;
-  border-color: #adadad;
-
-  -webkit-transition: color .2s;
-  -moz-transition:    color .2s;
+  overflow: hidden;
+}
+.image_container img {
+  width: 100%;
+  object-fit: contain;
 }
 .box_words {
-  float: left;
-  display: inline-block;
-  width: 40%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 .box_title{
   font-family: 'Zen Antique Soft', serif;
   font-weight: bold;
   font-size: 120%;
   line-height: 150%;
-  width: 200%;
   display: block;
   padding-left: 15px;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-bottom: 10px;
   text-decoration: underline;
-}
-.infobox_left:hover, .infobox_right:hover {
-  color: #575757;
 }
 .box_description {
   font-family: 'Libre Baskerville', serif;
@@ -151,24 +149,7 @@ a {
   padding-left: 15px;
   line-height: 170%;
 }
-.image_container {
-  display: inline-block;
-  margin-top: 50px;
-  float: left;
-  width: 57%;
-}
-.image_container img {
-  width: 100%;
-  object-fit: contain;
-}
-.image_container_map {
-  display: inline-block;
-  margin-top: 30px;
-  float: left;
-  width: 57%;
-}
-.image_container_map img {
-  width: 100%;
-  object-fit: contain;
+.infobox_left:hover, .infobox_center:hover, .infobox_right:hover {
+  color: #575757;
 }
 
