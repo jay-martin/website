@@ -46,7 +46,7 @@ function show_explanation1(){
 	container = document.getElementById('highlights_container1');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation1Height;
+		container.style.height = highlights_heights[0];
 	}
 	else{
 		container.style.height = '0px';
@@ -60,7 +60,7 @@ function show_explanation2(){
 	container = document.getElementById('highlights_container2');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation2Height;
+		container.style.height = highlights_heights[1];
 	}
 	else{
 		container.style.height = '0px';
@@ -71,7 +71,7 @@ function show_explanation3(){
 	container = document.getElementById('highlights_container3');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation3Height;
+		container.style.height = highlights_heights[2];
 	}
 	else{
 		container.style.height = '0px';
@@ -82,7 +82,7 @@ function show_explanation4(){
 	container = document.getElementById('highlights_container4');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation4Height;
+		container.style.height = highlights_heights[3];
 	}
 	else{
 		container.style.height = '0px';
@@ -93,7 +93,7 @@ function show_explanation5(){
 	container = document.getElementById('highlights_container5');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation5Height;
+		container.style.height = highlights_heights[4];
 	}
 	else{
 		container.style.height = '0px';
@@ -107,7 +107,7 @@ function show_explanation6(){
 	container = document.getElementById('highlights_container6');
 	const height = window.getComputedStyle(container).height;
 	if(height === '0px'){
-		container.style.height = explanation6Height;
+		container.style.height = highlights_heights[5];
 		/* This is the bottom button: the bottom border needs to be straightened out after expanding */
 		document.getElementById('bottom_button').style.borderBottomRightRadius = '0px';
 		document.getElementById('bottom_button').style.borderBottomLeftRadius = '0px';

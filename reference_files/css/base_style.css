@@ -135,14 +135,13 @@ th, td {
   font-size: 7.5px;
 }
 .programs {
-  /* display: none; */
   height: 100%;
   padding-left: 0px;
   margin-left: 0px;
   margin-top: 10px;
   overflow: hidden;
-  -webkit-transition: height 0s ease;
-  -moz-transition: height 0s ease;
+  -webkit-transition: height .5s ease;
+  -moz-transition: height .5s ease;
 }
 .programs_container:hover .programs_title{
   text-decoration: underline;

@@ -4,13 +4,19 @@
  * programs dropdown, and the function to highlight references
  * ****************************************************************************************/
 
+const ref_items = document.querySelectorAll('.ref_item');
 programsHeight = 0;
 
-explanation1Height = 0;
-explanation2Height = 0;
-explanation3Height = 0;
+//Get all highlights
+var highlights = document.getElementsByClassName("explanation_and_animation_button_container");
 
-const ref_items = document.querySelectorAll('.ref_item');
+//Create universal array of highlights heights
+highlights_heights = [];
+
+//Loop through all highlights and set highlights heights to 0
+for (var i = 0; i < highlights.length; i++) {
+	highlights_heights[i] = 0;
+}
 
 initialize_page();
 
@@ -18,26 +24,20 @@ function initialize_page(){
 	/* keep calculations a secret */
 	document.getElementById("highlights_content").style.visibility = 'hidden';
 	document.getElementById("programs").style.visibility = 'hidden';
-	
 	timer = 200;
 	setTimeout(function () {
-		/* calculate heights */
-		programsHeight     = window.getComputedStyle(document.getElementById('programs')).height;
-		explanation1Height = window.getComputedStyle(document.getElementById('highlights_container1')).height;
-		explanation2Height = window.getComputedStyle(document.getElementById('highlights_container2')).height;
-		explanation3Height = window.getComputedStyle(document.getElementById('highlights_container3')).height;
-
+		/* calculate highlights heights, as well as list of programs height, and then set to zero */
+		programsHeight = window.getComputedStyle(document.getElementById('programs')).height;
 		document.getElementById("programs").style.height = "0px";
-		document.getElementById("highlights_container1").style.height = "0px";
-		document.getElementById("highlights_container2").style.height = "0px";
-		document.getElementById("highlights_container3").style.height = "0px";
-	}, timer);
 
-	/* reset transition duration values */
-	document.getElementById("programs").style.transitionDuration = ".5s";
-	document.getElementById("highlights_container1").style.transitionDuration = ".5s";
-	document.getElementById("highlights_container2").style.transitionDuration = ".5s";
-	document.getElementById("highlights_container3").style.transitionDuration = ".5s";
+		for (var i = 0; i < highlights_heights.length; i++) {
+			num = i+1;
+			id = 'highlights_container' + num.toString();
+			highlights_heights[i] = window.getComputedStyle(document.getElementById(id)).height;
+			document.getElementById(id).style.height = "0px";
+		}
+
+	}, timer);
 
 	/* make highlights visible */
 	timer += 1000;
@@ -56,6 +56,7 @@ function initialize_page(){
 	}, timer);
 }
 
+//Adds a yellow highlight when a reference is selected
 function highlight(ref){
 	ref_items.forEach(ref_items => {
 	  ref_items.style.backgroundColor = 'white';
@@ -63,11 +64,13 @@ function highlight(ref){
 	document.getElementById(ref).style.backgroundColor = 'yellow';
 }
 
+//Shows the list of programs
 function show_programs(){
 	container = document.getElementById('programs');
 	container.style.height = programsHeight;
 }
 
+//Hides the list of programs
 function hide_programs(){
 	container = document.getElementById('programs');
 	container.style.height = '0px';
