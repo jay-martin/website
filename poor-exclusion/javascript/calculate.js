@@ -3,6 +3,10 @@
  * well as the function determining pertinent x-values that c3.js needs to render the EMTR chart
  * ****************************************************************************************/
 
+/** Returns the largest EITC benefit it is possible to receive
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {integer} - the largest EITC benefit it is possible to receive
+ * */
 function max_benefit_eitc(numChildren){
 	if(numChildren === 'none'){
 		return 560;
@@ -18,6 +22,10 @@ function max_benefit_eitc(numChildren){
 	}
 }
 
+/** Returns the largest CTC benefit it is possible to receive
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {integer} - the largest CTC benefit it is possible to receive
+ * */
 function max_benefit_ctc(numChildren){
 	if(numChildren === 'none'){
 		return 0;
@@ -33,7 +41,12 @@ function max_benefit_ctc(numChildren){
 	}
 }
 
-/* Returns the value the eitc would be if it did not include a phase-in*/
+/** Returns the value of the EITC at a given income for a given filing status and number of children IF the EITC did not include a phase-in
+ * @param {integer} - income
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - EITC benefit
+ * */
 function non_exclude_eitc_value(income, filingStatus, numChildren){
 	benefit = 0
 	if(filingStatus==="married"){
@@ -83,9 +96,12 @@ function non_exclude_eitc_value(income, filingStatus, numChildren){
 	return benefit;
 }
 
-/* Determines if the maximum benefit has already been reached */
-/* Returns true if yes */
-/* Needed for phaseout region, when max benefit > benefit */
+/** Returns a boolean showing if the maximum benefit has already been reached. Needed for phaseout region, when max benefit > benefit
+ * @param {integer} - income
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {boolean} - True if the maximum benefit has already been reached
+ * */
 function above_max(income, filingStatus, numChildren){
 	if(filingStatus === 'married'){
 		if(numChildren === 'none'){
@@ -156,14 +172,18 @@ function above_max(income, filingStatus, numChildren){
 	return false;
 }
 
-/* Returns the tax difference between a head of household & single filer at input: income */
+/** Returns the difference in tax liability between a single filer and head of household at a given income
+ * @param {integer} - income
+ * @return {float}
+ * */
 function hoh_value(income){
 	return single_tax(income) - hoh_tax(income);
 }
 
-/* Returns the tax a single filer would owe at input: income */
-/* Note: only includes first three brackets since chart only shows lower incomes */
-/* Note: calculated using standard deduction; does not include itemized deductions functionality*/
+/** Returns the tax a single filer would owe at a particular income (using the standard deduction)
+ * @param {integer} - income
+ * @return {float} - tax liability
+ * */
 function single_tax(income){
 	if(income <= 12950){
 		return 0;
@@ -179,9 +199,10 @@ function single_tax(income){
 	}
 }
 
-/* Returns the tax a head of household would owe at input: income */
-/* Note: only includes first three brackets since chart only shows lower incomes */
-/* Note: calculated using standard deduction; does not include itemized deductions functionality*/
+/** Returns the tax a head of household would owe at a particular income (using the standard deduction)
+ * @param {integer} - income
+ * @return {float} - tax liability
+ * */
 function hoh_tax(income){
 	if(income <= 19400){
 		return 0;
@@ -197,7 +218,12 @@ function hoh_tax(income){
 	}
 }
 
-/* Returns the EITC benefit given inputs: income, filing status and number of children*/
+/** Returns the value of the EITC at a given income for a given filing status and number of children
+ * @param {integer} - income
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - EITC benefit
+ * */
 function eitc_value(income, filingStatus, numChildren){
 	benefit = 0
 	if(filingStatus==="married"){
@@ -255,7 +281,12 @@ function eitc_value(income, filingStatus, numChildren){
 	return benefit;
 }
 
-/* Returns the CTC benefit given inputs: income, filing status and number of children*/
+/** Returns the value of the CTC at a given income for a given filing status and number of children
+ * @param {integer} - income
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - CTC benefit
+ * */
 function ctc_value(income, filingStatus, numChildren){
 	benefit = 0;
 	if(filingStatus==="married"){
@@ -541,6 +572,11 @@ function ctc_value(income, filingStatus, numChildren){
 	return benefit;
 }
 
+/** Returns a sorted array containing ALL the x-values c3.js will need to render the chart for a given filing status and number of children
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function all_reference_values(filingStatus, numChildren){
     eitcReferenceValues = eitc_reference_value(filingStatus, numChildren);
     ctcReferenceValues = ctc_reference_values(filingStatus, numChildren);
@@ -559,10 +595,18 @@ function all_reference_values(filingStatus, numChildren){
     return combined_brackets;
 }
 
+/** Returns an array containing the x-values c3.js will need to render the head of household values 
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function hoh_reference_values(){
 	return [0, 12950, 19400, 23225, 34050, 54725, 75300];
 }
 
+/** Returns an array containing the x-values c3.js will need to render the EITC values
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function eitc_reference_value(filingStatus, numChildren){
     referenceValues = [];
 
@@ -597,6 +641,11 @@ function eitc_reference_value(filingStatus, numChildren){
     return referenceValues;
 }
 
+/** Returns an array containing the x-values c3.js will need to render the CTC values
+ * @paragm {string} - string representing a tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function ctc_reference_values(filingStatus, numChildren){
     referenceValues = [];
     if (filingStatus==="married"){

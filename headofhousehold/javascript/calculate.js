@@ -1,3 +1,9 @@
+/** Returns the difference in tax between a single filer and a head of household at a given income, value of itemized deductions, and number of children
+ * @param {integer} - income
+ * @paragm {integer} - monetary value of itemized deductions
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - tax difference
+ * */
 function taxDifferenceatIncomeValue(income, itemDeduct, numChildren){
 	taxDif = taxDifference(itemDeduct, numChildren);
 
@@ -20,7 +26,10 @@ function taxDifferenceatIncomeValue(income, itemDeduct, numChildren){
     return user_dif;
 }
 
-/* Calculates the tax difference between a single filer and hoh at a particular deduction amount */
+/** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values
+ * @paragm {integer} - monetary value of itemized deductions
+ * @return {array of two arrays of floats} - 
+ * */
 function taxDifference(itemDeduct){
 	/* Calculate reference tax bracket values */
 	single_tax_brackets = singleNewBrackets(itemDeduct);
@@ -40,7 +49,10 @@ function taxDifference(itemDeduct){
 	return [combined_brackets, tax_difference];
 }
 
-/* Calculates the tax difference between a single filer and hoh at a particular deduction amount, including the effect of the CTC */
+/** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values WHEN INCLUDING THE CTC
+ * @paragm {integer} - monetary value of itemized deductions
+ * @return {array of two arrays of floats} - 
+ * */
 function tax_difference_with_ctc(itemDeduct, numChildren){
 	/* Calculate reference tax bracket values */
 	single_tax_brackets = singleNewBrackets(itemDeduct);

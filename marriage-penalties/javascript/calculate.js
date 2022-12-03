@@ -1,9 +1,13 @@
-/* Calculates combined income*/
+/** Returns the sum of the incomes of person 1 and person 2
+ * @return {integer}
+ * */
 function combined_income_marriage_penalty(){
     return parseInt(myRange_person1.value, 10) + parseInt(myRange_person2.value,10);
 }
 
-/* Calculates combined number of children, outputs integer*/
+/** Returns the sum of the children between person 1 and person 2
+ * @return {integer}
+ * */
 function numChildren(){
     if (person1_children.value==='none' && person2_children.value==='none'){return 0;}
     if ((person1_children.value==='one' && person2_children.value==='none') || (person1_children.value==='none' && person2_children.value==='one')){return 1;}
@@ -14,7 +18,12 @@ function numChildren(){
     if ((person1_children.value==='three' && person2_children.value==='three')){return 6;}
 }
 
-/* Calculates EITC benefit for the inputed income and filing status*/
+/** Returns the value of the EITC at a given income for a given filing status and number of children
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - value of EITC
+ * */
 function EITC_benefit(filingStatus, income, numChildren){
 	benefit = 0
 	if(filingStatus==="married"){
@@ -72,7 +81,10 @@ function EITC_benefit(filingStatus, income, numChildren){
 	return benefit;
 }
 
-/* Calculates the marriage penalty */
+/** Returns the marriage penalty for a given combined income
+ * @param {integer} - the sum of the incomes of person 1 and person 2
+ * @return {float} - the difference between the sum of the two individual EITC's and the married EITC at their combined income
+ * */
 function value_marriage_penalty(combined_income){
 	combined_children = numChildren();
 	numberChildren = 'none';
