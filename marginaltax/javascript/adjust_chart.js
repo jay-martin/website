@@ -5,9 +5,10 @@
  * ****************************************************************************************/
 
 /* Adjusts axis labels when chart is changed */
-function adjust_axes(){
+function adjust_axis_labels(){
 	if(chart_type.value === 'EMTR'){
         chart.internal.config.axis_y_tick_format = function(value){return d3.format('.0%')(value/100)};
+        chart.internal.config.axis_y_tick_values = [-60, -50, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
         chart.axis.labels({y: 'Effective Marginal Tax Rate'});
     }
     else{
@@ -30,84 +31,155 @@ function adjust_axes_numChildren(){
 	}
 }
 
-/* adjust y-axis to fit chart */
-function adjust_y_axis(){
+/* adjusts the y-axis of the EMTR chart */
+function adjust_y_axis_emtr(){
+    /* allow c3.js to dynamically update axes */
+    chart.internal.config.axis_y_max = undefined;
+    chart.internal.config.axis_y_min = undefined;
+
+    /* adjust for the fact that snap contains very large benefit cliffs (much greater than 100%) */
+    if(personal_income_tax_isActive && eitc_isActive && snap_isActive && ssi_isActive){
+         chart.axis.max({y: 110});
+    }
+    else if(snap_isActive){
+        chart.axis.max({y: 90});
+    }
+}
+
+/* adjust y-axis of the EI chart */
+function adjust_y_axis_ei(){
     numBenefitsActive = eitc_isActive + ctc_isActive + snap_isActive;
     numTaxesActive = personal_income_tax_isActive + fica_isActive;
 
-    if(chart_type.value === 'EMTR'){
-
+    /* 
+    if(zoom_dropdown.value === 'default'){
+        if(numBenefitsActive == 3 && numTaxesActive == 0){
+            chart.axis.max({y: 12000});
+            chart.axis.min({y: 0});
+        }
+        else if(numBenefitsActive == 3 && (numTaxesActive == 1 || numTaxesActive == 2)){
+            chart.axis.max({y: 12000});
+            chart.axis.min({y: -4000});
+        }
+        else if(numBenefitsActive == 2 && numTaxesActive == 0){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: 0});
+        }
+        else if(numBenefitsActive == 2 && numTaxesActive == 1 ){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -4000});
+        }
+        else if(numBenefitsActive == 2 && numTaxesActive == 2){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -6000});
+        }
+        else if(numBenefitsActive == 1 && numTaxesActive == 1 && personal_income_tax_isActive){
+            chart.axis.max({y: 4000});
+            chart.axis.min({y: -14000});
+        }
+        else if(numBenefitsActive == 1 && numTaxesActive == 1 && fica_isActive){
+            chart.axis.max({y: 4000});
+            chart.axis.min({y: -8000});
+        }
+        else if(numBenefitsActive == 1 && snap_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 6000});
+            chart.axis.min({y: -22000});
+        }
+        else if(numBenefitsActive == 1 && ctc_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 0});
+            chart.axis.min({y: -20000});
+        }
+        else if(numBenefitsActive == 1 && eitc_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 4000});
+            chart.axis.min({y: -22000});
+        }
+        else if(numBenefitsActive == 0 && numTaxesActive == 2){
+            chart.axis.max({y: 0});
+            chart.axis.min({y: -22000});
+        }
+        else if(numBenefitsActive == 0 && numTaxesActive == 1 && personal_income_tax_isActive){
+            chart.axis.max({y: 0});
+            chart.axis.min({y: -15000});
+        }
+        else if(numBenefitsActive == 0 && numTaxesActive == 1 && fica_isActive){
+            chart.axis.max({y: 0});
+            chart.axis.min({y: -8000});
+        }
+        else{
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -4000});
+        }
     }
-    else{
-        if(zoom_dropdown.value === 'lower' || zoom_dropdown.value === 'default'){
-            if(numBenefitsActive == 3 && numTaxesActive == 0){
-                chart.axis.max({y: 12000});
-                chart.axis.min({y: 0});
-            }
-            else if(numBenefitsActive == 3 && (numTaxesActive == 1 || numTaxesActive == 2)){
-                chart.axis.max({y: 12000});
-                chart.axis.min({y: -4000});
-            }
-            else if(numBenefitsActive == 2 && numTaxesActive == 0){
-                chart.axis.max({y: 8000});
-                chart.axis.min({y: 0});
-            }
-            else if(numBenefitsActive == 2 && numTaxesActive == 1 ){
-                chart.axis.max({y: 8000});
-                chart.axis.min({y: -4000});
-            }
-            else if(numBenefitsActive == 2 && numTaxesActive == 2){
-                chart.axis.max({y: 8000});
-                chart.axis.min({y: -6000});
-            }
-            else if(numBenefitsActive == 1 && snap_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
-                chart.axis.max({y: 6000});
-                chart.axis.min({y: -4000});
-            }
-            else if(numBenefitsActive == 1 && ctc_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
-                chart.axis.max({y: 4000});
-                chart.axis.min({y: -2000});
-            }
-            else if(numBenefitsActive == 1 && (numTaxesActive == 0 || numTaxesActive == 1)){
-                chart.axis.max({y: 6000});
-                chart.axis.min({y: -2000});
-            }
-            else if(numBenefitsActive == 1 && snap_isActive == true && numTaxesActive == 2){
-                chart.axis.max({y: 6000});
-                chart.axis.min({y: -6000});
-            }
-            else if(numBenefitsActive == 1 && ctc_isActive == true && numTaxesActive == 2){
-                chart.axis.max({y: 2000});
-                chart.axis.min({y: -4000});
-            }
-            else if(numBenefitsActive == 1 && eitc_isActive == true && numTaxesActive == 2){
-                chart.axis.max({y: 6000});
-                chart.axis.min({y: -6000});
-            }
-            else if(numBenefitsActive == 0 && numTaxesActive == 2){
-                chart.axis.max({y: 2000});
-                chart.axis.min({y: -7000});
-            }
-            else if(numBenefitsActive == 0 && numTaxesActive == 1){
-                chart.axis.max({y: 2000});
-                chart.axis.min({y: -4000});
-            }
-            else{
-                chart.axis.max({y: 8000});
-                chart.axis.min({y: -4000});
-            }
+    */
+    if(zoom_dropdown.value === 'lower' || zoom_dropdown.value === 'default'){
+        if(numBenefitsActive == 3 && numTaxesActive == 0){
+            chart.axis.max({y: 12000});
+            chart.axis.min({y: 0});
         }
-        currentMax = chart.axis.max()['y'];
-        newMax = currentMax;
-        if(ptc_isActive === true){
-            newMax += 10000;
+        else if(numBenefitsActive == 3 && (numTaxesActive == 1 || numTaxesActive == 2)){
+            chart.axis.max({y: 12000});
+            chart.axis.min({y: -4000});
         }
-        if(ssi_isActive === true){
-            newMax += 10000;
+        else if(numBenefitsActive == 2 && numTaxesActive == 0){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: 0});
         }
-        fit_y_axis_ei(newMax);
-        chart.axis.max({y: newMax});
-    }   
+        else if(numBenefitsActive == 2 && numTaxesActive == 1 ){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -4000});
+        }
+        else if(numBenefitsActive == 2 && numTaxesActive == 2){
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -6000});
+        }
+        else if(numBenefitsActive == 1 && snap_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
+            chart.axis.max({y: 6000});
+            chart.axis.min({y: -4000});
+        }
+        else if(numBenefitsActive == 1 && ctc_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
+            chart.axis.max({y: 4000});
+            chart.axis.min({y: -2000});
+        }
+        else if(numBenefitsActive == 1 && (numTaxesActive == 0 || numTaxesActive == 1)){
+            chart.axis.max({y: 6000});
+            chart.axis.min({y: -2000});
+        }
+        else if(numBenefitsActive == 1 && snap_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 6000});
+            chart.axis.min({y: -6000});
+        }
+        else if(numBenefitsActive == 1 && ctc_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 2000});
+            chart.axis.min({y: -4000});
+        }
+        else if(numBenefitsActive == 1 && eitc_isActive == true && numTaxesActive == 2){
+            chart.axis.max({y: 6000});
+            chart.axis.min({y: -6000});
+        }
+        else if(numBenefitsActive == 0 && numTaxesActive == 2){
+            chart.axis.max({y: 2000});
+            chart.axis.min({y: -7000});
+        }
+        else if(numBenefitsActive == 0 && numTaxesActive == 1){
+            chart.axis.max({y: 2000});
+            chart.axis.min({y: -4000});
+        }
+        else{
+            chart.axis.max({y: 8000});
+            chart.axis.min({y: -4000});
+        }
+    }
+
+    currentMax = chart.axis.max()['y'];
+    newMax = currentMax;
+    if(ptc_isActive === true){
+        newMax += 10000;
+    }
+    if(ssi_isActive === true){
+        newMax += 10000;
+    }
+    fit_y_axis_ei(newMax);
+    chart.axis.max({y: newMax});
 }
 
 /* update y-axis tick values for power users using custom axis ranges */
@@ -180,6 +252,6 @@ function zoom_chart(){
     }
     /* adjust for particular selection of charts */
     setTimeout(function () {
-        adjust_y_axis();
+        adjust_y_axis_ei();
     }, 500);
 }

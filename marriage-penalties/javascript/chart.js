@@ -18,12 +18,12 @@ var MPchart = c3.generate({
             'point_married' : 'x_point_married'
         },
         columns: [
-            ['x1',       0,             10979,        20131,        43493],
-            ['person1',  0,             3733,         3733,         0],
-            ['x2',       0, 7320, 9160,        16480],
-            ['person2',  0, 560,  560,         0],
-            ['x3',       0,             10979,               26262,        49622],
-            ['married',  0,             3733,                3733,         0],
+            ['x3',       0, 10979, 26262, 49622],
+            ['married',  0, 3733,  3733,  0],
+            ['x1',       0, 10979, 20131, 43493],
+            ['person1',  0, 3733,  3733,  0],
+            ['x2',       0, 7320, 9160, 16480],
+            ['person2',  0, 560,  560,  0],
 
             ['x4',            0,    60000],
             ['married_eitc',  1548, 1548],
@@ -54,16 +54,25 @@ var MPchart = c3.generate({
             person1: 'Your EITC',
             person2: "Your partner's EITC",
             married: 'EITC if you get married',
-        }
+        },
+        colors: {
+            person1: '#6ab6fc',
+            person2: '#770087',
+            married: '#000000',
+            married_eitc: '#FFFFFF',
+            penalty: '#eb3734',
+            combined_eitc: '#FFFFFF',
+            bonus: '#36D903',
+            point1: '#6ab6fc',
+            point2: '#770087',
+            point_married: '#000000',
+        },
     },
     padding: {
         bottom: 0,
         top: 10,
         left: 70,
         right: 22,
-    },
-    color: {
-        pattern: ['#6ab6fc', '#770087', '#000000', '#FFFFFF', '#eb3734', '#FFFFFF', '#36D903']
     },
     legend: {
         position: 'bottom',
@@ -72,11 +81,6 @@ var MPchart = c3.generate({
     tooltip: {
         show: false
     },
-    /*
-    point: {
-        show: false
-    },
-    */
     axis: {
         x: {
             label: {text: 'Employment Income', position: 'outer-center'},

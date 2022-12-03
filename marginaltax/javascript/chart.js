@@ -89,8 +89,7 @@ var chart = c3.generate({
                     },
                 values: [-60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
             },
-            max: 60,
-            padding: {top: 0, bottom: 0},
+            padding: {top: 19, bottom: 5},
         }
     },
     grid: {

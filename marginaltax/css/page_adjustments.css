@@ -1,3 +1,4 @@
+/*****************************************Adjustements to center explanation box*****************************************/
 .center_explanation_box {
 	padding-bottom: 0px;
 }
@@ -5,23 +6,15 @@
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
-#marginal_tax_rate {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-}
 .tax_and_benefit_breakdown {
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 90%;
 }
-#benefits_breakdown {
-	display: none;
-	margin-bottom: 0px;
-	padding-bottom: 0px;
-}
-.benefits_breakdown_item {
-	display: none;
+#marginal_tax_rate {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 .show_all_button{
 	display: none;
@@ -32,12 +25,22 @@
 	background-color: #f5f3f2;
 	margin-left: 10px;
 	color: #636363;
+	padding: 0px;
 }
 .show_all_button:hover {
 	background-color: #f5f3f2;
 }
 #benefit_loss_text {
 	display: inline-block;
+}
+#benefits_breakdown {
+	display: none;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+}
+.benefits_breakdown_item {
+	padding: 0;
 }
 #rounding_disclaimer {
 	font-size: 60%;

@@ -25,21 +25,35 @@ function switch_chart(){
 /* Controls the switch to the EMTR chart */
 function switch_to_emtr(){
 	chart.unload({ids: ['income_tax_and_transfer', 'tangent_line']});
-	adjust_axes();
-    adjust_y_axis();
+	setTimeout(function () {
+		adjust_y_axis_emtr();
+		adjust_axis_labels();
+	}, 500);
 	setTimeout(function () {
 		load_emtr_data();
-	}, 500);
+		modifyIncome();
+	}, 1000);
+
 }
 
 /* Controls the switch to the EI chart */
 function switch_to_ei(){
 	chart.unload({ids: ['personal_income_tax', 'fica', 'eitc', 'ctc', 'snap', 'total']});
-	adjust_axes();
-	adjust_y_axis();
+	adjust_axis_labels();
+	adjust_y_axis_ei();
 	setTimeout(function () {
 		load_ei_data();
 	}, 500);
+}
+
+/* Controls whether the y-axis is adjusted for the EMTR or EI graph based on user selection of chart */
+function adjust_y_axis(){
+	if(chart_type.value === 'EMTR'){
+		adjust_y_axis_emtr();
+	}
+	else{
+		adjust_y_axis_ei();
+	}
 }
 
 /****************************************
