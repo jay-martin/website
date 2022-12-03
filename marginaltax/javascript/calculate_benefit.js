@@ -3,12 +3,12 @@
  * well as the function determining pertinent x-values that c3.js needs to render the EI chart
  * ****************************************************************************************/
 
-/* Returns the benefit values of each benefit, as well as the sum of the benefits
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children)
-Output: array of integers
-Note: Disabled benefits return a value of 0 */
+/** Returns an array of the monetary values of each benefit, as well as the sum of the benefits, at a given income
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @return {array of floats} - array containing the benefit values for each benefit, as well as the sum of all benefit values 
+ * */
 function tax_and_transfer_at_income(income, numChildren){
 	householdSize = household_size('single', numChildren);
 
@@ -24,9 +24,9 @@ function tax_and_transfer_at_income(income, numChildren){
 	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, totalVal];
 }
 
-/* Returns the x-values needed for c3.js to render the EI chart 
-Inputs: None, determines values by referencing html inputs
-Output: Sorted array of integers */
+/** Returns the x-values needed for c3.js to render the EI chart 
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function get_x_values_effective_income(){
 	numChildren = num_children.value;
 
@@ -109,10 +109,11 @@ function get_x_values_effective_income(){
 	return xVals;
 }
 
-/* Returns the personal income tax liability for a given income 
-Inputs: 
-	income: integer of gross income 
-Output: float */
+/** Returns personal income tax liability for a given filing status at a given income
+ * @param {integer} - income
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @return {float} - personal income tax liability
+ * */
 function personal_tax_at_income(income){
 	if(personal_income_tax_isActive === true){
 		if(income <= 12950){
@@ -143,10 +144,10 @@ function personal_tax_at_income(income){
 	return 0;
 }
 
-/* Returns the FICA tax liability for a given income 
-Inputs: 
-	income: integer of gross income 
-Output: float */
+/** Returns FICA payroll tax liability at a given income
+ * @param {integer} - income
+ * @return {float} - FICA payroll tax liability
+ * */
 function fica_tax_at_income(income){
 	if(fica_isActive === true){
 		if(income <= 147000){
@@ -162,11 +163,11 @@ function fica_tax_at_income(income){
 	return 0;
 }
 
-/* Returns EITC benefit value for a given income and number of children
-Inputs: 
-	income: integer of gross income 
-	numChildren: string representing the number of children
-Output: float */
+/** Returns the monetary value of the EITC at a given income for a given number of children
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - EITC benefit
+ * */
 function eitc_benefit_at_income(income, numChildren){
 	if(eitc_isActive === true){
 		benefit = 0;
@@ -199,11 +200,12 @@ function eitc_benefit_at_income(income, numChildren){
 	return 0;
 }
 
-/* Returns CTC benefit value for given income and number of children
-Inputs: 
-	income: integer of gross income 
-	numChildren: string representing the number of children
-Output: float */
+/** Returns the monetary value of the CTC at a given income for a given number of children
+ * @param {integer} - income
+ * @param {string} - string reprenting tax filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - CTC benefit
+ * */
 function ctc_benefit_at_income(income, numChildren){
 	if(ctc_isActive === true){
 		benefit = 0;
@@ -302,12 +304,11 @@ function ctc_benefit_at_income(income, numChildren){
 	return 0;
 }
 
-/* PROBLEM: Currently calculates using number of children when these values are for ~household size~. So they work fine for single but not for married */
-/* Returns SNAP benefit value at a given income and household size
-Inputs: 
-	income: integer of gross income 
-	householdSize: string representing the number of people in the household (number of adults+number of children)
-Output: float */
+/** Returns the monetary value of SNAP at a given income for a given household size
+ * @param {integer} - income
+ * @param {integer} - number of people in household
+ * @return {float} - SNAP benefit
+ * */
 function snap_benefit_at_income(income, householdSize){
 	if(snap_isActive === true){
 		if(householdSize == 4){
@@ -334,11 +335,11 @@ function snap_benefit_at_income(income, householdSize){
 	return 0;
 }
 
-/* Returns Medicaid/PTC benefit values at a given income and number of children
-Inputs: 
-	income: integer of gross income 
-	numChildren: string representing the number of children in the household
-Output: float */
+/** Returns the monetary value of Medicaid/premium tax credits at a given income for a given number of children
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - Medicaid/PTC value
+ * */
 function ptc_benefit_at_income(income, numChildren){
 	if(ptc_isActive === true){
 		if(numChildren === "none"){
@@ -373,10 +374,10 @@ function ptc_benefit_at_income(income, numChildren){
 	return 0;
 }
 
-/* Returns SSI benefit value at a given income
-Inputs: 
-	income: integer of gross income 
-Output: float */
+/** Returns the monetary value of SSI at a given income
+ * @param {integer} - income
+ * @return {float} - SSI benefit
+ * */
 function ssi_benefit_at_income(income){
 	if(ssi_isActive === true){
 		if(income <= 780){

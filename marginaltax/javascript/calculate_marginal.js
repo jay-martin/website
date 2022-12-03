@@ -3,11 +3,11 @@
  * well as the function determining pertinent x-values that c3.js needs to render the EMTR chart
  * ****************************************************************************************/
 
-/** Returns the EMTR values of each benefit, as well as the sum of the EMTRs **
+/** Returns the EMTR values of each benefit, as well as the sum of the EMTRs, at a given income
  * @param {integer} - income
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * @param {string} - string representing the filing status ('married', 'hoh', 'single')
- * @return {array of floats} - array containing the benefit values for each benefit, as well as the sum of all benefit values 
+ * @return {array of floats} - array containing the EMTR's of each benefit, as well as the sum of all benefit values 
  * */
 function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
 	householdSize = household_size(filingStatus, numChildren);
@@ -24,19 +24,19 @@ function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
 	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, ptcVal, totalVal];
 }
 
-/* Returns the EMTR at a particular income 
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children)
-Output: float */
+/** Returns the EMTR of all benefits of a particular point
+ * @param {integer} - income
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - effective marginal tax rate
+ * */
 function slope_at_point(income, numChildren){
 	householdSize = household_size('single', numChildren);
 	return (personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, householdSize) + ptc_at_income_marginal(income, numChildren) + ssi_at_income_marginal(income)) / 100;
 }
 
-/* Returns the x-values needed for c3.js to render the EMTR chart 
-Inputs: None, determines values by referencing html inputs
-Output: Sorted array of integers */
+/** Returns the x-values needed for c3.js to render the EMTR chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * */
 function get_x_values_marginal(){
 	numChildren = num_children.value;
 
@@ -120,10 +120,11 @@ function get_x_values_marginal(){
 	return xVals;
 }
 
-/* Returns the personal income tax marginal tax rate for a given income 
-Inputs: 
-	income: integer of gross income 
-Output: integer */
+/** Returns the personal income tax rate at a given income
+ * @param {integer} - income
+ * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
+ * @return {integer} - personal income tax marginal tax rate
+ * */
 function personal_at_income_marginal(income){
 	single = [12950, 23225, 54725,  102025, 183000, 228900, 552850];
 	hoh =    [19400, 34050, 75300,  108450, 189450, 235350, 559300];
@@ -162,10 +163,10 @@ function personal_at_income_marginal(income){
 	return 0;
 }
 
-/* Return the marginal tax rate of FICA payroll taxes for a given income
-Inputs: 
-	income: integer of gross income 
-Output: float */
+/** Returns the fica income tax rate at a given income
+ * @param {integer} - income
+ * @return {float} - effective marginal tax rate
+ * */
 function fica_at_income_marginal(income){
 	if(fica_isActive === true){
 		if(income < 147000){
@@ -181,11 +182,12 @@ function fica_at_income_marginal(income){
 	return 0;
 }
 
-/* Returns EITC EMTR for the inputed income and filing status
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children)
-Output: integer */
+/** Returns the effective marginal tax rate of the EITC at a given income, for a given filing status and number of children
+ * @param {integer} - income
+ * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
+ * @param {string} - string representing number of children ('none', 'one', 'two', 'three')
+ * @return {float} - effective marginal tax rate
+ * */
 function eitc_at_income_marginal(income, numChildren){
 	if(eitc_isActive === true){
 		if(filingstatus.value === 'married'){
@@ -244,11 +246,12 @@ function eitc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* Returns the EITC EMTR for the inputed income and filing status
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children)
-Output: integer */
+/** Returns the effective marginal tax rate of the CTC at a given income, for a given filing status and number of children
+ * @param {integer} - income
+ * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
+ * @param {string} - string representing number of children ('none', 'one', 'two', 'three')
+ * @return {float} - effective marginal tax rate
+ * */
 function ctc_at_income_marginal(income, numChildren){
 	if(ctc_isActive === true){
 		if(numChildren ==="three"){
@@ -286,11 +289,11 @@ function ctc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* Returns SNAP's EMTR for a given income and household size 
-Inputs: 
-	income: integer of gross income 
-	householdSize: integer of the number of people in the household (number of adults+number of children)
-Output: integer */
+/** Returns the effective marginal tax rate of SNAP at a given income and household size
+ * @param {integer} - income
+ * @param {integer} - number of people (adults+children) in the household 
+ * @return {float} - effective marginal tax rate
+ * */
 function snap_at_income_marginal(income, householdSize){
 	if(snap_isActive === true){
 		if(householdSize == 5){
@@ -326,11 +329,12 @@ function snap_at_income_marginal(income, householdSize){
 	return 0;
 }
 
-/* Returns the EMTR of the premium tax credit for a given income and number of children
-Inputs: 
-	income: integer of gross income 
-	numChildren: string denoting the number of children
-Output: float */
+/** Returns the effective marginal tax rate of the premium tax credits at a given income, for a given number of children
+ * @param {integer} - income
+ * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
+ * @param {string} - string representing number of children ('none', 'one', 'two', 'three')
+ * @return {float} - effective marginal tax rate
+ * */
 function ptc_at_income_marginal(income, numChildren){
 	if(ptc_isActive === true){
 		/* married */
@@ -401,10 +405,10 @@ function ptc_at_income_marginal(income, numChildren){
 }
 
 /* PROBLEM: SSI affects SNAP */
-/* Returns the EMTR of SSI at a given income
-Inputs: 
-	income: integer of gross income 
-Output: integer */
+/** Returns the effective marginal tax rate of SSI at a given income
+ * @param {integer} - income
+ * @return {float} - effective marginal tax rate
+ * */
 function ssi_at_income_marginal(income){
 	if(ssi_isActive === true){
 		if(income >= 780 && income < 20964){
@@ -418,11 +422,12 @@ function ssi_at_income_marginal(income){
 	return 0;
 }
 
-/* Returns the number of people in a household given the number of adults (determined from marital status) and the number of children
-Inputs: 
-	filinStatus: string denoting whether the user is single, married or a head of household
-	numChildren: string denoting the number of children)
-Output: integer */
+/** Returns the number of people in a household given the number of adults (determined from marital status) and the number of children
+ * @param {integer} - income
+ * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
+ * @param {string} - string representing number of children ('none', 'one', 'two', 'three')
+ * @return {integer} - number of people in the household
+ * */
 function household_size(filingStatus, numChildrenString){
 	/* Calculate the number of adults */
 	if(filingStatus === 'married'){
