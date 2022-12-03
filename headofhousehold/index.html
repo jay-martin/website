@@ -3,8 +3,16 @@
 <head>
   <title>Head of Household</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./css/style.css" type="text/css" rel="stylesheet" />
+  <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- JQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -14,6 +22,14 @@
 
   <!-- Computer Modern Sans -->
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <!-- Computer Modern Classical Serif Italic -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <!-- Load d3.js and c3.js -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -38,121 +54,135 @@
 <!--div class for chart and highlights box-------------------------------------------->
 <div class = "chart_highlights_container">
   
-  <!--Left side-------------------------------------------------->
+   <!--Left side-------------------------------------------------->
   <div class="left_side">
     <div class="other_pages" id='other_pages_id'>
       <a href="../home/index.html">Home</a>
       <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Fixing Family Benefits</a>
       <a href="./index.html">Poverty Reduction</a>
-      <a href="./poor-exclusion/index.html">The Exclusion of Poor</br>Families</a>
       <a href="../marginaltax/index.html">Marginal Tax Rates</a>
       <a href="../marriage-penalties/index.html">Marriage Penalties</a>
-      <a href="./index.html">Asset Tests</a>
-      <a href="./index.html">A Better Way</a>
-      <a href="./index.html">The Child Tax Credit</a>
-      <a href="./index.html">The Earned Income Tax</br>Credit</a>
-      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
-      <a href="./index.html">SNAP (Food Stamps)</a>
-      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+      <a href="./index.html">Asinine Asset Tests</a>
+      <a href="./index.html">Administrative Burdens</a>
+      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+      <a href="./index.html">Racial Justice</a>
+      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        <div class="programs" id="programs">
+          <a href="./index.html">The Child Tax Credit</a>
+          <a href="./index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="./index.html">SNAP (Food Stamps)</a>
+          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="./index.html">WIC</a>
+          <a href="./index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
     </div>
   </div>
 
   <!--Chart------------------------------------------------------>
-  <div class="chart">
+  <div class="center">
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs" id="user_inputs">
-      <!--Income slider-->
-      <div class="slidecontainer" id="income_slider_container"> 
-        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_HOH">50,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
+    <div class="chart">
+
+      <!--User inputs------------------------------>
+      <div class="user_inputs" id="user_inputs">
+        <!--Income slider-->
+        <div class="slidecontainer" id="income_slider_container"> 
+          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_HOH">50,000</output>:</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
+          </div>
         </div>
+
+        <!--Itemized deductions slider-->
+        <div class="slidecontainer" id="itemized_slider_container"> 
+          <div class="slider-text" id="itemized_slider_text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions:</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');difference_hoh();modifyGraph_HOH();deductType()">
+          </div>
+        </div>
+
+        <div class="ctc_container">
+          <!--View tax credit effect switch-->
+          <div class="ctc_switch" id="ctc_switch_id">
+            <label class="switch_label">
+              Click to show the effect of the child tax credit:
+              <input type="checkbox" name="ctcSwitch" id="tax_credit_switch" onclick="modifyGraph_HOH();show_num_children();difference_hoh()">
+            </label>
+          </div>
+          <script>
+            function show_num_children(){
+                dropdownHidden = document.getElementById('num_children_container').style.visibility;
+                console.log("visibility: " + document.getElementById('num_children_container').style.visibility);
+                if(dropdownHidden === "hidden"){
+                    document.getElementById('num_children_container').style.visibility = "visible";
+                }
+                else{
+                    console.log("should hide");
+                    document.getElementById('num_children_container').style.visibility = "hidden";
+                }
+            }
+          </script>
+
+          <!--Number of old children-->
+          <div class="children_dropdown" id="num_children_container">
+            I have
+            <select name="numChildren" class="num_children_class" id="num_children" oninput="modifyGraph_HOH();difference_hoh()">
+              <option value="one">1 child</option>
+              <option value="two">2 children</option>
+              <option value="three">3 children</option>
+              <option value="four">4 children</option>
+              <option value="five">5 children</option>
+            </select>.
+          </div>
+          <script>
+            document.getElementById('num_children_container').style.visibility = "hidden";
+          </script>
+        </div> <!--ctc_containter-->
+
+      </div> <!--user_inputs container-->
+
+      <!--Calculate HOH savings-->
+      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+        <p class="explanation_text" id="item_or_stand"></p>
+        <p class="explanation_text" id="HOH_savings"></p>
+
+        <p class="explanation_text" id="explanation_line1"></p>
+        <p class="explanation_text" id="explanation_line2"></p>
+        <p class="explanation_text" id="explanation_line3"></p>
+        <p class="explanation_text" id="explanation_line4"></p>
+        <p class="explanation_text" id="explanation_line5"></p>
+        <p class="explanation_text" id="explanation_line6"></p>
+        <p class="explanation_text" id="explanation_line7"></p>
+        <p class="explanation_text" id="explanation_line8"></p>
+        <p class="explanation_text" id="explanation_line9"></p>
       </div>
+      <script type="text/javascript" src="./javascript/outputs.js"></script>
+      <script type="text/javascript" src="./javascript/calculate.js"></script>
 
-      <!--Itemized deductions slider-->
-      <div class="slidecontainer" id="itemized_slider_container"> 
-        <div class="slider-text" id="itemized_slider_text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');difference_hoh();modifyGraph_HOH();deductType()">
-        </div>
-      </div>
+      <!--Zoom switch-->
+      <label class="switch_label" id="zoom_label">
+        Click to zoom on lower incomes:
+        <input type="checkbox" class="zoom_button" name="zoom" id="zoom_switch" oninput="zoomHOHGraph();">
+        <span class="checkmark"></span>
+      </label>
 
-      <div class="ctc_container">
-        <!--View tax credit effect switch-->
-        <div class="ctc_switch" id="ctc_switch_id">
-          <label class="switch_label">
-            Click to show the effect of the child tax credit:
-            <input type="checkbox" name="ctcSwitch" id="tax_credit_switch" onclick="modifyGraph_HOH();show_num_children();difference_hoh()">
-          </label>
-        </div>
-        <script>
-          function show_num_children(){
-              dropdownHidden = document.getElementById('num_children_container').style.visibility;
-              console.log("visibility: " + document.getElementById('num_children_container').style.visibility);
-              if(dropdownHidden === "hidden"){
-                  document.getElementById('num_children_container').style.visibility = "visible";
-              }
-              else{
-                  console.log("should hide");
-                  document.getElementById('num_children_container').style.visibility = "hidden";
-              }
-          }
-        </script>
+      <!--End animation button-->
+      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+      </br>
 
-        <!--Number of old children-->
-        <div class="children_dropdown" id="num_children_container">
-          I have
-          <select name="numChildren" class="num_children_class" id="num_children" oninput="modifyGraph_HOH();difference_hoh()">
-            <option value="one">1 child</option>
-            <option value="two">2 children</option>
-            <option value="three">3 children</option>
-            <option value="four">4 children</option>
-            <option value="five">5 children</option>
-          </select>.
-        </div>
-        <script>
-          document.getElementById('num_children_container').style.visibility = "hidden";
-        </script>
-      </div> <!--ctc_containter-->
+      <!--Run HOH Benefit Graph Script-->
+      <div id="HOHchart"></div>
+      <script type="text/javascript" src="./javascript/chart.js"></script>
+      <script>HOHchart.focus();</script>
 
-    </div> <!--user_inputs container-->
+    </div> <!--chart end-->
 
-    <!--Calculate HOH savings-->
-    <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-      <p class="explanation_text" id="item_or_stand"></p>
-      <p class="explanation_text" id="HOH_savings"></p>
-
-      <p class="explanation_text" id="explanation_line1"></p>
-      <p class="explanation_text" id="explanation_line2"></p>
-      <p class="explanation_text" id="explanation_line3"></p>
-      <p class="explanation_text" id="explanation_line4"></p>
-      <p class="explanation_text" id="explanation_line5"></p>
-      <p class="explanation_text" id="explanation_line6"></p>
-      <p class="explanation_text" id="explanation_line7"></p>
-      <p class="explanation_text" id="explanation_line8"></p>
-      <p class="explanation_text" id="explanation_line9"></p>
-    </div>
-    <script type="text/javascript" src="./javascript/outputs.js"></script>
-    <script type="text/javascript" src="./javascript/calculate.js"></script>
-
-    <!--Zoom switch-->
-    <label class="switch_label" id="zoom_label">
-      Click to zoom on lower incomes:
-      <input type="checkbox" class="zoom_button" name="zoom" id="zoom_switch" oninput="zoomHOHGraph();">
-      <span class="checkmark"></span>
-    </label>
-
-    <!--End animation button-->
-    <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
-    </br>
-
-    <!--Run HOH Benefit Graph Script-->
-    <div id="HOHchart"></div>
-    <script type="text/javascript" src="./javascript/chart.js"></script>
-    <script>HOHchart.focus();</script>
-
-  </div> <!--chart end-->
+  </div> <!--Center-->
 
   <!--Highlights-------------------------------------------->
   <script type="text/javascript" src="./javascript/animations/universal.js"></script>

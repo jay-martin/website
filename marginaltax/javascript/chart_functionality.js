@@ -122,7 +122,7 @@ function disable_ssi(){
     else{
         ssi_button.disabled = true;
         ssi_isActive = false;
-        /* document.getElementById('ssi_button').style.backgroundColor = '#fafafa'; */
+        document.getElementById('ssi_button').style.backgroundColor = '#fafafa';
     }
 }
 

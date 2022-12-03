@@ -1,3 +1,40 @@
+/******************************************Benefits selection ********************************************/
+.many_select_container{
+  font-size: 90%;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+input.benefits_selection_buttons{
+  font-family: "Computer Modern Sans";
+  border: solid;
+  border-width: 1.5px;
+  border-color: #adadad;
+  background-color: #f5f3f2;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+input.benefits_selection_buttons_top{
+  font-family: "Computer Modern Sans";
+  border: solid;
+  border-width: 1.5px;
+  border-color: #adadad;
+  background-color: #d1d1d1;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+input.benefits_selection_buttons:disabled {
+  color: #b8b8b8;
+  background-color: #fafafa;
+  border-color: #b8b8b8;
+}
+/* No cursor change on hover when disabled */
+input.benefits_selection_buttons:disabled:hover {
+  cursor: default;
+}
 /*****************************************Adjustements to center explanation box*****************************************/
 .center_explanation_box {
 	padding-bottom: 0px;
@@ -51,4 +88,9 @@
 .explanation_text {
 	margin-bottom: 0px;
 	margin-top: 0px;
+}
+/*******************************Table adjustments***************/
+table.FPL {
+  float: right;
+  margin-top: 8px;
 }

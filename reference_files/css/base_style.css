@@ -31,6 +31,9 @@ input {
 img.table {
   display: inline-block;
 }
+.dropdown {
+  display: inline-block;
+}
 a.refs {
   text-decoration: none;
 }
@@ -57,10 +60,6 @@ table, th, td {
 th, td {
   border: 1px solid black;
   padding-left: 3px;
-}
-table.FPL {
-  float: right;
-  margin-top: 8px;
 }
 .switch_label {
   -webkit-transition: color .5s linear;
@@ -145,12 +144,6 @@ table.FPL {
   -webkit-transition: height 0s ease;
   -moz-transition: height 0s ease;
 }
-/*
-.programs_container:hover .programs{
-  display: block;
-  height: 100%;
-}
-*/
 .programs_container:hover .programs_title{
   text-decoration: underline;
 }
@@ -178,36 +171,9 @@ table.FPL {
   -webkit-transition: height 1s ease; 
   -moz-transition: height 1s ease; 
 }
-/*Benefits selection*/
-.many_select_container{
-  font-size: 90%;
-  line-height: 25px;
-  margin-bottom: 5px;
-}
-input.benefits_selection_buttons{
-  font-family: "Computer Modern Sans";
-  border: solid;
-  border-width: 1.5px;
-  border-color: #adadad;
-  background-color: #f5f3f2;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 3px;
-}
-input.benefits_selection_buttons_top{
-  font-family: "Computer Modern Sans";
-  border: solid;
-  border-width: 1.5px;
-  border-color: #adadad;
-  background-color: #d1d1d1;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 3px;
-}
-input.benefits_selection_buttons:hover{
-  background-color: #d1d1d1
+/**********Power Users*************/
+.arbitray_income_container {
+  display: none;
 }
 input.arbitrary_income {
   width: 80px;
@@ -359,19 +325,6 @@ input[type=submit].end_animation:disabled:hover {
   background: #1DA1F2;
   cursor: pointer;
   border-radius: 50%;
-}
-/*******Subcontainter in Chart: Number of Children Dropdown**************/
-.dropdown {
-  display: inline-block;
-}
-.ctc_container {
-}
-.ctc_switch {
-  display: inline-block;
-}
-.num_children_container {
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
 }
 /*******References******************************************************/
 .references, .notes{

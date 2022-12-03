@@ -3,7 +3,7 @@
 <head>
   <title>Marginal Tax Rates</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./css/style.css" type="text/css" rel="stylesheet" />
+  <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
@@ -19,7 +19,7 @@
 
   <!-- load c3 style -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
-  <link href="./css/chart_style.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
 
   <!-- Computer Modern Sans -->
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
@@ -60,17 +60,27 @@
     <div class="other_pages" id='other_pages_id'>
       <a href="../home/index.html">Home</a>
       <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Fixing Family Benefits</a>
       <a href="./index.html">Poverty Reduction</a>
       <a href="../poor-exclusion/index.html">The Exclusion of Poor</br>Families</a>
       <a href="../marriage-penalties/index.html">Marriage Penalties</a>
       <a href="./index.html">Asinine Asset Tests</a>
-      <a href="./index.html">A Better Way</a>
-      <a href="./index.html">The Child Tax Credit</a>
-      <a href="./index.html">The Earned Income Tax</br>Credit</a>
-      <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
-      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
-      <a href="./index.html">SNAP (Food Stamps)</a>
-      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+      <a href="./index.html">Administrative Burdens</a>
+      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+      <a href="./index.html">Racial Justice</a>
+      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        <div class="programs" id="programs">
+          <a href="./index.html">The Child Tax Credit</a>
+          <a href="./index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="./index.html">SNAP (Food Stamps)</a>
+          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="./index.html">WIC</a>
+          <a href="./index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
     </div>
   </div>
 
@@ -181,7 +191,7 @@
       <script type="text/javascript" src="./javascript/calculate_benefit.js"></script>
 
       <!--Zoom selection-->
-      <div class="dropdown" id="chart_type_dropdown_container">
+      <div class="dropdown" id="zoom_dropdown_container">
         Show higher/lower income:
         <select class="dropdown" name="zoom_level" id="zoom_dropdown" oninput="zoom_chart()">
           <option value="default">Default</option>
@@ -247,14 +257,6 @@
           <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
           <span class="checkmark"></span>
         </label>
-
-        <!--All policies-->
-        <label class="switch_label" id="all_outputs_label">
-          Show values for all policies:
-          <input type="checkbox" id="all_outputs_switch" oninput=";">
-          <span class="checkmark"></span>
-        </label>
-        </br>
 
         <!--Download excel-->
         <input type="submit" class="download_button" id="download_data" value="Download Excel Data" onclick="">

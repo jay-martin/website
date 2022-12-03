@@ -3,7 +3,7 @@
 <head>
   <title>Marriage Penalties</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="./css/style.css" type="text/css" rel="stylesheet" />
+  <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
   <!-- Font Awesome -->
@@ -11,7 +11,7 @@
   
   <!-- load c3.css -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
-  <link href="./css/chart_style.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
 
   <!-- Load d3.js and c3.js -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -45,96 +45,110 @@
     <div class="other_pages" id='other_pages_id'>
       <a href="../home/index.html">Home</a>
       <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Fixing Family Benefits</a>
       <a href="./index.html">Poverty Reduction</a>
-      <a href="./poor-exclusion/index.html">The Exclusion of Poor</br>Families</a>
       <a href="../marginaltax/index.html">Marginal Tax Rates</a>
-      <a href="./index.html">Asset Tests</a>
-      <a href="./index.html">A Better Way</a>
-      <a href="./index.html">The Child Tax Credit</a>
-      <a href="./index.html">The Earned Income Tax</br>Credit</a>
-      <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
-      <a href="./index.html">The Child and Dependent</br>Care Credit</a>
-      <a href="./index.html">SNAP (Food Stamps)</a>
-      <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+      <a href="../marriage-penalties/index.html">Marriage Penalties</a>
+      <a href="./index.html">Asinine Asset Tests</a>
+      <a href="./index.html">Administrative Burdens</a>
+      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+      <a href="./index.html">Racial Justice</a>
+      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        <div class="programs" id="programs">
+          <a href="./index.html">The Child Tax Credit</a>
+          <a href="./index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="./index.html">SNAP (Food Stamps)</a>
+          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="./index.html">WIC</a>
+          <a href="./index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
     </div>
   </div>
 
-  <!--Chart-------------------------------------------->
-  <div class = "chart">
-    
-    <!--User inputs-->
-    <div class="user_inputs" id="user_inputs">
+  <!--Center-------------------------------------------->
+  <div class="center">
+
+    <div class = "chart">
       
-      <!--Person 1 number of old children-->
-      <label for="numChildrenPerson1">I have</label>
-      <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income_outputs()">
-        <option value="none">no children</option>
-        <option value="one" selected>1 child</option>
-        <option value="two">2 children</option>
-        <option value="three">3+ children</option>
-      </select>
+      <!--User inputs-->
+      <div class="user_inputs" id="user_inputs">
+        
+        <!--Person 1 number of old children-->
+        <label for="numChildrenPerson1">I have</label>
+        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income_outputs()">
+          <option value="none">no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>
 
-      <!--Person 2 number of old children-->
-      <label for="numChildrenPerson2">and my partner has</label>
-      <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_outputs()" >
-        <option value="none">no children</option>
-        <option value="one" >1 child</option>
-        <option value="two">2 children</option>
-        <option value="three">3+ children</option>
-      </select>.
+        <!--Person 2 number of old children-->
+        <label for="numChildrenPerson2">and my partner has</label>
+        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_outputs()" >
+          <option value="none">no children</option>
+          <option value="one" >1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>.
 
-      <!--Person 1 income slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+        <!--Person 1 income slider-->
+        <div class="slidecontainer"> 
+          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+          </div>
         </div>
-      </div>
 
-      <!--Person 2 income slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+        <!--Person 2 income slider-->
+        <div class="slidecontainer"> 
+          <div class="slider-text"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
+          <div class="slider-actual">
+            <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+          </div>
         </div>
+
+      </div> <!--user_inputs container-->
+
+      <!--Calculate marriage penalty-->
+      <div class="center_explanation_box" id="center_explanations_container">
+        <p class="explanation_text" id="individual_eitc_values"></p>
+        <p class="explanation_text" id="combined_single_eitc"></p>
+        <p class="explanation_text" id="married_eitc_value"></p>
+        <p class="explanation_text" id="marriage_penalty_show"></p>
+
+        <p class="explanation_text" id="explanation_line1"></p>
+        <p class="explanation_text" id="explanation_line2"></p>
+        <p class="explanation_text" id="explanation_line3"></p>
+        <p class="explanation_text" id="explanation_line4"></p>
+        <p class="explanation_text" id="explanation_line5"></p>
+        <p class="explanation_text" id="explanation_line6"></p>
+        <p class="explanation_text" id="explanation_line7"></p>
+        <p class="explanation_text" id="explanation_line8"></p>
+        <p class="explanation_text" id="explanation_line9"></p>
+        <p class="explanation_text" id="explanation_line10"></p>
+        <p class="explanation_text" id="explanation_line11"></p>
+        <p class="explanation_text" id="explanation_line12"></p>
       </div>
+      <script type="text/javascript" src="./javascript/calculate.js"></script>
+      <script type="text/javascript" src="./javascript/outputs.js"></script>
 
-    </div> <!--user_inputs container-->
+      <!--End animation button-->
+      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+      </br>
 
-    <!--Calculate marriage penalty-->
-    <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="individual_eitc_values"></p>
-      <p class="explanation_text" id="combined_single_eitc"></p>
-      <p class="explanation_text" id="married_eitc_value"></p>
-      <p class="explanation_text" id="marriage_penalty_show"></p>
+      <!--Run Marriage Penalty Script-->
+      <div id="MPchart"></div> <!--Subcontainter for chart-->
+      <script type="text/javascript" src="./javascript/chart.js"></script>
+      <script type="text/javascript" src="./javascript/adjust_chart.js"></script>
+      <script>MPchart.focus();</script>
 
-      <p class="explanation_text" id="explanation_line1"></p>
-      <p class="explanation_text" id="explanation_line2"></p>
-      <p class="explanation_text" id="explanation_line3"></p>
-      <p class="explanation_text" id="explanation_line4"></p>
-      <p class="explanation_text" id="explanation_line5"></p>
-      <p class="explanation_text" id="explanation_line6"></p>
-      <p class="explanation_text" id="explanation_line7"></p>
-      <p class="explanation_text" id="explanation_line8"></p>
-      <p class="explanation_text" id="explanation_line9"></p>
-      <p class="explanation_text" id="explanation_line10"></p>
-      <p class="explanation_text" id="explanation_line11"></p>
-      <p class="explanation_text" id="explanation_line12"></p>
-    </div>
-    <script type="text/javascript" src="./javascript/calculate.js"></script>
-    <script type="text/javascript" src="./javascript/outputs.js"></script>
+    </div> <!--chart end-->
 
-    <!--End animation button-->
-    <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
-    </br>
-
-    <!--Run Marriage Penalty Script-->
-    <div id="MPchart"></div> <!--Subcontainter for chart-->
-    <script type="text/javascript" src="./javascript/chart.js"></script>
-    <script type="text/javascript" src="./javascript/adjust_chart.js"></script>
-    <script>MPchart.focus();</script>
-
-  </div> <!--chart end-->
+  </div> <!--Center-->
 
   <!--Highlights-------------------------------------------->
   <script type="text/javascript" src="./javascript/animations/universal.js"></script>

@@ -1,0 +1,12 @@
+.ctc_container {
+}
+.ctc_switch {
+  display: inline-block;
+}
+.num_children_container {
+  -webkit-transition: color 100ms linear;
+  -moz-transition: color 100ms linear;
+}
+.children_dropdown {
+  display: inline-block;
+}
