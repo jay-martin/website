@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Administrative Burdens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Outputs -->
+  <script type="text/javascript" src="./javascript/outputs.js"></script>
+  <script type="text/javascript" src="./javascript/ssi_criteria.js"></script>
+
+</head>
+
+<div class="logo">
+  <a href="../home/index.html">
+    <img src="../reference_files/images/logo.png" alt="Logo" width="125" height="37.5">
+  </a>
+</div>
+
+<body>
+
+  <div class="eligibility_status_container">
+    <div id="eligibility_status_title"><b>Eligibility Status:</b></div>
+    <div id="eligibility_status"><b><em>Not Enough Information</em></b></div>
+  
+    <div class='elibility_criteria' id='disabled_eligibility_status'>
+      <div class='elibility_criteria_left'>Disablity Status:</div>
+      <div class='elibility_criteria_right' id="disability_status">Uncertain</div>
+    </div> 
+
+    <div class='elibility_criteria' id='catelg_eligibility_status'>
+      <div class='elibility_criteria_left'>Categorical Eligibility:</div>
+      <div class='elibility_criteria_right' id="cat_elg_status">Uncertain</div>
+    </div> <!--Status line end-->
+
+    <div class='elibility_criteria' id='gross_eligibility_status'>
+      <div class='elibility_criteria_left'>Gross Income Test:</div>
+      <div class='elibility_criteria_right'>Uncertain</div>
+    </div> <!--Status line end-->
+
+    <div class='elibility_criteria' id='net_eligibility_status'>
+      <div class='elibility_criteria_left'>Net Income Test:</div>
+      <div class='elibility_criteria_right'>Uncertain</div>
+    </div> <!--Status line end-->
+
+    <div class='elibility_criteria' id='asset_eligibility_status'>
+      <div class='elibility_criteria_left'>Asset Test:</div>
+      <div class='elibility_criteria_right'>Uncertain</div>
+    </div> <!--Status line end-->
+  </div> <!--Eligibility container end-->
+
+  <script>
+    var fixedElement = document.querySelector('.eligibility_status_container');
+    var scrollThreshold = 168;
+
+    window.addEventListener('scroll', function() {
+      // Check if the user has scrolled down the page by the scroll threshold
+      if (window.pageYOffset >= scrollThreshold) {
+        // Set the position property of the .fixed-element element to fixed
+        fixedElement.style.position = 'fixed';
+        fixedElement.style.marginTop = '10px';
+      }
+      // If the user has not scrolled down the page by the scroll threshold
+      else {
+        // Set the position property of the .fixed-element element to absolute
+        fixedElement.style.position = 'absolute';
+        fixedElement.style.marginTop = '177px';
+      }
+    });
+  </script>
+
+<h1 id="top">Administrative Burdens</h1>
+<div class="name">
+  By Jay Martin </br>
+  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+</div>
+
+<!--div class for chart and highlights box: used here for the example form and left side menu-------------------------------------------->
+<div class = "chart_highlights_container">
+  
+  <!--Left side-------------------------------------------------->
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="../home/index.html">Home</a>
+      <a href="../familysecurityact/index.html">The Family Security Act</a>
+      <a href="./index.html">Fixing Family Benefits</a>
+      <a href="./index.html">Poverty Reduction</a>
+      <a href="../poor-exclusion/index.html">The Exclusion of Poor</br>Families</a>
+      <a href="../marriage-penalties/index.html">Marriage Penalties</a>
+      <a href="../marginaltax/index.html">Marginal Tax Rates</a>
+      <a href="./index.html">Asinine Asset Tests</a>
+      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+      <a href="./index.html">Racial Justice</a>
+      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        <div class="programs" id="programs">
+          <a href="./index.html">The Child Tax Credit</a>
+          <a href="./index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="./index.html">SNAP (Food Stamps)</a>
+          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="./index.html">WIC</a>
+          <a href="./index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
+    </div>
+  </div>
+
+  <!--Center------------------------------------------------------>
+  <div class="center">
+
+    <div class="dropdown" id="benefit">
+      Benefit: 
+      <select class="dropdown" id="benefit_dropdown" oninput=''>
+        <option value="default">SSI</option>
+        <option value="yes">SNAP</option>
+      </select>
+    </div>
+
+    <div class = 'form_mods_container'>
+      <div class="dropdown" id="display">
+        Display: 
+        <select class="dropdown" id="display_dropdown" oninput='display();'>
+          <option value="default">Reveal Next Line</option>
+          <option value="show_all" selected>Show All</option>
+        </select>
+      </div>
+
+      <div class="dropdown" id="calculation">
+        Calculation: 
+        <select class="dropdown" id="calculation_dropdown" oninput=''>
+          <option value="manual">Manual</option>
+          <option value="auto">Automatic</option>
+        </select>
+      </div>
+    </div> <!-- Form modification container end-->
+    
+    <div class="application"> <!--Example application-->
+      <div class="application_title"><b>SSI Eligibility</b></div>
+      <div class="application_description" id="application_description">Answer the questions below to determine if you are eligible. A new line will appear after you have answered the current line.</div>
+
+      <div class="application_line" id="title1"><b>Disability Status</b></div>
+      
+      <div class="application_line" id="line1a">
+        <div class="line_number">1a.</div>
+        <div class="left">Are you blind or over the age of 65?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="blind_elderly" oninput="reveal_next_line('line1b'); reveal_status_line('disability')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line1b">
+        <div class="line_number" id='line1b_title'>1b.</div>
+        <div class="left">Do you have a disability that prevents you from working?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="disabled" oninput="reveal_next_line('line2'); reveal_next_title('title2'); reveal_status_line('disability')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="title2"><b>Categorical Eligibility</b></div>
+      <div class="application_line" id="line2">
+        <div class="line_number">2.</div>
+        <div class="left">Are you currently a recipient of Temporary Assistance for Needy Families (TANF) or the Supplemental Nutrition Assistance Program (SNAP)?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="cat_elg" oninput="reveal_next_line('line3a'); reveal_next_title('title3');reveal_status_line('catElg')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id='title3'><b>Gross Income</b></div>
+      <div class="application_line" id="line3a">
+        <div class="line_number">3a.</div>
+        <div class="left"><b>Earned income:</b> How much money did you make from work this month?</div>
+        <div class="right">
+          $ <input type="number" id="earned_income" min="0" max="10000000" oninput="reveal_next_line('line3b')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3b">
+        <div class="line_number">3b.</div>
+        <div class="left">How much money did you make from non-work sources (e.g. child support, cash gifts, Social Security, unemployment insurance, and Social Security Disability Insurance)? Exclude benefits from SNAP & TANF. If you are married, do not include any of your spouse's income in this number. This value will henceforth be referred to as "unearned income".</div>
+        <div class="right">
+          $ <input type="number" id="unearned_income_money" min="0" max="10000000" oninput="reveal_next_line('line3c')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3c">
+        <div class="line_number">3c.</div>
+        <div class="left">What is the monetary value of all in-kind benefits (e.g. food, shelter) you received from other people? If you are married, do not include anything that your spouse purchased for you in this number. This will be added to your unearned income.</div>
+        <div class="right">
+          $ <input type="number" id="unearned_income_inkind" min="0" max="10000000" oninput="reveal_next_line('line3d')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3d">
+        <div class="line_number">3d.</div>
+        <div class="left"><b>Unearned income:</b> Add lines 3b and 3c and input the result:</div>
+        <div class="right">
+          $ <input type="number" id="unearned_income_inkind" min="0" max="10000000" oninput="reveal_next_line('line3e')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3e">
+        <div class="line_number">3e.</div>
+        <div class="left">Are you married?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="married" oninput="reveal_next_line('line3f')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3f">
+        <div class="line_number">3f.</div>
+        <div class="left">Is your spouse eligible for SSI?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="spouse_eligibility" oninput="reveal_next_line('line3g')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3g">
+        <div class="line_number">3g.</div>
+        <div class="left">Input your spouse's income:</div>
+        <div class="right">
+          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line4a'); reveal_next_title('title4');">
+        </div><!--right end-->
+      </div><!--line end-->
+
+       <div class="application_line" id="title4"><b>Countable Income</b></div>
+       <div class="application_line" id="line4a">
+        <div class="line_number">4a.</div>
+        <div class="left"><b>Countable Unearned Income:</b> You may exclude the first $20 of unearned income from your countable unearned income. If line 3d is equal to or exceeds $20, subtract $20 from line 3d and input the result. If line 3d is less than $20, input $0; the remainder will be used in the next line.</div>
+        <div class="right">
+          $ <input type="number" id="unearned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line4b')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4b">
+        <div class="line_number">4b.</div>
+        <div class="left">If your unearned income is less than $20, you may use the remainder of the $20 exclusion from line 4a towards your countable earned income. Subtract the remainder you determined when calculating line 4a from line 3a and input the result. If the remainder was $0, input the earned income you reported in line 3a.</div>
+        <div class="right">
+          $ <input type="number" id="earned_income_remainder_deduction" min="0" max="10000000" oninput="reveal_next_line('line4c')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+       <div class="application_line" id="line4c">
+        <div class="line_number">4c.</div>
+        <div class="left">You may exclude the first $65 of earned income you made this month from your countable earned income. If value of line 4b is equal to or exceeds $65, subtract $65 from line 4b and input the result. If line 4b is less than $65, input $0.</div>
+        <div class="right">
+          $ <input type="number" id="standard_deduction" min="0" max="10000000" oninput="reveal_next_line('line4d')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4d">
+        <div class="line_number">4d.</div>
+        <div class="left">You may exclude impairment related work expenses from your countable earned income. Subtract any impairment related work expenses from line 4c and input the result.</div>
+        <div class="right">
+          $ <input type="number" id="standard_deduction" min="0" max="10000000" oninput="reveal_next_line('line4e')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4e">
+        <div class="line_number">4e.</div>
+        <div class="left"><b>Countable Earned Income:</b> You may exclude 50% of your remaining earned income. Subtract 50% of the number you reported in line 4d from line 4d and input the result.</div>
+        <div class="right">
+          $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line4f')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4f">
+        <div class="line_number">4f.</div>
+        <div class="left"><b>Countable Income After Standard Exclusions:</b> Add line 4a to 4e and input the result.</div>
+        <div class="right">
+          $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4g">
+        <div class="line_number">4g.</div>
+        <div class="left">Are you either of the following: (1) blind <em>and</em> under the age of 65; or (2) blind <em>and</em> over the age of 65 <em>and</em> you received SSI in the month before you turned 65 on account of your blindness?</div>
+        <div class="right">
+          <div class="dropdown">
+            <select class="dropdown" id="blind_net_income" oninput="reveal_next_line('line4h')">
+              <option value="default">Select Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line4h">
+        <div class="line_number">4h.</div>
+        <div class="left"><b>Blind Work Expenses Exclusion:</b> You may exclude reasonable, unreimbursed work expenses that you needed to pay as a result of being blind. Subtract blind work expenses from line 4f and input the result.</div>
+        <div class="right">
+          $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id='title5'><b>Assets</b></div>
+      <div class="application_line" id="line5a">
+        <div class="line_number">5a.</div>
+        <div class="left">Input the amount of cash that you currently possess:</div>
+        <div class="right">
+          $ <input type="number" id="cash" min="0" max="10000000" oninput="reveal_next_line('line5b')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+       <div class="application_line" id="line5b">
+        <div class="line_number">5b.</div>
+        <div class="left">Input the amount of money you currently have in any checking or savings accounts:</div>
+        <div class="right">
+          $ <input type="number" id="bank_accounts" min="0" max="10000000" oninput="reveal_next_line('line5c')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line5c">
+        <div class="line_number">5c.</div>
+        <div class="left">Input the amount of money you currently have in Individual Retirement Accounts (IRAs) and 401(k) retirement plans:</div>
+        <div class="right">
+          $ <input type="number" id="retirement_accounts" min="0" max="10000000" oninput="reveal_next_line('line5d')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line5d">
+        <div class="line_number">5d.</div>
+        <div class="left">Input the amount of money you currently have in unrestricted Health Savings Accounts (HSAs):</div>
+        <div class="right">
+          $ <input type="number" id="hsa" min="0" max="10000000" oninput="reveal_next_line('line5e')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line5e">
+        <div class="line_number">5e.</div>
+        <div class="left">Input the amount of money you currently have invested in stocks, bonds, mutual funds, and certificates of deposit:</div>
+        <div class="right">
+          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line5f')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line5f">
+        <div class="line_number">5f.</div>
+        <div class="left">Input the monetary value of any tractors, boats, machinery, livestock, buildings, or land that you own:</div>
+        <div class="right">
+          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line5g');">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line5g">
+        <div class="line_number">5g.</div>
+        <div class="left"><b>Countable Assets:</b> Add together lines 5a through 5f and input the result.</div>
+        <div class="right">
+          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line6'); reveal_next_title('title6')">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="title6"><b>Marital Status</b></div>
+      <div class="application_line" id="line6">
+        <div class="line_number">6.</div>
+        <div class="left">Are you married to someone who would be eligible for SSI as an individual?</div>
+        <div class="right">
+          <div class="dropdown" id="num_children_container">
+            <select class="dropdown" id="household_size" oninput="reveal_next_line(''); reveal_next_title('')">
+              <option value="default">Select Option</option>
+              <option value="one">Yes</option>
+              <option value="two">No</option>
+            </select>
+          </div>
+        </div><!--right end-->
+      </div><!--line end-->
+
+    </div> <!--example application end-->
+
+    <div class="notes">
+    <h2 id="notes">Notes</h2>
+      <ol class="notes_list">
+        <li><a class="refs" href="#note1">^</a> Note 1.</li>
+        <li><a class="refs" href="#note2">^</a> Note 2.</li>
+        <li><a class="refs" href="#note3">^</a> Note 3.</li>
+        <li><a class="refs" href="#note4">^</a> Note 4.</li>
+        <li><a class="refs" href="#note5">^</a> Note 5.</li>
+      </ol>
+    </div>
+
+    <div class="references" id="references">
+    <h2>References</h2>
+      <ul class="references_list" id="references_list">
+        <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison (October 4, 2022). "<a href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022. </li>
+
+        <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison; Falk, Gene (February 25, 2022). "<a href=https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">The Supplemental Nutrition Assistance Program (SNAP): Categorical Eligibility</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220704025011/https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 4, 2022. </li>
+
+        <li class="ref_item" id="SSA">"<a href=https://www.ssa.gov/oact/cola/incomexcluded.html target="_blank">Income Exclusions for SSI Program</a>" (2022). <em>Social Security Administration</em>. <a href=https://web.archive.org/web/20220712212655/https://www.ssa.gov/oact/cola/incomexcluded.html target="_blank">Archived</a> from the original on July 12, 2022. </li>
+
+        <li class="ref_item" id="Morton">Morton, William R. (May 16, 2018). "<a href=https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">Social Security Disability Insurance (SSDI) and Supplemental Security Income (SSI): Eligibility, Benefits, and Financing</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220505081615/https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on May 5, 2022.</li>
+
+        <li class="ref_item" id="Morton">Morton, William R. (November 22, 2022). "<a href=https://crsreports.congress.gov/product/pdf/IF/IF10482 target="_blank">Supplemental Security Income (SSI)</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>.</li>
+
+        <li class="ref_item" id="VCU">"<a href=https://secure.ssa.gov/poms.nsf/lnx/0500820535 target="_blank">SI 00820.535 Blind Work Expense (BWEs)</a>" (2022). Program Operations Manual System (POMS). <em>Social Security Administration</em>. <a href=https://web.archive.org/web/20220701222008/https://secure.ssa.gov/poms.Nsf/lnx/0500820535 target="_blank">Archived</a> from the original on July 1, 2022.</li>
+
+        <li class="ref_item" id="VCU">"<a href=https://vcu-ntdc.org/resources/resourceDetail.cfm?id=1 target="_blank">Understanding the Supplemental Security Income (SSI) Program</a>" (2022). <em>Virginia Commonwealth University</em>.</li>
+      </ul>
+    </div>
+
+  </div> <!--Center-->
+
+  <!--Right Side-------------------------------------------->
+  <div class = "right_side">
+
+  </div> <!--right_side-->
+
+</div> <!--chart, center explanation & highlights container end-->
+
+<!-- Initialize page -->
+<script type="text/javascript" src="./javascript/on_startup.js"></script>
+
+</body>
+</html>

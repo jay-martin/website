@@ -9,8 +9,16 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
+  <!-- Computer Modern Sans -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <!-- Computer Modern Serif -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <!-- Computer Modern Classical Serif Italic -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
   <!-- load c3.css -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
 
   <!-- Load d3.js and c3.js -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -47,7 +55,7 @@
     </div>
     <div class='infobox_right'>
       <a href="../poor-exclusion/index.html">
-        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class="chart_container" id="poor_families_chart" onmouseover="poor_families_animation()" onmouseout="mouse_out_poor_families()"></div>
         <div class='box_words'>
           <div class="box_title">The Exclusion of Poor Families</div>
           <div class="box_description"><em>Poor families are deliberately excluded from many family benefits</em></div>
@@ -58,20 +66,20 @@
 
   <div class="box_level">
     <div class='infobox_left'>
+      <a href="../marriage-penalties/index.html">
+        <div class="chart_container" id="marriage_penalties_chart" onmouseover="marriage_penalties_animation()" onmouseout="mouse_out_marriage_penalties()"></div>
+        <div class='box_words'>
+          <div class="box_title">Marriage Penalties</div>
+          <div class="box_description"><em>You like your partner and want to marry them? Well, I hope you don't also like money, because you're going to have less of it.</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
       <a href="../marginaltax/index.html">
         <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">Marginal Tax Rates</div>
           <div class="box_description"><em>Phaseouts impose punishing marginal tax rates on working class families</em></div>
-        </div>
-      </a>
-    </div>
-    <div class='infobox_right'>
-      <a href="../marriage-penalties/index.html">
-        <div class="image_container"><img src="./images/mp_chart.png" alt="Marriage Penalty Chart"></div>
-        <div class='box_words'>
-          <div class="box_title">Marriage Penalties</div>
-          <div class="box_description"><em>You like your partner and want to marry them? Well, I hope you don't also like money, because you're going to have less of it.</em></div>
         </div>
       </a>
     </div>
@@ -86,11 +94,13 @@
       </div>
     </div>
     <div class='infobox_right'>
-      <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
-      <div class='box_words'>
-        <div class="box_title">Administrative Burdens</div>
-        <div class="box_description"><em>It's hard being poor. And it's harder still to get financial assistance.</em></div>
-      </div>
+      <a href="../administrative-burdens/index.html">
+        <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">Administrative Burdens</div>
+          <div class="box_description"><em>It's hard being poor. Complicated eligibility tests make it even harder.</em></div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -206,6 +216,10 @@
   </div>
 
 </div>
-
 </body>
+
+<!--Build charts scripts-->
+<script src="./javascript/poor_families_chart.js"></script>
+<script src="./javascript/marriage_penalties_chart.js"></script>
+
 </html>

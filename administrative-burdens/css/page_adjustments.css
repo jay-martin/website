@@ -1,0 +1,94 @@
+.form_mods_container {
+    display: inline-block;
+    float: right;
+}
+#benefit, #benefit_dropdown, #display, #display_dropdown, #calculation, #calculation_dropdown {
+    font-size: 85%;
+}
+.application {
+    font-family: "Computer Modern Serif";
+    font-size: 90%;
+    line-height: 1.25em;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #adadad;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.application_title {
+    font-size: 120%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-decoration: underline;
+}
+.application_description {
+    text-align: center;
+    margin-top: 5px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.application_line {
+    margin-top: 10px;
+    /* display: none; */
+}
+.line_number {
+    display: inline-block;
+    vertical-align: top;
+}
+.left {
+    display: inline-block;
+    max-width: 80%;
+}
+.right {
+    float: right;
+}
+#title1, #line1a {
+    display: block;
+}
+/*****************************Right side: Eligibility**************************/
+.eligibility_status_container {
+    /* display: none; */
+    position: absolute;
+    margin-left: 78%;
+    width: 21%;
+    font-family: "Computer Modern Serif";
+    text-align: center;
+    margin-top: 177px;
+    border: solid;
+    border-radius: 5px;
+    border-color: #adadad;
+}
+#eligibility_status_title {
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+    line-height: 2em;
+}
+#eligibility_status {
+    font-size: 90%;
+    margin-bottom: 5px;
+    padding: 0;
+    line-height: 1.5em;
+    color: #919191;
+}
+.elibility_criteria {
+    font-size: 80%;
+    text-align: left;
+    margin-left: 10px;
+    line-height: 2em;
+}
+.elibility_criteria_left, .elibility_criteria_right {
+    display: inline-block;
+}
+.elibility_criteria_left {
+    max-width: 60%;
+}
+.elibility_criteria_right {
+    float: right;
+    margin-right: 10px;
+    color: #919191;
+}

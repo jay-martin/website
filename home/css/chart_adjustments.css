@@ -1,0 +1,9 @@
+/*hide poor exclusion chart points */
+.c3-circles-total, .c3-circles-no_exclusion, .c3-circles-total_hidden, .c3-circles-ctc, .c3-circles-eitc, .c3-circles-hoh, .c3-circles-no_exclusion_end, .c3-circles-loss_in_benefits{
+  display: none;
+}
+
+/*hide marriage penalty chart points */
+.c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus{
+  display: none;
+}
