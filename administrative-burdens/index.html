@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
+  <link href="./css/mobile.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
   <!-- Font Awesome -->
@@ -40,29 +41,19 @@
     <div id="eligibility_status_title"><b>Eligibility Status:</b></div>
     <div id="eligibility_status"><b><em>Not Enough Information</em></b></div>
   
-    <div class='elibility_criteria' id='disabled_eligibility_status'>
+    <div class='elibility_criteria'>
       <div class='elibility_criteria_left'>Disablity Status:</div>
       <div class='elibility_criteria_right' id="disability_status">Uncertain</div>
     </div> 
 
-    <div class='elibility_criteria' id='catelg_eligibility_status'>
-      <div class='elibility_criteria_left'>Categorical Eligibility:</div>
-      <div class='elibility_criteria_right' id="cat_elg_status">Uncertain</div>
+    <div class='elibility_criteria'>
+      <div class='elibility_criteria_left'>Countable Income Test:</div>
+      <div class='elibility_criteria_right' id="countable_income_eligibility">Uncertain</div>
     </div> <!--Status line end-->
 
-    <div class='elibility_criteria' id='gross_eligibility_status'>
-      <div class='elibility_criteria_left'>Gross Income Test:</div>
-      <div class='elibility_criteria_right'>Uncertain</div>
-    </div> <!--Status line end-->
-
-    <div class='elibility_criteria' id='net_eligibility_status'>
-      <div class='elibility_criteria_left'>Net Income Test:</div>
-      <div class='elibility_criteria_right'>Uncertain</div>
-    </div> <!--Status line end-->
-
-    <div class='elibility_criteria' id='asset_eligibility_status'>
+    <div class='elibility_criteria'>
       <div class='elibility_criteria_left'>Asset Test:</div>
-      <div class='elibility_criteria_right'>Uncertain</div>
+      <div class='elibility_criteria_right' id='asset_eligibility'>Uncertain</div>
     </div> <!--Status line end-->
   </div> <!--Eligibility container end-->
 
@@ -143,14 +134,6 @@
           <option value="show_all" selected>Show All</option>
         </select>
       </div>
-
-      <div class="dropdown" id="calculation">
-        Calculation: 
-        <select class="dropdown" id="calculation_dropdown" oninput=''>
-          <option value="manual">Manual</option>
-          <option value="auto">Automatic</option>
-        </select>
-      </div>
     </div> <!-- Form modification container end-->
     
     <div class="application"> <!--Example application-->
@@ -164,7 +147,7 @@
         <div class="left">Are you blind or over the age of 65?</div>
         <div class="right">
           <div class="dropdown">
-            <select class="dropdown" id="blind_elderly" oninput="reveal_next_line('line1b'); reveal_status_line('disability')">
+            <select class="dropdown" id="blind_elderly" oninput="reveal_next_line('line1b'); reveal_status_line('disability'); check_eligibility();">
               <option value="default">Select Option</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
@@ -178,22 +161,7 @@
         <div class="left">Do you have a disability that prevents you from working?</div>
         <div class="right">
           <div class="dropdown">
-            <select class="dropdown" id="disabled" oninput="reveal_next_line('line2'); reveal_next_title('title2'); reveal_status_line('disability')">
-              <option value="default">Select Option</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-        </div><!--right end-->
-      </div><!--line end-->
-
-      <div class="application_line" id="title2"><b>Categorical Eligibility</b></div>
-      <div class="application_line" id="line2">
-        <div class="line_number">2.</div>
-        <div class="left">Are you currently a recipient of Temporary Assistance for Needy Families (TANF) or the Supplemental Nutrition Assistance Program (SNAP)?</div>
-        <div class="right">
-          <div class="dropdown">
-            <select class="dropdown" id="cat_elg" oninput="reveal_next_line('line3a'); reveal_next_title('title3');reveal_status_line('catElg')">
+            <select class="dropdown" id="disabled" oninput="reveal_next_line('line3a'); reveal_next_title('title3'); reveal_status_line('disability'); check_eligibility();">
               <option value="default">Select Option</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
@@ -207,7 +175,7 @@
         <div class="line_number">3a.</div>
         <div class="left"><b>Earned income:</b> How much money did you make from work this month?</div>
         <div class="right">
-          $ <input type="number" id="earned_income" min="0" max="10000000" oninput="reveal_next_line('line3b')">
+          $ <input type="number" id="earned_income" min="0" max="10000000" oninput="reveal_next_line('line3b');calculate_gross_income();calculate_countable_income();">
         </div><!--right end-->
       </div><!--line end-->
 
@@ -231,7 +199,7 @@
         <div class="line_number">3d.</div>
         <div class="left"><b>Unearned income:</b> Add lines 3b and 3c and input the result:</div>
         <div class="right">
-          $ <input type="number" id="unearned_income_inkind" min="0" max="10000000" oninput="reveal_next_line('line3e')">
+          $ <input type="number" id="unearned_income" min="0" max="10000000" oninput="reveal_next_line('line3e');calculate_gross_income();calculate_countable_income();">
         </div><!--right end-->
       </div><!--line end-->
 
@@ -267,7 +235,15 @@
         <div class="line_number">3g.</div>
         <div class="left">Input your spouse's income:</div>
         <div class="right">
-          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line4a'); reveal_next_title('title4');">
+          $ <input type="number" id="spouse_income" min="0" max="10000000" oninput="reveal_next_line('line3h');">
+        </div><!--right end-->
+      </div><!--line end-->
+
+      <div class="application_line" id="line3h">
+        <div class="line_number">3h.</div>
+        <div class="left"><b>Gross Income</b>:</div>
+        <div class="right">
+          $ <input type="number" id="gross_income" min="0" max="10000000" oninput="reveal_next_line('line4a'); reveal_next_title('title4');">
         </div><!--right end-->
       </div><!--line end-->
 
@@ -298,7 +274,7 @@
 
       <div class="application_line" id="line4d">
         <div class="line_number">4d.</div>
-        <div class="left">You may exclude impairment related work expenses from your countable earned income. Subtract any impairment related work expenses from line 4c and input the result.</div>
+        <div class="left">You may exclude impairment related work expenses from your countable earned income. Subtract any impairment related work expenses from line 4c and input the result. If the value is less than $0, input $0.</div>
         <div class="right">
           $ <input type="number" id="standard_deduction" min="0" max="10000000" oninput="reveal_next_line('line4e')">
         </div><!--right end-->
@@ -306,7 +282,7 @@
 
       <div class="application_line" id="line4e">
         <div class="line_number">4e.</div>
-        <div class="left"><b>Countable Earned Income:</b> You may exclude 50% of your remaining earned income. Subtract 50% of the number you reported in line 4d from line 4d and input the result.</div>
+        <div class="left"><b>Countable Earned Income:</b> You may exclude 50% of your remaining earned income. Divide line 4d by 2 and input the result.</div>
         <div class="right">
           $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line4f')">
         </div><!--right end-->
@@ -314,9 +290,9 @@
 
       <div class="application_line" id="line4f">
         <div class="line_number">4f.</div>
-        <div class="left"><b>Countable Income After Standard Exclusions:</b> Add line 4a to 4e and input the result.</div>
+        <div class="left"><b>Countable Income (Not Blind):</b> Add line 4a to 4e and input the result.</div>
         <div class="right">
-          $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5')">
+          $ <input type="number" id="countable_income_not_blind" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5');reveal_status_line('countableIncome');check_eligibility();">
         </div><!--right end-->
       </div><!--line end-->
 
@@ -336,9 +312,9 @@
 
       <div class="application_line" id="line4h">
         <div class="line_number">4h.</div>
-        <div class="left"><b>Blind Work Expenses Exclusion:</b> You may exclude reasonable, unreimbursed work expenses that you needed to pay as a result of being blind. Subtract blind work expenses from line 4f and input the result.</div>
+        <div class="left"><b>Countable Income (Blind):</b> You may exclude reasonable, unreimbursed work expenses that you needed to pay as a result of being blind. Subtract blind work expenses from line 4f and input the result. If the value is less than $0, input $0.</div>
         <div class="right">
-          $ <input type="number" id="earned_income_deduction" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5')">
+          $ <input type="number" id="countable_income_blind" min="0" max="10000000" oninput="reveal_next_line('line5a'); reveal_next_title('title5')">
         </div><!--right end-->
       </div><!--line end-->
 
@@ -395,22 +371,7 @@
         <div class="line_number">5g.</div>
         <div class="left"><b>Countable Assets:</b> Add together lines 5a through 5f and input the result.</div>
         <div class="right">
-          $ <input type="number" id="investments" min="0" max="10000000" oninput="reveal_next_line('line6'); reveal_next_title('title6')">
-        </div><!--right end-->
-      </div><!--line end-->
-
-      <div class="application_line" id="title6"><b>Marital Status</b></div>
-      <div class="application_line" id="line6">
-        <div class="line_number">6.</div>
-        <div class="left">Are you married to someone who would be eligible for SSI as an individual?</div>
-        <div class="right">
-          <div class="dropdown" id="num_children_container">
-            <select class="dropdown" id="household_size" oninput="reveal_next_line(''); reveal_next_title('')">
-              <option value="default">Select Option</option>
-              <option value="one">Yes</option>
-              <option value="two">No</option>
-            </select>
-          </div>
+          $ <input type="number" id="assets" min="0" max="10000000" oninput="reveal_status_line('assets');check_eligibility();">
         </div><!--right end-->
       </div><!--line end-->
 

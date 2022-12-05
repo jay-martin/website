@@ -49,6 +49,11 @@
 #title1, #line1a {
     display: block;
 }
+@media screen and (max-width: 1000px) {
+    .left {
+        max-width: 70%;
+    }
+}
 /*****************************Right side: Eligibility**************************/
 .eligibility_status_container {
     /* display: none; */
