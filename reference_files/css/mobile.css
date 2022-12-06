@@ -166,4 +166,8 @@
     -webkit-transition: height .5s ease;
     -moz-transition: height .5s ease;
   }
+  /*********Sliders************/
+  .slider-text {
+    width: 100%;
+  }
 }
