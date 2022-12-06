@@ -107,7 +107,7 @@
   </div>
 </div>
 
-<div class="eligibility_status_container">
+<div class="eligibility_status_container" id='eligibility_status_container'>
   <div id="eligibility_status_title"><b>Eligibility Status:</b></div>
   <div id="eligibility_status"><b><em>Not Enough Information</em></b></div>
 
@@ -127,24 +127,46 @@
   </div> <!--Status line end-->
 </div> <!--Eligibility container end-->
 
+<!--Change to position:sticky instead of this-->
 <script>
   var fixedElement = document.querySelector('.eligibility_status_container');
-  var scrollThreshold = 168;
+  var displayWidth = window.innerWidth;
+  var scrollThreshold = 163;
 
-  window.addEventListener('scroll', function() {
-    // Check if the user has scrolled down the page by the scroll threshold
-    if (window.pageYOffset >= scrollThreshold) {
-      // Set the position property of the .fixed-element element to fixed
-      fixedElement.style.position = 'fixed';
-      fixedElement.style.marginTop = '10px';
-    }
-    // If the user has not scrolled down the page by the scroll threshold
-    else {
-      // Set the position property of the .fixed-element element to absolute
-      fixedElement.style.position = 'absolute';
-      fixedElement.style.marginTop = '170px';
-    }
-  });
+  // Changing the eligibility status container is to position:fixed after a certain amount of scroll is only needed for desktop
+  if(displayWidth > 800){
+    window.addEventListener('scroll', function() {
+      // Check if the user has scrolled down the page by the scroll threshold
+      if (window.pageYOffset >= scrollThreshold) {
+        // Set the position property of the .fixed-element element to fixed
+        fixedElement.style.position = 'fixed';
+        fixedElement.style.marginTop = '5px';
+      }
+      // If the user has not scrolled down the page by the scroll threshold
+      else {
+        // Set the position property of the .fixed-element element to absolute
+        fixedElement.style.position = 'absolute';
+        fixedElement.style.marginTop = '170px';
+      }
+    });
+  }
+  // On mobile, collapse eligibility container after the user has scrolled a bit
+  else{
+    window.addEventListener('scroll', function() {
+      scrollThreshold = 50;
+      // Check if the user has scrolled down the page by the scroll threshold
+      if (window.pageYOffset >= scrollThreshold) {
+        //document.getElementById('eligibility_status_container').style.borderRadius = '20px';
+        //document.getElementById('eligibility_status_container').style.height = '33px';
+        $('.eligibility_status_container').addClass('trigger_collapse');
+        /*
+        $('.elibility_criteria').each(function() {
+          $(this).css('display', 'none');
+        });
+        */
+      }
+    });
+  }
 </script>
 
 <!--Title-->
@@ -461,7 +483,7 @@
 </section> <!--Top section-->
 
 <!--References section---------------------------------------------------------------------------------------------->
-<section class=center_no_side_elements id="references">
+<section class=center_no_side_elements id="references_section">
 
   <div class="notes">
     <h2 id="notes">Notes</h2>
