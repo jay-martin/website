@@ -33,6 +33,9 @@ function initialize_animation_currently_closed(){
 	p2Children = person2_children.value;
 	axisMax = MPchart.axis.max();
 
+	/*make end animation button visible */
+	document.getElementById('end_animation_button').style.display = 'block';
+
 	/* Reset explanation text color to black */
 	document.getElementById('explanation_line1').style.color = 'black';
 	document.getElementById('explanation_line2').style.color = 'black';
@@ -49,8 +52,11 @@ function initialize_animation_currently_closed(){
 
 	/* Disable play animation buttons */
 	document.getElementById("animation1_button").disabled = true;
+	document.getElementById("animation1_button_mobile").disabled = true;
 	document.getElementById("animation2_button").disabled = true;
+	document.getElementById("animation2_button_mobile").disabled = true;
 	document.getElementById("animation3_button").disabled = true;
+	document.getElementById("animation3_button_mobile").disabled = true;
 
 	/* Calculate heights of explanation box and input box */
 	explanation = document.getElementById('center_explanations_container');
@@ -72,9 +78,6 @@ function initialize_animation_currently_closed(){
 	/* Set transition durations back to 1s */
 	document.getElementById("user_inputs").style.transitionDuration = "1s";
 	document.getElementById('center_explanations_container').style.transitionDuration = "1s";
-
-	/*make end animation button visible */
-	document.getElementById('end_animation_button').style.visibility = 'visible';
 
 	timer = 1000;
 	setTimeout(function () {
@@ -114,8 +117,11 @@ function initialize_animation_already_open(){
 	/* Disable play animation buttons */
 	document.getElementById("end_animation_button").disabled = true;
 	document.getElementById("animation1_button").disabled = true;
+	document.getElementById("animation1_button_mobile").disabled = true;
 	document.getElementById("animation2_button").disabled = true;
+	document.getElementById("animation2_button_mobile").disabled = true;
 	document.getElementById("animation3_button").disabled = true;
+	document.getElementById("animation3_button_mobile").disabled = true;
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -252,13 +258,16 @@ function end_animation(){
 		document.getElementById('marriage_penalty_show').style.color = 'black';
 
 		/* remove End Animation Button and reset its colors */
-		document.getElementById('end_animation_button').style.visibility = 'hidden';
+		document.getElementById('end_animation_button').style.display = 'none';
 	}, timer);
 }
 
 function enable_animation_buttons(){
 	document.getElementById("end_animation_button").disabled = false;
 	document.getElementById("animation1_button").disabled = false;
+	document.getElementById("animation1_button_mobile").disabled = false;
 	document.getElementById("animation2_button").disabled = false;
+	document.getElementById("animation2_button_mobile").disabled = false;
 	document.getElementById("animation3_button").disabled = false;
+	document.getElementById("animation3_button_mobile").disabled = false;
 }

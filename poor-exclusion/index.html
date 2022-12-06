@@ -217,6 +217,7 @@
       </div>
       <script type="text/javascript" src="./javascript/calculate.js"></script>
       <script type="text/javascript" src="./javascript/outputs.js"></script>
+      <script type="text/javascript" src="../reference_files/javascript/highlights_explanations.js"></script>
 
       <!--End animation button-->
       <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
@@ -288,11 +289,49 @@
 
     </div> <!--chart end-->
 
+  <!--Mobile Highlights-------------------------------------------->
+  <script type="text/javascript" src="./javascript/animations/universal.js"></script>
+
+    <div class = "highlights" id="highlights_mobile"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="highlights_title_mobile">Highlights</div>
+
+      <div class="loader_container" id="loader_container_mobile">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content_mobile">
+        <button type="button" class="top_button" onclick="show_explanation1()">Which family programs exclude poor people?</button>
+        <div class="explanation_and_animation_button_container_mobile" id="highlights_container1_mobile">
+          <p class="explanation" id="highlight_text1">The principal family programs that exclude poor people are the child tax credit, the earned income tax credit, and the head of household filing status. Additionally, nonrefundable tax credits like the child and dependent care credit, as well as itemized deductions broadly, provide little to no benefit to poor people. Even the standard deduction, which ensures that poor people do not owe any income tax, provides less tax savings to poor people than it does to people with higher incomes.</p>
+          <input type="submit" class="animation_button" id="animation1_button_mobile" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation2()">What are the consequences of excluding poor people?</button>
+        <div class="explanation_and_animation_button_container_mobile" id="highlights_container2_mobile">
+          <p class="explanation" id="highlight_text2">The primary consequence of excluding poor people is to lessen the poverty reduction effects of welfare programs. Poverty, and in particular <em>child</em> poverty, is substantially higher than it would be if poor people were not excluded.</p>
+          <input type="submit" class="animation_button" id="animation2_button_mobile" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" onclick="show_explanation3()">Why are poor people excluded?</button>
+        <div class="explanation_and_animation_button_container_mobile" id="highlights_container3_mobile">
+          <p class="explanation" id="highlight_text3">The exclusion of poor people is typically justified on the basis that it will encourage work.</p>
+          <input type="submit" class="animation_button" id="animation3_button_mobile" value="Play animation" onclick="" />
+        </div>
+
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation4()">Do all programs exclude the poorest people?</button>
+        <div class="explanation_and_animation_button_container_mobile" id="highlights_container4_mobile">
+          <p class="explanation" id="highlight_text4">No, some programs do not exclude poor people. The Supplemental Nutrition Assistance Program (SNAP) and Temporary Assistance for Needy Families (TANF), for instance, are targeted at poor people. These programs, however, are far more paternalistic and stigmatizing: they require in-person or phone interviews, interrogations of income sources and spending patterns, work requirements, complicated benefit formulas, limitations on what the benefit can be spent on (unlike the EITC and CTC's cash benefit), and onerous restrictions on the amount of money that can be saved. See pages <em><a href="" target="_blank">Administrative Burdens</a></em> and <em><a href="" target="_blank">Asinine Asset Tests</a></em> for more.</p>
+          <input type="submit" class="animation_button" id="animation4_button_mobile" value="Play animation" onclick="" />
+        </div> 
+
+      </div> <!--highlights_content-->
+
+    </div> <!--highlights box-->
+
   </div> <!--Center-->
 
   <!--Highlights-------------------------------------------->
-  <script type="text/javascript" src="./javascript/animations/universal.js"></script>
-
   <div class = "right_side">
 
     <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->

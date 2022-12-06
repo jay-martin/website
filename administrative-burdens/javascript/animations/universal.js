@@ -67,7 +67,7 @@ function initialize_animation_currently_closed(){
 	document.getElementById('center_explanations_container').style.transitionDuration = "1s";
 
 	/*make end animation button visible */
-	document.getElementById('end_animation_button').style.visibility = 'visible';
+	document.getElementById('end_animation_button').style.display = 'block';
 
 	timer = 1000;
 	setTimeout(function () {
@@ -210,7 +210,7 @@ function end_animation(){
 		document.getElementById('zoom_label').style.color = 'black';
 
 		/* remove End Animation Button and reset its colors */
-		document.getElementById('end_animation_button').style.visibility = 'hidden';
+		document.getElementById('end_animation_button').style.display = 'none';
 	}, timer);
 
 	timer += 1000;

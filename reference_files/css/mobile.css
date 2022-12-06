@@ -152,4 +152,18 @@
     height: 100%;
     overflow: hidden;
   }
+  /****Highlights***********/
+  #highlights_mobile {
+    display: inline-block;
+    width: 99%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .explanation_and_animation_button_container_mobile{
+    height: 100%;
+    margin: 0px;
+    overflow: hidden;
+    -webkit-transition: height .5s ease;
+    -moz-transition: height .5s ease;
+  }
 }

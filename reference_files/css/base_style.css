@@ -51,8 +51,11 @@ th, td {
     overflow-x: auto;
     overflow-y: hidden;
 }
-/*Hide mobile navbar*/
+/*Hide mobile navbar & mobile highlights*/
 .mobile_navbar, .mobile_dropdown {
+  display: none;
+}
+#highlights_mobile {
   display: none;
 }
 /***********************Page Positioning**********************************************************/
