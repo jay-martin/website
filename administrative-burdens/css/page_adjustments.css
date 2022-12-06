@@ -98,52 +98,80 @@
     margin-right: 10px;
     color: #919191;
 }
+#collapse_icon, #expand_icon {
+    display: none;
+}
 
 /*******************Mobile Adjustments*********************************/
 @media screen and (max-width: 800px) {
     .eligibility_status_container{
         font-size: 110%;
-        width: 55%;
-        position: fixed;
-        margin-top: 83vh;
-        margin-left: 10px;
-        background-color: white;
-        box-shadow: 0 0 10px 1px #ddd;
-        height: 135px;
-
-        /*
         width: 100%;
-        margin-top: 83vh;
+        position: fixed;
+        margin-top: 90.5vh;
         margin-left: 0px;
+        background-color: white;
         border: none;
         border-top: solid;
-        border-radius: 0px;
-        border-color: #adadad;
-        padding-bottom: 10px;
-        */
+        border-radius: 5px;
+        border-color: white;
+        box-shadow: 0 0 10px 1px #ddd;
+        height: 200px;
+    }
+    #eligibility_status_title, #eligibility_status {
+        font-size: 105%;
+    }
+    .elibility_criteria {
+        font-size: 95%;
+    }
+    .trigger_collapse, .trigger_expand, .trigger_offPage, .trigger_onPage {
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
     }
     .trigger_collapse {
         animation-name: collapse;
-        animation-duration: .5s;
-        animation-fill-mode: forwards;
     }
-    .trigger_open {
-        animation-name: collapse;
-        animation-duration: .5s;
-        animation-direct: reverse;
-        animation-fill-mode: forwards;
+    .trigger_expand {
+        animation-name: expand;
+    }
+    .trigger_offPage {
+        animation-name: offPage;
+    }
+    .trigger_onPage {
+        animation-name: onPage;
     }
     @keyframes collapse {
-        0% { 
-            /* height: 135px; */
-            /* height: 100%; */
-            margin-top: 83vh;
-        }
-        100% {  
-            /* height: 57.5px; */
-            /* height: 20%; */
-            margin-top: 93vh;
-        }
+        0% { margin-top: 79.5vh;}
+        100% {  margin-top: 90.5vh;}
+    }
+    @keyframes expand {
+        0% { margin-top: 90.5vh;}
+        100% {  margin-top: 79.5vh; }
+    }
+    @keyframes offPage {
+        0% { }
+        100% { margin-top: 100vh; }
+    }
+    @keyframes onPage {
+        0% { }
+        100% { margin-top: 91vh; }
+    }
+    #expand_icon {
+        display: block;
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+        color: #919191;
+    }
+    #collapse_icon {
+        display: none;
+        margin-bottom: 5px;
+        color: #919191;
+    }
+    #eligibility_status_title {
+        margin-top: 0px;
+        line-height: 0em;
+        margin-bottom: 1em;
     }
     .left {
         max-width: 65%;

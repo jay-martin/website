@@ -108,7 +108,11 @@
 </div>
 
 <div class="eligibility_status_container" id='eligibility_status_container'>
-  <div id="eligibility_status_title"><b>Eligibility Status:</b></div>
+  <div class="clickable" onclick='status_animation();'>
+    <span class="material-symbols-outlined" id="expand_icon">expand_less</span>
+    <span class="material-symbols-outlined" id="collapse_icon">expand_more</span>
+    <div id="eligibility_status_title"><b>Eligibility Status:</b></div>
+  </div> <!--Clickable-->
   <div id="eligibility_status"><b><em>Not Enough Information</em></b></div>
 
   <div class='elibility_criteria'>
@@ -132,8 +136,9 @@
   var fixedElement = document.querySelector('.eligibility_status_container');
   var displayWidth = window.innerWidth;
   var scrollThreshold = 163;
+  var isExpanded = false;
 
-  // Changing the eligibility status container is to position:fixed after a certain amount of scroll is only needed for desktop
+  // Changing the eligibility status container to position:fixed after a certain amount of scroll is only needed for desktop
   if(displayWidth > 800){
     window.addEventListener('scroll', function() {
       // Check if the user has scrolled down the page by the scroll threshold
@@ -150,22 +155,39 @@
       }
     });
   }
-  // On mobile, collapse eligibility container after the user has scrolled a bit
+  // Mobile: Get rid of eligibility status container when user has scrolled past it
   else{
+    scrollThreshold = 1200;
     window.addEventListener('scroll', function() {
-      scrollThreshold = 50;
-      // Check if the user has scrolled down the page by the scroll threshold
       if (window.pageYOffset >= scrollThreshold) {
-        //document.getElementById('eligibility_status_container').style.borderRadius = '20px';
-        //document.getElementById('eligibility_status_container').style.height = '33px';
-        $('.eligibility_status_container').addClass('trigger_collapse');
-        /*
-        $('.elibility_criteria').each(function() {
-          $(this).css('display', 'none');
-        });
-        */
+        $('.eligibility_status_container').addClass('trigger_offPage');
       }
     });
+  }
+
+  function status_animation(){
+    if(isExpanded){
+      collapse_status();
+    }
+    else{
+      expand_status();
+    }
+  }
+
+  function expand_status(){
+    $('.eligibility_status_container').removeClass('trigger_collapse');
+    $('.eligibility_status_container').addClass('trigger_expand');
+    $('#expand_icon').css('display', 'none');
+    $('#collapse_icon').css('display', 'block');
+    isExpanded = true;
+  }
+
+  function collapse_status(){
+    $('.eligibility_status_container').removeClass('trigger_expand');
+    $('.eligibility_status_container').addClass('trigger_collapse');
+    $('#collapse_icon').css('display', 'none');
+    $('#expand_icon').css('display', 'block');
+    isExpanded = false;
   }
 </script>
 
@@ -232,7 +254,7 @@
       </div>
     </div> <!-- Form modification container end-->
     
-    <div class="application"> <!--Example application-->
+    <div class="application" id="application"> <!--Example application-->
       <div class="application_title"><b>SSI Eligibility</b></div>
       <div class="application_description" id="application_description">Answer the questions below to determine if you are eligible. A new line will appear after you have answered the current line.</div>
 
