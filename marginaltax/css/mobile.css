@@ -1,0 +1,155 @@
+/*PROBLEM: Overflow from Mathjax is hidden */
+/* Google Menu Icon */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+@media screen and (max-width: 800px) {
+  body {
+    width: 100%;
+    font-size: 90%;
+  }
+  h1 {
+    font-size: 175%;
+  }
+  #page_title {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo {
+    display: none;
+  }
+  .left_side {
+    display: none;
+  }
+  .right_side { 
+    display: none;
+  }
+  .center {
+    display: block;
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .center_no_side_elements {
+    width: 100%;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    overflow: hidden;
+  }
+  /* Adjustments to chart features */
+  #income_slider_container {
+    margin-top: 10px;
+  }
+  #income_slider_text {
+    display: block;
+    line-height: 1.2em;
+    width: 100%;
+  }
+  .slider-actual {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*******Navbar************/
+  .mobile_navbar {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1.5px solid;
+    border-color: #adadad;
+    background-color: white;
+    opacity: 100;
+    z-index: 1;
+  }
+  button.open_icon, button.close_icon {
+    text-align: left;
+    width: 9%;
+    padding-left: 10px;
+    margin-left: 10px;
+    border: none;
+    font-size: 100%;
+    vertical-align: top;
+    margin-top: 6px;
+  }
+  button.close_icon {
+    display: none;
+  }
+  button.navbar_logo {
+    font-family: 'Zen Antique Soft', serif;
+    font-size: 150%;
+    display: inline-block;
+    text-align: center;
+    width: 60%;
+    margin-left: 8%;
+    border: none;
+  }
+  button.open_icon:hover, button.close_icon, button.navbar_logo:hover {
+    background-color: white;
+  }
+  /*shift everything down*/
+  .title_container {
+    padding-top: 70px;
+  }
+  /****Dropdown***********/
+  .mobile_dropdown {
+    font-family: 'Libre Baskerville', serif;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin-top: 57px;
+    background-color: white;
+    z-index: 1;
+  }
+  .featured_pages_title {
+    margin-left: 10px;
+    font-size: 120%;
+    margin-bottom: 16px;
+    margin-top: 15px;
+  }
+  a.featured_pages {
+    margin-left: 10px;
+    font-size: 120%;
+    margin-top: 15px;
+  }
+  .mobile_dropdown a {
+    color: black;
+    margin-bottom: 16px;
+    padding-right: 10px;
+    text-decoration: none;
+    display: block;
+    width: max-content;
+  }
+  .mobile_dropdown a:hover {
+    text-decoration: underline;
+  }
+  .features_dropdown, .programs_dropdown {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 2em;
+    margin-top: 15px;
+    width: 45%;
+    margin-left: 10px;
+  }
+  .dropdown_title {
+    font-size: 120%;
+    margin-bottom: 16px;
+  }
+  .twitter_dropdown {
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+  }
+  /* disable scroll */
+  .stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
+}

@@ -1,6 +1,17 @@
 /******************************************************************************************
  * This file contains the function creating the c3.js chart
  * ****************************************************************************************/
+
+//Determine which set of x tick values to use depending on screen width
+//Mobile screens require fewer ticks
+var windowWidth = window.innerWidth;
+if(windowWidth < 800){
+    xTick = [0, 20000, 40000, 60000, 80000, 100000];
+}
+else{
+    xTick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,];
+}
+
 var chart = c3.generate({
     bindto: '#chart',
     data: {
@@ -61,8 +72,8 @@ var chart = c3.generate({
     padding: {
         bottom: 0,
         top: 10,
-        left: 75,
-        right: 20,
+        left: 55,
+        right: 10,
     },
     legend: {
         position: 'bottom',
@@ -76,7 +87,7 @@ var chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,]
+                values: xTick,
             },
             padding: {left: 0, right: 0},
             max: 100000,
@@ -100,5 +111,5 @@ var chart = c3.generate({
         y: {
             lines: [{value: 0, text: ''}],
         }
-    }
+    },
 });
