@@ -16,7 +16,7 @@ function display(){
 		document.getElementById('line1a').style.display = 'block';
 	}
 	else{
-		document.getElementById('application_description').innerHTML = 'Answer the questions below to determine if you are eligible. Your eligibility status based on current inputs will be displayed on the right.'
+		document.getElementById('application_description').innerHTML = 'Answer the questions below to determine if you are eligible. Your eligibility status based on current inputs is displayed in the eligibility box.'
 		$('.application_line').css('display', 'block');
 	}
 }

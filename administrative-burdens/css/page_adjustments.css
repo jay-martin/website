@@ -62,7 +62,7 @@
     width: 21%;
     font-family: "Computer Modern Serif";
     text-align: center;
-    margin-top: 177px;
+    margin-top: 170px;
     border: solid;
     border-radius: 5px;
     border-color: #adadad;
@@ -96,4 +96,16 @@
     float: right;
     margin-right: 10px;
     color: #919191;
+}
+
+@media screen and (max-width: 800px) {
+    .eligibility_status_container{
+        display: none;
+    }
+    .left {
+        max-width: 65%;
+    }
+    #benefit, #benefit_dropdown, #display, #display_dropdown, #calculation, #calculation_dropdown {
+        font-size: 100%;
+    }
 }
