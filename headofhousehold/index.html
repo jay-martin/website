@@ -189,20 +189,20 @@
             </label>
           </div>
           <script>
+            childrenIsShown = false;
             function show_num_children(){
-                dropdownHidden = document.getElementById('num_children_container').style.visibility;
-                console.log("visibility: " + document.getElementById('num_children_container').style.visibility);
-                if(dropdownHidden === "hidden"){
-                    document.getElementById('num_children_container').style.visibility = "visible";
-                }
-                else{
-                    console.log("should hide");
-                    document.getElementById('num_children_container').style.visibility = "hidden";
-                }
+              if(childrenIsShown === false){
+                document.getElementById('num_children_container').style.display = "block";
+                childrenIsShown = true;
+              }
+              else{
+                document.getElementById('num_children_container').style.display = "none";
+                childrenIsShown = false;
+              }
             }
           </script>
 
-          <!--Number of old children-->
+          <!--Number of children-->
           <div class="children_dropdown" id="num_children_container">
             I have
             <select name="numChildren" class="num_children_class" id="num_children" oninput="modifyGraph_HOH();difference_hoh()">
@@ -213,9 +213,6 @@
               <option value="five">5 children</option>
             </select>.
           </div>
-          <script>
-            document.getElementById('num_children_container').style.visibility = "hidden";
-          </script>
         </div> <!--ctc_containter-->
 
       </div> <!--user_inputs container-->
