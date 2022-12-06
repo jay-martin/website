@@ -4,7 +4,11 @@
   <title>Marriage Penalties</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
+  <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
+
+  <!-- Google Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <!-- Font Awesome -->
    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -30,15 +34,85 @@
 
 <body>
 
-<h1 id="top">Marriage Penalties</h1>
-<div class="name">
-  By Jay Martin </br>
-  <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+<!--Mobile navbar-->
+<div class="mobile_navbar" id='mobile_navbar'>
+  <button class='open_icon' id='open_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">menu</span></button>
+  <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
+  <button class="navbar_logo">The Welfare of Families</button>
+</div><!--Mobile Navbar-->
+<script>
+  navbarClicked = false;
+  function reveal_dropdown(){
+    if(navbarClicked === false){
+      //reveal dropdown
+      document.getElementById('mobile_dropdown').style.display = 'block';
+      navbarClicked = true;
+
+      //switch menu icon to x icon
+      document.getElementById('open_icon').style.display = 'none';
+      document.getElementById('close_icon').style.display = 'inline-block';
+
+      //disable scroll
+      document.body.classList.add("stop-scrolling");
+    }
+    else{
+      document.getElementById('mobile_dropdown').style.display = 'none';
+      navbarClicked = false;
+
+      //switch menu icon to x icon
+      document.getElementById('close_icon').style.display = 'none';
+      document.getElementById('open_icon').style.display = 'inline-block';
+
+      //enable scroll
+      document.body.classList.remove("stop-scrolling");
+    }
+  }
+</script>
+
+<!--Mobile dropdown-->
+<div class='mobile_dropdown' id='mobile_dropdown'>
+  <div class='featured_pages_title'><b>Featured Pages</b></div>
+  <a class='featured_pages' href="./index.html"><em>Fixing Family Benefits</em></a>
+  <a class='featured_pages' href="./index.html"><em>The Family Security Act</em></a>
+  <div class="features_dropdown">
+    <div class='dropdown_title'><b>Characteristics</b></div>
+    <a href="./index.html">Poverty Reduction</a>
+    <a href="../poor-exclusion/index.html">Exclusion of Poor Families</a>
+    <a href="../marriage-penalties/index.html">Marriage Penalties</a>
+    <a href="./index.html">Marginal Tax Rates</a>
+    <a href="./index.html">Asinine Asset Tests</a>
+    <a href="./index.html">Administrative Burdens</a>
+    <a href="../territories/index.html">Territories</a>
+    <a href="./index.html">Racial Justice</a>
+  </div>
+  <div class="programs_dropdown">
+    <div class='dropdown_title'><b>Programs</b></div>
+    <a href="./index.html">Child Tax Credit</a>
+    <a href="./index.html">Earned Income Tax Credit</a>
+    <a href="../headofhousehold/index.html">Head of Household</a>
+    <a href="./index.html">CDCC</a>
+    <a href="./index.html">SNAP (Food Stamps)</a>
+    <a href="./index.html">TANF</a>
+    <a href="./index.html">WIC</a>
+    <a href="./index.html">Medicaid & CHIP</a>
+  </div>
+  <div class='twitter_dropdown'>
+    <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
 </div>
 
+<!--Title-->
+<div class="title_container">
+  <h1 id="page_title">Marriage Penalties</h1>
+  <div class="name">By Jay Martin</div>
+  <div class="twitter_follow">
+    <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </br>
+  </div>
+</div><!--Title container-->
 
-<!--div class for chart and highlights box-------------------------------------------->
-<div class = "chart_highlights_container">
+<!--Top section containing page links (left), chart module (center), and highlights (right)-------------------------------------------->
+<section class = "top">
 
   <!--Left side-------------------------------------------------->
   <div class="left_side">
@@ -185,20 +259,6 @@
           <input type="submit" class="animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
         </div>
       </div> <!--highlights_content-->
-      
-      <!--
-      <button type="button" class="top_button" onclick="show_basic_overview()">What are marriage penalties? </button>
-        <p class="explanation" id="basic_overview_explanation" hidden>When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
-        <input type="submit" class="animation_button" id="basic_overview_animation" value="Play animation" onclick="show_basic_overview_animation()" hidden />
-      
-      <button type="button" >Who faces marriage penalties?</button>
-        <p class="explanation" id="itemized_explanation" hidden>Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
-        <input type="submit" class="animation_button" id="marriage_penalties_animation" value="Play animation"  hidden/>
-      
-      <button type="button" class="bottom_button" onclick="show_marriage_bonus_explanation()">Who faces marriage bonuses?</button>
-        <p class="explanation" id="marriage_bonus_explanation" hidden>Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC..</p>
-        <input type="submit" class="animation_button" id="marriage_bonus_animation" value="Play animation" onclick="show_marriage_bonus_animation()" hidden/>
-      -->
     
     </div> <!--Highlights box-->
     
@@ -207,7 +267,10 @@
   
   </div> <!--right_side-->
 
-</div> <!--chart, eitc values & highlights container end-->
+</section> <!--Top section-->
+
+<!-- Initialize page -->
+<script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 
 </body>
 </html>
