@@ -43,8 +43,7 @@ function animation3(){
 	setTimeout(function () {
 		person1Income = 7000;
 		person1Income_formatted = person1Income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		myRange_person1.value = person1Income;
-		rangeValue_person1.innerText = person1Income_formatted;
+		person1_income.value = person1Income;
 		MPchart.xgrids([{value: person1Income, text: "Person 1 Income"}]);
 		document.getElementById('explanation_line1').innerHTML = 'Some very-low income couples incur marriage bonuses. Consider, for instance, two people who each have one child.</br> Say the first person has an income of $' + person1Income_formatted + '.';
 		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
@@ -54,8 +53,7 @@ function animation3(){
 	setTimeout(function () {
 		person2Income = 3000;
 		person2Income_formatted = person2Income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		myRange_person2.value = person2Income;
-		rangeValue_person2.innerText = person2Income_formatted;
+		person2_income.value = person2Income;
 		MPchart.xgrids([{value: person1Income, text: "Person 1 Income"}, {value: person2Income, text: "Person 2 Income"}]);
 		document.getElementById('explanation_line1').innerHTML = 'Some very-low income couples incur marriage bonuses. Consider, for instance, two people who each have one child.</br> Say the first person has an income of $' + person1Income_formatted + '.</br>Say the other person has an income of $' + person2Income_formatted + '.';
 		eitc_values_style.scrollTop = eitc_values_style.scrollHeight;
@@ -63,7 +61,7 @@ function animation3(){
 
 	timer += 2000;
 	setTimeout(function () {
-		person1EITC = EITC_benefit('single', myRange_person1.value, person1_children.value);
+		person1EITC = EITC_benefit('single', person1_income.value, person1_children.value);
 		person1EITC_formatted = person1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.ygrids([{value: 0}, {value: person1EITC, text: "Person 1 EITC"}]);
 
@@ -74,7 +72,7 @@ function animation3(){
 
 	timer += 2000;
 	setTimeout(function () {
-		person2EITC = EITC_benefit('single', myRange_person2.value, person2_children.value);
+		person2EITC = EITC_benefit('single', person2_income.value, person2_children.value);
 		person2EITC_formatted = person2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.ygrids([{value: 0}, {value: person1EITC, text: "Person 1 EITC"}, {value: person2EITC, text: "Person 2 EITC"}]);
 

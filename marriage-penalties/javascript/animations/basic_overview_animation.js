@@ -36,10 +36,9 @@ function animation1(){
 
 	timer+= 2000;
 	setTimeout(function () {
-		myRange_person1.value = 30000;
-		MPchart.xgrids([{value: myRange_person1.value, text: 'Your income'}]);
-		person1Income = myRange_person1.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		rangeValue_person1.innerText = person1Income;
+		person1_income.value = 30000;
+		MPchart.xgrids([{value: person1_income.value, text: 'Your income'}]);
+		person1Income = person1_income.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 		document.getElementById('explanation_line1').style.color = '#7a7a7a';
 		document.getElementById('explanation_line2').innerHTML = 'Say you have an income of <b>$' + person1Income + "</b>.";
@@ -48,7 +47,7 @@ function animation1(){
 
 	timer += 2000;
 	setTimeout(function () {
-		person1EITC = EITC_benefit('single', myRange_person1.value, person1_children.value);
+		person1EITC = EITC_benefit('single', person1_income.value, person1_children.value);
 		person1EITC_formatted = person1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.ygrids.add({value: person1EITC, text: "Value of your EITC"});
 		document.getElementById('explanation_line2').innerHTML = 'Say you have an income of <b>$' + person1Income + "</b>. Then your EITC is worth <b>$" + person1EITC_formatted + "</b>.";
@@ -56,12 +55,12 @@ function animation1(){
 
 	timer += 2000;
 	setTimeout(function () {
-		MPchart.xgrids.remove([{value: myRange_person1.value, text: 'Your income'}]);
+		MPchart.xgrids.remove([{value: person1_income.value, text: 'Your income'}]);
 	}, timer);
 
 	timer+= 1000;
 	setTimeout(function () {
-		MPchart.xgrids.remove([{value: myRange_person1.value, text: 'Your income'}]);
+		MPchart.xgrids.remove([{value: person1_income.value, text: 'Your income'}]);
 		person2_children.value = 'one';
 		modify_person2();
 
@@ -80,10 +79,9 @@ function animation1(){
 	timer+= 3000;
 	setTimeout(function () {
 		MPchart.hide('person1');
-		myRange_person2.value = 18000;
-		person2Income = myRange_person2.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		rangeValue_person2.innerText = person2Income;
-		MPchart.xgrids([{value: myRange_person2.value, text: "Your partner's income"}]);
+		person2_income.value = 18000;
+		person2Income = person2_income.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		MPchart.xgrids([{value: person2_income.value, text: "Your partner's income"}]);
 
 		document.getElementById('explanation_line3').style.color = '#7a7a7a';
 		document.getElementById('explanation_line4').innerHTML = 'Say your partner has an income of <b>$' + person2Income + '</b>.';
@@ -92,7 +90,7 @@ function animation1(){
 
 	timer += 2000;
 	setTimeout(function () {
-		person2EITC = EITC_benefit('single', myRange_person2.value, person2_children.value);
+		person2EITC = EITC_benefit('single', person2_income.value, person2_children.value);
 		person2EITC_formatted = person2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.ygrids.add({value: person2EITC, text: "Value of your partner's EITC"});
 		document.getElementById('explanation_line4').innerHTML = 'Say your partner has an income of <b>$' + person2Income + '</b>. Then their EITC is worth <b>$' + person2EITC_formatted + "</b>.";
@@ -100,7 +98,7 @@ function animation1(){
 
 	timer += 2000;
 	setTimeout(function () {
-		MPchart.xgrids.remove([{value: myRange_person2.value, text: "Your partner's income"}]);
+		MPchart.xgrids.remove([{value: person2_income.value, text: "Your partner's income"}]);
 	}, timer);
 
 	timer+= 2000;
@@ -133,7 +131,7 @@ function animation1(){
 
 	timer += 2500;
 	setTimeout(function () {
-		MPchart.xgrids([{value: myRange_person1.value, text: 'Your income'}]);
+		MPchart.xgrids([{value: person1_income.value, text: 'Your income'}]);
 
 		document.getElementById('explanation_line6').style.color = '#7a7a7a';
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income;
@@ -142,13 +140,13 @@ function animation1(){
 
 	timer += 2000;
 	setTimeout(function () {
-		MPchart.xgrids([{value: myRange_person1.value, text: 'Your income'}, {value: myRange_person2.value, text: "Your partner's income"}]);
+		MPchart.xgrids([{value: person1_income.value, text: 'Your income'}, {value: person2_income.value, text: "Your partner's income"}]);
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income + " and your partner's income of $" + person2Income;
 	}, timer);
 
 	timer += 2000;
 	setTimeout(function () {
-		combinedIncome = parseInt(myRange_person1.value, 10) + parseInt(myRange_person2.value, 10);
+		combinedIncome = parseInt(person1_income.value, 10) + parseInt(person2_income.value, 10);
 		combinedIncome_formatted = combinedIncome.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 		MPchart.xgrids([{value: combinedIncome, text: ''}, {value: combinedIncome, text: ""}, {value: combinedIncome, text: "Combined income"}]);
 		document.getElementById('explanation_line7').innerHTML = "However, with your income of $" + person1Income + " and your partner's income of $" + person2Income + ", you have a combined income of <b>$" + combinedIncome_formatted + "</b>.";

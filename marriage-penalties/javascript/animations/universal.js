@@ -27,8 +27,8 @@ function initialize_animation_currently_closed(){
 	animationOpen = true;
 
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	p1Income = myRange_person1.value;
-	p2Income = myRange_person2.value;
+	p1Income = person1_income.value;
+	p2Income = person2_income.value;
 	p1Children = person1_children.value;
 	p2Children = person2_children.value;
 	axisMax = MPchart.axis.max();
@@ -109,8 +109,8 @@ function initialize_animation_currently_closed(){
 function initialize_animation_already_open(){
 
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	p1Income = myRange_person1.value;
-	p2Income = myRange_person2.value;
+	p1Income = person1_income.value;
+	p2Income = person2_income.value;
 	p1Children = person1_children.value;
 	p2Children = person2_children.value;
 
@@ -178,8 +178,8 @@ function end_animation(){
 	animationOpen = false;
 
 	/* reset values */
-	myRange_person1.value = p1Income;
-	myRange_person2.value = p2Income;
+	person1_income.value = p1Income;
+	person2_income.value = p2Income;
 	person1_children.value = p1Children;
 	person2_children.value = p2Children;
 
