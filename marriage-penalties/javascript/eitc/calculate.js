@@ -8,7 +8,7 @@ function combined_income_marriage_penalty(){
 /** Returns the sum of the children between person 1 and person 2
  * @return {integer}
  * */
-function numChildren(){
+function num_children(){
     if (person1_children.value==='none' && person2_children.value==='none'){return 0;}
     if ((person1_children.value==='one' && person2_children.value==='none') || (person1_children.value==='none' && person2_children.value==='one')){return 1;}
     if ((person1_children.value==='none' && person2_children.value==='two') || (person1_children.value==='one' && person2_children.value==='one') || (person1_children.value==='two' && person2_children.value==='none')){return 2;}
