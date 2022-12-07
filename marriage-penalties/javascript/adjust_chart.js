@@ -107,9 +107,9 @@ function modify_married(){
 }
 
 function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome, numChildren){
-    p1Income = myRange_person1.value;
+    p1Income = person1_income.value;
     p1EITC = EITC_benefit('single', p1Income, person1_children.value);
-    p2Income = myRange_person2.value;
+    p2Income = person2_income.value;
     p2EITC = EITC_benefit('single', p2Income, person2_children.value);
 
     /* Move xgrids */

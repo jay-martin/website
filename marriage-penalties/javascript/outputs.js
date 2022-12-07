@@ -13,8 +13,8 @@ function modify_income_outputs(){
 
     /*Calculate benefits and assing to variables*/
     combinedIncome = combined_income_marriage_penalty();
-    person1EITC = EITC_benefit('single', myRange_person1.value, person1_children.value);
-    person2EITC = EITC_benefit('single', myRange_person2.value, person2_children.value);
+    person1EITC = EITC_benefit('single', person1_income.value, person1_children.value);
+    person2EITC = EITC_benefit('single', person2_income.value, person2_children.value);
     combinedEITC = person1EITC + person2EITC;
     marriedEITC = EITC_benefit('married', combinedIncome, numberChildren);
     

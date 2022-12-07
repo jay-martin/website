@@ -90,8 +90,8 @@ function tax_liability(filingStatus, income){
  * @return {float} - the difference between the sum of the two individual tax liabilities and the married tax liability at their combined income
  * */
 function hoh_value_marriage_penalty(){
-	person1Income = myRange_person1.value;
-	person2Income = myRange_person2.value
+	person1Income = person1_income.value;
+	person2Income = person2_income.value
 	combinedIncome = person1Income + person2Income;
 
 	person1 = tax_liability('hoh', person1Income);

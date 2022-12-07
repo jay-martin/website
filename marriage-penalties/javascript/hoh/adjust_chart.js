@@ -45,8 +45,8 @@ function hoh_modify_married(){
 
 function hoh_modify_income(){
     // Incomes
-    p1Income = myRange_person1.value;
-    p2Income = myRange_person2.value;
+    p1Income = person1_income.value;
+    p2Income = person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
     
     // Tax liabilities
@@ -96,7 +96,7 @@ function hoh_modify_income(){
 }
 
 function hoh_adjust_axes(){
-    combinedIncome = parseInt(myRange_person1.value) + parseInt(myRange_person2.value);
+    combinedIncome = parseInt(person1_income.value) + parseInt(person2_income.value);
     if(combinedIncome < 60000){
         MPchart.axis.max({ x: 60000 });
     }

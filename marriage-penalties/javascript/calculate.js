@@ -2,7 +2,7 @@
  * @return {integer}
  * */
 function combined_income_marriage_penalty(){
-    return parseInt(myRange_person1.value, 10) + parseInt(myRange_person2.value,10);
+    return parseInt(person1_income.value, 10) + parseInt(person2_income.value,10);
 }
 
 /** Returns the sum of the children between person 1 and person 2
@@ -92,8 +92,8 @@ function value_marriage_penalty(combined_income){
 	else if(combined_children === 2){numberChildren='two';}
 	else if (combined_children >2){numberChildren='three';}
 
-	person1 = EITC_benefit('single', myRange_person1.value, person1_children.value);
-	person2 = EITC_benefit('single', myRange_person2.value, person2_children.value);
+	person1 = EITC_benefit('single', person1_income.value, person1_children.value);
+	person2 = EITC_benefit('single', person2_income.value, person2_children.value);
 	combined = EITC_benefit('married', combined_income, numberChildren);
 
 	return person1 + person2 - combined;
