@@ -120,31 +120,24 @@ function modify_income_chart(marriedEITC, combinedEITC, penalty, combinedIncome,
     MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_married', combinedIncome], ['point_married', marriedEITC] ] });
 
     /* Move stacked eitc value curves */
-    /* Adjust color of eitc value curves */
     if(penalty > 0){
         MPchart.show(['married_eitc', 'penalty']);
         MPchart.hide(['combined_eitc', 'bonus']);
         MPchart.load({
             columns: [
-                ['x4',            0,           100000],
+                ['x_horizontal',  0,           100000],
                 ['married_eitc',  marriedEITC, marriedEITC],
-                ['x5',            0,           100000],
                 ['penalty',       penalty,     penalty],
             ]
         });
-        MPchart.data.colors({
-            'married_eitc': '#FFFFFF',
-            'penalty': '#eb3734',
-        })
     }
     else{
         MPchart.hide(['married_eitc', 'penalty']);
         MPchart.show(['combined_eitc', 'bonus']);
         MPchart.load({
             columns: [
-                ['x6',            0, 100000],
+                ['x_horizontal',  0, 100000],
                 ['combined_eitc', combinedEITC, combinedEITC],
-                ['x7',            0, 100000],
                 ['bonus',         penalty * -1, penalty * -1],
             ]
         });

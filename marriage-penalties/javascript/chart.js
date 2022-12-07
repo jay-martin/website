@@ -5,17 +5,22 @@ var MPchart = c3.generate({
         xs: {
             'person1' : 'x1',
             'person2' : 'x2',
+            'person2_dashed' : 'x2',
             'married' : 'x3',
-
-            'married_eitc'  : 'x4',
-            'penalty'       : 'x5',
-
-            'combined_eitc' : 'x6',
-            'bonus'         : 'x7',
 
             'point1' : 'x_point1',
             'point2' : 'x_point2',
-            'point_married' : 'x_point_married'
+            'point_married' : 'x_point_married',
+
+            'married_eitc'  : 'x_horizontal',
+            'penalty'       : 'x_horizontal',
+            'combined_eitc' : 'x_horizontal',
+            'bonus'         : 'x_horizontal',
+
+            'hoh_married'   : 'x_horizontal',
+            'hoh_penalty'   : 'x_horizontal',
+            'hoh_combined'  : 'x_horizontal',
+            'hoh_bonus'     : 'x_horizontal',
         },
         columns: [
             ['x3',       0, 10979, 26262, 49622],
@@ -25,14 +30,11 @@ var MPchart = c3.generate({
             ['x2',       0, 7320, 9160, 16480],
             ['person2',  0, 560,  560,  0],
 
-            ['x4',            0,    60000],
+            ['x_horizontal',  0,    60000],
             ['married_eitc',  1548, 1548],
-            ['x5',            0,    60000],
             ['penalty',       1104, 1104],
 
-            ['x6',],
             ['combined_eitc',],
-            ['x7',],
             ['bonus',],
 
             ['x_point1', 30000],
@@ -47,36 +49,52 @@ var MPchart = c3.generate({
             'penalty'       : 'area',
             'combined_eitc' : 'area',
             'bonus'         : 'area',
+
+            'hoh_married'   : 'area',
+            'hoh_penalty'   : 'area',
+            'hoh_combined'  : 'area',
+            'hoh_bonus'     : 'area',
         },
-        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus']],
+        regions: {
+            person2_dashed: [ {'style':'dashed'}, ],
+        },
+        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus'], ['hoh_married', 'hoh_penalty'], ['hoh_combined', 'hoh_bonus']],
         order: false,
         names: {
             person1: 'Your EITC',
-            person2: "Your partner's EITC",
+            person2: "Your Partner's EITC",
+            person2_dashed: "Your Partner's Tax Liability",
             married: 'EITC if you get married',
         },
         colors: {
             person1: '#6ab6fc',
+            point1:  '#6ab6fc',
             person2: '#770087',
+            person2_dashed: '#770087',
+            point2: '#770087',
             married: '#000000',
+            point_married: '#000000',
+
             married_eitc: '#FFFFFF',
             penalty: '#eb3734',
             combined_eitc: '#FFFFFF',
             bonus: '#36D903',
-            point1: '#6ab6fc',
-            point2: '#770087',
-            point_married: '#000000',
+
+            hoh_married: '#FFFFFF',
+            hoh_penalty: '#eb3734',
+            hoh_combined: '#FFFFFF',
+            hoh_bonus: '#36D903',
         },
     },
     padding: {
         bottom: 0,
-        top: 10,
+        top: 0,
         left: 70,
         right: 22,
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married'],
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed'],
     },
     tooltip: {
         show: false
@@ -88,14 +106,14 @@ var MPchart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000]
             },
-            padding: {left: 0, right: 0},
+            padding: {left: 0, right: 30},
             max: 60000,
         },
         y: {
-            label: {text: 'Benefit / Marriage Penalty', position: 'outer-middle'},
+            label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
             },
             padding: {bottom: 0, top: 0},
             max: 4000,

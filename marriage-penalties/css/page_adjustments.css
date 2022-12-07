@@ -1,0 +1,4 @@
+/* Hide HOH user inputs on page load (loads with EITC chart)*/
+#hoh_user_inputs {
+	display: none;
+}

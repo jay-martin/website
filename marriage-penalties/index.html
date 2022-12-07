@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
   <!-- Google Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <!-- Font Awesome -->
-   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   
   <!-- load c3.css -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
@@ -21,8 +22,14 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
-  <!-- Computer Modern Sans -->
+  <!-- Computer Modern -->
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+
+  <!-- Javascript -->
+  <script src="./javascript/controls.js"></script>
+  <script src="./javascript/hoh/adjust_chart.js"></script>
+  <script src="./javascript/hoh/calculate.js"></script>
 
 </head>
 
@@ -150,30 +157,48 @@
       
       <!--User inputs-->
       <div class="user_inputs" id="user_inputs">
-        
-        <!--Person 1 number of old children-->
-        <label for="numChildrenPerson1">I have</label>
-        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income_outputs()">
-          <option value="none">no children</option>
-          <option value="one" selected>1 child</option>
-          <option value="two">2 children</option>
-          <option value="three">3+ children</option>
-        </select>
 
-        <!--Person 2 number of old children-->
-        <label for="numChildrenPerson2">and my partner has</label>
-        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income_outputs()" >
-          <option value="none">no children</option>
-          <option value="one" >1 child</option>
-          <option value="two">2 children</option>
-          <option value="three">3+ children</option>
-        </select>.
+        <!--Benefit Selector-->
+        <label for="benefit_selector">Show me the: </label>
+        <select id="benefit_selector" oninput="switch_chart()">
+          <option value="eitc">Earned Income Tax Credit</option>
+          <option value="hoh">Head of Household Filing Status</option>
+        </select></br>
+
+        <div id="eitc_user_inputs">
+          <!--Person 1 number of old children-->
+          <label for="numChildrenPerson1">I have</label>
+          <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income()">
+            <option value="none">no children</option>
+            <option value="one" selected>1 child</option>
+            <option value="two">2 children</option>
+            <option value="three">3+ children</option>
+          </select>
+
+          <!--Person 2 number of old children-->
+          <label for="numChildrenPerson2">and my partner has</label>
+          <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income()" >
+            <option value="none">no children</option>
+            <option value="one" >1 child</option>
+            <option value="two">2 children</option>
+            <option value="three">3+ children</option>
+          </select>.
+        </div> <!-- EITC user inputs-->
+
+        <div id='hoh_user_inputs'>
+          <!--Partner filing status-->
+          <label for="person2_filing_status">My partner's filing status is:</label>
+          <select name="person2_filing_status" id="person2_filing_status" oninput="hoh_modify_person2();modify_income();">
+            <option value="single">Single Filer</option>
+            <option value="hoh">Head of Household</option>
+          </select>
+        </div>
 
         <!--Person 1 income slider-->
         <div class="slidecontainer"> 
           <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_person1">30,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+            <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="myRange_person1" oninput="rangeValue_person1.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
           </div>
         </div>
 
@@ -181,7 +206,7 @@
         <div class="slidecontainer"> 
           <div class="slider-text"> My partner has an income of $<output id="rangeValue_person2">10,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_outputs();">
+            <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="myRange_person2" oninput="rangeValue_person2.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
           </div>
         </div>
 
