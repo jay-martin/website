@@ -33,7 +33,6 @@ else{
 }
 
 function initialize_page(){
-	console.log('initializing desktop page');
 	/* keep calculations a secret */
 	document.getElementById("highlights_content").style.visibility = 'hidden';
 	document.getElementById("programs").style.visibility = 'hidden';
@@ -70,7 +69,6 @@ function initialize_page(){
 }
 
 function initialize_mobile_page(){
-	console.log('initializing mobile page');
 	/* keep calculations a secret */
 	document.getElementById("highlights_content_mobile").style.visibility = 'hidden';
 	timer = 200;

@@ -69,8 +69,8 @@ function modify_person2(){
 }
 
 function modify_married(){
-    num_children = numChildren();
-    if(num_children===0){
+    numChildren = num_children();
+    if(numChildren===0){
         MPchart.load({
             columns: [
                 ['x3',      0, 7320, 15290, 22610, 60000],
@@ -78,7 +78,7 @@ function modify_married(){
             ]
         });
     }
-    else if(num_children===1){
+    else if(numChildren===1){
         MPchart.load({
             columns: [
                 ['x3',      0, 10979, 26262, 49622, 60000],
@@ -86,7 +86,7 @@ function modify_married(){
             ]
         });
     }
-    else if(num_children===2){
+    else if(numChildren===2){
         MPchart.axis.max({y: 7000});
         MPchart.load({
             columns: [
@@ -111,16 +111,16 @@ function eitc_modify_income(){
     p2Income = person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
-    combined_children = num_children();
-    numberChildren = 'none';
-    if(combined_children === 1){numberChildren='one';}
-    else if(combined_children === 2){numberChildren='two';}
-    else if (combined_children > 2){numberChildren='three';}
+    combinedChildren = num_children();
+    numChildren = 'none';
+    if(combinedChildren === 1){numChildren='one';}
+    else if(combinedChildren === 2){numChildren='two';}
+    else if (combinedChildren > 2){numChildren='three';}
 
     p1EITC = EITC_benefit('single', p1Income, person1_children.value);
     p2EITC = EITC_benefit('single', p2Income, person2_children.value);
     combinedEITC = p1EITC + p2EITC;
-    marriedEITC = EITC_benefit('married', combinedIncome, numberChildren);
+    marriedEITC = EITC_benefit('married', combinedIncome, numChildren);
 
     /* Move xgrids */
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
@@ -136,7 +136,7 @@ function eitc_modify_income(){
         MPchart.hide(['combined_eitc', 'bonus']);
         MPchart.load({
             columns: [
-                ['x_horizontal',  0,           100000],
+                ['x_horizontal',  0,           120000],
                 ['married_eitc',  marriedEITC, marriedEITC],
                 ['penalty',       penalty,     penalty],
             ]
@@ -147,7 +147,7 @@ function eitc_modify_income(){
         MPchart.show(['combined_eitc', 'bonus']);
         MPchart.load({
             columns: [
-                ['x_horizontal',  0, 100000],
+                ['x_horizontal',  0, 120000],
                 ['combined_eitc', combinedEITC, combinedEITC],
                 ['bonus',         penalty * -1, penalty * -1],
             ]

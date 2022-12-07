@@ -11,6 +11,8 @@ function hoh_modify_person2(){
     if(person2_filing_status.value === 'single'){
         MPchart.show('person2');
         MPchart.hide('person2_dashed');
+        MPchart.legend.hide('person2_dashed');
+        MPchart.legend.show('person2');
         MPchart.load({
             columns: [
                 ['x2',      0, 12950, 23225,  54725,  102025,  183000],
@@ -29,7 +31,9 @@ function hoh_modify_person2(){
 
         setTimeout(function () {
             MPchart.hide('person2');
-            MPchart.show('person2_dashed')
+            MPchart.show('person2_dashed');
+            MPchart.legend.hide('person2');
+            MPchart.legend.show('person2_dashed');
         }, 400);
     }
 }
@@ -70,23 +74,23 @@ function hoh_modify_income(){
     /* Move stacked eitc value curves */
     penalty = marriedTax - p1Tax - p2Tax;
     if(penalty > 0){
-        MPchart.show(['hoh_married',  'hoh_penalty']);
-        MPchart.hide(['hoh_combined', 'hoh_bonus']);
+        MPchart.show(['hoh_combined',  'hoh_penalty']);
+        MPchart.hide(['hoh_married',   'hoh_bonus']);
         MPchart.load({
             columns: [
                 ['x_horizontal', 0,           120000],
-                ['hoh_married',  combinedTax, combinedTax],
+                ['hoh_combined',  combinedTax, combinedTax],
                 ['hoh_penalty',  penalty,     penalty],
             ]
         });
     }
     else{
-        MPchart.hide(['hoh_married',  'hoh_penalty']);
-        MPchart.show(['hoh_combined', 'hoh_bonus']);
+        MPchart.hide(['hoh_combined',  'hoh_penalty']);
+        MPchart.show(['hoh_married', 'hoh_bonus']);
         MPchart.load({
             columns: [
                 ['x_horizontal', 0,            120000],
-                ['hoh_combined', marriedTax,   marriedTax],
+                ['hoh_married', marriedTax,   marriedTax],
                 ['hoh_bonus',    penalty * -1, penalty * -1],
             ]
         });
