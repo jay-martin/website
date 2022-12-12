@@ -55,7 +55,7 @@
     </div>
     <div class='infobox_right'>
       <a href="../poor-exclusion/index.html">
-        <div class="chart_container" id="poor_families_chart" onmouseover="poor_families_animation()" onmouseout="mouse_out_poor_families()"></div>
+        <div class="chart_container" id="poor_families_chart" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()"></div>
         <div class='box_words'>
           <div class="box_title">The Exclusion of Poor Families</div>
           <div class="box_description"><em>Poor families are deliberately excluded from many family benefits</em></div>
@@ -66,8 +66,8 @@
 
   <div class="box_level">
     <div class='infobox_left'>
-      <a href="../marriage-penalties/index.html">
-        <div class="chart_container" id="marriage_penalties_chart" onmouseover="marriage_penalties_animation()" onmouseout="mouse_out_marriage_penalties()"></div>
+      <a href="../marriage-penalties/index.html" onmouseenter="marriage_penalties_animation()" onmouseleave="mouse_out_marriage_penalties()">
+        <div class="chart_container" id="marriage_penalties_chart"></div>
         <div class='box_words'>
           <div class="box_title">Marriage Penalties</div>
           <div class="box_description"><em>You like your partner and want to marry them? Well, I hope you don't also like money.</em></div>
@@ -76,7 +76,7 @@
     </div>
     <div class='infobox_right'>
       <a href="../marginaltax/index.html">
-        <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class="chart_container" id="marginal_tax_chart"></div>
         <div class='box_words'>
           <div class="box_title">Marginal Tax Rates</div>
           <div class="box_description"><em>Phaseouts impose punishing marginal tax rates on working class families</em></div>
@@ -221,5 +221,6 @@
 <!--Build charts scripts-->
 <script src="./javascript/poor_families_chart.js"></script>
 <script src="./javascript/marriage_penalties_chart.js"></script>
+<script src="./javascript/marginal_chart.js"></script>
 
 </html>

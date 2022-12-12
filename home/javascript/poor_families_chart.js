@@ -114,29 +114,29 @@ var pfChart = c3.generate({
 });
 
 // Initiate the animation (triggered when user scrolls onto html element)
-stage = 0;
+pfStage = 0;
 var timeout;
 function poor_families_animation() {
     // Start the animation loop.
-    if(stage == 0){
+    if(pfStage == 0){
         timeout = setTimeout(pf1, 0);
     }
-    else if(stage == 1){
+    else if(pfStage == 1){
         timeout = setTimeout(pf2, 0);
     }
-    else if(stage == 2){
+    else if(pfStage == 2){
         timeout = setTimeout(pf3, 0);
     }
-    else if(stage == 3){
+    else if(pfStage == 3){
         timeout = setTimeout(pf4, 0);
     }
-    else if(stage == 4){
+    else if(pfStage == 4){
         timeout = setTimeout(pf5, 0);
     }
-    else if(stage == 5){
+    else if(pfStage == 5){
         timeout = setTimeout(pf6, 0);
     }
-    else if(stage == 6){
+    else if(pfStage == 6){
         timeout = setTimeout(pf_reset, 0);
     }
 }
@@ -152,7 +152,7 @@ function pf1(){
     pfChart.xgrids([ {value: 5000, text:'Your income'}, ]);
     pfChart.load({columns: [ ['x_point', 5000], ['existing_point', 2075], ['no_exclusion_point', 5733] ]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf2, 1000);
 }
 
@@ -173,7 +173,7 @@ function pf2(){
 
     pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf3, 1000); 
 }
 
@@ -194,7 +194,7 @@ function pf3(){
 
     pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf4, 1000); 
 }
 
@@ -213,7 +213,7 @@ function pf4(){
 
     pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf5, 1000); 
 }
 
@@ -232,7 +232,7 @@ function pf5(){
 
     pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf6, 1000); 
 }
 
@@ -240,7 +240,7 @@ function pf6(){
     pfChart.xgrids([ {value: 20000, text:'Your income'}, ]);
     pfChart.load({columns: [ ['x_point', 20000], ['existing_point', 2625], ['no_exclusion_point', 4000] ]});
 
-    stage++;
+    pfStage++;
     timeout = setTimeout(pf_reset, 1000);
 }
 
@@ -263,7 +263,7 @@ function pf_reset(){
 
     pfChart.axis.max({y: 7000});
 
-    stage = 0;
+    pfStage = 0;
     timeout = setTimeout(pf1, 1000); //Loop back to beginning
 }
 
