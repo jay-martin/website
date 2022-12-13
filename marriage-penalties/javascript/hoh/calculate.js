@@ -41,16 +41,16 @@ function tax_liability(filingStatus, income){
 			return .12 * (income - 34050) + 1465;
 		}
 		else if(income > 75300 && income <= 108450){
-			return .22 * (income - 54725) + 6415;
+			return .22 * (income - 75300) + 6415;
 		}
 		else if(income > 108450 && income <= 189450){
-			return .24 * (income - 102025) + 13708;
+			return .24 * (income - 108450) + 13708;
 		}
 		else if(income > 189450 && income <= 235350){
-			return .32 * (income - 183000) + 33148;
+			return .32 * (income - 189450) + 33148;
 		}
 		else if(income > 235350 && income <= 559300){
-			return .35 * (income - 228900) + 47836;
+			return .35 * (income - 235350) + 47836;
 		}
 		else{
 			return .37 * (income - 559300) + 161218.5;

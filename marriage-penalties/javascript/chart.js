@@ -22,9 +22,13 @@ var MPchart = c3.generate({
             'hoh_combined'  : 'x_horizontal',
             'hoh_bonus'     : 'x_horizontal',
 
-            'both_married'  : 'x_horizontal',
-            'both_penalty'  : 'x_horizontal',
-            'filler'        : 'x_horizontal',
+            'both_white'          : 'x_horizontal',
+            'both_penalty'        : 'x_horizontal',
+            'both_white_positive' : 'x_horizontal',
+            'both_bonus'          : 'x_horizontal',
+            'both_white_negative' : 'x_horizontal',
+            'both_bonus_negative' : 'x_horizontal',
+            'filler'              : 'x_horizontal',
         },
         columns: [
             ['x3',       0, 10979, 26262, 49622],
@@ -59,14 +63,18 @@ var MPchart = c3.generate({
             'hoh_combined'  : 'area',
             'hoh_bonus'     : 'area',
 
-            'both_married'  : 'area',
-            'both_penalty'  : 'area',
-            'filler'        : 'area',
+            'both_white'          : 'area',
+            'both_penalty'        : 'area',
+            'both_white_positive' : 'area',
+            'both_bonus'          : 'area',
+            'both_white_negative' : 'area',
+            'both_bonus_negative' : 'area',
+            'filler'              : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
         },
-        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus'], ['hoh_combined', 'hoh_penalty'], ['hoh_married', 'hoh_bonus'], ['both_married', 'both_penalty'] ], 
+        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus'], ['hoh_combined', 'hoh_penalty'], ['hoh_married', 'hoh_bonus'], ['both_white', 'both_penalty'], ['both_white_positive', 'both_bonus'], ['both_white_negative', 'both_bonus_negative'] ], 
         order: false,
         names: {
             person1: 'Your EITC',
@@ -93,9 +101,13 @@ var MPchart = c3.generate({
             hoh_combined: '#FFFFFF',
             hoh_bonus: '#36D903',
 
-            both_married: '#FFFFFF',
-            both_penalty: '#eb3734',
-            filler      : '#eb3734',
+            both_white   :       '#FFFFFF',
+            both_penalty :       '#eb3734',
+            both_white_positive: '#FFFFFF',
+            both_bonus   :       '#36D903',
+            both_white_negative: '#FFFFFF',
+            both_bonus_negative: '#36D903',
+            filler       :       '#eb3734',
         },
     },
     padding: {
@@ -106,7 +118,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_married', 'both_penalty', 'filler'],
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
     },
     tooltip: {
         show: false
@@ -125,7 +137,7 @@ var MPchart = c3.generate({
             label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [-7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
             },
             padding: {bottom: 0, top: 0},
             max: 4000,

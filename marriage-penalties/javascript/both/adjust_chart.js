@@ -171,12 +171,14 @@ function both_modify_income(){
     /* Move stacked eitc value curves */
     penalty = marriedTax - combinedTax;
     if(penalty > 0){
+        MPchart.show(['both_white', 'both_penalty']);
+        MPchart.hide(['both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative',]);
         if(marriedTax < 0 ){
             MPchart.hide('filler');
             MPchart.load({
                 columns: [
-                    ['x_horizontal', 0,             120000],
-                    ['both_married',  marriedTax,   marriedTax],
+                    ['x_horizontal',  0,             200000],
+                    ['both_white',    marriedTax,   marriedTax],
                     ['both_penalty',  penalty * -1, penalty * -1],
                 ]
             });
@@ -185,10 +187,10 @@ function both_modify_income(){
             MPchart.show('filler');
             MPchart.load({
                 columns: [
-                    ['x_horizontal', 0,             120000],
-                    ['both_married',  marriedTax,   marriedTax],
-                    ['both_penalty',  combinedTax,  combinedTax],
+                    ['x_horizontal', 0,             200000],
+                    ['both_white',    marriedTax,   marriedTax],
                     ['filler',        marriedTax,   marriedTax],
+                    ['both_penalty',  combinedTax,  combinedTax],
                 ]
             });
         }
@@ -196,22 +198,52 @@ function both_modify_income(){
             MPchart.hide('filler');
             MPchart.load({
                 columns: [
-                    ['x_horizontal', 0,             120000],
-                    ['both_married',  combinedTax,  combinedTax],
+                    ['x_horizontal',  0,             200000],
+                    ['both_white',    combinedTax,  combinedTax],
                     ['both_penalty',  penalty,      penalty],
                 ]
             });
         }
     }
     else{
-        //MPchart.hide(['hoh_married',  'hoh_penalty']);
-        //MPchart.show(['hoh_combined', 'hoh_bonus']);
-        MPchart.load({
-            columns: [
-                ['x_horizontal', 0,            120000],
-                ['hoh_combined', marriedTax,   marriedTax],
-                ['hoh_bonus',    penalty * -1, penalty * -1],
-            ]
-        });
+        MPchart.hide(['both_white', 'both_penalty', 'filler']);
+        if(marriedTax > 0){
+            MPchart.hide(['both_white_negative', 'both_bonus_negative']);
+            MPchart.show(['both_white_positive', 'both_bonus']);
+            MPchart.load({
+                columns: [
+                    ['x_horizontal',        0,            200000],
+                    ['both_white_positive', marriedTax,   marriedTax],
+                    ['both_bonus',          penalty * -1, penalty * -1],
+                ]
+            });
+        }
+        else{
+            MPchart.hide(['both_white_positive', 'both_bonus']);
+            MPchart.show(['both_white_negative', 'both_bonus_negative']);
+            MPchart.load({
+                columns: [
+                    ['x_horizontal',        0,            200000],
+                    ['both_white_negative', combinedTax,  combinedTax],
+                    ['both_bonus_negative', penalty,      penalty],
+                ]
+            });
+        }
+    }
+
+    // Adjust axes
+    x_ticks(combinedIncome); //located in ../hoh/adjust_chart.js (used for both hoh and both chart)
+    both_y_ticks(combinedIncome); 
+    hoh_both_adjust_axes();
+}
+
+function both_y_ticks(income){
+    if(income >= 140000){
+        MPchart.internal.config.axis_y_tick_values = [-6000, 0, 5000, 10000, 15000, 20000, 25000, 30000, 35000];
+    }
+    else{
+        MPchart.internal.config.axis_y_tick_values = [-6000, -4000, -2000, 0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000];
     }
 }
+
+
