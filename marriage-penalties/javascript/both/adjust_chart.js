@@ -234,7 +234,8 @@ function both_modify_income(){
     // Adjust axes
     x_ticks(combinedIncome); //located in ../hoh/adjust_chart.js (used for both hoh and both chart)
     both_y_ticks(combinedIncome); 
-    hoh_both_adjust_axes();
+    both_y_min(combinedTax);
+    hoh_both_adjust_axes(); //located in ../hoh/adjust_chart.js (used for both hoh and both chart)
 }
 
 function both_y_ticks(income){
@@ -242,7 +243,25 @@ function both_y_ticks(income){
         MPchart.internal.config.axis_y_tick_values = [-6000, 0, 5000, 10000, 15000, 20000, 25000, 30000, 35000];
     }
     else{
-        MPchart.internal.config.axis_y_tick_values = [-6000, -4000, -2000, 0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000];
+        MPchart.internal.config.axis_y_tick_values = [-14000, -12000, -10000, -8000, -6000, -4000, -2000, 0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000];
+    }
+}
+
+function both_y_min(combinedTax){
+    person1Children = person1_children.value ;
+    person2Children = person2_children.value;
+
+    if(combinedTax < -10000){
+        MPchart.axis.min({y: -14000});
+    }
+    else if(combinedTax < -8000){
+        MPchart.axis.min({y: -10000});
+    }
+    else if(person1Children === 'two' || person1Children === 'three' || person2Children === 'two' || person2_children === 'three'){
+        MPchart.axis.min({y: -8000});
+    }
+    else{
+        MPchart.axis.min({y: -6000});
     }
 }
 

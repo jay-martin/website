@@ -10,7 +10,7 @@ function eitc_outputs(){
     else if(combined_children === 2){numberChildren='two';}
     else if (combined_children >2){numberChildren='three';}
 
-    /*Calculate benefits and assing to variables*/
+    /*Determine EITC values*/
     combinedIncome = combined_income_marriage_penalty();
     person1EITC = EITC_benefit('single', person1_income.value, person1_children.value);
     person2EITC = EITC_benefit('single', person2_income.value, person2_children.value);

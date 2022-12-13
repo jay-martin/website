@@ -1,4 +1,4 @@
-function modify_person1(){
+function modify_person1_eitc(){
     if(person1_children.value === "none"){
         MPchart.load({
             columns: [
@@ -33,7 +33,7 @@ function modify_person1(){
     }
 }
 
-function modify_person2(){
+function modify_person2_eitc(){
     if(person2_children.value === "none"){
         MPchart.load({
             columns: [
@@ -68,7 +68,7 @@ function modify_person2(){
     }
 }
 
-function modify_married(){
+function modify_married_eitc(){
     numChildren = num_children();
     if(numChildren===0){
         MPchart.load({

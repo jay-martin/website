@@ -9,9 +9,50 @@ function modify_income(){
 		hoh_modify_income();
 	}
 	else{
+		both_outputs();
 		both_modify_income();
 	}
 }
+
+// Controls whether the number of children selector for person 1 modifies the EITC chart or the Both chart
+function modify_person1(){
+	if(benefit_selector.value === 'eitc'){
+		modify_person1_eitc();
+	}
+	else if(benefit_selector.value === 'both'){
+		both_modify_person1();
+	}
+} 
+
+// Controls whether the number of children selector for person 2 modifies the EITC chart or the Both chart
+function modify_person2(){
+	if(benefit_selector.value === 'eitc'){
+		modify_person2_eitc();
+	}
+	else if(benefit_selector.value === 'both'){
+		both_modify_person2();
+	}
+} 
+
+// Controls how to number of children selectors modifies the married chart
+function modify_married(){
+	if(benefit_selector.value === 'eitc'){
+		modify_married_eitc();
+	}
+	else if(benefit_selector.value === 'both'){
+		both_modify_married();
+	}
+}
+
+// Control whether the filing status selctor modifies the HOH chart of the Both chart
+function modify_person2_filing_status(){
+	if(benefit_selector.value === 'hoh'){
+		hoh_modify_person2();
+	}
+	else if(benefit_selector.value === 'both'){
+		both_modify_person2();
+	}
+} 
 
 // Switches the chart from the EITC chart to the HOH chart
 function switch_chart(){
@@ -84,11 +125,11 @@ function switch_chart(){
 		person2_income.max = 100000;
 		MPchart.unload({ ids: ['married_eitc', 'penalty', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed'] });
 		MPchart.ygrids([]);
-		//document.getElementById('hoh_user_inputs').style.display = 'block';
-		//document.getElementById('eitc_user_inputs').style.display = 'none';
+		document.getElementById('hoh_user_inputs').style.display = 'block';
+		document.getElementById('eitc_user_inputs').style.display = 'block';
 
 		setTimeout(function () {
-			MPchart.internal.config.axis_y_tick_values = [-6000, -4000, -2000, 0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000];
+			MPchart.internal.config.axis_y_tick_values = [-8000, -6000, -4000, -2000, 0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000];
 			MPchart.axis.max({y: 6000});
 			MPchart.axis.min({y: -6000});
 			MPchart.axis.labels({ y: 'Tax Liability'});
@@ -107,7 +148,7 @@ function switch_chart(){
 		}, 1000);
 		setTimeout(function () {
 			both_modify_income();
-			//hoh_outputs();
+			both_outputs();
 		}, 1500);
 	}
 }

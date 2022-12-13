@@ -184,7 +184,7 @@
         <div id='hoh_user_inputs'>
           <!--Partner filing status-->
           <label for="person2_filing_status">My partner's filing status is:</label>
-          <select name="person2_filing_status" id="person2_filing_status" oninput="hoh_modify_person2();modify_income();">
+          <select name="person2_filing_status" id="person2_filing_status" oninput="modify_person2_filing_status();modify_income();">
             <option value="single">Single Filer</option>
             <option value="hoh">Head of Household</option>
           </select>
@@ -323,6 +323,7 @@
 <script type="text/javascript" src="./javascript/hoh/calculate.js"></script>
 <script type="text/javascript" src="./javascript/hoh/outputs.js"></script>
 <script type="text/javascript" src="./javascript/both/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/both/outputs.js"></script>
 <script type="text/javascript" src="./javascript/animations/universal.js"></script>
 <script type="text/javascript" src="./javascript/animations/basic_overview_animation.js"></script>
 <script type="text/javascript" src="./javascript/animations/marriage_bonus_animation.js"></script>
