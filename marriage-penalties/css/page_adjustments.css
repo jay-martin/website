@@ -2,3 +2,59 @@
 #hoh_user_inputs {
 	display: none;
 }
+
+.box_title {
+	text-align: center;
+	text-decoration: underline;
+	margin-top: 0px;
+	font-size: 120%;
+}
+
+/* Text on explainer charts */
+.explainer_chart_text_title {
+	text-align: center;
+	line-height: 1.5em;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.explainer_chart_step {
+	line-height: 1.5em;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 92.5%;
+}
+.step_number {
+	display: inline-block;
+	width: 10%;
+	vertical-align: top;
+}
+.step_text {
+	display: inline-block;
+	width: 89%;
+}
+.forward_back_buttons{
+	float: right;
+}
+.explainer_button{
+	width: 70px;
+	height: 25px;
+	border: solid;
+	border-radius: 5px;
+	border-color: #adadad;
+	margin-bottom: 5px;
+	text-align: middle;
+	padding: 0;
+}
+.explainer_button:hover {
+	background-color: #dbdbdb;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 800px) {
+	.step_number {
+		width: 15%;
+	}
+	.step_text {
+		width: 83%;
+	}
+}

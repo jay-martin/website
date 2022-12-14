@@ -2,3 +2,7 @@
 .c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus, .c3-circles-person2_dashed, .c3-circles-hoh_penalty, .c3-circles-hoh_married, .c3-circles-hoh_comined, .c3-circles-hoh_bonus, .c3-circles-both_married, .c3-circles-both_penalty, .c3-circles-filler {
   display: none;
 }
+
+.c3-circles-married_plateau, .c3-circles-married_phasein, .c3-circles-married_phaseout  {
+  display: none;
+}

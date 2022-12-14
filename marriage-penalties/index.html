@@ -309,24 +309,200 @@
 
 </section> <!--Top section-->
 
+<section class = 'center_no_side_elements' id='hoh_fix'>
+  <h2>Fixing Head of Household Marriage Penalties</h3>
+  <p>
+    The way you eliminate the marriage penalties inherent in the head of household filing status is very simple: you eliminate it entirely and plough the savings into a universal child benefit. This takes advantage of a convenient fact: that the single and married filing statuses are already set up in such a way that they do not create marriage penalties.
+  </p>
+
+  <div class = "chart">
+
+    <!--Person 1 filing status-->
+    <label for="hoh_fix_person1_filing_status">I am a </label>
+    <select name="hoh_fix_person1_filing_status" id="hoh_fix_person1_filing_status">
+      <option value="single">single filer</option>
+    </select>
+
+    <!--Person 2 filing status-->
+    <label for="hoh_fix_person2_filing_status">and my partner is a </label>
+    <select name="hoh_fix_person2_filing_status" id="hoh_fix_person2_filing_status">
+      <option value="single">single filer</option>
+    </select>.
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="hoh_fix_person1_income_output">80,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_fix_person1_income" oninput="hoh_fix_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_fix_modify_income();hoh_fix_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="hoh_fix_person2_income_output">40,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_fix_person2_income" oninput="hoh_fix_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_fix_modify_income();hoh_fix_outputs();">
+      </div>
+    </div>
+
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="hoh_fix_individual"></p>
+      <p class="explanation_text" id="hoh_fix_married"></p>
+      <p class="explanation_text" id="hoh_fix_bonus"></p>
+    </div>
+
+    <div id="hoh_fix_chart"></div> <!--Div for single/married tax chart-->
+
+  </div> <!-- chart container-->
+
+</section> <!--HOH fix section end-->
+
+<section class = 'center_no_side_elements' id='eitc_fix'>
+  <h2>Fixing EITC Marriage Penalties</h3>
+
+  <!-------- Explanation chart --------->
+  <div class = "chart">
+    <h3 class="box_title">Eliminating (Most) Marriage Penalties</h3>
+    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> A married couple consists of <em>two</em> people, so the value of the married EITC should equal the sum of two individual EITC's.</div>
+
+    <div class="center_explanation_box">
+      <div class='explainer_chart_step'>
+        <div class="step_number"><b>Step 1:</b></div>
+        <div class="step_text">
+          The maximum EITC value for married couples must be double that of the individual max. That way, when two people who each receive the max individual EITC get married, their married EITC is equal to the sum of both of their prior individual EITC's.
+        </div>
+      </div>
+
+      <div class='explainer_chart_step'>
+        <div class="step_number"><b>Step 2:</b></div>
+        <div class="step_text">
+          The married EITC must phase in at least as fast as the individual EITC. That way, when two people get married and combine their incomes, their EITC scales up appropriately.
+        </div>
+      </div>
+
+      <div class='explainer_chart_step'>
+        <div class="step_number"><b>Step 3:</b></div>
+        <div class="step_text">
+          The income at which the married EITC begins to phase out should be at least double the income at which the individual EITC begins to phase out. This prevents marriage penalties at least until one spouse's income exceeds the income at which the individual EITC reaches $0.
+        </div>
+      </div>
+
+      <div class='explainer_chart_step'>
+        <div class="step_number"><b>Step 4:</b></div>
+        <div class="step_text">
+          The married EITC should phase out at the same rate or slower than the individual EITC. This ensures that when two people who are each in the phase-out of their individual EITC get married, their married EITC is not worth less than the sum of their individual EITC's.
+        </div>
+      </div>
+
+      <div class='explainer_chart_step'>
+        <div class="step_number"><b>End Result:</b></div>
+        <div class="step_text">
+          A married EITC in which doubling individual income leads to a benefit twice as large. This ensures that any time two people combine their incomes when they marry, their married EITC is at least as large as the sum of their two individual EITC's (at least until one spouse has an income above $30,000).
+        </div>
+      </div>
+
+      <div class="forward_back_buttons">
+        <button class="explainer_button" id="eitc_explainer_back_button" onclick="eitc_explainer_back();" disabled>Back</button>
+        <button class="explainer_button" id="eitc_explainer_next_button" onclick="eitc_explainer_next();">Next</button>
+      </div>
+    </div>
+
+    <div id="eitc_explainer_chart"></div> <!--Div for standard credit chart-->
+  </div>
+
+  <p>
+    In the module below, you can play around with the EITC outlined above and see that it does, in fact, eliminate all marriage penalties except for those intrinsic to phaseouts. I've also added some ways you could explicitly incorporate marriage <em>bonuses</em> into the EITC, on top of those that already implicitly exist. I personally would not do this—I have no real desire to go out of my way to ensure that single people get lower benefits—but perhaps the idea that these "encourage marriage" would make the general reform more appealing to some members of Congress.
+  </p>
+
+  <!-------- Reformed EITC Chart -------->
+  <div class = "chart">
+
+    <!--EITC Type-->
+    <label for="eitc_reform_type">Show: </label>
+    <select name="eitc_reform_type" id="eitc_reform_type" oninput="eitc_reform_adjust_married();eitc_reform_modify_income();eitc_reform_outputs();">
+      <option value="default">Default</option>
+      <option value="slope">Slope Marriage Bonus</option>
+      <option value="value">Larger EITC Marriage Bonus</option>
+      <option value="both">Both Marriage Bonuses</option>
+    </select>
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">10,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="40000" value="10000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">20,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="40000" value="20000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+      </div>
+    </div>
+
+    <div class="center_explanation_box">
+      <p class="explanation_text" id="eitc_reform_individual"></p>
+      <p class="explanation_text" id="eitc_reform_married"></p>
+      <p class="explanation_text" id="eitc_reform_penalty"></p>
+    </div>
+
+    <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
+  </div> <!-- chart container -->
+
+  <h3>An Alternative: the Standard Credit</h3>
+  <div class = "chart">
+    <div class="center_explanation_box">
+      <h3 class="box_title">The Standard Credit</h3>
+      <div class='explainer_chart_step'><b>Step 1:</b> Eliminate the phase-out to rid ourselves of marriage penalties.</div>
+      <div class='explainer_chart_step'><b>Step 2:</b> Eliminate the phase-in to include poor people, who are <em>most</em> in need of financial assistance.</div>
+      <div class='explainer_chart_step'><b>End Result:</b> Every person receives the same $3,000 tax credit.</div>
+    </div>
+  <div id="standard_credit_chart"></div> <!--Div for standard credit chart-->
+  
+  </div><!-- chart container -->
+
+</br>
+</br>
+</br>
+
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/highlights_explanations.js"></script>
 
-<!-- Javascipt Files -->
-<script type="text/javascript" src="./javascript/chart.js"></script>
-<script type="text/javascript" src="./javascript/controls.js"></script>
-<script type="text/javascript" src="./javascript/eitc/calculate.js"></script>
-<script type="text/javascript" src="./javascript/eitc/outputs.js"></script>
-<script type="text/javascript" src="./javascript/eitc/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/hoh/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/hoh/calculate.js"></script>
-<script type="text/javascript" src="./javascript/hoh/outputs.js"></script>
-<script type="text/javascript" src="./javascript/both/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/both/outputs.js"></script>
-<script type="text/javascript" src="./javascript/animations/universal.js"></script>
-<script type="text/javascript" src="./javascript/animations/basic_overview_animation.js"></script>
-<script type="text/javascript" src="./javascript/animations/marriage_bonus_animation.js"></script>
+<!-- Top Chart Javascipt Files -->
+<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/controls.js"></script>
+<script type="text/javascript" src="./javascript/topchart/eitc/calculate.js"></script>
+<script type="text/javascript" src="./javascript/topchart/eitc/outputs.js"></script>
+<script type="text/javascript" src="./javascript/topchart/eitc/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/hoh/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/hoh/calculate.js"></script>
+<script type="text/javascript" src="./javascript/topchart/hoh/outputs.js"></script>
+<script type="text/javascript" src="./javascript/topchart/both/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/both/outputs.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/basic_overview_animation.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/marriage_bonus_animation.js"></script>
+
+<!-- HOH Fix Javascipt Files -->
+<script type="text/javascript" src="./javascript/hohfix/chart.js"></script>
+<script type="text/javascript" src="./javascript/hohfix/outputs.js"></script>
+<script type="text/javascript" src="./javascript/hohfix/adjust_chart.js"></script>
+
+<!-- EITC Explainer Javascript Files -->
+<script type="text/javascript" src="./javascript/eitc_explainer/chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc_explainer/chart_animations.js"></script>
+
+<!-- Reformed EITC Javascript Files -->
+<script type="text/javascript" src="./javascript/eitcfix/chart.js"></script>
+<script type="text/javascript" src="./javascript/eitcfix/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/eitcfix/outputs.js"></script>
+
+<!-- Standard Credit -->
+<script type="text/javascript" src="./javascript/standardcredit/chart.js"></script>
+<script type="text/javascript" src="./javascript/standardcredit/chart_animation.js"></script>
 
 </body>
 </html>

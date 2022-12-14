@@ -64,7 +64,7 @@ function hoh_modify_income(){
     combinedTax = p1Tax + p2Tax;
     marriedTax = tax_liability('married', combinedIncome);
 
-    /* Move xgrids */
+    /* Move grids */
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedTax, text: "Your married tax"}, {value: combinedTax, text: "Combined individual tax"}]);
 
