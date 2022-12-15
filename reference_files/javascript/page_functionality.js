@@ -1,7 +1,40 @@
 /******************************************************************************************
- * This file contains the functions that open and close highlights
+ * This file contains the functions that 
+ * (1) Expands the mobile dropdown, and
+ * (2) Open and close highlights
  * ****************************************************************************************/
 
+/********************************Mobile Dropdown*********************************/
+navbarClicked = false;
+  function reveal_dropdown(){
+    if(navbarClicked === false){
+      //reveal dropdown
+      $('#mobile_dropdown').removeClass('collapse_dropdown');
+      $('#mobile_dropdown').addClass('reveal_dropdown');
+      navbarClicked = true;
+
+      //switch menu icon to x icon
+      document.getElementById('open_icon').style.display = 'none';
+      document.getElementById('close_icon').style.display = 'inline-block';
+
+      //disable scroll
+      document.body.classList.add("stop-scrolling");
+    }
+    else{
+      //document.getElementById('mobile_dropdown').style.display = 'none';
+      $('#mobile_dropdown').removeClass('reveal_dropdown');
+      $('#mobile_dropdown').addClass('collapse_dropdown');
+      navbarClicked = false;
+
+      //switch menu icon to x icon
+      document.getElementById('close_icon').style.display = 'none';
+      document.getElementById('open_icon').style.display = 'inline-block';
+
+      //enable scroll
+      document.body.classList.remove("stop-scrolling");
+    }
+  }
+/***********************************Highlights***********************************/
 function show_explanation1(){
 	if(isMobile){
 		container = document.getElementById('highlights_container1_mobile');

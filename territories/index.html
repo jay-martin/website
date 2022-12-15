@@ -15,6 +15,9 @@
   <!-- load c3.css -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
 
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   <!-- load map -->
   <link href="./css/map_style.css" type="text/css" rel="stylesheet" />
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -49,34 +52,6 @@
   <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
   <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
 </div><!--Mobile Navbar-->
-<script>
-  navbarClicked = false;
-  function reveal_dropdown(){
-    if(navbarClicked === false){
-      //reveal dropdown
-      document.getElementById('mobile_dropdown').style.display = 'block';
-      navbarClicked = true;
-
-      //switch menu icon to x icon
-      document.getElementById('open_icon').style.display = 'none';
-      document.getElementById('close_icon').style.display = 'inline-block';
-
-      //disable scroll
-      document.body.classList.add("stop-scrolling");
-    }
-    else{
-      document.getElementById('mobile_dropdown').style.display = 'none';
-      navbarClicked = false;
-
-      //switch menu icon to x icon
-      document.getElementById('close_icon').style.display = 'none';
-      document.getElementById('open_icon').style.display = 'inline-block';
-
-      //enable scroll
-      document.body.classList.remove("stop-scrolling");
-    }
-  }
-</script>
 
 <!--Mobile dropdown-->
 <div class='mobile_dropdown' id='mobile_dropdown'>
@@ -204,7 +179,7 @@
 
   <!--Highlights-------------------------------------------->
   <script type="text/javascript" src="./javascript/outputs.js"></script>
-  <script type="text/javascript" src="../reference_files/javascript/highlights_explanations.js"></script>
+  <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
   <div class = "right_side">
 

@@ -46,34 +46,6 @@
   <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
   <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
 </div><!--Mobile Navbar-->
-<script>
-  navbarClicked = false;
-  function reveal_dropdown(){
-    if(navbarClicked === false){
-      //reveal dropdown
-      document.getElementById('mobile_dropdown').style.display = 'block';
-      navbarClicked = true;
-
-      //switch menu icon to x icon
-      document.getElementById('open_icon').style.display = 'none';
-      document.getElementById('close_icon').style.display = 'inline-block';
-
-      //disable scroll
-      document.body.classList.add("stop-scrolling");
-    }
-    else{
-      document.getElementById('mobile_dropdown').style.display = 'none';
-      navbarClicked = false;
-
-      //switch menu icon to x icon
-      document.getElementById('close_icon').style.display = 'none';
-      document.getElementById('open_icon').style.display = 'inline-block';
-
-      //enable scroll
-      document.body.classList.remove("stop-scrolling");
-    }
-  }
-</script>
 
 <!--Mobile dropdown-->
 <div class='mobile_dropdown' id='mobile_dropdown'>
@@ -545,6 +517,7 @@
 
 <!-- Initialize page -->
 <script type="text/javascript" src="./javascript/on_startup.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
 </body>
 </html>

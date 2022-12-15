@@ -53,34 +53,6 @@
   <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
   <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
 </div><!--Mobile Navbar-->
-<script>
-  navbarClicked = false;
-  function reveal_dropdown(){
-    if(navbarClicked === false){
-      //reveal dropdown
-      document.getElementById('mobile_dropdown').style.display = 'block';
-      navbarClicked = true;
-
-      //switch menu icon to x icon
-      document.getElementById('open_icon').style.display = 'none';
-      document.getElementById('close_icon').style.display = 'inline-block';
-
-      //disable scroll
-      document.body.classList.add("stop-scrolling");
-    }
-    else{
-      document.getElementById('mobile_dropdown').style.display = 'none';
-      navbarClicked = false;
-
-      //switch menu icon to x icon
-      document.getElementById('close_icon').style.display = 'none';
-      document.getElementById('open_icon').style.display = 'inline-block';
-
-      //enable scroll
-      document.body.classList.remove("stop-scrolling");
-    }
-  }
-</script>
 
 <!--Mobile dropdown-->
 <div class='mobile_dropdown' id='mobile_dropdown'>
@@ -116,8 +88,8 @@
 
 <!--Title-->
 <div class="title_container">
-  <div class="category">Features of Family Benefits</div>
-  <h1 id="page_title">Marriage Penalties</h1>
+  <div class="category">Programs</div>
+  <h1 id="page_title">Head of Household</h1>
   <div class="name">By Jay Martin <img height="10px" src='../reference_files/images/social_logos/twitter-logo-01282021/Twitter logo/PNG/2021 Twitter logo - black.png'><img /></div>
   <div class="page_description"><em>On the American obsession with convoluted benefits administered through the tax code.</em></div>
 <!--
@@ -362,7 +334,7 @@
 
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
-<script type="text/javascript" src="../reference_files/javascript/highlights_explanations.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
 <!-- Javascript files -->
 <script type="text/javascript" src="./javascript/chart.js"></script>

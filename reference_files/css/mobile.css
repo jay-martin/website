@@ -66,14 +66,14 @@
   /*******Title Adjustments*****/
   .title_container {
     width: 100%;
-    padding-top: 70px;
+    padding-top: 60px;
     margin-bottom: 25px;
   }
   .category {
     font-family: 'Zen Antique Soft', serif;
     font-size: 85%;
     color: #582cfc;
-    display: none;
+    display: block;
   }
   #page_title, .name, .page_description, .twitter_follow, .category {
     text-align: left;

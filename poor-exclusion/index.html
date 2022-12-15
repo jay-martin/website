@@ -53,34 +53,6 @@
   <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
   <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
 </div><!--Mobile Navbar-->
-<script>
-  navbarClicked = false;
-  function reveal_dropdown(){
-    if(navbarClicked === false){
-      //reveal dropdown
-      document.getElementById('mobile_dropdown').style.display = 'block';
-      navbarClicked = true;
-
-      //switch menu icon to x icon
-      document.getElementById('open_icon').style.display = 'none';
-      document.getElementById('close_icon').style.display = 'inline-block';
-
-      //disable scroll
-      document.body.classList.add("stop-scrolling");
-    }
-    else{
-      document.getElementById('mobile_dropdown').style.display = 'none';
-      navbarClicked = false;
-
-      //switch menu icon to x icon
-      document.getElementById('close_icon').style.display = 'none';
-      document.getElementById('open_icon').style.display = 'inline-block';
-
-      //enable scroll
-      document.body.classList.remove("stop-scrolling");
-    }
-  }
-</script>
 
 <!--Mobile dropdown-->
 <div class='mobile_dropdown' id='mobile_dropdown'>
@@ -94,7 +66,7 @@
     <a href="../marriage-penalties/index.html">Marriage Penalties</a>
     <a href="./index.html">Marginal Tax Rates</a>
     <a href="./index.html">Asinine Asset Tests</a>
-    <a href="./index.html">Administrative Burdens</a>
+    <a href="../administrative-burdens/index.html">Administrative Burdens</a>
     <a href="../territories/index.html">Territories</a>
     <a href="./index.html">Racial Justice</a>
   </div>
@@ -394,7 +366,7 @@
 
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
-<script type="text/javascript" src="../reference_files/javascript/highlights_explanations.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
 <!-- Javascript Files --> 
 <script type="text/javascript" src="./javascript/chart.js"></script>
