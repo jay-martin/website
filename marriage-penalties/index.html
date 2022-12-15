@@ -489,6 +489,20 @@
       </select>
     -->
 
+      <!--Person 1 number of old children-->
+      <label for="eitc_fix_person1_numchildren">I have</label>
+      <select name="eitc_fix_person1_numchildren" id="eitc_fix_person1_numchildren" oninput="eitc_reform_adjust_existing();eitc_reform_modify_income();eitc_reform_outputs();" >
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+      </select>
+
+      <!--Person 2 number of old children-->
+      <label for="eitc_fix_person2_numchildren">and partner has</label>
+      <select name="eitc_fix_person2_numchildren" id="eitc_fix_person2_numchildren" oninput="eitc_reform_adjust_existing();eitc_reform_modify_income();eitc_reform_outputs();" >
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+      </select>.
+
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
         <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">10,000</output>:</div>

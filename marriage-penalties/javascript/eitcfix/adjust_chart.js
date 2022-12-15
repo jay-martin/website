@@ -46,10 +46,72 @@ function eitc_reform_adjust_married(){
 	*/
 }
 
+function eitc_reform_adjust_existing(){
+	person1_num_children = eitc_fix_person1_numchildren.value;
+	person2_num_children = eitc_fix_person2_numchildren.value;
+
+	if(person1_num_children === 'one' && person2_num_children === 'one'){
+		existingEITC.load({
+			columns: [
+				['x3',      0, 15290, 26262, 55529,],
+	            ['married', 0, 6164,  6164,  0,],
+	            ['x1',      0, 10979, 20131, 43492,],
+	            ['person1', 0, 3733,  3733,  0,],
+				['x2',      0, 10979, 20131, 43492,],
+	            ['person2', 0, 3733,  3733,  0,],
+			]
+		});
+	}
+	else if(person1_num_children === 'one' && person2_num_children === 'none'){
+		existingEITC.load({
+			columns: [
+				['x3',      0, 10979,26262, 49622,],
+				['married', 0, 3733, 3733,  0,],
+				['x1',      0, 10979, 20131, 43492,],
+	            ['person1', 0, 3733,  3733,  0,],
+				['x2',      0, 7320, 9160, 16480,],
+	            ['person2', 0, 560,  560,  0,],
+			]
+		});
+	}
+	else if(person1_num_children === 'none' && person2_num_children === 'one'){
+		existingEITC.load({
+			columns: [
+				['x3',      0, 10979,26262, 49622,],
+				['married', 0, 3733, 3733,  0,],
+				['x1',      0, 7320, 9160, 16480,],
+	            ['person1', 0, 560,  560,  0,],
+				['x2',      0, 10979, 20131, 43492,],
+	            ['person2', 0, 3733,  3733,  0,],
+			]
+		});
+	}
+	else{
+		existingEITC.load({
+			columns: [
+				['x3',      0, 7320, 15290, 22610,],
+				['married', 0, 560,  560,   0,],
+				['x1',      0, 7320, 9160, 16480,],
+	            ['person1', 0, 560,  560,  0,],
+				['x2',      0, 7320, 9160, 16480,],
+	            ['person2', 0, 560,  560,  0,],
+			]
+		});
+	}
+}
+
 function eitc_reform_modify_income(){
+	// Variables for income
 	p1Income = eitc_reform_person1_income.value;
 	p2Income = eitc_reform_person2_income.value;
 	combinedIncome = parseInt(p1Income) + parseInt(p2Income);
+
+	// Variables for number of children
+	person1_num_children = eitc_fix_person1_numchildren.value;
+	person2_num_children = eitc_fix_person2_numchildren.value;
+	combined_children    = 'one'
+	if(person1_num_children === 'one' && person2_num_children === 'one'){combined_children = 'two';}
+	else if(person1_num_children === 'none' && person2_num_children === 'none'){combined_children = 'none';}
 
 	// Reformed EITC Values
 	p1EITC = reformed_eitc_values_single(p1Income);
@@ -58,10 +120,10 @@ function eitc_reform_modify_income(){
 	marriedEITC = reformed_eitc_values_married(combinedIncome);
 
 	// Existing EITC Values
-    p1_existing_eitc = existing_eitc_value(p1Income, 'single', 'one');
-    p2_existing_eitc = existing_eitc_value(p2Income, 'single', 'one');
+    p1_existing_eitc = existing_eitc_value(p1Income, 'single', person1_num_children);
+    p2_existing_eitc = existing_eitc_value(p2Income, 'single', person2_num_children);
     combined_existing_eitc = p1_existing_eitc + p2_existing_eitc;
-    married_existing_eitc = existing_eitc_value(combinedIncome, 'married', 'two');
+    married_existing_eitc = existing_eitc_value(combinedIncome, 'married', combined_children);
 
 	// Move x-grids
 	eitcReform.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);

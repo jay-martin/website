@@ -49,9 +49,9 @@ var existingEITC = c3.generate({
         groups: [ ['combined', 'bonus'], ['married_value', 'penalty'] ], 
         order: false,
         names: {
-            person1: "Individual One-Child EITC",
-            person2: "Individual One-Child EITC",
-            married: "Married Two-Child EITC",
+            person1: "Your Individual EITC",
+            person2: "Your Partner's Individual EITC",
+            married: "Married EITC",
         },
         colors: {
             person1        : '#6ab6fc',

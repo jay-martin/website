@@ -25,9 +25,17 @@ function show_eitc_fix_values(){
 }
 
 function eitc_reform_outputs(){
+    // Variables for income
     p1Income = eitc_reform_person1_income.value;
     p2Income = eitc_reform_person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
+
+    // Variables for number of children
+    person1_num_children = eitc_fix_person1_numchildren.value;
+    person2_num_children = eitc_fix_person2_numchildren.value;
+    combined_children    = 'one'
+    if(person1_num_children === 'one' && person2_num_children === 'one'){combined_children = 'two';}
+    else if(person1_num_children === 'none' && person2_num_children === 'none'){combined_children = 'none';}
 
     // Reformed EITC Values
     p1EITC = reformed_eitc_values_single(p1Income);
@@ -52,10 +60,10 @@ function eitc_reform_outputs(){
     }
 
     // Existing EITC Values
-    p1_existing_eitc = existing_eitc_value(p1Income, 'single', 'one');
-    p2_existing_eitc = existing_eitc_value(p2Income, 'single', 'one');
+    p1_existing_eitc = existing_eitc_value(p1Income, 'single', person1_num_children);
+    p2_existing_eitc = existing_eitc_value(p2Income, 'single', person2_num_children);
     combined_existing_eitc = p1_existing_eitc + p2_existing_eitc;
-    married_existing_eitc = existing_eitc_value(combinedIncome, 'married', 'two');
+    married_existing_eitc = existing_eitc_value(combinedIncome, 'married', combined_children);
 
     // Existing EITC Outputs
     existing_penalty = combined_existing_eitc - married_existing_eitc;
