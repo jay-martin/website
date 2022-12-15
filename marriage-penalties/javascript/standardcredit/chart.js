@@ -1,3 +1,13 @@
+//Determine which set of x tick values to use depending on screen width
+//Mobile screens require fewer ticks
+var windowWidth = window.innerWidth;
+if(windowWidth < 800){
+    standard_credit_tick = [0, 20000, 40000, 60000, 80000];
+}
+else{
+    standard_credit_tick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000];
+}
+
 var standardCredit = c3.generate({
     bindto: '#standard_credit_chart',
     data: {
@@ -58,7 +68,7 @@ var standardCredit = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000]
+                values: standard_credit_tick
             },
             padding: {left: 0, right: 30},
             max: 80000,

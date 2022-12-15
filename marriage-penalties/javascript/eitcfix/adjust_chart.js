@@ -199,10 +199,18 @@ function eitc_reform_adjust_x_axis(){
 	combinedIncome = parseInt(eitc_reform_person1_income.value) + parseInt(eitc_reform_person2_income.value);
 	
 	if(combinedIncome > 60000){
+		if(window.innerWidth < 800){
+			eitcReform.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000];
+			existingEITC.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000];
+		}
 		eitcReform.axis.max({x: 100000});
 		existingEITC.axis.max({x: 100000});
 	}
 	else{
+		if(window.innerWidth < 800){
+			eitcReform.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
+			existingEITC.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
+		}
 		eitcReform.axis.max({x: 60000});
 		existingEITC.axis.max({x: 60000});
 	}

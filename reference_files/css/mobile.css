@@ -172,6 +172,30 @@
     -webkit-transition: height .5s ease;
     -moz-transition: height .5s ease;
   }
+
+  /*********Wide chart*********/
+  .chart_wide {
+    width: 93.5%;
+    margin-left: 0px;
+  }
+  .inner_chart_left {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+  .inner_chart_right {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+  }
+  .wide_inputs {
+    width: 100%;
+  }
+  .wide_show_values_button {
+    display: none;
+  }
   /*********Sliders************/
   .slider-text {
     width: 100%;
