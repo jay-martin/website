@@ -71,8 +71,8 @@ var existingEITC = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 70,
-        right: 22,
+        left: 65,
+        right: 20,
     },
     legend: {
         position: 'bottom',

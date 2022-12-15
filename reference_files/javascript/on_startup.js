@@ -32,7 +32,6 @@ else{
 	initialize_page();
 }
 
-/* 
 function initialize_page(){
 	//keep calculations a secret
 	document.getElementById("highlights_content").style.visibility = 'hidden';
@@ -68,7 +67,6 @@ function initialize_page(){
 		document.getElementById("programs").style.visibility = 'visible';
 	}, timer);
 }
-*/
 
 function initialize_mobile_page(){
 	/* keep calculations a secret */

@@ -32,6 +32,7 @@
   <!-- Computer Modern -->
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
 
 </head>
 
@@ -45,16 +46,18 @@
 
 <!--Mobile navbar-->
 <div class="mobile_navbar" id='mobile_navbar'>
+  <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
   <button class='open_icon' id='open_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">menu</span></button>
   <button class='close_icon' id='close_icon' onclick="reveal_dropdown();"><span class="material-symbols-outlined">close</span></button>
-  <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
 </div><!--Mobile Navbar-->
 <script>
   navbarClicked = false;
   function reveal_dropdown(){
     if(navbarClicked === false){
       //reveal dropdown
-      document.getElementById('mobile_dropdown').style.display = 'block';
+      //document.getElementById('mobile_dropdown').style.display = 'block';
+      $('#mobile_dropdown').removeClass('collapse_dropdown');
+      $('#mobile_dropdown').addClass('reveal_dropdown');
       navbarClicked = true;
 
       //switch menu icon to x icon
@@ -65,7 +68,9 @@
       document.body.classList.add("stop-scrolling");
     }
     else{
-      document.getElementById('mobile_dropdown').style.display = 'none';
+      //document.getElementById('mobile_dropdown').style.display = 'none';
+      $('#mobile_dropdown').removeClass('reveal_dropdown');
+      $('#mobile_dropdown').addClass('collapse_dropdown');
       navbarClicked = false;
 
       //switch menu icon to x icon
@@ -88,7 +93,7 @@
     <a href="./index.html">Poverty Reduction</a>
     <a href="../poor-exclusion/index.html">Exclusion of Poor Families</a>
     <a href="../marriage-penalties/index.html">Marriage Penalties</a>
-    <a href="./index.html">Marginal Tax Rates</a>
+    <a href="../marginaltax/index.html">Marginal Tax Rates</a>
     <a href="./index.html">Asinine Asset Tests</a>
     <a href="./index.html">Administrative Burdens</a>
     <a href="../territories/index.html">Territories</a>
@@ -112,211 +117,211 @@
 
 <!--Title-->
 <div class="title_container">
+  <div class="category">Features of Family Benefits</div>
   <h1 id="page_title">Marriage Penalties</h1>
-  <div class="name">By Jay Martin</div>
+  <div class="name">By Jay Martin <img height="10px" src='../reference_files/images/social_logos/twitter-logo-01282021/Twitter logo/PNG/2021 Twitter logo - black.png'><img /></div>
+  <div class="page_description"><em>Policymakers have foolishly concluded that a tying of the knot should be paired with an emptying of the pockets.</em></div>
+<!--
   <div class="twitter_follow">
     <a href="https://twitter.com/jaydavidmartin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jaydavidmartin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </br>
   </div>
+-->
 </div><!--Title container-->
 
-<!--Top section containing page links (left), chart module (center), and highlights (right)-------------------------------------------->
-<section class = "top">
-
-  <!--Left side-------------------------------------------------->
-  <div class="left_side">
-    <div class="other_pages" id='other_pages_id'>
-      <a href="../home/index.html">Home</a>
-      <a href="../familysecurityact/index.html">The Family Security Act</a>
-      <a href="./index.html">Fixing Family Benefits</a>
-      <a href="./index.html">Poverty Reduction</a>
-      <a href="../marginaltax/index.html">Marginal Tax Rates</a>
-      <a href="../marriage-penalties/index.html">Marriage Penalties</a>
-      <a href="./index.html">Asinine Asset Tests</a>
-      <a href="./index.html">Administrative Burdens</a>
-      <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
-      <a href="./index.html">Racial Justice</a>
-      <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
-        <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
-        <div class="programs" id="programs">
-          <a href="./index.html">The Child Tax Credit</a>
-          <a href="./index.html">The Earned Income Tax</br>Credit</a>
-          <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
-          <a href="./index.html">The Child & Dependent</br>Care Credit</a>
-          <a href="./index.html">SNAP (Food Stamps)</a>
-          <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
-          <a href="./index.html">WIC</a>
-          <a href="./index.html">Medicaid & CHIP</a>
-        </div>
-      </div><!--Programs container-->
-    </div>
+<!--Left side-------------------------------------------------->
+<div class="left_side">
+  <div class="other_pages" id='other_pages_id'>
+    <a href="../home/index.html">Home</a>
+    <a href="../familysecurityact/index.html">The Family Security Act</a>
+    <a href="./index.html">Fixing Family Benefits</a>
+    <a href="./index.html">Poverty Reduction</a>
+    <a href="../marginaltax/index.html">Marginal Tax Rates</a>
+    <a href="../marriage-penalties/index.html">Marriage Penalties</a>
+    <a href="./index.html">Asinine Asset Tests</a>
+    <a href="./index.html">Administrative Burdens</a>
+    <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
+    <a href="./index.html">Racial Justice</a>
+    <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
+      <div class="programs_title" onmouseover="show_programs();">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+      <div class="programs" id="programs">
+        <a href="./index.html">The Child Tax Credit</a>
+        <a href="./index.html">The Earned Income Tax</br>Credit</a>
+        <a href="../headofhousehold/index.html">The Head of Household</br>Filing Status</a>
+        <a href="./index.html">The Child & Dependent</br>Care Credit</a>
+        <a href="./index.html">SNAP (Food Stamps)</a>
+        <a href="./index.html">Temporary Assistance for</br>Needy Families</a>
+        <a href="./index.html">WIC</a>
+        <a href="./index.html">Medicaid & CHIP</a>
+      </div>
+    </div><!--Programs container-->
   </div>
+</div>
 
-  <!--Center-------------------------------------------->
-  <div class="center">
+<!--Center-------------------------------------------->
+<div class="center">
 
-    <div class = "chart">
+  <div class = "chart">
+    
+    <!--User inputs-->
+    <div class="user_inputs" id="user_inputs">
+
+      <!--Benefit Selector-->
+      <label for="benefit_selector">Show me: </label>
+      <select id="benefit_selector" oninput="switch_chart()">
+        <option value="eitc">The Earned Income Tax Credit</option>
+        <option value="hoh">The Head of Household Filing Status</option>
+        <option value="both">Both</option>
+      </select></br>
+
+      <div id="eitc_user_inputs">
+        <!--Person 1 number of old children-->
+        <label for="numChildrenPerson1">I have</label>
+        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income()">
+          <option value="none">no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>
+
+        <!--Person 2 number of old children-->
+        <label for="numChildrenPerson2">and my partner has</label>
+        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income()" >
+          <option value="none">no children</option>
+          <option value="one" >1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>.
+      </div> <!-- EITC user inputs-->
+
+      <div id='hoh_user_inputs'>
+        <!--Partner filing status-->
+        <label for="person2_filing_status">My partner's filing status is:</label>
+        <select name="person2_filing_status" id="person2_filing_status" oninput="modify_person2_filing_status();modify_income();">
+          <option value="single">Single Filer</option>
+          <option value="hoh">Head of Household</option>
+        </select>
+      </div>
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="person1_income_output">30,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
+        </div>
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
+        </div>
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!--Center Explanation Box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="individual_eitc_values"></p>
+      <p class="explanation_text" id="combined_single_eitc"></p>
+      <p class="explanation_text" id="married_eitc_value"></p>
+      <p class="explanation_text" id="marriage_penalty_show"></p>
+
+      <p class="explanation_text" id="explanation_line1"></p>
+      <p class="explanation_text" id="explanation_line2"></p>
+      <p class="explanation_text" id="explanation_line3"></p>
+      <p class="explanation_text" id="explanation_line4"></p>
+      <p class="explanation_text" id="explanation_line5"></p>
+      <p class="explanation_text" id="explanation_line6"></p>
+      <p class="explanation_text" id="explanation_line7"></p>
+      <p class="explanation_text" id="explanation_line8"></p>
+      <p class="explanation_text" id="explanation_line9"></p>
+      <p class="explanation_text" id="explanation_line10"></p>
+      <p class="explanation_text" id="explanation_line11"></p>
+      <p class="explanation_text" id="explanation_line12"></p>
+
+    </div>
+
+    <!--End animation button-->
+    <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+
+    <!--Run Marriage Penalty Script-->
+    <div id="MPchart"></div> <!--Subcontainter for chart-->
+
+  </div> <!--chart end-->
+
+  <!-- Mobile Highlights -->
+  <div class = "highlights" id="highlights_mobile"> <!--Subcontainter for highlights-->
+    <div class = "highlights_title" id="highlights_title_mobile">Highlights</div>
+
+    <div class="loader_container" id="loader_container_mobile">
+      <div class="loader" id="highlights_loader"></div>
+      Loading
+    </div>
+
+    <div class="highlights_content" id="highlights_content_mobile">
       
-      <!--User inputs-->
-      <div class="user_inputs" id="user_inputs">
-
-        <!--Benefit Selector-->
-        <label for="benefit_selector">Show me: </label>
-        <select id="benefit_selector" oninput="switch_chart()">
-          <option value="eitc">The Earned Income Tax Credit</option>
-          <option value="hoh">The Head of Household Filing Status</option>
-          <option value="both">Both</option>
-        </select></br>
-
-        <div id="eitc_user_inputs">
-          <!--Person 1 number of old children-->
-          <label for="numChildrenPerson1">I have</label>
-          <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income()">
-            <option value="none">no children</option>
-            <option value="one" selected>1 child</option>
-            <option value="two">2 children</option>
-            <option value="three">3+ children</option>
-          </select>
-
-          <!--Person 2 number of old children-->
-          <label for="numChildrenPerson2">and my partner has</label>
-          <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income()" >
-            <option value="none">no children</option>
-            <option value="one" >1 child</option>
-            <option value="two">2 children</option>
-            <option value="three">3+ children</option>
-          </select>.
-        </div> <!-- EITC user inputs-->
-
-        <div id='hoh_user_inputs'>
-          <!--Partner filing status-->
-          <label for="person2_filing_status">My partner's filing status is:</label>
-          <select name="person2_filing_status" id="person2_filing_status" oninput="modify_person2_filing_status();modify_income();">
-            <option value="single">Single Filer</option>
-            <option value="hoh">Head of Household</option>
-          </select>
-        </div>
-
-        <!--Person 1 income slider-->
-        <div class="slidecontainer"> 
-          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="person1_income_output">30,000</output>:</div>
-          <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
-          </div>
-        </div>
-
-        <!--Person 2 income slider-->
-        <div class="slidecontainer"> 
-          <div class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</div>
-          <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
-          </div>
-        </div>
-
-      </div> <!--user_inputs container-->
-
-      <!--Calculate marriage penalty-->
-      <div class="center_explanation_box" id="center_explanations_container">
-        <p class="explanation_text" id="individual_eitc_values"></p>
-        <p class="explanation_text" id="combined_single_eitc"></p>
-        <p class="explanation_text" id="married_eitc_value"></p>
-        <p class="explanation_text" id="marriage_penalty_show"></p>
-
-        <p class="explanation_text" id="explanation_line1"></p>
-        <p class="explanation_text" id="explanation_line2"></p>
-        <p class="explanation_text" id="explanation_line3"></p>
-        <p class="explanation_text" id="explanation_line4"></p>
-        <p class="explanation_text" id="explanation_line5"></p>
-        <p class="explanation_text" id="explanation_line6"></p>
-        <p class="explanation_text" id="explanation_line7"></p>
-        <p class="explanation_text" id="explanation_line8"></p>
-        <p class="explanation_text" id="explanation_line9"></p>
-        <p class="explanation_text" id="explanation_line10"></p>
-        <p class="explanation_text" id="explanation_line11"></p>
-        <p class="explanation_text" id="explanation_line12"></p>
+      <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties?</button>
+      <div class="explanation_and_animation_button_container_mobile" id="highlights_container1_mobile">
+        <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+        <input type="submit" class="animation_button" id="animation1_button_mobile" value="Play animation" onclick="animation1()" />
       </div>
 
-      <!--End animation button-->
-      <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
-
-      <!--Run Marriage Penalty Script-->
-      <div id="MPchart"></div> <!--Subcontainter for chart-->
-
-    </div> <!--chart end-->
-
-    <!-- Mobile Highlights -->
-    <div class = "highlights" id="highlights_mobile"> <!--Subcontainter for highlights-->
-      <div class = "highlights_title" id="highlights_title_mobile">Highlights</div>
-
-      <div class="loader_container" id="loader_container_mobile">
-        <div class="loader" id="highlights_loader"></div>
-        Loading
+      <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
+      <div class="explanation_and_animation_button_container_mobile" id="highlights_container2_mobile">
+        <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="animation_button" id="animation2_button_mobile" value="Play animation" onclick="animation2()" />
       </div>
 
-      <div class="highlights_content" id="highlights_content_mobile">
-        
-        <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties?</button>
-        <div class="explanation_and_animation_button_container_mobile" id="highlights_container1_mobile">
-          <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
-          <input type="submit" class="animation_button" id="animation1_button_mobile" value="Play animation" onclick="animation1()" />
-        </div>
-
-        <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
-        <div class="explanation_and_animation_button_container_mobile" id="highlights_container2_mobile">
-          <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
-          <input type="submit" class="animation_button" id="animation2_button_mobile" value="Play animation" onclick="animation2()" />
-        </div>
-
-        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
-        <div class="explanation_and_animation_button_container_mobile" id="highlights_container3_mobile">
-          <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
-          <input type="submit" class="animation_button" id="animation3_button_mobile" value="Play animation" onclick="animation3()"/>
-        </div>
-      </div> <!--highlights_content-->
-    
-    </div> <!--Highlights box-->
-
-  </div> <!--Center-->
-
-  <!--Highlights-------------------------------------------->
-  <div class = "right_side">
-
-    <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
-      <div class = "highlights_title" id="highlights_title">Highlights</div>
-
-      <div class="loader_container" id="loader_container">
-        <div class="loader" id="highlights_loader"></div>
-        Loading
+      <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
+      <div class="explanation_and_animation_button_container_mobile" id="highlights_container3_mobile">
+        <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+        <input type="submit" class="animation_button" id="animation3_button_mobile" value="Play animation" onclick="animation3()"/>
       </div>
-
-      <div class="highlights_content" id="highlights_content">
-        
-        <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties?</button>
-        <div class="explanation_and_animation_button_container" id="highlights_container1">
-          <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
-          <input type="submit" class="animation_button" id="animation1_button" value="Play animation" onclick="animation1()" />
-        </div>
-
-        <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
-        <div class="explanation_and_animation_button_container" id="highlights_container2">
-          <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
-          <input type="submit" class="animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
-        </div>
-
-        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
-        <div class="explanation_and_animation_button_container" id="highlights_container3">
-          <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
-          <input type="submit" class="animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
-        </div>
-      </div> <!--highlights_content-->
-    
-    </div> <!--Highlights box-->
+    </div> <!--highlights_content-->
   
-  </div> <!--right_side-->
+  </div> <!--Highlights box-->
 
-</section> <!--Top section-->
+</div> <!--Center-->
 
-<section class = 'center_no_side_elements' id='hoh_fix'>
+<!--Right Side-------------------------------------------->
+<div class = "right_side">
+
+  <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+    <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+    <div class="loader_container" id="loader_container">
+      <div class="loader" id="highlights_loader"></div>
+      Loading
+    </div>
+
+    <div class="highlights_content" id="highlights_content">
+      
+      <button type="button" class="top_button" onclick="show_explanation1()">What are marriage penalties?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container1">
+        <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+        <input type="submit" class="animation_button" id="animation1_button" value="Play animation" onclick="animation1()" />
+      </div>
+
+      <button type="button" onclick="show_explanation2()">Who faces marriage penalties?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container2">
+        <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
+      </div>
+
+      <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation3()">Who faces marriage bonuses?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container3">
+        <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+        <input type="submit" class="animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
+      </div>
+    </div> <!--highlights_content-->
+  
+  </div> <!--Highlights box-->
+
+</div> <!--right_side-->
+
+<div class = 'center_no_side_elements' id='hoh_fix'>
   <h2>Fixing Head of Household Marriage Penalties</h3>
   <p>
     The way you eliminate the marriage penalties inherent in the head of household filing status is very simple: you eliminate it entirely and plough the savings into a universal child benefit. This takes advantage of a convenient fact: that the single and married filing statuses are already set up in such a way that they do not create marriage penalties.
@@ -362,7 +367,7 @@
 
   </div> <!-- chart container-->
 
-</section> <!--HOH fix section end-->
+</div> <!--HOH fix section end-->
 
 <section class = 'center_no_side_elements' id='eitc_fix'>
   <h2>Fixing EITC Marriage Penalties</h3>

@@ -6,7 +6,6 @@ body {
 }
 h1 {
   font-family: 'Zen Antique Soft', serif;
-  text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -61,11 +60,15 @@ th, td {
   display: none;
 }
 /***********************Page Positioning**********************************************************/
+.top {
+  height: 100vh;
+}
 .left_side{
   display: inline-block;
   vertical-align: top;
   width: 18%;
   padding-right: 2.5%;
+  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
 }
 .center{
   display: inline-block;
@@ -75,8 +78,7 @@ th, td {
 }
 .center_no_side_elements {
   width: 56.8%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 20.8%;
 }
 .right_side{
   display: inline-block;
@@ -85,6 +87,7 @@ th, td {
   margin-right: 0px;
   margin-left: 0px;
   margin-bottom: 20px;
+  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
 }
 /***********************Top elements********************************************************************/
 .logo {
@@ -95,18 +98,25 @@ th, td {
 }
 .title_container {
   padding-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  text-align: center;
+}
+.category {
+  display: none;
 }
 .name {
   font-family: 'Zen Antique Soft', serif;
-  text-align: center;
   line-height: 2em;
-  font-size: 110%;
+  font-size: 85%;
   margin-bottom: 5px;
   margin-top: 8px;
 }
-.twitter_follow {
-  text-align: center;
+.page_description {
+  font-family: "Computer Modern Classical Serif Italic";
+  line-height: 1.5em;
 }
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
