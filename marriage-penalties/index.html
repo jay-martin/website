@@ -469,44 +469,66 @@
   </div>
 
   <p>
-    In the module below, you can play around with the EITC outlined above and see that it does, in fact, eliminate all marriage penalties except for those intrinsic to phaseouts. I've also added some ways you could explicitly incorporate marriage <em>bonuses</em> into the EITC, on top of those that already implicitly exist. I personally would not do this—I have no real desire to go out of my way to ensure that single people get lower benefits—but perhaps the idea that these "encourage marriage" would make the general reform more appealing to some members of Congress.
+    In the module below, you can play around with the EITC outlined above and see that it does, in fact, eliminate all marriage penalties except for those intrinsic to phaseouts. I've also added some ways you could explicitly incorporate marriage <em>bonuses</em> into the EITC, on top of those that already implicitly exist. I personally would not do this—I don't think we should go out of our way to make benefits lower for single people—but perhaps the idea that these "encourage marriage" would make the general reform more appealing to some members of Congress.
   </p>
 
   <!-------- Reformed EITC Chart -------->
-  <div class = "chart">
+  <div class = "chart_wide">
 
-    <!--EITC Type-->
-    <label for="eitc_reform_type">Show: </label>
-    <select name="eitc_reform_type" id="eitc_reform_type" oninput="eitc_reform_adjust_married();eitc_reform_modify_income();eitc_reform_outputs();">
-      <option value="default">Default</option>
-      <option value="slope">Slope Marriage Bonus</option>
-      <option value="value">Larger EITC Marriage Bonus</option>
-      <option value="both">Both Marriage Bonuses</option>
-    </select>
+    <input type="submit" class="wide_show_values_button" id="eitc_fix_outputs_button" value="Show Values" onclick="show_eitc_fix_values();" >
 
-    <!--Person 1 income slider-->
-    <div class="slidecontainer"> 
-      <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">10,000</output>:</div>
-      <div class="slider-actual">
-        <input type="range" min="0" max="40000" value="10000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+    <div class="wide_inputs">
+      <!--EITC Type-->
+    <!--
+      <label for="eitc_reform_type">Show: </label>
+      <select name="eitc_reform_type" id="eitc_reform_type" oninput="eitc_reform_adjust_married();eitc_reform_modify_income();eitc_reform_outputs();">
+        <option value="default">Default</option>
+        <option value="slope">Slope Marriage Bonus</option>
+        <option value="value">Larger EITC Marriage Bonus</option>
+        <option value="both">Both Marriage Bonuses</option>
+      </select>
+    -->
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">10,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="10000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+        </div>
       </div>
-    </div>
 
-    <!--Person 2 income slider-->
-    <div class="slidecontainer"> 
-      <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">20,000</output>:</div>
-      <div class="slider-actual">
-        <input type="range" min="0" max="40000" value="20000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">15,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="15000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+        </div>
       </div>
-    </div>
 
-    <div class="center_explanation_box">
-      <p class="explanation_text" id="eitc_reform_individual"></p>
-      <p class="explanation_text" id="eitc_reform_married"></p>
-      <p class="explanation_text" id="eitc_reform_penalty"></p>
-    </div>
+    </div> <!-- wide inputs -->
 
-    <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    <div class="inner_chart_left">
+      <h3 class='chart_wide_name'>Reformed EITC</h3>
+      <div class="center_explanation_box" id='eitc_fix_outputs' hidden>
+        <p class="explanation_text" id="eitc_reform_individual"></p>
+        <p class="explanation_text" id="eitc_reform_married"></p>
+        <p class="explanation_text" id="eitc_reform_penalty"></p>
+      </div>
+
+      <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    </div> <!--Inner left chart container-->
+
+    <div class="inner_chart_right">
+      <h3 class='chart_wide_name'>Current EITC</h3>
+      <div class="center_explanation_box" id='existing_outputs' hidden>
+        <p class="explanation_text" id="existing_individual"></p>
+        <p class="explanation_text" id="existing_married"></p>
+        <p class="explanation_text" id="existing_penalty"></p>
+      </div>
+
+      <div id="exisiting_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    </div> <!--Inner right chart container-->
+  
   </div> <!-- chart container -->
 
   <h3>An Alternative: the Standard Credit</h3>
@@ -555,6 +577,7 @@
 
 <!-- Reformed EITC Javascript Files -->
 <script type="text/javascript" src="./javascript/eitcfix/chart.js"></script>
+<script type="text/javascript" src="./javascript/eitcfix/existing_eitc.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/outputs.js"></script>
 

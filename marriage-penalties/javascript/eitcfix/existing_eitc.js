@@ -1,6 +1,6 @@
 /*DEFAULT GRAPH: One person with 1 child, other childless */
-var eitcReform = c3.generate({
-    bindto: '#reformed_eitc_chart',
+var existingEITC = c3.generate({
+    bindto: '#exisiting_eitc_chart',
     data: {
         xs: {
             'person1' : 'x1',
@@ -18,19 +18,23 @@ var eitcReform = c3.generate({
             'point_married' : 'x_point_married',
         },
         columns: [
-            ['x3',      0, 20000, 30000, 60000],
-            ['married', 0, 6000,  6000,  0],
-            ['x1',      0, 10000, 15000, 30000],
-            ['person1', 0, 3000,  3000,  0],
-            ['x2',      0, 10000, 15000, 30000],
-            ['person2', 0, 3000,  3000,  0],
+            ['x3',      0, 15290, 26262, 55529,],
+            ['married', 0, 6164,  6164,  0,],
+            ['x1',      0, 10979, 20131, 43492,],
+            ['person1', 0, 3733,  3733,  0,],
+            ['x2',      0, 10979, 20131, 43492,],
+            ['person2', 0, 3733,  3733,  0,],
 
             ['x_point1', 10000],
-            ['point1',   3000],
+            ['point1',   3400],
             ['x_point2', 15000],
-            ['point2',   3000],
+            ['point2',   3733],
             ['x_point_married', 25000],
-            ['point_married',   6000],
+            ['point_married',   6164],
+
+            ['x_horizontal',  0,    80000],
+            ['married_value', 6164, 6164],
+            ['penalty',       969,  969],
 
         ],
         types: {
@@ -45,9 +49,9 @@ var eitcReform = c3.generate({
         groups: [ ['combined', 'bonus'], ['married_value', 'penalty'] ], 
         order: false,
         names: {
-            person1: "Individual EITC (You)",
-            person2: "Individual EITC (Your Partner)",
-            married: "Married EITC",
+            person1: "Individual One-Child EITC",
+            person2: "Individual One-Child EITC",
+            married: "Married Two-Child EITC",
         },
         colors: {
             person1        : '#6ab6fc',
@@ -102,7 +106,7 @@ var eitcReform = c3.generate({
             lines: [{value: 10000, text: 'Your income'}, {value: 15000, text: "Your partner's income"}, {value: 25000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 6000, text: "Combined Individual EITC's/Married EITC"}, ]
+            lines: [{value: 6164, text: "Married EITC"}, {value: 7133, text: "Combined Individual EITC's"} ]
         }
     },
 });
