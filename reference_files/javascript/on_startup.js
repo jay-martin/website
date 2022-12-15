@@ -32,13 +32,14 @@ else{
 	initialize_page();
 }
 
+/* 
 function initialize_page(){
-	/* keep calculations a secret */
+	//keep calculations a secret
 	document.getElementById("highlights_content").style.visibility = 'hidden';
 	document.getElementById("programs").style.visibility = 'hidden';
 	timer = 200;
 	setTimeout(function () {
-		/* calculate highlights heights, as well as list of programs height, and then set to zero */
+		//calculate highlights heights, as well as list of programs height, and then set to zero
 		programsHeight = window.getComputedStyle(document.getElementById('programs')).height;
 		document.getElementById("programs").style.height = "0px";
 
@@ -51,7 +52,7 @@ function initialize_page(){
 
 	}, timer);
 
-	/* make highlights visible */
+	//make highlights visible
 	timer += 1000;
 	setTimeout(function () {
 		document.getElementById("highlights").style.border = 'solid';
@@ -67,6 +68,7 @@ function initialize_page(){
 		document.getElementById("programs").style.visibility = 'visible';
 	}, timer);
 }
+*/
 
 function initialize_mobile_page(){
 	/* keep calculations a secret */

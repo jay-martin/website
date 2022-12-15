@@ -19,8 +19,8 @@ var eitcExplainer = c3.generate({
             ['married_plateau',  3000,  3000],
             ['x_phasein',        0,     10000],
             ['married_phasein',  0,     3000],
-            ['x_phaseout',       15000, 30000],
-            ['married_phaseout', 3000,  0],
+            ['x_phaseout',       15000],
+            ['married_phaseout', 3000],
 
             ['x1',      0, 10000, 15000, 30000],
             ['person1', 0, 3000,  3000,  0],

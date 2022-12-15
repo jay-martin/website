@@ -10,7 +10,14 @@
 	font-size: 120%;
 }
 
-/* Text on explainer charts */
+/* Center text box */
+#eitc_explainer_chart_container {
+	position: relative; /* needed to position buttons */
+}
+.explainer_text_container {
+	height: 65%;
+	/* overflow: scroll; */
+}
 .explainer_chart_text_title {
 	text-align: center;
 	line-height: 1.5em;
@@ -23,6 +30,11 @@
 	margin-bottom: 5px;
 	font-size: 92.5%;
 }
+/*** Text box for EITC explainer ***/
+#eitc_explainer_center_box {
+	height: 180px;
+}
+/****** Explainer text inner elements ****/
 .step_number {
 	display: inline-block;
 	width: 10%;
@@ -30,10 +42,57 @@
 }
 .step_text {
 	display: inline-block;
-	width: 89%;
 }
+.line_container {
+	display: inline-block;
+	float: left;
+	padding: 0px;
+}
+.step_text_line {
+	width: 0px;
+	white-space: nowrap;
+	overflow: scroll;
+	margin: 0px;
+	padding: 0px;
+}
+/****** Explainer text animation ****/
+.type_text {
+	animation: 
+		typing 2s steps(40, end),
+    	blink-caret .6s step-end infinite;
+	animation-fill-mode: forwards;
+	animation-delay: .1s;
+}
+.type_text_medium {
+	animation: 
+		typing 1.5s steps(30, end),
+    	blink-caret .6s step-end infinite;
+	animation-fill-mode: forwards;
+	animation-delay: .1s;
+}
+.type_text_fast {
+	animation: 
+		typing 1s steps(20, end),
+    	blink-caret .6s step-end infinite;
+	animation-fill-mode: forwards;
+	animation-delay: .1s;
+}
+/* Typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+/* Typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #adadad; }
+}
+
+/****** Animation Buttons ****/
 .forward_back_buttons{
-	float: right;
+	position: absolute;
+	right: 15px;
+	margin-top: 242px;
 }
 .explainer_button{
 	width: 70px;
@@ -48,6 +107,10 @@
 .explainer_button:hover {
 	background-color: #dbdbdb;
 }
+.explainer_button:disabled:hover {
+	background-color: white;
+	cursor: default;
+}
 
 /* Mobile adjustments */
 @media screen and (max-width: 800px) {
@@ -56,5 +119,8 @@
 	}
 	.step_text {
 		width: 83%;
+	}
+	.forward_back_buttons {
+		margin-top: 197.5px;
 	}
 }
