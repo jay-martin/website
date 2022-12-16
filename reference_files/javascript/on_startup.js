@@ -24,7 +24,7 @@ for (var i = 0; i < highlights.length; i++) {
 
 //Determine whether to initialize desktop or mobile page
 var displayWidth = window.innerWidth;
-if(displayWidth < 800){
+if(displayWidth < 900){
 	initialize_mobile_page();
 	isMobile = true; //this is used by the functions that open the highlights when clicked
 }

@@ -7,7 +7,7 @@
   'GRAD' 0,
   'opsz' 48
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   body {
     width: 100%;
   }
@@ -242,3 +242,44 @@
     width: 100%;
   }
 }
+
+/********************************************************
+* Some adjustments for tablets
+*********************************************************/
+/* Set title back to middle of screen*/
+@media screen and (min-width: 800px) {
+  .title_container {
+    padding-top: 70px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+  .category {
+    display: none;
+  }
+  #page_title {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .name {
+    font-family: 'Zen Antique Soft', serif;
+    line-height: 2em;
+    font-size: 85%;
+    margin-bottom: 5px;
+    margin-top: 8px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page_description {
+    font-family: "Computer Modern Classical Serif Italic";
+    line-height: 1.5em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+

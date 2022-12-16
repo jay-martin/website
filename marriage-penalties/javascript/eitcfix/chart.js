@@ -1,4 +1,13 @@
-/*DEFAULT GRAPH: One person with 1 child, other childless */
+//Determine which set of x tick values to use depending on screen width
+//Mobile screens require fewer ticks
+var windowWidth = window.innerWidth;
+if(windowWidth < 800){
+    eitc_reform_tick = [0, 20000, 40000, 60000, 80000, 100000];
+}
+else{
+    eitc_reform_tick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+}
+
 var eitcReform = c3.generate({
     bindto: '#reformed_eitc_chart',
     data: {
@@ -45,8 +54,8 @@ var eitcReform = c3.generate({
         groups: [ ['combined', 'bonus'], ['married_value', 'penalty'] ], 
         order: false,
         names: {
-            person1: "Your Individual EITC",
-            person2: "Your Partner's Individual EITC",
+            person1: "Single EITC (You)",
+            person2: "Single EITC (Your Partner)",
             married: "Married EITC",
         },
         colors: {
@@ -82,7 +91,7 @@ var eitcReform = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
+                values: eitc_reform_tick,
             },
             padding: {left: 0, right: 30},
             max: 90000,
