@@ -478,17 +478,17 @@
 
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
-        <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">10,000</output>:</div>
+        <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">20,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="50000" value="10000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+          <input type="range" min="0" max="50000" value="20000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
         </div>
       </div>
 
       <!--Person 2 income slider-->
       <div class="slidecontainer"> 
-        <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">15,000</output>:</div>
+        <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">25,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="50000" value="15000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+          <input type="range" min="0" max="50000" value="25000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
         </div>
       </div>
 

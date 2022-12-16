@@ -18,19 +18,19 @@ var eitcReform = c3.generate({
             'point_married' : 'x_point_married',
         },
         columns: [
-            ['x3',      0, 20000, 30000, 60000],
-            ['married', 0, 6000,  6000,  0],
-            ['x1',      0, 10000, 15000, 30000],
-            ['person1', 0, 3000,  3000,  0],
-            ['x2',      0, 10000, 15000, 30000],
-            ['person2', 0, 3000,  3000,  0],
+            ['x3',      0, 21959, 40262, 86982],
+            ['married', 0, 7466,  7466,  0],
+            ['x1',      0, 10979, 20131, 43491.5,],
+            ['person1', 0, 3733,  3733,  0,],
+            ['x2',      0, 10979, 20131, 43491.5,],
+            ['person2', 0, 3733,  3733,  0,],
 
-            ['x_point1', 10000],
-            ['point1',   3000],
-            ['x_point2', 15000],
-            ['point2',   3000],
-            ['x_point_married', 25000],
-            ['point_married',   6000],
+            ['x_point1', 20000],
+            ['point1',   3733],
+            ['x_point2', 25000],
+            ['point2',   2955],
+            ['x_point_married', 45000],
+            ['point_married',   6688],
 
         ],
         types: {
@@ -45,8 +45,8 @@ var eitcReform = c3.generate({
         groups: [ ['combined', 'bonus'], ['married_value', 'penalty'] ], 
         order: false,
         names: {
-            person1: "Individual EITC (You)",
-            person2: "Individual EITC (Your Partner)",
+            person1: "Your Individual EITC",
+            person2: "Your Partner's Individual EITC",
             married: "Married EITC",
         },
         colors: {
@@ -85,24 +85,25 @@ var eitcReform = c3.generate({
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
             },
             padding: {left: 0, right: 30},
-            max: 60000,
+            max: 90000,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+                values: [0, 2000, 4000, 6000, 8000, 10000, 12000],
+                //[0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000]
             },
             padding: {bottom: 0, top: 0},
-            max: 10000,
+            max: 12000,
         }
     },
     grid: {
         x: {
-            lines: [{value: 10000, text: 'Your income'}, {value: 15000, text: "Your partner's income"}, {value: 25000, text: 'Combined income'}]
+            lines: [{value: 20000, text: 'Your income'}, {value: 25000, text: "Your partner's income"}, {value: 45000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 6000, text: "Combined Individual EITC's/Married EITC"}, ]
+            lines: [{value: 0}, {value: 6688, text: "Combined Individual EITC's/Married EITC"}, ]
         }
     },
 });

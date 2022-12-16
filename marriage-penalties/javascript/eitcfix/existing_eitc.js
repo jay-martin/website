@@ -25,16 +25,16 @@ var existingEITC = c3.generate({
             ['x2',      0, 10979, 20131, 43492,],
             ['person2', 0, 3733,  3733,  0,],
 
-            ['x_point1', 10000],
-            ['point1',   3400],
-            ['x_point2', 15000],
-            ['point2',   3733],
-            ['x_point_married', 25000],
-            ['point_married',   6164],
+            ['x_point1', 20000],
+            ['point1',   3733],
+            ['x_point2', 25000],
+            ['point2',   2955],
+            ['x_point_married', 45000],
+            ['point_married',   2217],
 
-            ['x_horizontal',  0,    80000],
-            ['married_value', 6164, 6164],
-            ['penalty',       969,  969],
+            ['x_horizontal',  0,    100000],
+            ['married_value', 2217, 2217],
+            ['penalty',       4471, 4471],
 
         ],
         types: {
@@ -89,24 +89,25 @@ var existingEITC = c3.generate({
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
             },
             padding: {left: 0, right: 30},
-            max: 60000,
+            max: 90000,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+                values: [0, 2000, 4000, 6000, 8000, 10000, 12000],
+                //[0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000]
             },
             padding: {bottom: 0, top: 0},
-            max: 10000,
+            max: 12000,
         }
     },
     grid: {
         x: {
-            lines: [{value: 10000, text: 'Your income'}, {value: 15000, text: "Your partner's income"}, {value: 25000, text: 'Combined income'}]
+            lines: [{value: 20000, text: 'Your income'}, {value: 25000, text: "Your partner's income"}, {value: 45000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 6164, text: "Married EITC"}, {value: 7133, text: "Combined Individual EITC's"} ]
+            lines: [{value: 2217, text: "Married EITC"}, {value: 6688, text: "Combined Individual EITC's"} ]
         }
     },
 });

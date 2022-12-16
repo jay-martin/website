@@ -1,8 +1,8 @@
 function eitc_reform_adjust_married(){
 	eitcReform.load({
 		columns: [
-			['x3',      0, 20000, 30000, 60000],
-            ['married', 0, 6000,  6000,  0],
+			['x3',      0, 21959, 40262, 77592],
+            ['married', 0, 7466,  7466,  0],
 		]
 	});
 	eitcReform.axis.max({x: 60000});
@@ -133,9 +133,13 @@ function eitc_reform_modify_income(){
     eitcReform.load({columns: [   ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_married', combinedIncome], ['point_married', marriedEITC] ] });
     existingEITC.load({columns: [ ['x_point1', p1Income] , ['point1', p1_existing_eitc], ['x_point2', p2Income], ['point2', p2_existing_eitc], ['x_point_married', combinedIncome], ['point_married', married_existing_eitc] ] });
 
-    // Refomred EITC: move y-grids & bonus region
+    // Reformed EITC: move y-grids & bonus region
     bonus = marriedEITC - combinedEITC;
-    if(bonus > 0){
+    if(bonus < 10 && bonus > -10){ //exact values sometimes does not equal zero because income threshold values are rounded to the nearest whole number (I've put a $20 buffer but the actual discrepancy is a small fraction of a dollar)
+    	eitcReform.hide(['combined', 'bonus', 'married_value', 'penalty']);
+    	eitcReform.ygrids([{value: 0}, {value: marriedEITC, text: "Combined Individual EITC's/Married EITC"}]);
+    }
+    else if(bonus > 0){
     	eitcReform.show(['combined', 'bonus']);
     	eitcReform.hide(['married_value', 'penalty']);
     	eitcReform.ygrids([{value: 0}, {value: marriedEITC, text: "Married EITC"}, {value: combinedEITC, text: "Combined Individual EITC's"}]);
@@ -146,10 +150,6 @@ function eitc_reform_modify_income(){
     			['bonus',        bonus,        bonus],
 			]
     	});
-    }
-    else if(bonus == 0){
-    	eitcReform.hide(['combined', 'bonus', 'married_value', 'penalty']);
-    	eitcReform.ygrids([{value: 0}, {value: marriedEITC, text: "Combined Individual EITC's/Married EITC"}]);
     }
     else{
     	eitcReform.show(['married_value', 'penalty']);
@@ -198,7 +198,7 @@ function eitc_reform_modify_income(){
 function eitc_reform_adjust_x_axis(){
 	combinedIncome = parseInt(eitc_reform_person1_income.value) + parseInt(eitc_reform_person2_income.value);
 	
-	if(combinedIncome > 60000){
+	if(combinedIncome > 90000){
 		if(window.innerWidth < 800){
 			eitcReform.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000];
 			existingEITC.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000];
@@ -208,23 +208,23 @@ function eitc_reform_adjust_x_axis(){
 	}
 	else{
 		if(window.innerWidth < 800){
-			eitcReform.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
-			existingEITC.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
+			eitcReform.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000];
+			existingEITC.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000];
 		}
-		eitcReform.axis.max({x: 60000});
-		existingEITC.axis.max({x: 60000});
+		eitcReform.axis.max({x: 90000});
+		existingEITC.axis.max({x: 90000});
 	}
 }
 
 function reformed_eitc_values_single(income){
-	if(income < 10000){
-		return .3 * income;
+	if(income < 10979){
+		return .34 * income;
 	}
-	else if(income >= 10000 && income < 15000){
-		return 3000;
+	else if(income >= 10979 && income < 20131){
+		return 3733;
 	}
-	else if(income >= 15000 && income < 30000){
-		return 3000 - .2 * (income - 15000);
+	else if(income >= 20131 && income < 43491){
+		return 3733 - .1598 * (income - 20131);
 	}
 	else{
 		return 0;
@@ -232,14 +232,14 @@ function reformed_eitc_values_single(income){
 }
 
 function reformed_eitc_values_married(income){
-	if(income < 20000){
-		return .3 * income;
+	if(income < 21959){
+		return .34 * income;
 	}
-	else if(income >= 20000 && income < 30000){
-		return 6000;
+	else if(income >= 21959 && income < 40262){
+		return 7466;
 	}
-	else if(income >= 30000 && income < 60000){
-		return 6000 - .2 * (income - 30000);
+	else if(income >= 40262 && income < 86982){
+		return 7466 - .1598 * (income - 40262);
 	}
 	else{
 		return 0;
