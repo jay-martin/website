@@ -89,29 +89,31 @@
     position: fixed;
     overflow: hidden;
     width: 100%;
-    /* border-bottom: 1.5px solid;
-    border-color: #adadad; */
-    border: none;
+    border-bottom: 1px solid;
+    border-color: black;
+    /* border-color: #adadad; */
+    /* border: none; */
     background-color: white;
     opacity: 100;
-    z-index: 1;
+    z-index: 2;
   }
   a.navbar_logo {
     font-family: 'Zen Antique Soft', serif;
-    font-size: 130%;
+    font-size: 120%;
     text-align: left;
     text-decoration: none;
     display: inline-block;
     width: 60%;
     margin-left: 15px;
-    margin-top: 1.5vh;
+    margin-top: 1vh;
     border: none;
     color: black;
   }
   button.open_icon, button.close_icon {
     float: right;
     margin-right: 5px;
-    margin-top: 6px;
+    margin-top: .4vh;
+    margin-bottom: 1px;
     width: 9%;
     border: none;
     font-size: 100%;
@@ -152,7 +154,7 @@
     z-index: 1;
   }
   .featured_pages_title, a.featured_pages  {
-    margin-left: 15px;
+    margin-left: 3%;
     font-size: 120%;
     margin-bottom: 8px;
     margin-top: 15px;
@@ -168,16 +170,23 @@
   .mobile_dropdown a:hover {
     text-decoration: underline;
   }
+  .two_columns {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .features_dropdown, .programs_dropdown {
     display: inline-block;
     vertical-align: top;
     line-height: 2em;
-    margin-top: 15px;
     width: 42.5%;
-    margin-left: 15px;
+    font-size: 95%;
+  }
+  .programs_dropdown {
+    margin-left: 7.5%;
   }
   .dropdown_title {
-    font-size: 120%;
+    font-size: 130%;
     margin-bottom: 16px;
   }
   .twitter_dropdown {
@@ -248,38 +257,60 @@
 *********************************************************/
 /* Set title back to middle of screen*/
 @media screen and (min-width: 800px) {
+  /* General page positioning */
+  .center {
+    display: block;
+    width: 90%;
+    margin-left: 5%;
+  }
+  .center_no_side_elements {
+    width: 90%;
+    margin-left: 5%;
+    overflow: hidden;
+  }
+  /* Navbar */
+  a.navbar_logo {
+    margin-left: 5%;
+  }
+  button.open_icon, button.close_icon {
+    margin-right: 2%;
+  }
+  /* Dropdown */
+  .two_columns {
+    width: 90%;
+    margin-top: 25px;
+  }
+  .features_dropdown, .programs_dropdown {
+    font-size: 120%;
+  }
+  .featured_pages_title, a.featured_pages {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 150%;
+    margin-top: 25px;
+  }
+  .twitter_dropdown {
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 5%;
+  }
+  /* Title */
   .title_container {
-    padding-top: 70px;
-    margin-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+    padding-top: 80px;
+    margin-bottom: 30px;
+    margin-left: 5%;
+    width: 90%;
   }
   .category {
     display: none;
   }
-  #page_title {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .name {
-    font-family: 'Zen Antique Soft', serif;
-    line-height: 2em;
-    font-size: 85%;
-    margin-bottom: 5px;
-    margin-top: 8px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  #page_title, .name, .page_description {
+    margin-left: 0;
   }
   .page_description {
-    font-family: "Computer Modern Classical Serif Italic";
-    line-height: 1.5em;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    width: 65%;
   }
+
 }
 
 

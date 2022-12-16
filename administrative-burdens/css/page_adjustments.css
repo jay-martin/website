@@ -103,7 +103,7 @@
 }
 
 /*******************Mobile Adjustments*********************************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .eligibility_status_container{
         font-size: 110%;
         width: 100%;
@@ -113,10 +113,10 @@
         background-color: white;
         border: none;
         border-top: solid;
-        border-radius: 5px;
+        border-radius: 20px;
         border-color: white;
         box-shadow: 0 0 10px 1px #ddd;
-        height: 200px;
+        height: 500px;
     }
     #eligibility_status_title, #eligibility_status {
         font-size: 105%;
@@ -129,10 +129,10 @@
         animation-fill-mode: forwards;
     }
     .trigger_collapse {
-        animation-name: collapse;
+        animation-name: eligibility_collapse;
     }
     .trigger_expand {
-        animation-name: expand;
+        animation-name: eligibility_expand;
     }
     .trigger_offPage {
         animation-name: offPage;
@@ -140,11 +140,11 @@
     .trigger_onPage {
         animation-name: onPage;
     }
-    @keyframes collapse {
+    @keyframes eligibility_collapse {
         0% { margin-top: 79.5vh;}
         100% {  margin-top: 90.5vh;}
     }
-    @keyframes expand {
+    @keyframes eligibility_expand {
         0% { margin-top: 90.5vh;}
         100% {  margin-top: 79.5vh; }
     }
@@ -181,5 +181,34 @@
     }
     #references_section {
         margin-top: 200%; /* Placeholder */
+    }
+}
+
+/****************************Tablet adjustments***************************/
+@media screen and (min-width: 800px) {
+    .eligibility_status_container {
+        font-size: 140%;
+        margin-top: 89vh;
+    }
+    .clickable {
+        margin-top: 7.5px;
+    }
+    #eligibility_status_title {
+        margin-top: 20px;
+    }
+    #eligibility_status {
+        margin-bottom: 10px;
+    }
+    .elibility_criteria {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    @keyframes eligibility_collapse {
+        0% { margin-top: 77.5vh;}
+        100% {  margin-top: 89.5vh;}
+    }
+    @keyframes eligibility_expand {
+        0% { margin-top: 89.5vh;}
+        100% {  margin-top: 77.5vh; }
     }
 }
