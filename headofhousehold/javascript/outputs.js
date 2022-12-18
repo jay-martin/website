@@ -8,24 +8,7 @@ document.getElementById('item_or_stand').innerHTML = 'You would use the <em>stan
 
 /* Calculates tax savings from the head of household status*/
 function difference_hoh(){
-	if(tax_credit_switch.checked === false){
-        numChildren = 0;
-    }
-    else{
-        numChildren = 1;
-        if(num_children.value === 'two'){
-            numChildren = 2;
-        }
-        else if(num_children.value === 'three'){
-            numChildren = 3;
-        }
-        else if(num_children.value === 'four'){
-            numChildren = 4;
-        }
-        else if(num_children.value === 'five'){
-            numChildren = 5;
-        }
-    }
+    numChildren = num_children_formatting(num_children.value);
     user_dif = tax_difference_at_income(user_income.value, itemized_deductions.value, numChildren);
     document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
 }

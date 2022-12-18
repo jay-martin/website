@@ -26,7 +26,7 @@ function zoomHOHGraph(){
 function modifyIncome_HOH(){
     income = user_income.value;
     itemDeduct = itemized_deductions.value;
-    numChildren = num_children.value;
+    numChildren = num_children_formatting(num_children.value);
 
     value = tax_difference_at_income(income, itemDeduct, numChildren);
     HOHchart.xgrids([{value: income, text:'Your income'}]);

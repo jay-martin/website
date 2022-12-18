@@ -145,7 +145,7 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">50,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
+            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();deductType()">
           </div>
         </div>
 
