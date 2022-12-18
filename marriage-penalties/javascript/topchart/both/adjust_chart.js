@@ -151,10 +151,10 @@ function both_modify_income(){
     else if(combinedChildren === 2){numChildren='two';}
     else if (combinedChildren > 2){numChildren='three';}
 
-    p1EITC = EITC_benefit('single', p1Income, person1_children.value);
-    p2EITC = EITC_benefit('single', p2Income, person2_children.value);
+    p1EITC = eitc_value_2023('single', p1Income, person1_children.value);
+    p2EITC = eitc_value_2023('single', p2Income, person2_children.value);
     combinedEITC = p1EITC + p2EITC;
-    marriedEITC = EITC_benefit('married', combinedIncome, numChildren);
+    marriedEITC = eitc_value_2023('married', combinedIncome, numChildren);
 
     p1Tax  = tax_liability_2023('hoh', p1Income) - p1EITC;
     p2Tax  = tax_liability_2023(person2_filing_status.value, p2Income) - p2EITC;

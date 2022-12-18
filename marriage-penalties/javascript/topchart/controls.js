@@ -65,12 +65,6 @@ function switch_chart(){
 		document.getElementById('eitc_user_inputs').style.display = 'none';
 
 		setTimeout(function () {
-			MPchart.axis.max({y: 6000});
-			MPchart.axis.min({y: 0})
-			MPchart.axis.labels({ y: 'Tax Liability'});
-		}, 500);
-
-		setTimeout(function () {
 			hoh_outputs();
 			hoh_modify_person1();
 			hoh_modify_person2();
@@ -80,7 +74,14 @@ function switch_chart(){
 				person2: "Your partner's tax liability",
 				married: "Married tax liability",
 			});
+		}, 500);
+
+		setTimeout(function () {
+			MPchart.axis.max({y: 6000});
+			MPchart.axis.min({y: 0})
+			MPchart.axis.labels({ y: 'Tax Liability'});
 		}, 1000);
+
 		setTimeout(function () {
 			hoh_modify_income();
 			hoh_outputs();
@@ -100,12 +101,6 @@ function switch_chart(){
 		document.getElementById('eitc_user_inputs').style.display = 'block';
 
 		setTimeout(function () {
-			MPchart.axis.max({y: 5000});
-			MPchart.axis.min({y: 0})
-			MPchart.axis.labels({ y: 'EITC Value'});
-		}, 500);
-
-		setTimeout(function () {
 			modify_person1();
 			modify_person2();
 			modify_married();
@@ -114,7 +109,14 @@ function switch_chart(){
 				person2: "Your Partner's EITC",
 				married: "EITC if you get married",
 			});
+		}, 500);
+
+		setTimeout(function () {
+			MPchart.axis.max({y: 5000});
+			MPchart.axis.min({y: 0})
+			MPchart.axis.labels({ y: 'EITC Value'});
 		}, 1000);
+
 		setTimeout(function () {
 			eitc_modify_income();
 			eitc_outputs();
