@@ -1,4 +1,7 @@
-/*DEFAULT GRAPH: Standard deduction for both single filer & HOH */
+/******************************************************************************************
+ * This file contains the function creating the c3.js chart
+ * DEFAULT GRAPH: Standard deduction for both single filer & HOH
+ * ****************************************************************************************/
 var HOHchart = c3.generate({
     bindto: '#HOHchart',
     data: {
@@ -7,10 +10,15 @@ var HOHchart = c3.generate({
             'person1' : 'x1',
             'person2' : 'x2',
             'after_ctc' : 'x3',
+
+            'point' : 'x_point',
         },
         columns: [
             ['x',            0, 12950, 19400, 23225, 34050, 54725, 75300, 102025, 108450, 183000, 189450, 228900, 235350, 552850, 559300, 600000],
             ['HOH_Savings',  0, 0,     645,   645,   861.5, 861.5, 2919,  2919,   3047.5, 3047.5, 3563.5, 3563.5, 3757,   3757,   3886,   3886],
+
+            ['x_point', 50000],
+            ['point', 862],
         ],
         types: {
             HOH_Savings: 'area',
@@ -23,7 +31,12 @@ var HOHchart = c3.generate({
             person1: 'Person 1',
             person2: 'Person 2',
             after_ctc: 'HOH Tax Savings after CTC'
-        }
+        },
+        colors: {
+            HOH_Savings : '#f7c22f',
+            after_ctc   : '#6ab6fc',
+            point       : '#000000',
+        },
     },
     transition: {
         duration: 400,
@@ -34,16 +47,11 @@ var HOHchart = c3.generate({
         left: 65,
         right: 20,
     },
-    color: {
-        pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
-    },
     legend: {
         position: 'bottom',
+        hide: ['point'],
     },
     tooltip: {
-        show: false
-    },
-    point: {
         show: false
     },
     axis: {
@@ -75,79 +83,3 @@ var HOHchart = c3.generate({
         }
     }
 });
-
-/* Zooms graph on lower incomes */
-function zoomHOHGraph(){
-    if(zoom_switch.checked === true){
-        myRange_HOH.max = "100000";
-        HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
-        HOHchart.axis.max({x: 60000});
-        setTimeout(function () {
-            HOHchart.axis.max({y: 1500});
-        }, 500);
-    }
-    else{
-        myRange_HOH.max = "600000";
-        HOHchart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
-        HOHchart.axis.max({y: 4000});
-        setTimeout(function () {
-            HOHchart.axis.max({x: 600000});
-        }, 500);
-    }
-}
-
-/* Moves the income slider */
-function modifyIncome_HOH(){
-    setTimeout(function () {
-        HOHchart.xgrids([{value: myRange_HOH.value, text:'Your income'}]);
-    }, );
-}
-
-/* Adjusts the chart according to user input */
-function modifyGraph_HOH(){
-    if(tax_credit_switch.checked === false){
-        data = taxDifference(myRange_ID.value);
-        combined_brackets = data[0];
-        tax_dif = data[1];
-
-        combined_brackets.unshift('x');
-        tax_dif.unshift('HOH_Savings');
-
-        HOHchart.hide('after_ctc');
-        HOHchart.data.names({HOH_Savings: 'HOH Tax Savings'});
-    }
-    else{
-        /* Formatting for number of children */
-        numChildren = 1;
-        if(num_children.value === 'two'){
-            numChildren = 2;
-        }
-        else if(num_children.value === 'three'){
-            numChildren = 3;
-        }
-        else if(num_children.value === 'four'){
-            numChildren = 4;
-        }
-        else if(num_children.value === 'five'){
-            numChildren = 5;
-        }
-
-        data = tax_difference_with_ctc(myRange_ID.value, numChildren);
-        combined_brackets = data[0];
-        tax_dif = data[1];
-
-        combined_brackets.unshift('x3');
-        tax_dif.unshift('after_ctc'); 
-
-        HOHchart.show('after_ctc');
-        HOHchart.data.names({HOH_Savings: 'HOH Tax Savings Before CTC'}); 
-    }
-
-    HOHchart.load({
-        columns: [
-            combined_brackets,
-            tax_dif
-        ]
-    });
-    HOHchart.focus();
-}

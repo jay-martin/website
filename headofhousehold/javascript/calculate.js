@@ -1,11 +1,21 @@
+/******************************************************************************************
+ * This file contains the functions performing calculations necessary for creating the HOH chart
+ * as well as determining the outputs
+ * ****************************************************************************************/
+
 /** Returns the difference in tax between a single filer and a head of household at a given income, value of itemized deductions, and number of children
  * @param {integer} - income
  * @paragm {integer} - monetary value of itemized deductions
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * @return {float} - tax difference
  * */
-function taxDifferenceatIncomeValue(income, itemDeduct, numChildren){
-	taxDif = taxDifference(itemDeduct, numChildren);
+function tax_difference_at_income(income, itemDeduct, numChildren){
+	if(tax_credit_switch.checked){
+		taxDif = tax_difference_with_ctc(itemDeduct, numChildren);
+	}
+	else{
+		taxDif = tax_difference(itemDeduct);
+	}
 
     i=0;
     while(income > taxDif[0][i]){
@@ -30,7 +40,7 @@ function taxDifferenceatIncomeValue(income, itemDeduct, numChildren){
  * @paragm {integer} - monetary value of itemized deductions
  * @return {array of two arrays of floats} - 
  * */
-function taxDifference(itemDeduct){
+function tax_difference(itemDeduct){
 	/* Calculate reference tax bracket values */
 	single_tax_brackets = singleNewBrackets(itemDeduct);
 	hoh_tax_brackets    = hohNewBrackets(itemDeduct);
@@ -41,12 +51,12 @@ function taxDifference(itemDeduct){
 	hoh_taxes = hohTaxes(hoh_tax_brackets, combined_brackets);
 
 	/* Calculate the difference in taxes between single and hoh */
-	tax_difference = [];
+	taxDif = [];
 	for (var i = 0; i < single_taxes.length; i++) {
-		tax_difference.push(single_taxes[i] - hoh_taxes[i]);
+		taxDif.push(single_taxes[i] - hoh_taxes[i]);
 	}
 
-	return [combined_brackets, tax_difference];
+	return [combined_brackets, taxDif];
 }
 
 /** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values WHEN INCLUDING THE CTC
@@ -71,15 +81,12 @@ function tax_difference_with_ctc(itemDeduct, numChildren){
 	hoh_taxes = taxes_after_ctc(hoh_taxes, numChildren);
 
 	/* Calculate the difference in taxes between single and hoh */
-	tax_difference = [];
+	taxDif = [];
 	for (var i = 0; i < single_taxes.length; i++) {
-		tax_difference.push(single_taxes[i] - hoh_taxes[i]);
+		taxDif.push(single_taxes[i] - hoh_taxes[i]);
 	}
 
-	console.log("Combined brackets:" + combined_brackets);
-	console.log("Tax dif: " + tax_difference);
-
-	return [combined_brackets, tax_difference];
+	return [combined_brackets, taxDif];
 }
 
 /* Calculates new effective single tax brackets given the deduction value */
@@ -243,4 +250,21 @@ function taxes_after_ctc(taxes, numChildren){
 		taxes[i] = taxes[i] - 1400 * numChildren;
 	}
 	return taxes;
+}
+
+function num_children_formatting(num_children_string){
+        numChildren = 1;
+        if(num_children_string === 'two'){
+            numChildren = 2;
+        }
+        else if(num_children_string === 'three'){
+            numChildren = 3;
+        }
+        else if(num_children_string === 'four'){
+            numChildren = 4;
+        }
+        else if(num_children_string === 'five'){
+            numChildren = 5;
+        }
+        return numChildren;
 }

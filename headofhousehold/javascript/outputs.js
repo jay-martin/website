@@ -1,3 +1,7 @@
+/******************************************************************************************
+ * This file contains the functions that outputs to the screen HOH values
+ * ****************************************************************************************/
+
 /*Default values */
 document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + 862 + '</b> compared to filing as single.';
 document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';
@@ -22,14 +26,14 @@ function difference_hoh(){
             numChildren = 5;
         }
     }
-    user_dif = taxDifferenceatIncomeValue(myRange_HOH.value, myRange_ID.value, numChildren);
+    user_dif = tax_difference_at_income(user_income.value, itemized_deductions.value, numChildren);
     document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
 }
 
 /* Writes to page whether user would itemize or use the standard deduction */
 function deductType(){
-    single_deduct = single_deduction(myRange_ID.value);
-    hoh_deduct = hoh_deduction(myRange_ID.value);
+    single_deduct = single_deduction(itemized_deductions.value);
+    hoh_deduct = hoh_deduction(itemized_deductions.value);
 
     if(single_deduct===12950 && hoh_deduct===19400){
         document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';

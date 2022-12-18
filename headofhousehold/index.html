@@ -6,6 +6,7 @@
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
+  <link href="./css/chart_adjustments.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
   <!-- Google Icons -->
@@ -115,7 +116,7 @@
       <a href="../marginaltax/index.html">Marginal Tax Rates</a>
       <a href="../marriage-penalties/index.html">Marriage Penalties</a>
       <a href="./index.html">Asinine Asset Tests</a>
-      <a href="./index.html">Administrative Burdens</a>
+      <a href="../administrative-burdens/index.html">Administrative Burdens</a>
       <a href="../territories/index.html">Leaving Behind</br>the Territories</a>
       <a href="./index.html">Racial Justice</a>
       <div class="programs_container" id="programs_container" onmouseleave="hide_programs();">
@@ -142,17 +143,17 @@
       <div class="user_inputs" id="user_inputs">
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
-          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="rangeValue_HOH">50,000</output>:</div>
+          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">50,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
+            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH();">
           </div>
         </div>
 
         <!--Itemized deductions slider-->
         <div class="slidecontainer" id="itemized_slider_container"> 
-          <div class="slider-text" id="itemized_slider_text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions:</div>
+          <div class="slider-text" id="itemized_slider_text"> I have $<output id="itemized_deductions_output">4,000</output> in itemized deductions:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');difference_hoh();modifyGraph_HOH();deductType()">
+            <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="itemized_deductions" oninput="itemized_deductions_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');difference_hoh();modifyGraph_HOH();deductType()">
           </div>
         </div>
 
@@ -341,6 +342,7 @@
 <!-- Javascript files -->
 <script type="text/javascript" src="./javascript/chart.js"></script>
 <script type="text/javascript" src="./javascript/calculate.js"></script>
+<script type="text/javascript" src="./javascript/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/outputs.js"></script>
 <script type="text/javascript" src="./javascript/animations/universal.js"></script>
 <script type="text/javascript" src="./javascript/animations/marriage_penalty_animation.js"></script>
