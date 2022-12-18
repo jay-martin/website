@@ -61,7 +61,6 @@ th, td {
 }
 /***********************Page Positioning**********************************************************/
 .top {
-  height: 100vh;
 }
 .left_side{
   display: inline-block;
