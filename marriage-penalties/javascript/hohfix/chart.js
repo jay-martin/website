@@ -25,23 +25,23 @@ var hohFixChart = c3.generate({
             'point_married' : 'x_point_married',
         },
         columns: [
-            ['x3',      0, 25900, 46400, 109450, 204050],
-            ['married', 0, 0,     2050,  9616,   30428],
-            ['x1',      0, 12950, 23225,  54725,  102025,  183000,  228900],
-            ['person1', 0, 0,     1027.5, 4807.5, 15213.5, 37755.5, 53443.5],
-            ['x2',      0, 12950, 23225,  54725,  102025,  183000,  228900],
-            ['person2', 0, 0,     1027.5, 4807.5, 15213.5, 37755.5, 53443.5],
+            ['x3',      0, 27700, 49700, 117150, 218450, 391900, 490200, 721450],
+            ['married', 0, 0,     2200,  10294,  32580,  74208,  105664, 186601.5],
+            ['x1',      0, 13850, 24850, 58575, 109225, 195950, 245100, 591975],
+            ['person1', 0, 0,     1100,  5147,  16290,  37104,  52832,  174238.25],
+            ['x2',      0, 13850, 24850, 58575, 109225, 195950, 245100, 591975],
+            ['person2', 0, 0,     1100,  5147,  16290,  37104,  52832,  174238.25],
 
             ['x_point1', 80000],
-            ['point1',   10368],
+            ['point1',   9861],
             ['x_point2', 40000],
-            ['point2',   3040.5],
+            ['point2',   2918],
             ['x_point_married', 120000],
-            ['point_married',   11937],
+            ['point_married',   10921],
 
-            ['x_horizontal', 0,      200000],
-            ['married_tax',  11937,  11937 ],
-            ['bonus',        1471.5, 1471.5],
+            ['x_horizontal', 0,     200000],
+            ['married_tax',  10921, 10921 ],
+            ['bonus',        1858,  1858],
         ],
         types: {
            'married_tax' : 'area',
@@ -108,7 +108,7 @@ var hohFixChart = c3.generate({
             lines: [{value: 80000, text: 'Your income'}, {value: 40000, text: "Your partner's income"}, {value: 120000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 11937, text: "Married tax"}, {value: 13408.5, text: "Combined individual tax"}, ]
+            lines: [{value: 0}, {value: 10921, text: "Married tax"}, {value: 12799, text: "Combined individual tax"}, ]
         }
     },
 });

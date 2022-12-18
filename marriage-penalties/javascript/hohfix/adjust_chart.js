@@ -4,10 +4,10 @@ function hoh_fix_modify_income(){
 	combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
 	// Tax liabilities
-	p1Tax = tax_liability('single', p1Income);
-	p2Tax = tax_liability('single', p2Income);
+	p1Tax = tax_liability_2023('single', p1Income);
+	p2Tax = tax_liability_2023('single', p2Income);
 	combinedTax = p1Tax + p2Tax;
-	marriedTax = tax_liability('married', combinedIncome);
+	marriedTax = tax_liability_2023('married', combinedIncome);
 
 	// Move grids
 	hohFixChart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);

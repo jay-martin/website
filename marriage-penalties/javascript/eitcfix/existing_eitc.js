@@ -27,23 +27,23 @@ var existingEITC = c3.generate({
             'point_married' : 'x_point_married',
         },
         columns: [
-            ['x3',      0, 15290, 26262, 55529,],
-            ['married', 0, 6164,  6164,  0,],
-            ['x1',      0, 10979, 20131, 43492,],
-            ['person1', 0, 3733,  3733,  0,],
-            ['x2',      0, 10979, 20131, 43492,],
-            ['person2', 0, 3733,  3733,  0,],
+            ['x3',      0, 16510, 28120, 59478,],
+            ['married', 0, 6604,  6604,  0,],
+            ['x1',      0, 11750, 21560, 46560,],
+            ['person1', 0, 3995,  3995,  0,],
+            ['x2',      0, 11750, 21560, 46560,],
+            ['person2', 0, 3995,  3995,  0,],
 
-            ['x_point1', 20000],
-            ['point1',   3733],
-            ['x_point2', 25000],
-            ['point2',   2955],
-            ['x_point_married', 45000],
-            ['point_married',   2217],
+            ['x_point1', 15000],
+            ['point1',   3995],
+            ['x_point2', 20000],
+            ['point2',   3995],
+            ['x_point_married', 35000],
+            ['point_married',   5155],
 
             ['x_horizontal',  0,    100000],
-            ['married_value', 2217, 2217],
-            ['penalty',       4471, 4471],
+            ['married_value', 5155, 5155],
+            ['penalty',       2835, 2835],
 
         ],
         types: {
@@ -98,7 +98,7 @@ var existingEITC = c3.generate({
                 values: existing_eitc_tick
             },
             padding: {left: 0, right: 30},
-            max: 90000,
+            max: 100000,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},
@@ -113,10 +113,10 @@ var existingEITC = c3.generate({
     },
     grid: {
         x: {
-            lines: [{value: 20000, text: 'Your income'}, {value: 25000, text: "Your partner's income"}, {value: 45000, text: 'Combined income'}]
+            lines: [{value: 15000, text: 'Your income'}, {value: 20000, text: "Your partner's income"}, {value: 35000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 2217, text: "Married EITC"}, {value: 6688, text: "Combined Individual EITC's"} ]
+            lines: [{value: 5155, text: "Married EITC"}, {value: 7990, text: "Combined Individual EITC's"} ]
         }
     },
 });

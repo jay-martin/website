@@ -31,26 +31,26 @@ var MPchart = c3.generate({
             'filler'              : 'x_horizontal',
         },
         columns: [
-            ['x3',       0, 10979, 26262, 49622],
-            ['married',  0, 3733,  3733,  0],
-            ['x1',       0, 10979, 20131, 43493],
-            ['person1',  0, 3733,  3733,  0],
-            ['x2',       0, 7320, 9160, 16480],
-            ['person2',  0, 560,  560,  0],
+            ['x3',       0, 11750, 28120, 53120],
+            ['married',  0, 3995,  3995,  0],
+            ['x1',       0, 11750, 21560, 46560],
+            ['person1',  0, 3995,  3995,  0],
+            ['x2',       0, 7840, 9800, 17640],
+            ['person2',  0, 600,  600,  0],
 
             ['x_horizontal',  0,    60000],
-            ['married_eitc',  1548, 1548],
-            ['penalty',       1104, 1104],
+            ['married_eitc',  2097, 2097],
+            ['penalty',       1134, 1134],
 
             ['combined_eitc',],
             ['bonus',],
 
             ['x_point1', 30000],
-            ['point1',   2156],
+            ['point1',   2646],
             ['x_point2', 10000],
-            ['point2',   496],
+            ['point2',   585],
             ['x_point_married', 40000],
-            ['point_married',   1548],
+            ['point_married',   2097],
         ],
         types: {
             'married_eitc'  : 'area',
@@ -148,7 +148,7 @@ var MPchart = c3.generate({
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 1548, text: "Your married EITC"}, {value: 2652, text: "Combined individual EITC's"}, ]
+            lines: [{value: 0}, {value: 2097, text: "Your married EITC"}, {value: 3231, text: "Combined individual EITC's"}, ]
         }
     },
 });

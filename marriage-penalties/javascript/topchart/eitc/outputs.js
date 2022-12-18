@@ -4,21 +4,22 @@ document.getElementById('married_eitc_value').innerHTML = "With a combined incom
 document.getElementById('marriage_penalty_show').innerHTML = 'You face a marriage <em>penalty</em> of <b>$1,104</b>.';
 
 function eitc_outputs(){
-    combined_children = num_children();
-    numberChildren = 'none';
-    if(combined_children === 1){numberChildren='one';}
-    else if(combined_children === 2){numberChildren='two';}
-    else if (combined_children >2){numberChildren='three';}
+    p1Income = person1_income.value;
+    p2Income = person2_income.value;
+    combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
-    /*Determine EITC values*/
-    combinedIncome = combined_income_marriage_penalty();
-    person1EITC = EITC_benefit('single', person1_income.value, person1_children.value);
-    person2EITC = EITC_benefit('single', person2_income.value, person2_children.value);
-    combinedEITC = person1EITC + person2EITC;
-    marriedEITC = EITC_benefit('married', combinedIncome, numberChildren);
+    p1Children = person1_children.value;
+    p2Children = person2_children.value;
+    numChildren = sum_children(p1Children, p2Children);
+
+    /* EITC values*/
+    p1EITC = eitc_value_2023(p1Income, 'single', p1Children);
+    p2EITC = eitc_value_2023(p2Income, 'single', p2Children);
+    combinedEITC = p1EITC + p2EITC;
+    marriedEITC = eitc_value_2023(combinedIncome, 'married', numChildren);
     
     /* Print updated data to screen*/
-    document.getElementById('individual_eitc_values').innerHTML = 'Your EITC is worth <b>$' + person1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your partner's EITC is worth <b>$" + person2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined EITC of <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+    document.getElementById('individual_eitc_values').innerHTML = 'Your EITC is worth <b>$' + p1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your partner's EITC is worth <b>$" + p2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined EITC of <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
     document.getElementById('married_eitc_value').innerHTML = "With a combined income of $" + combinedIncome.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ", if you married your EITC would be worth <b>$" + marriedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') +"</b>.";
 
     /* Print marriage penalty to screen */

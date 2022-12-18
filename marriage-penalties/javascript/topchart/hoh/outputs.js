@@ -6,11 +6,11 @@ function hoh_outputs(){
 	person2FilingStatus = person2_filing_status.value;
 
 	//Calculate tax liabilities
-	person1Tax = tax_liability('hoh', person1Income);
-	if(person2FilingStatus === 'single'){ person2Tax = tax_liability('single', person2Income); }
-	else{ person2Tax = tax_liability('hoh', person2Income);}
+	person1Tax = tax_liability_2023('hoh', person1Income);
+	if(person2FilingStatus === 'single'){ person2Tax = tax_liability_2023('single', person2Income); }
+	else{ person2Tax = tax_liability_2023('hoh', person2Income);}
 	combinedTax = person1Tax + person2Tax;
-	marriedTax = tax_liability('married', combinedIncome);
+	marriedTax = tax_liability_2023('married', combinedIncome);
 
 	/* Print updated data to screen*/
     document.getElementById('individual_eitc_values').innerHTML = 'You owe <b>$' + person1Tax.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> in income tax and your partner owes <b>$" + person2Tax.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined tax liability of <b>$" + combinedTax.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";

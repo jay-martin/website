@@ -1,109 +1,19 @@
 function modify_person1_eitc(){
-    if(person1_children.value === "none"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 7320, 9160, 16480],
-                ['person1', 0, 560,  560,  0]
-            ]
-        });
-    }
-    else if(person1_children.value === "one"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 10979, 20131, 43493],
-                ['person1', 0, 3733,  3733,  0]
-            ]
-        });
-    }
-    else if(person1_children.value === "two"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 15290, 20131, 49399],
-                ['person1', 0, 6164,  6164,  0]
-            ]
-        });
-    }
-    else if (person1_children.value === "three"){
-        MPchart.load({
-            columns: [
-                ['x1',      0, 15410, 20131, 53057],
-                ['person1', 0, 6935,  6935,  0]
-            ]
-        });
-    }
+    person1_num_children = person1_children.value;
+    single_eitc_builder_2023(MPchart, 'x1', 'person1', person1_num_children);
 }
 
 function modify_person2_eitc(){
-    if(person2_children.value === "none"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 7320, 9160, 16480],
-                ['person2', 0, 560,  560,  0]
-            ]
-        });
-    }
-    else if(person2_children.value === "one"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 10979, 20131, 43493],
-                ['person2', 0, 3733,  3733,  0]
-            ]
-        });
-    }
-    else if(person2_children.value === "two"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 15290, 20131, 49399],
-                ['person2', 0, 6164,  6164,  0]
-            ]
-        });
-    }
-    else if (person2_children.value === "three"){
-        MPchart.load({
-            columns: [
-                ['x2',      0, 15410, 20131, 53057],
-                ['person2', 0, 6935,  6935,  0]
-            ]
-        });
-    }
+    person2_num_children = person2_children.value;
+    single_eitc_builder_2023(MPchart, 'x2', 'person2', person2_num_children);
 }
 
 function modify_married_eitc(){
-    numChildren = num_children();
-    if(numChildren===0){
-        MPchart.load({
-            columns: [
-                ['x3',      0, 7320, 15290, 22610, 60000],
-                ['married', 0, 560,  560,   0,     0]
-            ]
-        });
-    }
-    else if(numChildren===1){
-        MPchart.load({
-            columns: [
-                ['x3',      0, 10979, 26262, 49622, 60000],
-                ['married', 0, 3733,  3733,  0,     0]
-            ]
-        });
-    }
-    else if(numChildren===2){
-        MPchart.axis.max({y: 7000});
-        MPchart.load({
-            columns: [
-                ['x3',      0, 15290, 26262, 55529, 60000],
-                ['married', 0, 6164,  6164,  0,     0]
-            ]
-        });
-    }
-    else{
-        MPchart.axis.max({y: 8000});
-        MPchart.load({
-            columns: [
-                ['x3',      0, 15410, 26262, 59187, 60000],
-                ['married', 0, 6935,  6935,  0,     0]
-            ]
-        });
-    }    
+    person1_num_children = person1_children.value;
+    person2_num_children = person2_children.value;
+    combined_children = sum_children(person1_num_children, person2_num_children);
+
+    married_eitc_builder_2023(MPchart, 'x3', 'married', combined_children);
 }
 
 function eitc_modify_income(){
@@ -111,16 +21,15 @@ function eitc_modify_income(){
     p2Income = person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
-    combinedChildren = num_children();
-    numChildren = 'none';
-    if(combinedChildren === 1){numChildren='one';}
-    else if(combinedChildren === 2){numChildren='two';}
-    else if (combinedChildren > 2){numChildren='three';}
+    p1Children = person1_children.value;
+    p2Children = person2_children.value;
+    numChildren = sum_children(p1Children, p2Children);
 
-    p1EITC = EITC_benefit('single', p1Income, person1_children.value);
-    p2EITC = EITC_benefit('single', p2Income, person2_children.value);
+    // EITC values
+    p1EITC = eitc_value_2023(p1Income, 'single', p1Children);
+    p2EITC = eitc_value_2023(p2Income, 'single', p2Children);
     combinedEITC = p1EITC + p2EITC;
-    marriedEITC = EITC_benefit('married', combinedIncome, numChildren);
+    marriedEITC = eitc_value_2023(combinedIncome, 'married', numChildren);
 
     /* Move xgrids */
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);

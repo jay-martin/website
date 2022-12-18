@@ -1,10 +1,5 @@
 function hoh_modify_person1(){
-    MPchart.load({
-        columns: [
-            ['x1',      0, 19400, 34050, 75300, 108450, 189450],
-            ['person1', 0, 0,     1465,  6415,  13708,  33148],
-        ]
-    });
+    hoh_tax_liability_builder_2023(MPchart, 'x1', 'person1');
 }
 
 function hoh_modify_person2(){
@@ -13,21 +8,11 @@ function hoh_modify_person2(){
         MPchart.hide('person2_dashed');
         MPchart.legend.hide('person2_dashed');
         MPchart.legend.show('person2');
-        MPchart.load({
-            columns: [
-                ['x2',      0, 12950, 23225,  54725,  102025,  183000],
-                ['person2', 0, 0,     1027.5, 4807.5, 15213.5, 37755.5],
-            ]
-        });
+        single_tax_liability_builder_2023(MPchart, 'x2', 'person2');
     }
-    else{
-        MPchart.load({
-            columns: [
-                ['x2',      0, 19400, 34050, 75300, 108450, 189450],
-                ['person2', 0, 0,     1465,  6415,  13708,  33148],
-                ['person2_dashed', 0, 0,     1465,  6415,  13708,  33148],
-            ]
-        });
+    else if(person2_filing_status.value == 'hoh'){
+        hoh_tax_liability_builder_2023(MPchart, 'x2', 'person2');
+        hoh_tax_liability_builder_2023(MPchart, 'x2', 'person2_dashed');
 
         setTimeout(function () {
             MPchart.hide('person2');
@@ -39,12 +24,7 @@ function hoh_modify_person2(){
 }
 
 function hoh_modify_married(){
-    MPchart.load({
-        columns: [
-            ['x3',      0, 25900, 46400, 109450, 204050],
-            ['married', 0, 0,     2050,  9616,   30428],
-        ]
-    });
+    married_tax_liability_builder_2023(MPchart, 'x3', 'married');
 }
 
 function hoh_modify_income(){
@@ -54,15 +34,15 @@ function hoh_modify_income(){
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
     
     // Tax liabilities
-    p1Tax = tax_liability('hoh', p1Income);
+    p1Tax = tax_liability_2023('hoh', p1Income);
     if(person2_filing_status.value === 'single'){ 
-        p2Tax = tax_liability('single', p2Income); 
+        p2Tax = tax_liability_2023('single', p2Income); 
     }
     else{ 
-        p2Tax = tax_liability('hoh', p2Income); 
+        p2Tax = tax_liability_2023('hoh', p2Income); 
     }
     combinedTax = p1Tax + p2Tax;
-    marriedTax = tax_liability('married', combinedIncome);
+    marriedTax = tax_liability_2023('married', combinedIncome);
 
     /* Move grids */
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
@@ -79,7 +59,7 @@ function hoh_modify_income(){
         MPchart.load({
             columns: [
                 ['x_horizontal', 0,           200000],
-                ['hoh_combined',  combinedTax, combinedTax],
+                ['hoh_combined', combinedTax, combinedTax],
                 ['hoh_penalty',  penalty,     penalty],
             ]
         });
@@ -105,7 +85,7 @@ function hoh_both_adjust_axes(){
     combinedIncome = parseInt(person1_income.value) + parseInt(person2_income.value);
 
     if(combinedIncome < 60000){
-        MPchart.axis.max({ x: 60000 });
+        MPchart.axis.max({ x: 60000, y: 6000 });
     }
     else if(combinedIncome < 80000){
         MPchart.axis.max({ x: 80000, y: 10000});

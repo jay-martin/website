@@ -12,17 +12,17 @@ function both_outputs(){
 
     //Calculate EITC values
     combinedIncome = combined_income_marriage_penalty();
-    person1EITC = EITC_benefit('single', person1Income, person1_children.value);
-    person2EITC = EITC_benefit('single', person2Income, person2_children.value);
+    person1EITC = eitc_value_2023('single', person1Income, person1_children.value);
+    person2EITC = eitc_value_2023('single', person2Income, person2_children.value);
     combinedEITC = person1EITC + person2EITC;
-    marriedEITC = EITC_benefit('married', combinedIncome, numberChildren);
+    marriedEITC = eitc_value_2023('married', combinedIncome, numberChildren);
 
     //Calculate baseline tax liabilities
-	person1Tax = tax_liability('hoh', person1Income);
-	if(person2FilingStatus === 'single'){ person2Tax = tax_liability('single', person2Income); }
-	else{ person2Tax = tax_liability('hoh', person2Income);}
+	person1Tax = tax_liability_2023('hoh', person1Income);
+	if(person2FilingStatus === 'single'){ person2Tax = tax_liability_2023('single', person2Income); }
+	else{ person2Tax = tax_liability_2023('hoh', person2Income);}
 	combinedTax = person1Tax + person2Tax;
-	marriedTax = tax_liability('married', combinedIncome);
+	marriedTax = tax_liability_2023('married', combinedIncome);
 
 	//Calculate tax liability after EITC
 	person1Total = person1Tax - person1EITC;

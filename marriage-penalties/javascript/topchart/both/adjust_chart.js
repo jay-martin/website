@@ -156,10 +156,10 @@ function both_modify_income(){
     combinedEITC = p1EITC + p2EITC;
     marriedEITC = EITC_benefit('married', combinedIncome, numChildren);
 
-    p1Tax  = tax_liability('hoh', p1Income) - p1EITC;
-    p2Tax  = tax_liability(person2_filing_status.value, p2Income) - p2EITC;
+    p1Tax  = tax_liability_2023('hoh', p1Income) - p1EITC;
+    p2Tax  = tax_liability_2023(person2_filing_status.value, p2Income) - p2EITC;
     combinedTax = p1Tax + p2Tax;
-    marriedTax  = tax_liability('married', combinedIncome) - marriedEITC;
+    marriedTax  = tax_liability_2023('married', combinedIncome) - marriedEITC;
 
     /* Move xgrids */
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
