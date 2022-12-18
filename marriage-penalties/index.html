@@ -350,11 +350,48 @@
     </div>
 
     <h3 class="box_title">Eliminating (Most) Marriage Penalties</h3>
-    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> A married couple consists of <em>two</em> people, so the value of the married EITC should equal the sum of two individual EITC's.</div>
+    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> When two people get married, their EITC should not change. In other words, the value of their married EITC should equal the sum of their two individual EITC's.</div>
 
     <div class="center_explanation_box" id="eitc_explainer_center_box">
       <div class="explainer_text_container" id="eitc_explainer_text_container">
         <div class='explainer_chart_step' id="eitc_explainer_start_prompt">Click next to start animation</div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step0" style="display:none;">
+          <div class="step_number"><b>Basics:</b></div>
+          <div class="step_text">
+            <div class="step_text_line0" id="eitc_explainer_step0A_text">We'll start with the single one-child EITC and think about how we'd construct the married</div>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0B_text">EITC so that marriage penalties are minimized.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0C_text">Think about two people who are each eligible for the EITC. That's <b>two</b> EITC's. </div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0D_text">But if they get married, they'll file their taxes jointly and receive only <b>one</b> EITC.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0E_text">So if their one married EITC is worth less than the sum of their two individual EITC's,</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0F_text">then they'd <em>lose</em> money as a result of getting married.</div>
+            </div></br>
+          </div> <!--step text-->
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step0-1" style="display:none;">
+          <div class="step_number"><b>Basics:</b></div>
+          <div class="step_text">
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1A_text">So the basic idea is this:</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1B_text">When two people get married, their married EITC should be worth the sum of the</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1C_text">two individual EITC's that they would receive if they were single.</div>
+            </div></br>
+          </div> <!--step text-->
+        </div>
 
         <div class='explainer_chart_step' id="eitc_explainer_step1" style="display:none;">
           <div class="step_number"><b>Step 1:</b></div>
@@ -378,17 +415,17 @@
         <div class='explainer_chart_step' id="eitc_explainer_step2" style="display:none;">
           <div class="step_number"><b>Step 2:</b></div>
           <div class="step_text">
-            <div class="step_text_line" id="eitc_explainer_step2A_text">Next, consider two people who are each at the very end of the phase-in region.</div>
+            <div class="step_text_line2" id="eitc_explainer_step2A_text">Next, consider two people who are each at the very end of the phase-in region.</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step2B_text">They each have incomes of $10,000 and EITC's worth $3,000.</div>
+              <div class="step_text_line2" id="eitc_explainer_step2B_text">They each have incomes of $10,000 and EITC's worth $3,000.</div>
             </div></br>
-            <div class="step_text_line" id="eitc_explainer_step2C_text">So, if they marry, their EITC should equal $6,000 at their combined income of $20,000.</div>
+            <div class="step_text_line2" id="eitc_explainer_step2C_text">So, if they marry, their EITC should equal $6,000 at their combined income of $20,000.</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step2D_text">Notice that this simply extends the individual phase-in.</div>
+              <div class="step_text_line2" id="eitc_explainer_step2D_text">Notice that this simply extends the individual phase-in.</div>
             </div></br>
-            <div class="step_text_line" id="eitc_explainer_step2E_text">Therefore, to ensure that two people in the phase-in region do not face a marriage penalty,</div>
+            <div class="step_text_line2" id="eitc_explainer_step2E_text">Therefore, to ensure that two people in the phase-in region do not face a marriage penalty,</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step2F_text">the married EITC should phase-in at least as fast as the individual EITC up to the new max.</div>
+              <div class="step_text_line2" id="eitc_explainer_step2F_text">the married EITC should phase-in at least as fast as the individual EITC up to the new max.</div>
             </div>
           </div>
         </div>
@@ -396,14 +433,14 @@
         <div class='explainer_chart_step' id="eitc_explainer_step3" style="display:none;">
           <div class="step_number"><b>Step 3:</b></div>
           <div class="step_text">
-            <div class="step_text_line" id="eitc_explainer_step3A_text">Third, consider two people who each have incomes right at the edge of the plateau.</div>
+            <div class="step_text_line3" id="eitc_explainer_step3A_text">Third, consider two people who each have incomes right at the edge of the plateau.</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step3B_text">They each have incomes of $15,000 and receive EITC's worth $3,000.</div>
+              <div class="step_text_line3" id="eitc_explainer_step3B_text">They each have incomes of $15,000 and receive EITC's worth $3,000.</div>
             </div></br>
-            <div class="step_text_line" id="eitc_explainer_step3C_text">If they marry, then at their combined income of $30,000 their EITC should be worth $6,000.</div>
-            <div class="step_text_line" id="eitc_explainer_step3D_text">$30,000 is twice as large as $15,000, so the married plateau should not end until at least</div>
+            <div class="step_text_line3" id="eitc_explainer_step3C_text">If they marry, then at their combined income of $30,000 their EITC should be worth $6,000.</div>
+            <div class="step_text_line3" id="eitc_explainer_step3D_text">$30,000 is twice as large as $15,000, so the married plateau should not end until at least</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step3E_text">double the income at which the individual EITC plateau ends.</div>
+              <div class="step_text_line3" id="eitc_explainer_step3E_text">double the income at which the individual EITC plateau ends.</div>
             </div>
           </div>
         </div>
@@ -411,21 +448,21 @@
         <div class='explainer_chart_step' id="eitc_explainer_step4" style="display:none;">
           <div class="step_number"><b>Step 4:</b></div>
           <div class="step_text">
-            <div class="step_text_line" id="eitc_explainer_step4A_text">Finally, consider two people who each have incomes right at the end of the phaseout.</div>
+            <div class="step_text_line4" id="eitc_explainer_step4A_text">Finally, consider two people who each have incomes right at the end of the phaseout.</div>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step4B_text">They each have incomes of $30,000, for a combined income of $60,000.</div>
+              <div class="step_text_line4" id="eitc_explainer_step4B_text">They each have incomes of $30,000, for a combined income of $60,000.</div>
             </div></br>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step4C_text">Notice that if their combined income drops below $60,000, then their EITC will be nonzero.</div>
+              <div class="step_text_line4" id="eitc_explainer_step4C_text">Notice that if their combined income drops below $60,000, then their EITC will be nonzero.</div>
             </div></br>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step4D_text">Hence, if they married, they should receive a nonzero EITC of the same value.</div>
+              <div class="step_text_line4" id="eitc_explainer_step4D_text">Hence, if they married, they should receive a nonzero EITC of the same value.</div>
             </div></br>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step4E_text">Notice that their married EITC should not reach $0 until $60,000 in income.</div>
+              <div class="step_text_line4" id="eitc_explainer_step4E_text">Notice that their married EITC should not reach $0 until $60,000 in income.</div>
             </div></br>
             <div class="line_container">
-              <div class="step_text_line" id="eitc_explainer_step4F_text">Thus, the married EITC should not reach $0 until double the income of the individual EITC.</div>
+              <div class="step_text_line4" id="eitc_explainer_step4F_text">Thus, the married EITC should not reach $0 until double the income of the individual EITC.</div>
             </div></br>
           </div>
         </div>
@@ -520,14 +557,9 @@
   
   </div> <!-- chart container -->
 
-  <h3>An Alternative: the Standard Credit</h3>
+  <h3>An Alternative: Child Benefits & the Standard Credit</h3>
   <div class = "chart">
-    <div class="center_explanation_box">
-      <h3 class="box_title">The Standard Credit</h3>
-      <div class='explainer_chart_step'><b>Step 1:</b> Eliminate the phase-out to rid ourselves of marriage penalties.</div>
-      <div class='explainer_chart_step'><b>Step 2:</b> Eliminate the phase-in to include poor people, who are <em>most</em> in need of financial assistance.</div>
-      <div class='explainer_chart_step'><b>End Result:</b> Every person receives the same $3,000 tax credit.</div>
-    </div>
+    <h3 class="box_title">The Standard Credit</h3>
   <div id="standard_credit_chart"></div> <!--Div for standard credit chart-->
   
   </div><!-- chart container -->

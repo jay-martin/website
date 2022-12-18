@@ -71,7 +71,7 @@ var chart = c3.generate({
     },
     padding: {
         bottom: 0,
-        top: 10,
+        top: 0,
         left: 55,
         right: 10,
     },

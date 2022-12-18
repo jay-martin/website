@@ -1,8 +1,11 @@
-eitc_explainer_currentStep = 0;
+eitc_explainer_currentStep = -1;
 eitc_explainer_text = document.querySelector('.explainer_text_container');
 
 function eitc_explainer_next(){
-	if(eitc_explainer_currentStep == 0){
+	if(eitc_explainer_currentStep == -1){
+		eitc_explainer_step0();
+	}
+	else if(eitc_explainer_currentStep == 0){
 		eitc_explainer_step1();
 	}
 	else if(eitc_explainer_currentStep == 1){
@@ -17,7 +20,10 @@ function eitc_explainer_next(){
 }
 
 function eitc_explainer_back(){
-	if(eitc_explainer_currentStep == 1){
+	if(eitc_explainer_currentStep == 0){
+		eitc_explainer_reverse_step0();
+	}
+	else if(eitc_explainer_currentStep == 1){
 		eitc_explainer_reverse_step1();
 	}
 	else if(eitc_explainer_currentStep == 2){
@@ -31,19 +37,146 @@ function eitc_explainer_back(){
 	}
 }
 
-function eitc_explainer_step1(){
+/**************************************************************** Step 0 ****************************************************************/
+function eitc_explainer_step0(){
+	// Next step state
+	eitc_explainer_currentStep++;
+	
+	// Timer for setTimeout
+	timer = 0;
+
 	// Disable buttons
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
 
 	// Show text
 	document.getElementById('eitc_explainer_start_prompt').style.display = 'none';
+	document.getElementById('eitc_explainer_step0').style.display = 'block';
+	$('#eitc_explainer_step0A_text').css('border-right', '.15em solid #adadad');
+	$('#eitc_explainer_step0A_text').addClass('type_text');
+
+	//Next text line
+	timer +=2100;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0A_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0A_text').style.border = 'none';
+		$('#eitc_explainer_step0A_text').removeClass('type_text');
+
+		$('#eitc_explainer_step0B_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0B_text').addClass('type_text_medium');
+	}, timer);
+
+	//Next text line
+	timer +=3500;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0B_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0B_text').style.border = 'none';
+		$('#eitc_explainer_step0B_text').removeClass('type_text_medium');
+
+		$('#eitc_explainer_step0C_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0C_text').addClass('type_text');
+	}, timer);
+
+	//Next text line
+	timer +=3500;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0C_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0C_text').style.border = 'none';
+		$('#eitc_explainer_step0C_text').removeClass('type_text');
+
+		$('#eitc_explainer_step0D_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0D_text').addClass('type_text');
+	}, timer);
+
+	//Next text line
+	timer +=3000;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0D_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0D_text').style.border = 'none';
+		$('#eitc_explainer_step0D_text').removeClass('type_text');
+
+		$('#eitc_explainer_step0E_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0E_text').addClass('type_text');
+	}, timer);
+
+	//Next text line
+	timer +=2100;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0E_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0E_text').style.border = 'none';
+		$('#eitc_explainer_step0E_text').removeClass('type_text');
+
+		$('#eitc_explainer_step0F_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0F_text').addClass('type_text_medium');
+	}, timer);
+
+	//Next text line
+	timer +=3000;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0F_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0F_text').style.border = 'none';
+		$('#eitc_explainer_step0F_text').removeClass('type_text_medium');
+
+		// Clear center text box
+		document.getElementById('eitc_explainer_step0').style.display = 'none';
+
+		// Add new step
+		document.getElementById('eitc_explainer_step0-1').style.display = 'block';
+		$('#eitc_explainer_step0-1A_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0-1A_text').addClass('type_text_fast');
+	}, timer);
+
+	//Next text line
+	timer +=3000;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0-1A_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0-1A_text').style.border = 'none';
+		$('#eitc_explainer_step0-1A_text').removeClass('type_text_fast');
+
+		$('#eitc_explainer_step0-1B_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0-1B_text').addClass('type_text');
+	}, timer);
+
+	//Next text line
+	timer +=2100;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_step0-1B_text').style.width = '100%';
+		document.getElementById('eitc_explainer_step0-1B_text').style.border = 'none';
+		$('#eitc_explainer_step0-1B_text').removeClass('type_text');
+
+		$('#eitc_explainer_step0-1C_text').css('border-right', '.15em solid #adadad');
+		$('#eitc_explainer_step0-1C_text').addClass('type_text');
+	}, timer);
+
+	//Enable buttons
+	timer +=2100;
+	setTimeout(function () {
+		document.getElementById('eitc_explainer_back_button').disabled = false;
+		document.getElementById('eitc_explainer_next_button').disabled = false;
+	}, timer);
+}
+
+/**************************************************************** Step 1 ****************************************************************/
+function eitc_explainer_step1(){
+	// Next step state
+	eitc_explainer_currentStep++;
+
+	// Disable buttons
+	document.getElementById('eitc_explainer_back_button').disabled = true;
+	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Prep step 0 text for back button
+	$('.step_text_line0').css('width', '100%');
+	$('.step_text_line0').css('border', 'none');
+
+	// Show text
+	document.getElementById('eitc_explainer_step0-1').style.display = 'none';
 	document.getElementById('eitc_explainer_step1').style.display = 'block';
 	$('#eitc_explainer_step1A_text').css('border-right', '.15em solid #adadad');
 	$('#eitc_explainer_step1A_text').addClass('type_text');
 
+	//Next text line
 	setTimeout(function () {
-		//Next text line
 		document.getElementById('eitc_explainer_step1A_text').style.width = '100%';
 		document.getElementById('eitc_explainer_step1A_text').style.border = 'none';
 		$('#eitc_explainer_step1A_text').removeClass('type_text');
@@ -105,7 +238,7 @@ function eitc_explainer_step1(){
 	}, 18000);
 
 	setTimeout(function () {
-		eitcExplainer.hide(['point1', 'point2']);
+		eitcExplainer.hide(['point_married', 'point2']);
 		eitcExplainer.xgrids([]);
 		eitcExplainer.ygrids([]);
 	}, 19000);
@@ -115,14 +248,20 @@ function eitc_explainer_step1(){
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 19400);
-
-	eitc_explainer_currentStep++;
 }
 
+/**************************************************************** Step 2 ****************************************************************/
 function eitc_explainer_step2(){
+	// Next step state
+	eitc_explainer_currentStep++;
+
 	// Disable buttons
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Prep step 1 text for back button
+	$('.step_text_line').css('width', '100%');
+	$('.step_text_line').css('border', 'none');
 
 	// Show text
 	document.getElementById('eitc_explainer_step1').style.display = 'none';
@@ -238,14 +377,20 @@ function eitc_explainer_step2(){
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 22000);
-
-	eitc_explainer_currentStep++;
 }
 
+/**************************************************************** Step 3 ****************************************************************/
 function eitc_explainer_step3(){
+	// Next step state
+	eitc_explainer_currentStep++;
+
 	// Disable buttons
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Prep step 2 text for back button
+	$('.step_text_line2').css('width', '100%');
+	$('.step_text_line2').css('border', 'none');
 
 	// Show text
 	document.getElementById('eitc_explainer_step2').style.display = 'none';
@@ -344,14 +489,20 @@ function eitc_explainer_step3(){
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 18900);
-	
-	eitc_explainer_currentStep++;
 }
 
+/**************************************************************** Step 4 ****************************************************************/
 function eitc_explainer_step4(){
+	// Next step state
+	eitc_explainer_currentStep++;
+
 	// Disable buttons
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Prep step 3 text for back button
+	$('.step_text_line3').css('width', '100%');
+	$('.step_text_line3').css('border', 'none');
 
 	// Show text
 	document.getElementById('eitc_explainer_step3').style.display = 'none';
@@ -365,8 +516,8 @@ function eitc_explainer_step4(){
 			columns: [
 				['x_point2', 30000],
 				['point2',   0],
-				['x_point1', 50000],
-				['point1',   0],
+				['x_point_married', 50000],
+				['point_married',   0],
 			]
 		});
 	}, 3000);
@@ -423,11 +574,11 @@ function eitc_explainer_step4(){
 	}, 16000);
 
 	setTimeout(function () {
-		eitcExplainer.show('point1');
+		eitcExplainer.show('point_married');
 		eitcExplainer.load({
 			columns: [
-				['x_point1', 50000],
-				['point1',   2000],
+				['x_point_married', 50000],
+				['point_married',   2000],
 			]
 		});
 	}, 19000);
@@ -448,8 +599,8 @@ function eitc_explainer_step4(){
 			columns: [
 				['x_point2', 22500],
 				['point2',   1500],
-				['x_point1', 52500],
-				['point1',   1500],
+				['x_point_married', 52500],
+				['point_married',   1500],
 			]
 		});
 	}, 24000);
@@ -461,8 +612,8 @@ function eitc_explainer_step4(){
 			columns: [
 				['x_point2', 25000],
 				['point2',   1000],
-				['x_point1', 55000],
-				['point1',   1000],
+				['x_point_married', 55000],
+				['point_married',   1000],
 			]
 		});
 	}, 25000);
@@ -474,8 +625,8 @@ function eitc_explainer_step4(){
 			columns: [
 				['x_point2', 27500],
 				['point2',   500],
-				['x_point1', 57500],
-				['point1',   500],
+				['x_point_married', 57500],
+				['point_married',   500],
 			]
 		});
 	}, 26000);
@@ -487,8 +638,8 @@ function eitc_explainer_step4(){
 			columns: [
 				['x_point2', 30000],
 				['point2',   0],
-				['x_point1', 60000],
-				['point1',   0],
+				['x_point_married', 60000],
+				['point_married',   0],
 			]
 		});
 	}, 27000);
@@ -514,15 +665,36 @@ function eitc_explainer_step4(){
 	setTimeout(function () {
 		eitcExplainer.xgrids([]);
 		eitcExplainer.ygrids([]);
-		eitcExplainer.hide(['point1', 'point2']);
+		eitcExplainer.hide(['point_married', 'point2']);
 	}, 33000);
 
 	// Enable back button (next button remains disabled because there is no next step)
 	setTimeout(function () {
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 	}, 33400);
+}
 
-	eitc_explainer_currentStep++;
+/**************************************************************** Reverse animations ****************************************************************/
+function eitc_explainer_reverse_step0(){
+	// Disable buttons
+	document.getElementById('eitc_explainer_back_button').disabled = true;
+	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Reset text attributes
+	$('.step_text_line0').removeClass('type_text');
+	$('.step_text_line0').removeClass('type_text_medium');
+	$('.step_text_line0').removeClass('type_text_fast');
+	$('.step_text_line0').css('border-right', 'none');
+	$('.step_text_line0').css('width', '0');
+
+	// Switch which step is displayed
+	document.getElementById('eitc_explainer_step0-1').style.display = 'none';
+	document.getElementById('eitc_explainer_start_prompt').style.display = 'block';
+
+	//Enable next button (back button remains disabled because we're back at the start of the animation)
+	document.getElementById('eitc_explainer_next_button').disabled = false;
+
+	eitc_explainer_currentStep--;
 }
 
 function eitc_explainer_reverse_step1(){
@@ -542,6 +714,16 @@ function eitc_explainer_reverse_step1(){
 
 	//Enable next button (back button remains disbaled because we're not at step 0)
 	setTimeout(function () {
+		$('.step_text_line0, .step_text_line').removeClass('type_text');
+		$('.step_text_line0, .step_text_line').removeClass('type_text_medium');
+		$('.step_text_line0, .step_text_line').removeClass('type_text_fast');
+		
+		$('.step_text_line').css('border-right', 'none');
+		$('.step_text_line').css('width', '0');
+		document.getElementById('eitc_explainer_step1').style.display = 'none';
+		document.getElementById('eitc_explainer_step0-1').style.display = 'block';
+
+		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 1400);
 
@@ -553,25 +735,34 @@ function eitc_explainer_reverse_step2(){
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
 
+	// Adjust text attributes
+	$('.step_text_line, .step_text_line2').removeClass('type_text');
+	$('.step_text_line, .step_text_line2').removeClass('type_text_medium');
+	$('.step_text_line, .step_text_line2').removeClass('type_text_fast');
+	$('.step_text_line, .step_text_line2').css('border-right', 'none');
+	$('.step_text_line2').css('width', '0');
+
 	eitcExplainer.load({
 		columns: [
 			['x_phasein',       0,     10000],
-			['married_phasein', 0,     6000],
-			['x_plateau',       10000, 15000],
-			['married_plateau', 6000,  6000],
+			['married_phasein', 0,     3000],
 		]
 	});
 
 	setTimeout(function () {
 		eitcExplainer.load({
 			columns: [
-				['married_phasein', 0, 3000],
+				['x_plateau',       10000, 15000],
+				['married_plateau', 6000,  6000],
 			]
 		})
 	}, 1000);
 
 	//Enable buttons
 	setTimeout(function () {
+		document.getElementById('eitc_explainer_step2').style.display = 'none';
+		document.getElementById('eitc_explainer_step1').style.display = 'block';
+
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 1400);
@@ -583,6 +774,13 @@ function eitc_explainer_reverse_step3(){
 	// Disable buttons
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
+
+	// Adjust text attributes
+	$('.step_text_line, .step_text_line2, .step_text_line3').removeClass('type_text');
+	$('.step_text_line, .step_text_line2, .step_text_line3').removeClass('type_text_medium');
+	$('.step_text_line, .step_text_line2, .step_text_line3').removeClass('type_text_fast');
+	$('.step_text_line, .step_text_line2, .step_text_line3').css('border-right', 'none');
+	$('.step_text_line3').css('width', '0');
 
 	eitcExplainer.xgrids([{value: 15000,}, {value: 30000,},]);
 
@@ -605,6 +803,9 @@ function eitc_explainer_reverse_step3(){
 
 	//Enable buttons
 	setTimeout(function () {
+		document.getElementById('eitc_explainer_step3').style.display = 'none';
+		document.getElementById('eitc_explainer_step2').style.display = 'block';
+
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 3400);
@@ -617,10 +818,17 @@ function eitc_explainer_reverse_step4(){
 	document.getElementById('eitc_explainer_back_button').disabled = true;
 	document.getElementById('eitc_explainer_next_button').disabled = true;
 
+	// Adjust text attributes
+	$('.step_text_line, .step_text_line2, .step_text_line3, .step_text_line4').removeClass('type_text');
+	$('.step_text_line, .step_text_line2, .step_text_line3, .step_text_line4').removeClass('type_text_medium');
+	$('.step_text_line, .step_text_line2, .step_text_line3, .step_text_line4').removeClass('type_text_fast');
+	$('.step_text_line, .step_text_line2, .step_text_line3, .step_text_line4').css('border-right', 'none');
+	$('.step_text_line4').css('width', '0');
+
 	eitcExplainer.load({
 		columns: [
-			['x_phaseout',       15000, 30000],
-			['married_phaseout', 3000,  0],
+			['x_phaseout',       29999, 30000],
+			['married_phaseout', 6000,  6000],
 		]
 	});
 
@@ -630,6 +838,9 @@ function eitc_explainer_reverse_step4(){
 
 	// Enable buttons
 	setTimeout(function () {
+		document.getElementById('eitc_explainer_step4').style.display = 'none';
+		document.getElementById('eitc_explainer_step3').style.display = 'block';
+
 		document.getElementById('eitc_explainer_back_button').disabled = false;
 		document.getElementById('eitc_explainer_next_button').disabled = false;
 	}, 1400);

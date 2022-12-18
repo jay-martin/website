@@ -44,14 +44,14 @@
 	display: inline-block;
 }
 .line_container {
-	display: inline-block;
+	/* display: inline-block; */
 	float: left;
 	padding: 0px;
 }
-.step_text_line {
-	width: 0px;
+.step_text_line0, .step_text_line, .step_text_line2, .step_text_line3, .step_text_line4 {
+	width: 0;
 	white-space: nowrap;
-	overflow: scroll;
+	overflow: hidden;
 	margin: 0px;
 	padding: 0px;
 }
@@ -65,14 +65,14 @@
 }
 .type_text_medium {
 	animation: 
-		typing 1.5s steps(30, end),
+		typing 1.5s steps(35, end),
     	blink-caret .6s step-end infinite;
 	animation-fill-mode: forwards;
 	animation-delay: .1s;
 }
 .type_text_fast {
 	animation: 
-		typing 1s steps(20, end),
+		typing 1s steps(30, end),
     blink-caret .6s step-end infinite;
 	animation-fill-mode: forwards;
 	animation-delay: .1s;
@@ -99,6 +99,7 @@
 	height: 25px;
 	border: solid;
 	border-radius: 5px;
+	border-width: 1.5px;
 	border-color: #adadad;
 	margin-bottom: 5px;
 	text-align: middle;

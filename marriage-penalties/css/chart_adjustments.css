@@ -6,3 +6,7 @@
 .c3-circles-married_plateau, .c3-circles-married_phasein, .c3-circles-married_phaseout  {
   display: none;
 }
+
+.c3-circles-tax {
+  display: none;
+}

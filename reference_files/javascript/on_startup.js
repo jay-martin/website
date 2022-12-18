@@ -36,7 +36,7 @@ function initialize_page(){
 	//keep calculations a secret
 	document.getElementById("highlights_content").style.visibility = 'hidden';
 	document.getElementById("programs").style.visibility = 'hidden';
-	timer = 200;
+	timer = 1000;
 	setTimeout(function () {
 		//calculate highlights heights, as well as list of programs height, and then set to zero
 		programsHeight = window.getComputedStyle(document.getElementById('programs')).height;
@@ -52,7 +52,7 @@ function initialize_page(){
 	}, timer);
 
 	//make highlights visible
-	timer += 1000;
+	timer += 1500;
 	setTimeout(function () {
 		document.getElementById("highlights").style.border = 'solid';
 		document.getElementById("highlights").style.borderColor = '#adadad';

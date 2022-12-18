@@ -89,8 +89,8 @@
     position: fixed;
     overflow: hidden;
     width: 100%;
-    border-bottom: 1px solid;
-    border-color: black;
+    /* border-bottom: 1px solid;
+    border-color: black; */
     /* border-color: #adadad; */
     /* border: none; */
     background-color: white;
@@ -125,23 +125,7 @@
   button.open_icon:hover, button.close_icon{
     background-color: white;
   }
-  /****Dropdown***********/
-  .reveal_dropdown {
-    animation: reveal .5s ease;
-    animation-fill-mode: forwards;
-  }
-  .collapse_dropdown {
-    animation: collapse .5s ease;
-    animation-fill-mode: forwards;
-  }
-  @keyframes reveal {
-    0% { height: 0 }
-    100% { height: 100vh }
-  }
-  @keyframes collapse {
-    from { height: 100vh }
-    to { height: 0 }
-  }
+  /****Dropdown Style***********/
   .mobile_dropdown {
     display: block;
     font-family: "Computer Modern Serif";
@@ -149,9 +133,11 @@
     height: 0;
     overflow: hidden;
     width: 100%;
-    margin-top: 56px;
+    padding-top: 56px;
     background-color: white;
     z-index: 1;
+    border-bottom: 1px solid;
+    border-color: black;
   }
   .featured_pages_title, a.featured_pages  {
     margin-left: 3%;
@@ -199,6 +185,57 @@
     height: 100%;
     overflow: hidden;
   }
+  /****Dropdown animations*/
+  .reveal_dropdown {
+    animation: reveal .75s ease, maintain_position_down .75s ease;
+    animation-fill-mode: forwards;
+  }
+  .collapse_dropdown {
+    animation: collapse .75s ease, maintain_position_up .75s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes reveal {
+    0% { height: 0 }
+    100% { height: 95vh }
+  }
+  @keyframes collapse {
+    0% { height: 95vh }
+    100% { height: 0 }
+  }
+
+  .push_down_page {
+    animation: push_down .75s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes push_down {
+    from { margin-top: 0 }
+    to { margin-top: 100vh }
+  }
+  .push_up_page {
+    animation: push_up .75s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes push_up {
+    from { margin-top: 100vh }
+    to { margin-top: 0vh }
+  }
+
+  .maintain_navbar_position_down {
+    animation: maintain_position_down .75s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes maintain_position_down {
+    from { margin-top: 0 }
+    to { margin-top: -100vh }
+  }
+  .maintain_navbar_position_up {
+    animation: maintain_position_up .75s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes maintain_position_up {
+    from { margin-top: -100vh }
+    to { margin-top: 0vh }
+  }
   /****Highlights***********/
   #highlights_mobile {
     display: inline-block;
@@ -225,7 +262,7 @@
 
   /*********Wide chart*********/
   .chart_wide {
-    width: 93.5%;
+    width: 94%;
     margin-left: 0px;
   }
   .inner_chart_left {
@@ -256,7 +293,7 @@
 * Some adjustments for tablets
 *********************************************************/
 /* Set title back to middle of screen*/
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 800px) and (max-width: 900px) {
   /* General page positioning */
   .center {
     display: block;
@@ -275,7 +312,7 @@
   button.open_icon, button.close_icon {
     margin-right: 2%;
   }
-  /* Dropdown */
+  /****Dropdown Style****/
   .two_columns {
     width: 90%;
     margin-top: 25px;
@@ -294,7 +331,58 @@
     margin-top: 25px;
     margin-left: 5%;
   }
-  /* Title */
+  /****Dropdown animations*/
+  .reveal_dropdown {
+    animation: reveal 1s ease, maintain_position_down 1s ease;
+    animation-fill-mode: forwards;
+  }
+  .collapse_dropdown {
+    animation: collapse 1s ease, maintain_position_up 1s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes reveal {
+    0% { height: 0 }
+    100% { height: 60vh }
+  }
+  @keyframes collapse {
+    0% { height: 60vh }
+    100% { height: 0 }
+  }
+
+  .push_down_page {
+    animation: push_down 1s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes push_down {
+    from { margin-top: 0 }
+    to { margin-top: 60vh }
+  }
+  .push_up_page {
+    animation: push_up 1s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes push_up {
+    from { margin-top: 60vh }
+    to { margin-top: 0vh }
+  }
+
+  .maintain_navbar_position_down {
+    animation: maintain_position_down 1s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes maintain_position_down {
+    from { margin-top: 0 }
+    to { margin-top: -60vh }
+  }
+  .maintain_navbar_position_up {
+    animation: maintain_position_up 1s ease;
+    animation-fill-mode: forwards;
+  }
+  @keyframes maintain_position_up {
+    from { margin-top: -60vh }
+    to { margin-top: 0vh }
+  }
+  /***** Title *******/
   .title_container {
     padding-top: 80px;
     margin-bottom: 30px;
