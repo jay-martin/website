@@ -71,7 +71,7 @@ function initialize_page(){
 function initialize_mobile_page(){
 	/* keep calculations a secret */
 	document.getElementById("highlights_content_mobile").style.visibility = 'hidden';
-	timer = 200;
+	timer = 1000;
 	setTimeout(function () {
 		/* calculate highlights heights, and then set to zero */
 		for (var i = 0; i < highlights_heights.length; i++) {
@@ -84,7 +84,7 @@ function initialize_mobile_page(){
 	}, timer);
 
 	/* make highlights visible */
-	timer += 1000;
+	timer += 1500;
 	setTimeout(function () {
 		document.getElementById("highlights_mobile").style.border = 'solid';
 		document.getElementById("highlights_mobile").style.borderColor = '#adadad';

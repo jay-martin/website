@@ -183,16 +183,15 @@
       
       <!--Income slider-->
       <div class="slidecontainer"> 
-        <div class="income-display"> I have an income of $<output id="rangeValue_all">20,000</output>.</div>
-
+        <div class="slider-text"> I have an income of $<output id="rangeValue_all">20,000</output>.</div>
         <div class="slider-actual">
           <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="myRange_income_all" oninput="rangeValue_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_income(); modify_benefit_outputs_all()">
         </div>
       </div>
 
       <!--Itemized deductions slider-->
-      <div class="slidecontainer" id="id_container" hidden> 
-        <div class="income-display"> I have $<output id="rangeValue_ID_all">4,000</output> in itemized deductions.</div>
+      <div class="slidecontainer" hidden> 
+        <div class="slider-text"> I have $<output id="rangeValue_ID_all">4,000</output> in itemized deductions.</div>
         <div class="slider-actual">
           <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID_all" oninput="rangeValue_ID_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_chart(); modify_benefit_outputs_all()">
         </div>
@@ -402,7 +401,7 @@
 
     <!--Income slider-->
     <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_CA">60,000</output>.</div>
+       <div class="slider-text"> I have an income of $<output id="rangeValue_CA">60,000</output>.</div>
 
       <div class="slider-actual">
         <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="myRange_CA" oninput="rangeValue_CA.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
@@ -457,7 +456,7 @@
 
     <!--Income slider-->
     <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</div>
+      <div class="slider-text"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</div>
 
       <div class="slider-actual">
         <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
@@ -466,7 +465,7 @@
 
     <!--Itemized deductions slider-->
     <div class="slidecontainer"> 
-      <div class="income-display"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</div>
+      <div class="slider-text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</div>
 
       <div class="slider-actual">
         <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
@@ -524,7 +523,7 @@
 
     <!--Income slider-->
     <div class="slidecontainer"> 
-      <div class="income-display"> I have an income of $<output id="rangeValue">20,000</output>.</div>
+      <div class="slider-text"> I have an income of $<output id="rangeValue">20,000</output>.</div>
 
       <div class="slider-actual">
         <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="myRange" oninput="rangeValue.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output_eitc()">
