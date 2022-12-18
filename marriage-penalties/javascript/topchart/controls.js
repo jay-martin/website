@@ -100,7 +100,7 @@ function switch_chart(){
 		document.getElementById('eitc_user_inputs').style.display = 'block';
 
 		setTimeout(function () {
-			MPchart.axis.max({y: 4000});
+			MPchart.axis.max({y: 5000});
 			MPchart.axis.min({y: 0})
 			MPchart.axis.labels({ y: 'EITC Value'});
 		}, 500);

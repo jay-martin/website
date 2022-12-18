@@ -101,16 +101,11 @@ function adjust_y_axis(){
             MPchart.axis.max({y: 1000});
         }
     }
-    /* Baseline axis max: $4,000*/
+    /* Baseline axis max: $5,000*/
     else if((person1Children === 'one' && person2Children === 'none') || (person1Children === 'none' && person2Children === 'one')){
-        if(combinedEITC > 3900){
-        MPchart.axis.max({y: 4500});
-        }
-        else{
-            MPchart.axis.max({y: 4000});
-        }
+        MPchart.axis.max({y: 5000});
     }
-    /* Baseline axis max: $4,000 */
+    /* Baseline axis max: $7,000 */
     else if((person1Children === 'two' && person2Children === 'none') || (person1Children === 'none' && person2Children === 'two')){
         if(combinedEITC > 6500){
             MPchart.axis.max({y: 7200});
