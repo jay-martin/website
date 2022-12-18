@@ -40,35 +40,42 @@ function modifyIncome_HOH(){
 
 /* Adjusts the chart according to user input */
 function modifyGraph_HOH(){
+    itemDeduct = itemized_deductions.value;
+    numChildren = num_children_formatting(num_children.value);
+
+    tax_no_ctc = tax_difference(itemDeduct);
+    brackets_no_ctc = tax_no_ctc[0];
+    tax_dif_no_ctc = tax_no_ctc[1];
+
+    brackets_no_ctc.unshift('x');
+    tax_dif_no_ctc.unshift('HOH_Savings');
+
     if(tax_credit_switch.checked === false){
-        data = tax_difference(itemized_deductions.value);
-        combined_brackets = data[0];
-        tax_dif = data[1];
-
-        combined_brackets.unshift('x');
-        tax_dif.unshift('HOH_Savings');
-
         HOHchart.hide('after_ctc');
-        HOHchart.data.names({HOH_Savings: 'HOH Tax Savings'});
+        HOHchart.load({
+            columns: [
+                brackets_no_ctc,
+                tax_dif_no_ctc,
+            ]
+        });
     }
     else{
-        numChildren = num_children_formatting(num_children.value);
-
-        data = tax_difference_with_ctc(itemized_deductions.value, numChildren);
-        combined_brackets = data[0];
-        tax_dif = data[1];
-
-        combined_brackets.unshift('x3');
-        tax_dif.unshift('after_ctc'); 
-
         HOHchart.show('after_ctc');
-        HOHchart.data.names({HOH_Savings: 'HOH Tax Savings Before CTC'}); 
-    }
+        
+        tax_with_ctc = tax_difference_with_ctc(itemDeduct, numChildren);
+        brackets_with_ctc = tax_with_ctc[0];
+        tax_dif_with_ctc = tax_with_ctc[1];
 
-    HOHchart.load({
-        columns: [
-            combined_brackets,
-            tax_dif
-        ]
-    });
+        brackets_with_ctc.unshift('x3');
+        tax_dif_with_ctc.unshift('after_ctc'); 
+
+        HOHchart.load({
+            columns: [
+                brackets_no_ctc,
+                tax_dif_no_ctc,
+                brackets_with_ctc,
+                tax_dif_with_ctc,
+            ]
+        });
+    }
 }
