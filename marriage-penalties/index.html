@@ -589,21 +589,75 @@
   </div> <!-- chart container -->
 
   <p>
-    One thing that you'll probably notice is that our reformed married EITC is quite a bit larger than the existing married EITC. The max benefit is worth over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've tried to slyly fit in a benefit boost for married people—it's simply because this is the bare minimum you need to prevent marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, in other words, save a lot of money. And Congress, it appears, has prioritized saving money over ensuring marriage is not discouraged. Which means that the only way Congress can finally get out of the business of discouraging marriage, without reducing benefits for single people, is to raise benefits for married people.
+    One thing that you'll probably notice is that our reformed married EITC is quite a bit larger than the existing married EITC. The max benefit is worth over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've tried to slyly fit in a benefit boost for married people—it's simply because this is the bare minimum you need to prevent marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, in other words, save a lot of money. And Congress, it appears, has prioritized saving money over ensuring marriage is not discouraged. Which means that the only way Congress can finally get out of the business of discouraging marriage (without reducing benefits for single people) is to raise benefits for married people.
   </p>
 
   <p>
-    A problem remains, however. The current EITC is an unwieldy beast, consisting of a total of 8(!) different benefits based on the number of children a filer has. Just look at it (add 'meme version' button that switches chart to meme of Patrick 'look at it'):
+    A problem remains, however. The current EITC is an unwieldy beast, consisting of a total of 8(!) different benefits based on the number of children a filer has. It's an ugly policy that's needlessly convoluted. Just look at it:
   </p>
 
   <div id="eitc_2023"></div>
 
+  <video id='spongebob_meme' height="100%" width="100%" controls width="320">
+    <source src="./video/eitc2023meme.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <input type="submit" class="center_floating_button" id="meme_button" value="Meme Version" onclick="show_spongebob_meme();" >
+  </br>
+
+  <p>
+    This differentiation by number of children makes it really difficult to come up with a coherent benefit schedule that doesn't have marriage penalties. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations.
+  </p>
+
+  <p>
+    For example, if someone with one child marries a childless person, they still have only one child, and so wouldn't bump up to the two-child married EITC that we constructed. Instead, we'd need to construct an additional one-child married EITC. And...it's not immediately clear how we'd do that, because the childless single and one-child single EITC curves are very different from each other. If we're committed to eliminating marriage penalties, the best we can do is create some sizeable marriage bonuses by constructing a confusingly shaped one-child married EITC that takes the one-child single EITC and then increases its maximum benefit by $600 (the maximum benefit of the single childless EITC).
+  </p>
+
+  <p>
+    And that's only the beginning of our problems. Above one child, there are multiple ways in which a married couple could end up with more than one child. A married couple with two children could end up with two children because each adult has one child of their own, or because one adult has two children and the other has zero. And a married couple with  three children could end up with three children because one parent has three children and the other has zero, or because one parent has two children and the other has one child.
+  </p>
+
+  <p>
+    To really eliminate penalties, we have to deal with the worst case ("worst" in the sense of being the most costly, not in the sense that being blessed with new Americans is somehow a bad thing). So the three child benefit would need to accomodate a two-child parent marrying a one-child parent, because this results in a larger EITC than a three-child parent marrying a childless person. If we didn't do this, and instead created the three-child married EITC around the idea of a three-child parent marrying a childless person, then any two child–one child couples would face (pretty substantial) marriage penalties.
+  </p>
+
+  <p>
+    But this necessity to deal with the worst-case itself creates problems. Notice that if a three+ child parent marries a three+ child parent, then they have at least <em>six</em> children. Which EITC a person/couple is eligible for is determined by the number of children they have, so does this mean we have to creat a four, five and six+ child EITC? If you actually want to eliminate marriage penalties under the current framework, then basically yes: you either add curves for four, five and six children or you deal only with the worst case and construct a 3+ child married EITC that accomodates families in which each parent has 3 or more children of their own. To keep things somewhat simpler, we'll do the latter.
+  </p>
+
+  <p>
+    All of these considerations together result in the below, ghastly EITC:
+  </p>
+
+  <div id="eitc_fix_all_curves"></div>
+
+  <p>
+    (The two-children married EITC phases in faster than the one we constructed earlier because we need the phase-in to accomodate three children–zero children couples).
+  </p>
+
+  <p>
+    I hope it is evident from the discussion above that the current structure of the EITC, based around differentiating beneficiaries by the number of children that they have, makes it painfully difficult to build an EITC benefit structure that doesn't have marriage penalties. Frankly, if we want to eliminate marriage penalties, then the current structure is untenable.
+  </p>
+
+  <p>
+    Fortunately, there's no law of the universe that says we have to construct it this way. It's just a policy choice, so we can reformulate the EITC along whatever lines we like. And, as I'll explain in the section below, it's not only marriage penalties: there are a great many reasons why we should reformulate the structure of the EITC.
+  </p>
+
   <h3>Alternative 1: Simplifying the EITC</h3>
+  <p>
+    So, you've come to terms with the fact that the EITC as currently structured makes it impossibly difficult to eliminate marriage penalties. You might be feeling sad that such a vaunted policy turns out to be irredeemably flawed, destined to encourage family dysfunction. Now, I will add salt to the wound, and lay out a number of other ways in which the EITC as currently constructed is deeply dissatisfying.
+  </p>
+
+  <div id="simpler_eitc"></div>
 
   <h3>Alternative 2: Child Benefits & the Standard Credit</h3>
+  <!-- Standard credit chart -->
+  <!--
   <div class = "chart">
     <h3 class="box_title">The Standard Credit</h3>
-  <div id="standard_credit_chart"></div> <!--Div for standard credit chart-->
+  <div id="standard_credit_chart"></div> 
+-->
   
   </div><!-- chart container -->
 
@@ -623,6 +677,9 @@
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
+
+<!-- Page functionality -->
+<script type="text/javascript" src="./javascript/page_functionality.js"></script>
 
 <!-- Top Chart Javascipt Files -->
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
@@ -656,6 +713,10 @@
 
 <!-- 2023 EITC Javascript Files -->
 <script type="text/javascript" src="./javascript/2023-eitc/chart.js"></script>
+<script type="text/javascript" src="./javascript/2023-eitc/chart_full_fix.js"></script>
+
+<!-- Simpler EITC Javascript Files -->
+<script type="text/javascript" src="./javascript/simpler-eitc/chart.js"></script>
 
 <!-- Standard Credit -->
 <script type="text/javascript" src="./javascript/standardcredit/chart.js"></script>

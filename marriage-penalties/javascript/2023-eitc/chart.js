@@ -59,7 +59,7 @@ var eitc2023 = c3.generate({
             zero_single  : 'No Children',
             one_single   : 'One Child',
             two_single   : 'Two Children',
-            three_single : 'Three Children',
+            three_single : 'Three or More Children',
         },
         colors: {
             zero_single    : '#6ab6fc',
