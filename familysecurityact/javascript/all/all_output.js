@@ -4,7 +4,7 @@
 
 /*Default values */
 document.getElementById('allFSAtotal').innerHTML = 'Under the Family Security Act 2.0, your child benefit is <b>$3,000</b> and your EITC is <b>$3,000</b>, for a total benefit of <b>$6,000</b>.';
-document.getElementById('allCurrent').innerHTML = 'Under existing law (2022), your child tax credit is <b>$1,400</b> and your EITC is <b>$3,733</b>, for a total benefit of <b>$5,133<b>.';
+document.getElementById('allCurrent').innerHTML = 'Under 2022 law, your child tax credit is <b>$1,400</b> and your EITC is <b>$3,733</b>, for a total benefit of <b>$5,133<b>.';
 document.getElementById('allDifference').innerHTML = 'Under the Family Security Act 2.0, your benefit would';
 document.getElementById('allDifference_color').innerHTML = '<b>increase by $867</b>.';
 
@@ -68,7 +68,7 @@ function eitc_outputs_all(){
     currEITC = existingEITC(income, filingStatus, numChildren);
 
     document.getElementById('allFSAeitc').innerHTML = 'Under the Family Security Act, your EITC is $' + fsaEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.';
-    document.getElementById('allCurrentEITC').innerHTML = 'Under existing law (2022), your EITC $' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.';
+    document.getElementById('allCurrentEITC').innerHTML = 'Under 2022 law, your EITC $' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.';
     difference = fsaEITC - currEITC;
     if(difference < 0){
         difference = difference * -1;
@@ -133,24 +133,24 @@ function outputs_all(){
 
         if(netChange.toFixed(0) === hoh_savings.toFixed(0) && netChange > 0){
             document.getElementById('allFSAtotal').innerHTML = 'Under the Family Security Act 2.0, your child benefit is <b>$' + fsaCA.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + fsaEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> for a total benefit of <b>$' + fsaTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
-            document.getElementById('allCurrent').innerHTML = 'Under existing law (2022), your CTC is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
+            document.getElementById('allCurrent').innerHTML = 'Under 2022 law, your child tax credit is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
             document.getElementById('allHOH').innerHTML = 'Nominally, the head of household filing status saves you <b>$' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> in taxes, for a total benefit of <b>$' + currTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>. However, your income is too low to receive the full CTC, and as a result if you were to become a single filer you would be able to completely offset the increased $' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' in taxes with an additional $' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' worth of the nonrefundable portion of the CTC, resulting in no net change in after-tax income from the HOH filing status. (You can confirm this by toggling to single filer and seeing that the CTC increases by $' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ', and the total benefit does not change.)';
         }
         else if(netChange < hoh_savings && netChange > 0){
             document.getElementById('allFSAtotal').innerHTML = 'Under the Family Security Act 2.0, your child benefit is <b>$' + fsaCA.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + fsaEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> for a total benefit of <b>$' + fsaTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
-            document.getElementById('allCurrent').innerHTML = 'Under existing law (2022), your CTC is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
+            document.getElementById('allCurrent').innerHTML = 'Under 2022 law, your child tax credit is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
             document.getElementById('allHOH').innerHTML = 'Nominally, the head of household filing status saves you <b>$' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> in taxes, for a total benefit of <b>$' + currTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>. However, your income is too low to receive the full CTC, and as a result if you were to become a single filer you would be able to partially offset the increased $' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' in taxes with an additional $' + netChange.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' worth of the nonrefundable portion of the CTC, resulting in a net change in after-tax income from the HOH filing status of only $' + diffCTCHOH.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '. (You can confirm this by toggling to single filer and seeing that the CTC increases by $' + netChange.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ', and the total benefit increases by only $' + diffCTCHOH.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.)';
         }
         else{
             document.getElementById('allFSAtotal').innerHTML = 'Under the Family Security Act 2.0, your child benefit is <b>$' + fsaCA.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + fsaEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> for a total benefit of <b>$' + fsaTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
-            document.getElementById('allCurrent').innerHTML = 'Under existing law (2022), your CTC is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
+            document.getElementById('allCurrent').innerHTML = 'Under 2022 law, your child tax credit is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
             document.getElementById('allHOH').innerHTML = 'Additionally, the head of household filing status saves you <b>$' + hoh_savings.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> in taxes, for a total benefit of <b>$' + currTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
         }
     }
     else{
         document.getElementById('allHOH').innerHTML = '';
         document.getElementById('allFSAtotal').innerHTML = 'Under the Family Security Act 2.0, your child benefit is <b>$' + fsaCA.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + fsaEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>, for a total benefit of <b>$' + fsaTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
-        document.getElementById('allCurrent').innerHTML = 'Under existing law (2022), your CTC is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>, for a total benefit of <b>$' + currTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
+        document.getElementById('allCurrent').innerHTML = 'Under 2022 law, your child tax credit is <b>$' + ctc.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> and your EITC is <b>$' + currEITC.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>, for a total benefit of <b>$' + currTotal.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b>.';
     }
 
 

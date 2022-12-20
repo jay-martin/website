@@ -1,12 +1,21 @@
-/*hide points for all lines except point */
+/* hide points for all lines except point */
+
+/* Top chart */
 .c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus, .c3-circles-person2_dashed, .c3-circles-hoh_penalty, .c3-circles-hoh_married, .c3-circles-hoh_comined, .c3-circles-hoh_bonus, .c3-circles-both_married, .c3-circles-both_penalty, .c3-circles-filler {
   display: none;
 }
 
+/*   */
 .c3-circles-married_plateau, .c3-circles-married_phasein, .c3-circles-married_phaseout  {
   display: none;
 }
 
+/*   */
 .c3-circles-tax {
+  display: none;
+}
+
+/* 2023 EITC */
+.c3-circles-zero_single, .c3-circles-zero_married, .c3-circles-one_single, .c3-circles-one_married, .c3-circles-two_single, .c3-circles-two_married, .c3-circles-three_single, .c3-circles-three_married {
   display: none;
 }

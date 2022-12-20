@@ -176,16 +176,28 @@
       <div class="slidecontainer"> 
         <div class="slider-text" id="income_slider_text"> I have an income of $<output id="person1_income_output">30,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();adjust_arbitrary_income();">
         </div>
+      </div>
+
+      <!--Power Users: Person 1 arbitrary income-->
+      <div class="arbitray_income_container" id="person1_arbitrary_income_container">
+        <label for="person1_arbitray_income">Input your income:</label>
+        <input type="number" class="arbitrary_income" id="person1_arbitray_income" name="person1_arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modify_income();">
       </div>
 
       <!--Person 2 income slider-->
       <div class="slidecontainer"> 
         <div class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();adjust_arbitrary_income();">
         </div>
+      </div>
+
+      <!--Power Users: Person 2 arbitrary income-->
+      <div class="arbitray_income_container" id="person2_arbitrary_income_container">
+        <label for="arbitray_income">Input your partner's income:</label>
+        <input type="number" class="arbitrary_income" id="person2_arbitray_income" name="person2_arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modify_income();">
       </div>
 
     </div> <!--user_inputs container-->
@@ -213,10 +225,20 @@
     </div>
 
     <!--End animation button-->
-    <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+    <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled />
 
     <!--Marriage Penalties Chart-->
     <div id="MPchart"></div> <!--Subcontainter for chart-->
+
+      <!--Power users-->
+      <div class="power_users_container">
+        <!--Arbitrary income switch-->
+        <label class="switch_label" id="arbitrary_income_label">
+          Arbitrary income:
+          <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
+          <span class="checkmark"></span>
+        </label>
+      </div>
 
   </div> <!--chart end-->
 
@@ -291,7 +313,16 @@
 </div> <!--right_side-->
 
 <div class = 'center_no_side_elements' id='hoh_fix'>
-  <h2>Fixing Head of Household Marriage Penalties</h3>
+  <h2>Head of Household</h2>
+  <p>
+    The head of household status creates some pretty sizeable marriage penalties. A family of four in which both parents make $30,000 could save between $798 and $1,596 by getting a divorce, depending on how they claim their dependents. While marriage penalties probably have a smaller effect on behavior for higher income couples, they can reach pretty ridiculous levels at these incomes: two heads of households making $80,000 each would incur a penalty of over $6,000 if they married.
+  </p>
+
+  <p>
+    It's important to note that it doesn't require careful cherry picking to find these penalties. About x% of marriages are between a childless person and a person with at least one child. If the childless person makes at least $14,000 and the head of household at least $20,000, then they are guaranteed a marriage penalty of over $600 unless one of them is high earner. About y% of marriages are between two people who each have children of their own. In this case, as long as both of them earn at least $19,000 then they are guaranteed to incur a penalty of at least $1,000, with penalties approaching $2,000 common.
+  </p>
+
+  <h3>The Solution</h3>
   <p>
     The way you eliminate the marriage penalties inherent in the head of household filing status is very simple: you eliminate it entirely and plough the savings into a universal child benefit. This takes advantage of a convenient fact: that the single and married filing statuses are already set up in such a way that they do not create marriage penalties.
   </p>
@@ -339,8 +370,8 @@
 
 </div> <!--HOH fix section end-->
 
-<section class = 'center_no_side_elements' id='eitc_fix'>
-  <h2>Fixing EITC Marriage Penalties</h2>
+<section class = 'center_no_side_elements' id='eitc'>
+  <h2>The Earned Income Tax Credit</h2>
 
   <!-------- Explanation chart --------->
   <div class = "chart" id="eitc_explainer_chart_container">
@@ -349,8 +380,8 @@
       <button class="explainer_button" id="eitc_explainer_next_button" onclick="eitc_explainer_next();">Next</button>
     </div>
 
-    <h3 class="box_title">Eliminating (Most) Marriage Penalties</h3>
-    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> When two people get married, their EITC should not change. In other words, the value of their married EITC should equal the sum of their two individual EITC's.</div>
+    <h3 class="box_title">Constructing an EITC with Minimal Marriage Penalties</h3>
+    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> A marriage consists of <em>two</em> people, each of whom would receive their own EITC if single. Therefore, to prevent marriage penalties, the married EITC should equal the sum of the two individual EITC's each would receive if single.</div>
 
     <div class="center_explanation_box" id="eitc_explainer_center_box">
       <div class="explainer_text_container" id="eitc_explainer_text_container">
@@ -481,7 +512,7 @@
   </div>
 
   <p>
-    In the module below, you can play around with the EITC outlined above and see that it does, in fact, eliminate all marriage penalties except for those intrinsic to phaseouts. I've also added some ways you could explicitly incorporate marriage <em>bonuses</em> into the EITC, on top of those that already implicitly exist. I personally would not do this—I don't think we should go out of our way to make benefits lower for single people—but perhaps the idea that these "encourage marriage" would make the general reform more appealing to some members of Congress.
+    In the module below, you can play around with the EITC outlined above and compare it to the current EITC. You'll notice that the new EITC is superior to the current one and does, in fact, eliminate all marriage penalties except for those inherent to phaseouts.
   </p>
 
   <!-------- Reformed EITC Chart -------->
@@ -557,6 +588,16 @@
   
   </div> <!-- chart container -->
 
+  <p>
+    One thing that you'll probably notice is that our reformed married EITC is quite a bit larger than the existing married EITC. The max benefit is worth over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've tried to slyly fit in a benefit boost for married people—it's simply because this is the bare minimum you need to prevent marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, in other words, save a lot of money. And Congress, it appears, has prioritized saving money over ensuring marriage is not discouraged. Which means that the only way Congress can finally get out of the business of discouraging marriage, without reducing benefits for single people, is to raise benefits for married people.
+  </p>
+
+  <p>
+    A problem remains, however. The current EITC is an unwieldy beast, consisting of a total of 8(!) different benefits based on the number of children a filer has. Just look at it (add 'meme version' button that switches chart to meme of Patrick 'look at it'):
+  </p>
+
+  <div id="eitc_2023"></div>
+
   <h3>Alternative 1: Simplifying the EITC</h3>
 
   <h3>Alternative 2: Child Benefits & the Standard Credit</h3>
@@ -565,6 +606,13 @@
   <div id="standard_credit_chart"></div> <!--Div for standard credit chart-->
   
   </div><!-- chart container -->
+
+</section>
+
+<section class = 'center_no_side_elements' id='ssi_section'>
+  <h2>Supplemental Security Income</h2>
+
+</section>
 
 </br>
 </br>
@@ -578,12 +626,12 @@
 
 <!-- Top Chart Javascipt Files -->
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/chart_functionality.js"></script>
 <script type="text/javascript" src="./javascript/topchart/controls.js"></script>
 <script type="text/javascript" src="./javascript/topchart/eitc/calculate.js"></script>
 <script type="text/javascript" src="./javascript/topchart/eitc/outputs.js"></script>
 <script type="text/javascript" src="./javascript/topchart/eitc/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/hoh/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/hoh/calculate.js"></script>
 <script type="text/javascript" src="./javascript/topchart/hoh/outputs.js"></script>
 <script type="text/javascript" src="./javascript/topchart/both/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/both/outputs.js"></script>
@@ -605,6 +653,9 @@
 <script type="text/javascript" src="./javascript/eitcfix/existing_eitc.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/outputs.js"></script>
+
+<!-- 2023 EITC Javascript Files -->
+<script type="text/javascript" src="./javascript/2023-eitc/chart.js"></script>
 
 <!-- Standard Credit -->
 <script type="text/javascript" src="./javascript/standardcredit/chart.js"></script>

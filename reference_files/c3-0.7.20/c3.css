@@ -60,7 +60,7 @@
 
 /*-- Line --*/
 .c3-line {
-  stroke-width: 1.5px;
+  stroke-width: 1.75px; /* I adjusted up from 1.5px to 1.75px */
 }
 
 /*-- Point --*/
