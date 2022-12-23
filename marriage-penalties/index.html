@@ -137,10 +137,16 @@
     <div class="user_inputs" id="user_inputs">
 
       <!--Benefit Selector-->
-      <label for="benefit_selector">Show me: </label>
+      <label for="benefit_selector">Show me </label>
       <select id="benefit_selector" oninput="switch_chart()">
         <option value="eitc">The Earned Income Tax Credit</option>
         <option value="hoh">The Head of Household Filing Status</option>
+      </select>
+
+      <label for="chart_type">and view as </label>
+      <select id="chart_type" oninput="switch_chart()">
+        <option value="benefit">benefit chart</option>
+        <option value="percent">percent of income lost</option>
       </select></br>
 
       <div id="eitc_user_inputs">
@@ -314,12 +320,17 @@
 
 <div class = 'center_no_side_elements' id='hoh_fix'>
   <h2>Head of Household</h2>
-  <p>
-    The head of household status creates some pretty sizeable marriage penalties. A family of four in which both parents make $30,000 could save between $798 and $1,596 by getting a divorce, depending on how they claim their dependents. While marriage penalties probably have a smaller effect on behavior for higher income couples, they can reach pretty ridiculous levels at these incomes: two heads of households making $80,000 each would incur a penalty of over $6,000 if they married.
+  <div class="article_tag"><em>Program Page: <a href="../headofhousehold/index.html" target="_blank">Head of Household</a> </em></div>
+  <p class="top">
+    The head of household status creates some pretty sizeable marriage penalties. A family of four in which both parents make $30,000, for instance, could save between $798 and $1,596 by getting a divorce, depending on how they claim their dependents. They can reach pretty ridiculous levels at higher incomes (though at higher incomes they probably have less effect on behavior): two heads of households making $80,000 each would incur a penalty of over $6,000 if they married.
   </p>
 
   <p>
     It's important to note that it doesn't require careful cherry picking to find these penalties. About x% of marriages are between a childless person and a person with at least one child. If the childless person makes at least $14,000 and the head of household at least $20,000, then they are guaranteed a marriage penalty of over $600 unless one of them is high earner. About y% of marriages are between two people who each have children of their own. In this case, as long as both of them earn at least $19,000 then they are guaranteed to incur a penalty of at least $1,000, with penalties approaching $2,000 common.
+  </p>
+
+  <p>
+    When paired with the EITC, the marriage penalties can be astounding. A couple with two children between them and $60,000 in income could lose nearly $7,000—over 11% of their income—from getting married. That
   </p>
 
   <h3>The Solution</h3>
@@ -372,6 +383,7 @@
 
 <section class = 'center_no_side_elements' id='eitc'>
   <h2>The Earned Income Tax Credit</h2>
+  <div class="article_tag"><em>Program Page: <a href="../eitc/index.html" target="_blank">Earned Income Tax Credit</a> </em></div>
 
   <!-------- Explanation chart --------->
   <div class = "chart" id="eitc_explainer_chart_container">
@@ -607,23 +619,23 @@
   </br>
 
   <p>
-    This differentiation by number of children makes it really difficult to come up with a coherent benefit schedule that doesn't have marriage penalties. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations.
+    This differentiation by number of children makes it really difficult to come up with a coherent benefit schedule that doesn't have marriage penalties. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations. A couple could have three children, for instance, because one partner has three children and the other has none, <em>or</em> because one has two children and the other has one. So our three-child married EITC somehow has to take into account both of these possibilities.
   </p>
 
   <p>
-    For example, if someone with one child marries a childless person, they still have only one child, and so wouldn't bump up to the two-child married EITC that we constructed. Instead, we'd need to construct an additional one-child married EITC. And...it's not immediately clear how we'd do that, because the childless single and one-child single EITC curves are very different from each other. If we're committed to eliminating marriage penalties, the best we can do is create some sizeable marriage bonuses by constructing a confusingly shaped one-child married EITC that takes the one-child single EITC and then increases its maximum benefit by $600 (the maximum benefit of the single childless EITC).
+    To truly eliminate marriage penalties, the only way to handle this is to deal with the <em>worst</em> case ("worst" in the sense of being the most expensive). So the three child benefit would have to accomodate a two-child parent marrying a one-child parent, because this results in a larger EITC than a three-child parent marrying a childless person. If we didn't do this, and instead created the three-child married EITC around the idea of a three-child parent marrying a childless person, then two child–one child couples could face (pretty substantial) marriage penalties.
   </p>
 
   <p>
-    And that's only the beginning of our problems. Above one child, there are multiple ways in which a married couple could end up with more than one child. A married couple with two children could end up with two children because each adult has one child of their own, or because one adult has two children and the other has zero. And a married couple with  three children could end up with three children because one parent has three children and the other has zero, or because one parent has two children and the other has one child.
+    At the same time, however, the phase-in for the single three-child EITC is steeper than the phase-in for either the two-child or one-child EITC. Which means that our married three-child EITC is going to need to phase in at least as fast as the single three-child EITC, or else we'd create marriage penalties for three-child single parents who have incomes that put them in the phase-in region.
   </p>
 
   <p>
-    To really eliminate penalties, we have to deal with the worst case ("worst" in the sense of being the most costly, not in the sense that being blessed with new Americans is somehow a bad thing). So the three child benefit would need to accomodate a two-child parent marrying a one-child parent, because this results in a larger EITC than a three-child parent marrying a childless person. If we didn't do this, and instead created the three-child married EITC around the idea of a three-child parent marrying a childless person, then any two child–one child couples would face (pretty substantial) marriage penalties.
+    This necessity to deal with the worst-case itself creates some complications. Notice that if a parent with two children married another parent with two children, then they have <em>four</em> children. The current EITC doesn't have a dedicated married four child EITC, it shoves this married couple into the 3+ children EITC. But if we were to construct the married 3+ children curve around the idea of the couple having three children, then couples with more than three children would face marriage penalties. And as the number of children increases up to six, these marriage penalties grow larger and larger, until they're stupid large. Under the current EITC, for instance, when a parent with three or more children marries another parent with three or more children, they can face marriage penalties of over $10,000!
   </p>
 
   <p>
-    But this necessity to deal with the worst-case itself creates problems. Notice that if a three+ child parent marries a three+ child parent, then they have at least <em>six</em> children. Which EITC a person/couple is eligible for is determined by the number of children they have, so does this mean we have to creat a four, five and six+ child EITC? If you actually want to eliminate marriage penalties under the current framework, then basically yes: you either add curves for four, five and six children or you deal only with the worst case and construct a 3+ child married EITC that accomodates families in which each parent has 3 or more children of their own. To keep things somewhat simpler, we'll do the latter.
+    This means that, if we really want to eliminate marriage penalties, we'll either need to create married EITC's for people with four, five, and six or more children, or we'll have to set the married three+ children EITC at the worst case possibility of 6+ children. The former would cost less but would substantially increase the complexity of the EITC, so I'll consider the latter possibility. Either way, however, the largest married EITC (for 6+ children) is going to have to be much, much larger than the current largest EITC.
   </p>
 
   <p>
@@ -633,7 +645,7 @@
   <div id="eitc_fix_all_curves"></div>
 
   <p>
-    (The two-children married EITC phases in faster than the one we constructed earlier because we need the phase-in to accomodate three children–zero children couples).
+    The childless EITC is constructed straightforwardly from the process we used above to build a mostly marriage-penalty free EITC (i.e. it's basically "double" the single EITC). The married two-child EITC is exactly the one we constructed in the previous section, only with a steeper phase-in to prevent marriage penalties among two children–zero children couples. The married three or more children EITC shows the worst-case possibility of a parent with three or more children marrying someone else with three or more children. And the married one-child EITC—the EITC for a person with one child who marries a childless person—takes the single one-child EITC and increases the maximum value by $600, the maximum value of the childless EITC.
   </p>
 
   <p>
@@ -641,7 +653,7 @@
   </p>
 
   <p>
-    Fortunately, there's no law of the universe that says we have to construct it this way. It's just a policy choice, so we can reformulate the EITC along whatever lines we like. And, as I'll explain in the section below, it's not only marriage penalties: there are a great many reasons why we should reformulate the structure of the EITC.
+    Fortunately, there's no law of the universe that says we have to construct it this way. It's just a policy choice, so we can reformulate the EITC along whatever lines we like. And, as I'll explain in the next two sections, it's not only marriage penalties: there are a many reasons to want to restructure the EITC.
   </p>
 
   <h3>Solution 1: Simplifying the EITC</h3>
@@ -649,24 +661,124 @@
     So, you've come to terms with the fact that the EITC as currently structured makes it impossibly difficult to eliminate marriage penalties. You might be feeling sad that such a vaunted policy turns out to be irredeemably flawed, destined to encourage family dysfunction. Now, I will add salt to the wound, and lay out a number of other ways in which the EITC as currently constructed is deeply dissatisfying.
   </p>
 
+  <p>
+    In this section I'll operate within the EITC's basic logic—that it should include a phase-in to "encourage work" and a phase-out to "target" the benefit at low-and-working class people and reduce the sticker price. In the next section, I'll challenge that logic and argue for a more substantial reform.
+  </p>
+
+  <p>
+    Along with the infeasibility of eliminating marriage penalties, there are three additional reasons why the current practice of stratiying benificiaires by the number of children that they have is bad:
+  </p>
+
+  <h4>1. It's needlessly complicated</h4>
+  <p>
+    The tax code is already complicated and confusing.
+  </p>
+
+  <h4>2. It's incoherent—the EITC is trying to be both a wage subsidy and a family benefit</h4>
+
+  <h4>3. Childless workers receive little—and may even be hurt by the EITC</h4>
+
+  <h4>The Proposal</h4>
+  <p>
+    Proposal 1 is to simplify and rationalize the EITC. We'll collapse it down to just two benefits: a single benefit and a married benefit. We'll construct them as we did in the section above to minimize marriage penalties. This new EITC fixes each of our four problems. It's:
+  </p>
+
+  <ol>
+    <li><b>Pro-Marriage:</b> It largely eliminates marriage penalties.</li>
+    <li><b>Simple:</b> It makes the program easier to understand, simplifying an already complicated tax code and reducing improper payments</li>
+    <li><b>Coherent:</b> It gives the EITC a coherent purpose: it's a wage supplement for working class people, simple as that.</li>
+    <li><b>A fair shake:</b> There's no reason to largely exclude low-income childless people from the EITC—they need help too.</li>
+    <li><b>Pro-Work:</b> The EITC is designed to encourage work, so it is profoundly strange that we've largely excluded childless people—a large share of prime working age people—from it. The redesign extends the EITC's work encouraging properties to childless people.</li>
+  </ol>
+
   <div id="simpler_eitc"></div>
 
   <h3>Solution 2: Child Benefits & the Standard Credit</h3>
+  <p>
+    There are good reasons to doubt two fundamental elements of the EITC: that it should include a phase-in and a phase-out.
+  </p>
+
+  <h4>1. The phase-out creates work disincentives</h4>
+  <div class="article_tag"><em>See also: <a href="../marginaltax/index.html" target="_blank">Marginal Tax Rates</a> </em></div>
+
+  <p class="top">
+    The EITC is designed to promote work by topping up the wages people make from work. In the language of economics, the EITC makes use of the <a href="https://en.wikipedia.org/wiki/Substitution_effect" target="_blank">substitution effect</a>: by increasing the wage of an additional hour of work, the EITC increases the cost of not working, and thus increases the incentive to work more (to "substitute" additional wages for additional hours of leisure). It must be noted that there is a countervailing <a href="https://www.investopedia.com/terms/i/incomeeffect.asp" target="_blank">income effect</a>—as income rises, people demand a higher quantity of goods, including a higher quantity of leisure–but research suggests that the substitution effect dominates.
+  </p>
+
+  <p>
+    In more intutitive language, all this is saying is that if your wage is, say, $15 an hour, then the phase-in region of the one-child EITC increases this to $20.10 an hour. When you're considering whether to work additional hours, that $20.10 an hour makes the additional work more appealing than the $15 an hour wage would.
+  </p>
+
+  <p>
+    However, this only holds in the phase-in region. The plateau has no effect on work incentives, and the phase-out <em>reverses</em> the incentives. In the phase out, additional hours of work <em>reduce</em> the amount of the EITC. For example, the one-child EITC phases out at a rate of $210.60 per $1,000 in additional earned income. That means that if you work more and earn an additional $1,000, your EITC decreases by $210.60, and thus your income in fact only rises by $789.40. 
+  </p>
+
+  <p>
+    This puts the substitition and income effects into reverse. The EITC phase-out <b>reduces</b> additional wages, and thus reduces the cost of not working additional hours, and thus reduces the incentive to work more. Again, the income effect works in the opposite direction, but the substitutiton effect appears to dominate at the incomes at which the EITC phases out.
+  </p>
+
+  <p>
+    Another way of saying this is that the EITC phase-out imposes a postive <a href="./marginaltax/index.html" target="_blank">effective marginal tax rate</a>. Other programs, like SNAP and SSI, also impose EMTR's, so they can compuond on top of each other to produce very large effective marginal tax rates: an additional $100 of earned income, for instance, can cause a $21.06 loss in the EITC, <em>and</em> a $24 loss in SNAP benefits, <em>and</em> a $50 loss in SSI benefits. These together create large work disincentives, where additional work nets very little additional money. 
+  </p>
+
+  <p>
+    The only way to get rid of these disincentives is to <em>reduce or eliminate phase-outs</em>.
+  </p>
+
+  <h4>2. The only way to truly eliminate marriage penalties is to eliminate the phase-out</h4>
+  <h4>3. The phase-out is really just an inferior way to fund the program</h4>
+  <h4>4. The phase-in substantially reduces the EITC's poverty alleviation effects</h4>
+  
+
   <!-- Standard credit chart -->
-  <!--
   <div class = "chart">
     <h3 class="box_title">The Standard Credit</h3>
   <div id="standard_credit_chart"></div> 
--->
   
   </div><!-- chart container -->
+
+  <p>
+    The standard credit is not a perfect policy. It has the hallmark problems of a benefit delivered through the tax code rather than through direct spending. You can read about these problems [[[here]]]], and Matt Bruenig has <a href=https://www.peoplespolicyproject.org/2021/02/15/who-should-administer-a-new-child-benefit-program/ target="_blank">written</a> <a href="https://www.peoplespolicyproject.org/2022/03/07/the-child-tax-credit-cannot-be-administered/" target="_blank">extensively</a> <a href="https://www.peoplespolicyproject.org/2021/10/13/new-child-tax-credit-is-not-reaching-the-poorest-families/" target="_blank">about</a> them with regards to the child tax credit at the People's Policy Project. In short, tax benefits can end up excluding poor people because people with low incomes are not required to file tax returns, but without a tax return the IRS can't send them a check. This is one reason it's become an increasingly popular proposal to replace the child tax credit, administered by the IRS, with a monthly child benefit administered by the Social Security Administration, which doesn't have this problem.
+  </p>
+
+  <p>
+    I'm proposing a standard credit rather than a direct spending program, however, because it strikes me as something that politicians and the general public would be more amenable to. As the political scientists <a href=https://www.bucknell.edu/fac-staff/chris-ellis target="_blank">Christopher Ellis</a> and <a href=https://www.maxwell.syr.edu/directory/christopher-faricy target="_blank">Christopher Faricy</a> demonstrate in their book <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion toward Social Tax Expenditures</a></em>, "public support for a wide variety of social benefits is significantly higher when those benefits are framed as being delivered through tax breaks rather than framed as direct government spending".<a class="refs" id="note1" href="#notes"><sup>1</sup></a>
+  </p>
+
+  <p>
+    The standard credit fits this mold: it's a "tax cut", not a direct spending program. And as tax cuts go, a standard credit feels in nature a lot like the standard deduction, which is very popular. Additionally, since the standard credit does not necessarily have to replace the EITC—you can easily have both at the same time—a standard credit also offers the alternative pathway of first instituting it as a non-refundable credit, which could make it more amenable to Republicans and the handful of Democratic politicians who are still deeply wed to the idea of phase-ins. Then, with the non-refundable standard credit in place, it becomes a simple and cheap reform to later make it refundable. 
+  </p>
 
 </section>
 
 <section class = 'center_no_side_elements' id='ssi_section'>
   <h2>Supplemental Security Income</h2>
+  <div class="article_tag"><em>Program Page: <a href="../ssi/index.html" target="_blank">Supplemental Security Income</a> </em></div>
 
 </section>
+
+<!--References section---------------------------------------------------------------------------------------------->
+<section class=center_no_side_elements id="references">
+
+  <div class="notes">
+    <h2 id="notes">Notes</h2>
+    <ol class="notes_list">
+      <li><a class="refs" href="#note1">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>". <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
+
+      <li><a class="refs" href="#note2">^</a> SNAP 2022 maximum benefits were obtained from <a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments</a> (<a href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a>).</li>
+
+      <li><a class="refs" href="#note3">^</a> SNAP 2022 standard deductions were obtained from the Texas Health and Human Services Commission's <a href="https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Texas Works Handbook: C-120, Supplemental Nutrition Assistance</a> (<a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Archived</a>).</li>
+    </ol>
+  </div>
+
+  <div class="references" id="references">
+    <h2>References</h2>
+    <ul class="references_list" id="references_list">
+      <li class="ref_item" id="Ellis">Ellis, Christopher; Faricy, Christopher (May 20, 2021). "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>". <em>Fortune</em>. <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
+    </ul>
+  </div>
+
+</section> <!--References section-->
 
 </br>
 </br>

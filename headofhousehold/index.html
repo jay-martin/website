@@ -222,7 +222,6 @@
 
       <!--Run HOH Benefit Graph Script-->
       <div id="HOHchart"></div>
-      <script>HOHchart.focus();</script>
 
     </div> <!--chart end-->
 
@@ -337,24 +336,109 @@
 
 <section class = 'center_no_side_elements'>
   <h2>Head of Household is Regressive</h2>
+  <div class="article_tag"><em>See also: <a href="../poor-exclusion/index.html" target="_blank">The Exclusion of Poor Families</a> </em></div>
+
+  <div class='chart'>
+    <div class="user_inputs" id="user_inputs">
+      <!--Income slider-->
+      <div class="slidecontainer" id="income_slider_container"> 
+        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_regressive_output">50,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="income_regressive" oninput="income_regressive_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_regressive();regressive_outputs();">
+        </div>
+      </div>
+    </div>
+
+    <!--Calculate HOH savings-->
+    <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+      <p class="explanation_text" id="benefit_max_difference"></p>
+    </div>
+
+    <div id="regressive_chart"></div>
+
+    <!--Zoom switch-->
+    <label class="switch_label" id="zoom_label_regressive">
+      Click to zoom on lower incomes:
+      <input type="checkbox" class="zoom_button" id="zoom_switch_regressive" oninput="zoom_regressive();">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
 </section>
 
 <section class = 'center_no_side_elements'>
   <h2>Head of Household Creates Marriage Penalties</h2>
+  <div class="article_tag"><em>See also: <a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a> </em></div>
+
+    <div class = "chart">
+
+    <!--Person 1 filing status-->
+    <label for="marriage_penalty_person1_filing_status">I am a </label>
+    <select name="marriage_penalty_person1_filing_status" id="marriage_penalty_person1_filing_status" oninput='hoh_modify_person1();hoh_modify_income();marriage_penalty_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh" selected>head of household</option>
+    </select>
+
+    <!--Person 2 filing status-->
+    <label for="marriage_penalty_person2_filing_status">and my partner is a </label>
+    <select name="marriage_penalty_person2_filing_status" id="marriage_penalty_person2_filing_status" oninput='hoh_modify_person2();hoh_modify_income();marriage_penalty_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh">head of household</option>
+    </select>.
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="marriage_penalty_person1_income_output">80,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_modify_income();marriage_penalty_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="marriage_penalty_person2_income_output">40,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_modify_income();marriage_penalty_outputs();">
+      </div>
+    </div>
+
+    <!--Center box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="marriage_penalty_individual"></p>
+      <p class="explanation_text" id="marriage_penalty_married"></p>
+      <p class="explanation_text" id="marriage_penalty_bonus"></p>
+    </div>
+
+    <div id="marriage_penalty_chart"></div> <!--Div for single/married tax chart-->
+
+  </div> <!-- chart container-->
+
 </section>
 
-<!-- Initialize page -->
+<!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
-<!-- Javascript files -->
-<script type="text/javascript" src="./javascript/chart.js"></script>
-<script type="text/javascript" src="./javascript/calculate.js"></script>
-<script type="text/javascript" src="./javascript/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/outputs.js"></script>
-<script type="text/javascript" src="./javascript/animations/universal.js"></script>
-<script type="text/javascript" src="./javascript/animations/marriage_penalty_animation.js"></script>
-<script type="text/javascript" src="./javascript/animations/poor_people_animation.js"></script>
+<!-- Top Chart Javascript files -->
+<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/calculate.js"></script>
+<script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/marriage_penalty_animation.js"></script>
+<script type="text/javascript" src="./javascript/topchart/animations/poor_people_animation.js"></script>
+
+<!-- Regressive Chart Javascript Files -->
+<script type="text/javascript" src="./javascript/regressive_chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/regressive_chart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/regressive_chart/outputs.js"></script>
+
+<!-- Marriage Penalty Chart Javascript Files -->
+<script type="text/javascript" src="./javascript/marriage_penalty_chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage_penalty_chart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage_penalty_chart/outputs.js"></script>
 
 </body>
 </html>

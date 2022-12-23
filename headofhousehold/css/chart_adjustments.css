@@ -2,3 +2,13 @@
 .c3-circles-HOH_Savings, .c3-circles-after_ctc, .c3-circles-person_1, .c3-circles-person_2 {
   display: none;
 }
+
+/* Regressive Chart */
+.c3-circles-max_benefit, .c3-circles-outline {
+  display: none;
+}
+
+/* Marriage Penalties Chart */
+.c3-circles-person1, .c3-circles-person2, .c3-circles-person2_dashed,  .c3-circles-married, .c3-circles-penalty, .c3-circles-bonus {
+  display: none;
+}
