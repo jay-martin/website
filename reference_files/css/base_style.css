@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap&family=Noto+Serif+NP+Hmong:wght@400;500;600;700');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Antique+Soft&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap');
 body {
   font-family: 'Latin Modern Sans';
   text-rendering: optimizeLegibility;
@@ -6,8 +6,9 @@ body {
   margin: 0;
 }
 h1, h2, h3, h4 {
-  font-family: 'Zen Antique Soft', serif;
-  font-weight: 800;
+  /* font-family: 'Zen Antique Soft', serif; */
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
 }
 h1 {
   margin-top: 0px;
