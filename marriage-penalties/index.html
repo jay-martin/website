@@ -34,6 +34,9 @@
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
   <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
 
+  <!-- Latin Modern -->
+  <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-sans.css" type="text/css" charset="utf-8" />
+
 </head>
 
 <div class="logo">
@@ -387,10 +390,6 @@
 
   <!-------- Explanation chart --------->
   <div class = "chart" id="eitc_explainer_chart_container">
-    <div class="forward_back_buttons">
-      <button class="explainer_button" id="eitc_explainer_back_button" onclick="eitc_explainer_back();" disabled>Back</button>
-      <button class="explainer_button" id="eitc_explainer_next_button" onclick="eitc_explainer_next();">Next</button>
-    </div>
 
     <h3 class="box_title">Constructing an EITC with Minimal Marriage Penalties</h3>
     <div class='explainer_chart_text_title'><b>The Basic Idea:</b> A marriage consists of <em>two</em> people, each of whom would receive their own EITC if single. Therefore, to prevent marriage penalties, the married EITC should equal the sum of the two individual EITC's each would receive if single.</div>
@@ -518,6 +517,12 @@
         </div>
 
       </div> <!-- text container -->
+
+      <div class="forward_back_buttons">
+        <button class="explainer_button" id="eitc_explainer_back_button" onclick="eitc_explainer_back();" disabled>Back</button>
+        <button class="explainer_button" id="eitc_explainer_next_button" onclick="eitc_explainer_next();">Next</button>
+      </div>
+
     </div> <!-- explanation box -->
 
     <div id="eitc_explainer_chart"></div> <!--Div for standard credit chart-->
@@ -649,7 +654,7 @@
   </p>
 
   <p>
-    I hope it is evident from the discussion above that the current structure of the EITC, based around differentiating beneficiaries by the number of children that they have, makes it painfully difficult to build an EITC benefit structure that doesn't have marriage penalties. Frankly, if we want to eliminate marriage penalties, then the current structure is untenable.
+    I hope it is evident by now that the current structure of the EITC, based around differentiating beneficiaries by the number of children that they have, makes it painfully difficult to build an EITC benefit structure that doesn't have marriage penalties. Frankly, if we want to eliminate marriage penalties, then the current structure is untenable.
   </p>
 
   <p>
@@ -680,7 +685,7 @@
 
   <h4>The Proposal</h4>
   <p>
-    Proposal 1 is to simplify and rationalize the EITC. We'll collapse it down to just two benefits: a single benefit and a married benefit. We'll construct them as we did in the section above to minimize marriage penalties. This new EITC fixes each of our four problems. It's:
+    In my first proposal, I simplify and rationalize the EITC. We'll collapse it down to just two benefits: a single benefit and a married benefit. We'll construct them as we did in the section above to minimize marriage penalties. This new EITC addresses each of the problems we've identified with the current EITC. It's:
   </p>
 
   <ol>
@@ -691,7 +696,30 @@
     <li><b>Pro-Work:</b> The EITC is designed to encourage work, so it is profoundly strange that we've largely excluded childless people—a large share of prime working age people—from it. The redesign extends the EITC's work encouraging properties to childless people.</li>
   </ol>
 
+  <h3 class='chart_wide_name'>Reformed EITC</h3>
   <div id="simpler_eitc"></div>
+
+  <h4>Comparison with the Family Security Act</h4>
+  <div class="article_tag"><em>See also: <a href="../familysecurityact/index.html" target="_blank">Family Security Act</a> </em></div>
+
+  <p class="top">
+    You might notice that this reform is similar in nature to Mitt Romney's proposed <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both propose increasing child benefits and simplifying the EITC. Romney's plan also proposes eliminating the head of household filing status and putting the savings towards the child benefit, as I proposed in the head of household section. There are, however, some differences, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
+  </p>
+
+  <h3 class='chart_wide_name' style="margin-bottom: 15px">Family Security Act EITC</h3>
+  <div id="fsa_eitc"></div>
+
+  <p>
+    With Romney's proposal, it should be noted, he went to lengths to ensure that the policy is revenue neutral, whereas I have been more lackadaisical with funding. This placed particularly strong constraints on his EITC reform, as he relied on it to provide nearly half of the funding for the FSA's enhanced child benefit. While I don't know his exact thought process, these funding constraints seems like they could be a major reason he didn't fully consolidate the program into one single and one married benefit, but instead maintained separate benefits for childless people and for parents. He'd need to do that because raising the childless benefit up to the values of the benefit for parents would substantially reduce the amount of revenue his EITC reform would save, and thus push his proposal into the red, while dropping the benefit for parents down to the childless benefit would be such a substantial benefit reduction from the current EITC that virtually all working class people would see their benefits cut substantially even with the larger child benefit.
+  </p>
+
+  <p>
+    Under similar budgetary constraints, the EITC reform I proposed might need to be similarly altered. These alterations, however, have major drawbacks. While Romney's EITC generally reduces marriage penalties, it is still a good ways from eliminating them. The phase-out, of course, inherently imposes marriage penalties, but there are also marriage penalties for many couples in which each partner has children of their own—and those marriage penalties can be as large as $1,000.
+  </p>
+
+  <p>
+    The reductions to the EITC for parents are also a bit overzealous. Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced.<a class="refs" id="note1" href="#notes"><sup>1</sup></a> The FSA would still reduce child poverty substantially,<a class="refs" id="note2" href="#notes"><sup>2</sup></a> but it would certainly have a greater impact if EITC reductions were fully offset by benefit enhancements elsewhere.
+  </p>
 
   <h3>Solution 2: Child Benefits & the Standard Credit</h3>
   <p>
@@ -742,7 +770,7 @@
   </p>
 
   <p>
-    I'm proposing a standard credit rather than a direct spending program, however, because it strikes me as something that politicians and the general public would be more amenable to. As the political scientists <a href=https://www.bucknell.edu/fac-staff/chris-ellis target="_blank">Christopher Ellis</a> and <a href=https://www.maxwell.syr.edu/directory/christopher-faricy target="_blank">Christopher Faricy</a> demonstrate in their book <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion toward Social Tax Expenditures</a></em>, "public support for a wide variety of social benefits is significantly higher when those benefits are framed as being delivered through tax breaks rather than framed as direct government spending".<a class="refs" id="note1" href="#notes"><sup>1</sup></a>
+    I'm proposing a standard credit rather than a direct spending program, however, because it strikes me as something that politicians and the general public would be more amenable to. As the political scientists <a href=https://www.bucknell.edu/fac-staff/chris-ellis target="_blank">Christopher Ellis</a> and <a href=https://www.maxwell.syr.edu/directory/christopher-faricy target="_blank">Christopher Faricy</a> demonstrate in their book <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion toward Social Tax Expenditures</a></em>, "public support for a wide variety of social benefits is significantly higher when those benefits are framed as being delivered through tax breaks rather than framed as direct government spending".<a class="refs" id="note3" href="#notes"><sup>3</sup></a>
   </p>
 
   <p>
@@ -763,18 +791,26 @@
   <div class="notes">
     <h2 id="notes">Notes</h2>
     <ol class="notes_list">
-      <li><a class="refs" href="#note1">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>". <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
+      <li><a class="refs" href="#note1">^</a> <a href="#Marr">Marr et al. 2022</a></li>
 
-      <li><a class="refs" href="#note2">^</a> SNAP 2022 maximum benefits were obtained from <a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments</a> (<a href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a>).</li>
+      <li><a class="refs" href="#note1">^</a> The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half (<a href="#Hammond">Hammond, Orr 2021</a>), while the FSA 2.0 would reduce child poverty by 13% (<a href="#Orr">Orr, McCabe 2022</a>).</li>
 
-      <li><a class="refs" href="#note3">^</a> SNAP 2022 standard deductions were obtained from the Texas Health and Human Services Commission's <a href="https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Texas Works Handbook: C-120, Supplemental Nutrition Assistance</a> (<a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Archived</a>).</li>
+      <li><a class="refs" href="#note3">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>" (<a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a>). For the full book, see <a href="#Ellis-book">Ellis, Faricy 2021</a>.</li>
     </ol>
   </div>
 
   <div class="references" id="references">
     <h2>References</h2>
     <ul class="references_list" id="references_list">
+      <li class="ref_item" id="Ellis-book">Ellis, Christopher; Faricy, Christopher (2021). <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion Toward Social Tax Expenditures</a></em>. Russell Sage Foundation. ISBN 978-0871544407.</li>
+
       <li class="ref_item" id="Ellis">Ellis, Christopher; Faricy, Christopher (May 20, 2021). "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>". <em>Fortune</em>. <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
+
+      <li class="ref_item" id="Hammond">Hammond, Samuel; Orr, Robert (February 4, 2021). "<a href="https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/">Factsheet: Senator Romney’s Family Security Act</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20220813063420/https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/ target="_blank">Archived</a> from the original on August 13, 2022.</li>
+
+      <li class="ref_item" id="Marr">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). "<a href=https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It</a>". <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Archived</a> from the original on October 21, 2022.</li>
+
+      <li class="ref_item" id="Orr">Orr, Robert; McCabe, Joshua (June 15, 2022). "<a href=https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">Analysis of the Family Security Act 2.0</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20221127210837/https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">Archived</a> from the original on November 27, 2022.</li>
     </ul>
   </div>
 
@@ -822,6 +858,9 @@
 <script type="text/javascript" src="./javascript/eitcfix/existing_eitc.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/eitcfix/outputs.js"></script>
+
+<!-- FSA EITC -->
+<script type="text/javascript" src="./javascript/fsa-eitc/chart.js"></script>
 
 <!-- 2023 EITC Javascript Files -->
 <script type="text/javascript" src="./javascript/2023-eitc/chart.js"></script>

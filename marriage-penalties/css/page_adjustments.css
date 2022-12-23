@@ -32,6 +32,7 @@
 }
 /*** Text box for EITC explainer ***/
 #eitc_explainer_center_box {
+	position: relative;
 	height: 180px;
 }
 /****** Explainer text inner elements ****/
@@ -91,8 +92,8 @@
 /****** Animation Buttons ****/
 .forward_back_buttons{
 	position: absolute;
-	right: 15px;
-	margin-top: 242px;
+	right: 5px;
+	bottom: 2px;
 }
 .explainer_button{
 	width: 70px;
