@@ -145,12 +145,20 @@ sup {
 .category {
   display: none;
 }
+#page_title {
+  margin-bottom: 4px;
+}
 .name {
   font-family: 'Zen Antique Soft', serif;
   line-height: 2em;
   font-size: 85%;
   margin-bottom: 5px;
   margin-top: 8px;
+  text-decoration: none;
+  color: black;
+}
+a.my_socials {
+  margin-left: 3px;
 }
 .page_description {
   font-family: "Computer Modern Classical Serif Italic";
@@ -179,6 +187,9 @@ sup {
   text-decoration: underline;
 }
 .programs_container {
+  position: relative;
+  background-color: white;
+  z-index: 1;
   padding-bottom: 10px;
 }
 .programs_title{
@@ -201,6 +212,38 @@ sup {
 .programs_container:hover .programs_title{
   text-decoration: underline;
 }
+/*****************Share buttons*************************************/
+.share_buttons_container {
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 116vh;
+}
+a.share_button {
+  position: relative;
+  font-size: 90%;
+  text-decoration: none;
+  padding: 0;
+  color: black;
+}
+.share_button_image {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+}
+.share_button_text {
+  position: absolute;
+  display: inline-block;
+  margin-left: 25px;
+  bottom: 1.5px;
+  padding: 0;
+  line-height: 1em;
+
+  color: #858585;
+}
+
+.share_button_text:hover {
+  text-decoration: underline;
+}
 /*****************Chart container (top center)*************************************/
 .chart, .chart_wide {
   font-family: "Computer Modern Sans";
@@ -212,8 +255,8 @@ sup {
   margin-bottom: 10px;
 }
 .chart_wide {
-  width: 150%;
-  margin-left: -25%;
+  width: 140%;
+  margin-left: -20%;
   position: relative;
 }
 .wide_inputs {

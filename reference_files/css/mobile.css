@@ -67,6 +67,11 @@
     margin-right: auto;
   }
 
+  /*******Hide share buttons*****/
+  .share_buttons_container {
+    display: none;
+  }
+
   /*******Title Adjustments*****/
   .title_container {
     width: 100%;
@@ -407,7 +412,6 @@
   .page_description {
     width: 65%;
   }
-
 }
 
 

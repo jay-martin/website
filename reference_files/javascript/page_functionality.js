@@ -1,8 +1,35 @@
 /******************************************************************************************
  * This file contains the functions that 
- * (1) Expands the mobile dropdown, and
- * (2) Open and close highlights
+ * (1) Adjust the position of the share buttons
+ * (2) Expands the mobile dropdown, and
+ * (3) Open and close highlights
  * ****************************************************************************************/
+
+/********************************Share Buttons*******************************((**/
+var fixedElement = document.querySelector('.share_buttons_container');
+var displayHeight = $(window).innerHeight();
+var scrollThreshold = 1.05 * displayHeight;
+var isExpanded = false;
+
+// Changing the eligibility status container to position:fixed after a certain amount of scroll is only needed for desktop
+if(displayWidth > 900){
+
+  window.addEventListener('scroll', function() {
+
+    // Check if the user has scrolled down the page by the scroll threshold
+    if (window.pageYOffset >= scrollThreshold) {
+      // Set the position property of the .fixed element to fixed
+      fixedElement.style.position = 'fixed';
+      fixedElement.style.marginTop = '10vh';
+    }
+    // If the user has not scrolled down the page by the scroll threshold
+    else {
+      // Set the position property of the fixed element to absolute
+      fixedElement.style.position = 'absolute';
+      fixedElement.style.marginTop = '116vh';
+    }
+  });
+}
 
 /********************************Mobile Dropdown*********************************/
 navbarClicked = false;
