@@ -21,7 +21,7 @@ h3 {
 h4 {
   margin-bottom: 0px;
 }
-p {
+p, ol, ul {
   font-family: "Computer Modern Sans";
   line-height: 1.5em;
 }
@@ -506,11 +506,9 @@ img.table {
   line-height: 1.75em;
   display: block;
 }
-.references_list, .notes_list{
+ul.references_list, ol.notes_list {
+  margin-left: 5px;
   padding-left: 3%;
-}
-.notes_list{
-
 }
 .ref_item {
   background-color: white;

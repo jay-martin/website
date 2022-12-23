@@ -14,14 +14,18 @@
   h1 {
     font-size: 175%;
   }
-  h2, h3 {
-    padding-left: 3%;
-    padding-right: 3%;
+  h2, h3, h4 {
+    padding-left: 10px;
+    padding-right: 10px;
   }
   p {
     font-size: 110%;
-    padding-left: 3%;
-    padding-right: 3%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  ol, ul {
+    margin-left: 10px;
+    margin-right: 10px;
   }
   #page_title {
     width: 80%;
@@ -287,11 +291,16 @@
   .slider-text {
     width: 100%;
   }
+  /*********References************/
+  ul.references_list, ol.notes_list {
+    padding-left: 20px;
+    margin-left: 15px;
+  }
 }
 
-/********************************************************
+/*********************************************************************************************
 * Some adjustments for tablets
-*********************************************************/
+*********************************************************************************************/
 /* Set title back to middle of screen*/
 @media screen and (min-width: 800px) and (max-width: 900px) {
   /* General page positioning */
