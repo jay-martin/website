@@ -62,7 +62,7 @@
     width: 21%;
     font-family: "Computer Modern Serif";
     text-align: center;
-    margin-top: 192px;
+    margin-top: 193px;
     border: solid;
     border-radius: 5px;
     border-width: 1.5px;
@@ -185,7 +185,7 @@
 }
 
 /****************************Tablet adjustments***************************/
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 800px) and (max-width: 900px) {
     .eligibility_status_container {
         font-size: 140%;
         margin-top: 89vh;
