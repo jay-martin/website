@@ -5,10 +5,17 @@ body {
   line-height: 2em;
   margin: 0;
 }
-h1, h2, h3, h4 {
-  /* font-family: 'Zen Antique Soft', serif; */
+h1 {
+  font-family: 'Zen Antique Soft', serif;
+  font-weight: 800;
+}
+h2, h3, h4 {
+  font-family: 'Zen Antique Soft', serif;
+  font-weight: 400;
+  /*
   font-family: 'Zen Old Mincho', serif;
   font-weight: 900;
+  */
 }
 h1 {
   margin-top: 0px;
