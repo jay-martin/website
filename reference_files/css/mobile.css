@@ -67,11 +67,10 @@
     margin-right: auto;
   }
 
-  /*******Hide share buttons*****/
-  .share_buttons_container {
+  /*******Hide blog prome & share buttons*****/
+  img.blog_promotion, .share_buttons_container {
     display: none;
   }
-
   /*******Title Adjustments*****/
   .title_container {
     width: 100%;

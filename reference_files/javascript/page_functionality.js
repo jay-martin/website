@@ -8,7 +8,7 @@
 /********************************Share Buttons*******************************((**/
 var fixedElement = document.querySelector('.share_buttons_container');
 var displayHeight = $(window).innerHeight();
-var scrollThreshold = 1.05 * displayHeight;
+var scrollThreshold = 1.075 * displayHeight;
 var isExpanded = false;
 
 // Changing the eligibility status container to position:fixed after a certain amount of scroll is only needed for desktop
@@ -26,7 +26,7 @@ if(displayWidth > 900){
     else {
       // Set the position property of the fixed element to absolute
       fixedElement.style.position = 'absolute';
-      fixedElement.style.marginTop = '116vh';
+      fixedElement.style.marginTop = '118vh';
     }
   });
 }

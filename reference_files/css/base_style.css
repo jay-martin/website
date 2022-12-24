@@ -180,6 +180,44 @@ img.top_social_icons {
   font-family: "Computer Modern Classical Serif Italic";
   line-height: 1.5em;
 }
+/***********************Blog promotion ********************************************************************/
+img.blog_promotion {
+  position: absolute;
+  width: 17.5%;
+  right: 25px;
+  margin-top: 119vh;
+}
+/*****************Share buttons*************************************/
+.share_buttons_container {
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 118vh;
+}
+a.share_button {
+  position: relative;
+  font-size: 90%;
+  text-decoration: none;
+  padding: 0;
+  color: black;
+}
+.share_button_image {
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+}
+.share_button_text {
+  position: absolute;
+  display: inline-block;
+  margin-left: 25px;
+  bottom: 1.5px;
+  padding: 0;
+  line-height: 1em;
+
+  color: #858585;
+}
+.share_button_text:hover {
+  text-decoration: underline;
+}
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
 .other_pages {
@@ -226,38 +264,6 @@ img.top_social_icons {
   -moz-transition: height .5s ease;
 }
 .programs_container:hover .programs_title{
-  text-decoration: underline;
-}
-/*****************Share buttons*************************************/
-.share_buttons_container {
-  position: absolute;
-  margin-left: 30px;
-  margin-top: 116vh;
-}
-a.share_button {
-  position: relative;
-  font-size: 90%;
-  text-decoration: none;
-  padding: 0;
-  color: black;
-}
-.share_button_image {
-  position: absolute;
-  margin: 0;
-  bottom: 0;
-}
-.share_button_text {
-  position: absolute;
-  display: inline-block;
-  margin-left: 25px;
-  bottom: 1.5px;
-  padding: 0;
-  line-height: 1em;
-
-  color: #858585;
-}
-
-.share_button_text:hover {
   text-decoration: underline;
 }
 /*****************Chart container (top center)*************************************/
