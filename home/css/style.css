@@ -5,6 +5,7 @@ body {
   line-height: 2em;
   margin-top: 0px;
   padding-top: 0px;
+  font-family: 'Latin Modern Sans';
 }
 h1 {
   font-family: 'Zen Antique Soft', serif;
@@ -158,5 +159,57 @@ a {
   margin-top: 15px;
   margin-left: 5px;
   margin-right: 10px;
+}
+/*******Page Bottom*******************************************************************************/
+section.page_bottom {
+  position: relative;
+  border-top: solid;
+  border-color: #bdbdbd;
+  color: #858585;
+  font-size: 80%;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 75px;
+  line-height: 1.5em;
+}
+#bottom_logo, #bottom_name {
+  font-family: 'Zen Antique Soft', serif;
+}
+#bottom_logo {
+  font-size: 120%;
+}
+#bottom_socials {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+a.bottom_social_links {
+  display: inline-block;
+  margin-right: 5px;
+}
+a.cc_links {
+  display: inline-block;
+}
+#cc_container {
+  position: relative;
+  margin-bottom: 60px;
+  margin-top: 5px;
+}
+#cc_logos {
+  position: absolute;
+  margin-top: 10px;
+  text-decoration: none;
+}
+#cc_description {
+  position: absolute;
+  margin-top: 4px;
+  line-height: 1.2em;
+  margin-left: 50px;
+}
+#cc_text_link {
+  display: inline-block;
+  text-decoration: underline;
+  color: #858585;
 }
 
