@@ -301,6 +301,10 @@
     padding-left: 20px;
     margin-left: 15px;
   }
+  /*********Page Bottom************/
+  section.page_bottom {
+    padding-bottom: 80px;
+  }
 }
 
 /*********************************************************************************************
@@ -411,6 +415,10 @@
   }
   .page_description {
     width: 65%;
+  }
+  /*********Page Bottom************/
+  section.page_bottom {
+    padding-bottom: 60px;
   }
 }
 

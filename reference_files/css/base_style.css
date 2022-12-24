@@ -137,6 +137,7 @@ section.page_bottom {
   margin-right: 20px;
   margin-bottom: 20px;
   margin-top: 75px;
+  padding-bottom: 40px;
   line-height: 1.5em;
 }
 /***********************Top elements********************************************************************/
@@ -600,7 +601,6 @@ a.bottom_social_links {
 }
 #cc_container {
   position: relative;
-  margin-bottom: 60px;
   margin-top: 5px;
 }
 #cc_logos {
