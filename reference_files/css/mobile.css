@@ -89,6 +89,18 @@
     margin-left: 15px;
     width: 80%;
   }
+  #page_title {
+    font-size: 180%;
+  }
+  .name, .page_description {
+    font-size: 120%;
+  }
+  img.top_social_icons {
+    height: 15px;
+  }
+  #top_substack_loco {
+    margin-left: 5px;
+  }
   .page_description {
     font-size: 120%;
   }
@@ -305,6 +317,9 @@
   section.page_bottom {
     padding-bottom: 80px;
   }
+  img.bottom_social_logos {
+    margin-left: 7.5px;
+  }
 }
 
 /*********************************************************************************************
@@ -419,6 +434,9 @@
   /*********Page Bottom************/
   section.page_bottom {
     padding-bottom: 60px;
+  }
+  img.bottom_social_logos {
+    height: 20px;
   }
 }
 

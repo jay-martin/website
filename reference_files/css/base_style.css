@@ -164,7 +164,7 @@ section.page_bottom {
 .name {
   font-family: 'Zen Antique Soft', serif;
   line-height: 2em;
-  font-size: 85%;
+  font-size: 100%;
   margin-bottom: 5px;
   margin-top: 8px;
   text-decoration: none;
@@ -172,6 +172,9 @@ section.page_bottom {
 }
 a.my_socials {
   margin-left: 3px;
+}
+img.top_social_icons {
+  height: 12.5px;
 }
 .page_description {
   font-family: "Computer Modern Classical Serif Italic";
@@ -594,6 +597,10 @@ ul.references_list, ol.notes_list {
   position: absolute;
   right: 0;
   top: 5px;
+}
+img.bottom_social_logos {
+  height: 17.5px;
+
 }
 a.bottom_social_links {
   display: inline-block;
