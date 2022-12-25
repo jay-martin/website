@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Zen+Antique+Soft&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap');
 body {
   margin-left: auto;
   margin-right: auto;
@@ -9,14 +9,11 @@ body {
 }
 h1 {
   font-family: 'Zen Antique Soft', serif;
-  font-size: 250%;
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 0px;
-  padding-top: 25px;
+  font-weight: 800;
 }
 h2 {
   font-family: 'Zen Antique Soft', serif;
+  font-weight: 400;
   line-height: 1em;
   margin-top: 0px;
   text-align: center;
@@ -32,6 +29,29 @@ a {
   color: black;
   display: block;
 }
+.next_section {
+  margin-top: 15px;
+}
+img.blog_promotoe_horizontal {
+  margin-top: 10px;
+  width: 100%;
+}
+#Characteristics {
+  margin-top: 5px;
+}
+
+/***************Title Section****************************************************************************/
+section.top {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+#page_title {
+  font-size: 300%;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-top: 0px;
+}
 .name {
   font-family: 'Zen Antique Soft', serif;
   text-align: center;
@@ -39,23 +59,52 @@ a {
   font-size: 120%;
   margin-bottom: 10px;
 }
-/********************************************************************************************************/
-/* Media query for mobile 800px: */
-/********************************************************************************************************/
-@media screen and (max-width: 800px) {
-  body {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-    font-size: 75%;
-  }
-  .navbar-desktop {
-    display: none;
-  }
-  .left_side{
-    width: 0px;
-  }
-  .right_side{
-    width: 0px;
-  }
+a.name_twitter_link {
+  display: inline-block;
+}
+/***************Top Bar**********************************************************************************/
+.horizontal_line, .horizontal_line_top {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid;
+  border-width: .5px;
+  margin-bottom: 2px;
+}
+.horizontal_line_top {
+  border-color: #cfcfcf;
+}
+.top_bar {
+  font-family: 'Zen Antique Soft', serif;
+  font-size: 80%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+th {
+  width: 25%;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1.5em;
+}
+.top_bar_dropdown {
+  font-family: 'Zen Antique Soft', serif;
+  font-weight: 400;
+  display: inline-block;
+  margin-right: 16%;
+}
+/**Social Links**/
+.social_links_container {
+  float: right;
+  margin-top: 2.5px;
+}
+a.social_link {
+  display: inline-block;
+  margin-left: 10px;
+}
+img.top_social_icons {
+  height: 12.5px;
 }
 /********************************************************************************************************/
 /* Page boxes */
@@ -143,6 +192,7 @@ a {
   padding-top: 0px;
   padding-bottom: 10px;
   text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 .box_description {
   font-family: "Computer Modern Classical Serif Italic";
