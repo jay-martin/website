@@ -109,13 +109,6 @@
   .page_description {
     font-size: 120%;
   }
-  /* Use color icons */
-  #twitter_black, #substack_black {
-    display: none;
-  }
-  #twitter_blue, #substack_orange {
-    display: inline-block;
-  }
   /*******Navbar************/
   .mobile_navbar {
     display: block;
@@ -208,10 +201,45 @@
     font-size: 130%;
     margin-bottom: 16px;
   }
-  .twitter_dropdown {
-    text-align: center;
-    margin-top: 16px;
-    width: 100%;
+  .mobile_dropdown_socials_left, .mobile_dropdown_socials_right {
+    display: inline-block;
+    margin-left: 2.5%;
+    width: 44%;
+  }
+  .mobile_dropdown_socials_text {
+    font-size: 110%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 7.5px;
+  }
+  a.mobile_dropdown_link {
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+  img.mobile_dropdown_icon {
+    height: 27.5px;
+    margin-left: 0px;
+    margin-top: 1px;
+  }
+  #mobile_dropdown_twitter_share_icon, #mobile_dropdown_twitter_follow_icon {
+    margin-left: 5px;
+  }
+  .mobile_dropdown_blog_promote {
+    margin-left: 2.5%;
+  }
+  img.mobile_dropdown_blog_promote_image {
+    height: 40px;
+    margin-top: 1px;
+  }
+  .mobile_dropdown_horizontal_line {
+    height: 0;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-width: 1px;
+    border-color: #bdbdbd;
+    margin-bottom: 10px;
   }
   /* disable scroll */
   .stop-scrolling {
@@ -371,12 +399,26 @@
     font-size: 150%;
     margin-top: 25px;
   }
-  .twitter_dropdown {
-    text-align: left;
-    margin-top: 25px;
+  .mobile_dropdown_socials_left {
     margin-left: 5%;
   }
+  .mobile_dropdown_socials_text {
+    font-size: 150%;
+  }
+  img.mobile_dropdown_icon {
+    height: 35px;
+    margin-top: 10px;
+  }
+  .mobile_dropdown_blog_promote {
+    margin-left: 5%;
+    margin-top: 10px;
+  }
+  img.mobile_dropdown_blog_promote_image {
+    height: 50px;
+    margin-top: 10px;
+  }
   /****Dropdown animations*/
+  /* 
   .reveal_dropdown {
     animation: reveal 1s ease, maintain_position_down 1s ease;
     animation-fill-mode: forwards;
@@ -387,10 +429,10 @@
   }
   @keyframes reveal {
     0% { height: 0 }
-    100% { height: 60vh }
+    100% { height: 80vh }
   }
   @keyframes collapse {
-    0% { height: 60vh }
+    0% { height: 80vh }
     100% { height: 0 }
   }
 
@@ -400,14 +442,14 @@
   }
   @keyframes push_down {
     from { margin-top: 0 }
-    to { margin-top: 60vh }
+    to { margin-top: 80vh }
   }
   .push_up_page {
     animation: push_up 1s ease;
     animation-fill-mode: forwards;
   }
   @keyframes push_up {
-    from { margin-top: 60vh }
+    from { margin-top: 80vh }
     to { margin-top: 0vh }
   }
 
@@ -417,16 +459,17 @@
   }
   @keyframes maintain_position_down {
     from { margin-top: 0 }
-    to { margin-top: -60vh }
+    to { margin-top: -80vh }
   }
   .maintain_navbar_position_up {
     animation: maintain_position_up 1s ease;
     animation-fill-mode: forwards;
   }
   @keyframes maintain_position_up {
-    from { margin-top: -60vh }
+    from { margin-top: -80vh }
     to { margin-top: 0vh }
   }
+  */
   /***** Title *******/
   .title_container {
     padding-top: 80px;
