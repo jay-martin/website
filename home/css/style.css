@@ -243,6 +243,9 @@ a.bottom_social_links {
   display: inline-block;
   margin-right: 5px;
 }
+#twitter_bottom_button_blue_icon, #substack_bottom_button_blue_icon {
+  display: none;
+}
 a.cc_links {
   display: inline-block;
 }

@@ -67,9 +67,15 @@
     margin-right: auto;
   }
 
-  /*******Hide blog prome & share buttons*****/
+  /*******Hide blog promo & share buttons, show mobile version*****/
   img.blog_promotion, .share_buttons_container {
     display: none;
+  }
+  #blog_promote_mobile_link {
+    display: block;
+  }
+  .blog_promote_mobile {
+    width: 100%;
   }
   /*******Title Adjustments*****/
   .title_container {
@@ -102,6 +108,13 @@
   }
   .page_description {
     font-size: 120%;
+  }
+  /* Use color icons */
+  #twitter_black, #substack_black {
+    display: none;
+  }
+  #twitter_blue, #substack_orange {
+    display: inline-block;
   }
   /*******Navbar************/
   .mobile_navbar {
@@ -429,6 +442,17 @@
   }
   .page_description {
     width: 65%;
+  }
+  /*********Blog Promo*************/
+  #blog_promote_mobile_link {
+    display: none;
+  }
+  #blog_promote_horizontal_link {
+    display: block;
+  }
+  img.blog_promote_horizontal {
+    margin-top: 10px;
+    width: 100%;
   }
   /*********Page Bottom************/
   section.page_bottom {

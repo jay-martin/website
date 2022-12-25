@@ -33,4 +33,9 @@
 	margin-bottom: 10px;
 }
 
+/***************Infobox adjustments***********************************************************************/
+.infobox_left, .infobox_right {
+	border-radius: 10px;
+}
+
 }
