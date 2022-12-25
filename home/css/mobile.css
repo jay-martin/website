@@ -10,7 +10,7 @@
 	width: 100%;
 }
 /***************Hide Elements*****************************************************************************/
-.blog_promotoe_horizontal, #blog_promotoe_horizontal_link {
+.blog_promotoe_horizontal, #blog_promote_horizontal_link {
 	display: none;
 }
 /***************Page Box Styling**************************************************************************/
@@ -19,6 +19,18 @@
 }
 .box_level {
 	display: block;
+}
+
+/***************Mobile Blog Promotion*********************************************************************/
+.blog_promote_mobile, #blog_promote_mobile_link {
+  display: block;
+}
+.blog_promote_mobile {
+  width: 100%;
+}
+#blog_promote_mobile_link {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 }

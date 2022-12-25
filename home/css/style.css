@@ -32,12 +32,17 @@ a {
 .next_section {
   margin-top: 15px;
 }
-img.blog_promotoe_horizontal {
+img.blog_promote_horizontal {
   margin-top: 10px;
   width: 100%;
 }
 #Characteristics {
   margin-top: 5px;
+}
+
+/***************Hide Mobile Elements**********************************************************************/
+.blog_promote_mobile, #blog_promote_mobile_link {
+  display: none;
 }
 
 /***************Title Section****************************************************************************/
