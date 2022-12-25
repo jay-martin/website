@@ -1,11 +1,12 @@
 /******************************************************************************************
  * This file contains the functions that 
  * (1) Adjust the position of the share buttons
- * (2) Expands the mobile dropdown, and
- * (3) Open and close highlights
+ * (2) Adjust the color of the Twitter & Substack icons by author name
+ * (3) Expands the mobile dropdown, and
+ * (4) Open and close highlights
  * ****************************************************************************************/
 
-/********************************Share Buttons*******************************((**/
+/********************************Share Buttons**********************************/
 var fixedElement = document.querySelector('.share_buttons_container');
 var displayHeight = $(window).innerHeight();
 var scrollThreshold = 1.075 * displayHeight;
@@ -29,6 +30,16 @@ if(displayWidth > 900){
       fixedElement.style.marginTop = '118vh';
     }
   });
+}
+
+/********************************Twitter & Substack Icons**********************************/
+function switch_icon(id_current, id_new){
+	document.getElementById(id_current).style.display = 'none';
+	document.getElementById(id_new).style.display = 'inline-block';
+}
+
+function text_color(id, color){
+	document.getElementById(id).style.color = color;
 }
 
 /********************************Mobile Dropdown*********************************/

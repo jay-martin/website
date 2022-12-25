@@ -176,6 +176,9 @@ a.my_socials {
 img.top_social_icons {
   height: 12.5px;
 }
+#twitter_blue, #substack_orange {
+  display: none;
+}
 .page_description {
   font-family: "Computer Modern Classical Serif Italic";
   line-height: 1.5em;
@@ -183,8 +186,8 @@ img.top_social_icons {
 /***********************Blog promotion ********************************************************************/
 img.blog_promotion {
   position: absolute;
-  width: 17.5%;
-  right: 25px;
+  width: 16%;
+  right: 35px;
   margin-top: 119vh;
 }
 /*****************Share buttons*************************************/
@@ -193,7 +196,7 @@ img.blog_promotion {
   margin-left: 30px;
   margin-top: 118vh;
 }
-a.share_button {
+.share_button {
   position: relative;
   font-size: 90%;
   text-decoration: none;
@@ -204,6 +207,9 @@ a.share_button {
   position: absolute;
   margin: 0;
   bottom: 0;
+}
+#twitter_share_button_blue_icon, #facebook_share_button_blue_icon, #reddit_share_button_orange_icon {
+  display: none;
 }
 .share_button_text {
   position: absolute;
@@ -217,6 +223,11 @@ a.share_button {
 }
 .share_button_text:hover {
   text-decoration: underline;
+}
+#section_dropdown {
+  padding-top: 0;
+  margin-top: 0;
+  height: 27.5px;
 }
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
