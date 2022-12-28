@@ -5,12 +5,21 @@
 	font-size: 250%;
 	line-height: 1em;
 }
+.bottom_social_logos {
+	height: 12.5px;
+}
 /***************Top Bar**********************************************************************************/
 .top_bar {
 	width: 100%;
 }
+.mobile_dropdown {
+	display: block;
+}
+#mobile_top_bar {
+	display: table;
+}
 /***************Hide Elements*****************************************************************************/
-.blog_promotoe_horizontal, #blog_promote_horizontal_link {
+#desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link {
 	display: none;
 }
 /***************Page Box Styling**************************************************************************/

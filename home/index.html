@@ -37,86 +37,181 @@
 
   <h1 id="page_title">The Welfare of Families</h1>
   <div class="name">
-    A Project by <a class="name_twitter_link" href="https://twitter.com/jaydavidmartin1" target="_blank">Jay Martin</a> </br>
+    A Project by Jay Martin
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="switch_icon('twitter_bottom_button_grey_icon', 'twitter_bottom_button_blue_icon');" onmouseleave="switch_icon('twitter_bottom_button_blue_icon', 'twitter_bottom_button_grey_icon');">
+      <img class="bottom_social_logos" id="twitter_bottom_button_grey_icon" height="15px" src='../reference_files/images/social_logos/Twitter/Logo black.svg' >
+      <img class="bottom_social_logos" id="twitter_bottom_button_blue_icon" height="15px" src='../reference_files/images/social_logos/Twitter/Logo blue.svg' >
+    </a>
+
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="switch_icon('substack_bottom_button_grey_icon', 'substack_bottom_button_blue_icon');" onmouseleave="switch_icon('substack_bottom_button_blue_icon', 'substack_bottom_button_grey_icon');">
+      <img class="bottom_social_logos" id="substack_bottom_button_grey_icon" height="15px" src='../reference_files/images/social_logos/Substack/substack.svg' >
+      <img class="bottom_social_logos" id="substack_bottom_button_blue_icon" height="15px" src='../reference_files/images/social_logos/Substack/substack-orange.svg' >
+    </a>
+    </br>
+    <!-- A Project by <a class="name_twitter_link" href="https://twitter.com/jaydavidmartin1" target="_blank">Jay Martin</a> </br> -->
   </div>
 
   <div class="horizontal_line_top"></div>
 
-  <table class="top_bar">
+  <table class="top_bar" id="desktop_top_bar">
     <tr>
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_overview')">Overview</th>
-
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
-
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_problems')">Problems</th>
-
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_programs')">Programs</th>
+    </tr>
+  </table>
+
+  <table class="top_bar" id="mobile_top_bar">
+    <tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_overview')">Overview</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_bills')">Bills</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_problems')">Problems</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_programs')">Programs</th>
     </tr>
   </table>
 
   <div class="horizontal_line"></div>
 
-    <!-- Overview -->
+    <div class="desktop_dropdown">
+      <!-- Overview -->
       <div class="table_container" id="table_container_overview">
         <table class="dropdown_menu" id="overview_dropdown" >
           <tr>
             <th class="dropdown_menu_column_top">Why We Need the Welfare State</th>
-            <th class="dropdown_menu_column_top">All That's Wrong With the Current System</th>
+            <th class="dropdown_menu_column_top">All the Problems Fit to Print</th>
             <th class="dropdown_menu_column_top">Fixing Family Benefits</th>
           </tr>
-      </table>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="table_container_bills">
+        <table class="dropdown_menu" id="bills_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top">Family Security Act</th>
+            <th class="dropdown_menu_column_top">End Child Poverty Act</th>
+            <th class="dropdown_menu_column_top"></th>
+          </tr>
+        </table>
+     </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="table_container_problems">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
+            <th class="dropdown_menu_column_top">The Exclusion of Poor Families</th>
+            <th class="dropdown_menu_column_top">Marriage Penalties</th>
+          </tr>
+          <tr>
+            <th class=>Marginal Tax Rates</th>
+            <th class=>Asinine Asset Tests</th>
+            <th class=>Administrative Burdens</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">Leaving Behind the Territories</th>
+            <th class="dropdown_menu_column_bottom">Promoting Racial Justice, Imperfectly</th>
+          </tr>
+        </table>
+      </div>
+
+     <!-- Programs -->
+      <div class="table_container" id="table_container_programs">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top">The Child Tax Credit</th>
+            <th class="dropdown_menu_column_top">The Earned Income Tax Credit</th>
+            <th class="dropdown_menu_column_top">Head of Household</th>
+          </tr>
+          <tr>
+            <th class=>Child and Dependent Care Credit</th>
+            <th class=>SNAP (Food Stamps)</th>
+            <th class=>TANF</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">WIC</th>
+            <th class="dropdown_menu_column_bottom">Medicaid & CHIP</th>
+          </tr>
+        </table>
+      </div>
+    </div> <!-- Desktop dropdown -->
+
+    <div class="mobile_dropdown">
+
+      <!-- Overview -->
+      <div class="table_container" id="mobile_table_container_overview">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">The Welfare State</th>
+            <th class="dropdown_menu_column_top">Problems Overview</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">Fixing Family Benefits</th>
+            <th class="dropdown_menu_column_bottom"></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="mobile_table_container_bills">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">Family Security Act</th>
+            <th class="dropdown_menu_column_top">End Child Poverty Act</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">SSI Restoration Act</th>
+            <th class="dropdown_menu_column_bottom"></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="mobile_table_container_problems">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
+            <th class="dropdown_menu_column_top">Exclusion of Poor Families</th>
+          </tr>
+          <tr>
+            <th>Marriage Penalties</th>
+            <th>Marginal Tax Rates</th>
+          </tr>
+          <tr>
+            <th>Asinine Asset Tests</th>
+            <th>Administrative Burdens</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">The Territories</th>
+            <th class="dropdown_menu_column_bottom">Racial Justice</th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Programs -->
+      <div class="table_container" id="mobile_table_container_programs">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">Child Tax Credit</th>
+            <th class="dropdown_menu_column_top">Earned Income Tax Credit</th>
+          </tr>
+          <tr>
+            <th>Head of Household</th>
+            <th>CDCC</th>
+          </tr>
+          <tr>
+            <th>SNAP (Food Stamps)</th>
+            <th>TANF</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">WIC</th>
+            <th class="dropdown_menu_column_bottom">Medicaid & CHIP</th>
+          </tr>
+        </table>
+      </div>
+
     </div>
-
-    <!-- Bills -->
-    <div class="table_container" id="table_container_bills">
-      <table class="dropdown_menu" id="bills_dropdown" >
-        <tr>
-          <th class="dropdown_menu_column_top">Family Security Act</th>
-          <th class="dropdown_menu_column_top">End Child Poverty Act</th>
-          <th class="dropdown_menu_column_top"></th>
-        </tr>
-    </table>
-  </div>
-
-    <!-- Problems -->
-    <div class="table_container" id="table_container_problems">
-      <table class="dropdown_menu" id="problems_dropdown" >
-        <tr>
-          <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
-          <th class="dropdown_menu_column_top">The Exclusion of Poor Families</th>
-          <th class="dropdown_menu_column_top">Marriage Penalties</th>
-        </tr>
-        <tr>
-          <th class=>Marginal Tax Rates</th>
-          <th class=>Asinine Asset Tests</th>
-          <th class=>Administrative Burdens</th>
-        </tr>
-        <tr>
-          <th class="dropdown_menu_column_bottom">Leaving Behind the Territories</th>
-          <th class="dropdown_menu_column_bottom">Promoting Racial Justice, Imperfectly</th>
-        </tr>
-    </table>
-  </div>
-
-   <!-- Programs -->
-    <div class="table_container" id="table_container_programs">
-      <table class="dropdown_menu" id="problems_dropdown" >
-        <tr>
-          <th class="dropdown_menu_column_top">The Child Tax Credit</th>
-          <th class="dropdown_menu_column_top">The Earned Income Tax Credit</th>
-          <th class="dropdown_menu_column_top">Head of Household</th>
-        </tr>
-        <tr>
-          <th class=>Child and Dependent Care Credit</th>
-          <th class=>SNAP (Food Stamps)</th>
-          <th class=>Temporary Assistance for Needy Families</th>
-        </tr>
-        <tr>
-          <th class="dropdown_menu_column_bottom">WIC</th>
-          <th class="dropdown_menu_column_bottom">Medicaid & CHIP</th>
-        </tr>
-    </table>
-  </div>
 
   <div class="horizontal_line"></div>
 </section>
@@ -355,12 +450,12 @@
 <!--Bottom section---------------------------------------------------------------------------------------------->
 <section class="page_bottom">
   <div id="bottom_socials">
-    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" onmouseenter="switch_icon('twitter_bottom_button_grey_icon', 'twitter_bottom_button_blue_icon');" onmouseleave="switch_icon('twitter_bottom_button_blue_icon', 'twitter_bottom_button_grey_icon');">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="switch_icon('twitter_bottom_button_grey_icon', 'twitter_bottom_button_blue_icon');" onmouseleave="switch_icon('twitter_bottom_button_blue_icon', 'twitter_bottom_button_grey_icon');">
       <img class="bottom_social_logos" id="twitter_bottom_button_grey_icon" height="15px" src='../reference_files/images/social_logos/Twitter/Logo grey.svg' >
       <img class="bottom_social_logos" id="twitter_bottom_button_blue_icon" height="15px" src='../reference_files/images/social_logos/Twitter/Logo blue.svg' >
     </a>
 
-    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" onmouseenter="switch_icon('substack_bottom_button_grey_icon', 'substack_bottom_button_blue_icon');" onmouseleave="switch_icon('substack_bottom_button_blue_icon', 'substack_bottom_button_grey_icon');">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="switch_icon('substack_bottom_button_grey_icon', 'substack_bottom_button_blue_icon');" onmouseleave="switch_icon('substack_bottom_button_blue_icon', 'substack_bottom_button_grey_icon');">
       <img class="bottom_social_logos" id="substack_bottom_button_grey_icon" height="15px" src='../reference_files/images/social_logos/Substack/substack-grey.svg' >
       <img class="bottom_social_logos" id="substack_bottom_button_blue_icon" height="15px" src='../reference_files/images/social_logos/Substack/substack-orange.svg' >
     </a>

@@ -81,16 +81,29 @@ function switch_dropdown(newID, oldID){
 
 // Opens a dropdown menu
 function reveal_dropdown(revealID){
+	deviceWidth = window.innerWidth;
+
 	clearTimeout(closeTimeout); // End timeout for display none if the user clicks to reveal dropdown while the dropdown is closing
 	closeTimeout = null;
 	$(revealID).css('display', 'block');
+
 	// For some reason, the animation only moves smoothly if contained in a setTimeout
 	setTimeout(function () {
-		if(revealID === '#table_container_overview' || revealID === '#table_container_bills'){
-			$('.table_container').css('height', '50px');
+		if(deviceWidth >= 700){
+			if(revealID === '#table_container_overview' || revealID === '#table_container_bills'){
+				$('.table_container').css('height', '50px');
+			}
+			else{
+				$('.table_container').css('height', '117.5px');
+			}
 		}
 		else{
-			$('.table_container').css('height', '117.5px');
+			if(revealID === '#mobile_table_container_overview' || revealID === '#mobile_table_container_bills'){
+				$('.table_container').css('height', '85px');
+			}
+			else{
+				$('.table_container').css('height', '150px');
+			}
 		}
 	}, 0);
 }

@@ -41,7 +41,7 @@ img.blog_promote_horizontal {
 }
 
 /***************Hide Mobile Elements**********************************************************************/
-.blog_promote_mobile, #blog_promote_mobile_link {
+#mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown {
   display: none;
 }
 
