@@ -93,6 +93,13 @@ th {
   padding-bottom: 0;
   line-height: 1.5em;
 }
+tr {
+
+}
+th.top_bar_item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .top_bar_dropdown {
   font-family: 'Zen Antique Soft', serif;
   font-weight: 400;
@@ -111,6 +118,32 @@ a.social_link {
 img.top_social_icons {
   height: 12.5px;
 }
+/***Dropdown items********/
+.table_container {
+  height: 0px;
+  overflow: hidden;
+  transition: height 1s;
+  display: none;
+}
+table.dropdown_menu {
+  font-family: 'Zen Antique Soft', serif;
+  font-size: 12px;
+  width: 90%;
+  margin-left: 5%;
+  border-spacing: 15px;
+}
+th.dropdown_menu_column_top:hover, th.dropdown_menu_column_bottom:hover {
+  cursor: pointer;
+  text-decoration: underline;
+} 
+th.dropdown_menu_column_top {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+th.dropdown_menu_column_bottom {
+  margin-bottom: 10px;
+}
+
 /********************************************************************************************************/
 /* Page boxes */
 /********************************************************************************************************/

@@ -7,6 +7,9 @@
   <link href="./css/mobile.css" type="text/css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/favicon.png">
 
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
   <!-- FontAwesome -->
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -41,15 +44,80 @@
 
   <table class="top_bar">
     <tr>
-      <th>Featured</th>
-      <th>Problems</th>
-      <th>Programs</th>
-      <th>Socials</th>
-    </tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_overview')">Overview</th>
 
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
+
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_problems')">Problems</th>
+
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_programs')">Programs</th>
+    </tr>
   </table>
 
   <div class="horizontal_line"></div>
+
+    <!-- Overview -->
+      <div class="table_container" id="table_container_overview">
+        <table class="dropdown_menu" id="overview_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top">Why We Need the Welfare State</th>
+            <th class="dropdown_menu_column_top">All That's Wrong With the Current System</th>
+            <th class="dropdown_menu_column_top">Fixing Family Benefits</th>
+          </tr>
+      </table>
+    </div>
+
+    <!-- Bills -->
+    <div class="table_container" id="table_container_bills">
+      <table class="dropdown_menu" id="bills_dropdown" >
+        <tr>
+          <th class="dropdown_menu_column_top">Family Security Act</th>
+          <th class="dropdown_menu_column_top">End Child Poverty Act</th>
+          <th class="dropdown_menu_column_top"></th>
+        </tr>
+    </table>
+  </div>
+
+    <!-- Problems -->
+    <div class="table_container" id="table_container_problems">
+      <table class="dropdown_menu" id="problems_dropdown" >
+        <tr>
+          <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
+          <th class="dropdown_menu_column_top">The Exclusion of Poor Families</th>
+          <th class="dropdown_menu_column_top">Marriage Penalties</th>
+        </tr>
+        <tr>
+          <th class=>Marginal Tax Rates</th>
+          <th class=>Asinine Asset Tests</th>
+          <th class=>Administrative Burdens</th>
+        </tr>
+        <tr>
+          <th class="dropdown_menu_column_bottom">Leaving Behind the Territories</th>
+          <th class="dropdown_menu_column_bottom">Promoting Racial Justice, Imperfectly</th>
+        </tr>
+    </table>
+  </div>
+
+   <!-- Programs -->
+    <div class="table_container" id="table_container_programs">
+      <table class="dropdown_menu" id="problems_dropdown" >
+        <tr>
+          <th class="dropdown_menu_column_top">The Child Tax Credit</th>
+          <th class="dropdown_menu_column_top">The Earned Income Tax Credit</th>
+          <th class="dropdown_menu_column_top">Head of Household</th>
+        </tr>
+        <tr>
+          <th class=>Child and Dependent Care Credit</th>
+          <th class=>SNAP (Food Stamps)</th>
+          <th class=>Temporary Assistance for Needy Families</th>
+        </tr>
+        <tr>
+          <th class="dropdown_menu_column_bottom">WIC</th>
+          <th class="dropdown_menu_column_bottom">Medicaid & CHIP</th>
+        </tr>
+    </table>
+  </div>
+
   <div class="horizontal_line"></div>
 </section>
 
@@ -77,6 +145,10 @@
     </div>
   </div>
 
+<br>
+
+<!--Bills--------------------------------------------------------------------------------------------------------------->
+<h2>Bill Analysis</h2>
   <div class="box_level">
     <div class='infobox_left'>
       <a href="../familysecurityact/index.html">
@@ -121,8 +193,8 @@
       </div>
     </div>
     <div class='infobox_right'>
-      <a href="../poor-exclusion/index.html">
-        <div class="chart_container" id="poor_families_chart" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()"></div>
+      <a href="../poor-exclusion/index.html" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()">
+        <div class="chart_container" id="poor_families_chart" ></div>
         <div class='box_words'>
           <div class="box_title">The Exclusion of Poor Families</div>
           <div class="box_description"><em>Poor families are deliberately excluded from many family benefits</em></div>

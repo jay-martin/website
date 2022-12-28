@@ -267,7 +267,7 @@ function mp5(){
     });
 
     mpStage++;
-    timeout = setTimeout(mp6, 1000);
+    timeout = setTimeout(mp6, 2000);
 }
 
 function mp6(){
