@@ -135,7 +135,7 @@ table.dropdown_menu {
   margin-left: 5%;
   border-spacing: 15px;
 }
-th.dropdown_menu_column_top:hover, th.dropdown_menu_column_bottom:hover {
+th.dropdown_menu_column_top:hover, th.dropdown_menu_column_bottom:hover, th.dropdown_menu_column_middle:hover {
   cursor: pointer;
   text-decoration: underline;
 } 
