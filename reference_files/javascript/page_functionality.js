@@ -1,13 +1,13 @@
 /******************************************************************************************
  * This file contains the functions that 
- * (1) Adjust the position of the share buttons
+ * (1) Adjust the position of the left sidebar
  * (2) Adjust the color of the Twitter & Substack icons by author name
  * (3) Expands the mobile dropdown, and
  * (4) Open and close highlights
  * ****************************************************************************************/
 
-/********************************Share Buttons**********************************/
-var fixedElement = document.querySelector('.share_buttons_container');
+/********************************Left sidebare**********************************/
+var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();
 var scrollThreshold = 1.075 * displayHeight;
 var isExpanded = false;

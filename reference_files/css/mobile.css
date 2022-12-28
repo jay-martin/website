@@ -68,7 +68,7 @@
   }
 
   /*******Hide blog promo & share buttons, show mobile version*****/
-  img.blog_promotion, .share_buttons_container {
+  img.blog_promotion, .left_side_bar {
     display: none;
   }
   #blog_promote_mobile_link {

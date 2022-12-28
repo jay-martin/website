@@ -31,6 +31,9 @@ h3 {
 h4 {
   margin-bottom: 0px;
 }
+html {
+  scroll-behavior: smooth;
+}
 p, ol, ul {
   font-family: 'Latin Modern Sans';
   line-height: 1.5em;
@@ -194,6 +197,45 @@ img.blog_promotion {
   margin-top: 119vh;
 }
 /*****************Share buttons*************************************/
+.left_side_bar {
+  position: absolute;
+  margin-left: 30px;
+  margin-top: 118vh;
+}
+.left_side_bar_title_text {
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
+  font-size: 14px;
+}
+.left_side_bar_horizontal_line {
+  border-top: solid;
+  height: 0px;
+}
+ul.left_side_bar_list {
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 400;
+  list-style-type: none;
+  font-size: 14px;
+  margin-top: 2.5px;
+  padding-left: 0px;
+}
+a.sidebar_links {
+  color: black;
+  text-decoration: none;
+}
+a.sidebar_links:hover {
+  text-decoration: underline;
+}
+.left_side_bar_social_icons_container {
+  margin-top: 2.5px;
+}
+#twitter_sidebar_blue_icon, #facebook_sidebar_blue_icon, #reddit_sidebar_orange_icon {
+  display: none;
+}
+img.left_side_bar_social_logos {
+  height: 17px;
+}
+/*
 .share_buttons_container {
   position: absolute;
   margin-left: 30px;
@@ -232,6 +274,7 @@ img.blog_promotion {
   margin-top: 0;
   height: 27.5px;
 }
+*/
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
 .other_pages {
