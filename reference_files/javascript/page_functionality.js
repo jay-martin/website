@@ -6,7 +6,7 @@
  * (4) Open and close highlights
  * ****************************************************************************************/
 
-/********************************Left sidebare**********************************/
+/******************************** Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();
 var scrollThreshold = 1.075 * displayHeight;
@@ -32,7 +32,7 @@ if(displayWidth > 900){
   });
 }
 
-/********************************Twitter & Substack Icons**********************************/
+/******************************** Twitter & Substack Icons **********************************/
 function switch_icon(id_current, id_new){
 	document.getElementById(id_current).style.display = 'none';
 	document.getElementById(id_new).style.display = 'inline-block';
@@ -42,7 +42,14 @@ function text_color(id, color){
 	document.getElementById(id).style.color = color;
 }
 
-/********************************Mobile Dropdown*********************************/
+/******************************** Mobile Dropdown *********************************/
+$(document).ready(function(){
+	$('#navigation_bar_button').click(function(){
+		$(this).toggleClass('open');
+		reveal_dropdown();
+	});
+});
+
 navbarClicked = false;
 function reveal_dropdown(){
   if(navbarClicked === false){
@@ -58,15 +65,11 @@ function reveal_dropdown(){
     
     $('body').removeClass('push_up_page');
     $('body').addClass('push_down_page');
-    
-    navbarClicked = true;
-
-    //switch menu icon to x icon
-    document.getElementById('open_icon').style.display = 'none';
-    document.getElementById('close_icon').style.display = 'inline-block';
 
     //disable scroll
-    //document.body.classList.add("stop-scrolling");
+    document.body.classList.add("stop-scrolling");
+
+    navbarClicked = true;
   }
   else{
     //document.getElementById('mobile_dropdown').style.display = 'none';
@@ -79,17 +82,13 @@ function reveal_dropdown(){
     $('body').removeClass('push_down_page');
     $('body').addClass('push_up_page');
 
-    navbarClicked = false;
-
-    //switch menu icon to x icon
-    document.getElementById('close_icon').style.display = 'none';
-    document.getElementById('open_icon').style.display = 'inline-block';
-
     //enable scroll
-    //document.body.classList.remove("stop-scrolling");
+    document.body.classList.remove("stop-scrolling");
+
+    navbarClicked = false;
   }
 }
-/***********************************Highlights***********************************/
+/*********************************** Highlights ***********************************/
 function show_explanation1(){
 	if(isMobile){
 		container = document.getElementById('highlights_container1_mobile');
