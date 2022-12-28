@@ -46,5 +46,27 @@
 .infobox_left, .infobox_right {
 	border-radius: 10px;
 }
+/***************Page bottom******************************************************************************/
+section.page_bottom {
+	padding-bottom: 80px;
+}
+img.bottom_social_logos {
+	margin-left: 7.5px;
+}
+
+}
+
+/*********************************************************************************************
+* Some adjustments for tablets
+*********************************************************************************************/
+/* Set title back to middle of screen*/
+@media screen and (min-width: 800px) and (max-width: 900px) {
+/*********Page Bottom************/
+section.page_bottom {
+	padding-bottom: 60px;
+}
+img.bottom_social_logos {
+	height: 20px;
+}
 
 }
