@@ -4,6 +4,7 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 2em;
   margin: 0;
+  /* background-color: #fff1dc; */
 }
 h1 {
   font-family: 'Zen Antique Soft', serif;
@@ -335,7 +336,7 @@ img.left_side_bar_social_logos {
 }
 .chart_wide {
   width: 140%;
-  margin-left: -20%;
+  margin-left: -10%;
   position: relative;
 }
 .wide_inputs {
