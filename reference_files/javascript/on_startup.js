@@ -39,8 +39,7 @@ function initialize_page(){
 		document.getElementById("programs").style.height = "0px";
 
 		for (var i = 0; i < highlights_heights.length; i++) {
-			num = i+1;
-			id = 'highlights_container' + num.toString();
+			id = 'highlights_container' + (i+1).toString();
 			highlights_heights[i] = window.getComputedStyle(document.getElementById(id)).height;
 			document.getElementById(id).style.height = "0px";
 		}
@@ -72,8 +71,7 @@ function initialize_mobile_page(){
 	setTimeout(function () {
 		/* calculate highlights heights, and then set to zero */
 		for (var i = 0; i < highlights_heights.length; i++) {
-			num = i+1;
-			id = 'highlights_container' + num.toString() + '_mobile';
+			id = 'mobile_highlights_container' + (i+1).toString();
 			highlights_heights_mobile[i] = window.getComputedStyle(document.getElementById(id)).height;
 			document.getElementById(id).style.height = "0px";
 		}
