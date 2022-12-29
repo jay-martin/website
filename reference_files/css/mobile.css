@@ -378,8 +378,6 @@
     height: 100%;
     margin: 0px;
     overflow: hidden;
-    -webkit-transition: height .5s ease;
-    -moz-transition: height .5s ease;
   }
 
   /*********Wide chart*********/

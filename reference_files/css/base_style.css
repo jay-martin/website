@@ -313,13 +313,15 @@ img.left_side_bar_social_logos {
   font-size: 7.5px;
 }
 .programs {
+  visibility: hidden; /* revealed after intialize_page() is finished */
   height: 100%;
   padding-left: 0px;
   margin-left: 0px;
   margin-top: 10px;
   overflow: hidden;
-  -webkit-transition: height .5s ease;
-  -moz-transition: height .5s ease;
+  /* transition is set by function initialize_page() to the below value
+  transition: height .5s ease; 
+  */
 }
 .programs_container:hover .programs_title{
   text-decoration: underline;
@@ -598,8 +600,9 @@ button.bottom_button{
   height: 100%;
   margin: 0px;
   overflow: hidden;
-  -webkit-transition: height .5s ease;
-  -moz-transition: height .5s ease;
+  /* transition is set by function initialize_page() to the below value
+  transition: height .5s ease; 
+  */
 }
 p.explanation {
   margin-top: 0px;
