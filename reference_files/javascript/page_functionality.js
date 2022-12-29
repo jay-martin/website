@@ -2,8 +2,10 @@
  * This file contains the functions that 
  * (1) Adjust the position of the left sidebar
  * (2) Adjust the color of the Twitter & Substack icons by author name
- * (3) Expands the mobile dropdown, and
- * (4) Open and close highlights
+ * (3) Expands the mobile dropdown,
+ * (4) Highlights a reference when an in-line citation from the notes section is clicked
+ * (5) Expands and collapses the list of programs in the page list
+ * (6) Open and close highlights
  * ****************************************************************************************/
 
 /******************************** Left sidebar **********************************/
@@ -88,6 +90,29 @@ function reveal_dropdown(){
     navbarClicked = false;
   }
 }
+
+/*************************** References Highlighting ******************************/
+//Adds a yellow highlight when a reference is selected
+function highlight(ref){
+	ref_items.forEach(ref_items => {
+	  ref_items.style.backgroundColor = 'white';
+	});
+	document.getElementById(ref).style.backgroundColor = 'yellow';
+}
+
+/**************************** Programs *******************************************/
+//Shows the list of programs
+function show_programs(){
+	container = document.getElementById('programs');
+	container.style.height = programsHeight;
+}
+
+//Hides the list of programs
+function hide_programs(){
+	container = document.getElementById('programs');
+	container.style.height = '0px';
+}
+
 /*********************************** Highlights ***********************************/
 function show_explanation1(){
 	if(isMobile){

@@ -527,7 +527,7 @@ ul.notes_list {
 /*****************Highlights (Top Right)*************************************/
 .highlights {
   font-family: 'Computer Modern Serif';
-  border-style: none;
+  border: none;
   border-width: 1.5px;
   border-color: #adadad;
   width: 95%;
@@ -544,6 +544,10 @@ ul.notes_list {
   font-weight: bold;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+/* Hidden during page initialization */
+#highlights_content, #programs {
+  visibility: hidden;
 }
 .loader_container {
   border: solid;

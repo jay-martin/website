@@ -361,6 +361,10 @@
     margin-left: 0px;
     margin-right: 0px;
   }
+  /* Hide during page initialization */
+  #highlights_content_mobile {
+    visibility: hidden;
+  }
   .highlights_title {
     font-size: 120%;
   }

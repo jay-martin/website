@@ -1,7 +1,6 @@
 /******************************************************************************************
- * This file contains the function that performs a number of calculations and css manipulations
- * needed to render the page. It also contains the function that opens and closes the
- * programs dropdown, and the function to highlight references
+ * This file contains the function that performs a number of calculations and CSS manipulations
+ * needed to render the page.
  * ****************************************************************************************/
 
 const ref_items = document.querySelectorAll('.ref_item');
@@ -33,9 +32,6 @@ else{
 }
 
 function initialize_page(){
-	//keep calculations a secret
-	document.getElementById("highlights_content").style.visibility = 'hidden';
-	document.getElementById("programs").style.visibility = 'hidden';
 	timer = 1000;
 	setTimeout(function () {
 		//calculate highlights heights, as well as list of programs height, and then set to zero
@@ -51,17 +47,20 @@ function initialize_page(){
 
 	}, timer);
 
-	//make highlights visible
+	//make highlights and programs visible
 	timer += 1500;
 	setTimeout(function () {
-		document.getElementById("highlights").style.border = 'solid';
-		document.getElementById("highlights").style.borderColor = '#adadad';
-		document.getElementById("highlights").style.borderWidth = '1.5px';
-		document.getElementById("highlights_title").style.border = 'none';
-		document.getElementById("highlights_title").style.borderBottom = 'solid';
-		document.getElementById("highlights_title").style.borderColor = '#adadad';
-		document.getElementById("highlights_title").style.borderWidth = '1.5px';
-		document.getElementById("loader_container").style.border = 'none';
+		$('#highlights').css({
+			'border'       : 'solid',
+			'border-color' : '#adadad',
+			'border-width' : '1.5px'
+		});
+		$('#highlights_title').css({
+			'border'        : 'none',
+			'border-bottom' : 'solid',
+			'border-color'  : '#adadad',
+			'border-width'  : '1.5px'
+		});
 		document.getElementById("loader_container").style.display = 'none';
 		document.getElementById("highlights_content").style.visibility = 'visible';
 		document.getElementById("programs").style.visibility = 'visible';
@@ -69,8 +68,6 @@ function initialize_page(){
 }
 
 function initialize_mobile_page(){
-	/* keep calculations a secret */
-	document.getElementById("highlights_content_mobile").style.visibility = 'hidden';
 	timer = 1000;
 	setTimeout(function () {
 		/* calculate highlights heights, and then set to zero */
@@ -86,36 +83,19 @@ function initialize_mobile_page(){
 	/* make highlights visible */
 	timer += 1500;
 	setTimeout(function () {
-		document.getElementById("highlights_mobile").style.border = 'solid';
-		document.getElementById("highlights_mobile").style.borderColor = '#adadad';
-		document.getElementById("highlights_mobile").style.borderWidth = '1.5px';
-		document.getElementById("highlights_title_mobile").style.border = 'none';
-		document.getElementById("highlights_title_mobile").style.borderBottom = 'solid';
-		document.getElementById("highlights_title_mobile").style.borderColor = '#adadad';
-		document.getElementById("highlights_title_mobile").style.borderWidth = '1.5px';
-		document.getElementById("loader_container_mobile").style.border = 'none';
+		$('#highlights_mobile').css({
+			'border'       : 'solid',
+			'border-color' : '#adadad',
+			'border-width' : '1.5px'
+		});
+		$('#highlights_title_mobile').css({
+			'border'        : 'none',
+			'border-bottom' : 'solid',
+			'border-color'  : '#adadad',
+			'border-width'  : '1.5px'
+		});
 		document.getElementById("loader_container_mobile").style.display = 'none';
 		document.getElementById("highlights_content_mobile").style.visibility = 'visible';
 	}, timer);
-}
-
-//Adds a yellow highlight when a reference is selected
-function highlight(ref){
-	ref_items.forEach(ref_items => {
-	  ref_items.style.backgroundColor = 'white';
-	});
-	document.getElementById(ref).style.backgroundColor = 'yellow';
-}
-
-//Shows the list of programs
-function show_programs(){
-	container = document.getElementById('programs');
-	container.style.height = programsHeight;
-}
-
-//Hides the list of programs
-function hide_programs(){
-	container = document.getElementById('programs');
-	container.style.height = '0px';
 }
 
