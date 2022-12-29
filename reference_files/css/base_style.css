@@ -426,8 +426,16 @@ input[type=submit].end_animation:disabled:hover {
   cursor: default;
 }
 /**********Power Users*************/
+.chart_attributes {
+  margin-top: 20px;
+  font-size: 90%;
+}
+/**********Power Users*************/
 .arbitray_income_container {
   display: none;
+}
+h3.power_users_header {
+  font-family: 'Latin Modern Sans';
 }
 input.arbitrary_income {
   width: 80px;
@@ -461,7 +469,11 @@ input.download_button:hover{
   background-color: #d1d1d1
 }
 /******Chart notes*************/
-.chart_notes {
+button.chart_notes_button {
+  font-size: 80%;
+  margin-top: 5px;
+}
+.chart_notes_container {
   font-size: 65%;
   margin-bottom: 0px;
   padding-bottom: 0px;

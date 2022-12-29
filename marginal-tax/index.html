@@ -332,6 +332,7 @@
       <div class="chart_actual" id="chart"></div>
 
       <!--Chart attributes-->
+      <div class="chart_attributes">
         <!--Zoom selection-->
         <div class="dropdown" id="zoom_dropdown_container">
           Show higher/lower income:
@@ -351,6 +352,7 @@
           </select>
           .
         </div>
+      </div>
 
       <!--Power users-->
       <div class="power_users_container">
@@ -373,7 +375,7 @@
           <div id="y_axis_range_ei" onclick="arbitrary_y_axis()"></div>
         </div>
 
-        <h3>Power Users</h3>
+        <h3 class="power_users_header">Power Users</h3>
         <!--Arbitrary income switch-->
         <label class="switch_label" id="arbitrary_income_label">
           Arbitrary income:
@@ -389,12 +391,14 @@
         </label>
 
         <!--Download excel-->
+      <!--
         <input type="submit" class="download_button" id="download_data" value="Download Excel Data" onclick="">
+      -->
       </div>
 
       <!--Chart notes---------------->
-      <div class="chart_notes">
-        <h3 class="notes_title">Notes</h3>
+      <button class="chart_notes_button" id="top_chart_notes_button" onclick="open_and_close_chart_notes('top_chart_notes')">View Chart Notes</button>
+      <div class="chart_notes_container" id="top_chart_notes" hidden>
         <ul class="notes_list">
           <li>This chart deals only with taxes on labor income. Taxes on consumption (e.g. sales tax) and income from ownership (e.g. capital gains & property tax) are not included.</li>
           <li>This chart shows only federal taxes and benefits. Many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>

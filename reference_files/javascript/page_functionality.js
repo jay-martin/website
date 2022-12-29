@@ -6,6 +6,7 @@
  * (4) Highlights a reference when an in-line citation from the notes section is clicked
  * (5) Expands and collapses the list of programs in the page list
  * (6) Open and close highlights
+ * (7) Open and close chart notes
  * ****************************************************************************************/
 
 /******************************** Left sidebar **********************************/
@@ -132,3 +133,20 @@ function show_explanation(identifier){
 		highlight.style.height = '0px';
 	}
 }
+
+/*********************************** Chart Notes ***********************************/
+var chartNotes = new Object(); //dictionary to keep track of which chart notes are open
+function open_and_close_chart_notes(chartID){
+  if(chartNotes[chartID] === 'open'){
+    chartNotes[chartID] = 'closed';
+    document.getElementById(chartID).hidden = true;
+    document.getElementById(chartID + '_button').innerHTML = 'View Chart Notes';
+  }
+  else{
+    chartNotes[chartID] = 'open';
+    document.getElementById(chartID).hidden = false;
+    document.getElementById(chartID + '_button').innerHTML = 'Close Chart Notes';
+  }
+}
+
+
