@@ -11,12 +11,8 @@ h1 {
   font-weight: 800;
 }
 h2, h3, h4 {
-  font-family: 'Zen Antique Soft', serif;
-  font-weight: 400;
-  /*
   font-family: 'Zen Old Mincho', serif;
   font-weight: 900;
-  */
 }
 h1 {
   margin-top: 0px;
@@ -197,7 +193,7 @@ img.blog_promotion {
   right: 35px;
   margin-top: 119vh;
 }
-/*****************Share buttons*************************************/
+/*****************Left side bar*************************************/
 .left_side_bar {
   position: absolute;
   margin-left: 30px;
@@ -235,6 +231,10 @@ a.sidebar_links:hover {
 }
 img.left_side_bar_social_logos {
   height: 17px;
+}
+.left_sidebar_social_icons_link {
+  display: inline-block;
+  margin-right: 0px;
 }
 /*
 .share_buttons_container {
@@ -279,8 +279,8 @@ img.left_side_bar_social_logos {
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
 .other_pages {
-  width: 100%;
   font-family: "Computer Modern Serif";
+  width: 100%;
   font-size: 90%;
   margin-left: 30px;
   margin-right: 30px;
