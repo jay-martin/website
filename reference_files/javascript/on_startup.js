@@ -9,16 +9,16 @@ var isMobile = false;
 
 //Get all highlights
 var highlights = document.getElementsByClassName("explanation_and_animation_button_container");
-var highlights_mobile = document.getElementsByClassName("explanation_and_animation_button_container_mobile");
+var highlights_mobile = document.getElementsByClassName("mobile_explanation_and_animation_button_container");
 
 //Create universal array of highlights heights
 highlights_heights = [];
-highlights_heights_mobile = [];
+mobile_highlights_heights = [];
 
 //Loop through all highlights and set highlights heights to 0
 for (var i = 0; i < highlights.length; i++) {
 	highlights_heights[i] = 0;
-	highlights_heights_mobile[i] = 0;
+	mobile_highlights_heights[i] = 0;
 }
 
 //Determine whether to initialize desktop or mobile page
@@ -97,9 +97,9 @@ function initialize_page(){
 			'border-color'  : '#adadad',
 			'border-width'  : '1.5px'
 		});
-		document.getElementById("loader_container").style.display = 'none';
-		document.getElementById("highlights_content").style.visibility = 'visible';
-		document.getElementById("programs").style.visibility = 'visible';
+		$('#loader_container').css('display', 'none');
+		$('#highlights_content').css('visibility', 'visible');
+		$('#programs').css('visibility', 'visible');
 	}, 0);
 }
 
@@ -107,26 +107,26 @@ function initialize_mobile_page(){
 	// calculate highlights heights, and then set to zero
 	for (var i = 0; i < highlights_heights.length; i++) {
 		id = 'mobile_highlights_container' + (i+1).toString();
-		highlights_heights_mobile[i] = window.getComputedStyle(document.getElementById(id)).height;
+		mobile_highlights_heights[i] = window.getComputedStyle(document.getElementById(id)).height;
 		document.getElementById(id).style.height = "0px";
 	}
 
 	// make highlights visible
 	setTimeout(function () {
-		$('.explanation_and_animation_button_container_mobile').css('transition', 'height .5s ease');
-		$('#highlights_mobile').css({
+		$('.mobile_explanation_and_animation_button_container').css('transition', 'height .5s ease');
+		$('#mobile_highlights').css({
 			'border'       : 'solid',
 			'border-color' : '#adadad',
 			'border-width' : '1.5px'
 		});
-		$('#highlights_title_mobile').css({
+		$('#mobile_highlights_title').css({
 			'border'        : 'none',
 			'border-bottom' : 'solid',
 			'border-color'  : '#adadad',
 			'border-width'  : '1.5px'
 		});
-		document.getElementById("loader_container_mobile").style.display = 'none';
-		document.getElementById("highlights_content_mobile").style.visibility = 'visible';
+		$('#mobile_loader_container').css('display', 'none');
+		$('#mobile_highlights_content').css('visibility', 'visible');
 	}, 100);
 }
 

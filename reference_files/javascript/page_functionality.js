@@ -116,7 +116,7 @@ function hide_programs(){
 /*********************************** Highlights ***********************************/
 function show_explanation(identifier){
 	if(isMobile){ 
-		heights = highlights_heights_mobile;
+		heights = mobile_highlights_heights;
 		highlight = document.getElementById('mobile_highlights_container' + identifier);
 	}
 	else{ 

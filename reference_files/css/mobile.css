@@ -355,14 +355,14 @@
     to { margin-top: 0vh }
   }
   /****Highlights***********/
-  #highlights_mobile {
+  #mobile_highlights {
     display: inline-block;
     width: 99%;
     margin-left: 0px;
     margin-right: 0px;
   }
   /* Hide during page initialization */
-  #highlights_content_mobile {
+  #mobile_highlights_content {
     visibility: hidden;
   }
   .highlights_title {
@@ -374,7 +374,7 @@
   button {
     font-size: 100%;
   }
-  .explanation_and_animation_button_container_mobile{
+  .mobile_explanation_and_animation_button_container{
     height: 100%;
     margin: 0px;
     overflow: hidden;
