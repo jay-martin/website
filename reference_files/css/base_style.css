@@ -93,23 +93,29 @@ video {
   margin-right: auto;
 }
 /*********************** Default Color (Light Mode) **********************************************************/
+/** Transition settings **/
 body, button, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease-out, color 1s ease-out;
 }
+.center_explanation_box {
+  transition: background-color 1s ease-out !important;
+}
+.social_icon {
+  transition: fill .15s ease-out;
+}
+ #logo-span1, #logo-span2 {
+  transition: fill 1s ease-out;
+ }
+/** Default colors **/
 body, button, select, .programs_container {
   background-color: white;
 }
 .center_explanation_box {
   background-color: #f5f3f2;
-  transition: background-color 1s ease-out !important;
 }
 a.sidebar_links, .other_pages a {
   color: black;
 }
-.social_icon {
-  transition: fill .15s ease-out;
-}
-
 #page_color_toggler {
   background-color: grey;
 }
@@ -146,7 +152,7 @@ a.sidebar_links, .other_pages a {
 .dark-mode .center_explanation_box {
   background-color: #141414;
 }
-.dark-mode .social_icon {
+.dark-mode .social_icon, .dark-mode #logo-span1, .dark-mode #logo-span2 {
   fill: #dbdbdb;
 }
 .dark-mode path.st1 {
@@ -222,6 +228,10 @@ section.page_bottom {
   position: absolute;
   margin-left: 30px;
   margin-top: 25px;
+}
+svg.logo-svg {
+  width: 125px;
+  height: 37.5px;
 }
 .left_side_absolute {
   position: absolute;
