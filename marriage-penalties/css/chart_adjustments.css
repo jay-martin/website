@@ -24,3 +24,15 @@
 .c3-circles-childless_single, .c3-circles-childless_married, .c3-circles-child_single, .c3-circles-child_married {
   display: none;
 }
+
+/******************* Dark Mode ******************************/
+/* Setting opacity of hidden area to 0 for all modes deals with both sepia and dark modes */
+.c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-hoh_maried, .c3-area-hoh_combined, .c3-area-both_white, .c3-area-both_white_positive, .c3-area-both_white_negative {
+  opacity: 0 !important;
+}
+.c3-area-married_tax {
+  opacity: 0 !important;
+}
+.c3-area-combined, .c3-area-married_value {
+  opacity: 0 !important;
+}

@@ -71,9 +71,9 @@ var existingEITC = c3.generate({
             married        : '#000000',
             point_married  : '#000000',
 
-            combined      : '#FFFFFF',
+            combined      : '#36D903',
             bonus         : '#36D903',  
-            married_value : '#FFFFFF',
+            married_value : '#eb3734',
             penalty       : '#eb3734',
         },
     },

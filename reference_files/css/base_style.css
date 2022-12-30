@@ -156,6 +156,13 @@ a.sidebar_links, .other_pages a {
   background-color: #242424;
   color: #dbdbdb;
 }
+/** charts **/
+.dark-mode .c3 text {
+  fill: #dbdbdb;
+}
+.dark-mode .c3-grid line, .dark-mode .c3-axis-x line, .dark-mode .c3-axis-y line, .dark-mode .c3-axis-x path, .dark-mode .c3-axis-y path {
+  stroke: #dbdbdb;
+}
 
 /*********************** Page Positioning **********************************************************/
 .top {

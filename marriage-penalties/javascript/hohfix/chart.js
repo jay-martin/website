@@ -66,7 +66,7 @@ var hohFixChart = c3.generate({
             married: '#000000',
             point_married: '#000000',
 
-            married_tax : '#FFFFFF',
+            married_tax : '#36D903',
             bonus       : '#36D903',      
         },
     },

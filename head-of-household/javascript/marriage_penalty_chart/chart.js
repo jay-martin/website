@@ -74,10 +74,10 @@ var marriagePenaltyChart = c3.generate({
             married: '#000000',
             point_married: '#000000',
 
-            combined_tax : '#FFFFFF',
+            combined_tax : 'red',
             penalty      : 'red',
 
-            married_tax : '#FFFFFF',
+            married_tax : '#36D903',
             bonus       : '#36D903',      
         },
     },

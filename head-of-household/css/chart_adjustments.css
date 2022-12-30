@@ -9,6 +9,16 @@
 }
 
 /* Marriage Penalties Chart */
-.c3-circles-person1, .c3-circles-person2, .c3-circles-person2_dashed,  .c3-circles-married, .c3-circles-penalty, .c3-circles-bonus {
+.c3-circles-person1, .c3-circles-person2, .c3-circles-person2_dashed,  .c3-circles-married, .c3-circles-penalty, .c3-circles-combined_tax, .c3-circles-bonus {
   display: none;
+}
+
+/******************* Dark Mode ******************************/
+/* Setting opacity of hidden area to 0 for all modes deals with both sepia and dark modes */
+.c3-area-HOH_Savings {
+  opacity: 0 !important;
+}
+
+.c3-area-combined_tax, .c3-area-married_tax {
+  opacity: 0 !important;
 }
