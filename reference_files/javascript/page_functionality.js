@@ -26,6 +26,9 @@ function toggle_page_color(position){
     isFirstToggle = false;
   }
 
+  // social icons are by default set to transition in .15s
+  $('.social_icon').css('transition', 'fill 1s ease-out');
+
   if(position === 'right'){
     $('#page_color_toggler').removeClass('toggle_left');
     $('#page_color_toggler').removeClass('toggle_center');
@@ -53,6 +56,11 @@ function toggle_page_color(position){
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
   }
+
+  //reset social icon transition speed
+  setTimeout( function(){
+    $('.social_icon').css('transition', 'fill .15s ease-out');
+  }, 1000);
 }
 
 /******************************** Left sidebar **********************************/
@@ -93,16 +101,16 @@ redditOrange = '#FF5700'
  * */
 function change_social_fill_forward(platform, id){
   if(platform == 'twitter'){
-    change_svg_fill(id, twitterBlue);
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('twitter-blue');
   }
   else if(platform == 'substack'){
-   change_svg_fill(id, substackOrange);
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('substack-orange');
   }
   else if(platform == 'facebook'){
-    change_svg_fill(id, facebookBlue);
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('facebook-blue');
   }
   else if(platform == 'reddit'){
-    change_svg_fill(id, redditOrange);
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('reddit-orange');
   }
 }
 
@@ -110,24 +118,14 @@ function change_social_fill_forward(platform, id){
  * @param {string} - the html id of the svg element to be changed
  * */
 function change_social_fill_backward(id){
-  if(pageStyle == 'light' || pageStyle == 'sepia'){
-    change_svg_fill(id, 'black');
-  }
-  else if(pageStyle == 'dark'){
-    change_svg_fill(id, '#dbdbdb');
-  }
+  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-base-color');
 }
 
 /** Changes the social media icons at the bottom of the page back to their original color (#858585 for light & sepia modes, #dbdbdb for dark mode)
  * @param {string} - the html id of the svg element to be changed
  * */
 function page_bottom_change_social_fill_backward(id){
-  if(pageStyle == 'light' || pageStyle == 'sepia'){
-    change_svg_fill(id, '#858585');
-  }
-  else if(pageStyle == 'dark'){
-    change_svg_fill(id, '#dbdbdb');
-  }
+  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-page-bottom-base-color');
 }
 
 /** Adjusts the fill of an svg image

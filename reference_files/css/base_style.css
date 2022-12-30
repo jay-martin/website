@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Antique+Soft&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap');
+/****** Check for dark mode *****/
+@media (prefers-color-scheme: dark) {
+
+}
+
 body {
   font-family: 'Latin Modern Sans';
   text-rendering: optimizeLegibility;
@@ -132,10 +137,11 @@ a.sidebar_links, .other_pages a {
 .sepia path.st1 {
   fill: #fff5e6;
 }
-.sepia #twitter_bottom_svg, .sepia #substack_bottom_svg {
-  fill: #858585;
-}
 /*********************** Dark Mode *****************************************************************/
+.dark-mode {
+  background-color: #242424;
+  color: #dbdbdb;
+}
 .dark-mode a:link {
   color: #86acf0;
 }
@@ -152,15 +158,14 @@ a.sidebar_links, .other_pages a {
 .dark-mode .center_explanation_box {
   background-color: #141414;
 }
-.dark-mode .social_icon, .dark-mode #logo-span1, .dark-mode #logo-span2 {
+.dark-mode #logo-span1, .dark-mode #logo-span2 {
+  fill: #dbdbdb;
+}
+.dark-mode .social-base-color, .dark-mode .social-page-bottom-base-color {
   fill: #dbdbdb;
 }
 .dark-mode path.st1 {
   fill: #000000;
-}
-.dark-mode {
-  background-color: #242424;
-  color: #dbdbdb;
 }
 /** charts **/
 .dark-mode .c3 text {
@@ -169,7 +174,16 @@ a.sidebar_links, .other_pages a {
 .dark-mode .c3-grid line, .dark-mode .c3-axis-x line, .dark-mode .c3-axis-y line, .dark-mode .c3-axis-x path, .dark-mode .c3-axis-y path {
   stroke: #dbdbdb;
 }
+/*********************** Social icon colors *****************************************************************/
+.social-base-color {fill: #000000;}
+.social-page-bottom-base-color {fill: #858585;}
+.twitter-blue {fill: #1D9BF0;}
+.facebook-blue {fill: #1778F2;}
+.reddit-orange {fill: #FF5700;}
+.substack-orange {fill: #ff6700;}
 
+/* social media circle icons */
+path.st1{fill:#FFFFFF;}
 /*********************** Page Positioning **********************************************************/
 .top {
 }
@@ -371,9 +385,6 @@ a.sidebar_links:hover {
   display: inline-block;
   margin-right: 0px;
 }
-/* social media circle icons */
-path.st0{fill:#000000;}
-path.st1{fill:#FFFFFF;}
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
 .other_pages {
@@ -769,7 +780,6 @@ a.refs {
 }
 svg.bottom_social_logos {
   height: 17.5px;
-  fill: #858585;
 }
 #twitter_bottom_button_blue_icon, #substack_bottom_button_blue_icon {
   display: none;

@@ -3,6 +3,7 @@
  * needed to render the page.
  * ****************************************************************************************/
 
+//setup for page calculations
 const ref_items = document.querySelectorAll('.ref_item');
 programsHeight = 0;
 var isMobile = false;
@@ -129,4 +130,17 @@ function initialize_mobile_page(){
 		$('#mobile_highlights_content').css('visibility', 'visible');
 	}, 100);
 }
+
+/** Dark Mode **/
+// Check for dark mode
+/**
+$(document).ready(function(){
+	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+	if (prefersDarkScheme.matches) {
+	  $('body').addClass('dark-mode');
+	} else {
+	  $('body').removeClass('dark-mode');
+	}
+});
+**/
 
