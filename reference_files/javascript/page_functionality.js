@@ -9,6 +9,58 @@
  * (7) Open and close chart notes
  * ****************************************************************************************/
 
+/******************************** Page color toggle ******************************/
+var isFirstToggle = true;
+function toggle_page_color(position){
+  if(isFirstToggle){
+    $('#page_color_toggler').removeClass('toggle_default_position');
+    isFirstToggle = false;
+  }
+
+  if(position === 'right'){
+    $('#page_color_toggler').removeClass('toggle_left');
+    $('#page_color_toggler').removeClass('toggle_center');
+    $('#page_color_toggler').addClass('toggle_right');
+
+    load_dark();
+  }
+  else if(position === 'center'){
+    $('#page_color_toggler').removeClass('toggle_right');
+    $('#page_color_toggler').removeClass('toggle_left');
+    $('#page_color_toggler').addClass('toggle_center');
+
+    load_sepia();
+  }
+  else if(position === 'left'){
+    $('#page_color_toggler').removeClass('toggle_right');
+    $('#page_color_toggler').removeClass('toggle_center');
+    $('#page_color_toggler').addClass('toggle_left');
+
+    load_white();
+  }
+}
+
+function load_white(){
+  $('body, button, select, .programs_container').css('background-color', 'white');
+  $('body, button, select, a.sidebar_links, .other_pages a').css('color', 'black');
+  $('.center_explanation_box').css('background-color', '#f5f3f2');
+}
+
+function load_sepia(){
+  $('body, button, select, .programs_container').css('background-color', '#fff5e6');
+  $('body, button, select, a.sidebar_links, .other_pages a').css('color', 'black');
+  $('.center_explanation_box').css('background-color', '#f7f0e6');
+
+  //first: #fff1dc
+  //lighter: #fff5e6
+}
+
+function load_dark(){
+  $('body, button, select, .programs_container').css('background-color', '#242424');
+  $('body, button, select, a.sidebar_links, .other_pages a').css('color', '#dbdbdb');
+  $('.center_explanation_box').css('background-color', '#141414');
+}
+
 /******************************** Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();
@@ -94,7 +146,7 @@ function reveal_dropdown(){
 
 /*************************** References Highlighting ******************************/
 //Adds a yellow highlight when a reference is selected
-function highlight(ref){
+function highlight_ref(ref){
 	ref_items.forEach(ref_items => {
 	  ref_items.style.backgroundColor = 'white';
 	});

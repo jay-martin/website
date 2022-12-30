@@ -59,6 +59,15 @@
   </a>
 </div>
 
+<div class="left_side_absolute">
+  <div class="page_color_button_group">
+    <button onclick="toggle_page_color('left')">Light</button>
+    <button onclick="toggle_page_color('center')">Sepia</button>
+    <button onclick="toggle_page_color('right')">Dark</button>
+    <div id="page_color_toggler" class="toggle_default_position"></div>
+  </div>
+</div>
+
 <!--Mobile navbar-->
 <div class="mobile_navbar" id='mobile_navbar'>
   <a href='../home/index.html' class="navbar_logo">The Welfare of Families</a>
@@ -389,11 +398,6 @@
           <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
           <span class="checkmark"></span>
         </label>
-
-        <!--Download excel-->
-      <!--
-        <input type="submit" class="download_button" id="download_data" value="Download Excel Data" onclick="">
-      -->
       </div>
 
       <!--Chart notes---------------->
@@ -1148,7 +1152,7 @@
   <div class="notes">
     <h2 id="notes">Notes</h2>
     <ol class="notes_list">
-      <li><a class="refs" href="#note1">^</a> Information on SNAP benefits sourced from <a href="#Aussenberg" onclick="highlight('Aussenberg')">Aussenberg 2022</a>.</li>
+      <li><a class="refs" href="#note1">^</a> Information on SNAP benefits sourced from <a href="#Aussenberg" onclick="highlight_ref('Aussenberg')">Aussenberg 2022</a>.</li>
       <li><a class="refs" href="#note2">^</a> SNAP 2022 maximum benefits were obtained from <a href=https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf target="_blank">USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments</a> (<a href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a>).</li>
 
       <li><a class="refs" href="#note3">^</a> SNAP 2022 standard deductions were obtained from the Texas Health and Human Services Commission's <a href="https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Texas Works Handbook: C-120, Supplemental Nutrition Assistance</a> (<a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="_blank">Archived</a>).</li>
@@ -1159,13 +1163,13 @@
 
       <li><a class="refs" href="#note6">^</a> These figures were obtained from <a href=https://www.healthcare.gov/glossary/federal-poverty-level-fpl/ target="_blank">healthcare.gov</a> (<a href=https://web.archive.org/web/20221118232338/https://www.healthcare.gov/glossary/federal-poverty-level-fpl/ target="_blank">Archived</a>).</li>
 
-      <li><a class="refs" href="#note7">^</a> <a href="#Masterson" onclick="highlight('Masterson')">Masterson & Megna 2022.</a></li>
+      <li><a class="refs" href="#note7">^</a> <a href="#Masterson" onclick="highlight_ref('Masterson')">Masterson & Megna 2022.</a></li>
 
-      <li><a class="refs" href="#note8">^</a> Information on the way cost-sharing reductions work was obtained from <a href="#Fernandez" onclick="highlight('Fernandez');">Fernandez 2022.</a>
+      <li><a class="refs" href="#note8">^</a> Information on the way cost-sharing reductions work was obtained from <a href="#Fernandez" onclick="highlight_ref('Fernandez');">Fernandez 2022.</a>
 
-      <li><a class="refs" href="#note9">^</a> Information regarding silver loading, excluding that dealing with marginal tax rates, was sourced from <a href="#Fernandez" onclick="highlight('Fernandez');">Fernandez 2022.</a></li>
+      <li><a class="refs" href="#note9">^</a> Information regarding silver loading, excluding that dealing with marginal tax rates, was sourced from <a href="#Fernandez" onclick="highlight_ref('Fernandez');">Fernandez 2022.</a></li>
 
-      <li><a class="refs" href="#note10">^</a> <a href="#Aron-Dine" onclick="highlight('Aron-Dine')">Aron-Dine 2019.</a></li>
+      <li><a class="refs" href="#note10">^</a> <a href="#Aron-Dine" onclick="highlight_ref('Aron-Dine')">Aron-Dine 2019.</a></li>
     </ol>
   </div>
 

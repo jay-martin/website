@@ -28,6 +28,9 @@ h3 {
 h4 {
   margin-bottom: 0px;
 }
+select {
+  border-radius: 2.5px;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -40,6 +43,18 @@ p.top {
 }
 button, input {
   font-family: "Computer Modern Sans";
+}
+button{
+  font-size: 90%;
+  width: 100%;
+  border: none;
+  border-top: solid;
+  border-width: 1.5px;
+  border-color: #adadad;
+  cursor: pointer;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 input {
   color: #5a585;
@@ -62,8 +77,7 @@ th, td {
   padding-left: 3px;
 }
 .switch_label {
-  -webkit-transition: color .5s linear;
-  -moz-transition: color .5s linear;
+  transition: color .5s linear;
 }
 .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
     overflow-x: auto;
@@ -89,6 +103,24 @@ sup {
 .symbol {
   display: inline-block;
   font-family: ;
+}
+/***********************Color**********************************************************/
+body, button, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
+  transition: background-color 1s ease-out, color 1s ease-out;
+}
+body, button, select, .programs_container {
+  background-color: white;
+}
+.center_explanation_box {
+  background-color: #f5f3f2;
+  transition: background-color 1s ease-out !important;
+}
+a.sidebar_links, .other_pages a {
+  color: black;
+}
+
+#page_color_toggler {
+  background-color: grey;
 }
 
 /***********************Desktop: hide mobile elements**********************************************************/
@@ -150,6 +182,60 @@ section.page_bottom {
   margin-left: 30px;
   margin-top: 25px;
 }
+.left_side_absolute {
+  position: absolute;
+  top: 25px;
+  left: 78.5%;
+  width: 21.5%;
+}
+.page_color_button_group {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  border: solid;
+  border-color: #dbdbdb;
+  border-radius: 30px;
+  border-width: 1.5px;
+  width: 150px;
+}
+.page_color_button_group button {
+  border: none;
+  width: 33.33%;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
+  color: #bdbdbd !important;
+}
+.page_color_button_group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+#page_color_toggler {
+  position: absolute;
+  height: 100%;
+  width: 50px;
+  border-radius: 30px;
+  opacity: 20%;
+  transition: left .2s ease;
+}
+.toggle_default_position {
+  left: 0;
+}
+.toggle_left {
+  left: 0;
+}
+.toggle_center {
+  left: 49px;
+}
+.toggle_right{
+  left: 100px;
+}
+/***********************Title********************************************************************/
 .title_container {
   padding-top: 20px;
   margin-bottom: 20px;
@@ -171,7 +257,6 @@ section.page_bottom {
   margin-bottom: 5px;
   margin-top: 8px;
   text-decoration: none;
-  color: black;
 }
 a.my_socials {
   margin-left: 3px;
@@ -217,7 +302,6 @@ ul.left_side_bar_list {
   padding-left: 0px;
 }
 a.sidebar_links {
-  color: black;
   text-decoration: none;
 }
 a.sidebar_links:hover {
@@ -288,7 +372,6 @@ img.left_side_bar_social_logos {
 }
 /* Links */
 .other_pages a {
-  color: black;
   margin-bottom: 16px;
   padding-right: 10px;
   text-decoration: none;
@@ -300,7 +383,6 @@ img.left_side_bar_social_logos {
 }
 .programs_container {
   position: relative;
-  background-color: white;
   z-index: 1;
   padding-bottom: 10px;
 }
@@ -377,7 +459,6 @@ img.left_side_bar_social_logos {
 .center_explanation_box {
   border: solid;
   border-color: #adadad;
-  background-color: #f5f3f2;
   border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -410,7 +491,9 @@ input[type=submit].end_animation{
   border-radius: 3px;
   display: none;
 }
-input[type=submit].end_animation:hover {background-color: #d1d1d1}
+input[type=submit].end_animation:hover {
+  background-color: #d1d1d1
+}
 
 /* Lighter colors for when it is disabled */
 input[type=submit].end_animation:disabled {
@@ -456,7 +539,6 @@ input.download_button {
   border: solid;
   border-width: 1.5px;
   border-color: #adadad;
-  background-color: #f5f3f2;
   width: 15%px;
   height: 10%;
   color: black;
@@ -472,6 +554,9 @@ input.download_button:hover{
 button.chart_notes_button {
   font-size: 80%;
   margin-top: 5px;
+}
+button.chart_notes_button:hover {
+  background-color: #f0efed;
 }
 .chart_notes_container {
   font-size: 65%;
@@ -588,25 +673,15 @@ ul.notes_list {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-button{
-  font-size: 90%;
-  width: 100%;
-  background-color: white;
-  border: none;
-  border-top: solid;
-  border-width: 1.5px;
-  border-color: #adadad;
-  cursor: pointer;
-  margin: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 button.top_button{
   border-top: none;
 }
 button.bottom_button{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.highlights_content button:hover {
+  background-color: #f0efed;
 }
 .explanation_and_animation_button_container{
   height: 100%;
@@ -624,7 +699,7 @@ p.explanation {
   padding-right: 10px;
   font-size: 80%;
 }
-input[type=submit].animation_button{
+input[type=submit].animation_button {
   width: 50%;
   border: solid;
   border-width: 1.5px;
@@ -649,8 +724,9 @@ input[type=submit].animation_button:disabled:hover {
   background-color: #fafafa;
   cursor: default;
 }
-button:hover {background-color: #f0efed;}
-input[type=submit].animation_button:hover {background-color: #d1d1d1}
+input[type=submit].animation_button:hover {
+  background-color: #d1d1d1;
+}
 
 /*******Article*******************************************************************************/
 img.table {
@@ -665,9 +741,6 @@ img.table {
 ul.references_list, ol.notes_list {
   margin-left: 5px;
   padding-left: 3%;
-}
-.ref_item {
-  background-color: white;
 }
 /*******Page Bottom*******************************************************************************/
 #bottom_logo, #bottom_name {
