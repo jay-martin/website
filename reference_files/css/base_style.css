@@ -70,9 +70,6 @@ button{
   padding-top: 10px;
   padding-bottom: 10px;
 }
-input {
-  color: #5a585;
-}
 .dropdown {
   display: inline-block;
 }
@@ -99,23 +96,26 @@ video {
 }
 /*********************** Transition Setting **********************************************************/
 body, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
-  transition: background-color 1s ease-out, color 1s ease-out;
+  transition: background-color 1s ease, color 1s ease;
 }
 .center_explanation_box {
-  transition: background-color 1s ease-out !important; /* For some reason, .center_explanation_box requires the !important tag */
+  transition: background-color 1s ease !important; /* For some reason, .center_explanation_box requires the !important tag */
 }
 /** Some elements need fast transition by default **/
 .social_icon {
   transition: fill .15s ease-out;
 }
-button {
-  transition: background-color .15s ease-out;
+button, input[type=submit].animation_button, input[type=submit].end_animation {
+  transition: background-color .1s ease;
 }
 /*********************** Default Color (Light Mode) **********************************************************/
  #logo-span1, #logo-span2 {
   transition: fill 1s ease-out;
  }
 /** Default colors where needed **/
+input {
+  color: #5a585;
+}
 button, .programs_container {
   background-color: white;
 }
@@ -130,6 +130,28 @@ a.sidebar_links, .other_pages a {
 }
 #page_color_toggler {
   background-color: grey;
+}
+/*** Highlights Buttons ***/
+input[type=submit].animation_button, input[type=submit].end_animation {
+  background-color: #f5f3f2;
+  border: solid;
+  border-color: #adadad;
+}
+/* Darker color on hover */
+input[type=submit].animation_button:hover, input[type=submit].end_animation:hover {
+  background-color: #d1d1d1;
+}
+/* Lighter colors for when it is disabled */
+input[type=submit].animation_button:disabled, input[type=submit].end_animation:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+}
+/* No color change on hover when disabled */
+input[type=submit].animation_button:disabled:hover, input[type=submit].end_animation:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
 }
 /*********************** Sepia Mode *****************************************************************/
 .sepia button, .sepia select, .sepia .programs_container {
@@ -177,7 +199,29 @@ a.sidebar_links, .other_pages a {
 .dark-mode path.st1 {
   fill: #000000;
 }
-/** charts **/
+/*** Highlights Buttons ***/
+.dark-mode input[type=submit].animation_button, .dark-mode input[type=submit].end_animation {
+  background-color: #141414;
+  border-color: #dbdbdb;
+  color: #dbdbdb;
+}
+/* Lighter color on hover */
+.dark-mode input[type=submit].animation_button:hover, .dark-mode input[type=submit].end_animation:hover {
+  background-color: #474747;
+}
+/* Lighter colors for when it is disabled */
+.dark-mode input[type=submit].animation_button:disabled, .dark-mode input[type=submit].end_animation:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+}
+/* No color change on hover when disabled */
+.dark-mode input[type=submit].animation_button:disabled:hover, .dark-mode input[type=submit].end_animation:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+}
+/*** Charts ***/
 .dark-mode .c3 text {
   fill: #dbdbdb;
 }
@@ -510,34 +554,17 @@ a.sidebar_links:hover {
 p.explanation_text {
   transition: color .5s linear; 
 }
-input[type=submit].end_animation{
+input[type=submit].end_animation {
   font-family: "Computer Modern Sans";
   float: right;
-  border: solid;
   border-width: 1.5px;
-  border-color: #adadad;
-  background-color: #f5f3f2;
-  color: black;
+  border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 3px;
+
   display: none;
 }
-input[type=submit].end_animation:hover {
-  background-color: #d1d1d1
-}
-
-/* Lighter colors for when it is disabled */
-input[type=submit].end_animation:disabled {
-  color: #b8b8b8;
-  background-color: #fafafa;
-  border-color: #b8b8b8;
-}
-/* No color change on hover when disabled */
 input[type=submit].end_animation:disabled:hover {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
   cursor: default;
 }
 /**********Power Users*************/
@@ -729,31 +756,15 @@ p.explanation {
 }
 input[type=submit].animation_button {
   width: 50%;
-  border: solid;
   border-width: 1.5px;
-  border-color: #adadad;
-  background-color: #f5f3f2;
-  color: black;
+  border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
-  border-radius: 3px;
   margin-bottom: 15px;
 }
-/* Lighter colors for when it is disabled */
-input[type=submit].animation_button:disabled {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
-}
-/* No color change on hover when disabled */
+/* No cursor change on hover when disabled */
 input[type=submit].animation_button:disabled:hover {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
   cursor: default;
-}
-input[type=submit].animation_button:hover {
-  background-color: #d1d1d1;
 }
 
 /*******Article*******************************************************************************/

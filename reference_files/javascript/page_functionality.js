@@ -27,8 +27,8 @@ function toggle_page_color(position){
   }
 
   // buttons and social icons are by default set to transition in .15s
-  $('.social_icon').css('transition', 'fill 1s ease-out');
-  $('button').css('transition', 'background-color 1s ease-out');
+  $('.social_icon').css('transition', 'fill 1s ease');
+  $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color 1s ease');
 
   if(position === 'right'){
     $('#page_color_toggler').removeClass('toggle_left');
@@ -61,7 +61,7 @@ function toggle_page_color(position){
   //reset social icon transition speed
   setTimeout( function(){
     $('.social_icon').css('transition', 'fill .15s ease-out');
-    $('button').css('transition', 'background-color .15s ease-out');
+    $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color .1s ease');
   }, 1000);
 }
 
