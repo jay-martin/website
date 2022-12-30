@@ -59,6 +59,7 @@ function load_dark(){
   $('body, button, select, .programs_container').css('background-color', '#242424');
   $('body, button, select, a.sidebar_links, .other_pages a').css('color', '#dbdbdb');
   $('.center_explanation_box').css('background-color', '#141414');
+  $('#twitter_blue_svg').css('fill', '#dbdbdb');
 }
 
 /******************************** Left sidebar **********************************/

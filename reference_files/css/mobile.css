@@ -67,10 +67,11 @@
     margin-right: auto;
   }
 
-  /*******Hide blog promo & share buttons, show mobile version*****/
-  img.blog_promotion, .left_side_bar {
+  /*******Hide desktop elements*****/
+  img.blog_promotion, .left_side_bar, .left_side_absolute {
     display: none;
   }
+  /*******Show mobile elements*****/
   #blog_promote_mobile_link {
     display: block;
   }

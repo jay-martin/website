@@ -60,12 +60,13 @@
 
 /*-- Line --*/
 .c3-line {
-  stroke-width: 1.75px; /* I adjusted up from 1.5px to 1.75px */
+  stroke-width: 2.5px; /* I adjusted up from 1.5px to 2.5px */
 }
 
 /*-- Point --*/
 .c3-circle {
   fill: currentColor;
+  r: 3px; /* adjusted from default */
 }
 
 .c3-circle._expanded_ {
