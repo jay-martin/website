@@ -26,8 +26,9 @@ function toggle_page_color(position){
     isFirstToggle = false;
   }
 
-  // social icons are by default set to transition in .15s
+  // buttons and social icons are by default set to transition in .15s
   $('.social_icon').css('transition', 'fill 1s ease-out');
+  $('button').css('transition', 'background-color 1s ease-out');
 
   if(position === 'right'){
     $('#page_color_toggler').removeClass('toggle_left');
@@ -60,6 +61,7 @@ function toggle_page_color(position){
   //reset social icon transition speed
   setTimeout( function(){
     $('.social_icon').css('transition', 'fill .15s ease-out');
+    $('button').css('transition', 'background-color .15s ease-out');
   }, 1000);
 }
 

@@ -97,23 +97,30 @@ video {
   margin-left: auto;
   margin-right: auto;
 }
-/*********************** Default Color (Light Mode) **********************************************************/
-/** Transition settings **/
-body, button, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
+/*********************** Transition Setting **********************************************************/
+body, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease-out, color 1s ease-out;
 }
 .center_explanation_box {
-  transition: background-color 1s ease-out !important;
+  transition: background-color 1s ease-out !important; /* For some reason, .center_explanation_box requires the !important tag */
 }
+/** Some elements need fast transition by default **/
 .social_icon {
   transition: fill .15s ease-out;
 }
+button {
+  transition: background-color .15s ease-out;
+}
+/*********************** Default Color (Light Mode) **********************************************************/
  #logo-span1, #logo-span2 {
   transition: fill 1s ease-out;
  }
-/** Default colors **/
-body, button, select, .programs_container {
+/** Default colors where needed **/
+button, .programs_container {
   background-color: white;
+}
+.highlights_content button:hover {
+  background-color: #f0efed;
 }
 .center_explanation_box {
   background-color: #f5f3f2;
@@ -151,6 +158,9 @@ a.sidebar_links, .other_pages a {
 .dark-mode button, .dark-mode select, .dark-mode .programs_container {
   background-color: #242424;
   color: #dbdbdb;
+}
+.dark-mode .highlights_content button:hover {
+  background-color: #474747;
 }
 .dark-mode a.sidebar_links, .dark-mode .other_pages a, .dark-mode .page_bottom {
   color: #dbdbdb;
@@ -700,9 +710,6 @@ button.top_button{
 button.bottom_button{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-.highlights_content button:hover {
-  background-color: #f0efed;
 }
 .explanation_and_animation_button_container{
   height: 100%;
