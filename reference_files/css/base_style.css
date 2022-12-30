@@ -4,7 +4,6 @@ body {
   text-rendering: optimizeLegibility;
   line-height: 2em;
   margin: 0;
-  /* background-color: #fff1dc; */
 }
 html {
   scroll-behavior: smooth;
@@ -106,6 +105,9 @@ body, button, select, .programs_container {
 }
 a.sidebar_links, .other_pages a {
   color: black;
+}
+.social_icon {
+  transition: fill .15s ease-out;
 }
 
 #page_color_toggler {
@@ -249,7 +251,7 @@ section.page_bottom {
 a.my_socials {
   margin-left: 3px;
 }
-img.top_social_icons {
+.top_social_icons {
   height: 12.5px;
 }
 #twitter_blue, #substack_orange {
@@ -301,13 +303,17 @@ a.sidebar_links:hover {
 #twitter_sidebar_blue_icon, #facebook_sidebar_blue_icon, #reddit_sidebar_orange_icon {
   display: none;
 }
-img.left_side_bar_social_logos {
+.left_side_bar_social_logos {
   height: 17px;
 }
 .left_sidebar_social_icons_link {
   display: inline-block;
   margin-right: 0px;
 }
+/* social media circle icons */
+path.st0{fill:#000000;}
+path.st1{fill:#FFFFFF;}
+
 /*
 .share_buttons_container {
   position: absolute;
@@ -741,8 +747,9 @@ a.refs {
   right: 0;
   top: 5px;
 }
-img.bottom_social_logos {
+svg.bottom_social_logos {
   height: 17.5px;
+  fill: #858585;
 }
 #twitter_bottom_button_blue_icon, #substack_bottom_button_blue_icon {
   display: none;
