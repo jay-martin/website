@@ -31,77 +31,28 @@ function toggle_page_color(position){
     $('#page_color_toggler').removeClass('toggle_center');
     $('#page_color_toggler').addClass('toggle_right');
 
-    load_dark();
+    pageStyle = 'dark';
+    $('body').removeClass('sepia');
+    $('body').addClass('dark-mode');
   }
   else if(position === 'center'){
     $('#page_color_toggler').removeClass('toggle_right');
     $('#page_color_toggler').removeClass('toggle_left');
     $('#page_color_toggler').addClass('toggle_center');
 
-    load_sepia();
+    pageStyle = 'sepia';
+    $('body').removeClass('dark-mode');
+    $('body').addClass('sepia');
   }
   else if(position === 'left'){
     $('#page_color_toggler').removeClass('toggle_right');
     $('#page_color_toggler').removeClass('toggle_center');
     $('#page_color_toggler').addClass('toggle_left');
 
-    load_white();
+    pageStyle = 'light';
+    $('body').removeClass('dark-mode');
+    $('body').removeClass('sepia');
   }
-}
-
-// Loads light mode
-function load_white(){
-  pageStyle = 'light';
-
-  $('body, button, select, .programs_container').css('background-color', 'white');
-  $('body, button, select, a.sidebar_links, .other_pages a').css('color', 'black');
-  $('.page_bottom').css('color', '#858585');
-  $('.center_explanation_box').css('background-color', '#f5f3f2');
-
-  $('.social_icon').css('transition', 'fill 1s ease-out');
-  $('.social_icon').css('fill', 'black');
-  $('path.st1').css('fill', '#ffffff');
-  $('#twitter_bottom_svg, #substack_bottom_svg').css('fill', '#858585');
-  setTimeout(function(){
-    $('.social_icon').css('transition', 'fill .15s ease-out');
-  }, 1000);
-}
-
-// Loads sepia mode
-function load_sepia(){
-  pageStyle = 'sepia';
-
-  $('body, button, select, .programs_container').css('background-color', '#fff5e6');
-  $('body, button, select, a.sidebar_links, .other_pages a').css('color', 'black');
-  $('.page_bottom').css('color', '#858585');
-  $('.center_explanation_box').css('background-color', '#f7f0e6');
-
-  $('.social_icon').css('transition', 'fill 1s ease-out');
-  $('.social_icon').css('fill', 'black');
-  $('path.st1').css('fill', '#fff5e6');
-  $('#twitter_bottom_svg, #substack_bottom_svg').css('fill', '#858585');
-  setTimeout(function(){
-    $('.social_icon').css('transition', 'fill .15s ease-out');
-  }, 1000);
-
-  //first: #fff1dc
-  //lighter: #fff5e6
-}
-
-// Loads dark mode
-function load_dark(){
-  pageStyle = 'dark';
-
-  $('body, button, select, .programs_container').css('background-color', '#242424');
-  $('body, button, select, a.sidebar_links, .other_pages a, .page_bottom').css('color', '#dbdbdb');
-  $('.center_explanation_box').css('background-color', '#141414');
-
-  $('.social_icon').css('transition', 'fill 1s ease-out');
-  $('.social_icon').css('fill', '#dbdbdb');
-  $('path.st1').css('fill', '#000000');
-  setTimeout(function(){
-    $('.social_icon').css('transition', 'fill .15s ease-out');
-  }, 1000);
 }
 
 /******************************** Left sidebar **********************************/

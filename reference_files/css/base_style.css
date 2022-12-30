@@ -92,7 +92,7 @@ video {
   margin-left: auto;
   margin-right: auto;
 }
-/*********************** Color **********************************************************/
+/*********************** Default Color (Light Mode) **********************************************************/
 body, button, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease-out, color 1s ease-out;
 }
@@ -113,6 +113,50 @@ a.sidebar_links, .other_pages a {
 #page_color_toggler {
   background-color: grey;
 }
+/*********************** Sepia Mode *****************************************************************/
+.sepia button, .sepia select, .sepia .programs_container {
+  background-color: #fff5e6;
+}
+.sepia .center_explanation_box {
+  background-color: #f7f0e6;
+}
+.sepia {
+  background-color: #fff5e6;
+}
+.sepia path.st1 {
+  fill: #fff5e6;
+}
+.sepia #twitter_bottom_svg, .sepia #substack_bottom_svg {
+  fill: #858585;
+}
+/*********************** Dark Mode *****************************************************************/
+.dark-mode a:link {
+  color: #86acf0;
+}
+.dark-mode a:visited {
+  color: #bd86f1;
+}
+.dark-mode button, .dark-mode select, .dark-mode .programs_container {
+  background-color: #242424;
+  color: #dbdbdb;
+}
+.dark-mode a.sidebar_links, .dark-mode .other_pages a, .dark-mode .page_bottom {
+  color: #dbdbdb;
+}
+.dark-mode .center_explanation_box {
+  background-color: #141414;
+}
+.dark-mode .social_icon {
+  fill: #dbdbdb;
+}
+.dark-mode path.st1 {
+  fill: #000000;
+}
+.dark-mode {
+  background-color: #242424;
+  color: #dbdbdb;
+}
+
 /*********************** Page Positioning **********************************************************/
 .top {
 }
@@ -313,47 +357,6 @@ a.sidebar_links:hover {
 /* social media circle icons */
 path.st0{fill:#000000;}
 path.st1{fill:#FFFFFF;}
-
-/*
-.share_buttons_container {
-  position: absolute;
-  margin-left: 30px;
-  margin-top: 118vh;
-}
-.share_button {
-  position: relative;
-  font-size: 90%;
-  text-decoration: none;
-  padding: 0;
-  color: black;
-}
-.share_button_image {
-  position: absolute;
-  margin: 0;
-  bottom: 0;
-}
-#twitter_share_button_blue_icon, #facebook_share_button_blue_icon, #reddit_share_button_orange_icon {
-  display: none;
-}
-.share_button_text {
-  position: absolute;
-  display: inline-block;
-  margin-left: 25px;
-  bottom: 1.5px;
-  padding: 0;
-  line-height: 1em;
-
-  color: #858585;
-}
-.share_button_text:hover {
-  text-decoration: underline;
-}
-#section_dropdown {
-  padding-top: 0;
-  margin-top: 0;
-  height: 27.5px;
-}
-*/
 /*************************************Top Section********************************************************/
 /*****************Other pages (top left)*************************************/
 .other_pages {
