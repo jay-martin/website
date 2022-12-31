@@ -1,9 +1,9 @@
 /******************************************************************************************
  * This file contains the functions that 
  * (1) Toggles between light, sepia, and dark modes
- * (2) Adjust the position of the left sidebar
- * (3) Adjust the color of the Twitter & Substack icons by author name
- * (4) Expands the mobile dropdown,
+ * (2) Adjust the position of the left sidebar on scroll
+ * (3) Adjust the color of the Twitter & Substack icons
+ * (4) Expands the mobile dropdown
  * (5) Highlights a reference when an in-line citation from the notes section is clicked
  * (6) Expands and collapses the list of programs in the page list
  * (7) Open and close highlights
@@ -14,26 +14,26 @@ pageStyle = 'light';
 
 /******************************** Page color toggle ******************************/
 /** Controls toggling between light, sepia, and dark modes
- * @param {string} - the current position of the toggle ('left', 'center', or 'right')
+ * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')
  * */
-function toggle_page_color(position){
+function toggle_page_color(mode){
   // buttons and social icons are by default set to transition in .15s
   $('.social_icon').css('transition', 'fill 1s ease');
   $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color 1s ease');
 
-  if(position === 'right'){
+  if(mode === 'dark'){
     pageStyle = 'dark';
     $('body').removeClass('light-mode');
     $('body').removeClass('sepia');
     $('body').addClass('dark-mode');
   }
-  else if(position === 'center'){
+  else if(mode === 'sepia'){
     pageStyle = 'sepia';
     $('body').removeClass('light-mode');
     $('body').removeClass('dark-mode');
     $('body').addClass('sepia');
   }
-  else if(position === 'left'){
+  else if(mode === 'light'){
     pageStyle = 'light';
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
