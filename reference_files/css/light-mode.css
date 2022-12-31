@@ -58,8 +58,8 @@ circle.cc-circle {fill: #ffffff;}
 /*********************** Animation buttons *****************************************************************/
 input[type=submit].animation_button, input[type=submit].end_animation {
   background-color: #f5f3f2;
-  border: solid;
   border-color: #adadad;
+  color: black;
 }
 /* Darker color on hover */
 input[type=submit].animation_button:hover, input[type=submit].end_animation:hover {

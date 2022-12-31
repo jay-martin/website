@@ -173,8 +173,8 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 /********** Animation Buttons *****/
 .light-mode input[type=submit].animation_button, .light-mode input[type=submit].end_animation {
   background-color: #f5f3f2;
-  border: solid;
   border-color: #adadad;
+  color: black;
 }
 /* Lighter color on hover */
 .light-mode input[type=submit].animation_button:hover, .light-mode input[type=submit].end_animation:hover {
@@ -253,8 +253,8 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 /********** Animation Buttons *****/
 .sepia input[type=submit].animation_button, .sepia input[type=submit].end_animation {
   background-color: #f5f3f2;
-  border: solid;
   border-color: #adadad;
+  color: black;
 }
 /* Lighter color on hover */
 .sepia input[type=submit].animation_button:hover, .sepia input[type=submit].end_animation:hover {
@@ -856,6 +856,7 @@ p.explanation {
 }
 input[type=submit].animation_button {
   width: 50%;
+  border: solid;
   border-width: 1.5px;
   border-radius: 3px;
   text-decoration: none;
