@@ -26,18 +26,33 @@ function toggle_page_color(mode){
     $('body').removeClass('light-mode');
     $('body').removeClass('sepia');
     $('body').addClass('dark-mode');
+
+    // Change browser default rendering to dark
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+    }, 200);
   }
   else if(mode === 'sepia'){
     pageStyle = 'sepia';
     $('body').removeClass('light-mode');
     $('body').removeClass('dark-mode');
     $('body').addClass('sepia');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 200);
   }
   else if(mode === 'light'){
     pageStyle = 'light';
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
     $('body').addClass('light-mode');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 200);
   }
 
   //reset social icon transition speed
