@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Antique+Soft&family=Zen+Old+Mincho:wght@400;500;600;700;900&display=swap');
-/****** Check for dark mode *****/
-@media (prefers-color-scheme: dark) {
-
-}
-
 body {
   font-family: 'Latin Modern Sans';
   text-rendering: optimizeLegibility;
@@ -108,68 +103,168 @@ body, select, .programs_container, #page_color_toggler, .center_explanation_box,
 button, input[type=submit].animation_button, input[type=submit].end_animation {
   transition: background-color .1s ease;
 }
-/*********************** Default Color (Light Mode) **********************************************************/
- #logo-span1, #logo-span2 {
+#logo-span1, #logo-span2 {
   transition: fill 1s ease-out;
- }
-/** Default colors where needed **/
-input {
-  color: #5a585;
 }
-button, .programs_container {
+/*********************** Universal Colors *****************************************************************/
+#page_color_toggler {background-color: grey;}
+.twitter-blue {fill: #1D9BF0;}
+.facebook-blue {fill: #1778F2;}
+.reddit-orange {fill: #FF5700;}
+.substack-orange {fill: #ff6700;}
+/*********************** Light Mode **********************************************************************/
+/********** Page Fundamentals *************/
+.light-mode {
   background-color: white;
-}
-.highlights_content button:hover {
-  background-color: #f0efed;
-}
-.center_explanation_box {
-  background-color: #f5f3f2;
-}
-a.sidebar_links, .other_pages a {
   color: black;
 }
-#page_color_toggler {
-  background-color: grey;
+.light-mode a:link {
+  color: #0000EE;
 }
-circle.cc-circle {
-  fill: #ffffff;
+.light-mode a:visited {
+  color: #551A8B;
 }
-/*** Highlights Buttons ***/
-input[type=submit].animation_button, input[type=submit].end_animation {
+.light-mode button, .light-mode select {
+  background-color: white;
+  color: black;
+}
+/********** Page Top ***************/
+.light-mode #logo-span1, .light-mode #logo-span2 {
+  fill: black;
+}
+/********** Highlights *************/
+.light-mode .highlights_content button:hover {
+  background-color: #f0efed;
+}
+/********** Left Sidebar ***********/
+.light-mode a.sidebar_links, .light-mode .other_pages a {
+  color: black;
+}
+.light-mode .programs_container {
+  background-color: white;
+  color: black;
+}
+/********** Chart Module **********/
+.light-mode .center_explanation_box {
+  background-color: #f5f3f2;
+}
+/********** Charts *****************/
+.light-mode .c3 text {
+  fill: black;
+}
+.light-mode .c3-grid line, .light-mode .c3-axis-x line, .light-mode .c3-axis-y line, .light-mode .c3-axis-x path, .light-mode .c3-axis-y path {
+  stroke: black;
+}
+/********** Page Bottom ***********/
+.light-mode .page_bottom {
+  color: #858585;
+  border-color: #bdbdbd;
+}
+/********** Social icon colors ****/
+.light-mode .social-base-color {fill: #000000;}
+.light-mode .social-page-bottom-base-color {fill: #858585;}
+/* social media circle icons */
+.light-mode path.st1 {fill:#FFFFFF;}
+.light-mode circle.cc-circle {fill: #ffffff;}
+/********** Animation Buttons *****/
+.light-mode input[type=submit].animation_button, .light-mode input[type=submit].end_animation {
   background-color: #f5f3f2;
   border: solid;
   border-color: #adadad;
 }
-/* Darker color on hover */
-input[type=submit].animation_button:hover, input[type=submit].end_animation:hover {
+/* Lighter color on hover */
+.light-mode input[type=submit].animation_button:hover, .light-mode input[type=submit].end_animation:hover {
   background-color: #d1d1d1;
 }
 /* Lighter colors for when it is disabled */
-input[type=submit].animation_button:disabled, input[type=submit].end_animation:disabled {
+.light-mode input[type=submit].animation_button:disabled, .light-mode input[type=submit].end_animation:disabled {
   color: #b8b8b8;
   border-color: #b8b8b8;
   background-color: #fafafa;
 }
 /* No color change on hover when disabled */
-input[type=submit].animation_button:disabled:hover, input[type=submit].end_animation:disabled:hover {
+.light-mode input[type=submit].animation_button:disabled:hover, .light-mode input[type=submit].end_animation:disabled:hover {
   color: #b8b8b8;
   border-color: #b8b8b8;
   background-color: #fafafa;
 }
 /*********************** Sepia Mode *****************************************************************/
-.sepia button, .sepia select, .sepia .programs_container {
+.sepia {
   background-color: #fff5e6;
+  color: black;
 }
+.sepia a:link {
+  color: #0000EE;
+}
+.sepia a:visited {
+  color: #551A8B;
+}
+.sepia button, .sepia select {
+  background-color: #fff5e6;
+  color: black;
+}
+/********** Page Top ***************/
+.sepia #logo-span1, .sepia #logo-span2 {
+  fill: black;
+}
+/********** Highlights *************/
+.sepia .highlights_content button:hover {
+  background-color: #f0efed;
+}
+/********** Left Sidebar ***********/
+.sepia a.sidebar_links, .sepia .other_pages a {
+  color: black;
+}
+.sepia .programs_container {
+  background-color: #fff5e6;
+  color: black;
+}
+/********** Chart Module **********/
 .sepia .center_explanation_box {
   background-color: #f7f0e6;
 }
-.sepia {
-  background-color: #fff5e6;
+/********** Charts *****************/
+.sepia .c3 text {
+  fill: black;
 }
-.sepia path.st1, .sepia circle.cc-circle {
-  fill: #fff5e6;
+.sepia .c3-grid line, .sepia .c3-axis-x line, .sepia .c3-axis-y line, .sepia .c3-axis-x path, .sepia .c3-axis-y path {
+  stroke: black;
+}
+/********** Page Bottom ***********/
+.sepia .page_bottom {
+  color: #858585;
+  border-color: #bdbdbd;
+}
+/********** Social icon colors ****/
+.sepia .social-base-color {fill: #000000;}
+.sepia .social-page-bottom-base-color {fill: #858585;}
+/* social media circle icons */
+.sepia path.st1 {fill:#fff5e6;}
+.sepia circle.cc-circle {fill: #fff5e6;}
+/********** Animation Buttons *****/
+.sepia input[type=submit].animation_button, .sepia input[type=submit].end_animation {
+  background-color: #f5f3f2;
+  border: solid;
+  border-color: #adadad;
+}
+/* Lighter color on hover */
+.sepia input[type=submit].animation_button:hover, .sepia input[type=submit].end_animation:hover {
+  background-color: #d1d1d1;
+}
+/* Lighter colors for when it is disabled */
+.sepia input[type=submit].animation_button:disabled, .sepia input[type=submit].end_animation:disabled {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
+}
+/* No color change on hover when disabled */
+.sepia input[type=submit].animation_button:disabled:hover, .sepia input[type=submit].end_animation:disabled:hover {
+  color: #b8b8b8;
+  border-color: #b8b8b8;
+  background-color: #fafafa;
 }
 /*********************** Dark Mode *****************************************************************/
+/********** Page Fundamentals *************/
 .dark-mode {
   background-color: #242424;
   color: #dbdbdb;
@@ -180,29 +275,49 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
 .dark-mode a:visited {
   color: #bd86f1;
 }
-.dark-mode button, .dark-mode select, .dark-mode .programs_container {
+.dark-mode button, .dark-mode select {
   background-color: #242424;
   color: #dbdbdb;
 }
-.dark-mode .highlights_content button:hover {
-  background-color: #474747;
-}
-.dark-mode a.sidebar_links, .dark-mode .other_pages a, .dark-mode .page_bottom {
-  color: #dbdbdb;
-}
-.dark-mode .center_explanation_box {
-  background-color: #141414;
-}
+/********** Page Top *****************/
 .dark-mode #logo-span1, .dark-mode #logo-span2 {
   fill: #dbdbdb;
 }
-.dark-mode .social-base-color, .dark-mode .social-page-bottom-base-color {
+/********** Highlights ***************/
+.dark-mode .highlights_content button:hover {
+  background-color: #474747;
+}
+/********** Left Sidebar *************/
+.dark-mode a.sidebar_links, .dark-mode .other_pages a, .dark-mode .page_bottom {
+  color: #dbdbdb;
+}
+.dark-mode .programs_container {
+  background-color: #242424;
+  color: #dbdbdb;
+}
+/********** Chart Module *************/
+.dark-mode .center_explanation_box {
+  background-color: #141414;
+}
+/********** Charts ******************/
+.dark-mode .c3 text {
   fill: #dbdbdb;
 }
-.dark-mode path.st1, .dark-mode circle.cc-circle {
-  fill: #242424;
+.dark-mode .c3-grid line, .dark-mode .c3-axis-x line, .dark-mode .c3-axis-y line, .dark-mode .c3-axis-x path, .dark-mode .c3-axis-y path {
+  stroke: #dbdbdb;
 }
-/*** Highlights Buttons ***/
+/********** Page Bottom *************/
+.page_bottom {
+  color: #dbdbdb;
+  border-color: #dbdbdb;
+}
+/********** Social Icons ************/
+.dark-mode .social-base-color {fill: #dbdbdb;}
+.dark-mode .social-page-bottom-base-color {fill: #dbdbdb;}
+/* social media circle icons */
+path.st1 {fill: #242424;}
+circle.cc-circle {fill: #242424;}
+/********** Animation Buttons *********/
 .dark-mode input[type=submit].animation_button, .dark-mode input[type=submit].end_animation {
   background-color: #141414;
   border-color: #dbdbdb;
@@ -224,23 +339,6 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
   border-color: #b8b8b8;
   background-color: #fafafa;
 }
-/*** Charts ***/
-.dark-mode .c3 text {
-  fill: #dbdbdb;
-}
-.dark-mode .c3-grid line, .dark-mode .c3-axis-x line, .dark-mode .c3-axis-y line, .dark-mode .c3-axis-x path, .dark-mode .c3-axis-y path {
-  stroke: #dbdbdb;
-}
-/*********************** Social icon colors *****************************************************************/
-.social-base-color {fill: #000000;}
-.social-page-bottom-base-color {fill: #858585;}
-.twitter-blue {fill: #1D9BF0;}
-.facebook-blue {fill: #1778F2;}
-.reddit-orange {fill: #FF5700;}
-.substack-orange {fill: #ff6700;}
-
-/* social media circle icons */
-path.st1{fill:#FFFFFF;}
 /*********************** Page Positioning **********************************************************/
 .top {
 }
@@ -344,9 +442,6 @@ svg.logo-svg {
   border-radius: 30px;
   opacity: 20%;
   transition: left .2s ease;
-}
-.toggle_default_position {
-  left: 0;
 }
 .toggle_left {
   left: 0;

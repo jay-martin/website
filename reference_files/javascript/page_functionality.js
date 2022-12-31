@@ -9,7 +9,6 @@
  * (7) Open and close highlights
  * (8) Open and close chart notes
  * ****************************************************************************************/
-
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
 
@@ -36,6 +35,7 @@ function toggle_page_color(position){
     $('#page_color_toggler').addClass('toggle_right');
 
     pageStyle = 'dark';
+    $('body').removeClass('light-mode');
     $('body').removeClass('sepia');
     $('body').addClass('dark-mode');
   }
@@ -45,6 +45,7 @@ function toggle_page_color(position){
     $('#page_color_toggler').addClass('toggle_center');
 
     pageStyle = 'sepia';
+    $('body').removeClass('light-mode');
     $('body').removeClass('dark-mode');
     $('body').addClass('sepia');
   }
@@ -56,6 +57,7 @@ function toggle_page_color(position){
     pageStyle = 'light';
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
+    $('body').addClass('light-mode');
   }
 
   //reset social icon transition speed
