@@ -131,6 +131,9 @@ a.sidebar_links, .other_pages a {
 #page_color_toggler {
   background-color: grey;
 }
+circle.cc-circle {
+  fill: #ffffff;
+}
 /*** Highlights Buttons ***/
 input[type=submit].animation_button, input[type=submit].end_animation {
   background-color: #f5f3f2;
@@ -163,7 +166,7 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
 .sepia {
   background-color: #fff5e6;
 }
-.sepia path.st1 {
+.sepia path.st1, .sepia circle.cc-circle {
   fill: #fff5e6;
 }
 /*********************** Dark Mode *****************************************************************/
@@ -196,8 +199,8 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
 .dark-mode .social-base-color, .dark-mode .social-page-bottom-base-color {
   fill: #dbdbdb;
 }
-.dark-mode path.st1 {
-  fill: #000000;
+.dark-mode path.st1, .dark-mode circle.cc-circle {
+  fill: #242424;
 }
 /*** Highlights Buttons ***/
 .dark-mode input[type=submit].animation_button, .dark-mode input[type=submit].end_animation {
