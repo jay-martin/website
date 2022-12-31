@@ -90,11 +90,12 @@ video {
   margin-right: auto;
 }
 /*********************** Transition Setting **********************************************************/
-body, select, .programs_container, #page_color_toggler, .center_explanation_box, a.sidebar_links, .other_pages a {
+body, select, .programs_container, #page_color_toggler, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease, color 1s ease;
 }
 .center_explanation_box {
-  transition: background-color 1s ease !important; /* For some reason, .center_explanation_box requires the !important tag */
+  /* For some reason, .center_explanation_box requires the !important tag or it will switch colors immediately*/
+  transition: background-color 1s ease !important; 
 }
 /** Some elements need fast transition by default **/
 .social_icon {
@@ -106,6 +107,11 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 #logo-span1, #logo-span2 {
   transition: fill 1s ease-out;
 }
+/*
+p.explanation_text {
+  transition: color .5s ease; 
+}
+*/
 /*********************** Universal Colors *****************************************************************/
 #page_color_toggler {background-color: grey;}
 .twitter-blue {fill: #1D9BF0;}
@@ -651,9 +657,6 @@ a.sidebar_links:hover {
 .center_explanation_box:scrollbar { 
     display: none;  /* Safari and Chrome */
 }
-p.explanation_text {
-  transition: color .5s linear; 
-}
 input[type=submit].end_animation {
   font-family: "Computer Modern Sans";
   float: right;
@@ -661,7 +664,6 @@ input[type=submit].end_animation {
   border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
-
   display: none;
 }
 input[type=submit].end_animation:disabled:hover {
