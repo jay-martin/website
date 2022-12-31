@@ -113,6 +113,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 .reddit-orange {fill: #FF5700;}
 .substack-orange {fill: #ff6700;}
 /*********************** Light Mode **********************************************************************/
+/********** Toggler ***********************/
+.light-mode #page_color_toggler {
+  left: 0;
+}
 /********** Page Fundamentals *************/
 .light-mode {
   background-color: white;
@@ -189,6 +193,11 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   background-color: #fafafa;
 }
 /*********************** Sepia Mode *****************************************************************/
+/********** Toggler ***********************/
+.sepia #page_color_toggler {
+  left: 49px;
+}
+/********** Page Fundamentals *************/
 .sepia {
   background-color: #fff5e6;
   color: black;
@@ -264,6 +273,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   background-color: #fafafa;
 }
 /*********************** Dark Mode *****************************************************************/
+/********** Toggler ***********************/
+.dark-mode #page_color_toggler {
+  left: 100px;
+}
 /********** Page Fundamentals *************/
 .dark-mode {
   background-color: #242424;
@@ -442,15 +455,6 @@ svg.logo-svg {
   border-radius: 30px;
   opacity: 20%;
   transition: left .2s ease;
-}
-.toggle_left {
-  left: 0;
-}
-.toggle_center {
-  left: 49px;
-}
-.toggle_right{
-  left: 100px;
 }
 /***********************Title********************************************************************/
 .title_container {

@@ -1,12 +1,4 @@
 /*PROBLEM: Overflow from Mathjax is hidden */
-/* Google Menu Icon */
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
 @media screen and (max-width: 900px) {
   body {
     width: 100%;
@@ -420,7 +412,8 @@
   img.bottom_social_logos {
     margin-left: 7.5px;
   }
-}
+
+} /************* End Media Query *********************/
 
 /*********************************************************************************************
 * Some adjustments for tablets

@@ -13,47 +13,27 @@
 pageStyle = 'light';
 
 /******************************** Page color toggle ******************************/
-var isFirstToggle = true;
-
 /** Controls toggling between light, sepia, and dark modes
- ** Animates the toggle
  * @param {string} - the current position of the toggle ('left', 'center', or 'right')
  * */
 function toggle_page_color(position){
-  if(isFirstToggle){
-    $('#page_color_toggler').removeClass('toggle_default_position');
-    isFirstToggle = false;
-  }
-
   // buttons and social icons are by default set to transition in .15s
   $('.social_icon').css('transition', 'fill 1s ease');
   $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color 1s ease');
 
   if(position === 'right'){
-    $('#page_color_toggler').removeClass('toggle_left');
-    $('#page_color_toggler').removeClass('toggle_center');
-    $('#page_color_toggler').addClass('toggle_right');
-
     pageStyle = 'dark';
     $('body').removeClass('light-mode');
     $('body').removeClass('sepia');
     $('body').addClass('dark-mode');
   }
   else if(position === 'center'){
-    $('#page_color_toggler').removeClass('toggle_right');
-    $('#page_color_toggler').removeClass('toggle_left');
-    $('#page_color_toggler').addClass('toggle_center');
-
     pageStyle = 'sepia';
     $('body').removeClass('light-mode');
     $('body').removeClass('dark-mode');
     $('body').addClass('sepia');
   }
   else if(position === 'left'){
-    $('#page_color_toggler').removeClass('toggle_right');
-    $('#page_color_toggler').removeClass('toggle_center');
-    $('#page_color_toggler').addClass('toggle_left');
-
     pageStyle = 'light';
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
