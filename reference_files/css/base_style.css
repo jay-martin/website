@@ -333,8 +333,8 @@ p.explanation_text {
 .dark-mode .social-base-color {fill: #dbdbdb;}
 .dark-mode .social-page-bottom-base-color {fill: #dbdbdb;}
 /* social media circle icons */
-path.st1 {fill: #242424;}
-circle.cc-circle {fill: #242424;}
+.dark-mode path.st1 {fill: #242424;}
+.dark-mode circle.cc-circle {fill: #242424;}
 /********** Animation Buttons *********/
 .dark-mode input[type=submit].animation_button, .dark-mode input[type=submit].end_animation {
   background-color: #141414;
