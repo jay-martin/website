@@ -31,7 +31,6 @@ a.sidebar_links, .other_pages a {
 }
 .programs_container {
   background-color: #242424;
-  color: #dbdbdb;
 }
 /*********************** Chart Module **********************************************************************/
 .center_explanation_box {
@@ -42,7 +41,7 @@ a.sidebar_links, .other_pages a {
   fill: #dbdbdb;
 }
 .c3-grid line, .c3-axis-x line, .c3-axis-y line, .c3-axis-x path, .c3-axis-y path {
-  stroke: #dbdbdb;
+  stroke: #dbdbdb !important;
 }
 .c3-ygrid line {
   opacity: 0;

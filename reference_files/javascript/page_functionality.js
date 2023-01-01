@@ -74,7 +74,7 @@ function toggle_page_color(mode){
 /******************************** Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();
-var scrollThreshold = 1.075 * displayHeight;
+var scrollThreshold = 1.3 * displayHeight;
 var isExpanded = false;
 
 // Changing the eligibility status container to position:fixed after a certain amount of scroll is only needed for desktop
@@ -92,7 +92,7 @@ if(displayWidth > 900){
     else {
       // Set the position property of the fixed element to absolute
       fixedElement.style.position = 'absolute';
-      fixedElement.style.marginTop = '118vh';
+      fixedElement.style.marginTop = '140vh';
     }
   });
 }
