@@ -53,6 +53,103 @@ ol, ul {
   margin-right: 1%;
   overflow: hidden;
 }
+/*********************** Light Mode ************************************************************************/
+/********* Navbar ***********/
+.light-mode .mobile_navbar {
+  background-color: white;
+}
+.light-mode a.navbar_logo {
+  color: black;
+}
+.light-mode button.open_icon:hover, .light-mode button.close_icon{
+  background-color: white;
+}
+.light-mode .open_close_button span {
+  background: black;
+}
+/********* Dropdown *********/
+.light-mode .mobile_dropdown {
+  background-color: white;
+  border-bottom: 1px solid;
+  border-color: black;
+}
+.light-mode .mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: #bdbdbd;
+}
+.light-mode .mobile_dropdown a {
+  color: black;
+}
+/********* Title *********/
+.light-mode .category {
+  color: #582cfc;
+}
+/*********************** Sepia *****************************************************************************/
+/********* Navbar ***********/
+.sepia .mobile_navbar {
+  background-color: #fff5e6;
+}
+.sepia a.navbar_logo {
+  color: black;
+}
+.sepia button.open_icon:hover, .sepia button.close_icon{
+  background-color: #fff5e6;
+}
+.sepia .open_close_button span {
+  background: black;
+}
+/********* Dropdown *********/
+.sepia .mobile_dropdown {
+  background-color: #fff5e6;
+  border-bottom: 1px solid;
+  border-color: black;
+}
+.sepia .mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: #bdbdbd;
+}
+.sepia .mobile_dropdown a {
+  color: black;
+}
+/********* Title *********/
+.sepia .category {
+  color: #582cfc;
+}
+/*********************** Dark Mode *************************************************************************/
+/********* Navbar ***********/
+.dark-mode .mobile_navbar {
+  background-color: #242424;
+}
+.dark-mode a.navbar_logo {
+  color: #dbdbdb;
+}
+.dark-mode button.open_icon:hover, .dark-mode button.close_icon{
+  background-color: white;
+}
+.dark-mode .open_close_button span {
+  background: #dbdbdb;
+}
+/********* Dropdown *********/
+.dark-mode .mobile_dropdown {
+  background-color: #242424;
+  border-bottom: 1px solid;
+  border-color: #dbdbdb;
+}
+.dark-mode .mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: #dbdbdb;
+}
+.dark-mode .mobile_dropdown a {
+  color: #dbdbdb;
+}
+/********* Title *********/
+.dark-mode .category {
+  color: #dbdbdb;
+}
+
 /*********************** Title *****************************************************************************/
 .title_container {
   width: 100%;
@@ -62,7 +159,6 @@ ol, ul {
 .category {
   font-family: 'Zen Antique Soft', serif;
   font-size: 85%;
-  color: #582cfc;
   display: block;
 }
 #page_title, .name, .page_description, .twitter_follow, .category {
@@ -132,11 +228,6 @@ img.top_social_icons {
   position: fixed;
   overflow: hidden;
   width: 100%;
-  /* border-bottom: 1px solid;
-  border-color: black; */
-  /* border-color: #adadad; */
-  /* border: none; */
-  background-color: white;
   opacity: 100;
   z-index: 2;
 }
@@ -150,7 +241,6 @@ a.navbar_logo {
   margin-left: 15px;
   margin-top: 1vh;
   border: none;
-  color: black;
 }
 button.open_icon, button.close_icon {
   float: right;
@@ -164,9 +254,6 @@ button.open_icon, button.close_icon {
 }
 button.close_icon {
   display: none;
-}
-button.open_icon:hover, button.close_icon{
-  background-color: white;
 }
 /*********************** Responsive Open/Close Button *******************************************************************/
 .navigation_button_container {
@@ -191,7 +278,6 @@ button.open_icon:hover, button.close_icon{
   position: absolute;
   height: 2.5px;
   width: 100%;
-  background: #000000;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -232,10 +318,7 @@ button.open_icon:hover, button.close_icon{
   overflow: hidden;
   width: 100%;
   padding-top: 56px;
-  background-color: white;
   z-index: 1;
-  border-bottom: 1px solid;
-  border-color: black;
 }
 .featured_pages_title, a.featured_pages  {
   margin-left: 3%;
@@ -244,7 +327,6 @@ button.open_icon:hover, button.close_icon{
   margin-top: 15px;
 }
 .mobile_dropdown a {
-  color: black;
   margin-bottom: 16px;
   padding-right: 10px;
   text-decoration: none;
@@ -308,9 +390,6 @@ img.mobile_dropdown_blog_promote_image {
   width: 95%;
   margin-left: auto;
   margin-right: auto;
-  border: solid;
-  border-width: 1px;
-  border-color: #bdbdbd;
   margin-bottom: 10px;
 }
 /* disable scroll */

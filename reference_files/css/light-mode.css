@@ -44,7 +44,7 @@ a.sidebar_links, .other_pages a {
 .c3-grid line, .c3-axis-x line, .c3-axis-y line, .c3-axis-x path, .c3-axis-y path {
   stroke: black;
 }
-/*********************** Page Bottom ****************************************************************************/
+/*********************** Page Bottom ***********************************************************************/
 .page_bottom {
   color: #858585;
   border-color: #bdbdbd;
@@ -77,4 +77,36 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
   color: #b8b8b8;
   border-color: #b8b8b8;
   background-color: #fafafa;
+}
+/*********************** Mobile ************************************************************************/
+/********* Navbar ***********/
+.mobile_navbar {
+  background-color: white;
+}
+a.navbar_logo {
+  color: black;
+}
+button.open_icon:hover, button.close_icon{
+  background-color: white;
+}
+.open_close_button span {
+  background: black;
+}
+/********* Dropdwon *********/
+.mobile_dropdown {
+  background-color: white;
+  border-bottom: 1px solid;
+  border-color: black;
+}
+.mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: #bdbdbd;
+}
+.mobile_dropdown a {
+  color: black;
+}
+/********* Title *********/
+.category {
+  color: #582cfc;
 }

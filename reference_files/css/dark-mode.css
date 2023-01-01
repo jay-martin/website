@@ -46,7 +46,7 @@ a.sidebar_links, .other_pages a {
 .c3-ygrid line {
   opacity: 0;
 }
-/*********************** Page Bottom ****************************************************************************/
+/*********************** Page Bottom ***********************************************************************/
 .page_bottom {
   color: #dbdbdb;
   border-color: #dbdbdb;
@@ -79,4 +79,36 @@ input[type=submit].animation_button:disabled:hover, input[type=submit].end_anima
   color: #b8b8b8;
   border-color: #b8b8b8;
   background-color: #fafafa;
+}
+/*********************** Mobile ************************************************************************/
+/********* Navbar ***********/
+.mobile_navbar {
+  background-color: #242424;
+}
+a.navbar_logo {
+  color: #dbdbdb;
+}
+button.open_icon:hover, button.close_icon{
+  background-color: white;
+}
+.open_close_button span {
+  background: #dbdbdb;
+}
+/********* Dropdown *********/
+.mobile_dropdown {
+  background-color: #242424;
+  border-bottom: 1px solid;
+  border-color: #dbdbdb;
+}
+.mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: #dbdbdb;
+}
+.mobile_dropdown a {
+  color: #dbdbdb;
+}
+/********* Title *********/
+.category {
+  color: #dbdbdb;
 }
