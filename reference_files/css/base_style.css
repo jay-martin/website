@@ -860,7 +860,6 @@ p.explanation {
 }
 input[type=submit].animation_button {
   width: 50%;
-  border: solid;
   border-width: 1.5px;
   border-radius: 3px;
   text-decoration: none;

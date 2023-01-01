@@ -57,6 +57,7 @@ path.st1 {fill:#FFFFFF;}
 circle.cc-circle {fill: #ffffff;}
 /*********************** Animation buttons *****************************************************************/
 input[type=submit].animation_button, input[type=submit].end_animation {
+  border: solid;
   background-color: #f5f3f2;
   border-color: #adadad;
   color: black;
