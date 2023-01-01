@@ -44,8 +44,8 @@ var fsaEITC = c3.generate({
             child_married     : 'Married with Dependent',
         },
         colors: {
-            childless_single    : 'black',
-            childless_married   : 'black',
+            childless_single    : color_mode_color,
+            childless_married   : color_mode_color,
 
             child_single     : '#f7c22f',
             child_married    : '#f7c22f',

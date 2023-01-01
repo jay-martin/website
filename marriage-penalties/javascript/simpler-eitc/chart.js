@@ -27,7 +27,7 @@ var simplerEITC = c3.generate({
         },
         colors: {
             person1        : '#6ab6fc',
-            married        : '#000000',
+            married        : color_mode_color,
         },
     },
     padding: {

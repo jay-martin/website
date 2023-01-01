@@ -2,6 +2,13 @@
  * This file contains the function creating the c3.js chart
  * DEFAULT GRAPH: Standard deduction for both single filer & HOH
  * ****************************************************************************************/
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    color_mode_color = '#dbdbdb';
+}
+else{
+    color_mode_color = 'black';
+}
+
 var HOHchart = c3.generate({
     bindto: '#HOHchart',
     data: {
@@ -35,7 +42,7 @@ var HOHchart = c3.generate({
         colors: {
             HOH_Savings : '#f7c22f',
             after_ctc   : '#6ab6fc',
-            point       : '#000000',
+            point       :  color_mode_color,
         },
     },
     transition: {

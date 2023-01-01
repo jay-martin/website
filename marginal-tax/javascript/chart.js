@@ -12,6 +12,13 @@ else{
     xTick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,];
 }
 
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    color_mode_color = '#dbdbdb';
+}
+else{
+    color_mode_color = 'black';
+}
+
 var chart = c3.generate({
     bindto: '#chart',
     data: {
@@ -63,7 +70,7 @@ var chart = c3.generate({
             eitc: '#8700a680',
             ctc:  '#0008ff80',
             snap: '#00e5ffB3',
-            point: 'black'
+            point: color_mode_color,
         },
     },
     transition: {

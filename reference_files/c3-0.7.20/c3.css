@@ -66,7 +66,7 @@
 /*-- Point --*/
 .c3-circle {
   fill: currentColor;
-  r: 3px; /* adjusted from default */
+  r: 3.1px; /* adjusted from default */
 }
 
 .c3-circle._expanded_ {

@@ -27,6 +27,9 @@ function toggle_page_color(mode){
     $('body').removeClass('sepia');
     $('body').addClass('dark-mode');
 
+    // Page specific changes
+    page_color_mode('dark');
+
     // Change browser default rendering to dark
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
@@ -38,6 +41,9 @@ function toggle_page_color(mode){
     $('body').removeClass('dark-mode');
     $('body').addClass('sepia');
 
+    // Page specific changes
+    page_color_mode('sepia');
+
     // Change browser default rendering to light
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
@@ -48,6 +54,9 @@ function toggle_page_color(mode){
     $('body').removeClass('dark-mode');
     $('body').removeClass('sepia');
     $('body').addClass('light-mode');
+
+    // Page specific changes
+    page_color_mode('light');
 
     // Change browser default rendering to light
     setTimeout(function(){

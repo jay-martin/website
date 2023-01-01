@@ -71,8 +71,8 @@ var marriagePenaltyChart = c3.generate({
             person2: '#770087',
             person2_dashed: '#770087',
             point2: '#770087',
-            married: '#000000',
-            point_married: '#000000',
+            married: color_mode_color,
+            point_married: color_mode_color,
 
             combined_tax : 'red',
             penalty      : 'red',

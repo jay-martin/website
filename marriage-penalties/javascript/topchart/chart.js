@@ -1,4 +1,10 @@
-/*DEFAULT GRAPH: One person with 1 child, other childless */
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    color_mode_color = '#dbdbdb';
+}
+else{
+    color_mode_color = 'black';
+}
+
 var MPchart = c3.generate({
     bindto: '#MPchart',
     data: {
@@ -88,8 +94,8 @@ var MPchart = c3.generate({
             person2: '#770087',
             person2_dashed: '#770087',
             point2: '#770087',
-            married: '#000000',
-            point_married: '#000000',
+            married: color_mode_color,
+            point_married: color_mode_color,
 
             married_eitc: '#eb3734',
             penalty: '#eb3734',

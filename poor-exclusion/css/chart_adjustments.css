@@ -2,3 +2,8 @@
 .c3-circles-total, .c3-circles-no_exclusion, .c3-circles-total_hidden, .c3-circles-ctc, .c3-circles-eitc, .c3-circles-hoh, .c3-circles-no_exclusion_end, .c3-circles-loss_in_benefits{
   display: none;
 }
+
+/******************* Opacity ******************************/
+.c3-area-total_hidden {
+  opacity: 0 !important;
+}
