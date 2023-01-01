@@ -38,6 +38,12 @@ var chart = c3.generate({
         columns: [
             ['x',                   0, 12949, 12950, 23224, 23225, 54724, 54725, 102024, 102025, 182999, 183000, 228899, 228900, 552849, 552850, 600000],
             ['total',               0, 0,     10,    10,    12,    12,    22,    22,     24,     24,     32,     32,     35,     35,     37,     37],
+
+            // Listed empty so that point is positioned above
+            ['x_tangent',],
+            ['income_tax_and_transfer',],
+            ['tangent_line',],
+
             ['x_point', 50000],
             ['point', 12],
         ],

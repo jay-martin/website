@@ -34,6 +34,13 @@ var eitcReform = c3.generate({
             ['x2',      0, 11750, 21560, 46560,],
             ['person2', 0, 3995,  3995,  0,],
 
+            // Listed empty because they need to be positioned below the points
+            ['x_horizontal',],
+            ['married_value',],
+            ['penalty',],
+            ['combined'],
+            ['bonus'],
+
             ['x_point1', 15000],
             ['point1',   3995],
             ['x_point2', 20000],

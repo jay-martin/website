@@ -34,16 +34,19 @@ var existingEITC = c3.generate({
             ['x2',      0, 11750, 21560, 46560,],
             ['person2', 0, 3995,  3995,  0,],
 
+            ['x_horizontal',  0,    100000],
+            ['married_value', 5155, 5155],
+            ['penalty',       2835, 2835],
+            // Listed empty because they need to be positioned below the points
+            ['combined',],
+            ['bonus',],
+
             ['x_point1', 15000],
             ['point1',   3995],
             ['x_point2', 20000],
             ['point2',   3995],
             ['x_point_married', 35000],
             ['point_married',   5155],
-
-            ['x_horizontal',  0,    100000],
-            ['married_value', 5155, 5155],
-            ['penalty',       2835, 2835],
 
         ],
         types: {

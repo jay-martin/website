@@ -36,16 +36,16 @@ var marriagePenaltyChart = c3.generate({
             ['person2', 0, 0,     1100,  5147,  16290,  37104,  52832,  174238.25],
             ['person2_dashed', 0, 0,     1100,  5147,  16290,  37104,  52832,  174238.25],
 
+            ['x_horizontal', 0,    200000],
+            ['combined_tax', 9718, 9718],
+            ['penalty',      1203, 1203],
+
             ['x_point1', 80000],
             ['point1',   6800],
             ['x_point2', 40000],
             ['point2',   2918],
             ['x_point_married', 120000],
             ['point_married',   10921],
-
-            ['x_horizontal', 0,    200000],
-            ['combined_tax', 9718, 9718],
-            ['penalty',      1203, 1203],
         ],
         hide: ['person2_dashed'],
         types: {

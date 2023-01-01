@@ -32,16 +32,16 @@ var hohFixChart = c3.generate({
             ['x2',      0, 13850, 24850, 58575, 109225, 195950, 245100, 591975],
             ['person2', 0, 0,     1100,  5147,  16290,  37104,  52832,  174238.25],
 
+            ['x_horizontal', 0,     200000],
+            ['married_tax',  10921, 10921 ],
+            ['bonus',        1858,  1858],
+
             ['x_point1', 80000],
             ['point1',   9861],
             ['x_point2', 40000],
             ['point2',   2918],
             ['x_point_married', 120000],
             ['point_married',   10921],
-
-            ['x_horizontal', 0,     200000],
-            ['married_tax',  10921, 10921 ],
-            ['bonus',        1858,  1858],
         ],
         types: {
            'married_tax' : 'area',

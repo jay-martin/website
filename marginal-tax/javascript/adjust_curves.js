@@ -48,7 +48,15 @@ function load_emtr_data(){
 	total.unshift('total');
 
 	/* load relevant charts */
-	chart.load({columns: [xVals, total],});
+	val = tax_and_transfer_at_income_marginal(income, num_children.value, filingstatus.value)[6];
+	chart.load({columns: [
+			xVals, 
+			total,
+			['x_point', user_income.value],
+			['point', val],
+		],
+	});
+	
 	/*
 	if(personal_income_tax_isActive === true){
 		chart.load({columns: [xVals, personal]});
