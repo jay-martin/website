@@ -61,6 +61,9 @@ var CAchart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 60000, text: 'Your income'}]
         },

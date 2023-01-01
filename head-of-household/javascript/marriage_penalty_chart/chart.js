@@ -115,6 +115,9 @@ var marriagePenaltyChart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 80000, text: 'Your income'}, {value: 40000, text: "Your partner's income"}, {value: 120000, text: 'Combined income'}]
         },

@@ -70,8 +70,8 @@
 }
 
 .c3-circle._expanded_ {
-  stroke-width: 1px;
-  stroke: white;
+  stroke-width: 0px; /* adjusted from default value of 1px */
+  stroke: currentColor; /* adjusted from default value: white */
 }
 
 .c3-selected-circle {

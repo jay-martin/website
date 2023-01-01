@@ -150,6 +150,9 @@ var MPchart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]
         },

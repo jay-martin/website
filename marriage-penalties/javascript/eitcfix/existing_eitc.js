@@ -112,6 +112,9 @@ var existingEITC = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 15000, text: 'Your income'}, {value: 20000, text: "Your partner's income"}, {value: 35000, text: 'Combined income'}]
         },

@@ -109,6 +109,9 @@ var eitc2023 = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             //lines: [{value: 15000, text: 'Your income'},]
         },

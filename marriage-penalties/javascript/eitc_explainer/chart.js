@@ -84,4 +84,9 @@ var eitcExplainer = c3.generate({
             max: 4000,
         }
     },
+    grid: {
+        lines: {
+          front: false
+        },
+    },
 });

@@ -111,6 +111,9 @@ var chart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 50000, text: 'Your income'}],
             min: 0,

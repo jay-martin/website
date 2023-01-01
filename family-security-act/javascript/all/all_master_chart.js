@@ -66,6 +66,9 @@ var master_chart_all = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 20000, text: 'Your income'}]
         },
