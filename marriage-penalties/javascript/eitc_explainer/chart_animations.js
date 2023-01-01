@@ -187,7 +187,7 @@ function eitc_explainer_step1(){
 
 
 	setTimeout(function () {
-		eitcExplainer.ygrids([{value: 3000}]);
+		eitcExplainer.ygrids([{value: 3000, class: 'eitc_explainer_ygrid1'}]);
 	}, 5500);
 
 	setTimeout(function () {
@@ -205,7 +205,7 @@ function eitc_explainer_step1(){
 	}, 9000);
 
 	setTimeout(function () {
-		eitcExplainer.ygrids([{value: 6000}]);
+		eitcExplainer.ygrids([{value: 6000, class: 'eitc_explainer_ygrid1'}]);
 	}, 10000);
 
 	setTimeout(function () {
@@ -291,7 +291,7 @@ function eitc_explainer_step2(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 10000}]);
-		eitcExplainer.ygrids([ {value: 3000}]);
+		eitcExplainer.ygrids([ {value: 3000, class: 'eitc_explainer_ygrid1' }]);
 	}, 6500);
 
 	setTimeout(function () {
@@ -306,7 +306,7 @@ function eitc_explainer_step2(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 20000}]);
-		eitcExplainer.ygrids([ {value: 6000}]);
+		eitcExplainer.ygrids([ {value: 6000, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 20000,],
@@ -419,7 +419,7 @@ function eitc_explainer_step3(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 15000,},]);
-		eitcExplainer.ygrids([ {value: 3000},]);
+		eitcExplainer.ygrids([ {value: 3000, class: 'eitc_explainer_ygrid1'},]);
 	}, 6000);
 
 	setTimeout(function () {
@@ -433,7 +433,7 @@ function eitc_explainer_step3(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([  {value: 30000,},]);
-		eitcExplainer.ygrids([  {value: 6000}]);
+		eitcExplainer.ygrids([  {value: 6000, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 30000],
@@ -533,7 +533,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 30000, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'} ]);
-		eitcExplainer.ygrids([ {value: 0},]);
+		eitcExplainer.ygrids([ {value: 0, class: 'eitc_explainer_ygrid1'},]);
 	}, 7000);
 
 	setTimeout(function () {
@@ -555,7 +555,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 20000, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'}, {value: 50000, text: 'Combined Income'}]);
-		eitcExplainer.ygrids([ {value: 2000}]);
+		eitcExplainer.ygrids([ {value: 2000, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 20000],
@@ -594,7 +594,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 22500, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'}, {value: 52500, text: 'Combined Income'}]);
-		eitcExplainer.ygrids([ {value: 1500}]);
+		eitcExplainer.ygrids([ {value: 1500, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 22500],
@@ -607,7 +607,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 25000, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'}, {value: 55000, text: 'Combined Income'}]);
-		eitcExplainer.ygrids([ {value: 1000}]);
+		eitcExplainer.ygrids([ {value: 1000, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 25000],
@@ -620,7 +620,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 27500, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'}, {value: 57500, text: 'Combined Income'}]);
-		eitcExplainer.ygrids([ {value: 500}]);
+		eitcExplainer.ygrids([ {value: 500, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 27500],
@@ -633,7 +633,7 @@ function eitc_explainer_step4(){
 
 	setTimeout(function () {
 		eitcExplainer.xgrids([ {value: 30000, text: 'Person 1 Income'}, {value: 30000, text: 'Person 2 Income', position: 'middle'}, {value: 60000, text: 'Combined Income'}]);
-		eitcExplainer.ygrids([ {value: 0}]);
+		eitcExplainer.ygrids([ {value: 0, class: 'eitc_explainer_ygrid1'}]);
 		eitcExplainer.load({
 			columns: [
 				['x_point2', 30000],

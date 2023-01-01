@@ -44,6 +44,9 @@ a.sidebar_links, .other_pages a {
 .c3-grid line, .c3-axis-x line, .c3-axis-y line, .c3-axis-x path, .c3-axis-y path {
   stroke: #dbdbdb;
 }
+.c3-ygrid line {
+  opacity: 0;
+}
 /*********************** Page Bottom ****************************************************************************/
 .page_bottom {
   color: #dbdbdb;

@@ -5,13 +5,23 @@
   display: none;
 }
 
-/*   */
+/* HOH Single Filer */
+.c3-circles-married_tax {
+  display: none;
+}
+
+/* EITC Explainer Points */
 .c3-circles-married_plateau, .c3-circles-married_phasein, .c3-circles-married_phaseout  {
   display: none;
 }
 
-/*   */
-.c3-circles-tax {
+/* EITC Explainer Y Grids */
+.c3-ygrid-line.eitc_explainer_ygrid1 line {
+  stroke-opacity: 1;
+}
+
+/* Comparison chart */
+.c3-circles-married_value, .c3-circles-combined {
   display: none;
 }
 
@@ -22,6 +32,11 @@
 
 /* FSA EITC */
 .c3-circles-childless_single, .c3-circles-childless_married, .c3-circles-child_single, .c3-circles-child_married {
+  display: none;
+}
+
+/* Standard Credit */
+.c3-circles-tax {
   display: none;
 }
 

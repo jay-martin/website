@@ -29,7 +29,7 @@ function dark_mode(){
 
 	eitcExplainer.data.colors({
 		married_plateau  : '#dbdbdb',
-		maried_phasein   : '#dbdbdb',
+		married_phasein   : '#dbdbdb',
 		married_phaseout : '#dbdbdb',
 		point_married    : '#dbdbdb',
 	});

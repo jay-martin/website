@@ -117,6 +117,9 @@ p.explanation_text {
 .facebook-blue {fill: #1778F2;}
 .reddit-orange {fill: #FF5700;}
 .substack-orange {fill: #ff6700;}
+.c3-ygrid-line line {
+  stroke-opacity: 0;
+}
 /*********************** Light Mode **********************************************************************/
 /********** Toggler ***********************/
 .light-mode #page_color_toggler {
