@@ -26,7 +26,7 @@ for (var i = 0; i < highlights.length; i++) {
 //Wait until page is fully loaded
 var displayWidth = window.innerWidth;
 $(document).ready(function(){
-	desktop_or_mobile_intialize();
+	desktop_or_mobile_intialize(); // Kept as a separate function because the function is needed for window resize events
 });
 
 //Handle screen resize events
@@ -37,28 +37,6 @@ $(window).on('resize', function() {
     	prepare_resize();
   	}
 });
-
-function prepare_resize(){
-	// Hide highlights, show loader
-	$('#loader_container').css('display', 'block');
-	$('#highlights_content').css('visibility', 'hidden');
-	$('#programs').css('visibility', 'hidden');
-
-	// Adjust borders
-	$('#highlights').css('border', 'none');
-	$('#highlights_title').css({
-		'border'        : 'solid',
-		'border-color'  : '#adadad',
-		'border-width'  : '1.5px'
-	});
-
-	//Expand highlights & programs
-	$('.explanation_and_animation_button_container').css('height', '100%');
-	$('#programs').css('height', '100%');
-
-	//run the inititalization function
-	desktop_or_mobile_intialize();
-}
 
 function desktop_or_mobile_intialize(){
 	if(displayWidth < 900){
@@ -83,19 +61,22 @@ function initialize_page(){
 		document.getElementById(id).style.height = "0px";
 	}
 
-	//make highlights and programs visible, set highlights & programs transition time to .5s ease
+	//make highlights and programs visible, set highlights & programs height transition time to .5s ease
 	setTimeout(function () {
+		// Allow smooth height transitions for programs container and highlights
 		$('.explanation_and_animation_button_container').css('transition', 'height .5s ease');
 		$('.programs').css('transition', 'height .5s ease');
+
+		// Adjust the borders of the highlights container
 		$('.highlights').css({
 			'border'        : 'solid',
 		});
-		$('#highlights_title').css({
+		$('.highlights_title').css({
 			'border'        : 'none',
 			'border-bottom' : 'solid',
-			'border-width'  : '1.5px',
-			'border-color'  : '#adadad',
 		});
+
+		// Remove the loader and make the content visible
 		$('#loader_container').css('display', 'none');
 		$('#highlights_content').css('visibility', 'visible');
 		$('#programs').css('visibility', 'visible');
@@ -118,7 +99,10 @@ function initialize_mobile_page(){
 
 	// make highlights visible
 	setTimeout(function () {
+		// Allow smooth height transitions for the highlights container
 		$('.mobile_explanation_and_animation_button_container').css('transition', 'height .5s ease');
+
+		// Adjust the borders of the highlights container
 		$('#mobile_highlights').css({
 			'border'       : 'solid',
 			'border-color' : '#adadad',
@@ -127,12 +111,34 @@ function initialize_mobile_page(){
 		$('#mobile_highlights_title').css({
 			'border'        : 'none',
 			'border-bottom' : 'solid',
-			'border-color'  : '#adadad',
-			'border-width'  : '1.5px'
 		});
+
+		// Remove the loader and make the content visible
 		$('#mobile_loader_container').css('display', 'none');
 		$('#mobile_highlights_content').css('visibility', 'visible');
 	}, 100);
+}
+
+function prepare_resize(){
+	// Hide highlights, show loader
+	$('#loader_container').css('display', 'block');
+	$('#highlights_content').css('visibility', 'hidden');
+	$('#programs').css('visibility', 'hidden');
+
+	// Adjust borders
+	$('#highlights').css('border', 'none');
+	$('#highlights_title').css({
+		'border'        : 'solid',
+		'border-color'  : '#adadad',
+		'border-width'  : '1.5px'
+	});
+
+	//Expand highlights & programs
+	$('.explanation_and_animation_button_container').css('height', '100%');
+	$('#programs').css('height', '100%');
+
+	//run the inititalization function
+	desktop_or_mobile_intialize();
 }
 
 /** Dark Mode **/

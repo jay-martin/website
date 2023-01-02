@@ -10,7 +10,7 @@
   color: #bdbdbd !important;
 }
 /*********************** Page Fundamentals *****************************************************************/
-body {
+body, button, select {
   background-color: white;
   color: black;
 }
@@ -20,10 +20,6 @@ a:link {
 a:visited {
   color: #551A8B;
 }
-button, select {
-  background-color: white;
-  color: black;
-}
 button {
   border-color: #adadad;
 }
@@ -32,15 +28,14 @@ button {
   fill: black;
 }
 /*********************** Highlights ************************************************************************/
+.highlights, .highlights_title {
+  border-color : #adadad !important;
+}
 .highlights_content button:hover {
   background-color: #f0efed;
 }
 /*********************** Left Sidebar **********************************************************************/
 a.sidebar_links, .other_pages a {
-  color: black;
-}
-.programs_container {
-  background-color: white;
   color: black;
 }
 /*********************** Chart Module **********************************************************************/
@@ -55,7 +50,10 @@ a.sidebar_links, .other_pages a {
 .slider {
   background-color: #d3d3d3;
 }
-/*********************** Charts ****************************************************************************/
+button.chart_notes_button:hover {
+  background-color: #f0efed;
+}
+/*********************** CS.JS Charts ****************************************************************************/
 .c3 text {
   fill: black;
 }

@@ -52,6 +52,11 @@
   stroke-dasharray: 3 3;
 }
 
+/*************** Y Grid opacity set to 0 by default **********************/
+.c3-ygrid line {
+  opacity: 0;
+}
+
 /*-- Text on Chart --*/
 .c3-text.c3-empty {
   fill: #808080;
