@@ -28,6 +28,7 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 #logo-span1, #logo-span2 {
   transition: fill 1s ease-out;
 }
+
 /*********************** Light Mode ***************************************************************************************************************/
 /********** Toggler ***********************/
 .light-mode #page_color_toggler {
@@ -53,6 +54,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 }
 .light-mode button {
   border-color: #adadad;
+}
+/*********************** Tables ****************************************************************************/
+.light-mode table, .light-mode th, .light-mode tr, .light-mode td {
+  border-color: black;
 }
 /********** Page Top ***************/
 .light-mode #logo-span1, .light-mode #logo-span2 {
@@ -152,6 +157,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 .sepia button {
   border-color: #b5a177;
 }
+/*********************** Tables ****************************************************************************/
+.sepia table, .sepia th, .sepia tr, .sepia td {
+  border-color: black;
+}
 /********** Page Top ***************/
 .sepia #logo-span1, .sepia #logo-span2 {
   fill: black;
@@ -249,6 +258,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 }
 .dark-mode button {
   border-color: #adadad;
+}
+/*********************** Tables ****************************************************************************/
+.dark-mode table, .dark-mode th, .dark-mode tr, .dark-mode td {
+  border-color: #bdbdbd;
 }
 /********** Page Top *****************/
 .dark-mode #logo-span1, .dark-mode #logo-span2 {
