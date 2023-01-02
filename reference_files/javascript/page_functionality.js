@@ -23,9 +23,7 @@ function toggle_page_color(mode){
 
   if(mode === 'dark'){
     pageStyle = 'dark';
-    $('body').removeClass('light-mode');
-    $('body').removeClass('sepia');
-    $('body').addClass('dark-mode');
+    document.body.className = 'dark-mode';
 
     // Page specific changes
     page_color_mode('dark');
@@ -37,9 +35,7 @@ function toggle_page_color(mode){
   }
   else if(mode === 'sepia'){
     pageStyle = 'sepia';
-    $('body').removeClass('light-mode');
-    $('body').removeClass('dark-mode');
-    $('body').addClass('sepia');
+    document.body.className = 'sepia';
 
     // Page specific changes
     page_color_mode('sepia');
@@ -51,9 +47,7 @@ function toggle_page_color(mode){
   }
   else if(mode === 'light'){
     pageStyle = 'light';
-    $('body').removeClass('dark-mode');
-    $('body').removeClass('sepia');
-    $('body').addClass('light-mode');
+    document.body.className = 'light-mode';
 
     // Page specific changes
     page_color_mode('light');

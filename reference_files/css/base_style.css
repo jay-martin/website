@@ -188,7 +188,7 @@ svg.logo-svg {
   width: 50px;
   border-radius: 30px;
   opacity: 20%;
-  transition: left .2s ease;
+  transition: left .2s ease !important;
 }
 /***********************Title********************************************************************/
 .title_container {

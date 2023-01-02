@@ -1,132 +1,21 @@
-/*********************** Page Color Toggle ******************************************************************/
-#page_color_toggler {
-  left: 0;
-  background-color: grey;
-}
-.page_color_button_group {
-  border-color: #dbdbdb;
-}
-.page_color_button_group button {
-  color: #bdbdbd !important;
-}
-/*********************** Page Fundamentals *****************************************************************/
-body, button, select {
-  background-color: white;
-  color: black;
-}
-a:link {
-  color: #0000EE;
-}
-a:visited {
-  color: #551A8B;
-}
-button {
-  border-color: #adadad;
-}
-/*********************** Tables ****************************************************************************/
-table, th, tr, td {
-  border-color: black;
-}
-/*********************** Page Top **************************************************************************/
-#logo-span1,  #logo-span2 {
-  fill: black;
-}
-/*********************** Highlights ************************************************************************/
-.highlights, .highlights_title {
-  border-color : #adadad !important;
-}
-.highlights_content button:hover {
-  background-color: #f0efed;
-}
-/*********************** Left Sidebar **********************************************************************/
-a.sidebar_links, .other_pages a {
-  color: black;
-}
-/*********************** Chart Module **********************************************************************/
-.chart, .chart_wide {
-  border-style: solid;
-  border-color: #adadad;
-}
-.center_explanation_box {
-  background-color: #f5f3f2;
-  border-color: #adadad;
-}
-.slider {
-  background-color: #d3d3d3;
-}
-button.chart_notes_button:hover {
-  background-color: #f0efed;
-}
-/*********************** CS.JS Charts ****************************************************************************/
-.c3 text {
-  fill: black;
-}
-.c3-grid line, .c3-axis-x line, .c3-axis-y line, .c3-axis-x path, .c3-axis-y path {
-  stroke: black;
-}
-/*********************** Page Bottom ***********************************************************************/
-.page_bottom {
-  color: #858585;
-  border-color: #bdbdbd;
-}
-/*********************** Social icon colors *****************************************************************/
-.social-base-color {fill: #000000;}
-.social-page-bottom-base-color {fill: #858585;}
-/* social media circle icons */
-path.st1 {fill:#FFFFFF;}
-circle.cc-circle {fill: #ffffff;}
-/*********************** Animation buttons *****************************************************************/
-input[type=submit].animation_button, input[type=submit].end_animation {
-  border: solid;
-  background-color: #f5f3f2;
-  border-color: #adadad;
-  color: black;
-}
-/* Darker color on hover */
-input[type=submit].animation_button:hover, input[type=submit].end_animation:hover {
-  background-color: #d1d1d1;
-}
-/* Lighter colors for when it is disabled */
-input[type=submit].animation_button:disabled, input[type=submit].end_animation:disabled {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
-}
-/* No color change on hover when disabled */
-input[type=submit].animation_button:disabled:hover, input[type=submit].end_animation:disabled:hover {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
-}
-/*********************** Mobile ************************************************************************/
-/********* Navbar ***********/
-.mobile_navbar {
-  background-color: white;
-}
-a.navbar_logo {
-  color: black;
-}
-button.open_icon:hover, button.close_icon{
-  background-color: white;
-}
-.open_close_button span {
-  background: black;
-}
-/********* Dropdwon *********/
-.mobile_dropdown {
-  background-color: white;
-  border-bottom: 1px solid;
-  border-color: black;
-}
-.mobile_dropdown_horizontal_line {
-  border: solid;
-  border-width: 1px;
-  border-color: #bdbdbd;
-}
-.mobile_dropdown a {
-  color: black;
-}
-/********* Title *********/
-.category {
-  color: #582cfc;
+:root {
+  --base-background: white;
+  --base-text: black;
+  --base-border: #adadad;
+  --base-link: #0000EE;
+  --base-link-visited: #551A8B;
+  --button-hover: #f0efed;
+  --center-explanation-box: #f5f3f2;
+  --slider: #d3d3d3;
+  --animation-button-background: #f5f3f2;
+  --page-bottom-border: #bdbdbd;
+  --page-bottom-text: #858585;
+
+  --base-social-icon-fill: #000000;
+  --page-bottom-social-icon-fill: #858585;
+
+  --toggle-position: 0;
+  --toggle-color: grey;
+  --toggle-text: #bdbdbd;
+  --toggle-border: #dbdbdb;
 }
