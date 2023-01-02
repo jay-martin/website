@@ -32,9 +32,6 @@ button {
   fill: black;
 }
 /*********************** Highlights ************************************************************************/
-.highlights, .highlights_title {
-  border-color: #adadad;
-}
 .highlights_content button:hover {
   background-color: #f0efed;
 }
@@ -53,7 +50,6 @@ a.sidebar_links, .other_pages a {
 }
 .center_explanation_box {
   background-color: #f5f3f2;
-  border: solid;
   border-color: #adadad;
 }
 .slider {

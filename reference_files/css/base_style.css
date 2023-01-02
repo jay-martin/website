@@ -58,6 +58,7 @@ button{
   width: 100%;
   border: none;
   border-top: solid;
+  border-color: #adadad;
   border-width: 1.5px;
   cursor: pointer;
   margin: 0px;
@@ -92,16 +93,16 @@ video {
 body, select, .programs_container, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
   transition: background-color 1s ease, color 1s ease;
 }
+button, .chart, .chart_wide, .highlights, .highlights_title {
+  transition: border 1s ease;
+}
 .center_explanation_box, .slider {
   /* For some reason, .center_explanation_box requires the !important tag or it will switch colors immediately*/
   transition: background-color 1s ease, border 1s ease !important; 
 }
-button, .chart, .chart_wide, .highlights, .highlights_title {
-  transition: border 1s ease;
-}
 /** Some elements need fast transition by default **/
 .social_icon {
-  transition: fill .15s ease-out;
+  transition: fill .15s ease;
 }
 button, input[type=submit].animation_button, input[type=submit].end_animation {
   transition: background-color .1s ease;
@@ -703,6 +704,7 @@ a.sidebar_links:hover {
 }
 /*******Center Explanation Box****/
 .center_explanation_box {
+  border: solid;
   border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -845,17 +847,19 @@ ul.notes_list {
 /*****************Highlights (Top Right)*************************************/
 .highlights {
   font-family: 'Computer Modern Serif';
-  border: none;
-  border-width: 1.5px;
   width: 95%;
   display: inline-block;
   text-align: center;
-  border-radius: 5px;
   margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  border-width : 1.5px !important;
+  border-color : #adadad !important;
 }
 .highlights_title {
   font-size: 110%;
   border: solid;
+  border-color: #adadad;
   border-width: 1.5px;
   font-weight: bold;
   border-top-left-radius: 5px;

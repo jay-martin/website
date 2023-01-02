@@ -87,21 +87,25 @@ function initialize_page(){
 	setTimeout(function () {
 		$('.explanation_and_animation_button_container').css('transition', 'height .5s ease');
 		$('.programs').css('transition', 'height .5s ease');
-		$('#highlights').css({
-			'border'       : 'solid',
+		$('.highlights').css({
+			'border'        : 'solid',
 		});
 		$('#highlights_title').css({
 			'border'        : 'none',
 			'border-bottom' : 'solid',
-			/*
+			'border-width'  : '1.5px',
 			'border-color'  : '#adadad',
-			'border-width'  : '1.5px'
-			*/
 		});
 		$('#loader_container').css('display', 'none');
 		$('#highlights_content').css('visibility', 'visible');
 		$('#programs').css('visibility', 'visible');
-	}, 0);
+	}, 50);
+
+	/*
+	setTimeout(function () {
+		$('.highlights').css({'transition' : 'border 1s ease'});
+	}, 100);
+	*/
 }
 
 function initialize_mobile_page(){
