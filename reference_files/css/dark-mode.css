@@ -1,6 +1,13 @@
 /*********************** Page Color Toggle ******************************************************************/
 #page_color_toggler {
   left: 100px;
+  background-color: grey;
+}
+.page_color_button_group {
+  border-color: #dbdbdb;
+}
+.page_color_button_group button {
+  color: #bdbdbd !important;
 }
 /*********************** Page Fundamentals *****************************************************************/
 body {
@@ -17,11 +24,17 @@ button, select {
   background-color: #242424;
   color: #dbdbdb;
 }
+button {
+  border-color: #adadad;
+}
 /*********************** Page Top **************************************************************************/
 #logo-span1,  #logo-span2 {
   fill: #dbdbdb;
 }
 /*********************** Highlights ************************************************************************/
+.highlights, .highlights_title {
+  border-color: #adadad;
+}
 .highlights_content button:hover {
   background-color: #474747;
 }
@@ -33,8 +46,17 @@ a.sidebar_links, .other_pages a {
   background-color: #242424;
 }
 /*********************** Chart Module **********************************************************************/
+.chart, .chart_wide {
+  border-style: solid;
+  border-color: #adadad;
+}
 .center_explanation_box {
   background-color: #141414;
+  border: solid;
+  border-color: #adadad;
+}
+.slider {
+  background-color: #d3d3d3;
 }
 /*********************** Charts ****************************************************************************/
 .c3 text {

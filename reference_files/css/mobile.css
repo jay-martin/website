@@ -6,7 +6,7 @@ body {
   width: 100%;
 }
 /*********************** Hide Desktop Elements ************************************************************/
-img.blog_promotion, .left_side_bar, .left_side_absolute, .logo {
+img.blog_promotion, .left_side_bar, .page_color_toggle_container, .logo {
   display: none;
 }
 /*********************** Show Mobile Elements **************************************************************/

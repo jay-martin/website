@@ -59,7 +59,6 @@ button{
   border: none;
   border-top: solid;
   border-width: 1.5px;
-  border-color: #adadad;
   cursor: pointer;
   margin: 0px;
   padding-top: 10px;
@@ -90,12 +89,15 @@ video {
   margin-right: auto;
 }
 /*********************** Transition Setting **********************************************************/
-body, select, .programs_container, #page_color_toggler, a.sidebar_links, .other_pages a {
+body, select, .programs_container, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
   transition: background-color 1s ease, color 1s ease;
 }
-.center_explanation_box {
+.center_explanation_box, .slider {
   /* For some reason, .center_explanation_box requires the !important tag or it will switch colors immediately*/
-  transition: background-color 1s ease !important; 
+  transition: background-color 1s ease, border 1s ease !important; 
+}
+button, .chart, .chart_wide, .highlights, .highlights_title {
+  transition: border 1s ease;
 }
 /** Some elements need fast transition by default **/
 .social_icon {
@@ -112,7 +114,6 @@ p.explanation_text {
   transition: color .5s ease; 
 }
 /*********************** Universal Colors *****************************************************************/
-#page_color_toggler {background-color: grey;}
 .twitter-blue {fill: #1D9BF0;}
 .facebook-blue {fill: #1778F2;}
 .reddit-orange {fill: #FF5700;}
@@ -124,6 +125,13 @@ p.explanation_text {
 /********** Toggler ***********************/
 .light-mode #page_color_toggler {
   left: 0;
+  background-color: grey;
+}
+.light-mode .page_color_button_group {
+  border-color: #dbdbdb;
+}
+.light-mode .page_color_button_group button {
+  color: #bdbdbd !important;
 }
 /********** Page Fundamentals *************/
 .light-mode {
@@ -140,11 +148,17 @@ p.explanation_text {
   background-color: white;
   color: black;
 }
+.light-mode button {
+  border-color: #adadad;
+}
 /********** Page Top ***************/
 .light-mode #logo-span1, .light-mode #logo-span2 {
   fill: black;
 }
 /********** Highlights *************/
+.light-mode .highlights, .light-mode .highlights_title {
+  border-color: #adadad !important;
+}
 .light-mode .highlights_content button:hover {
   background-color: #f0efed;
 }
@@ -157,15 +171,23 @@ p.explanation_text {
   color: black;
 }
 /********** Chart Module **********/
+.light-mode .chart, .light-mode .chart_wide {
+  border-style: solid;
+  border-color: #adadad;
+}
 .light-mode .center_explanation_box {
   background-color: #f5f3f2;
+  border-color: #adadad;
+}
+.light-mode .slider {
+  background-color: #d3d3d3;
 }
 /********** Charts *****************/
 .light-mode .c3 text {
   fill: black;
 }
 .light-mode .c3-grid line, .light-mode .c3-axis-x line, .light-mode .c3-axis-y line, .light-mode .c3-axis-x path, .light-mode .c3-axis-y path {
-  stroke: black;
+  stroke: black !important; /* sometimes does not transition without !important tag */
 }
 /********** Page Bottom ***********/
 .light-mode .page_bottom {
@@ -204,10 +226,17 @@ p.explanation_text {
 /********** Toggler ***********************/
 .sepia #page_color_toggler {
   left: 49px;
+  background-color: #827868;
+}
+.sepia .page_color_button_group {
+  border-color: #b5a177;
+}
+.sepia .page_color_button_group button {
+  color: #b5a177 !important;
 }
 /********** Page Fundamentals *************/
 .sepia {
-  background-color: #fff5e6;
+  background-color: #ffeed4;
   color: black;
 }
 .sepia a:link {
@@ -217,56 +246,70 @@ p.explanation_text {
   color: #551A8B;
 }
 .sepia button, .sepia select {
-  background-color: #fff5e6;
+  background-color: #ffeed4;
   color: black;
+}
+.sepia button {
+  border-color: #b5a177;
 }
 /********** Page Top ***************/
 .sepia #logo-span1, .sepia #logo-span2 {
   fill: black;
 }
 /********** Highlights *************/
+.sepia .highlights, .sepia .highlights_title {
+  border-color: #b5a177 !important;
+}
 .sepia .highlights_content button:hover {
-  background-color: #f0efed;
+  background-color: #f5e4cb;
 }
 /********** Left Sidebar ***********/
 .sepia a.sidebar_links, .sepia .other_pages a {
   color: black;
 }
 .sepia .programs_container {
-  background-color: #fff5e6;
+  background-color: #ffeed4;
   color: black;
 }
 /********** Chart Module **********/
+.sepia .chart, .sepia .chart_wide {
+  border-style: solid;
+  border-color: #b5a177;
+}
 .sepia .center_explanation_box {
-  background-color: #f7f0e6;
+  background-color: #f5e4cb;
+  border-color: #b5a177;
+}
+.sepia .slider {
+  background-color: #b5a177;
 }
 /********** Charts *****************/
 .sepia .c3 text {
   fill: black;
 }
 .sepia .c3-grid line, .sepia .c3-axis-x line, .sepia .c3-axis-y line, .sepia .c3-axis-x path, .sepia .c3-axis-y path {
-  stroke: black;
+  stroke: black !important; /* sometimes does not transition without !important tag */
 }
 /********** Page Bottom ***********/
 .sepia .page_bottom {
-  color: #858585;
-  border-color: #bdbdbd;
+  color: #8a7c5e;
+  border-color: #8a7c5e;
 }
 /********** Social icon colors ****/
 .sepia .social-base-color {fill: #000000;}
-.sepia .social-page-bottom-base-color {fill: #858585;}
+.sepia .social-page-bottom-base-color {fill: #8a7c5e;}
 /* social media circle icons */
-.sepia path.st1 {fill:#fff5e6;}
-.sepia circle.cc-circle {fill: #fff5e6;}
+.sepia path.st1 {fill:#ffeed4;}
+.sepia circle.cc-circle {fill: #ffeed4;}
 /********** Animation Buttons *****/
 .sepia input[type=submit].animation_button, .sepia input[type=submit].end_animation {
-  background-color: #f5f3f2;
-  border-color: #adadad;
+  background-color: #f5e4cb;
+  border-color: #b5a177;
   color: black;
 }
-/* Lighter color on hover */
+/* Darker color on hover */
 .sepia input[type=submit].animation_button:hover, .sepia input[type=submit].end_animation:hover {
-  background-color: #d1d1d1;
+  background-color: #e3d2b8;
 }
 /* Lighter colors for when it is disabled */
 .sepia input[type=submit].animation_button:disabled, .sepia input[type=submit].end_animation:disabled {
@@ -284,6 +327,13 @@ p.explanation_text {
 /********** Toggler ***********************/
 .dark-mode #page_color_toggler {
   left: 100px;
+  background-color: grey;
+}
+.dark-mode .page_color_button_group {
+  border-color: #dbdbdb;
+}
+.dark-mode .page_color_button_group button {
+  color: #bdbdbd !important;
 }
 /********** Page Fundamentals *************/
 .dark-mode {
@@ -300,11 +350,17 @@ p.explanation_text {
   background-color: #242424;
   color: #dbdbdb;
 }
+.dark-mode button {
+  border-color: #adadad;
+}
 /********** Page Top *****************/
 .dark-mode #logo-span1, .dark-mode #logo-span2 {
   fill: #dbdbdb;
 }
 /********** Highlights ***************/
+.dark-mode .highlights, .dark-mode .highlights_title {
+  border-color: #adadad !important;
+}
 .dark-mode .highlights_content button:hover {
   background-color: #474747;
 }
@@ -317,15 +373,23 @@ p.explanation_text {
   color: #dbdbdb;
 }
 /********** Chart Module *************/
+.dark-mode .chart, .dark-mode .chart_wide {
+  border-style: solid;
+  border-color: #adadad;
+}
 .dark-mode .center_explanation_box {
   background-color: #141414;
+  border-color: #adadad;
+}
+.dark-mode .slider {
+  background-color: #d3d3d3;
 }
 /********** Charts ******************/
 .dark-mode .c3 text {
   fill: #dbdbdb;
 }
 .dark-mode .c3-grid line, .dark-mode .c3-axis-x line, .dark-mode .c3-axis-y line, .dark-mode .c3-axis-x path, .dark-mode .c3-axis-y path {
-  stroke: #dbdbdb;
+  stroke: #dbdbdb !important; /* sometimes does not transition without !important tag */
 }
 /********** Page Bottom *************/
 .dark-mode .page_bottom {
@@ -421,7 +485,7 @@ svg.logo-svg {
   width: 125px;
   height: 37.5px;
 }
-.left_side_absolute {
+.page_color_toggle_container {
   position: absolute;
   top: 25px;
   left: 78.5%;
@@ -433,7 +497,6 @@ svg.logo-svg {
   margin-right: auto;
   font-size: 12px;
   border: solid;
-  border-color: #dbdbdb;
   border-radius: 30px;
   border-width: 1.5px;
   width: 150px;
@@ -447,7 +510,6 @@ svg.logo-svg {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 30px;
-  color: #bdbdbd !important;
 }
 .page_color_button_group:after {
   content: "";
@@ -598,9 +660,7 @@ a.sidebar_links:hover {
 /*****************Chart container (top center)*************************************/
 .chart, .chart_wide {
   font-family: "Computer Modern Sans";
-  border-style: solid;
   border-width: 1.5px;
-  border-color: #adadad;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
@@ -643,8 +703,6 @@ a.sidebar_links:hover {
 }
 /*******Center Explanation Box****/
 .center_explanation_box {
-  border: solid;
-  border-color: #adadad;
   border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -761,7 +819,6 @@ ul.notes_list {
   width: 100%;
   height: 8px;
   border-radius: 15px;
-  background: #d3d3d3;
   outline: none;
   opacity: 0.7;
   transition: opacity .2s;
@@ -790,7 +847,6 @@ ul.notes_list {
   font-family: 'Computer Modern Serif';
   border: none;
   border-width: 1.5px;
-  border-color: #adadad;
   width: 95%;
   display: inline-block;
   text-align: center;
@@ -801,7 +857,6 @@ ul.notes_list {
   font-size: 110%;
   border: solid;
   border-width: 1.5px;
-  border-color: #adadad;
   font-weight: bold;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;

@@ -89,14 +89,14 @@ function initialize_page(){
 		$('.programs').css('transition', 'height .5s ease');
 		$('#highlights').css({
 			'border'       : 'solid',
-			'border-color' : '#adadad',
-			'border-width' : '1.5px'
 		});
 		$('#highlights_title').css({
 			'border'        : 'none',
 			'border-bottom' : 'solid',
+			/*
 			'border-color'  : '#adadad',
 			'border-width'  : '1.5px'
+			*/
 		});
 		$('#loader_container').css('display', 'none');
 		$('#highlights_content').css('visibility', 'visible');
