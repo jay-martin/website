@@ -4,10 +4,11 @@
   --base-border: #dbdbdb;
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
-  --button-hover: #474747;
+  --highlights-button-hover: #474747;
   --center-explanation-box: #141414;
   --slider: #d3d3d3;
   --animation-button-background: #141414;
+  --animation-button-hover: #474747;
   --page-bottom-border: #dbdbdb;
   --page-bottom-text: #dbdbdb;
 

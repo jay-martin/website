@@ -33,10 +33,11 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #adadad;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --button-hover: #f0efed;
+  --highlights-button-hover: #f0efed;
   --center-explanation-box: #f5f3f2;
   --slider: #d3d3d3;
   --animation-button-background: #f5f3f2;
+  --animation-button-hover: #dedede;
   --page-bottom-border: #bdbdbd;
   --page-bottom-text: #858585;
 
@@ -55,10 +56,11 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #b5a177;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --button-hover: #f5e4cb;
+  --highlights-button-hover: #f5e4cb;
   --center-explanation-box: #f5e4cb;
   --slider: #b5a177;
   --animation-button-background: #f5e4cb;
+  --animation-button-hover: #e3d2b8;
   --page-bottom-border: #8a7c5e;
   --page-bottom-text: #8a7c5e;
 
@@ -77,10 +79,11 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #dbdbdb;
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
-  --button-hover: #474747;
+  --highlights-button-hover: #474747;
   --center-explanation-box: #141414;
   --slider: #d3d3d3;
   --animation-button-background: #141414;
+  --animation-button-hover: #474747;
   --page-bottom-border: #dbdbdb;
   --page-bottom-text: #dbdbdb;
 
@@ -132,7 +135,7 @@ table,  th,  tr,  td {
   border-color: var(--base-border) !important;
 }
 .highlights_content button:hover {
-  background-color: var(--button-hover);
+  background-color: var(--highlights-button-hover);
 }
 /********** Left Sidebar *************/
 a.sidebar_links,  .other_pages a {
@@ -151,7 +154,7 @@ a.sidebar_links,  .other_pages a {
   background-color: var(--slider);
 }
 button.chart_notes_button:hover {
-  background-color: var(--button-hover);
+  background-color: var(--highlights-button-hover);
 }
 /********** C3.JS Charts ******************/
 .c3 text {
@@ -168,22 +171,21 @@ button.chart_notes_button:hover {
 /********** Animation Buttons *********/
 input[type=submit].animation_button,  input[type=submit].end_animation {
   background-color: var(--animation-button-background);
+  border: solid;
   border-color: var(--base-border);
   color: var(--base-text);
 }
 /* Lighter color on hover */
 input[type=submit].animation_button:hover,  input[type=submit].end_animation:hover {
-  background-color: var(--button-hover);
+  background-color: var(--animation-button-hover);
 }
 /* Lighter colors for when it is disabled */
-/*
 input[type=submit].animation_button:disabled,  input[type=submit].end_animation:disabled {
   color: #b8b8b8;
   border-color: #b8b8b8;
   background-color: #fafafa;
 }
 /* No color change on hover when disabled */
-/*
 input[type=submit].animation_button:disabled:hover,  input[type=submit].end_animation:disabled:hover {
   color: #b8b8b8;
   border-color: #b8b8b8;
