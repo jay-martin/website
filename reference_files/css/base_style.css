@@ -48,7 +48,9 @@ sup {
 }
 /*********************** User Inputs **********************************************************/
 select {
+  border: solid;
   border-radius: 2.5px;
+  border-width: 1px;
 }
 button, input {
   font-family: "Computer Modern Sans";
