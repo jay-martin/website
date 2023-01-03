@@ -60,7 +60,7 @@ function toggle_page_color(mode){
 
   //reset social icon transition speed
   setTimeout( function(){
-    $('.social_icon').css('transition', 'fill .15s ease-out');
+    $('.social_icon').css('transition', 'fill .15s ease');
     $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color .1s ease');
   }, 1000);
 }

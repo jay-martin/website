@@ -1,0 +1,160 @@
+/*********************** Root *********************************************************************************************************/
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --base-background: white;
+    --base-text: black;
+    --base-border: #cfcfcf;
+    --base-link: #0000EE;
+    --base-link-visited: #551A8B;
+    --low-emphasis-color: #bdbdbd;
+    --page-bottom-color: #858585;
+
+    --top-lines-color: black;
+
+    --toggle-position: 0px;
+    --toggle-color: grey;
+  }
+
+}
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --base-background: #242424;
+    --base-text: #dbdbdb;
+    --base-border: #dbdbdb;
+    --base-link: #86acf0;
+    --base-link-visited: #bd86f1;
+    --low-emphasis-color: #dbdbdb;
+    --page-bottom-color: #dbdbdb;
+
+    --top-lines-color: #dbdbdb;
+
+    --toggle-position: 100px;
+    --toggle-color: #a6a6a6;
+  }
+}
+
+/*********************** Universal Colors *********************************************************************************************************/
+.twitter-blue {fill: #1D9BF0;}
+.facebook-blue {fill: #1778F2;}
+.reddit-orange {fill: #FF5700;}
+.substack-orange {fill: #ff6700;}
+
+/*********************** Color Modes *********************************************************************************************************/
+.light-mode {
+  --base-background: white;
+  --base-text: black;
+  --base-border: #cfcfcf;
+  --base-link: #0000EE;
+  --base-link-visited: #551A8B;
+  --low-emphasis-color: #bdbdbd;
+  --page-bottom-color: #858585;
+
+  --top-lines-color: black;
+
+  --toggle-position: 0px;
+  --toggle-color: grey;
+}
+
+.sepia {
+  --base-background: #ffeed4;
+  --base-text: black;
+  --base-border: #b5a177;
+  --base-link: #0000EE;
+  --base-link-visited: #551A8B;
+  --low-emphasis-color: #b5a177;
+  --page-bottom-color: #8a7c5e;
+
+  --top-lines-color: #b5a177;
+
+  --toggle-position: 49px;
+  --toggle-color: #827868;
+}
+
+.dark-mode {
+  --base-background: #242424;
+  --base-text: #dbdbdb;
+  --base-border: #dbdbdb;
+  --base-link: #86acf0;
+  --base-link-visited: #bd86f1;
+  --low-emphasis-color: #dbdbdb;
+  --page-bottom-color: #dbdbdb;
+
+  --top-lines-color: #dbdbdb;
+
+  --toggle-position: 100px;
+  --toggle-color: #a6a6a6;
+}
+
+/*********************** Transition Settings ******************************************************************************************************/
+body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
+  transition: background-color 1s ease, color 1s ease;
+}
+.infobox_left, .infobox_center, .infobox_right, .top_box, .horizontal_line, .horizontal_line_top {
+  transition: border 1s ease;
+}
+/***** Some elements need fast transition by default *****/
+.social_icon {
+  transition: fill .15s ease;
+}
+
+/*************** Color Settings ****************************************************************************/
+/********** Toggler ***********************/
+#page_color_toggler {
+  left: var(--toggle-position);
+  background-color: var(--toggle-color);
+}
+.page_color_button_group {
+  border-color: var(--low-emphasis-color) !important;
+}
+.page_color_button_group button {
+  color: var(--low-emphasis-color) !important;
+}
+/********** Page Fundamentals *************/
+body, button {
+  background-color: var(--base-background);
+  color: var(--base-text);
+}
+a {
+  color: var(--base-text);
+}
+button {
+  border-color: var(--base-border);
+}
+/********** Page Top *****************/
+.horizontal_line {
+  border: solid;
+  border-color: var(--top-lines-color);
+}
+.horizontal_line_top {
+  border: solid;
+  border-color: var(--base-border);
+}
+/********** Page Body *****************/
+.infobox_left, .infobox_center, .infobox_right, .top_box {
+  border: solid;
+  border-color: var(--base-border);
+}
+/********** C3.JS Charts ******************/
+.c3 text {
+  fill: var(--base-text);
+}
+.c3-grid line,  .c3-axis-x line,  .c3-axis-y line,  .c3-axis-x path,  .c3-axis-y path {
+  stroke: var(--base-text) !important; /* sometimes does not transition without !important tag */
+}
+/********** Page Bottom *************/
+section.page_bottom {
+  border-top: solid;
+  border-color: var(--page-bottom-color);
+  color: var(--page-bottom-color);
+}
+/********** Social Icons ************/
+.social-base-color {
+  fill: var(--base-text);
+}
+.social-page-bottom-base-color {
+  fill: var(--page-bottom-color);
+}
+/* social media circle icons */
+path.st1, circle.cc-circle {
+  fill: var(--base-background);
+}

@@ -1,8 +1,88 @@
+/******************************** Page color toggle ******************************/
+/** Controls toggling between light, sepia, and dark modes
+ * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')
+ * */
+function toggle_page_color(mode){
+  // buttons and social icons are by default set to transition in .15s
+  $('.social_icon').css('transition', 'fill 1s ease');
+  $('button').css('transition', 'background-color 1s ease');
+
+  if(mode === 'dark'){
+    pageStyle = 'dark';
+    document.body.className = 'dark-mode';
+
+    // Page specific changes
+    page_color_mode('dark');
+
+    // Change browser default rendering to dark
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+    }, 200);
+  }
+  else if(mode === 'sepia'){
+    pageStyle = 'sepia';
+    document.body.className = 'sepia';
+
+    // Page specific changes
+    page_color_mode('sepia');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 200);
+  }
+  else if(mode === 'light'){
+    pageStyle = 'light';
+    document.body.className = 'light-mode';
+
+    // Page specific changes
+    page_color_mode('light');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 200);
+  }
+
+  //reset social icon transition speed
+  setTimeout( function(){
+    $('.social_icon').css('transition', 'fill .15s ease');
+    $('button').css('transition', 'background-color .1s ease');
+  }, 1000);
+}
+
 /********************************Twitter & Substack Icons**********************************/
-// Used to switch between the black Twitter/Substack icon and the blue/orange Twitter/Substack icon
-function switch_icon(id_current, id_new){
-	document.getElementById(id_current).style.display = 'none';
-	document.getElementById(id_new).style.display = 'inline-block';
+/** Changes a social media icon its brand color
+ * @param {string} - the platform ('twitter', 'substack', 'facebook', or 'reddit') the social media icon represents
+ * @param {string} - the html id of the svg element to be changed
+ * */
+function change_social_fill_forward(platform, id){
+  if(platform == 'twitter'){
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('twitter-blue');
+  }
+  else if(platform == 'substack'){
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('substack-orange');
+  }
+  else if(platform == 'facebook'){
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('facebook-blue');
+  }
+  else if(platform == 'reddit'){
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('reddit-orange');
+  }
+}
+
+/** Changes a social media icon back to its original color (black for light & sepia modes, #dbdbdb for dark mode)
+ * @param {string} - the html id of the svg element to be changed
+ * */
+function change_social_fill_backward(id){
+  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-base-color');
+}
+
+/** Changes the social media icons at the bottom of the page back to their original color (#858585 for light & sepia modes, #dbdbdb for dark mode)
+ * @param {string} - the html id of the svg element to be changed
+ * */
+function page_bottom_change_social_fill_backward(id){
+  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-page-bottom-base-color');
 }
 
 // Changes the text color on an element

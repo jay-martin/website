@@ -219,9 +219,6 @@ a.my_socials {
 .top_social_icons {
   height: 12.5px;
 }
-#twitter_blue, #substack_orange {
-  display: none;
-}
 .page_description {
   font-family: "Computer Modern Classical Serif Italic";
   line-height: 1.5em;
