@@ -4,19 +4,18 @@
   --base-border: #adadad;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --highlights-button-hover: #f0efed;
-  --center-explanation-box: #f5f3f2;
-  --slider: #d3d3d3;
-  --animation-button-background: #f5f3f2;
-  --animation-button-hover: #dedede;
-  --page-bottom-border: #bdbdbd;
-  --page-bottom-text: #858585;
 
-  --base-social-icon-fill: #000000;
-  --page-bottom-social-icon-fill: #858585;
+  --small-button-background: #f5f3f2;
+  --small-button-hover: #dedede;
+  --small-button-disabled-background: #fafafa;
+  --small-button-disabled-border-text: #b8b8b8;
+
+  --low-emphasis-color: #bdbdbd;
+
+  --box-color: #f5f3f2;
+  --slider: #d3d3d3;
+  --page-bottom-color: #858585;
 
   --toggle-position: 0;
   --toggle-color: grey;
-  --toggle-text: #bdbdbd;
-  --toggle-border: #dbdbdb;
 }

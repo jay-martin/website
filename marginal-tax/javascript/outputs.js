@@ -50,13 +50,13 @@ function output1(){
     else{taxLiability_formatted = taxLiability.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 
     /* Conditionals for taxes */
-    if(personal_income_tax_isActive === true && fica_isActive === true){
+    if(isActive['income_tax'] && isActive['fica']){
     	document.getElementById('tax_liability').innerHTML = '<b>' + taxLiability_formatted + '¢</b> in income and payroll tax.';
     }
-    else if(personal_income_tax_isActive === true){
+    else if(isActive['income_tax']){
     	document.getElementById('tax_liability').innerHTML = '<b>' + taxLiability_formatted + '¢</b> in income tax.';
     }
-    else if(fica_isActive === true){
+    else if(isActive['fica']){
     	document.getElementById('tax_liability').innerHTML = '<b>' + taxLiability_formatted + '¢</b> in payroll tax.';
     }
     else{
@@ -68,7 +68,7 @@ function output1(){
     else{benefitLoss_formatted = benefitLoss.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 
     /* Conditionals for benefits */
-    numBenefitsActive = eitc_isActive + ctc_isActive + snap_isActive + ptc_isActive + ssi_isActive;
+    numBenefitsActive = isActive['eitc'] + isActive['ctc'] + isActive['snap'] + isActive['ptc'] + isActive['ssi'];
     if(numBenefitsActive == 0){
     	document.getElementById('benefit_loss_text').innerHTML = 'You have not selected any benefits.'
     	document.getElementById('show_all_button').style.display = 'none';
@@ -96,7 +96,7 @@ function output1(){
 }
 
 function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
-	if(eitc_isActive){
+	if(isActive['eitc']){
 		document.getElementById('eitc_marginal').style.display = 'list-item';
 		if(eitc >=0 ){
 			if(eitc.toFixed(2) - Math.floor(eitc) !== 0){ eitc_formatted = eitc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
@@ -114,7 +114,7 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 		document.getElementById('eitc_marginal').style.display = 'none';
 	}
 
-	if(ctc_isActive){
+	if(isActive['ctc']){
 		document.getElementById('ctc_marginal').style.display = 'list-item';
 		if(ctc >=0 ){
 			if(ctc.toFixed(2) - Math.floor(ctc) !== 0){ ctc_formatted = ctc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
@@ -132,7 +132,7 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 		document.getElementById('ctc_marginal').style.display = 'none';
 	}
 
-	if(snap_isActive){
+	if(isActive['snap']){
 		if(snap.toFixed(2) - Math.floor(snap) !== 0){ snap_formatted = snap.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 		else{snap_formatted = snap.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 		document.getElementById('snap_marginal').innerHTML = '<b>SNAP:</b> ' + snap_formatted + '¢ benefit loss';
@@ -142,7 +142,7 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 		document.getElementById('snap_marginal').style.display = 'none';
 	}
 
-	if(ptc_isActive){
+	if(isActive['ptc']){
 		if(ptc.toFixed(2) - Math.floor(ptc) !== 0){ ptc_formatted = ptc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 		else{ptc_formatted = ptc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 		document.getElementById('ptc_marginal').innerHTML = '<b>Premium Tax Credits: </b>' + ptc_formatted + '¢ credit reduction';
@@ -152,7 +152,7 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 		document.getElementById('ptc_marginal').style.display = 'none';
 	}
 
-	if(ssi_isActive){
+	if(isActive['ssi']){
 		if(ssi.toFixed(2) - Math.floor(ssi) !== 0){ ssi_formatted = ssi.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 		else{ssi_formatted = ssi.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 		document.getElementById('ssi_marginal').innerHTML = '<b>SSI:</b> ' + ssi_formatted + '¢ benefit loss';

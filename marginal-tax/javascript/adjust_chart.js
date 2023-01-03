@@ -38,10 +38,10 @@ function adjust_y_axis_emtr(){
     chart.internal.config.axis_y_min = undefined;
 
     /* adjust for the fact that snap contains very large benefit cliffs (much greater than 100%) */
-    if(personal_income_tax_isActive && eitc_isActive && snap_isActive && ssi_isActive){
+    if(isActive['income_tax'] && isActive['eitc'] && isActive['snap'] && isActive['ssi']){
          chart.axis.max({y: 110});
     }
-    else if(snap_isActive){
+    else if(isActive['snap']){
         chart.axis.max({y: 90});
     }
 }

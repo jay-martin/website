@@ -334,14 +334,14 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="benefits_selection_buttons_top" id="tax_brackets_button" value="Personal Income Tax" onClick="add_personal_income_tax(); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_fica(); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_eitc(); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_ctc(); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_snap(); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_ptc();modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons selected_benefits_button" id="'income_tax_button'" value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
           <input type="submit" class="benefits_selection_buttons" id="cost_sharing_button" value="Cost Sharing Reductions">
-          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_ssi();modifyIncome(); adjust_y_axis();output1();" disabled >
+          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();" disabled >
         </div>
 
         <!--Disability Status-->

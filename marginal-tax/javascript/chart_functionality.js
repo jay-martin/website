@@ -113,29 +113,3 @@ function arbitrary_income_input(){
 function adjust_arbitrary_income(){
     arbitray_income.value = income;
 }
-
-/* Disables/Enables the SSI button based upon whether the user selects that they are not disabled/disabled */
-function disable_ssi(){
-    if(disability_status.value === 'disabled'){
-        ssi_button.disabled = false;
-    }
-    else{
-        ssi_button.disabled = true;
-        ssi_isActive = false;
-        document.getElementById('ssi_button').style.backgroundColor = '#fafafa';
-    }
-}
-
-/* Disables/Enables the Medicaid/PCT button & CSR button based upon whether the user selects that they have/do not have employer-sponsored healthcare */
-function disable_healthcare(){
-    if(healthcare_status.value === 'no_employer'){
-        ptc_button.disabled = false;
-        cost_sharing_button.disabled = false;
-    }
-    else{
-        ptc_button.disabled = true;
-        document.getElementById('ptc_button').style.backgroundColor = '#fafafa';
-        ptc_isActive = false;
-        cost_sharing_button.disabled = true;
-    }
-}

@@ -2,14 +2,6 @@
  * This file contains the functions that add data to the chart
  * ****************************************************************************************/
 
-personal_income_tax_isActive = true;
-fica_isActive = false;
-eitc_isActive = false;
-ctc_isActive = false;
-snap_isActive = false;
-ptc_isActive = false;
-ssi_isActive = false;
-
 /* Loads EMTR data to the chart */
 function load_emtr_data(){
 	numChildren = num_children.value;
@@ -78,7 +70,7 @@ function load_emtr_data(){
 
 /* Loads EI data to the chart */
 function load_ei_data(){
-	if(ptc_isActive === true){
+	if(isActive['ptc']){
 		load_ei_with_ptc();
 		return;
 	}

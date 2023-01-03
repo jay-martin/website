@@ -33,21 +33,19 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #adadad;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --highlights-button-hover: #f0efed;
-  --center-explanation-box: #f5f3f2;
-  --slider: #d3d3d3;
-  --animation-button-background: #f5f3f2;
-  --animation-button-hover: #dedede;
-  --page-bottom-border: #bdbdbd;
-  --page-bottom-text: #858585;
+  --low-emphasis-color: #bdbdbd;
 
-  --base-social-icon-fill: #000000;
-  --page-bottom-social-icon-fill: #858585;
+  --small-button-background: #f5f3f2;
+  --small-button-hover: #dedede;
+  --small-button-disabled-background: #fafafa;
+  --small-button-disabled-border-text: #b8b8b8;
+
+  --box-color: #f5f3f2;
+  --slider: #d3d3d3;
+  --page-bottom-color: #858585;
 
   --toggle-position: 0px;
   --toggle-color: grey;
-  --toggle-text: #bdbdbd;
-  --toggle-border: #dbdbdb;
 }
 
 .sepia {
@@ -56,21 +54,19 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #b5a177;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --highlights-button-hover: #f5e4cb;
-  --center-explanation-box: #f5e4cb;
-  --slider: #b5a177;
-  --animation-button-background: #f5e4cb;
-  --animation-button-hover: #e3d2b8;
-  --page-bottom-border: #8a7c5e;
-  --page-bottom-text: #8a7c5e;
+  --low-emphasis-color: #b5a177;
 
-  --base-social-icon-fill: #000000;
-  --page-bottom-social-icon-fill: #8a7c5e;
+  --small-button-background: #f5e4cb;
+  --small-button-hover: #e3d2b8;
+  --small-button-disabled-background: #f5e4cb;
+  --small-button-disabled-border-text: #c7b691;
+
+  --box-color: #f5e4cb;
+  --slider: #b5a177;
+  --page-bottom-color: #8a7c5e;
 
   --toggle-position: 49px;
   --toggle-color: #827868;
-  --toggle-text: #b5a177;
-  --toggle-border: #b5a177;
 }
 
 .dark-mode {
@@ -79,21 +75,19 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   --base-border: #dbdbdb;
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
-  --highlights-button-hover: #474747;
-  --center-explanation-box: #141414;
-  --slider: #d3d3d3;
-  --animation-button-background: #141414;
-  --animation-button-hover: #474747;
-  --page-bottom-border: #dbdbdb;
-  --page-bottom-text: #dbdbdb;
+  --low-emphasis-color: #dbdbdb;
 
-  --base-social-icon-fill: #dbdbdb;
-  --page-bottom-social-icon-fill: #dbdbdb;
+  --small-button-background: #242424;
+  --small-button-hover: #6e6e6e;
+  --small-button-disabled-background: #242424;
+  --small-button-disabled-border-text: #8c8c8c;
+
+  --box-color: #474747;
+  --slider: #d3d3d3;
+  --page-bottom-color: #dbdbdb;
 
   --toggle-position: 100px;
   --toggle-color: #a6a6a6;
-  --toggle-text: #dbdbdb;
-  --toggle-border: #dbdbdb;
 }
 
 /*********************** Color Settings ***************************************************************************************************************/
@@ -103,10 +97,10 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   background-color: var(--toggle-color);
 }
 .page_color_button_group {
-  border-color: var(--toggle-border);
+  border-color: var(--low-emphasis-color);
 }
 .page_color_button_group button {
-  color: var(--toggle-text) !important;
+  color: var(--low-emphasis-color) !important;
 }
 /********** Page Fundamentals *************/
 body,  button,  select {
@@ -135,7 +129,7 @@ table,  th,  tr,  td {
   border-color: var(--base-border) !important;
 }
 .highlights_content button:hover {
-  background-color: var(--highlights-button-hover);
+  background-color: var(--box-color);
 }
 /********** Left Sidebar *************/
 a.sidebar_links,  .other_pages a {
@@ -147,7 +141,7 @@ a.sidebar_links,  .other_pages a {
   border-color: var(--base-border);
 }
 .center_explanation_box {
-  background-color: var(--center-explanation-box);
+  background-color: var(--box-color);
   border-color: var(--base-border);
 }
 .slider {
@@ -165,38 +159,32 @@ button.chart_notes_button:hover {
 }
 /********** Page Bottom *************/
 .page_bottom {
-  color: var(--page-bottom-text);
-  border-color: var(--page-bottom-border);
+  color: var(--page-bottom-color);
+  border-color: var(--page-bottom-color);
 }
 /********** Animation Buttons *********/
 input[type=submit].animation_button,  input[type=submit].end_animation {
-  background-color: var(--animation-button-background);
+  background-color: var(--small-button-background);
   border: solid;
   border-color: var(--base-border);
   color: var(--base-text);
 }
 /* Lighter color on hover */
 input[type=submit].animation_button:hover,  input[type=submit].end_animation:hover {
-  background-color: var(--animation-button-hover);
+  background-color: var(--small-button-hover);
 }
 /* Lighter colors for when it is disabled */
 input[type=submit].animation_button:disabled,  input[type=submit].end_animation:disabled {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
-}
-/* No color change on hover when disabled */
-input[type=submit].animation_button:disabled:hover,  input[type=submit].end_animation:disabled:hover {
-  color: #b8b8b8;
-  border-color: #b8b8b8;
-  background-color: #fafafa;
+  color: var(--small-button-disabled-border-text);
+  background-color: var(--small-button-disabled-background);
+  border-color: var(--small-button-disabled-border-text);
 }
 /********** Social Icons ************/
 .social-base-color {
-  fill: var(--base-social-icon-fill);
+  fill: var(--base-text);
 }
 .social-page-bottom-base-color {
-  fill: var(--page-bottom-social-icon-fill);
+  fill: var(--page-bottom-color);
 }
 /* social media circle icons */
 path.st1, circle.cc-circle {

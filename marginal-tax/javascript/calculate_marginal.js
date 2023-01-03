@@ -41,15 +41,15 @@ function get_x_values_marginal(){
 	numChildren = num_children.value;
 
 	xVals = [];
-	if(personal_income_tax_isActive === true){
+	if(isActive['income_tax']){
 		tax_bracket_xvals = [12949, 12950, 23224, 23225, 54724, 54725, 102024, 102025, 182999, 183000, 228899, 228900, 552849, 552850];
 		xVals = xVals.concat(tax_bracket_xvals);
 	}
-	if(fica_isActive === true){
+	if(isActive['fica']){
 		fica_xvals = [146999, 147000, 199999, 200000];
 		xVals = xVals.concat(fica_xvals);
 	}
-	if(eitc_isActive === true){
+	if(isActive['eitc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([7319, 7320, 9159, 9160, 16479, 16480]);
 		}
@@ -63,7 +63,7 @@ function get_x_values_marginal(){
 			xVals = xVals.concat([15409, 15410, 20130, 20131, 53056, 53057]);
 		}
 	}
-	if(ctc_isActive === true){
+	if(isActive['ctc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([]);
 		}
@@ -77,7 +77,7 @@ function get_x_values_marginal(){
 			xVals = xVals.concat([2499, 2500, 12949, 12950, 23224, 23225, 30128, 30129, 199999, 200000, 319999, 320000]);
 		}
 	}
-	if(snap_isActive === true){
+	if(isActive['snap']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([2654, 2655, 15154, 15155]);
 		}
@@ -91,7 +91,7 @@ function get_x_values_marginal(){
 			xVals = xVals.concat([2759, 2760, 34451, 34452, 34453]);
 		}
 	}
-	if(ptc_isActive === true){
+	if(isActive['ptc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([20384, 20385, 40769, 40770, 54359, 54360, 74258, 74259]);
 		}
@@ -105,7 +105,7 @@ function get_x_values_marginal(){
 			xVals = xVals.concat([41624, 41625, 83249, 83250, 110999, 111000, 205693, 205694]);
 		}
 	}
-	if(ssi_isActive === true){
+	if(isActive['ssi']){
 		xVals = xVals.concat([779, 780, 20963, 20964]);
 	}
 
@@ -134,7 +134,7 @@ function personal_at_income_marginal(income){
 	else if(filingstatus.value === 'hoh'){brack = hoh;}
 	else{brack = married;}
 
-	if(personal_income_tax_isActive === true){
+	if(isActive['income_tax']){
 		if(income < brack[0]){
 			return 0;
 		}
@@ -168,7 +168,7 @@ function personal_at_income_marginal(income){
  * @return {float} - effective marginal tax rate
  * */
 function fica_at_income_marginal(income){
-	if(fica_isActive === true){
+	if(isActive['fica'] === true){
 		if(income < 147000){
 			return 7.65;
 		}
@@ -189,7 +189,7 @@ function fica_at_income_marginal(income){
  * @return {float} - effective marginal tax rate
  * */
 function eitc_at_income_marginal(income, numChildren){
-	if(eitc_isActive === true){
+	if(isActive['eitc']){
 		if(filingstatus.value === 'married'){
 			if(numChildren ==="three"){
 				if(income < 15410){return -45;}
@@ -253,7 +253,7 @@ function eitc_at_income_marginal(income, numChildren){
  * @return {float} - effective marginal tax rate
  * */
 function ctc_at_income_marginal(income, numChildren){
-	if(ctc_isActive === true){
+	if(isActive['ctc']){
 		if(numChildren ==="three"){
 			if(income < 2500){return 0;}
 			else if(income >= 2500 && income < 12950){return -15;}
@@ -295,7 +295,7 @@ function ctc_at_income_marginal(income, numChildren){
  * @return {float} - effective marginal tax rate
  * */
 function snap_at_income_marginal(income, householdSize){
-	if(snap_isActive === true){
+	if(isActive['snap']){
 		if(householdSize == 5){
 			if(income < 2760){return 0;}
 			else if(income >= 2760  && income < 34452){return 24;}
@@ -336,7 +336,7 @@ function snap_at_income_marginal(income, householdSize){
  * @return {float} - effective marginal tax rate
  * */
 function ptc_at_income_marginal(income, numChildren){
-	if(ptc_isActive === true){
+	if(isActive['ptc']){
 		/* married */
 		if(filingstatus.value === 'married'){
 			if(numChildren === "none"){
@@ -410,7 +410,7 @@ function ptc_at_income_marginal(income, numChildren){
  * @return {float} - effective marginal tax rate
  * */
 function ssi_at_income_marginal(income){
-	if(ssi_isActive === true){
+	if(isActive['ssi']){
 		if(income >= 780 && income < 20964){
 			return 50;
 		}

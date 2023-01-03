@@ -4,19 +4,18 @@
   --base-border: #dbdbdb;
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
-  --highlights-button-hover: #474747;
-  --center-explanation-box: #141414;
-  --slider: #d3d3d3;
-  --animation-button-background: #141414;
-  --animation-button-hover: #474747;
-  --page-bottom-border: #dbdbdb;
-  --page-bottom-text: #dbdbdb;
 
-  --base-social-icon-fill: #dbdbdb;
-  --page-bottom-social-icon-fill: #dbdbdb;
+  --small-button-background: #242424;
+  --small-button-hover: #6e6e6e;
+  --small-button-disabled-background: #242424;
+  --small-button-disabled-border-text: #8c8c8c;
+
+  --low-emphasis-color: #dbdbdb;
+
+  --box-color: #474747;
+  --slider: #d3d3d3;
+  --page-bottom-color: #dbdbdb;
 
   --toggle-position: 100px;
   --toggle-color: #a6a6a6;
-  --toggle-text: #dbdbdb;
-  --toggle-border: #dbdbdb;
 }
