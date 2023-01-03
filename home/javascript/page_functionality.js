@@ -1,3 +1,10 @@
+/******************************************************************************************
+ * This file contains the functions that 
+ * (1) Toggles between light, sepia, and dark modes
+ * (2) Adjust the color of the Twitter & Substack icons
+ * (3) Opens and closes the top dropdown menus
+ * ****************************************************************************************/
+
 /******************************** Page color toggle ******************************/
 /** Controls toggling between light, sepia, and dark modes
  * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')

@@ -104,7 +104,7 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
   background-color: var(--toggle-color);
 }
 .page_color_button_group {
-  border-color: var(--low-emphasis-color) !important;
+  border-color: var(--base-border) !important;
 }
 .page_color_button_group button {
   color: var(--low-emphasis-color) !important;

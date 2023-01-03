@@ -53,11 +53,10 @@ img.blog_promote_horizontal {
 #mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown {
   display: none;
 }
-
 /*************** Page Color Toggler ************************************************************************/
 .page_color_toggle_container {
   position: absolute;
-  top: 25px;
+  top: 37px;
   left: 78.5%;
   width: 21.5%;
 }
