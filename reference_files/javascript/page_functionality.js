@@ -258,22 +258,6 @@ var isOpen = new Object(); //dictionary to keep track of which chart notes are o
 /** Opens and closes the portions of the page
  * @param {string} - the html id of the element that is opened/closed
  * */
-/* 
-function open_and_close_page_portion(id){
-  if(isOpen[id] === 'open'){
-    isOpen[id] = 'closed';
-    document.getElementById(id).style.display = 'none';
-  }
-  else{
-    isOpen[id] = 'open';
-    document.getElementById(id).style.display = 'block';
-  }
-}
-*/
-
-/** Opens and closes the portions of the page
- * @param {string} - the html id of the element that is opened/closed
- * */
 var isOpen_heights = new Object();
 function open_and_close_page_portion(id){
   if(isOpen_heights[id] === 'open'){

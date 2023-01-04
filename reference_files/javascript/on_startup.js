@@ -115,7 +115,7 @@ function initialize_mobile_page(){
 	// make highlights visible
 	setTimeout(function () {
 		// Allow smooth height transitions for the highlights container
-		$('.mobile_explanation_and_animation_button_container').css('transition', 'height .5s ease');
+		$('.mobile_explanation_and_animation_button_container, .appendix').css('transition', 'height .5s ease');
 
 		// Adjust the borders of the highlights container
 		$('#mobile_highlights').css({
