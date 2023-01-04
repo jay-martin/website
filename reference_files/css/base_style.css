@@ -50,7 +50,7 @@ sup {
 select {
   border: solid;
   border-radius: 2.5px;
-  border-width: 1px;
+  border-width: 1.5px;
 }
 button, input {
   font-family: "Computer Modern Sans";
@@ -73,13 +73,15 @@ button {
   margin-top: 10px;
   float: right;
 }
-.small_button {
-  font-family: "Computer Modern Sans";
+input[type=submit].small_button {
   cursor: pointer;
-  border: solid;
   border-radius: 3px;
   border-width: 1.5px;
   transition: background-color .2s ease, border .2s ease;
+}
+input[type=submit].animation_button {
+  width: 50%;
+  margin-bottom: 15px;
 }
 /*********************** Tables & Video **********************************************************/
 table {
@@ -405,7 +407,6 @@ input[type=submit].end_animation:disabled:hover {
 }
 /**********Power Users*************/
 .chart_attributes {
-  margin-top: 20px;
   font-size: 90%;
 }
 /**********Power Users*************/
@@ -414,6 +415,7 @@ input[type=submit].end_animation:disabled:hover {
 }
 h3.power_users_header {
   font-family: 'Latin Modern Sans';
+  margin-top: 0px;
 }
 input.arbitrary_income {
   width: 80px;
@@ -584,19 +586,6 @@ p.explanation {
   padding-right: 10px;
   font-size: 80%;
 }
-input[type=submit].animation_button {
-  width: 50%;
-  border-width: 1.5px !important; /* Firefox does not render border-width without !important tag */
-  border-radius: 3px;
-  text-decoration: none;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-/* No cursor change on hover when disabled */
-input[type=submit].animation_button:disabled:hover {
-  cursor: default;
-}
-
 /******* Article *******************************************************************************/
 img.table {
   display: inline-block;

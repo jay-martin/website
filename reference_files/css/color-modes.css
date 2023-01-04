@@ -19,7 +19,8 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
 .social_icon {
   transition: fill .15s ease;
 }
-button, input[type=submit].animation_button, input[type=submit].end_animation {
+/* input[type=submit].animation_button, input[type=submit].end_animation */
+button {
   transition: background-color .1s ease;
 }
 #logo-span1, #logo-span2 {
@@ -109,7 +110,7 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
   color: var(--low-emphasis-color) !important;
 }
 /********** Page Fundamentals *************/
-body,  button,  select {
+body {
   background-color: var(--base-background);
   color: var(--base-text);
 }
@@ -119,28 +120,31 @@ a:link {
 a:visited {
   color: var(--base-link-visited);
 }
-button {
+/********** User inputs *************/
+button, select {
+  background-color: var(--base-background);
+  color: var(--base-text);
   border-color: var(--base-border);
 }
-.small_button {
+input[type=submit].small_button {
   background-color: var(--small-button-background);
   border: solid;
   border-color: var(--base-border);
   color: var(--base-text);
 }
-.small_button:hover {
+input[type=submit].small_button:hover {
   background-color: var(--small-button-hover);
 }
-.small_button:disabled {
+input[type=submit].small_button:disabled {
   background-color: var(--small-button-disabled-background);
   color: var(--small-button-disabled-border-text);
   border-color: var(--small-button-disabled-border-text);
 }
 /* No cursor change on hover when disabled */
-.small_button:disabled:hover {
+input[type=submit].small_button:disabled:hover {
   cursor: default;
 }
-.selected_button {
+input[type=submit].selected_button {
   background-color: var(--small-button-hover);
 }
 /********** Tables ******************/
@@ -202,23 +206,6 @@ button.chart_notes_button:hover {
 .page_bottom {
   color: var(--page-bottom-color);
   border-color: var(--page-bottom-color);
-}
-/********** Animation Buttons *********/
-input[type=submit].animation_button,  input[type=submit].end_animation {
-  background-color: var(--small-button-background);
-  border: solid;
-  border-color: var(--base-border);
-  color: var(--base-text);
-}
-/* Lighter color on hover */
-input[type=submit].animation_button:hover,  input[type=submit].end_animation:hover {
-  background-color: var(--small-button-hover);
-}
-/* Lighter colors for when it is disabled */
-input[type=submit].animation_button:disabled,  input[type=submit].end_animation:disabled {
-  color: var(--small-button-disabled-border-text);
-  background-color: var(--small-button-disabled-background);
-  border-color: var(--small-button-disabled-border-text);
 }
 /********** Social Icons ************/
 .social-base-color {
