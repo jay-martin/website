@@ -503,7 +503,7 @@ ul.notes_list {
   cursor: pointer;
   border-radius: 50%;
 }
-/*****************Highlights (Top Right)*************************************/
+/***************** Highlights (Top Right) *************************************/
 .highlights {
   font-family: 'Computer Modern Serif';
   width: 95%;
@@ -587,11 +587,65 @@ input[type=submit].animation_button:disabled:hover {
   cursor: default;
 }
 
-/*******Article*******************************************************************************/
+/******* Article *******************************************************************************/
 img.table {
   display: inline-block;
 }
-/*******References*******************************************************************************/
+/******* Appendix *****************************************************************************/
+.appendix_container {
+  margin-top: 15px;
+}
+.appendix {
+  font-size: 80%;
+  line-height: 1.75em;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: solid;
+}
+.appendix_bottom {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.appendix_button {
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
+  font-size: 100%;
+  text-align: left;
+  border: solid;
+  border-bottom: none;
+}
+.appendix_button_top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.appendix_button_bottom {
+  border-bottom: solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.appendix_chevron {
+  float: right;
+  margin-right: 10px;
+  margin-top: 3.5px;
+}
+.rotate180-forwards {
+  animation: rotate180-forwards-keyframes .35s ease;
+  animation-fill-mode: forwards;
+}
+.rotate180-back {
+  animation: rotate180-back-keyframes .35s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes rotate180-forwards-keyframes {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(180deg);}
+}
+@keyframes rotate180-back-keyframes {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(0deg);}
+}
+/******* References *****************************************************************************/
 .references, .notes{
   font-size: 80%;
   line-height: 1.75em;

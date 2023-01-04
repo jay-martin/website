@@ -89,3 +89,7 @@ table.FPL {
   float: right;
   margin-top: 8px;
 }
+/******************************* Appendix ***********************/
+#appendix-snap, #appendix-ssi, #appendix-ptc, #appendix-csr {
+	display: none;
+}

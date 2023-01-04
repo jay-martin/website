@@ -252,7 +252,55 @@ function show_explanation(identifier){
 	}
 }
 
-/*********************************** Chart Notes ***********************************/
+/*********************************** Open/Close Page Portion *********************/
+var isOpen = new Object(); //dictionary to keep track of which chart notes are open
+
+/** Opens and closes the portions of the page
+ * @param {string} - the html id of the element that is opened/closed
+ * */
+function open_and_close_page_portion(id){
+  if(isOpen[id] === 'open'){
+    isOpen[id] = 'closed';
+    document.getElementById(id).style.display = 'none';
+  }
+  else{
+    isOpen[id] = 'open';
+    document.getElementById(id).style.display = 'block';
+  }
+}
+
+/** Adjusts the border of the bottom appendix **/
+bottom_appendix_isOpen = false;
+function adjust_bottom_apendix_border(){
+  if(bottom_appendix_isOpen){
+    $('.appendix_button_bottom').css('border-bottom', 'solid');
+    $('.appendix_button_bottom').css('border-bottom-left-radius', '5px');
+    $('.appendix_button_bottom').css('border-bottom-right-radius', '5px');
+    bottom_appendix_isOpen = false;
+  }
+  else{
+    $('.appendix_button_bottom').css('border-radius', '0px');
+    $('.appendix_button_bottom').css('border-bottom', 'none');
+    bottom_appendix_isOpen = true;
+  }
+}
+
+/** Opens and closes the portions of the page
+ * @param {string} - rotates a Font Awesome icon by 180 degrees
+ * */
+var icon_isRotated = new Object();
+function rotate_icon_180(id){
+  if(icon_isRotated[id] == 'rotated'){
+    $(id).removeClass('rotate180-forwards').addClass('rotate180-back');
+    icon_isRotated[id] = 'not-rotated';
+  }
+  else{
+    $(id).removeClass('rotate180-back').addClass('rotate180-forwards');
+    icon_isRotated[id] = 'rotated';
+  }
+}
+
+/*********************************** Open/Close Chart Notes *********************/
 var chartNotes = new Object(); //dictionary to keep track of which chart notes are open
 
 /** Opens and closes the notes section below a chart

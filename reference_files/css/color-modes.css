@@ -150,12 +150,23 @@ a.sidebar_links,  .other_pages a {
 button.chart_notes_button:hover {
   background-color: var(--box-color);
 }
-/********** C3.JS Charts ******************/
+/********** C3.JS Charts *************/
 .c3 text {
   fill: var(--base-text);
 }
 .c3-grid line,  .c3-axis-x line,  .c3-axis-y line,  .c3-axis-x path,  .c3-axis-y path {
   stroke: var(--base-text) !important; /* sometimes does not transition without !important tag */
+}
+/********** Appendix ****************/
+.appendix {
+  border-color: var(--base-border);
+}
+.appendix_button {
+  background-color: var(--box-color);
+  border-color: var(--base-border) !important;
+}
+.appendix_button:hover {
+  background-color: var(--small-button-hover);
 }
 /********** Page Bottom *************/
 .page_bottom {
