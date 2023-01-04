@@ -48,8 +48,8 @@ function adjust_y_axis_emtr(){
 
 /* adjust y-axis of the EI chart */
 function adjust_y_axis_ei(){
-    numBenefitsActive = eitc_isActive + ctc_isActive + snap_isActive;
-    numTaxesActive = personal_income_tax_isActive + fica_isActive;
+    numBenefitsActive = isActive['eitc'] + isActive['ctc'] + isActive['snap'];
+    numTaxesActive = isActive['income_tax'] + isActive['fica'];
 
     /* 
     if(zoom_dropdown.value === 'default'){
@@ -132,11 +132,11 @@ function adjust_y_axis_ei(){
             chart.axis.max({y: 8000});
             chart.axis.min({y: -6000});
         }
-        else if(numBenefitsActive == 1 && snap_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
+        else if(numBenefitsActive == 1 && isActive['snap'] == true && (numTaxesActive == 0 || numTaxesActive == 1)){
             chart.axis.max({y: 6000});
             chart.axis.min({y: -4000});
         }
-        else if(numBenefitsActive == 1 && ctc_isActive == true && (numTaxesActive == 0 || numTaxesActive == 1)){
+        else if(numBenefitsActive == 1 && isActive['ctc'] == true && (numTaxesActive == 0 || numTaxesActive == 1)){
             chart.axis.max({y: 4000});
             chart.axis.min({y: -2000});
         }
@@ -144,15 +144,15 @@ function adjust_y_axis_ei(){
             chart.axis.max({y: 6000});
             chart.axis.min({y: -2000});
         }
-        else if(numBenefitsActive == 1 && snap_isActive == true && numTaxesActive == 2){
+        else if(numBenefitsActive == 1 && isActive['snap'] == true && numTaxesActive == 2){
             chart.axis.max({y: 6000});
             chart.axis.min({y: -6000});
         }
-        else if(numBenefitsActive == 1 && ctc_isActive == true && numTaxesActive == 2){
+        else if(numBenefitsActive == 1 && isActive['ctc'] == true && numTaxesActive == 2){
             chart.axis.max({y: 2000});
             chart.axis.min({y: -4000});
         }
-        else if(numBenefitsActive == 1 && eitc_isActive == true && numTaxesActive == 2){
+        else if(numBenefitsActive == 1 && isActive['eitc'] == true && numTaxesActive == 2){
             chart.axis.max({y: 6000});
             chart.axis.min({y: -6000});
         }
@@ -172,10 +172,10 @@ function adjust_y_axis_ei(){
 
     currentMax = chart.axis.max()['y'];
     newMax = currentMax;
-    if(ptc_isActive === true){
+    if(isActive['ptc'] === true){
         newMax += 10000;
     }
-    if(ssi_isActive === true){
+    if(isActive['ssi'] === true){
         newMax += 10000;
     }
     fit_y_axis_ei(newMax);

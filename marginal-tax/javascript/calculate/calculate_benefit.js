@@ -31,15 +31,15 @@ function get_x_values_effective_income(){
 	numChildren = num_children.value;
 
 	xVals = [];
-	if(personal_income_tax_isActive === true){
+	if(isActive['income_tax']){
 		tax_bracket_xvals = [12950, 23225, 54725, 102025, 183000, 228900, 552850];
 		xVals = xVals.concat(tax_bracket_xvals);
 	}
-	if(fica_isActive === true){
+	if(isActive['fica']){
 		fica_xvals = [147000, 200000];
 		xVals = xVals.concat(fica_xvals);
 	}
-	if(eitc_isActive === true){
+	if(isActive['eitc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([7320, 9160, 16480]);
 		}
@@ -53,7 +53,7 @@ function get_x_values_effective_income(){
 			xVals = xVals.concat([15410, 20131, 53057]);
 		}
 	}
-	if(ctc_isActive === true){
+	if(isActive['ctc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([]);
 		}
@@ -67,7 +67,7 @@ function get_x_values_effective_income(){
 			xVals = xVals.concat([2500, 12950, 23225, 30129, 200000, 320000]);
 		}
 	}
-	if(snap_isActive === true){
+	if(isActive['snap']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([2655, 15155]); /*contains one less because calculated SNAP benefit reaches 0 before the eligbility cutoff, whereas with households >1 the benefit is positive at the eligibility cutoff, and so needs a sudden dropoff for the benefit cliff */
 		}
@@ -81,7 +81,7 @@ function get_x_values_effective_income(){
 			xVals = xVals.concat([2760, 34452, 34453]);
 		}
 	}
-	if(ptc_isActive === true){
+	if(isActive['ptc']){
 		if(numChildren === 'none'){
 			xVals = xVals.concat([20385, 40770, 54360, 74259]);
 		}
@@ -95,7 +95,7 @@ function get_x_values_effective_income(){
 			xVals = xVals.concat([41626, 83250, 111000, 205694]);
 		}
 	}
-	if(ssi_isActive === true){
+	if(isActive['snap']){
 		xVals = xVals.concat([780, 20964]);
 	}
 
@@ -115,7 +115,7 @@ function get_x_values_effective_income(){
  * @return {float} - personal income tax liability
  * */
 function personal_tax_at_income(income){
-	if(personal_income_tax_isActive === true){
+	if(isActive['income_tax']){
 		if(income <= 12950){
 			return 0;
 		}
@@ -149,7 +149,7 @@ function personal_tax_at_income(income){
  * @return {float} - FICA payroll tax liability
  * */
 function fica_tax_at_income(income){
-	if(fica_isActive === true){
+	if(isActive['fica']){
 		if(income <= 147000){
 			return .0765 * income;
 		}
@@ -169,7 +169,7 @@ function fica_tax_at_income(income){
  * @return {float} - EITC benefit
  * */
 function eitc_benefit_at_income(income, numChildren){
-	if(eitc_isActive === true){
+	if(isActive['eitc']){
 		benefit = 0;
 		if(numChildren ==="three"){
 			if(income < 15410){benefit = .45 * income;}
@@ -207,7 +207,7 @@ function eitc_benefit_at_income(income, numChildren){
  * @return {float} - CTC benefit
  * */
 function ctc_benefit_at_income(income, numChildren){
-	if(ctc_isActive === true){
+	if(isActive['ctc']){
 		benefit = 0;
 		if(numChildren === 'none'){
 			benefit = 0;
@@ -310,7 +310,7 @@ function ctc_benefit_at_income(income, numChildren){
  * @return {float} - SNAP benefit
  * */
 function snap_benefit_at_income(income, householdSize){
-	if(snap_isActive === true){
+	if(isActive['snap']){
 		if(householdSize == 4){
 			if(income <= 2760){return 10020;}
 			else if(income > 2760  && income <= 34452){return 10020 - .24 * (income - 2760);}
@@ -341,7 +341,7 @@ function snap_benefit_at_income(income, householdSize){
  * @return {float} - Medicaid/PTC value
  * */
 function ptc_benefit_at_income(income, numChildren){
-	if(ptc_isActive === true){
+	if(isActive['ptc']){
 		if(numChildren === "none"){
 			if(income <= 20385){return 6312;}  /* 150% of one-person household FPL ($13,590) */
 			else if(income > 20385 && income <= 40770){return 6312 - ( .06  * income * income / (40770-20385) + income * (-1 *  (20385 * .06  / (40770-20385) ) ) );}  /* 150–300% of one-person household FPL */
@@ -379,7 +379,7 @@ function ptc_benefit_at_income(income, numChildren){
  * @return {float} - SSI benefit
  * */
 function ssi_benefit_at_income(income){
-	if(ssi_isActive === true){
+	if(isActive['ssi']){
 		if(income <= 780){
 			return 10092;
 		}
