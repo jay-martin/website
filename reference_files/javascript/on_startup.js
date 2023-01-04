@@ -105,6 +105,13 @@ function initialize_mobile_page(){
 		document.getElementById(id).style.height = "0px";
 	}
 
+	//calculate the heights of each of the appendices and then set each to zero
+	for (var i = 0; i < appendices.length; i++) {
+		appendix_id = 'appendix' + (i+1).toString();
+		appendix_heights[appendix_id] = window.getComputedStyle(document.getElementById(appendix_id)).height;
+		document.getElementById(appendix_id).style.height = "0px";
+	}
+
 	// make highlights visible
 	setTimeout(function () {
 		// Allow smooth height transitions for the highlights container
