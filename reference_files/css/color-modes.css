@@ -148,7 +148,7 @@ a.sidebar_links,  .other_pages a {
   background-color: var(--slider);
 }
 button.chart_notes_button:hover {
-  background-color: var(--highlights-button-hover);
+  background-color: var(--box-color);
 }
 /********** C3.JS Charts ******************/
 .c3 text {
