@@ -328,7 +328,7 @@
 
   <!--Center---------------------------------------------------->
   <div class="center">
-    
+
     <!--Chart--------------------------------------------->
     <div class="chart">
       <!--User inputs--------------------------->
@@ -336,14 +336,14 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="benefits_selection_buttons selected_benefits_button" id="'income_tax_button'" value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="benefits_selection_buttons" id="cost_sharing_button" value="Cost Sharing Reductions">
-          <input type="submit" class="benefits_selection_buttons" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();" disabled >
+          <input type="submit" class="small_button selected_button" id='income_tax_button' value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button" id="cost_sharing_button" value="Cost Sharing Reductions">
+          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();" disabled >
         </div>
 
         <!--Disability Status-->
@@ -433,6 +433,9 @@
       <!--End animation button-->
       <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
 
+      <!-- Chart download button ---->
+      <input type="submit" class="small_button" id="download_chart_button" value="Download Screenshot" onclick="">
+
       <!--c3.js chart-->
       <div class="chart_actual" id="chart"></div>
 
@@ -504,14 +507,14 @@
           <li>This chart shows only federal taxes and benefits. Many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
           <li>It is assumed that modified adjusted gross income (MAGI) equals gross income.</li>
           <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
-          <li>Eligibility for SNAP and SSI is based on monthly income, whereas eligibility for most other programs considered here, as well as income tax liability, are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#appendix_snap'>Appendix: SNAP</a>. For details on how SSI marginal tax rates are calculated, see: <a href='#appendix_ssi'>Appendix: SSI</a>.</li>
+          <li>Eligibility for SNAP and SSI is based on monthly income, whereas eligibility for most other programs considered here, as well as income tax liability, are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#snap_appendix_icon'>Appendix: SNAP</a>. For details on how SSI marginal tax rates are calculated, see: <a href='#ssi_appendix_icon'>Appendix: SSI</a>.</li>
           <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. Able-bodied adults without dependents (ABAWD) can only receive SNAP for three months every three years unless they satisfy work requirements. SNAP and SSI both include rather onerous asset tests for most recipients (they are waived for people who are both categorically eligible and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty)</a>. This chart does not show SNAP benefits for the small proportion of recipients who are both categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li> 
           <li>Personal income tax is calculated using the standard deduction.</li>
-          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse. For most people, this has no effect on their payroll tax liability; however, tax rates will differ for higher income couples in which one parter has earnings exceeding Social Security's maximum taxable earnings ($147,000 in 2022). See <a href='#appendix_fica'>Appendix: FICA</a> for further details.</li>
+          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse. For most people, this has no effect on their payroll tax liability; however, tax rates will differ for higher income couples in which one parter has earnings exceeding Social Security's maximum taxable earnings ($147,000 in 2022). See <a href='#fica_appendix_icon'>Appendix: FICA</a> for further details.</li>
           <li>Eligibility for several benefits is based on the federal poverty line. This chart shows benefit levels based on the poverty line for the 48 contiguous states and Washington D.C. The poverty line differs in Alaska, Hawaii, and the US territories.
-          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. See <a href='#appendix_snap'>Appendix: SNAP</a> for details on how SNAP marginal tax rates are calculated.</li>
+          <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. See <a href='#snap_appendix_icon'>Appendix: SNAP</a> for details on how SNAP marginal tax rates are calculated.</li>
           <li>This chart shows SNAP benefits for people in the 48 contiguous states and Washington D.C. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
-          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. The monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#appendix_medicaid'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
+          <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. The monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#ptc_appendix_icon'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
           <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
           <li>This chart uses the premium tax credit formula that is in effect from 2021 through 2025. In 2026, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
         </ul>
@@ -1403,6 +1406,8 @@
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+
+<script type="text/javascript" src="../reference_files/javascript/create_png.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>

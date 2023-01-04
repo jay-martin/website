@@ -122,6 +122,27 @@ a:visited {
 button {
   border-color: var(--base-border);
 }
+.small_button {
+  background-color: var(--small-button-background);
+  border: solid;
+  border-color: var(--base-border);
+  color: var(--base-text);
+}
+.small_button:hover {
+  background-color: var(--small-button-hover);
+}
+.small_button:disabled {
+  background-color: var(--small-button-disabled-background);
+  color: var(--small-button-disabled-border-text);
+  border-color: var(--small-button-disabled-border-text);
+}
+/* No cursor change on hover when disabled */
+.small_button:disabled:hover {
+  cursor: default;
+}
+.selected_button {
+  background-color: var(--small-button-hover);
+}
 /********** Tables ******************/
 table,  th,  tr,  td {
   border-color: var(--base-border);

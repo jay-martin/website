@@ -16,16 +16,17 @@ var isActive = {
 /******************************************************** Controls for benefit buttons *******************************************************/
 function add_benefit(benefit){
 	id = '#' + benefit + '_button';
+	console.log(id);
 
 	if(isActive[benefit]){
 		isActive[benefit] = false;
-		$(id).removeClass('selected_benefits_button');
+		$(id).removeClass('selected_button');
 		load_data();
 		chart.unload(benefit);
 	}
 	else{
 		isActive[benefit] = true;
-		$(id).addClass('selected_benefits_button');
+		$(id).addClass('selected_button');
 		load_data();
 	}
 }

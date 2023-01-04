@@ -4,32 +4,6 @@
   line-height: 25px;
   margin-bottom: 5px;
 }
-.benefits_selection_buttons {
-  font-family: "Computer Modern Sans";
-  text-decoration: none;
-  cursor: pointer;
-  border: solid;
-  border-radius: 3px;
-  border-width: 1.5px;
-  border-color: var(--base-border);
-  background-color: var(--small-button-background);
-  transition: background-color .2s ease, border .2s ease;
-}
-.selected_benefits_button {
-  background-color: var(--small-button-hover);
-}
-.benefits_selection_buttons:hover {
-  background-color: var(--small-button-hover);
-}
-.benefits_selection_buttons:disabled {
-  background-color: var(--small-button-disabled-background);
-  color: var(--small-button-disabled-border-text);
-  border-color: var(--small-button-disabled-border-text);
-}
-/* No cursor change on hover when disabled */
-.benefits_selection_buttons:disabled:hover {
-  cursor: default;
-}
 /***************************************** Adjustements to center explanation box *****************************************/
 .center_explanation_box {
 	padding-bottom: 0px;

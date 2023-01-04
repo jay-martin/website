@@ -73,6 +73,14 @@ button {
   margin-top: 10px;
   float: right;
 }
+.small_button {
+  font-family: "Computer Modern Sans";
+  cursor: pointer;
+  border: solid;
+  border-radius: 3px;
+  border-width: 1.5px;
+  transition: background-color .2s ease, border .2s ease;
+}
 /*********************** Tables & Video **********************************************************/
 table {
   display: inline-table;
@@ -564,7 +572,7 @@ button.bottom_button{
   height: 100%;
   margin: 0px;
   overflow: hidden;
-  /* transition is set by function initialize_page() to the below value
+  /* transition is set by function initialize_page() to the below value:
   transition: height .5s ease; 
   */
 }

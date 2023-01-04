@@ -19,7 +19,7 @@ pageStyle = 'light';
 function toggle_page_color(mode){
   // buttons and social icons are by default set to transition in .15s
   $('.social_icon').css('transition', 'fill 1s ease');
-  $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color 1s ease');
+  $('button, .small_button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color 1s ease');
 
   if(mode === 'dark'){
     pageStyle = 'dark';
@@ -61,7 +61,7 @@ function toggle_page_color(mode){
   //reset social icon transition speed
   setTimeout( function(){
     $('.social_icon').css('transition', 'fill .15s ease');
-    $('button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color .1s ease');
+    $('button, .small_button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color .1s ease');
   }, 1000);
 }
 
