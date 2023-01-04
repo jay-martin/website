@@ -204,6 +204,8 @@ svg.logo-svg {
 }
 #page_title {
   margin-bottom: 4px;
+  font-size: 240%;
+  line-height: 1.1em;
 }
 .name {
   font-family: 'Zen Antique Soft', serif;
