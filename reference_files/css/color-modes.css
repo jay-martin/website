@@ -46,6 +46,8 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 
   --toggle-position: 0px;
   --toggle-color: grey;
+
+  --category-color: #582cfc;
 }
 
 .sepia {
@@ -67,6 +69,8 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 
   --toggle-position: 49px;
   --toggle-color: #827868;
+
+  --category-color: #582cfc;
 }
 
 .dark-mode {
@@ -88,6 +92,8 @@ button, input[type=submit].animation_button, input[type=submit].end_animation {
 
   --toggle-position: 100px;
   --toggle-color: #a6a6a6;
+
+  --category-color: #b19cff;
 }
 
 /*********************** Color Settings ***************************************************************************************************************/

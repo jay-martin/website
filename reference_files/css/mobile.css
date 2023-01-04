@@ -1,6 +1,38 @@
 /*PROBLEM: Overflow from Mathjax is hidden */
 @media screen and (max-width: 900px) {
 
+/*********************** Color Settings ************************************************************************/
+.mobile_navbar {
+  background-color: var(--base-background);
+}
+a.navbar_logo {
+  color: var(--base-text) !important;
+}
+button.open_icon:hover, button.close_icon{
+  background-color: var(--base-background);
+}
+.open_close_button span {
+  background: var(--base-text);
+}
+/********* Dropdown *********/
+.mobile_dropdown {
+  background-color: var(--base-background);
+  border-bottom: 1px solid;
+  border-color: var(--base-text);
+}
+.mobile_dropdown_horizontal_line {
+  border: solid;
+  border-width: 1px;
+  border-color: var(--low-emphasis-color);
+}
+.mobile_dropdown a {
+  color: var(--base-text) !important;
+}
+/********* Title *********/
+.category {
+  color: var(--category-color);
+}
+
 /*********************** Body *****************************************************************************/
 body {
   width: 100%;
@@ -52,102 +84,6 @@ ol, ul {
   margin-left: 1%;
   margin-right: 1%;
   overflow: hidden;
-}
-/*********************** Light Mode ************************************************************************/
-/********* Navbar ***********/
-.light-mode .mobile_navbar {
-  background-color: white;
-}
-.light-mode a.navbar_logo {
-  color: black;
-}
-.light-mode button.open_icon:hover, .light-mode button.close_icon{
-  background-color: white;
-}
-.light-mode .open_close_button span {
-  background: black;
-}
-/********* Dropdown *********/
-.light-mode .mobile_dropdown {
-  background-color: white;
-  border-bottom: 1px solid;
-  border-color: black;
-}
-.light-mode .mobile_dropdown_horizontal_line {
-  border: solid;
-  border-width: 1px;
-  border-color: #bdbdbd;
-}
-.light-mode .mobile_dropdown a {
-  color: black;
-}
-/********* Title *********/
-.light-mode .category {
-  color: #582cfc;
-}
-/*********************** Sepia *****************************************************************************/
-/********* Navbar ***********/
-.sepia .mobile_navbar {
-  background-color: #fff5e6;
-}
-.sepia a.navbar_logo {
-  color: black;
-}
-.sepia button.open_icon:hover, .sepia button.close_icon{
-  background-color: #fff5e6;
-}
-.sepia .open_close_button span {
-  background: black;
-}
-/********* Dropdown *********/
-.sepia .mobile_dropdown {
-  background-color: #fff5e6;
-  border-bottom: 1px solid;
-  border-color: black;
-}
-.sepia .mobile_dropdown_horizontal_line {
-  border: solid;
-  border-width: 1px;
-  border-color: #bdbdbd;
-}
-.sepia .mobile_dropdown a {
-  color: black;
-}
-/********* Title *********/
-.sepia .category {
-  color: #582cfc;
-}
-/*********************** Dark Mode *************************************************************************/
-/********* Navbar ***********/
-.dark-mode .mobile_navbar {
-  background-color: #242424;
-}
-.dark-mode a.navbar_logo {
-  color: #dbdbdb;
-}
-.dark-mode button.open_icon:hover, .dark-mode button.close_icon{
-  background-color: white;
-}
-.dark-mode .open_close_button span {
-  background: #dbdbdb;
-}
-/********* Dropdown *********/
-.dark-mode .mobile_dropdown {
-  background-color: #242424;
-  border-bottom: 1px solid;
-  border-color: #dbdbdb;
-}
-.dark-mode .mobile_dropdown_horizontal_line {
-  border: solid;
-  border-width: 1px;
-  border-color: #dbdbdb;
-}
-.dark-mode .mobile_dropdown a {
-  color: #dbdbdb;
-}
-/********* Title *********/
-.dark-mode .category {
-  color: #dbdbdb;
 }
 
 /*********************** Title *****************************************************************************/
@@ -320,7 +256,7 @@ button.close_icon {
   padding-top: 56px;
   z-index: 1;
 }
-.featured_pages_title, a.featured_pages  {
+.featured_pages_title, a.featured_pages {
   margin-left: 3%;
   font-size: 120%;
   margin-bottom: 8px;
