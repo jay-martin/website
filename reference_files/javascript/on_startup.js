@@ -11,10 +11,12 @@ var isMobile = false;
 //Get all highlights
 var highlights = document.getElementsByClassName("explanation_and_animation_button_container");
 var highlights_mobile = document.getElementsByClassName("mobile_explanation_and_animation_button_container");
+var appendices = document.getElementsByClassName("appendix");
 
 //Create universal array of highlights heights
 highlights_heights = [];
 mobile_highlights_heights = [];
+appendix_heights = new Object();
 
 //Loop through all highlights and set highlights heights to 0
 for (var i = 0; i < highlights.length; i++) {
@@ -61,11 +63,17 @@ function initialize_page(){
 		document.getElementById(id).style.height = "0px";
 	}
 
+	//calculate the heights of each of the appendices and then set each to zero
+	for (var i = 0; i < appendices.length; i++) {
+		appendix_id = 'appendix' + (i+1).toString();
+		appendix_heights[appendix_id] = window.getComputedStyle(document.getElementById(appendix_id)).height;
+		document.getElementById(appendix_id).style.height = "0px";
+	}
+
 	//make highlights and programs visible, set highlights & programs height transition time to .5s ease
 	setTimeout(function () {
 		// Allow smooth height transitions for programs container and highlights
-		$('.explanation_and_animation_button_container').css('transition', 'height .5s ease');
-		$('.programs').css('transition', 'height .5s ease');
+		$('.explanation_and_animation_button_container, .programs, .appendix').css('transition', 'height .5s ease');
 
 		// Adjust the borders of the highlights container
 		$('.highlights').css({

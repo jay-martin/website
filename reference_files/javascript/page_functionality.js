@@ -258,6 +258,7 @@ var isOpen = new Object(); //dictionary to keep track of which chart notes are o
 /** Opens and closes the portions of the page
  * @param {string} - the html id of the element that is opened/closed
  * */
+/* 
 function open_and_close_page_portion(id){
   if(isOpen[id] === 'open'){
     isOpen[id] = 'closed';
@@ -268,25 +269,42 @@ function open_and_close_page_portion(id){
     document.getElementById(id).style.display = 'block';
   }
 }
+*/
+
+/** Opens and closes the portions of the page
+ * @param {string} - the html id of the element that is opened/closed
+ * */
+var isOpen_heights = new Object();
+function open_and_close_page_portion(id){
+  if(isOpen_heights[id] === 'open'){
+    isOpen_heights[id] = 'closed';
+    document.getElementById(id).style.height = '0px';
+  }
+  else{
+    isOpen_heights[id] = 'open';
+    document.getElementById(id).style.height = appendix_heights[id];
+  }
+}
 
 /** Adjusts the border of the bottom appendix **/
 bottom_appendix_isOpen = false;
 function adjust_bottom_apendix_border(){
   if(bottom_appendix_isOpen){
-    $('.appendix_button_bottom').css('border-bottom', 'solid');
-    $('.appendix_button_bottom').css('border-bottom-left-radius', '5px');
-    $('.appendix_button_bottom').css('border-bottom-right-radius', '5px');
     bottom_appendix_isOpen = false;
+
+    setTimeout(function(){
+      $('.appendix_button_bottom').css('border-bottom-left-radius', '3.4px');
+      $('.appendix_button_bottom').css('border-bottom-right-radius', '3.4px');
+    }, 350);
   }
   else{
-    $('.appendix_button_bottom').css('border-radius', '0px');
-    $('.appendix_button_bottom').css('border-bottom', 'none');
     bottom_appendix_isOpen = true;
+    $('.appendix_button_bottom').css('border-radius', '0px');
   }
 }
 
-/** Opens and closes the portions of the page
- * @param {string} - rotates a Font Awesome icon by 180 degrees
+/** Rotates icon icon by 180 degrees
+ * @param {string} - id of icon to be rotated
  * */
 var icon_isRotated = new Object();
 function rotate_icon_180(id){

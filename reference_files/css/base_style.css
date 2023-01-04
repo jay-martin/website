@@ -596,35 +596,36 @@ img.table {
 /******* Appendix *****************************************************************************/
 .appendix_container {
   margin-top: 15px;
+  border-radius: 5px;
 }
 .appendix {
   font-size: 80%;
   line-height: 1.75em;
-  display: block;
   padding-left: 10px;
   padding-right: 10px;
-  border: solid;
+  overflow: hidden;
+
+  border: none;
+  border-bottom: solid;
 }
 .appendix_bottom {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border: none;
 }
 .appendix_button {
   font-family: 'Zen Old Mincho', serif;
   font-weight: 900;
   font-size: 100%;
   text-align: left;
-  border: solid;
-  border-bottom: none;
+  border: none;
 }
 .appendix_button_top {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 3.4px;
+  border-top-right-radius: 3.4px;
 }
 .appendix_button_bottom {
-  border-bottom: solid;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border: none !important;
+  border-bottom-left-radius: 3.4px;
+  border-bottom-right-radius: 3.4px;
 }
 .appendix_chevron {
   float: right;

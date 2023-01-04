@@ -624,8 +624,8 @@
   <div class='appendix_container'>
 
     <!-------------------------- Appendix SNAP -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button appendix_button_top" onclick="open_and_close_page_portion('appendix-snap'); rotate_icon_180('#snap_appendix_icon');">Appendix: Supplemental Nutrition Assistance Program (SNAP)<i class="fa-solid fa-chevron-up appendix_chevron" id='snap_appendix_icon'></i></button>
-    <div class="appendix" id="appendix-snap">
+    <button class="appendix_button appendix_button_top" onclick="open_and_close_page_portion('appendix1');rotate_icon_180('#snap_appendix_icon');">Appendix: Supplemental Nutrition Assistance Program (SNAP)<i class="fa-solid fa-chevron-up appendix_chevron" id='snap_appendix_icon'></i></button>
+    <div class="appendix" id="appendix1">
       <h3>Considerations</h3>
       <p>
          Not included are the child support deduction, excess shelter deduction, the dependent care deduction (which includes only expenses related to work or training) and deduction alterations for households with an elderly or disabled member. Additionally, some people are eligible for SNAP through <em>categorical eligibility</em> (e.g. people who receive cash benefits through TANF are automatically eligible for SNAP), which does not include a gross income limit. This chart does not show marginal tax rates for the small proportion of SNAP recipients who are categorically eligible for SNAP and have gross incomes above 130% of the poverty line.
@@ -780,8 +780,8 @@
     </div> <!--Appendix: SNAP-->
 
     <!-------------------------- Appendix SSI -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button" onclick="open_and_close_page_portion('appendix-ssi');rotate_icon_180('#ssi_appendix_icon')">Appendix: Supplemental Security Income (SSI)<i class="fa-solid fa-chevron-up appendix_chevron" id='ssi_appendix_icon'></i></button>
-    <div class="appendix" id="appendix-ssi">
+    <button class="appendix_button" onclick="open_and_close_page_portion('appendix2');rotate_icon_180('#ssi_appendix_icon')">Appendix: Supplemental Security Income (SSI)<i class="fa-solid fa-chevron-up appendix_chevron" id='ssi_appendix_icon'></i></button>
+    <div class="appendix" id="appendix2">
       <h3>Calculating SSI Effective Marginal Tax Rates In Isolation</h3>
       <p>
         SSI imposes a very high marginal tax rate. Nominally, it is 100%: every dollar of earned or unearned income (unearned includes in-kind benefits like food and shelter provided by other people) results in a $1 reduction in SSI benefits. However, SSI excludes the first $20 made of any income (earned or unearned) in a month, the first $65 of earned income made in a month, one-half of earned income above the first $65 of earned income plus any remainder from the $20 exclusion, and several quarterly exclusions for infrequent or irregular unearned income.(supCRS SSI Long: 17) (Note that these figures are not adjusted for inflation each year—they have been the same since 1972).(supCRS SSI Long: 18) So the gist here is that <em>countable income</em>—income after exclusions—has a 100% marginal tax rate. However, <em>gross income</em>—income before exclusions—does not, because some of it is exempted.
@@ -952,8 +952,8 @@
     </div><!--Appendix: SSI-->
 
     <!-------------------------- Appendix Medicaid/PTC -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button appendix_button_bottom" id='appendix-ptc-button' onclick="open_and_close_page_portion('appendix-ptc');rotate_icon_180('#ptc_appendix_icon');adjust_bottom_apendix_border()">Appendix: Medicaid & Premium Tax Credits <i class="fa-solid fa-chevron-up appendix_chevron" id='ptc_appendix_icon'></i></button>
-    <div class="appendix appendix_bottom" id="appendix-ptc">
+    <button class="appendix_button appendix_button_bottom" id='appendix-ptc-button' onclick="open_and_close_page_portion('appendix3');rotate_icon_180('#ptc_appendix_icon');adjust_bottom_apendix_border()">Appendix: Medicaid & Premium Tax Credits <i class="fa-solid fa-chevron-up appendix_chevron" id='ptc_appendix_icon'></i></button>
+    <div class="appendix appendix_bottom" id="appendix3">
       <h3>Including Medicaid & the Premium Tax Credits Together</h3>
       Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount </br>
 
@@ -1184,7 +1184,7 @@
 
     </div>
 
-    <div class="references" id="appendix-csr">
+    <div class="references" id="appendix-csr" style="display:none">
       <h2>Appendix: Cost Sharing Reductions</h2>
       <p>
         The Affordable Care Act includes not only tax credits to help pay the cost of premiums, but also reductions in cost sharing to help cover deductibles and copayments. These, too, phase out with income.

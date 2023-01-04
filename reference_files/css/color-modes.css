@@ -158,12 +158,15 @@ button.chart_notes_button:hover {
   stroke: var(--base-text) !important; /* sometimes does not transition without !important tag */
 }
 /********** Appendix ****************/
+.appendix_container {
+  border: solid;
+  border-color: var(--base-border);
+}
 .appendix {
   border-color: var(--base-border);
 }
 .appendix_button {
   background-color: var(--box-color);
-  border-color: var(--base-border) !important;
 }
 .appendix_button:hover {
   background-color: var(--small-button-hover);
