@@ -60,11 +60,11 @@ var hohFixChart = c3.generate({
         colors: {
             person1: '#6ab6fc',
             point1:  '#6ab6fc',
-            person2: '#770087',
-            person2_dashed: '#770087',
-            point2: '#770087',
-            married: color_mode_color,
-            point_married: color_mode_color,
+            person2: purple_shade,
+            person2_dashed: purple_shade,
+            point2: purple_shade,
+            married: white_or_black,
+            point_married: white_or_black,
 
             married_tax : '#36D903',
             bonus       : '#36D903',      

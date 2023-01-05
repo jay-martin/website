@@ -58,6 +58,12 @@
   <!-- MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- savesvgaspng -->
+<!--
+  <script src="../reference_files/node_modules/save-svg-as-png/lib/SaveSvgAsPng.js"></script>
+-->
+
 </head>
 
 <body>
@@ -439,7 +445,7 @@
       <div class="chart_actual" id="chart"></div>
 
       <!-- Chart download button ---->
-      <input type="submit" class="small_button" id="download_chart_button" value="Download Screenshot">
+      <input type="submit" class="small_button" id="download_chart_button" value="Download Screenshot" onclick="exportChartToPng('chart');">
 
       <!--Chart attributes-->
       <div class="chart_attributes">
@@ -499,7 +505,7 @@
           <div class="slider-text" id="axis_slider_text">Y-Axis Range: $<output id="y_axis_output_start_ei">0</output>–$<output id="y_axis_output_end_ei">20,000</output></div>
           <div id="y_axis_range_ei" onclick="arbitrary_y_axis()"></div>
         </div>
-        
+
       </div>
 
       <!--Chart notes---------------->

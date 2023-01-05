@@ -38,8 +38,8 @@ var standardCredit = c3.generate({
         colors: {
             person1: '#6ab6fc',
             point1:  '#6ab6fc',
-            married: color_mode_color,
-            point_married: color_mode_color,
+            married: white_or_black,
+            point_married: white_or_black,
             tax: '#eb3734',
         },
         hide: ['tax'],

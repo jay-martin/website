@@ -1,9 +1,38 @@
+/*
+function exportChartToPng(chartID){
+  //fix weird back fill
+  d3.select('#'+chartID).selectAll("path").attr("fill", "none");
+  //fix no axes
+  d3.select('#'+chartID).selectAll("path.domain").attr("stroke", "black");
+  //fix no tick
+  d3.select('#'+chartID).selectAll(".tick line").attr("stroke", "black");
+  var svgElement = $('#'+chartID).find('svg')[0];
+  saveSvgAsPng(svgElement, chartID+'.png');
+}
+*/
+
+/*
+function create_png(){
+  console.log('in function');
+  d3.selectAll("path").attr("fill", "none");
+  d3.selectAll(".tick line, path.domain").attr("stroke", "black");
+  var $container = $('#chart'),
+      // Canvg requires trimmed content
+      content = $container.html().trim(),
+      canvas = document.getElementById('svg-canvas');
+    // Draw svg on canvas
+    Canvg(canvas, content);
+}
+*/
+
+
+/* 
 $("#save-btn").click(function() {
       $("#chart").get(0).toBlob(function(blob) {
         saveAs(blob, "chart_1.png");
     });
 });
-
+*/
 
 /*
 var btn = document.querySelector('button');

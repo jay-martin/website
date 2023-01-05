@@ -20,11 +20,17 @@ function dark_mode(){
 	MPchart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
 	});
 
 	hohFixChart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
 	});
 
 	eitcExplainer.data.colors({
@@ -37,11 +43,27 @@ function dark_mode(){
 	eitcReform.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
 	});
 
 	existingEITC.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
+	});
+
+	eitc2023.data.colors({
+		three_single : '#03c900',
+		three_married: '#03c900',
+	});
+
+	eitc2023_full_fix.data.colors({
+		three_single : '#03c900',
+		three_married: '#03c900',
 	});
 
 	simplerEITC.data.colors({
@@ -64,11 +86,17 @@ function light_mode(){
 	MPchart.data.colors({
 		married       : 'black',
 		point_married : 'black',
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
 	});
 
 	hohFixChart.data.colors({
 		married       : 'black',
 		point_married : 'black',
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
 	});
 
 	eitcExplainer.data.colors({
@@ -81,11 +109,27 @@ function light_mode(){
 	eitcReform.data.colors({
 		married       : 'black',
 		point_married : 'black',
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
 	});
 
 	existingEITC.data.colors({
 		married       : 'black',
 		point_married : 'black',
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
+	});
+
+	eitc2023.data.colors({
+		three_single : '#0c6300',
+		three_married: '#0c6300',
+	});
+
+	eitc2023_full_fix.data.colors({
+		three_single : '#0c6300',
+		three_married: '#0c6300',
 	});
 
 	simplerEITC.data.colors({

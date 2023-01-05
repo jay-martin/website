@@ -41,11 +41,11 @@ var eitcExplainer = c3.generate({
         colors: {
             person1: '#6ab6fc',
             point1:  '#6ab6fc',
-            point2: '#770087',
-            married_plateau : color_mode_color,
-            married_phasein : color_mode_color,
-            married_phaseout: color_mode_color,
-            point_married   : color_mode_color,
+            point2: purple_shade,
+            married_plateau : white_or_black,
+            married_phasein : white_or_black,
+            married_phaseout: white_or_black,
+            point_married   : white_or_black,
 
             combined : '#FFFFFF',
             bonus    : '#36D903',      
