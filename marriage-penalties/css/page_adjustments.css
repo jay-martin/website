@@ -98,20 +98,9 @@
 .explainer_button{
 	width: 70px;
 	height: 25px;
-	border: solid;
-	border-radius: 5px;
-	border-width: 1.5px;
-	border-color: #adadad;
 	margin-bottom: 5px;
 	text-align: middle;
 	padding: 0;
-}
-.explainer_button:hover {
-	background-color: #dbdbdb;
-}
-.explainer_button:disabled:hover {
-	background-color: white;
-	cursor: default;
 }
 
 /* Mobile adjustments */

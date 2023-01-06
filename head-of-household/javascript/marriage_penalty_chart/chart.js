@@ -8,6 +8,13 @@ else{
     hoh_fix_tick = [0, 20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000];
 }
 
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    purple_shade = '#cb3ede';
+}
+else{
+    purple_shade = '#770087';
+}
+
 var marriagePenaltyChart = c3.generate({
     bindto: '#marriage_penalty_chart',
     data: {
@@ -68,9 +75,9 @@ var marriagePenaltyChart = c3.generate({
         colors: {
             person1: '#6ab6fc',
             point1:  '#6ab6fc',
-            person2: '#770087',
-            person2_dashed: '#770087',
-            point2: '#770087',
+            person2: purple_shade,
+            person2_dashed: purple_shade,
+            point2: purple_shade,
             married: color_mode_color,
             point_married: color_mode_color,
 

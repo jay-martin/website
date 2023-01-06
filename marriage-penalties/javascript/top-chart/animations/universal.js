@@ -90,19 +90,17 @@ function initialize_animation_currently_closed(){
 		MPchart.xgrids([]);
 
 		/*fade out text*/
-		document.getElementById('individual_eitc_values').style.color = '#f5f3f2';
-		document.getElementById('combined_single_eitc').style.color = '#f5f3f2';
-		document.getElementById('married_eitc_value').style.color = '#f5f3f2';
-		document.getElementById('marriage_penalty_show').style.color = '#f5f3f2';
+		document.getElementById('individual_values').style.color = '#f5f3f2';
+		document.getElementById('married_value').style.color = '#f5f3f2';
+		document.getElementById('marriage_penalty_output').style.color = '#f5f3f2';
 	}, timer);
 
 	timer += 1000;
 	setTimeout(function () {
 	    /* clear text (currently it has just faded to the background color) */
-		document.getElementById('individual_eitc_values').innerHTML = '';
-		document.getElementById('combined_single_eitc').innerHTML = '';
-		document.getElementById('married_eitc_value').innerHTML = '';
-		document.getElementById('marriage_penalty_show').innerHTML = '';
+		document.getElementById('individual_values').innerHTML = '';
+		document.getElementById('married_value').innerHTML = '';
+		document.getElementById('marriage_penalty_output').innerHTML = '';
 	}, timer);
 }
 
@@ -252,10 +250,9 @@ function end_animation(){
 	timer += 1000;
 	setTimeout(function () {
 		/* Fade output values back in */
-		document.getElementById('individual_eitc_values').style.color = 'black';
-		document.getElementById('combined_single_eitc').style.color = 'black';
-		document.getElementById('married_eitc_value').style.color = 'black';
-		document.getElementById('marriage_penalty_show').style.color = 'black';
+		document.getElementById('individual_values').style.color = 'black';
+		document.getElementById('married_value').style.color = 'black';
+		document.getElementById('marriage_penalty_output').style.color = 'black';
 
 		/* remove End Animation Button and reset its colors */
 		document.getElementById('end_animation_button').style.display = 'none';

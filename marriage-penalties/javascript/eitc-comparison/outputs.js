@@ -1,11 +1,11 @@
 /*Default values */
 document.getElementById('eitc_reform_individual').innerHTML = "Your EITC is worth <b>$3,995</b> and your partner's EITC is worth <b>$3,995</b>, for a combined EITC benefit <b>$7,990</b>.";
 document.getElementById('eitc_reform_married').innerHTML =    "With a combined income of $35,000, if you married your EITC would be worth <b>$7,990</b>.";
-document.getElementById('eitc_reform_penalty').innerHTML =    "Thus, if you married your family's EITC benefit would not change.";
+document.getElementById('eitc_reform_penalty').innerHTML =    "Thus, if you married your family's EITC benefit would <b>stay the same</b>.";
 
 document.getElementById('existing_individual').innerHTML = "Your EITC is worth <b>$3,995</b> and your partner's EITC is worth <b>$3,995</b>, for a combined EITC benefit <b>$7,990</b>.";
 document.getElementById('existing_married').innerHTML =    "With a combined income of $35,000, if you married your EITC would be worth <b>$5,155</b>.";
-document.getElementById('existing_penalty').innerHTML =    "Thus, if you married your family's EITC benefit would <em>decrease</em> by <b>$2,835</b>.";
+document.getElementById('existing_penalty').innerHTML =    "Thus, if you married your family's EITC benefit would <b><p class='inline red'>decrease by $2,835</p></b>.";
 
 eitc_fix_outputs_isClicked = false;
 
@@ -46,15 +46,15 @@ function eitc_reform_outputs(){
     document.getElementById('eitc_reform_individual').innerHTML = "Your EITC is worth <b>$" + p1EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your partner's EITC is worth <b>$" + p2EITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined EITC benefit <b>$" + combinedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
     document.getElementById('eitc_reform_married').innerHTML =    "With a combined income of $" + combinedIncome.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ", if you married your EITC would be worth <b>$" + marriedEITC.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
 
-    if(bonus > 0){
-        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <em>increase</em> by <b>$" + bonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+    if(bonus.toFixed(0) > 0){
+        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b><p class='inline green'>increase by $" + bonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</p></b>.";
     }
-    else if(bonus == 0){
-        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would not change.";
+    else if(bonus.toFixed(0) == 0){
+        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b>stay the same</b>.";
     }
     else{
         bonus = bonus * -1;
-        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <em>decrease</em> by <b>$" + bonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+        document.getElementById('eitc_reform_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b><p class='inline red'>decrease by $" + bonus.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</p></b>.";
     }
 
     // Existing EITC Values
@@ -67,15 +67,15 @@ function eitc_reform_outputs(){
     existing_penalty = combined_existing_eitc - married_existing_eitc;
     document.getElementById('existing_individual').innerHTML = "Your EITC is worth <b>$" + p1_existing_eitc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your partner's EITC is worth <b>$" + p2_existing_eitc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, for a combined EITC benefit <b>$" + combined_existing_eitc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
     document.getElementById('existing_married').innerHTML =    "With a combined income of $" + combinedIncome.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ", if you married your EITC would be worth <b>$" + married_existing_eitc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
-    if(existing_penalty > 0){
-        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <em>decrease</em> by <b>$" + existing_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+    if(existing_penalty.toFixed(0) > 0){
+        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b><p class='inline red'>decrease by $" + existing_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</p></b>.";
     }
-    else if(existing_penalty == 0){
-        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would not change.";
+    else if(existing_penalty.toFixed(0) == 0){
+        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b>stay the same</b>.";
     }
     else{
         existing_penalty = existing_penalty * -1;
-        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <em>increase</em> by <b>$" + existing_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>.";
+        document.getElementById('existing_penalty').innerHTML =  "Thus, if you married your family's EITC benefit would <b><p class='inline green'>increase by $" + existing_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</p></b>.";
     }
 
 }

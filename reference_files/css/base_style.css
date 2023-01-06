@@ -31,6 +31,10 @@ p, ol, ul {
   font-family: 'Latin Modern Sans';
   line-height: 1.5em;
 }
+p.inline {
+  display: inline-block;
+  margin: 0px;
+}
 p.top {
   margin-top: 5px;
 }

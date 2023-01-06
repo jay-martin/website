@@ -400,10 +400,9 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="individual_eitc_values"></p>
-      <p class="explanation_text" id="combined_single_eitc"></p>
-      <p class="explanation_text" id="married_eitc_value"></p>
-      <p class="explanation_text" id="marriage_penalty_show"></p>
+      <p class="explanation_text" id="individual_values"></p>
+      <p class="explanation_text" id="married_value"></p>
+      <p class="explanation_text" id="marriage_penalty_output"></p>
 
       <p class="explanation_text" id="explanation_line1"></p>
       <p class="explanation_text" id="explanation_line2"></p>
@@ -546,41 +545,41 @@
   <div class = "chart">
 
     <!--Person 1 filing status-->
-    <label for="hoh_fix_person1_filing_status">I am a </label>
-    <select name="hoh_fix_person1_filing_status" id="hoh_fix_person1_filing_status">
+    <label for="single_tax_person1_filing_status">I am a </label>
+    <select id="single_tax_person1_filing_status">
       <option value="single">single filer</option>
     </select>
 
     <!--Person 2 filing status-->
-    <label for="hoh_fix_person2_filing_status">and my partner is a </label>
-    <select name="hoh_fix_person2_filing_status" id="hoh_fix_person2_filing_status">
+    <label for="single_tax_person2_filing_status">and my partner is a </label>
+    <select id="single_tax_person2_filing_status">
       <option value="single">single filer</option>
     </select>.
 
     <!--Person 1 income slider-->
     <div class="slidecontainer"> 
-      <div class="slider-text" id="income_slider_text">I have an income of $<output id="hoh_fix_person1_income_output">80,000</output>:</div>
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</div>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_fix_person1_income" oninput="hoh_fix_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_fix_modify_income();hoh_fix_outputs();">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
       </div>
     </div>
 
     <!--Person 2 income slider-->
     <div class="slidecontainer"> 
-      <div class="slider-text">My partner has an income of $<output id="hoh_fix_person2_income_output">40,000</output>:</div>
+      <div class="slider-text">My partner has an income of $<output id="single_tax_person2_income_output">40,000</output>:</div>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_fix_person2_income" oninput="hoh_fix_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_fix_modify_income();hoh_fix_outputs();">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
       </div>
     </div>
 
     <!--Center box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="hoh_fix_individual"></p>
-      <p class="explanation_text" id="hoh_fix_married"></p>
-      <p class="explanation_text" id="hoh_fix_bonus"></p>
+      <p class="explanation_text" id="single_tax_individual_values"></p>
+      <p class="explanation_text" id="single_tax_married_value"></p>
+      <p class="explanation_text" id="single_tax_bonus"></p>
     </div>
 
-    <div id="hoh_fix_chart"></div> <!--Div for single/married tax chart-->
+    <div id="single_tax_chart"></div> <!--Div for single/married tax chart-->
 
   </div> <!-- chart container-->
 
@@ -722,8 +721,8 @@
       </div> <!-- text container -->
 
       <div class="forward_back_buttons">
-        <button class="explainer_button" id="eitc_explainer_back_button" onclick="eitc_explainer_back();" disabled>Back</button>
-        <button class="explainer_button" id="eitc_explainer_next_button" onclick="eitc_explainer_next();">Next</button>
+        <input type="submit" class="small_button explainer_button" id="eitc_explainer_back_button" value="Back" onclick="eitc_explainer_back();" disabled>
+        <input type="submit" class="small_button explainer_button" id="eitc_explainer_next_button" value="Next" onclick="eitc_explainer_next();">
       </div>
 
     </div> <!-- explanation box -->
@@ -809,16 +808,16 @@
   </div> <!-- chart container -->
 
   <p>
-    One thing that you'll notice is that the reformed married EITC is quite a bit larger than the existing married EITC: the max benefit is over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've slyly tried to fit a big benefit boost in for married people—this is the bare minimum needed to eliminate marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, it turns out, save a lot of money. And by all appearances, Congress has prioritized saving money over ensuring marriage is not discouraged. 
+    One thing that you'll notice is that the reformed married EITC is quite a bit larger than the existing married EITC: the max benefit is over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've slyly tried to fit a big benefit boost in for married people—this is the bare minimum required to eliminate marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, it turns out, save a lot of money. And by all appearances, Congress has prioritized saving money over ensuring marriage is not discouraged. 
   </p>
 
   <p>
     This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we'll need to do a more substantial reform of the EITC.
   </p>
 
-  <h3>Things are still not great</h3>
+  <h3>There are more issues</h3>
   <p>
-    Even if you're on board with an EITC boost for married people (it's not a bad idea in itself!), a big problem remains. So far, we've only dealt with two curves: the 1-child single EITC and the 2-child married EITC that a couple would jump up to. That obscures the complexity of the reform, because the EITC doesn't consist of only two curves: it consists of <em>eight</em>. The current EITC is an unwieldy beast, frankly. Just look at it:
+    Even if you're on board with an EITC boost for married people (it's not a bad idea in itself!), a big problem remains. So far, we've only dealt with two curves: the 1-child single EITC and the 2-child married EITC that a couple would jump up to. This obscures the complexity of the reform, because the EITC doesn't consist of only two curves: it consists of <em>eight</em>. The structure of the EITC is frankly a bit absurd. Words you'd generally want to associate with a policy are things like "simple", "elegant", and "easy to understand". The EITC instead brings to mind words like "convoluted", "ugly", and "perplexing". Just look at it:
   </p>
 
   <div id="eitc_2023"></div>
@@ -832,11 +831,11 @@
   </br>
 
   <p>
-    This differentiation by number of children makes it really difficult to come up with an easily understandable benefit schedule that doesn't include marriage penalties. When we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations. A couple could have three children, for instance, because one partner has three children and the other has none, <em>or</em> because one has two children and the other has one. So our three-child married EITC somehow has to take into account both of these possibilities.
+    This differentiation by number of children makes it quite difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations. A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's single EITC's for one, two, and three+ children, so we also have to consider married couples with one, two, three, four, five, and six+ children.
   </p>
 
   <p>
-    To truly eliminate marriage penalties, the only way to handle this is to deal with the <em>worst</em> case ("worst" in the sense of resulting in the largest benefit). So the three child benefit would have to accomodate a two-child parent marrying a one-child parent, because this results in a larger EITC than a three-child parent marrying a childless person. If we didn't do this, and instead created the three-child married EITC around the idea of a three-child parent marrying a childless person, then two child–one child couples would face pretty substantial marriage penalties.
+    To truly eliminate marriage penalties, the only way to handle this is to deal with the <em>worst</em> case. i.e. the case that necessitates the largest benefit. If you design the EITC around a child combination other than the worst case, then you get marriage penalties. So, for instance, the three child benefit needs to be designed around a two-child parent marrying a one-child parent, because adding up the single two-child and single one-child EITC's results in a larger benefit than adding up the single three-child and single childless EITC's. If we didn't do this, and instead constructed the three-child married EITC to accomodate a three-child parent marrying a childless person, then any couple in which one spouse has two children and the other one child would face substantial marriage penalties.
   </p>
 
   <p>
@@ -919,30 +918,39 @@
   <div class="article_tag"><em>See also: <a href="../family-security-act/index.html" target="_blank">Family Security Act</a> </em></div>
 
   <p class="top">
-    You might notice that this reform is similar in nature to Mitt Romney's proposed <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both propose increasing child benefits and simplifying the EITC. Romney's plan also proposes eliminating the head of household filing status and putting the savings towards the child benefit, as I proposed in the head of household section. There are, however, some differences, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
+    You might notice that this reform is similar in nature to the EITC Mitt Romney proposed in the <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both proposals simplify the EITC, and accompany it with an increased child benefit. And as I also will advocate later in this page, Romney proposes eliminating the head of household filing status and putting the savings towards the child benefit. There are, however, some differences between the two proposals, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
   </p>
 
   <h3 class='chart_wide_name' style="margin-bottom: 15px">Family Security Act EITC</h3>
   <div id="fsa_eitc"></div>
 
   <p>
-    With Romney's proposal, it should be noted, he went to lengths to ensure that the policy is revenue neutral, whereas I have been more lackadaisical with funding. This placed particularly strong constraints on his EITC reform, as he relied on it to provide nearly half of the funding for the FSA's enhanced child benefit. While I don't know his exact thought process, these funding constraints seems like they could be a major reason he didn't fully consolidate the program into one single and one married benefit, but instead maintained separate benefits for childless people and for parents. He'd need to do that because raising the childless benefit up to the values of the benefit for parents would substantially reduce the amount of revenue his EITC reform would save, and thus push his proposal into the red, while dropping the benefit for parents down to the childless benefit would be such a substantial benefit reduction from the current EITC that virtually all working class people would see their benefits cut substantially even with the larger child benefit.
+    With Romney's proposal, it should be noted, he went to lengths to ensure that the policy is revenue neutral, whereas I have been more lackadaisical with funding. This placed particularly strong constraints on his EITC reform, as he relied on it to provide nearly half of the funding for the FSA's enhanced child benefit. While I don't know his exact thought process, these funding constraints seems like they could be a major reason he didn't fully consolidate the program into one single and one married benefit, instead maintaining separate benefits for childless people and for parents. He likely needed to do that because raising the childless benefit up to the value of the benefit for parents would substantially reduce the amount of revenue his EITC reform would save, and thus push his proposal into the red; conversely, dropping the benefit for parents down to the childless benefit would be such a substantial benefit reduction compared to the current EITC that virtually all working class people would see their benefits cut substantially even with the larger child benefit.
   </p>
 
   <p>
-    Under similar budgetary constraints, the EITC reform I proposed might need to be similarly altered. These alterations, however, have major drawbacks. While Romney's EITC generally reduces marriage penalties, it is still a good ways from eliminating them. The phase-out, of course, inherently imposes marriage penalties, but there are also marriage penalties for many couples in which each partner has children of their own—and those marriage penalties can be as large as $1,000.
+    Under similar budgetary constraints, the EITC reform I proposed might need to be similarly altered. These alterations, however, have major drawbacks. While Romney's EITC generally reduces marriage penalties, it is still a good ways from eliminating them. The phase-out, of course, inherently imposes marriage penalties, but there are also marriage penalties for many couples in which each partner has children of their own. These marriage penalties are generally not as severe as those that currently exist, but they can be as large as $1,000.
   </p>
 
   <p>
-    The reductions to the EITC for parents are also a bit overzealous. Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced.<a class="refs" id="note1" href="#notes"><sup>1</sup></a> The FSA would still reduce child poverty substantially,<a class="refs" id="note2" href="#notes"><sup>2</sup></a> but it would certainly have a greater impact if EITC reductions were fully offset by benefit enhancements elsewhere.
+    The reductions to the EITC for parents are also a bit overzealous (alternatively, the child benefit increase is not large enough). Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced, according to the CBPP.<a class="refs" id="note1" href="#notes"><sup>1</sup></a> The FSA would still reduce child poverty substantially,<a class="refs" id="note2" href="#notes"><sup>2</sup></a> but it would certainly have a greater impact if either (1) the EITC were not so sharply cut, or (2) the EITC reductions were fully offset by benefit enhancements elsewhere.
+  </p>
+
+  <p>
+    The latter option would be preferable, as a child benefit is in general superior to the EITC, but it would require more revenue than a less sharp reduction to the EITC. In any case, the <em>structure</em> of Romeny's EITC is a big step in the right direction, and it is likely only for budgetary reasons that he did not go the full ways to the structure I have proposed.
   </p>
 
   <h3>Solution 2: Child Benefits & the Standard Credit</h3>
   <p>
-    There are good reasons to doubt two fundamental elements of the EITC: that it should include a phase-in and a phase-out.
+    So we've got a reformed EITC that mostly eliminates marriage penalties. However, there's just no way to completely eliminate them: the phase-out makes that impossible. Fortunately for those of us who would prefer not to discourage marriage, there are good reasons to doubt two fundamental aspects of the EITC: that it should include a phase-in and a phase-out.
   </p>
 
-  <h4>1. The phase-out creates work disincentives</h4>
+  <h4>1. Phase-Outs Discourage Marriage</h4>
+  <p>
+    As we've already established, there's just no way to eliminate marriage penalties without eliminating phase-outs. 
+  </p>
+
+  <h4>2. Phase-Outs Discourage Work</h4>
   <div class="article_tag"><em>See also: <a href="../marginal-tax/index.html" target="_blank">Marginal Tax Rates</a> </em></div>
 
   <p class="top">
@@ -954,24 +962,39 @@
   </p>
 
   <p>
-    However, this only holds in the phase-in region. The plateau has no effect on work incentives, and the phase-out <em>reverses</em> the incentives. In the phase out, additional hours of work <em>reduce</em> the amount of the EITC. For example, the one-child EITC phases out at a rate of $210.60 per $1,000 in additional earned income. That means that if you work more and earn an additional $1,000, your EITC decreases by $210.60, and thus your income in fact only rises by $789.40. 
+    However, this only holds in the phase-in region. The plateau has no effect on work incentives, and the phase-out <em>reverses</em> the incentives. In the phase out, additional hours of work <em>reduce</em> the amount of the EITC. For example, the one-child EITC phases out at a rate of $210.60 per $1,000 in additional earned income. This means that if you work enough to earn an additional $1,000, your income in fact only rises by $789.40.
   </p>
 
   <p>
-    This puts the substitition and income effects into reverse. The EITC phase-out <b>reduces</b> additional wages, and thus reduces the cost of not working additional hours, and thus reduces the incentive to work more. Again, the income effect works in the opposite direction, but the substitutiton effect appears to dominate at the incomes at which the EITC phases out.
+    This puts the substitition and income effects into reverse. The EITC phase-out <b>reduces</b> additional wages, and thus reduces the cost of not working additional hours, and thus reduces the incentive to work more. Again, the income effect works in the opposite direction, but the substitutiton effect appears to dominate, which accords with intution: very few people would suspect that taxes <em>increase</em> the incentive to work, and all the EITC phase-out is doing is imposing an effective tax (you can read more about effective marginal tax rates <a href="./marginaltax/index.html" target="_blank">here</a>).
   </p>
 
   <p>
-    Another way of saying this is that the EITC phase-out imposes a postive <a href="./marginaltax/index.html" target="_blank">effective marginal tax rate</a>. Other programs, like SNAP and SSI, also impose EMTR's, so they can compuond on top of each other to produce very large effective marginal tax rates: an additional $100 of earned income, for instance, can cause a $21.06 loss in the EITC, <em>and</em> a $24 loss in SNAP benefits, <em>and</em> a $50 loss in SSI benefits. These together create large work disincentives, where additional work nets very little additional money. 
+    Importantly, other programs like SNAP ("food stamps") and SSI (cash payments to disabled people who are unable to work) also impose effective taxes. As a result, they can compuond on top of each other to produce very large effective tax rates: an additional $100 of earned income, for instance, could cause a $21.06 loss in the EITC, <em>and</em> a $24 loss in SNAP benefits, <em>and</em> a $50 loss in SSI benefits, resulting in only $3.96 of actual new income (and this is before you've paid your income and payroll tax). These together create large work disincentives because additional work nets very little additional income.
   </p>
 
   <p>
-    The only way to get rid of these disincentives is to <em>reduce or eliminate phase-outs</em>.
+    There is really only one way to get rid of these disincentives: <em>eliminate phase-outs</em>. We could tinker around with phase-outs to make them less substantial—ensure they don't stack on top of each other, reduce the phase-out rate etc.—but these never truly eliminate eliminate them. To be fair, there's no way to completely eliminate effective tax rates, because the government has to collect tax to operate. But phase-outs do something pernicious that ordinary taxes do not: they focus effective taxes on a small group of people—those who fall into the phase-out. Taxes, by contrast, can be spread out onto the population at large, making the effective tax each person pays much, much lower than the effective tax individuals in the phase-out face.
   </p>
 
-  <h4>2. The only way to truly eliminate marriage penalties is to eliminate the phase-out</h4>
   <h4>3. The phase-out is really just an inferior way to fund the program</h4>
-  <h4>4. The phase-in substantially reduces the EITC's poverty alleviation effects</h4>
+
+  <h4>All Together Now</h4>
+  <p>
+    So we've established that phase-outs necessarily <b>discourage marriage <em>and</em> discourage work.</b> And the only arguments in their favor—that they reduce the cost of the EITC and "target" benefits to lower-income people—turn out to be a mirage. It is just much less effective to concentrate effective taxes onto a small group of people who fall into the phase-out than it is to give everyone the benefit and spread out the taxes.
+  </p>
+
+  <p>
+    So if we take the reformed EITC I proposed in the section above and eliminate the phase-out, we end up with something like this:
+  </p>
+
+  <p>
+    However, you'll probably note that there's something pernicious about this. We're giving everyone a cash benefit—except for poor people! This is, on its face, absurd. Poor people are precisely the people who most need financial assistance. It is the very definition of poverty that they do not have enough money, and so it is ludicrous to provide a cash benefit to every person except those who need it the most.
+  </p>
+
+  <p>
+    Showing it this way, I think, really highlights the fundamental absurdity of the EITC. As we've demonstrated, phase-outs are really just a funding mechanism that concentrates taxes on a small group of people rather than a large group of people.
+  </p>
   
 
   <!-- Standard credit chart -->
@@ -1129,19 +1152,19 @@
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
 <!-- Top Chart Javascipt Files -->
-<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/chart-functionality.js"></script>
-<script type="text/javascript" src="./javascript/topchart/controls.js"></script>
-<script type="text/javascript" src="./javascript/topchart/eitc/calculate.js"></script>
-<script type="text/javascript" src="./javascript/topchart/eitc/outputs.js"></script>
-<script type="text/javascript" src="./javascript/topchart/eitc/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/hoh/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/hoh/outputs.js"></script>
-<script type="text/javascript" src="./javascript/topchart/both/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/both/outputs.js"></script>
-<script type="text/javascript" src="./javascript/topchart/animations/universal.js"></script>
-<script type="text/javascript" src="./javascript/topchart/animations/basic-overview-animation.js"></script>
-<script type="text/javascript" src="./javascript/topchart/animations/marriage-bonus-animation.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/calculate.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/hoh/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/hoh/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/both/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/both/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/basic-overview-animation.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/marriage-bonus-animation.js"></script>
 
 <!-- Single Tax Javascipt Files -->
 <script type="text/javascript" src="./javascript/single-tax/chart.js"></script>

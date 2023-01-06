@@ -8,8 +8,8 @@ else{
     hoh_fix_tick = [0, 20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000];
 }
 
-var hohFixChart = c3.generate({
-    bindto: '#hoh_fix_chart',
+var singleTaxChart = c3.generate({
+    bindto: '#single_tax_chart',
     data: {
         xs: {
             'person1' : 'x1',

@@ -23,12 +23,14 @@ function dark_mode(){
 
 	regressiveChart.data.colors({
 		outline : '#dbdbdb',
-
 	});
 
 	marriagePenaltyChart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb', 
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
 	});
 }
 
@@ -40,11 +42,13 @@ function light_mode(){
 
 	regressiveChart.data.colors({
 		outline : 'black',
-
 	});
 
 	marriagePenaltyChart.data.colors({
 		married       : 'black',
 		point_married : 'black', 
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
 	});
 }

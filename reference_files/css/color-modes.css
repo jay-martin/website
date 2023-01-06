@@ -35,6 +35,8 @@ button {
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
   --low-emphasis-color: #bdbdbd;
+  --red: red;
+  --green: green;
 
   --small-button-background: #f5f3f2;
   --small-button-hover: #dedede;
@@ -58,6 +60,8 @@ button {
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
   --low-emphasis-color: #b5a177;
+  --red: red;
+  --green: green;
 
   --small-button-background: #f5e4cb;
   --small-button-hover: #e3d2b8;
@@ -81,6 +85,8 @@ button {
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
   --low-emphasis-color: #dbdbdb;
+  --red: #ff4845;
+  --green: #00d100;
 
   --small-button-background: #242424;
   --small-button-hover: #6e6e6e;
@@ -119,6 +125,12 @@ a:link {
 }
 a:visited {
   color: var(--base-link-visited);
+}
+p.red {
+  color: var(--red);
+}
+p.green {
+  color: var(--green);
 }
 /********** User inputs *************/
 button, select {

@@ -25,7 +25,7 @@ function dark_mode(){
 		point2: '#cb3ede',
 	});
 
-	hohFixChart.data.colors({
+	singleTaxChart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
 		person2 : '#cb3ede',
@@ -91,7 +91,7 @@ function light_mode(){
 		point2 : '#770087',
 	});
 
-	hohFixChart.data.colors({
+	singleTaxChart.data.colors({
 		married       : 'black',
 		point_married : 'black',
 		person2 : '#770087',

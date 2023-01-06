@@ -8,9 +8,9 @@ function animation3(){
 		MPchart.xgrids([]);
 		MPchart.ygrids([{value: 0}]);
 		MPchart.regions([]);
-		document.getElementById('individual_eitc_values').innerHTML = '';
-		document.getElementById('married_eitc_value').innerHTML = '';
-		document.getElementById('marriage_penalty_show').innerHTML = '';
+		document.getElementById('individual_values').innerHTML = '';
+		document.getElementById('married_value').innerHTML = '';
+		document.getElementById('marriage_penalty_output').innerHTML = '';
     	MPchart.axis.max({y: 4000});
     	MPchart.axis.max({x: 50000});
 		MPchart.hide('person1');
