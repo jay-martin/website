@@ -48,6 +48,9 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/ca0c7f000f.js" crossorigin="anonymous"></script>
+
   <!-- MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -327,22 +330,16 @@
     <div class="user_inputs" id="user_inputs">
 
       <!--Benefit Selector-->
-      <label for="benefit_selector">Show me </label>
+      <label for="benefit_selector">Show me the</label>
       <select id="benefit_selector" oninput="switch_chart()">
-        <option value="eitc">The Earned Income Tax Credit</option>
-        <option value="hoh">The Head of Household Filing Status</option>
-      </select>
-
-      <label for="chart_type">and view as </label>
-      <select id="chart_type" oninput="switch_chart()">
-        <option value="benefit">benefit chart</option>
-        <option value="percent">percent of income lost</option>
-      </select></br>
+        <option value="eitc">Earned Income Tax Credit</option>
+        <option value="hoh">Head of Household Filing Status</option>
+      </select>.
 
       <div id="eitc_user_inputs">
         <!--Person 1 number of old children-->
         <label for="numChildrenPerson1">I have</label>
-        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income()">
+        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income('children')">
           <option value="none">no children</option>
           <option value="one" selected>1 child</option>
           <option value="two">2 children</option>
@@ -351,7 +348,7 @@
 
         <!--Person 2 number of old children-->
         <label for="numChildrenPerson2">and my partner has</label>
-        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income()" >
+        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income('children')" >
           <option value="none">no children</option>
           <option value="one" >1 child</option>
           <option value="two">2 children</option>
@@ -372,7 +369,7 @@
       <div class="slidecontainer"> 
         <div class="slider-text" id="income_slider_text"> I have an income of $<output id="person1_income_output">30,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();adjust_arbitrary_income();">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
         </div>
       </div>
 
@@ -386,7 +383,7 @@
       <div class="slidecontainer"> 
         <div class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</div>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();adjust_arbitrary_income();">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
         </div>
       </div>
 
@@ -525,6 +522,7 @@
 <div class = 'center_no_side_elements' id='hoh'>
   <h2>Head of Household</h2>
   <div class="article_tag"><em>Program Page: <a href="../head-of-household/index.html" target="_blank">Head of Household</a> </em></div>
+
   <p class="top">
     The head of household status creates some pretty sizeable marriage penalties. A family of four in which both parents make $30,000, for instance, could save between $798 and $1,596 by getting a divorce, depending on how they claim their dependents. They can reach pretty ridiculous levels at higher incomes (though at higher incomes they probably have less effect on behavior): two heads of households making $80,000 each would incur a penalty of over $6,000 if they married.
   </p>
@@ -532,6 +530,51 @@
   <p>
     It's important to note that it doesn't require careful cherry picking to find these penalties. About x% of marriages are between a childless person and a person with at least one child. If the childless person makes at least $14,000 and the head of household at least $20,000, then they are guaranteed a marriage penalty of over $600 unless one of them is high earner. About y% of marriages are between two people who each have children of their own. In this case, as long as both of them earn at least $19,000 then they are guaranteed to incur a penalty of at least $1,000, with penalties approaching $2,000 common.
   </p>
+
+  <!----------- HOH Tax Chart-------------->
+  <div class = "chart">
+
+    <!--Person 1 filing status-->
+    <label for="hoh_tax_person1_filing_status">I am a </label>
+    <select id="hoh_tax_person1_filing_status" oninput='hoh_tax_modify_person1();hoh__tax_modify_income();hoh_tax_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh" selected>head of household</option>
+    </select>
+
+    <!--Person 2 filing status-->
+    <label for="hoh_tax_person2_filing_status">and my partner is a </label>
+    <select id="hoh_tax_person2_filing_status" oninput='hoh_tax_modify_person2();hoh_tax_modify_income();hoh_tax_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh">head of household</option>
+    </select>.
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="hoh_tax_person2_income_output">40,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Center box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="hoh_tax_individual"></p>
+      <p class="explanation_text" id="hoh_tax_married"></p>
+      <p class="explanation_text" id="hoh_tax_penalty"></p>
+    </div>
+
+    <!-- HOH Tax Chart-->
+    <div id="hoh_tax_chart"></div>
+
+  </div> <!-- chart container-->
 
   <p>
     When paired with the EITC, the marriage penalties can be astounding. A couple with two children between them and $60,000 in income could lose nearly $7,000—over 11% of their income—from getting married. That
@@ -589,6 +632,12 @@
 <section class = 'center_no_side_elements' id='eitc'>
   <h2>The Earned Income Tax Credit</h2>
   <div class="article_tag"><em>Program Page: <a href="../eitc/index.html" target="_blank">Earned Income Tax Credit</a> </em></div>
+
+  <p class="top">
+    The EITC...
+  </p>
+
+  <h3>Constructing an EITC with Minimal Marriage Penalties</h3>
 
   <!-------- Explanation chart --------->
   <div class = "chart" id="eitc_explainer_chart_container">
@@ -754,14 +803,12 @@
       <!--Person 1 number of old children-->
       <label for="eitc_fix_person1_numchildren">I have</label>
       <select name="eitc_fix_person1_numchildren" id="eitc_fix_person1_numchildren" oninput="eitc_reform_adjust_existing_person1();" >
-        <option value="none">no children</option>
         <option value="one" selected>1 child</option>
       </select>
 
       <!--Person 2 number of old children-->
       <label for="eitc_fix_person2_numchildren">and partner has</label>
       <select name="eitc_fix_person2_numchildren" id="eitc_fix_person2_numchildren" oninput="eitc_reform_adjust_existing_person2();" >
-        <option value="none">no children</option>
         <option value="one" selected>1 child</option>
       </select>.
 
@@ -1033,7 +1080,7 @@
     <ol class="notes_list">
       <li><a class="refs" href="#note1">^</a> <a href="#Marr" onclick="highlight_ref('Marr')">Marr et al. 2022</a></li>
 
-      <li><a class="refs" href="#note1">^</a> The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half (<a href="#Hammond">Hammond, Orr 2021</a>), while the FSA 2.0 would reduce child poverty by 13% (<a href="#Orr" onclick="highlight_ref('Orr')">Orr, McCabe 2022</a>).</li>
+      <li><a class="refs" href="#note1">^</a> The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half (<a href="#Hammond" onclick="highlight_ref('Hammond');">Hammond, Orr 2021</a>), while the FSA 2.0 would reduce child poverty by 13% (<a href="#Orr" onclick="highlight_ref('Orr')">Orr, McCabe 2022</a>).</li>
 
       <li><a class="refs" href="#note3">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>" (<a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a>). For the full book, see <a href="#Ellis-book" onclick="highlight_ref('Ellis-book')">Ellis, Faricy 2021</a>.</li>
 
@@ -1050,11 +1097,17 @@
 
       <li class="ref_item" id="Hammond">Hammond, Samuel; Orr, Robert (February 4, 2021). "<a href="https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/">Factsheet: Senator Romney’s Family Security Act</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20220813063420/https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/ target="_blank">Archived</a> from the original on August 13, 2022.</li>
 
+      <li class="ref_item" id="Elias">Ilin, Elias; Kotlikoff, Laurence J.; Pitts, Melinda (October 2022). "<a href=https://www.nber.org/papers/w30159 target="_blank">Is Our Fiscal System Discouraging Marriage? A New Look at the Marriage Tax</a>". <em>NBER Working Paper 30159</em>. DOI: <a href="https://doi.org/10.3386/w30159" target="_blank">10.3386/w30159</a>.
+
       <li class="ref_item" id="Marr">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). "<a href=https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It</a>". <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Archived</a> from the original on October 21, 2022.</li>
 
       <li class="ref_item" id="Marr-2">Marr, Chuck; Huang, Yixuan (March 2, 2020). "<a href=https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty target="_blank">Childless Adults Are Lone Group Taxed Into Poverty</a>". <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty target="_blank">Archived</a> from the original on December 21, 2022.</li>
 
       <li class="ref_item" id="Orr">Orr, Robert; McCabe, Joshua (June 15, 2022). "<a href=https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">Analysis of the Family Security Act 2.0</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20221127210837/https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">Archived</a> from the original on November 27, 2022.</li>
+
+      <li class="ref_item" id="Pomerleau">Pomerleau, Kyle (April 2015). "<a href=https://files.taxfoundation.org/legacy/docs/TaxFoundation_FF464_0.pdf target="_blank">Understanding the Marriage Penalty and Marriage Bonus</a>" <i class="fa fa-file-pdf-o"></i>. <em>Tax Foundation</em>. <a href=https://web.archive.org/web/20210301102001/https://files.taxfoundation.org/legacy/docs/TaxFoundation_FF464_0.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on March 1, 2021.</li>
+
+      <li class="ref_item" id="Wilcox">Wilcox, W. Bradford; Price, Joseph P.; Rachidi, Angela (2016). "<a href=https://ifstudies.org/ifs-admin/resources/marriage-penalty-hep-2016.pdf target="_blank">Marriage, Penalized: Does Social Welfare Policy Affect Family Formation?</a>" <i class="fa fa-file-pdf-o"></i>. <em>American Enterprise Institute & Institute for Family Studies</em>. <a href=https://web.archive.org/web/20220708012449/https://ifstudies.org/ifs-admin/resources/marriage-penalty-hep-2016.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 8, 2022.</li>
     </ul>
   </div>
 
@@ -1165,6 +1218,11 @@
 <script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/animations/basic-overview-animation.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/animations/marriage-bonus-animation.js"></script>
+
+<!-- HOH Tax Javascript Files -->
+<script type="text/javascript" src="./javascript/hoh-tax/chart.js"></script>
+<script type="text/javascript" src="./javascript/hoh-tax/outputs.js"></script>
+<script type="text/javascript" src="./javascript/hoh-tax/adjust-chart.js"></script>
 
 <!-- Single Tax Javascipt Files -->
 <script type="text/javascript" src="./javascript/single-tax/chart.js"></script>

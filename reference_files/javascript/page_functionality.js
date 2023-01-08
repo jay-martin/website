@@ -212,10 +212,10 @@ function reveal_dropdown(){
  * @param {string} - the html id of the reference to be highlighted
  * */
 function highlight_ref(ref){
-	ref_items.forEach(ref_items => {
-	  ref_items.style.backgroundColor = 'white';
-	});
-	document.getElementById(ref).style.backgroundColor = 'yellow';
+  ref_items.forEach(ref_items => {
+    ref_items.classList.remove('highlighted');
+  });
+  document.getElementById(ref).classList.add('highlighted');
 }
 
 /**************************** Programs *******************************************/

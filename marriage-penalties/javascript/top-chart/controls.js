@@ -1,5 +1,5 @@
 // Controls whether the EITC or HOH income modification funcion is triggered
-function modify_income(){
+function modify_income(modifyType){
 	if(benefit_selector.value === 'eitc'){
 		eitc_outputs();
 		eitc_modify_income();
@@ -72,6 +72,7 @@ function switch_chart(){
 			MPchart.data.names({
 				person1: 'Your tax liability',
 				person2: "Your partner's tax liability",
+				person2_dashed: "Your partner's tax liability",
 				married: "Married tax liability",
 			});
 		}, 500);
@@ -107,6 +108,7 @@ function switch_chart(){
 			MPchart.data.names({
 				person1: 'Your EITC',
 				person2: "Your Partner's EITC",
+				person2_dashed: "Your Partner's EITC",
 				married: "EITC if you get married",
 			});
 		}, 500);

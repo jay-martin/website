@@ -47,6 +47,7 @@ var MPchart = c3.generate({
             ['person1',  0, 3995,  3995,  0],
             ['x2',       0, 7840, 9800, 17640],
             ['person2',  0, 600,  600,  0],
+            ['person2_dashed', 0, 600,  600,  0],
 
             ['x_horizontal',  0,    60000],
             ['married_eitc',  2097, 2097],
@@ -89,7 +90,7 @@ var MPchart = c3.generate({
         names: {
             person1: 'Your EITC',
             person2: "Your Partner's EITC",
-            person2_dashed: "Your partner's tax liability",
+            person2_dashed: "Your Partner's EITC",
             married: 'EITC if you get married',
         },
         colors: {

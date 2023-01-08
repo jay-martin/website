@@ -1,11 +1,42 @@
 function modify_person1_eitc(){
     person1_num_children = person1_children.value;
-    single_eitc_builder_2023(MPchart, 'x1', 'person1', person1_num_children);
+    person2_num_children = person2_children.value;
+    if(person1_num_children === person2_num_children){
+        single_eitc_builder_2023(MPchart, 'x1', 'person1', person1_num_children);
+        setTimeout(function(){
+            MPchart.hide('person2');
+            MPchart.show('person2_dashed');
+        }, 400);
+    }
+    else{
+        single_eitc_builder_2023(MPchart, 'x1', 'person1', person1_num_children);
+        MPchart.hide('person2_dashed');
+        MPchart.show('person2');
+    }
 }
 
 function modify_person2_eitc(){
+    person1_num_children = person1_children.value;
     person2_num_children = person2_children.value;
-    single_eitc_builder_2023(MPchart, 'x2', 'person2', person2_num_children);
+    if(person1_num_children === person2_num_children){
+        single_eitc_builder_2023(MPchart, 'x2', 'person2', person2_num_children);
+        single_eitc_builder_2023(MPchart, 'x2', 'person2_dashed', person2_num_children);
+
+        setTimeout(function(){
+            MPchart.legend.hide('person2');
+            MPchart.legend.show('person2_dashed');
+            MPchart.show('person2_dashed');
+            MPchart.hide('person2');
+        }, 400);
+    }
+    else{
+        single_eitc_builder_2023(MPchart, 'x2', 'person2', person2_num_children);
+        single_eitc_builder_2023(MPchart, 'x2', 'person2_dashed', person2_num_children);
+        MPchart.legend.hide('person2_dashed');
+        MPchart.legend.show('person2');
+        MPchart.show('person2');
+        MPchart.hide('person2_dashed');
+    }
 }
 
 function modify_married_eitc(){
@@ -76,6 +107,7 @@ function eitc_modify_income(){
     else{
         MPchart.axis.max({x: 60000});
     }
+    
     /* Adjust chart y-axis max in case combined income exceeds current y-axis max */
     adjust_y_axis();
 }

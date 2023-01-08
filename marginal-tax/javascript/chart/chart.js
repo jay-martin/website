@@ -44,8 +44,8 @@ var chart = c3.generate({
             ['income_tax_and_transfer',],
             ['tangent_line',],
 
-            ['x_point', 50000],
-            ['point', 12],
+            ['x_point', 15000],
+            ['point', 10],
         ],
         types: {
             total: 'area',
@@ -121,7 +121,7 @@ var chart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 50000, text: 'Your income'}],
+            lines: [{value: 15000, text: 'Your income'}],
             min: 0,
         },
         y: {

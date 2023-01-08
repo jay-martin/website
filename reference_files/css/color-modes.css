@@ -37,6 +37,7 @@ button {
   --low-emphasis-color: #bdbdbd;
   --red: red;
   --green: green;
+  --highlighted: yellow;
 
   --small-button-background: #f5f3f2;
   --small-button-hover: #dedede;
@@ -62,6 +63,7 @@ button {
   --low-emphasis-color: #b5a177;
   --red: red;
   --green: green;
+  --highlighted: yellow;
 
   --small-button-background: #f5e4cb;
   --small-button-hover: #e3d2b8;
@@ -87,6 +89,7 @@ button {
   --low-emphasis-color: #dbdbdb;
   --red: #ff4845;
   --green: #00d100;
+  --highlighted: #545400;
 
   --small-button-background: #242424;
   --small-button-hover: #6e6e6e;

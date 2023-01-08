@@ -30,12 +30,12 @@ function output1(){
     taxRate = taxLiability + benefitLoss;
 
     /* Default is for the rounding disclaimer not to be displayed. If any output requires decimal places, the rounding disclaimer will be triggered */
-    document.getElementById('rounding_disclaimer').style.display = 'none';
+    //document.getElementById('rounding_disclaimer').style.display = 'none';
 
     /*format taxRate that there is a decimal if values are not a whole number, but no decimal if it is a whole number */
     if(taxRate.toFixed(2) - Math.floor(taxRate) !== 0){
     	taxRate_formatted = taxRate.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    	document.getElementById('rounding_disclaimer').style.display = 'block';
+    	//document.getElementById('rounding_disclaimer').style.display = 'block';
     }
     else{
     	taxRate_formatted = taxRate.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -45,7 +45,7 @@ function output1(){
     /* Format taxLiability */
     if(taxLiability.toFixed(2) - Math.floor(taxLiability) !== 0){
     	taxLiability_formatted = taxLiability.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    	document.getElementById('rounding_disclaimer').style.display = 'block';
+    	//document.getElementById('rounding_disclaimer').style.display = 'block';
     }
     else{taxLiability_formatted = taxLiability.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 

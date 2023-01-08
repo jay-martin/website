@@ -29,9 +29,6 @@
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/ca0c7f000f.js" crossorigin="anonymous"></script>
-
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -54,6 +51,9 @@
   <!-- JQuery UI -->
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/ca0c7f000f.js" crossorigin="anonymous"></script>
 
   <!-- MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -347,12 +347,12 @@
           <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); output1()">
           <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); output1()">
           <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="ptc_button" value="Medicaid/Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="cost_sharing_button" value="Cost Sharing Reductions">
-          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();" disabled >
+          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();">
+          <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
         </div>
 
         <!--Disability Status-->
+      <!--
         <div class="dropdown" id="disability_container">
           I am a
           <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();load_data();modifyIncome();output1();">
@@ -360,9 +360,10 @@
             <option value="disabled">disabled</option>
           </select>
         </div>
+      -->
 
         <!--Filing status-->
-        <label for="filingstatus"></label>
+        <label for="filingstatus">I am a</label>
         <select name="filingstatus" id="filingstatus" oninput="">
           <option value="married">married joint filer</option>
           <option value="hoh">head of household</option>
@@ -377,10 +378,11 @@
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
             <option value="three">3 children</option>
-          </select> under the age of 18 and I
+          </select> under the age of 18.
         </div>
 
         <!--Employer-sponsored healthcare-->
+      <!--
         <div class="dropdown" id="disability_container">
           <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();load_data();modifyIncome();output1();">
             <option value="no_employer">do not have</option>
@@ -388,12 +390,13 @@
           </select>
         </div>
         employer-sponsored health insurance.
+      -->
 
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
-          <div class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">50,000</output> this year:</div>
+          <div class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">15,000</output> this year:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="100000" value="50000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
           </div>
         </div>
 
@@ -421,7 +424,7 @@
                 <li class="benefits_breakdown_item" id="ssi_marginal"></li>
               </ul>
           </ul>
-          <p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>
+          <!--<p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>-->
 
           <p class="explanation_text" id="explanation_line1"></p>
           <p class="explanation_text" id="explanation_line2"></p>
@@ -635,7 +638,12 @@
   <div class='appendix_container'>
 
     <!-------------------------- Appendix SNAP -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button appendix_button_top" onclick="open_and_close_page_portion('appendix1');rotate_icon_180('#snap_appendix_icon');">Appendix: Supplemental Nutrition Assistance Program (SNAP)<i class="fa-solid fa-chevron-up appendix_chevron" id='snap_appendix_icon'></i></button>
+    <button class="appendix_button appendix_button_top" onclick="open_and_close_page_portion('appendix1');rotate_icon_180('#snap_appendix_icon');">
+      <table class="appendix_header">
+          <th class="appendix_th appendix_text">Appendix: Supplemental Nutrition Assistance Program (SNAP)</th> 
+          <th class="appendix_th"><i class="fa-solid fa-chevron-up appendix_chevron" id='snap_appendix_icon'></i></th>
+      </table>
+    </button>
     <div class="appendix" id="appendix1">
       <h3>Considerations</h3>
       <p>
@@ -644,7 +652,7 @@
 
       <h3>Calculating SNAP Effective Marginal Tax Rates</h3>
       <p>
-        SNAP is based around the idea that recipients should dedicate 30% of their income towards food purchases, with SNAP making up any shortfall between the 30% contribution and the amount of money needed to purchase a "nutritionally adequate low-cost diet".<a class="refs" id="note1" href="#notes"><sup>1</sup></a> Consequently, the SNAP benefit formula takes a maximum benefit, defined as the amount of money needed to purchase a nutritionally adequete low-cost diet for a particular household size, and then subtracts from that 30% of net income: $$\text{Benefit} = \text{Maximum Benefit} - \text{30% of Net Income} $$
+        SNAP is based around the idea that recipients should dedicate 30% of their income towards food purchases, with SNAP making up any shortfall between the 30% contribution and the amount of money needed to purchase a "nutritionally adequate low-cost diet".<a class="refs" id="note1" href="#notes"><sup>1</sup></a> Consequently, the SNAP benefit formula takes a maximum benefit, defined as the amount of money needed to purchase such a diet (which varies by household size), and then subtracts from that 30% of net income: $$\text{Benefit} = \text{Maximum Benefit} - \text{30% of Net Income} $$
       </p>
 
       <p>
@@ -689,7 +697,7 @@
       </p>
 
       <p>
-        Net income is calculated by subtracting from gross income a number of deductions. I include the two universally-available deductions: the SNAP standard deduction (this is separate from the standard deduction used for personal income tax) and the earned income deduction, which allows recipients to deduct 20% of their gross income. Some recipients can use additional deductions, like the deduction for court-order child support, but we will not consider them here. This results in the following formula for net income: $$ \text{Net Income} = \text{Gross Income} - .2 (\text{Gross Income}) - \text{Standard Deduction} = .8 (\text{Gross Income}) - \text{Standard Deduction}$$
+        Net income is calculated by subtracting from gross income a number of deductions. I include the two universally-available deductions: the SNAP standard deduction (this is separate from the standard deduction used for personal income tax) and the earned income deduction, which allows recipients to deduct 20% of their gross income. Some recipients can use additional deductions, like the deduction for court-order child support, but we will not consider them here. This results in the following formula for net income: $$ \text{Net Income} = \text{Gross Income} - .2 (\text{Gross Income}) - \text{Standard Deduction}$$ $$= .8 (\text{Gross Income}) - \text{Standard Deduction}$$
       </p>
 
       <p>
@@ -791,23 +799,32 @@
     </div> <!--Appendix: SNAP-->
 
     <!-------------------------- Appendix SSI -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button" onclick="open_and_close_page_portion('appendix2');rotate_icon_180('#ssi_appendix_icon')">Appendix: Supplemental Security Income (SSI)<i class="fa-solid fa-chevron-up appendix_chevron" id='ssi_appendix_icon'></i></button>
+    <button class="appendix_button" onclick="open_and_close_page_portion('appendix2');rotate_icon_180('#ssi_appendix_icon')">
+      <table class="appendix_header">
+        <th class="appendix_th appendix_text">Appendix: Supplemental Security Income (SSI)</th> 
+        <th class="appendix_th"><i class="fa-solid fa-chevron-up appendix_chevron" id='ssi_appendix_icon'></i></th>
+      </table>
+    </button>
     <div class="appendix" id="appendix2">
       <h3>Calculating SSI Effective Marginal Tax Rates In Isolation</h3>
       <p>
-        SSI imposes a very high marginal tax rate. Nominally, it is 100%: every dollar of earned or unearned income (unearned includes in-kind benefits like food and shelter provided by other people) results in a $1 reduction in SSI benefits. However, SSI excludes the first $20 made of any income (earned or unearned) in a month, the first $65 of earned income made in a month, one-half of earned income above the first $65 of earned income plus any remainder from the $20 exclusion, and several quarterly exclusions for infrequent or irregular unearned income.(supCRS SSI Long: 17) (Note that these figures are not adjusted for inflation each year—they have been the same since 1972).(supCRS SSI Long: 18) So the gist here is that <em>countable income</em>—income after exclusions—has a 100% marginal tax rate. However, <em>gross income</em>—income before exclusions—does not, because some of it is exempted.
+        SSI imposes very high marginal tax rates. Nominally, it is 100%: every dollar of earned or unearned income (unearned includes in-kind benefits like food and shelter provided by other people) results in a $1 reduction in SSI benefits. However, SSI excludes the first $20 of any income (earned or unearned) made in a month, the first $65 of earned income made in a month, one-half of earned income above the first $65 (and any remainder from the $20 exclusion), and several quarterly exclusions for infrequent or irregular unearned income.(supCRS SSI Long: 17) Note that these figures are not adjusted for inflation each year—they have been the same since 1972.(supCRS SSI Long: 18) 
       </p>
 
       <p>
-        This chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, we will not include the $20 exclusion, since this can be applied to non-labor income. So, for the purposes of our calculations, we exclude the first $65 of monthly income plus one-half of additional monthly income. 
+        Income after these exclusions is referred to as <em>countable income</em>, and SSI imposes a 100% effective marginal tax rate on countable income. EMTR's on <em>gross income</em>, however, are less than 100%, because some of it is exempted.
       </p>
 
       <p>
-        Our chart looks at income on an annual basis, while SSI is based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. In practice, though, these differences are small enough that they hardly register on the chart.
+        Before we get into the marginal tax rate calculations, let's review the assumptions I make. First, this chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, we will not include the $20 exclusion, since this can be applied to non-labor income. So for our calculations, we will exclude the first $65 of monthly income plus one-half of additional monthly income. 
       </p>
 
       <p>
-        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets include "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). These asset limits can disqualify people that our chart would show receive an SSI benefit, since we are only considering income. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. If you would like more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
+        Second, the chart looks at income on an annual basis, while SSI is based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. In practice, though, these differences are small enough that they hardly register on the chart.
+      </p>
+
+      <p>
+        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets include "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). Because the chart does not take into consideration these asset limits, the chart can indicate that somebody would receive an SSI benefit even though they would be disqualified by the asset test. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. For more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
       </p>
 
       <p>
@@ -837,19 +854,19 @@
       </p>
 
       <p>
-        The SSI benefit is calculated by subtracting countable income from the maximum benefit. Since we're assuming that annual income is uniform over the year, we can say that the annual exclusion on labor income is \($65 \times 12 = $780 \). And since 50% of earned income after the first-of-the-month is exempted, i.e. countable income rises by only $0.50 for every dollar of labor income, the benefit \(B\) at gross income \(I\), with \(B_{max}\) denoting the max benefit, is: $$B(I) = B_{max} \text{ if } I \leq \$780 $$ $$B(I) = B_{max} - .5 (I - 780) \text{ if } I> \$780$$
+        The SSI benefit is calculated by subtracting countable income from the maximum benefit. Since it is assumed that annual income is uniform over the year, the annual exclusion on earned income is \($65 \times 12 = $780 \). And since 50% of earned income after the first-of-the-month is exempted, i.e. countable income rises by only $0.50 for every dollar of labor income, the benefit \(B\) at gross income \(I\), with \(B_{max}\) denoting the max benefit, is: $$B(I) = B_{max} \text{ if } I \leq \$780 $$ $$B(I) = B_{max} - .5 (I - 780) \text{ if } I> \$780$$
       </p>
 
       <p>
-         For our effective marginal tax rates, since the first $780 of income is excluded, there is no decrease in SSI benefits for the first $780 in labor income. That means there is a 0% effective marginal tax rate on the first $779 (at $780, an additional dollar of income results in $781 of income, so there is a non-zero EMTR): $$EMTR_{I < \text{\$780} } = 0\% $$
+         Since first $780 of income is excluded, there is no decrease in SSI benefits for the first $780 in income. This means there is a 0% effective marginal tax rate on the first $779 (at $780, an additional dollar of income results in $781 of income, so there is a non-zero EMTR): $$EMTR_{I < \text{\$780} } = 0\% $$
       </p>
 
       <p>
-        Half of labor income above the first $750 is exempted. Clearly, this is a 50% effective marginal tax rate, though I'll still run through the calculation. The EMTR is the loss in benefits as a result of a $1 increase in income. The EMTR is thus: $$EMTR_{I \geq \text{\$780}}(I) = B(I+1)-B(I) = B_{max} - .5((I+1) - 780) - (B_{max} - .5(I-780)) = 50\% $$
+        Half of labor income above the first $750 is exempted. Clearly, this is a 50% effective marginal tax rate, though I'll still run through the calculation. The EMTR is the loss in benefits as a result of a $1 increase in income, i.e. \( B(I+1) - B(I) \). The EMTR is thus: $$EMTR_{I \geq \text{\$780}}(I) = B_{max} - .5((I+1) - 780) - (B_{max} - .5(I-780)) = 50\% $$
       </p>
 
       <p>
-        Finally, we have to take into consideration when the benefit equals $0. Once the benefit hits $0, the EMTR drops to 0%, since there is no more benefit to lose as a result of additional income. The calculation is straightforward, we just set \(B(I)\) for income greater than $780 equal to zero and solve: \(I= 2(B_{max} + 390) \). The benefits reach zero at the following values:
+        Finally, we have to take into consideration when the benefit equals $0. Once the benefit hits $0, the EMTR drops to 0%, since there is no more benefit to lose as a result of additional income. The calculation is straightforward, we just set \(B(I)\) for income greater than $780 equal to zero and solve: \(I= 2(B_{max} + 390) \). The benefits thus reaches zero at the following values:
       </p>
 
       <table style="width:90%">
@@ -868,7 +885,7 @@
       </table>
 
       <p>
-        Now we have a full accounting of our benefits and our effective marginal tax rates. These are shown in the tables below:
+        Now we have a full accounting of benefits and effective marginal tax rates. These are shown in the tables below:
       </p>
 
       <table style="width:45%">
@@ -920,7 +937,7 @@
       </table>
 
       <p>
-         Note that these figures would be <em>lower</em> for people with "unearned" income, so these figures in-effect represent the <em>maximum</em> benefits people can receive at a given gross income. We will not take into consideration "unearned" income provided by private individuals. However, in the next section we will account for "unearned" income received from other federal programs.
+         Note that the benefit at a particular level income is in general <em>lower</em> when unearned income is included. A disabled individual who makes $15,000 exclusively from earned income, for instance, would receives a benefit of \( $10,092-.5($15,000 - $780) = $2,982 \), while a disabled individual who makes $15,000 exclusively from unearned income would receive a benefit of \( $10,092 - ($15,000 - $240) = $0\). Thus, these figures in-effect represent the <em>maximum</em> benefit disabled people can receive at a given income.
       </p>
 
       <h3>SSI Effective Marginal Tax Rates Considering Other Programs</h3>
@@ -963,7 +980,12 @@
     </div><!--Appendix: SSI-->
 
     <!-------------------------- Appendix Medicaid/PTC -------------------------------------------------------------------------------------------------->
-    <button class="appendix_button appendix_button_bottom" id='appendix-ptc-button' onclick="open_and_close_page_portion('appendix3');rotate_icon_180('#ptc_appendix_icon');adjust_bottom_apendix_border()">Appendix: Medicaid & Premium Tax Credits <i class="fa-solid fa-chevron-up appendix_chevron" id='ptc_appendix_icon'></i></button>
+    <button class="appendix_button appendix_button_bottom" id='appendix-ptc-button' onclick="open_and_close_page_portion('appendix3');rotate_icon_180('#ptc_appendix_icon');adjust_bottom_apendix_border()">
+      <table class="appendix_header">
+        <th class="appendix_th appendix_text">Appendix: Medicaid & Premium Tax Credits</th> 
+        <th class="appendix_th"><i class="fa-solid fa-chevron-up appendix_chevron" id='ptc_appendix_icon'></i></th>
+      </table>
+    </button>
     <div class="appendix appendix_bottom" id="appendix3">
       <h3>Including Medicaid & the Premium Tax Credits Together</h3>
       Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount </br>
@@ -1040,7 +1062,7 @@
       </p>
 
       <p>
-        We can simply things for our income tier above 400% of the poverty line. If you plug into the above equation, you can see that the EMTR above 400% is a constant 8.5%. You can also get an intuiton for this by stripping things back and considering how the required contribution grows for an additional dollar within this income tier. Since the premium contribution percentage above 400% of the poverty line is 8.5%, for an additional dollar of income the required contribution grows by: $$EMTR_{\text{400+%}}(I) = \Delta \text{premium contribution} = .085(I + 1) - .085I = 8.5 \% $$
+        We can simply things for the income tier above 400% of the poverty line. If you plug into the above equation, you can see that the EMTR above 400% is a constant 8.5%. You can also get an intuiton for this by stripping things back and considering how the required contribution grows for an additional dollar within this income tier. Since the premium contribution percentage above 400% of the poverty line is 8.5%, for an additional dollar of income the required contribution grows by: $$EMTR_{\text{400+%}}(I) = \Delta \text{premium contribution} = .085(I + 1) - .085I = 8.5 \% $$
       </p>
 
       <p>
@@ -1052,7 +1074,7 @@
       </p>
 
       <p>
-        It also means that we only have one other equation: for our 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
+        It also means that we only have one other equation: for the 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
 
       <p>
         Now we have just have to take into account the cost of the premium. While the required contribition technically grows indefinitely, the actual amount someone has to pay for their premium does not. Basically, once someone's required contribution equals their premium, they are paying the full cost of the premium, so additional income doesn't impose any additional costs on them.
@@ -1159,7 +1181,7 @@
       </table>
 
       <p>
-        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. Our income tier values (the \(h\)'s in our equations) come from our poverty level table, and our required contribution=premium values come from the table above.
+        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. The income tier values (the \(h\)'s) come from the poverty level table, and the required contribution=premium values come from the table above.
       </p>
 
       <table style="width:90%">
@@ -1328,6 +1350,8 @@
       <li class="ref_item" id="Morton">Morton, William R. (November 22, 2022). "<a href=https://crsreports.congress.gov/product/pdf/IF/IF10482 target="_blank">Supplemental Security Income (SSI)</a>" <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>.</li>
 
       <li class="ref_item" id="VCU">"<a href=https://vcu-ntdc.org/resources/resourceDetail.cfm?id=1 target="_blank">Understanding the Supplemental Security Income (SSI) Program</a>" (2022). <em>Virginia Commonwealth University</em>.</li>
+
+      <li class="ref_item" id="Watson">Watson, Garret (March 5, 2021). "<a href=https://taxfoundation.org/senate-american-rescue-plan-direct-payments/ target="_blank">Senate Direct Payment Design Would Create High Implicit Marginal Tax Rates</a>". <em>Tax Foundation</em>. <a href=https://web.archive.org/web/20221107214726/https://taxfoundation.org/senate-american-rescue-plan-direct-payments/ target="_blank">Archived</a> from the original on November 7, 2022.</li>
     </ul>
   </div>
 
