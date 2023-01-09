@@ -674,10 +674,60 @@ ul.references_list, ol.notes_list {
   padding-left: 3%;
 }
 a.refs {
+  font-family: "Computer Modern Sans";
   text-decoration: none;
+  font-size: 14px;
+  vertical-align: top;
 }
 .highlighted {
   background-color: var(--highlighted);
+}
+/******* Tooltip *****************************************************************************/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  border: solid;
+  border-width: 1px;
+  border-color: var(--base-border);
+  background-color: var(--base-background);
+  border-radius: 4px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  margin-left: -17.5px;
+  opacity: 0;
+  transition: opacity .3s;
+  width: max-content;
+  max-width: 250px;
+
+  color: var(--base-text);
+  font-size: 13px;
+  line-height: 1.5em;
+  text-align: left;
+}
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 7px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--base-border) transparent transparent transparent;
+}
+.tooltip_link {
+  cursor: pointer;
+  text-decoration: none;
+}
+.tooltip_link:hover {
+  text-decoration: underline;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 /*******Page Bottom*******************************************************************************/
 #bottom_logo, #bottom_name {
