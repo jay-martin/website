@@ -3,6 +3,8 @@
 .facebook-blue {fill: #1778F2;}
 .reddit-orange {fill: #FF5700;}
 .substack-orange {fill: #ff6700;}
+.linkedin-blue {fill: #1686B0;}
+.white-fill {fill: white;}
 
 /*********************** Transition Settings ******************************************************************************************************/
 body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
@@ -230,6 +232,9 @@ button.chart_notes_button:hover {
   fill: var(--page-bottom-color);
 }
 /* social media circle icons */
+.social-icon-circe-base-color {
+  fill: var(--base-background);;
+}
 path.st1, circle.cc-circle {
   fill: var(--base-background);
 }

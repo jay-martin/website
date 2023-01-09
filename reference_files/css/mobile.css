@@ -305,6 +305,7 @@ button.close_icon {
 a.mobile_dropdown_link {
   display: inline-block;
   margin-bottom: 0px;
+  padding-right: 5px;
 }
 .mobile_dropdown_icon {
   height: 27.5px;

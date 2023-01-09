@@ -102,17 +102,25 @@ redditOrange = '#FF5700'
  * @param {string} - the html id of the svg element to be changed
  * */
 function change_social_fill_forward(platform, id){
+  path = id + '_path';
   if(platform == 'twitter'){
     $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('twitter-blue');
+    $(path).removeClass('st1').addClass('white-fill');
   }
   else if(platform == 'substack'){
     $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('substack-orange');
   }
   else if(platform == 'facebook'){
     $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('facebook-blue');
+    $(path).removeClass('st1').addClass('white-fill');
+  }
+  else if(platform == 'linkedin'){
+    $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('linkedin-blue');
+    $(path).removeClass('st1').addClass('white-fill');
   }
   else if(platform == 'reddit'){
     $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('reddit-orange');
+    $(path).removeClass('st1').addClass('white-fill');
   }
 }
 
@@ -120,7 +128,9 @@ function change_social_fill_forward(platform, id){
  * @param {string} - the html id of the svg element to be changed
  * */
 function change_social_fill_backward(id){
-  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-base-color');
+  path = id + '_path';
+  $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('linkedin-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-base-color');
+  $(path).removeClass('white-fill').addClass('st1');
 }
 
 /** Changes the social media icons at the bottom of the page back to their original color (#858585 for light & sepia modes, #dbdbdb for dark mode)
@@ -216,6 +226,13 @@ function highlight_ref(ref){
     ref_items.classList.remove('highlighted');
   });
   document.getElementById(ref).classList.add('highlighted');
+}
+
+function highlight_note(note){
+  note_items.forEach(note_items => {
+    note_item.sclassList.remove('highlighted');
+  });
+  document.getElementById(note).classList.add('highlighted');
 }
 
 /**************************** Programs *******************************************/
