@@ -18,7 +18,7 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
   transition: background-color 1s ease, border 1s ease !important; 
 }
 /***** Some elements need fast transition by default *****/
-.social_icon {
+.social_icon, .st1 {
   transition: fill .15s ease;
 }
 /* input[type=submit].animation_button, input[type=submit].end_animation */

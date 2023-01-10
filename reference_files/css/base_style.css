@@ -236,17 +236,90 @@ a.my_socials {
 .top_social_icons {
   height: 12.5px;
 }
+.top_social_icons:hover {
+  transform: scale(1.1);
+}
 .page_description {
   font-family: "Computer Modern Classical Serif Italic";
   font-size: 17px;
   line-height: 1.5em;
 }
 /***********************Blog promotion ********************************************************************/
-img.blog_promotion {
-  position: absolute;
-  width: 16%;
-  right: 35px;
-  margin-top: 119vh;
+.blog_container {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  border: none;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: .75fr .1fr 1fr .1fr 1fr .1fr 1fr .1fr 1fr;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  transition: all .25s ease;
+  animation: gradient 10s ease infinite;
+}
+.blog_container:hover {
+  transform: scale(1.01);
+}
+a.blog_promotion_link_container {
+  color: white !important;
+  text-decoration: none;
+}
+.blog_grid_item {
+  font-family: "Computer Modern Classical Serif Italic";
+  font-size: 21px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.5em;
+  margin: 10px;
+
+  display: flex;
+}
+.blog_grid_item_left {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.blog_grid_item_right {
+  margin-right: 20px;
+}
+.blog_text{
+  margin: auto;
+}
+.blog_svg {
+  margin: auto;
+  object-fit: cover;
+  width: 100%;
+  stroke: white;
+}
+.blog_svg:hover  {
+  stroke: white;
+}
+.blog_logo_J {
+  fill: white;
+  fill-opacity: 0;
+  /* transition: fill-opacity .1s ease; */
+}
+.blog_container:hover .blog_svg {
+  animation: spin .5s ease;
+}
+.vertical_line {
+  border-right: solid;
+  border-width: 2.5px;
+  border-radius: 2px;
+  border-color: white;
+  height: 85%;
+  margin: auto;
+}
+
+@keyframes gradient { 
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+@keyframes spin {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
 }
 /*****************Left side bar*************************************/
 .left_side_bar {
@@ -280,11 +353,11 @@ a.sidebar_links:hover {
 .left_side_bar_social_icons_container {
   margin-top: 2.5px;
 }
-#twitter_sidebar_blue_icon, #facebook_sidebar_blue_icon, #reddit_sidebar_orange_icon {
-  display: none;
-}
 .left_side_bar_social_logos {
   height: 17px;
+}
+.left_side_bar_social_logos:hover {
+  transform: scale(1.1);
 }
 .left_sidebar_social_icons_link {
   display: inline-block;
