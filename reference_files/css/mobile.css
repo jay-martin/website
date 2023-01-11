@@ -14,6 +14,17 @@ button.open_icon:hover, button.close_icon{
 .open_close_button span {
   background: var(--base-text);
 }
+/*********************** Hide Desktop Elements ************************************************************/
+img.blog_promotion, .left_side_bar, .page_color_toggle_container, .logo, .blog_container, .vertical_blog_container {
+  display: none;
+}
+/*********************** Show Mobile Elements **************************************************************/
+#blog_promote_mobile_link {
+  display: block;
+}
+.blog_promote_mobile {
+  width: 100%;
+}
 /********* Dropdown *********/
 .mobile_dropdown {
   background-color: var(--base-background);
@@ -35,17 +46,6 @@ button.open_icon:hover, button.close_icon{
 
 /*********************** Body *****************************************************************************/
 body {
-  width: 100%;
-}
-/*********************** Hide Desktop Elements ************************************************************/
-img.blog_promotion, .left_side_bar, .page_color_toggle_container, .logo {
-  display: none;
-}
-/*********************** Show Mobile Elements **************************************************************/
-#blog_promote_mobile_link {
-  display: block;
-}
-.blog_promote_mobile {
   width: 100%;
 }
 /*********************** Text *******************************************************************************/
@@ -429,6 +429,10 @@ img.bottom_social_logos {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 800px) and (max-width: 900px) {
   
+/********************** Show some desktop elements ************************************************************/
+.blog_container {
+  display: grid;
+}
 /*********************** Page Positioning *********************************************************************/
 .center {
   display: block;
@@ -448,6 +452,9 @@ button.open_icon, button.close_icon {
   margin-right: 2%;
 }
 /*********************** Dropdown **************************************************************************/
+a.navbar_logo {
+  font-size: 24px;
+}
 .two_columns {
   width: 90%;
   margin-top: 25px;
@@ -491,6 +498,15 @@ img.mobile_dropdown_blog_promote_image {
 }
 #page_title, .name, .page_description {
   margin-left: 0;
+}
+#page_title {
+  font-size: 45px;
+}
+.name, .page_description {
+  font-size: 22.5px;
+}
+.top_social_icons {
+  height: 15.5px;
 }
 .page_description {
   width: 65%;
