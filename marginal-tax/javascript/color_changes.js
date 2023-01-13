@@ -3,6 +3,13 @@
  * switches between light, sepia, and dark modes
  * ****************************************************************************************/
 
+/****** Page Load Colors ******/
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    white_or_black = '#dbdbdb';
+}
+else{
+    white_or_black = 'black';
+}
 
 /** Controls page-specific changes that must be made when toggling between light, sepia, and dark modes
  * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')

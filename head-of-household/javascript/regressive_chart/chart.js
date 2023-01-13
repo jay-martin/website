@@ -52,9 +52,9 @@ var regressiveChart = c3.generate({
         },
         colors: {
             HOH_Savings : 'white',
-            outline     : color_mode_color,
+            outline     : white_or_black,
             after_ctc   : '#6ab6fc',
-            point       : color_mode_color,
+            point       : white_or_black,
 
             max_benefit : 'red',
             point_top   : 'red',

@@ -5,6 +5,9 @@
 
 var marginalTaxChart = c3.generate({
     bindto: '#marginal_tax_chart',
+    size: {
+        height: 280,
+    },
     data: {
         xs: {
             total : 'x',

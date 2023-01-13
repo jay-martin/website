@@ -1,14 +1,3 @@
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    white_or_black = '#dbdbdb';
-    purple_shade = '#cb3ede';
-    green_shade = '#03c900';
-}
-else{
-    white_or_black = 'black';
-    purple_shade = '#770087';
-    green_shade = '#0c6300';
-}
-
 var MPchart = c3.generate({
     bindto: '#MPchart',
     data: {

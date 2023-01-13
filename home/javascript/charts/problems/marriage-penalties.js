@@ -4,6 +4,9 @@
  * ****************************************************************************************/
 var MPchart = c3.generate({
     bindto: '#marriage_penalties_chart',
+    size: {
+        height: 280,
+    },
     data: {
         xs: {
             'person1' : 'x1',
@@ -155,8 +158,9 @@ function marriage_penalties_animation() {
         timeout = setTimeout(mp7, 0);
     }
     else if(mpStage == 7){
-        timeout = setTimeout(mp8, 0);
+        timeout = setTimeout(mp1, 0);
     }
+    /*
     else if(mpStage == 8){
         timeout = setTimeout(mp9, 0);
     }
@@ -172,6 +176,7 @@ function marriage_penalties_animation() {
     else if(mpStage == 12){
         timeout = setTimeout(mp13, 0);
     }
+    */
 }
 
 // Cancel the pending setTimeout calls (triggered when user scrolls off of html element)
@@ -274,9 +279,48 @@ function mp5(){
     });
 
     mpStage++;
-    timeout = setTimeout(mp6, 2000);
+    timeout = setTimeout(mp6, 1000);
 }
 
+function mp6(){
+    /* Move xgrids */
+    MPchart.xgrids([{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]);
+    MPchart.ygrids([{value: 0}, {value: 1548, text: "Your married EITC"}, {value: 2652, text: "Combined individual EITC's"},]);
+    /* Load new columns */
+    MPchart.load({
+        columns: [
+            ['x3',       0, 10979, 26262, 49622],
+            ['married',  0, 3733,  3733,  0],
+
+            ['x1',       0, 10979, 20131, 43493],
+            ['person1',  0, 3733,  3733,  0],
+            
+            ['x2',       0, 7320, 9160, 16480],
+            ['person2',  0, 560,  560,  0],
+
+            ['x_point_married', 40000],
+            ['point_married',   1548],
+            ['x_point1', 30000],
+            ['point1',   2156],
+            ['x_point2', 10000],
+            ['point2',   496],
+
+            ['married_eitc',  1548, 1548],
+            ['penalty',       1104, 1104],
+        ]
+    });
+
+    mpStage++;
+    timeout = setTimeout(mp7, 1000);
+}
+
+function mp7(){
+    MPchart.axis.max({y: 4000});
+    mpStage = 0;
+    timeout = setTimeout(mp1, 1000);
+}
+
+/* 
 function mp6(){
     MPchart.unload({ ids: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married'] });
     MPchart.ygrids([]);
@@ -401,3 +445,4 @@ function mp13(){
     mpStage = 0;
     timeout = setTimeout(mp1, 1000);
 }
+*/

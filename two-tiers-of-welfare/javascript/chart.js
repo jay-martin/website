@@ -1,12 +1,6 @@
 /******************************************************************************************
  * This file contains the function creating the c3.js chart
  * ****************************************************************************************/
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    white_or_black = '#dbdbdb';
-}
-else{
-    white_or_black = 'black';
-}
 
 var chart = c3.generate({
     bindto: '#chart',
