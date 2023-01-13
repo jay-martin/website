@@ -5,7 +5,7 @@
  * (3) Opens and closes the top dropdown menus
  * ****************************************************************************************/
 
-/******************************** Page color toggle ******************************/
+/******************************** 1. Page color toggle ******************************/
 /** Controls toggling between light, sepia, and dark modes
  * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')
  * */
@@ -49,7 +49,7 @@ function toggle_page_color(mode){
   }, 1000);
 }
 
-/********************************Twitter & Substack Icons**********************************/
+/******************************** 2. Twitter & Substack Icons **********************************/
 /** Changes a social media icon its brand color
  * @param {string} - the platform ('twitter', 'substack', 'facebook', or 'reddit') the social media icon represents
  * @param {string} - the html id of the svg element to be changed
@@ -88,7 +88,7 @@ function text_color(id, color){
 	document.getElementById(id).style.color = color;
 }
 
-/********************************Top Menu*************************************************/
+/********************************3. Top Menu *************************************************/
 var currentExpanded = '';
 var closeTimeout = null;
 
@@ -108,17 +108,21 @@ function dropdown_functionality(menuID){
 			temp = currentExpanded; //currentExpanded gets mixed up when reveal_dropdown is called
 			clearTimeout(closeTimeout); // End timeout for display none if the user clicks to reveal dropdown while the dropdown is closing
 			closeTimeout = null;
-			if(menuID === '#table_container_overview' || menuID === '#table_container_bills'){
+			if(menuID === '#table_container_overview'){
 				$('.table_container').css('transition', 'height .5s');
 				$('.table_container').css('height', '50px');
 			}
-			else{
+			else if(menuID === '#table_container_problems' || menuID === '#table_container_bills'){
+				$('.table_container').css('transition', 'height .5s');
+				$('.table_container').css('height', '83.75px');
+			}
+			else if(menuID === '#table_container_programs'){
 				$('.table_container').css('transition', 'height 1s');
 				$('.table_container').css('height', '117.5px');
 			}
 
 			//switch to new dropdown text after height has been adjusted
-			$('.table_container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
+			$('.table_container').on("transitionend", function(e){
 			    $(temp).css('display', 'none');
 				$(menuID).css('display', 'block');
 			    $('.table_container').css('transition', 'height 1s');
@@ -135,7 +139,7 @@ function dropdown_functionality(menuID){
 
 // Switches between dropdown menus when one is open and the user clicks a different menu
 function switch_dropdown(newID, oldID){
-	if( (oldID === '#table_container_overview' || oldID === '#table_container_bills') && (newID === '#table_container_problems' || newID === '#table_container_programs') ){
+	if( (oldID === '#table_container_overview' || oldID === '#table_container_problems' || oldID === '#table_container_bills') && newID === '#table_container_programs' ){
 		$('.table_container').css('height', '117.5px');
 		closeTimeout = setTimeout(function () {
 			$(oldID).css('display', 'none');
@@ -143,7 +147,15 @@ function switch_dropdown(newID, oldID){
 			closeTimeout = null;
 		}, 1000);
 	}
-	else if( (oldID === '#table_container_problems' || oldID === '#table_container_programs') && (newID === '#table_container_overview' || newID === '#table_container_bills') ){
+	else if( (oldID === '#table_container_overview' || oldID === '#table_container_programs') && (newID === '#table_container_problems' || newID === '#table_container_bills') ){
+		$('.table_container').css('height', '83.75px');
+		closeTimeout = setTimeout(function () {
+			$(oldID).css('display', 'none');
+			$(newID).css('display', 'block');
+			closeTimeout = null;
+		}, 1000);
+	}
+	else if( (oldID === '#table_container_problems' || oldID === '#table_container_programs' || oldID === '#table_container_bills') && newID === '#table_container_overview' ){
 		$('.table_container').css('height', '50px');
 		closeTimeout = setTimeout(function () {
 			$(oldID).css('display', 'none');
@@ -168,18 +180,28 @@ function reveal_dropdown(revealID){
 	// For some reason, the animation only moves smoothly if contained in a setTimeout
 	setTimeout(function () {
 		if(deviceWidth >= 700){
-			if(revealID === '#table_container_overview' || revealID === '#table_container_bills'){
+			if(revealID === '#table_container_overview'){
 				$('.table_container').css('height', '50px');
+			}
+			else if(revealID == '#table_container_bills' || revealID == '#table_container_problems'){
+				$('.table_container').css('height', '83.75px');
 			}
 			else{
 				$('.table_container').css('height', '117.5px');
 			}
 		}
 		else{
-			if(revealID === '#mobile_table_container_overview' || revealID === '#mobile_table_container_bills'){
-				$('.table_container').css('height', '85px');
+			if(revealID === '#mobile_table_container_overview'){
+				$('.table_container').css('height', '100px');
+				//85px if no indent
 			}
-			else{
+			else if(revealID === '#mobile_table_container_problems'){
+				$('.table_container').css('height', '117.5px');
+			}
+			else if(revealID === '#mobile_table_container_bills'){
+				$('.table_container').css('height', '135px');
+			}
+			else if(revealID === '#mobile_table_container_programs'){
 				$('.table_container').css('height', '150px');
 			}
 		}
@@ -198,3 +220,4 @@ function close_dropdown(menuID){
 		currentExpanded = '';
 	}, 1000);
 }
+

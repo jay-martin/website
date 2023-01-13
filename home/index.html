@@ -81,18 +81,18 @@
   <table class="top_bar" id="desktop_top_bar">
     <tr>
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_overview')">Overview</th>
-      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_problems')">Problems</th>
       <th class="top_bar_item" onclick="dropdown_functionality('#table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
     </tr>
   </table>
 
   <table class="top_bar" id="mobile_top_bar">
     <tr>
       <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_overview')">Overview</th>
-      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_bills')">Bills</th>
       <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_problems')">Problems</th>
       <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_bills')">Bills</th>
     </tr>
   </table>
 
@@ -103,45 +103,29 @@
       <div class="table_container" id="table_container_overview">
         <table class="dropdown_menu" id="overview_dropdown" >
           <tr>
-            <th class="dropdown_menu_column_top"><a href="">Why We Need the Welfare State</a></th>
-            <th class="dropdown_menu_column_top"><a href="">All the Problems Fit to Print</a></th>
-            <th class="dropdown_menu_column_top"><a href="">Fixing Family Benefits</a></th>
+            <th class="dropdown_menu_column_top"><a href="../why-we-need-family-benefits/index.html">Why We Need Family Benefits</a></th>
+            <th class="dropdown_menu_column_top"><a href="../problems-overview/index.html">The Major Problems</a></th>
+            <th class="dropdown_menu_column_top"><a href="../fixing-family-benefits/index.html">Fixing Family Benefits</a></th>
           </tr>
         </table>
       </div>
-
-      <!-- Bills -->
-      <div class="table_container" id="table_container_bills">
-        <table class="dropdown_menu" id="bills_dropdown" >
-          <tr>
-            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
-            <th class="dropdown_menu_column_top"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
-            <th class="dropdown_menu_column_top"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
-          </tr>
-        </table>
-     </div>
 
       <!-- Problems -->
       <div class="table_container" id="table_container_problems">
         <table class="dropdown_menu" id="problems_dropdown" >
           <tr>
-            <th class="dropdown_menu_column_top"><a href="">Two Tiers of Welfare</a></th>
-            <th class="dropdown_menu_column_top"><a href="../poor-exclusion/index.html">The Exclusion of Poor Families</a></th>
+            <th class="dropdown_menu_column_top"><a href="../two-tiers-of-welfare/index.html">Two Tiers of Welfare</a></th>
             <th class="dropdown_menu_column_top"><a href="../marriage-penalties/index.html">Marriage Penalties</a></th>
-          </tr>
-          <tr>
             <th class="dropdown_menu_column_middle"><a href="../marginal-tax/index.html">Marginal Tax Rates</a></th>
-            <th class="dropdown_menu_column_middle"><a href="../asset-test/index.html">Asinine Asset Tests</a></th>
-            <th class="dropdown_menu_column_middle"><a href="../administrative-burdens/index.html">Administrative Burdens</a></th>
           </tr>
           <tr>
-            <th class="dropdown_menu_column_bottom"><a href="../territories/index.html">Leaving Behind the Territories</a></th>
-            <th class="dropdown_menu_column_bottom"><a href="">Promoting Racial Justice, Imperfectly</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../asset-tests/index.html">Asinine Asset Tests</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../administrative-burdens/index.html">Administrative Burdens</a></th>
           </tr>
         </table>
       </div>
 
-     <!-- Programs -->
+      <!-- Programs -->
       <div class="table_container" id="table_container_programs">
         <table class="dropdown_menu" id="problems_dropdown" >
           <tr>
@@ -155,11 +139,27 @@
             <th class="dropdown_menu_column_middle"><a href="../temporary-assistance-for-needy-families/index.html">TANF</a></th>
           </tr>
           <tr>
-            <th class="dropdown_menu_column_bottom"><a href="">WIC</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="../women-infants-children/index.html">WIC</a></th>
             <th class="dropdown_menu_column_bottom"><a href="../medicaid/index.html">Medicaid & CHIP</a></th>
           </tr>
         </table>
       </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="table_container_bills">
+        <table class="dropdown_menu" id="bills_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="../build-back-better/index.html">Build Back Better</a></th>
+            <th class="dropdown_menu_column_top"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="../working-families-tax-relief-act/index.html">Working Families Tax Relief Act</a></th>
+          </tr>
+        </table>
+     </div>
+
     </div> <!-- Desktop dropdown -->
 
     <div class="mobile_dropdown">
@@ -168,25 +168,11 @@
       <div class="table_container" id="mobile_table_container_overview">
         <table class="dropdown_menu">
           <tr>
-            <th class="dropdown_menu_column_top"><a href="">Welfare State</a></th>
+            <th class="dropdown_menu_column_top"><a href="">Why We Need Family Benefits</a></th>
             <th class="dropdown_menu_column_top"><a href="">Problems Overview</a></th>
           </tr>
           <tr>
             <th class="dropdown_menu_column_bottom"><a href="">Fixing Family Benefits</a></th>
-            <th class="dropdown_menu_column_bottom"></th>
-          </tr>
-        </table>
-      </div>
-
-      <!-- Bills -->
-      <div class="table_container" id="mobile_table_container_bills">
-        <table class="dropdown_menu">
-          <tr>
-            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
-            <th class="dropdown_menu_column_top"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
-          </tr>
-          <tr>
-            <th class="dropdown_menu_column_bottom"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
             <th class="dropdown_menu_column_bottom"></th>
           </tr>
         </table>
@@ -197,19 +183,14 @@
         <table class="dropdown_menu">
           <tr>
             <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
-            <th class="dropdown_menu_column_top"><a href="../poor-exclusion/index.html">The Exclusion of Poor Families</a></th>
+            <th class="dropdown_menu_column_top"><a href="../marriage-penalties/index.html">Marriage Penalties</a></th>
           </tr>
           <tr>
-            <th class="dropdown_menu_column_middle"><a href="../marriage-penalties/index.html">Marriage Penalties</a></th>
             <th class="dropdown_menu_column_middle">Marginal Tax Rates</th>
-          </tr>
-          <tr>
             <th class="dropdown_menu_column_middle">Asinine Asset Tests</th>
-            <th class="dropdown_menu_column_middle">Administrative Burdens</th>
           </tr>
           <tr>
-            <th class="dropdown_menu_column_bottom"><a href="../territories/index.html">Leaving Behind the Territories</a></th>
-            <th class="dropdown_menu_column_bottom"><a href="">Promoting Racial Justice, Imperfectly</a></th>
+            <th class="dropdown_menu_column_bottom">Administrative Burdens</th>
           </tr>
         </table>
       </div>
@@ -218,8 +199,8 @@
       <div class="table_container" id="mobile_table_container_programs">
         <table class="dropdown_menu">
           <tr>
-            <th class="dropdown_menu_column_top"><a href="../child-tax-credit/index.html">The Child Tax Credit</a></th>
-            <th class="dropdown_menu_column_top"><a href="../earned-income-tax-credit/index.html">The Earned Income Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="../child-tax-credit/index.html">Child Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="../earned-income-tax-credit/index.html">Earned Income Tax Credit</a></th>
           </tr>
           <tr>
             <th class="dropdown_menu_column_middle"><a href="../head-of-household/index.html">Head of Household</a></th>
@@ -236,6 +217,23 @@
         </table>
       </div>
 
+      <!-- Bills -->
+      <div class="table_container" id="mobile_table_container_bills">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="../build-back-better/index.html">Build Back Better</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="../working-families-tax-relief-act/index.html">Working Families Tax Relief Act</a></th>
+          </tr>
+        </table>
+      </div>
+
     </div>
 
   <div class="horizontal_line"></div>
@@ -245,50 +243,41 @@
 <div class="box_container">
 
 <!--Featured Pages--------------------------------------------------------------------------------------------------------------->
-  <h2>Featured Pages</h2>
+  <h2>Overview Pages</h2>
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
-      <div class='box_words'>
-        <div class="box_title">Why We Need the Welfare State</div>
-        <div class="box_description"><em>Description</em></div>
-      </div>
+      <a href="../why-we-need-family-benefits/index.html">
+        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Why We Need Family Benefits</div>
+          <div class="box_description"><em>Description</em></div>
+        </div>
+      </a>
     </div>
     <div class='infobox_right'>
-      <a href="../poor-exclusion/index.html">
+      <a href="../problems-overview/index.html">
+        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">An Overview of the Major Problems</div>
+          <div class="box_description"><em>All that's wrong with the current system.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="../fixing-family-benefits/index.html">
         <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">Fixing Family Benefits</div>
-          <div class="box_description"><em>An Alternative To The Current System</em></div>
+          <div class="box_description"><em>An alternative to the current system</em></div>
         </div>
       </a>
     </div>
   </div>
 
 <br>
-
-<!--Bills--------------------------------------------------------------------------------------------------------------->
-<h2>Bill Analysis</h2>
-  <div class="box_level">
-    <div class='infobox_left'>
-      <a href="../family-security-act/index.html">
-        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
-        <div class='box_words'>
-          <div class="box_title">Analysis of the Family Security Act</div>
-          <div class="box_description"><em>A Promising Reform that Could Use a Few Touchups</em></div>
-        </div>
-      </a>
-    </div>
-    <div class='infobox_right'>
-      <a href="../poor-exclusion/index.html">
-        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
-        <div class='box_words'>
-          <div class="box_title">Analysis of the End Child Poverty Act</div>
-          <div class="box_description"><em>An Alternative To The Current System</em></div>
-        </div>
-      </a>
-    </div>
-  </div>
 
   <!--Blog Promotion------------------------------------------------------------------------------------------------------------>
 <div class = 'center_no_side_elements'>
@@ -357,25 +346,15 @@
 
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
-      <div class='box_words'>
-        <div class="box_title">Two Tiers of Welfare</div>
-        <div class="box_description"><em>The American Welfare State is stratified into two tiers: streamlined & , </em></div>
-      </div>
-    </div>
-    <div class='infobox_right'>
-      <a href="../poor-exclusion/index.html" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()">
+      <a href="../two-tiers-of-welfare/index.html" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()">
         <div class="chart_container" id="poor_families_chart" ></div>
         <div class='box_words'>
-          <div class="box_title">The Exclusion of Poor Families</div>
+          <div class="box_title">Two Tiers of Welfare</div>
           <div class="box_description"><em>Poor families are deliberately excluded from many family benefits</em></div>
         </div>
       </a>
     </div>
-  </div>
-
-  <div class="box_level">
-    <div class='infobox_left'>
+    <div class='infobox_right'>
       <a href="../marriage-penalties/index.html" onmouseenter="marriage_penalties_animation()" onmouseleave="mouse_out_marriage_penalties()">
         <div class="chart_container" id="marriage_penalties_chart"></div>
         <div class='box_words'>
@@ -384,7 +363,10 @@
         </div>
       </a>
     </div>
-    <div class='infobox_right'>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
       <a href="../marginal-tax/index.html">
         <div class="chart_container" id="marginal_tax_chart"></div>
         <div class='box_words'>
@@ -393,17 +375,19 @@
         </div>
       </a>
     </div>
+    <div class='infobox_right'>
+      <a href="../asset-tests/index.html">
+        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">Asinine Asset tests</div>
+          <div class="box_description"><em>Want to save money but also not starve? Too bad.</em></div>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
-      <div class='box_words'>
-        <div class="box_title">Asinine Asset tests</div>
-        <div class="box_description"><em>Want to save money but also not starve? Too bad.</em></div>
-      </div>
-    </div>
-    <div class='infobox_right'>
       <a href="../administrative-burdens/index.html">
         <div class="image_container" id="admin_image_container"><img src="./images/admin.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
@@ -414,36 +398,75 @@
     </div>
   </div>
 
+  <br>
+
+  <!--Bills--------------------------------------------------------------------------------------------------------------->
+  <h2>Bill Analysis</h2>
   <div class="box_level">
     <div class='infobox_left'>
-      <a href="../territories/index.html">
-        <div class="image_container"><img src="./images/territories_map.png" alt="Map of US Territories"></div>
+      <a href="../family-security-act/index.html">
+        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
-          <div class="box_title">Leaving the Territories Behind</div>
-          <div class="box_description"><em>Many programs are not available in US territories</em></div>
+          <div class="box_title">Analysis of the Family Security Act</div>
+          <div class="box_description"><em>A Promising Overhaul that Could Use a Few Touchups</em></div>
         </div>
       </a>
     </div>
     <div class='infobox_right'>
-      <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
-      <div class='box_words'>
-        <div class="box_title">Promoting Racial Justice, Imperfectly</div>
-        <div class="box_description"><em>Family benefits lift the fortunes of countless people of color.</em></div>
-      </div>
+      <a href="../build-back-better/index.html">
+        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of Build Back Better</div>
+          <div class="box_description"><em>Fundamentally Uncreative, but an Improvement Nonetheless.</em></div>
+        </div>
+      </a>
     </div>
   </div>
 
-  <br>
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="../end-child-poverty-act/index.html">
+        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the End Child Poverty Act</div>
+          <div class="box_description"><em>A Promising Reform that Could Use a Few Touchups</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="../ssi-restoration-act/index.html">
+        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the SSI Restoration Act</div>
+          <div class="box_description"><em>A worthwhile incremental reform.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="../end-child-poverty-act/index.html">
+        <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the Working Families Tax Relief Act</div>
+          <div class="box_description"><em>It Certainly Doesn't Shake Things Up, but It's Worthwhile Nonetheless.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
 
   <!--Programs---------------------------------------------------------------------------------------------------------------->
   <h2 class="next_section">Major Programs (And How They Can Be Improved)</h2>
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
-      <div class='box_words'>
-        <div class="box_title">The Child Tax Credit</div>
-        <div class="box_description"><em>The fundamental—and problematic—family benefit</em></div>
-      </div>
+      <a href="../child-tax-credit/index.html">
+        <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">The Child Tax Credit</div>
+          <div class="box_description"><em>The fundamental—and problematic—family benefit</em></div>
+        </div>
+      </a>
     </div>
     <div class='infobox_center'>
       <a href="../earned-income-tax-credit/index.html">
@@ -467,14 +490,16 @@
 
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
-      <div class='box_words'>
-        <div class="box_title">The Child and Dependent Care Credit</div>
-        <div class="box_description"><em>Sure, we already have a child tax credit, but how about another, worse one?</em></div>
-      </div>
+      <a href="../child-and-dependent-care-credit/index.html">
+        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
+        <div class='box_words'>
+          <div class="box_title">The Child and Dependent Care Credit</div>
+          <div class="box_description"><em>Sure, we already have a child tax credit, but how about another, worse one?</em></div>
+        </div>
+      </a>
     </div>
     <div class='infobox_center'>
-      <a href="../poor-exclusion/index.html">
+      <a href="../supplemental-nutrition-assistance-program/index.html">
         <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">SNAP (Food Stamps)</div>
@@ -483,7 +508,7 @@
       </a>
     </div>
     <div class='infobox_right'>
-      <a href="../head-of-household/index.html">
+      <a href="../temporary-assistance-for-needy-families/index.html">
         <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">Temporary Assistance for Needy Families</div>
@@ -495,14 +520,16 @@
 
   <div class="box_level">
     <div class='infobox_left'>
-      <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
-      <div class='box_words'>
-        <div class="box_title">Supplemental Nutrition for Women, Infants, and Children (WIC)</div>
-        <div class="box_description"><em>A program that only exists because SNAP isn't enough to feed your baby</em></div>
-      </div>
+      <a href="../women-infants-children/index.html">
+        <div class="image_container"><img src="./images/hoh_chart.png" alt="HOH Chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Supplemental Nutrition for Women, Infants, and Children (WIC)</div>
+          <div class="box_description"><em>A program that only exists because SNAP isn't enough to feed your baby</em></div>
+        </div>
+      </a>
     </div>
     <div class='infobox_center'>
-      <a href="../poor-exclusion/index.html">
+      <a href="../medicaid/index.html">
         <div class="image_container"><img src="./images/poor_families_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">Medicaid & the Children's Health Insurance Program (CHIP)</div>
@@ -511,7 +538,7 @@
       </a>
     </div>
     <div class='infobox_right'>
-      <a href="../head-of-household/index.html">
+      <a href="../temporary-assistance-for-needy-families/index.html">
         <div class="image_container"><img src="./images/emtr_chart.png" alt="Chart of EITC and CTC Benefits"></div>
         <div class='box_words'>
           <div class="box_title">Temporary Assistance for Needy Families</div>
