@@ -6,13 +6,14 @@
  * (4) Expands the mobile dropdown
  * (5) Highlights a reference when an in-line citation from the notes section is clicked
  * (6) Expands and collapses the list of programs/bills in the page list
- * (7) Open and close highlights
- * (8) Open and close chart notes
+ * (7) Opens and closes the top chart highlights
+ * (8) Opens and closes appendix sections
+ * (9) Opens and closes chart notes
  * ****************************************************************************************/
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
 
-/******************************** Page color toggle ******************************/
+/******************************** 1. Page color toggle ******************************/
 /** Controls toggling between light, sepia, and dark modes
  * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')
  * */
@@ -65,7 +66,7 @@ function toggle_page_color(mode){
   }, 1000);
 }
 
-/******************************** Left sidebar **********************************/
+/******************************** 2. Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();
 var scrollThreshold = 1.3 * displayHeight;
@@ -91,7 +92,7 @@ if(displayWidth > 900){
   });
 }
 
-/******************************** Twitter & Substack Icons **********************************/
+/******************************** 3. Social Icons **********************************/
 twitterBlue = '#1D9BF0';
 facebookBlue = '#1778F2';
 substackOrange = '#ff6700';
@@ -166,7 +167,7 @@ function text_color(id, color){
 	document.getElementById(id).style.color = color;
 }
 
-/******************************** Mobile Dropdown *********************************/
+/******************************** 4. Mobile Dropdown *********************************/
 // Listens for when the user presses the menu icon and then triggers reveal_dropdown()
 $(document).ready(function(){
 	$('#navigation_bar_button').click(function(){
@@ -181,8 +182,6 @@ navbarClicked = false;
 // Opens and closes the dropdown menu
 function reveal_dropdown(){
   if(navbarClicked === false){
-  	// remove navbar bottom border
-  	$('.mobile_navbar').css('border-bottom','none');
 
     // dropdown animation
     $('#mobile_dropdown').removeClass('collapse_dropdown');
@@ -195,12 +194,11 @@ function reveal_dropdown(){
     $('body').addClass('push_down_page');
 
     //disable scroll
-    document.body.classList.add("stop-scrolling");
+    //document.body.classList.add("stop-scrolling");
 
     navbarClicked = true;
   }
   else{
-    //document.getElementById('mobile_dropdown').style.display = 'none';
     $('#mobile_dropdown').removeClass('reveal_dropdown');
     $('#mobile_dropdown').addClass('collapse_dropdown');
     
@@ -211,13 +209,23 @@ function reveal_dropdown(){
     $('body').addClass('push_up_page');
 
     //enable scroll
-    document.body.classList.remove("stop-scrolling");
+    //document.body.classList.remove("stop-scrolling");
 
     navbarClicked = false;
   }
 }
 
-/*************************** References Highlighting ******************************/
+function close_dropdown(){
+  $('html').css('scroll-behavior', 'auto');
+  $('#navigation_bar_button').toggleClass('open');
+  reveal_dropdown();
+
+  setTimeout(function(){
+    $('html').css('scroll-behavior', 'smooth');
+  }, 100);
+}
+
+/*************************** 5. References Highlighting ******************************/
 /** Adds a yellow highlight when the user clicks in inline-citation
  * @param {string} - the html id of the reference to be highlighted
  * */
@@ -235,7 +243,7 @@ function highlight_note(note){
   document.getElementById(note).classList.add('highlighted');
 }
 
-/**************************** Programs *******************************************/
+/**************************** 6. Programs & Bills Dropdown *******************************************/
 //Shows the list of programs
 function show_programs(id){
   if(id == 'programs'){
@@ -251,7 +259,7 @@ function hide_programs(id){
 	document.getElementById(id).style.height = '0px';
 }
 
-/*********************************** Highlights ***********************************/
+/*********************************** 7. Highlights ***********************************/
 /** Opens and closes highlight boxes
  * @param {string} - the html id of the highlight to be opened/closed
  * */
@@ -274,7 +282,7 @@ function show_explanation(identifier){
 	}
 }
 
-/*********************************** Open/Close Page Portion *********************/
+/*********************************** 8. Open/Close Appendix *********************/
 var isOpen = new Object(); //dictionary to keep track of which chart notes are open
 
 /** Opens and closes the portions of the page
@@ -324,7 +332,7 @@ function rotate_icon_180(id){
   }
 }
 
-/*********************************** Open/Close Chart Notes *********************/
+/*********************************** 9. Open/Close Chart Notes *********************/
 var chartNotes = new Object(); //dictionary to keep track of which chart notes are open
 
 /** Opens and closes the notes section below a chart

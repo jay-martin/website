@@ -4,6 +4,8 @@
 /*********************** Color Settings ************************************************************************/
 .mobile_navbar {
   background-color: var(--base-background);
+  border-bottom: solid;
+  border-color: var(--base-border);
 }
 a.navbar_logo {
   color: var(--base-text) !important;
@@ -162,8 +164,8 @@ img.top_social_icons {
 .mobile_navbar {
   display: block;
   position: fixed;
-  overflow: hidden;
   width: 100%;
+  height: 56px;
   opacity: 100;
   z-index: 2;
 }
@@ -251,20 +253,13 @@ button.close_icon {
   font-family: "Computer Modern Serif";
   position: fixed;
   height: 0;
-  overflow: hidden;
+  overflow: scroll;
   width: 100%;
   padding-top: 56px;
   z-index: 1;
 }
-.featured_pages_title, a.featured_pages {
-  margin-left: 3%;
-  font-size: 120%;
-  margin-bottom: 8px;
-  margin-top: 15px;
-}
 .mobile_dropdown a {
-  margin-bottom: 16px;
-  padding-right: 10px;
+  margin-bottom: 10px;
   text-decoration: none;
   display: block;
   width: max-content;
@@ -272,32 +267,50 @@ button.close_icon {
 .mobile_dropdown a:hover {
   text-decoration: underline;
 }
-.two_columns {
-  width: 94%;
+.mobile_dropdown_header {
+  margin-left: 3%;
+  font-size: 18px;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+.mobile_dropdown_horizontal_line {
+  height: 0;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
-.features_dropdown, .programs_dropdown {
-  display: inline-block;
-  vertical-align: top;
-  line-height: 2em;
-  width: 42.5%;
-  font-size: 95%;
+.mobile_dropdown_jump_to {
+  margin-left: 3%;
+  margin-bottom: 12.5px;
 }
-.programs_dropdown {
-  margin-left: 7.5%;
+.mobile_dropdown_jump_to a {
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-decoration: none;
 }
-.dropdown_title {
-  font-size: 130%;
-  margin-bottom: 16px;
+table.mobile_dropdown_table {
+  width: 94%;
+  margin-left: 3%;
+  table-layout:fixed;
+}
+table.mobile_dropdown_table td {
+  font-size: 16px;
+  font-weight: normal;
+  width: 50%;
+  border: none;
+  padding-left: 0;
+  white-space: normal !important;
+  word-wrap: break-word !important;
 }
 .mobile_dropdown_socials_left, .mobile_dropdown_socials_right {
   display: inline-block;
   margin-left: 2.5%;
   width: 44%;
+  margin-bottom: 40px;
 }
 .mobile_dropdown_socials_text {
-  font-size: 110%;
+  font-size: 18px;
   display: inline-block;
   vertical-align: top;
   margin-right: 7.5px;
@@ -310,29 +323,10 @@ a.mobile_dropdown_link {
 .mobile_dropdown_icon {
   height: 27.5px;
   margin-left: 0px;
-  margin-top: 1px;
+  margin-top: 5px;
 }
 #mobile_dropdown_twitter_share_icon, #mobile_dropdown_twitter_follow_icon {
   margin-left: 5px;
-}
-.mobile_dropdown_blog_promote {
-  margin-left: 2.5%;
-}
-img.mobile_dropdown_blog_promote_image {
-  height: 40px;
-  margin-top: 1px;
-}
-.mobile_dropdown_horizontal_line {
-  height: 0;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-}
-/* disable scroll */
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
 }
 /*********Dropdown animations********/
 .reveal_dropdown {
@@ -345,10 +339,10 @@ img.mobile_dropdown_blog_promote_image {
 }
 @keyframes reveal {
   0% { height: 0 }
-  100% { height: 95vh }
+  100% { height: 96vh }
 }
 @keyframes collapse {
-  0% { height: 95vh }
+  0% { height: 96vh }
   100% { height: 0 }
 }
 .push_down_page {
@@ -457,26 +451,22 @@ a.navbar_logo {
 }
 .two_columns {
   width: 90%;
-  margin-top: 25px;
+  margin-top: 15px;
 }
-.features_dropdown, .programs_dropdown {
-  font-size: 120%;
-}
-.featured_pages_title, a.featured_pages {
+table.mobile_dropdown_table {
+  margin-left: 5%;
   width: 90%;
+}
+.dropdown_title, .mobile_dropdown_header, .mobile_dropdown_socials_text {
+  font-size: 22px;
+}
+.mobile_dropdown_jump_to, .mobile_dropdown_header, .mobile_dropdown_socials_left {
   margin-left: 5%;
-  font-size: 150%;
-  margin-top: 25px;
 }
-.mobile_dropdown_socials_left {
-  margin-left: 5%;
-}
-.mobile_dropdown_socials_text {
-  font-size: 150%;
-}
-img.mobile_dropdown_icon {
+.mobile_dropdown_icon {
   height: 35px;
   margin-top: 10px;
+  margin-right: 7.5px;
 }
 .mobile_dropdown_blog_promote {
   margin-left: 5%;
@@ -500,7 +490,7 @@ img.mobile_dropdown_blog_promote_image {
   margin-left: 0;
 }
 #page_title {
-  font-size: 45px;
+  font-size: 40px;
 }
 .name, .page_description {
   font-size: 22.5px;
@@ -510,6 +500,10 @@ img.mobile_dropdown_blog_promote_image {
 }
 .page_description {
   width: 65%;
+}
+.mobile_dropdown_horizontal_line {
+  width: 92%;
+  margin-left: 4%;
 }
 /*********************** Blog Promo **************************************************************************/
 #blog_promote_mobile_link {
