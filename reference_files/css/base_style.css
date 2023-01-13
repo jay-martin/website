@@ -313,7 +313,7 @@ a.blog_promotion_link_container {
   /* transition: fill-opacity .1s ease; */
 }
 .blog_container:hover .blog_svg {
-  animation: spin .5s ease;
+  /* animation: spin .5s ease; */
   /* transform: scale(1.1); */
 }
 .vertical_line {
