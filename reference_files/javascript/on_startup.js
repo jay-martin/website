@@ -6,6 +6,7 @@
 //setup for page calculations
 const ref_items = document.querySelectorAll('.ref_item');
 programsHeight = 0;
+billsHeight = 0;
 var isMobile = false;
 
 //Get all highlights
@@ -56,6 +57,10 @@ function initialize_page(){
 	programsHeight = window.getComputedStyle(document.getElementById('programs')).height;
 	document.getElementById("programs").style.height = "0px";
 
+	//calculate bills height and set to zero
+	billsHeight = window.getComputedStyle(document.getElementById('bills')).height;
+	document.getElementById("bills").style.height = "0px";
+
 	//calculate the heights of each of the highlights and then set each to zero
 	for (var i = 0; i < highlights_heights.length; i++) {
 		id = 'highlights_container' + (i+1).toString();
@@ -86,8 +91,7 @@ function initialize_page(){
 
 		// Remove the loader and make the content visible
 		$('#loader_container').css('display', 'none');
-		$('#highlights_content').css('visibility', 'visible');
-		$('#programs').css('visibility', 'visible');
+		$('#highlights_content, #programs, #bills').css('visibility', 'visible');
 	}, 50);
 
 	/*

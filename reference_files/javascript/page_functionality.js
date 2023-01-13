@@ -5,7 +5,7 @@
  * (3) Adjust the color of the Twitter & Substack icons
  * (4) Expands the mobile dropdown
  * (5) Highlights a reference when an in-line citation from the notes section is clicked
- * (6) Expands and collapses the list of programs in the page list
+ * (6) Expands and collapses the list of programs/bills in the page list
  * (7) Open and close highlights
  * (8) Open and close chart notes
  * ****************************************************************************************/
@@ -237,13 +237,18 @@ function highlight_note(note){
 
 /**************************** Programs *******************************************/
 //Shows the list of programs
-function show_programs(){
-	document.getElementById('programs').style.height = programsHeight;
+function show_programs(id){
+  if(id == 'programs'){
+    document.getElementById(id).style.height = programsHeight;
+  }
+  else if(id == 'bills'){
+    document.getElementById(id).style.height = billsHeight;
+  }
 }
 
 //Hides the list of programs
-function hide_programs(){
-	document.getElementById('programs').style.height = '0px';
+function hide_programs(id){
+	document.getElementById(id).style.height = '0px';
 }
 
 /*********************************** Highlights ***********************************/
