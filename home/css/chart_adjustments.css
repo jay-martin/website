@@ -1,9 +1,21 @@
-/*hide poor exclusion chart points */
+/******************* Hide Points ******************************/
+/* Two Tiers Chart */
 .c3-circles-total, .c3-circles-no_exclusion, .c3-circles-total_hidden, .c3-circles-ctc, .c3-circles-eitc, .c3-circles-hoh, .c3-circles-no_exclusion_end, .c3-circles-loss_in_benefits{
   display: none;
 }
 
-/*hide marriage penalty chart points */
+/* Marriage Penalty Chart */
 .c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus, .c3-circles-person2_dashed, .c3-circles-hoh_penalty, .c3-circles-hoh_married, .c3-circles-hoh_comined, .c3-circles-hoh_bonus, .c3-circles-both_married, .c3-circles-both_penalty, .c3-circles-both_filler {
   display: none;
+}
+
+/******************* Opacity ******************************/
+/* Two Tiers Chart */
+.c3-area-total_hidden {
+  opacity: 0 !important;
+}
+
+/* Marriage Penalty Chart */
+.c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-hoh_maried, .c3-area-hoh_combined, .c3-area-both_white, .c3-area-both_white_positive, .c3-area-both_white_negative {
+  opacity: 0 !important;
 }

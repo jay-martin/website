@@ -2,7 +2,7 @@
  * This file contains the function creating the "Exclusion of Poor Families" c3.js chart 
  * And the functions controlling the animation of that chart
  * ****************************************************************************************/
-var pfChart = c3.generate({
+var twoTiersChart = c3.generate({
     bindto: '#poor_families_chart',
     data: {
         xs: {
@@ -45,12 +45,15 @@ var pfChart = c3.generate({
             loss_in_benefits: 'Loss in Benefits',
         },
         colors: {
-            total: 'black',
+            total: white_or_black,
             total_hidden: 'white',
+
             no_exclusion: 'red',
             no_exclusion_end: 'red',
+
             loss_in_benefits: 'red',
-            existing_point: 'black',
+
+            existing_point: white_or_black,
             no_exclusion_point: 'red',
 
         },
@@ -103,6 +106,9 @@ var pfChart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 10000, text: 'Your income'}],
             min: 0,
@@ -149,15 +155,15 @@ function mouse_out_poor_families(event) {
  * The below functions run the animation in a step-by-step process so that the animation stops when the users scroll off the element
  * ***************************/
 function pf1(){
-    pfChart.xgrids([ {value: 5000, text:'Your income'}, ]);
-    pfChart.load({columns: [ ['x_point', 5000], ['existing_point', 2075], ['no_exclusion_point', 5733] ]});
+    twoTiersChart.xgrids([ {value: 5000, text:'Your income'}, ]);
+    twoTiersChart.load({columns: [ ['x_point', 5000], ['existing_point', 2075], ['no_exclusion_point', 5733] ]});
 
     pfStage++;
     timeout = setTimeout(pf2, 1000);
 }
 
 function pf2(){
-    pfChart.axis.max({y: 11000});
+    twoTiersChart.axis.max({y: 11000});
 
     x = ['x', 0, 2500, 15290, 21167, 25900, 26262, 37900, 55529, 400000, 480000];
     existing = ['total', 0, 1000, 8082.5, 8964.05, 8964, 9000.2, 7712.659999999999, 4000, 4000, 0];
@@ -171,14 +177,14 @@ function pf2(){
     existingPoint = ['existing_point', 2375];
     noExcludePoint = ['no_exclusion_point', 10164]
 
-    pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
+    twoTiersChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
     pfStage++;
     timeout = setTimeout(pf3, 1000); 
 }
 
 function pf3(){
-    pfChart.axis.max({y: 7000});
+    twoTiersChart.axis.max({y: 7000});
 
     x = ['x', 0, 15290, 26262, 55529];
     existing = ['total', 0, 6164, 6164, 0];
@@ -192,7 +198,7 @@ function pf3(){
     existingPoint = ['existing_point', 2000];
     noExcludePoint = ['no_exclusion_point', 6164];
 
-    pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
+    twoTiersChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
     pfStage++;
     timeout = setTimeout(pf4, 1000); 
@@ -211,7 +217,7 @@ function pf4(){
     existingPoint = ['existing_point', 1700];
     noExcludePoint = ['no_exclusion_point', 3733];
 
-    pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
+    twoTiersChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
     pfStage++;
     timeout = setTimeout(pf5, 1000); 
@@ -230,15 +236,15 @@ function pf5(){
     existingPoint = ['existing_point', 375];
     noExcludePoint = ['no_exclusion_point', 4000];
 
-    pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
+    twoTiersChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
 
     pfStage++;
     timeout = setTimeout(pf6, 1000); 
 }
 
 function pf6(){
-    pfChart.xgrids([ {value: 20000, text:'Your income'}, ]);
-    pfChart.load({columns: [ ['x_point', 20000], ['existing_point', 2625], ['no_exclusion_point', 4000] ]});
+    twoTiersChart.xgrids([ {value: 20000, text:'Your income'}, ]);
+    twoTiersChart.load({columns: [ ['x_point', 20000], ['existing_point', 2625], ['no_exclusion_point', 4000] ]});
 
     pfStage++;
     timeout = setTimeout(pf_reset, 1000);
@@ -258,10 +264,10 @@ function pf_reset(){
     existingPoint = ['existing_point', 4525];
     noExcludePoint = ['no_exclusion_point', 5733];
 
-    pfChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
-    pfChart.xgrids([ {value: 10000, text:'Your income'}, ]);
+    twoTiersChart.load({columns: [x, existing, existingHidden, noExclude, x2, noExcludeEnd, xPoint, existingPoint, noExcludePoint]});
+    twoTiersChart.xgrids([ {value: 10000, text:'Your income'}, ]);
 
-    pfChart.axis.max({y: 7000});
+    twoTiersChart.axis.max({y: 7000});
 
     pfStage = 0;
     timeout = setTimeout(pf1, 1000); //Loop back to beginning

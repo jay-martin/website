@@ -13,10 +13,10 @@ else{
 }
 
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    color_mode_color = '#dbdbdb';
+    white_or_black = '#dbdbdb';
 }
 else{
-    color_mode_color = 'black';
+    white_or_black = 'black';
 }
 
 var chart = c3.generate({
@@ -76,7 +76,7 @@ var chart = c3.generate({
             eitc: '#8700a680',
             ctc:  '#0008ff80',
             snap: '#00e5ffB3',
-            point: color_mode_color,
+            point: white_or_black,
         },
     },
     transition: {

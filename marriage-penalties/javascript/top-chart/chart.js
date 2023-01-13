@@ -96,9 +96,11 @@ var MPchart = c3.generate({
         colors: {
             person1: '#6ab6fc',
             point1:  '#6ab6fc',
+
             person2: purple_shade,
             person2_dashed: purple_shade,
             point2: purple_shade,
+            
             married: white_or_black,
             point_married: white_or_black,
 

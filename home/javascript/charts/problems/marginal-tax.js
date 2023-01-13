@@ -3,7 +3,7 @@
  * And the functions controlling the animation of that chart
  * ****************************************************************************************/
 
-var taxChart = c3.generate({
+var marginalTaxChart = c3.generate({
     bindto: '#marginal_tax_chart',
     data: {
         xs: {
@@ -54,7 +54,7 @@ var taxChart = c3.generate({
             eitc: '#8700a680',
             ctc:  '#0008ff80',
             snap: '#00e5ffB3',
-            point: 'black'
+            point: white_or_black,
         },
     },
     transition: {

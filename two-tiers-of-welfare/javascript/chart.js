@@ -2,10 +2,10 @@
  * This file contains the function creating the c3.js chart
  * ****************************************************************************************/
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    color_mode_color = '#dbdbdb';
+    white_or_black = '#dbdbdb';
 }
 else{
-    color_mode_color = 'black';
+    white_or_black = 'black';
 }
 
 var chart = c3.generate({
@@ -51,12 +51,15 @@ var chart = c3.generate({
             loss_in_benefits: 'Loss in Benefits',
         },
         colors: {
-            total: color_mode_color,
+            total: white_or_black,
             total_hidden: 'white',
+
             no_exclusion: 'red',
             no_exclusion_end: 'red',
+
             loss_in_benefits: 'red',
-            existing_point: color_mode_color,
+            
+            existing_point: white_or_black,
             no_exclusion_point: 'red',
 
         },

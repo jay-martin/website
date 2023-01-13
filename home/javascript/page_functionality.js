@@ -18,6 +18,9 @@ function toggle_page_color(mode){
     pageStyle = 'dark';
     document.body.className = 'dark-mode';
 
+    // Page specific changes
+    page_color_mode('dark');
+
     // Change browser default rendering to dark
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
@@ -27,6 +30,9 @@ function toggle_page_color(mode){
     pageStyle = 'sepia';
     document.body.className = 'sepia';
 
+    // Page specific changes
+    page_color_mode('light');
+
     // Change browser default rendering to light
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
@@ -35,6 +41,9 @@ function toggle_page_color(mode){
   else if(mode === 'light'){
     pageStyle = 'light';
     document.body.className = 'light-mode';
+
+    // Page specific changes
+    page_color_mode('light');
 
     // Change browser default rendering to light
     setTimeout(function(){

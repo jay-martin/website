@@ -96,7 +96,6 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
 .social_icon {
   transition: fill .15s ease;
 }
-
 /*************** Color Settings ****************************************************************************/
 /********** Toggler ***********************/
 #page_color_toggler {
@@ -134,7 +133,7 @@ button {
   border: solid;
   border-color: var(--base-border);
 }
-/********** C3.JS Charts ******************/
+/********** C3.JS Charts *************/
 .c3 text {
   fill: var(--base-text);
 }

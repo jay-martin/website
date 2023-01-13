@@ -62,17 +62,21 @@ var MPchart = c3.generate({
         },
         colors: {
             person1: '#6ab6fc',
-            person2: '#770087',
-            married: '#000000',
-            married_eitc: '#FFFFFF',
-            penalty: '#eb3734',
-            combined_eitc: '#FFFFFF',
-            bonus: '#36D903',
-            point1: '#6ab6fc',
-            point2: '#770087',
-            point_married: '#000000',
-            hoh_combined: '#FFFFFF',
-            hoh_penalty: '#eb3734',
+            point1:  '#6ab6fc',
+
+            person2: purple_shade,
+            point2:  purple_shade,
+
+            married:       white_or_black,
+            point_married: white_or_black,
+
+            married_eitc:  '#eb3734',
+            combined_eitc: '#eb3734',
+            penalty:       '#eb3734',
+            bonus:          green_shade,
+
+            hoh_combined: '#eb3734',
+            hoh_penalty:  '#eb3734',
         },
     },
     padding: {
@@ -112,6 +116,9 @@ var MPchart = c3.generate({
         }
     },
     grid: {
+        lines: {
+          front: false
+        },
         x: {
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]
         },
