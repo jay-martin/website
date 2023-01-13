@@ -1,6 +1,6 @@
 @media screen and (max-width: 700px) {
 
-/***************Title Section****************************************************************************/
+/*************** Title Section ****************************************************************************/
 #page_title {
 	font-size: 250%;
 	line-height: 1em;
@@ -8,7 +8,7 @@
 .bottom_social_logos {
 	height: 12.5px;
 }
-/***************Top Bar**********************************************************************************/
+/*************** Top Bar **********************************************************************************/
 .top_bar {
 	width: 100%;
 }
@@ -18,19 +18,18 @@
 #mobile_top_bar {
 	display: table;
 }
-/***************Hide Elements*****************************************************************************/
-#desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link {
+/*************** Hide Desktop Elements *****************************************************************************/
+#desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link, .page_color_toggle_container, .blog_container {
 	display: none;
 }
-/***************Page Box Styling**************************************************************************/
+/*************** Page Box Styling **************************************************************************/
 .box_container {
 	width: 95%;
 }
 .box_level {
 	display: block;
 }
-
-/***************Mobile Blog Promotion*********************************************************************/
+/*************** Mobile Blog Promotion *********************************************************************/
 .blog_promote_mobile, #blog_promote_mobile_link {
   display: block;
 }
@@ -42,11 +41,11 @@
 	margin-bottom: 10px;
 }
 
-/***************Infobox adjustments***********************************************************************/
+/*************** Infobox adjustments ***********************************************************************/
 .infobox_left, .infobox_right {
 	border-radius: 10px;
 }
-/***************Page bottom******************************************************************************/
+/*************** Page bottom ******************************************************************************/
 section.page_bottom {
 	padding-bottom: 80px;
 }
@@ -61,7 +60,7 @@ img.bottom_social_logos {
 *********************************************************************************************/
 /* Set title back to middle of screen*/
 @media screen and (min-width: 800px) and (max-width: 900px) {
-/*********Page Bottom************/
+/********* Page Bottom ************/
 section.page_bottom {
 	padding-bottom: 60px;
 }
