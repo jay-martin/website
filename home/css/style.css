@@ -123,6 +123,7 @@ a.bottom_social_links {
 .top_social_icons {
   height: 12.5px;
   transition: all .15s ease;
+  margin-right: 2px;
 }
 .top_social_icons:hover {
   transform: scale(1.1);
@@ -170,9 +171,6 @@ th.top_bar_item:hover {
 a.social_link {
   display: inline-block;
   margin-left: 10px;
-}
-img.top_social_icons {
-  height: 12.5px;
 }
 /*** Dropdown items ********/
 .table_container {
@@ -427,7 +425,8 @@ a.cc_link {
 
 /***********************Blog promotion ********************************************************************/
 .blog_container {
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
   width: 100%;
   height: 185px;
@@ -482,9 +481,6 @@ a.blog_promotion_link_container {
   fill-opacity: 0;
   /* transition: fill-opacity .1s ease; */
 }
-.blog_container:hover .blog_svg {
-  animation: spin .5s ease;
-}
 .vertical_line {
   border-right: solid;
   border-width: 2.5px;
@@ -498,9 +494,5 @@ a.blog_promotion_link_container {
   0% {background-position:0% 50%}
   50% {background-position:100% 50%}
   100% {background-position:0% 50%}
-}
-@keyframes spin {
-  0% {transform: rotate(0deg)}
-  100% {transform: rotate(360deg)}
 }
 
