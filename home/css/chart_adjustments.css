@@ -9,6 +9,11 @@
   display: none;
 }
 
+/* HOH Chart */
+.c3-circles-HOH_Savings {
+  display: none;
+}
+
 /******************* Opacity ******************************/
 /* Two Tiers Chart */
 .c3-area-total_hidden {

@@ -1,5 +1,5 @@
 /******************************************************************************************
- * This file contains the function creating the "Marriage" c3.js chart 
+ * This file contains the function creating the "Marriage Penalties" c3.js chart 
  * And the functions controlling the animation of that chart
  * ****************************************************************************************/
 var MPchart = c3.generate({

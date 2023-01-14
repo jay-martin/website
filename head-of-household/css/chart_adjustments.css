@@ -1,4 +1,5 @@
-/*hide points for all lines except point */
+/******************* Hide Points ******************************/
+/* Top Chart */
 .c3-circles-HOH_Savings, .c3-circles-after_ctc, .c3-circles-person_1, .c3-circles-person_2 {
   display: none;
 }

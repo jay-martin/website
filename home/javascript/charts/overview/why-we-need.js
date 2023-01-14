@@ -1,17 +1,17 @@
 /******************************************************************************************
- * This file contains the function creating the "Marginal Tax Rates" c3.js chart 
+ * This file contains the function creating the "Why We Need Family Benefits" c3.js chart 
  * And the functions controlling the animation of that chart
  * ****************************************************************************************/
 
 if(window.innerWidth < 800){
-    marginal_tax_x_tick = [0, 20000, 40000, 60000, 80000, 100000];
+    why_we_need_x_tick = [0, 20000, 40000, 60000, 80000, 100000];
 }
 else{
-    marginal_tax_x_tick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+    why_we_need_x_tick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
 }
 
-var marginalTaxChart = c3.generate({
-    bindto: '#marginal_tax_chart',
+var whyWeNeedChart = c3.generate({
+    bindto: '#why_we_need_chart',
     size: {
         height: 280,
     },
@@ -88,7 +88,7 @@ var marginalTaxChart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: marginal_tax_x_tick,
+                values: why_we_need_x_tick,
             },
             padding: {left: 0, right: 0},
             max: 100000,

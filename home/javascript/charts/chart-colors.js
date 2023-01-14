@@ -25,6 +25,26 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
+    /* Why We Need Family Benefits Chart */
+    whyWeNeedChart.data.colors({
+        point: '#dbdbdb',
+    });
+
+    /* Problems Overview Chart */
+    problemsOverviewChart.data.colors({
+        married       : '#dbdbdb',
+        point_married : '#dbdbdb',
+        person2 : '#cb3ede',
+        person2_dashed : '#cb3ede',
+        point2: '#cb3ede',
+    });
+
+    /* Fixing Family Benefits Chart */
+    fixingFamilyBenefitsChart.data.colors({
+        total          : '#dbdbdb',
+        existing_point : '#dbdbdb',
+    });
+
     /* Two Tiers Chart */
     twoTiersChart.data.colors({
         total          : '#dbdbdb',
@@ -44,10 +64,35 @@ function dark_mode(){
     marginalTaxChart.data.colors({
         point: '#dbdbdb',
     });
+
+    /* Head of Household Chart */
+    HOHchart.data.colors({
+        point: '#dbdbdb',
+    });
 }
 
 // Changes for light/sepia mode
 function light_mode(){
+    /* Why We Need Family Benefits Chart */
+    whyWeNeedChart.data.colors({
+        point: 'black',
+    });
+
+    /* Problems Overview Chart */
+    problemsOverviewChart.data.colors({
+        married       : 'black',
+        point_married : 'black',
+        person2 : '#770087',
+        person2_dashed : '#770087',
+        point2 : '#770087',
+    });
+
+    /* Fixing Family Benefits Chart */
+    fixingFamilyBenefitsChart.data.colors({
+        total          : 'black',
+        existing_point : 'black',
+    });
+
     /* Two Tiers Chart */
     twoTiersChart.data.colors({
         total          : 'black',
@@ -65,6 +110,11 @@ function light_mode(){
 
     /* Marginal Tax Chart */
     marginalTaxChart.data.colors({
+        point: 'black',
+    });
+
+    /* Head of Household Chart */
+    HOHchart.data.colors({
         point: 'black',
     });
 }

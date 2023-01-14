@@ -290,6 +290,80 @@ th.dropdown_menu_column_bottom {
   padding-left: 15px;
   line-height: 170%;
 }
+/************************************* Blog Promotion *************************/
+.blog_promotion_square {
+  font-family: "Computer Modern Classical Serif Italic";
+  border: none;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  transition: all .25s ease;
+  animation: gradient 10s ease infinite;
+}
+@keyframes gradient { 
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+.blog_square_center {
+  text-align: center;
+}
+svg.blog_square_logo {
+  height: 65px;
+  margin-top: 10px;
+}
+.blog_square_logo_circle, .blog_square_logo_J {
+  stroke: white;
+}
+.blog_square_logo_text {
+  font-size: 18px;
+}
+svg.blog_square_logo, .blog_square_logo_text {
+  transition: all .25s ease;
+}
+#blog_logo_link:hover .blog_square_logo, #blog_logo_link:hover .blog_square_logo_text {
+  transform: scale(1.05);
+}
+.blog_square_horizontal_line {
+  height: 0;
+  border-bottom: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
+
+.article_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 66%;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.left-grid-item {
+  border-right: solid;
+  border-width: 1px;
+}
+.bottom-grid-item {
+  border-top: solid;
+  border-width: 1px;
+}
+.grid-item-text {
+  font-size: 18px;
+  text-align: center;
+  margin: 5px;
+  margin-top: 18px;
+  transition: all .25s ease;
+}
+.grid-item:hover .grid-item-text {
+  transform: scale(1.01);
+  cursor: pointer;
+}
+.grid-item:hover {
+  background-color: rgba(239, 239, 240, 0.15);
+}
 /************************************* Chart formatting *************************/
 .chart_container {
   margin-top: 15px;
