@@ -113,9 +113,6 @@ section.top {
   text-align: center;
   margin-bottom: 10px;
 }
-img.name_social_logos {
-  height: 13px;
-}
 a.social_links {
   display: inline-block;
 }
@@ -125,6 +122,10 @@ a.bottom_social_links {
 }
 .top_social_icons {
   height: 12.5px;
+  transition: all .15s ease;
+}
+.top_social_icons:hover {
+  transform: scale(1.1);
 }
 /*************** Top Bar **********************************************************************************/
 .horizontal_line, .horizontal_line_top {
