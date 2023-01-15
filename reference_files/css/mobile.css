@@ -6,9 +6,11 @@
   background-color: var(--base-background);
   border-bottom: solid;
   border-color: var(--base-border);
+  transition: all 1s ease;
 }
 a.navbar_logo {
   color: var(--base-text) !important;
+  transition: color 1s ease
 }
 button.open_icon:hover, button.close_icon{
   background-color: var(--base-background);
@@ -16,22 +18,12 @@ button.open_icon:hover, button.close_icon{
 .open_close_button span {
   background: var(--base-text);
 }
-/*********************** Hide Desktop Elements ************************************************************/
-img.blog_promotion, .left_side_bar, .page_color_toggle_container, .logo, .blog_container, .vertical_blog_container {
-  display: none;
-}
-/*********************** Show Mobile Elements **************************************************************/
-#blog_promote_mobile_link {
-  display: block;
-}
-.blog_promote_mobile {
-  width: 100%;
-}
 /********* Dropdown *********/
 .mobile_dropdown {
-  background-color: var(--base-background);
   border-bottom: 1px solid;
   border-color: var(--base-text);
+  background-color: var(--base-background);
+  transition: all 1s ease;
 }
 .mobile_dropdown_horizontal_line {
   border: solid;
@@ -40,10 +32,22 @@ img.blog_promotion, .left_side_bar, .page_color_toggle_container, .logo, .blog_c
 }
 .mobile_dropdown a {
   color: var(--base-text) !important;
+  transition: color 1s ease;
 }
 /********* Title *********/
 .category {
   color: var(--category-color);
+}
+/*********************** Hide Desktop Elements ************************************************************/
+.left_side_bar, .page_color_toggle_container, .logo, .blog_container, .vertical_blog_container {
+  display: none;
+}
+/*********************** Show Mobile Elements **************************************************************/
+#blog_promote_mobile_link {
+  display: block;
+}
+.blog_promote_mobile {
+  width: 100%;
 }
 
 /*********************** Body *****************************************************************************/
@@ -307,7 +311,7 @@ table.mobile_dropdown_table td {
   display: inline-block;
   margin-left: 2.5%;
   width: 44%;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .mobile_dropdown_socials_text {
   font-size: 18px;
@@ -324,9 +328,41 @@ a.mobile_dropdown_link {
   height: 27.5px;
   margin-left: 0px;
   margin-top: 5px;
+
+  transition: fill 1s ease;
 }
 #mobile_dropdown_twitter_share_icon, #mobile_dropdown_twitter_follow_icon {
   margin-left: 5px;
+}
+/********* Mobile Page Color Toggle ********/
+svg.mobile_page_color_icon {
+  float: right;
+  margin-top: 15px;
+  margin-right: 20px;
+  height: 22.5px;
+  fill: var(--base-text);
+}
+.page_color_button_group {
+  margin-left: 2.5%;
+  margin-bottom: 60px;
+  margin-top: 10px;
+  width: 252px;
+  border-color: var(--base-border) !important;
+}
+.page_color_button_group button {
+  font-size: 16px;
+  color: var(--base-text) !important;
+}
+.mobile_page_color_toggler {
+  position: absolute;
+  height: 100%;
+  width: 84px;
+  border-radius: 30px;
+  opacity: 20%;
+  background-color: var(--toggle-color);
+  transition: left .2s ease !important;
+
+  left: var(--mobile-toggle-position);
 }
 /*********Dropdown animations********/
 .reveal_dropdown {
@@ -475,6 +511,13 @@ table.mobile_dropdown_table {
 img.mobile_dropdown_blog_promote_image {
   height: 50px;
   margin-top: 10px;
+}
+.page_color_button_group {
+  margin-left: 5%;
+}
+svg.mobile_page_color_icon {
+  height: 25px;
+  margin-right: 5%;
 }
 /*********************** Title **************************************************************************/
 .title_container {

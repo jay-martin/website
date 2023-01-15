@@ -19,7 +19,8 @@
   --slider: #d3d3d3;
   --page-bottom-color: #858585;
 
-  --toggle-position: 0;
+  --toggle-position: 0px;
+  --mobile-toggle-position: 0px;
   --toggle-color: grey;
 
   --category-color: #582cfc;

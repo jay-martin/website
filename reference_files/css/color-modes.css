@@ -7,7 +7,7 @@
 .white-fill {fill: white;}
 
 /*********************** Transition Settings ******************************************************************************************************/
-body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
+body, select, .page_color_toggler, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease, color 1s ease;
 }
 .chart, .chart_wide, .highlights {
@@ -36,7 +36,6 @@ button {
   --base-border: #adadad;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --low-emphasis-color: #bdbdbd;
   --red: red;
   --green: green;
   --highlighted: yellow;
@@ -46,11 +45,14 @@ button {
   --small-button-disabled-background: #fafafa;
   --small-button-disabled-border-text: #b8b8b8;
 
+  --low-emphasis-color: #bdbdbd;
+
   --box-color: #f5f3f2;
   --slider: #d3d3d3;
   --page-bottom-color: #858585;
 
   --toggle-position: 0px;
+  --mobile-toggle-position: 0px;
   --toggle-color: grey;
 
   --category-color: #582cfc;
@@ -62,7 +64,6 @@ button {
   --base-border: #b5a177;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
-  --low-emphasis-color: #b5a177;
   --red: red;
   --green: green;
   --highlighted: yellow;
@@ -72,11 +73,14 @@ button {
   --small-button-disabled-background: #f5e4cb;
   --small-button-disabled-border-text: #c7b691;
 
+  --low-emphasis-color: #b5a177;
+
   --box-color: #f5e4cb;
   --slider: #b5a177;
   --page-bottom-color: #8a7c5e;
 
   --toggle-position: 49px;
+  --mobile-toggle-position: 84px;
   --toggle-color: #827868;
 
   --category-color: #582cfc;
@@ -88,7 +92,6 @@ button {
   --base-border: #dbdbdb;
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
-  --low-emphasis-color: #dbdbdb;
   --red: #ff4845;
   --green: #00d100;
   --highlighted: #545400;
@@ -98,11 +101,14 @@ button {
   --small-button-disabled-background: #242424;
   --small-button-disabled-border-text: #8c8c8c;
 
+  --low-emphasis-color: #dbdbdb;
+
   --box-color: #474747;
   --slider: #d3d3d3;
   --page-bottom-color: #dbdbdb;
 
   --toggle-position: 100px;
+  --mobile-toggle-position: 168px;
   --toggle-color: #a6a6a6;
 
   --category-color: #b19cff;
@@ -110,15 +116,15 @@ button {
 
 /*********************** Color Settings ***************************************************************************************************************/
 /********** Toggler ***********************/
-#page_color_toggler {
+.page_color_toggler {
   left: var(--toggle-position);
   background-color: var(--toggle-color);
 }
 .page_color_button_group {
-  border-color: var(--low-emphasis-color);
+  border-color: var(--base-border);
 }
 .page_color_button_group button {
-  color: var(--low-emphasis-color) !important;
+  color: var(--base-border);
 }
 /********** Page Fundamentals *************/
 body {

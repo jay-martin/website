@@ -209,7 +209,7 @@ svg.logo-svg {
   clear: both;
   display: table;
 }
-#page_color_toggler {
+.page_color_toggler {
   position: absolute;
   height: 100%;
   width: 50px;
@@ -217,7 +217,7 @@ svg.logo-svg {
   opacity: 20%;
   transition: left .2s ease !important;
 }
-/***********************Title********************************************************************/
+/*********************** Title ********************************************************************/
 .title_container {
   padding-top: 20px;
   margin-bottom: 20px;

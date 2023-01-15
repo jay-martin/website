@@ -66,6 +66,10 @@ function toggle_page_color(mode){
   }, 1000);
 }
 
+function mobile_page_toggle(){
+  document.body.style.marginTop = '100vh';
+}
+
 /******************************** 2. Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');
 var displayHeight = $(window).innerHeight();

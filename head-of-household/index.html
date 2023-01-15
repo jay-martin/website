@@ -78,7 +78,7 @@
     <button onclick="toggle_page_color('light')">Light</button>
     <button onclick="toggle_page_color('sepia')">Sepia</button>
     <button onclick="toggle_page_color('dark')">Dark</button>
-    <div id="page_color_toggler"></div>
+    <div class="page_color_toggler"></div>
   </div>
 </div>
 
@@ -258,6 +258,17 @@
         </g>
       </svg>
     </a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+  <div class='mobile_dropdown_header'><b>Page Color</b></div>
+
+  <!-- Mobile Page Color Toggle -->
+  <div class="page_color_button_group">
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('light');mobile_page_toggle();">Light</button>
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('sepia');mobile_page_toggle();">Sepia</button>
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('dark');mobile_page_toggle();">Dark</button>
+    <div class="mobile_page_color_toggler"></div>
   </div>
 
 </div> <!-- mobile_dropdown -->

@@ -29,15 +29,11 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	HOHchart.data.colors({
+	topChart.data.colors({
 		point: '#dbdbdb',
 	});
 
-	regressiveChart.data.colors({
-		outline : '#dbdbdb',
-	});
-
-	marriagePenaltyChart.data.colors({
+	MPchart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb', 
 		person2 : '#cb3ede',
@@ -48,15 +44,11 @@ function dark_mode(){
 
 // Changes for light/sepia mode
 function light_mode(){
-		HOHchart.data.colors({
+	topChart.data.colors({
 		point: 'black',
 	});
 
-	regressiveChart.data.colors({
-		outline : 'black',
-	});
-
-	marriagePenaltyChart.data.colors({
+	MPchart.data.colors({
 		married       : 'black',
 		point_married : 'black', 
 		person2 : '#770087',
