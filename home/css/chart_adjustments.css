@@ -9,6 +9,11 @@
   display: none;
 }
 
+/* EITC Chart */
+.c3-circles-childless, .c3-circles-childless_married, .c3-circles-one_child, .c3-circles-one_child_married, .c3-circles-two_child, .c3-circles-two_child_married, .c3-circles-three_child, .c3-circles-three_child_married {
+  display: none;
+}
+
 /* HOH Chart */
 .c3-circles-HOH_Savings {
   display: none;
