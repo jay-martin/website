@@ -291,3 +291,92 @@ var tabletEITCChart = c3.generate({
         },
     }
 });
+
+
+/********************* Animation ******************************************************************************************************************************/
+// Initiate animation
+eitcStage = 0;
+var eitcTimeout;
+function eitc_animation() {
+    // Start the animation loop.
+    if(eitcStage == 0){
+        eitcTimeout = setTimeout(eitc_stage_1, 0);
+    }
+    else if(eitcStage == 1){
+        eitcTimeout = setTimeout(eitc_stage_2, 0);
+    }
+    else if(eitcStage == 2){
+        eitcTimeout = setTimeout(eitc_stage_3, 0);
+    }
+}
+
+// Cancel the pending setTimeout calls (triggered when user scrolls off of html element)
+function mouse_out_eitc(event) {
+    clearTimeout(eitcTimeout);
+}
+
+// Stage 1
+function eitc_stage_1(){
+    eitcChart.xgrids([ {value: 50000}, ]);
+    eitcChart.load({
+        columns: [ 
+            ['x_point', 50000], 
+            ['point0',  0],
+            ['point0M', 0],
+            ['point1',  eitc_value_2023(50000, 'single',  'one')],
+            ['point1M', eitc_value_2023(50000, 'married', 'one')],
+            ['point2',  eitc_value_2023(50000, 'single',  'two')],
+            ['point2M', eitc_value_2023(50000, 'married', 'two')],
+            ['point3',  eitc_value_2023(50000, 'single',  'three')],
+            ['point3M', eitc_value_2023(50000, 'married', 'three')],
+        ]
+    });
+
+    eitcStage++;
+    eitcTimeout = setTimeout(eitc_stage_2, 1000);
+}
+
+// Stage 2
+function eitc_stage_2(){
+    eitcChart.xgrids([ {value: 5000}, ]);
+    eitcChart.load({
+        columns: [ 
+            ['x_point', 5000], 
+            ['point0',  eitc_value_2023(5000, 'single',   'none')],
+            ['point0M', eitc_value_2023(5000, 'married',  'none')],
+            ['point1',  eitc_value_2023(5000, 'single',  'one')],
+            ['point1M', eitc_value_2023(5000, 'married', 'one')],
+            ['point2',  eitc_value_2023(5000, 'single',  'two')],
+            ['point2M', eitc_value_2023(5000, 'married', 'two')],
+            ['point3',  eitc_value_2023(5000, 'single',  'three')],
+            ['point3M', eitc_value_2023(5000, 'married', 'three')],
+        ]
+    });
+
+    eitcStage++;
+    eitcTimeout = setTimeout(eitc_stage_3, 1000);
+}
+
+// Stage 3
+function eitc_stage_3(){
+    eitcChart.xgrids([ {value: 20000}, ]);
+    eitcChart.load({
+        columns: [ 
+            ['x_point', 20000], 
+            ['point0',  eitc_value_2023(20000, 'single',   'none')],
+            ['point0M', eitc_value_2023(20000, 'married',  'none')],
+            ['point1',  eitc_value_2023(20000, 'single',  'one')],
+            ['point1M', eitc_value_2023(20000, 'married', 'one')],
+            ['point2',  eitc_value_2023(20000, 'single',  'two')],
+            ['point2M', eitc_value_2023(20000, 'married', 'two')],
+            ['point3',  eitc_value_2023(20000, 'single',  'three')],
+            ['point3M', eitc_value_2023(20000, 'married', 'three')],
+        ]
+    });
+
+    eitcStage = 0;
+    eitcTimeout = setTimeout(eitc_stage_1, 1000);
+}
+
+
+
