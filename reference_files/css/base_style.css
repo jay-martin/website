@@ -816,7 +816,7 @@ th.appendix_text {
   100% {transform: rotate(0deg);}
 }
 /******* References *****************************************************************************/
-.references, .notes{
+.references, .notes {
   font-size: 13px;
   line-height: 1.75em;
   display: block;
@@ -874,7 +874,7 @@ a.refs {
   visibility: visible;
   opacity: 1;
 }
-/*******Page Bottom*******************************************************************************/
+/******* Page Bottom *******************************************************************************/
 #bottom_logo, #bottom_name {
   font-family: 'Zen Antique Soft', serif;
 }

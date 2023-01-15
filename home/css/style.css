@@ -12,8 +12,8 @@ h1 {
   font-weight: 800;
 }
 h2 {
-  font-family: 'Zen Antique Soft', serif;
-  font-weight: 400;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   line-height: 1em;
   margin-top: 0px;
   text-align: center;
@@ -95,6 +95,15 @@ section.top {
   margin-top: 0px;
   margin-bottom: 20px;
 }
+.top_logo_container {
+  text-align: center;
+}
+svg.top_logo_svg {
+  width: 50%;
+  margin-top: 30px;
+  stroke: var(--base-text);
+  fill: var(--base-text);
+}
 #page_title {
   font-size: 300%;
   text-align: center;
@@ -103,7 +112,8 @@ section.top {
   padding-top: 0px;
 }
 .name {
-  font-family: 'Zen Antique Soft', serif;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   line-height: 2em;
   font-size: 120%;
   text-align: center;
@@ -133,7 +143,8 @@ a.bottom_social_links {
   margin-bottom: 2px;
 }
 .top_bar {
-  font-family: 'Zen Antique Soft', serif;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   font-size: 80%;
   width: 80%;
   margin-left: auto;
@@ -154,8 +165,8 @@ th.top_bar_item:hover {
   text-decoration: underline;
 }
 .top_bar_dropdown {
-  font-family: 'Zen Antique Soft', serif;
-  font-weight: 400;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   display: inline-block;
   margin-right: 16%;
 }
@@ -176,7 +187,8 @@ a.social_link {
   display: none;
 }
 table.dropdown_menu {
-  font-family: 'Zen Antique Soft', serif;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   font-size: 12px;
   width: 90%;
   margin-left: 5%;
@@ -213,7 +225,8 @@ th.dropdown_menu_column_bottom {
 .box_title_topbox {
   display: inline-block;
   vertical-align: top;
-  font-family: 'Zen Antique Soft', serif;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   width: 25%;
   height: 100%;
   padding: 15px;
@@ -267,8 +280,8 @@ th.dropdown_menu_column_bottom {
   margin-bottom: 20px;
 }
 .box_title{
-  font-family: 'Zen Antique Soft', serif;
-  font-weight: bold;
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 900;
   font-size: 140%;
   line-height: 150%;
   display: block;
