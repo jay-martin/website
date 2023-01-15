@@ -5,7 +5,7 @@
 var introductionChart = c3.generate({
     bindto: '#introduction_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

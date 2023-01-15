@@ -42,7 +42,7 @@
 }
 
 /*************** Infobox adjustments ***********************************************************************/
-.infobox_left, .infobox_right {
+.infobox_left, .infobox_center, .infobox_right {
 	border-radius: 10px;
 }
 /*************** Mobile page color toggler ******************************************************************/
@@ -74,8 +74,11 @@ section.page_bottom {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 700px) and (max-width: 900px) {
 /********* Hide Desktop Elements *******/
-.page_color_toggle_container {
+.page_color_toggle_container, #desktop_programs_container {
 	display: none;
+}
+#tablet_programs_container {
+	display: block;
 }
 /*************** Mobile page color toggler ******************************************************************/
 .mobile_page_color_button_group {

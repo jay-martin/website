@@ -5,7 +5,7 @@
 var twoTiersChart = c3.generate({
     bindto: '#poor_families_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

@@ -5,7 +5,7 @@
 var buildBackBetterChart = c3.generate({
     bindto: '#build_back_better_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

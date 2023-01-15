@@ -3,7 +3,7 @@
  * And the functions controlling the animation of that chart
  * ****************************************************************************************/
 
-if(window.innerWidth < 800){
+if(window.innerWidth < 900){
     marginal_tax_x_tick = [0, 20000, 40000, 60000, 80000, 100000];
 }
 else{
@@ -13,7 +13,7 @@ else{
 var marginalTaxChart = c3.generate({
     bindto: '#marginal_tax_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

@@ -5,7 +5,7 @@
 var problemsOverviewChart = c3.generate({
     bindto: '#problems_overview_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

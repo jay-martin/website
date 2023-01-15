@@ -5,7 +5,7 @@
 var tanf2Chart = c3.generate({
     bindto: '#tanf_2_chart',
     size: {
-        height: 200,
+        height: programsChartHeight,
     },
     data: {
         xs: {

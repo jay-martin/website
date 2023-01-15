@@ -10,6 +10,15 @@ else{
     green_shade = '#0c6300';
 }
 
+if(window.innerWidth < 900){
+    chartHeight = 230;
+    programsChartHeight = 230;
+}
+else{
+    chartHeight = 280;
+    programsChartHeight = 200;
+}
+
 /************************************************* Light/Dark Switch *************************************************/
 /** Controls page-specific changes that must be made when toggling between light, sepia, and dark modes
  * @param {string} - the mode the user selects ('light', 'sepia', or 'dark')

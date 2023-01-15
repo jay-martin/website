@@ -50,7 +50,7 @@ img.blog_promote_horizontal {
 }
 
 /*************** Hide Mobile Elements **********************************************************************/
-#mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown, .mobile_page_color_button_group {
+#mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {
   display: none;
 }
 /*************** Page Color Toggler ************************************************************************/

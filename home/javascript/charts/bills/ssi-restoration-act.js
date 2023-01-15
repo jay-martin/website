@@ -5,7 +5,7 @@
 var ssiRestorationActChart = c3.generate({
     bindto: '#ssi_restoration_act_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

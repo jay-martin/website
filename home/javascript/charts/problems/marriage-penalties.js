@@ -5,7 +5,7 @@
 var MPchart = c3.generate({
     bindto: '#marriage_penalties_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

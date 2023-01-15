@@ -5,7 +5,7 @@
 var assetTestsChart = c3.generate({
     bindto: '#asset_tests_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

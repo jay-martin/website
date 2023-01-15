@@ -5,7 +5,7 @@
 var fixingFamilyBenefitsChart = c3.generate({
     bindto: '#fixing_family_benefits_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {

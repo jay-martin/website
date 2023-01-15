@@ -5,7 +5,7 @@
 var workingFamiliesChart = c3.generate({
     bindto: '#working_families_tax_relief_chart',
     size: {
-        height: 280,
+        height: chartHeight,
     },
     data: {
         xs: {
