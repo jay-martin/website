@@ -30,17 +30,56 @@
 	display: block;
 }
 /*************** Mobile Blog Promotion *********************************************************************/
-.blog_promote_mobile, #blog_promote_mobile_link {
+.mobile_blog_container {
   display: block;
+  font-family: "Computer Modern Classical Serif Italic";
+
+  border-radius: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  transition: all .25s ease;
+  animation: gradient 10s ease infinite;
 }
-.blog_promote_mobile {
-  width: 100%;
+.mobile_blog_logo_container {
+	text-align: center;
+	padding-bottom: 10px;
 }
-#blog_promote_mobile_link {
-	margin-top: 10px;
+.mobile_blog_svg {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  width: 80px;
+  stroke: white;
+}
+.mobile_blog_horizontal_line {
+	height: 0px;
+	border-bottom: solid;
+	border-color: white;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 10px;
 }
-
+.mobile_blog_text {
+	font-size: 22px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+.large_font {
+	font-size: 24px;
+}
+.old_mincho {
+	font-family: 'Zen Old Mincho', serif;
+}
+.small_font {
+	font-size: 18px;
+	line-height: 1.2em;
+}
 /*************** Infobox adjustments ***********************************************************************/
 .infobox_left, .infobox_center, .infobox_right {
 	border-radius: 10px;
