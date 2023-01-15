@@ -2,28 +2,28 @@
  * This file contains the functions that outputs to the screen EITC values
  * ****************************************************************************************/
 
-/*Default values */
-document.getElementById('eitc-value').innerHTML = 'The head of household filing status saves you <b>$' + 862 + '</b> compared to filing as single.';
+/* Default Output */
+document.getElementById('eitc-value').innerHTML = 'One Child Single/HOH: <b>$3,995</b>';
 
-/* Calculates tax savings from the head of household status*/
-function difference_hoh(){
-    numChildren = num_children_formatting(num_children.value);
-    user_dif = tax_difference_at_income(user_income.value, itemized_deductions.value, numChildren);
-    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
-}
+/* Outputs EITC Values */
+function top_chart_outputs(){
+    income = user_income.value;
 
-/* Writes to page whether user would itemize or use the standard deduction */
-function deductType(){
-    single_deduct = single_deduction(itemized_deductions.value);
-    hoh_deduct = hoh_deduction(itemized_deductions.value);
+    zero_single   = eitc_value_2023(income, 'single',  'none').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    zero_married  = eitc_value_2023(income, 'married', 'none').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    one_single    = eitc_value_2023(income, 'single',  'one').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    one_married   = eitc_value_2023(income, 'married', 'one').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    two_single    = eitc_value_2023(income, 'single',  'two').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    two_married   = eitc_value_2023(income, 'married', 'two').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    three_single  = eitc_value_2023(income, 'single',  'three').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    three_married = eitc_value_2023(income, 'married', 'three').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-    if(single_deduct===12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';
-    }
-    else if(single_deduct>12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as a head of household but would <em>itemize</em> as a single filer.';
-    }
-    else{
-        document.getElementById('item_or_stand').innerHTML = 'You would <em>itemize</em> your deductions as both a single filer and head of household.';
-    }
+    document.getElementById('childless_li').innerHTML = 'Childless Single: <b>$' + zero_single + '</b>';
+    document.getElementById('childless_married_li').innerHTML = 'Childless Married: <b>$' + zero_married + '</b>';
+    document.getElementById('one_child_li').innerHTML = 'One Child Single/HOH: <b>$' + one_single + '</b>';
+    document.getElementById('one_child_married_li').innerHTML = 'One Child Married: <b>$' + one_married + '</b>';
+    document.getElementById('two_child_li').innerHTML = 'Two Child Single/HOH: <b>$' + two_single + '</b>';
+    document.getElementById('two_child_married_li').innerHTML = 'Two Child Married: <b>$' + two_married + '</b>';
+    document.getElementById('three_child_li').innerHTML = 'Three Child Single/HOH: <b>$' + three_single + '</b>';
+    document.getElementById('three_child_married_li').innerHTML = 'Three Child Married: <b>$' + three_married + '</b>';
 }

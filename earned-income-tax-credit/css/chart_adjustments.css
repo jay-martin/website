@@ -1,10 +1,6 @@
-/*hide points for all lines except point */
-.c3-circles-HOH_Savings, .c3-circles-after_ctc, .c3-circles-person_1, .c3-circles-person_2 {
-  display: none;
-}
-
-/* Regressive Chart */
-.c3-circles-max_benefit, .c3-circles-outline {
+/******************* Hide Points ******************************/
+/* Top Chart */
+.c3-circles-childless, .c3-circles-childless_married, .c3-circles-one_child, .c3-circles-one_child_married, .c3-circles-two_child, .c3-circles-two_child_married, .c3-circles-three_child, .c3-circles-three_child_married {
   display: none;
 }
 
@@ -15,14 +11,6 @@
 
 /******************* Opacity Settings ******************************/
 /* Setting opacity of hidden area to 0 for all modes deals with both sepia and dark modes */
-.c3-area-HOH_Savings {
-  opacity: 0 !important;
-}
-
 .c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-hoh_maried, .c3-area-hoh_combined, .c3-area-both_white, .c3-area-both_white_positive, .c3-area-both_white_negative {
-  opacity: 0 !important;
-}
-
-.c3-area-combined_tax, .c3-area-married_tax {
   opacity: 0 !important;
 }

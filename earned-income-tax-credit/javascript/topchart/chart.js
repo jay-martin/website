@@ -1,42 +1,100 @@
 /******************************************************************************************
- * This file contains the function creating the c3.js chart
- * DEFAULT GRAPH: Standard deduction for both single filer & HOH
+ * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
 var topChart = c3.generate({
     bindto: '#topchart',
     data: {
         xs: {
-            'HOH_Savings' : 'x',
-            'person1' : 'x1',
-            'person2' : 'x2',
-            'after_ctc' : 'x3',
+            'childless' :         'x0',
+            'childless_married' : 'x0M',
 
-            'point' : 'x_point',
+            'one_child' :         'x1',
+            'one_child_married' : 'x1M',
+
+            'two_child' :         'x2',
+            'two_child_married' : 'x2M',
+
+            'three_child' :         'x3',
+            'three_child_married' : 'x3M',
+
+            'point0' : 'x_point',
+            'point0M' : 'x_point',
+            'point1' : 'x_point',
+            'point1M' : 'x_point',
+            'point2' : 'x_point',
+            'point2M' : 'x_point',
+            'point3' : 'x_point',
+            'point3M' : 'x_point',
         },
         columns: [
-            ['x',            0, 12950, 19400, 23225, 34050, 54725, 75300, 102025, 108450, 183000, 189450, 228900, 235350, 552850, 559300, 600000],
-            ['HOH_Savings',  0, 0,     645,   645,   861.5, 861.5, 2919,  2919,   3047.5, 3047.5, 3563.5, 3563.5, 3757,   3757,   3886,   3886],
+            ['x0M',               0, 7840, 16370, 24210],
+            ['childless_married', 0, 600,  600,   0],
 
-            ['x_point', 50000],
-            ['point', 862],
+            ['x0',        0, 7840, 9800, 17640],
+            ['childless', 0, 600,  600,  0],
+
+            ['x1M',                0, 11750, 28120, 53120],
+            ['one_child_married', 0, 3995,  3995,  0],
+
+            ['x1',        0, 11750, 21560, 46560],
+            ['one_child', 0, 3995,  3995,  0],
+
+            ['x2M',               0, 16510, 28120, 59478],
+            ['two_child_married', 0, 6604,  6604,  0],
+
+            ['x2',        0, 16510, 21560, 52918],
+            ['two_child', 0, 6604,  6604,  0],
+
+            ['x3M',                 0, 16510, 28120, 63398],
+            ['three_child_married', 0, 7430,  7430,  0],
+
+            ['x3',          0, 16510, 21560, 56838],
+            ['three_child', 0, 7430,  7430,  0],
+
+            ['x_point', 20000],
+            ['point0',  0],
+            ['point0M', 322.3],
+            ['point1',  3995],
+            ['point1M', 3995],
+            ['point2',  6604],
+            ['point2M', 6604],
+            ['point3',  7430],
+            ['point3M', 7430],
+            
         ],
-        types: {
-            HOH_Savings: 'area',
-            person1: 'area',
-            person2: 'area',
-            after_ctc: 'area',
+        regions: {
+            childless_married   : [ {'style':'dashed'}, ],
+            one_child_married   : [ {'style':'dashed'}, ],
+            two_child_married   : [ {'style':'dashed'}, ],
+            three_child_married : [ {'style':'dashed'}, ],
         },
         names: {
-            HOH_Savings: 'HOH Tax Savings',
-            person1: 'Person 1',
-            person2: 'Person 2',
-            after_ctc: 'HOH Tax Savings after CTC'
+            childless:   'Childless',
+            one_child:   'One Child',
+            two_child:   'Two Children',
+            three_child: 'Three Children'
         },
         colors: {
-            HOH_Savings : '#f7c22f',
-            after_ctc   : '#6ab6fc',
-            point       :  white_or_black,
+            childless           : '#6ab6fc',
+            childless_married   : '#6ab6fc',
+            point0              : '#6ab6fc',
+            point0M             : '#6ab6fc',
+
+            one_child           : '#f7c22f',
+            one_child_married   : '#f7c22f',
+            point1              : '#f7c22f',
+            point1M             : '#f7c22f',
+
+            two_child           : '#fa0000',
+            two_child_married   : '#fa0000',
+            point2              : '#fa0000',
+            point2M             : '#fa0000',
+
+            three_child         : green_shade,
+            three_child_married : green_shade,
+            point3              : green_shade,
+            point3M             : green_shade,
         },
     },
     transition: {
@@ -50,7 +108,7 @@ var topChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point'],
+        hide: ['childless_married', 'one_child_married', 'two_child_married', 'three_child_married', 'point0', 'point0M', 'point1', 'point1M', 'point2', 'point2M', 'point3', 'point3M',],
     },
     tooltip: {
         show: false
@@ -60,19 +118,19 @@ var topChart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
+                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 65000]
             },
             padding: {left: 0, right: 0},
-            max: 600000,
+            max: 65000,
         },
         y: {
-            label: {text: 'Tax Savings', position: 'outer-middle'},
+            label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000, 6000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
             },
-            max: 4000,
-            padding: {top: 0},
+            max: 10000,
+            padding: {top: 0, bottom: 0},
         }
     },
     grid: {
@@ -80,10 +138,8 @@ var topChart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 50000, text: 'Your income'}],
+            lines: [{value: 20000, text: 'Your income'}],
             min: 0,
         },
-        y: {
-        }
     }
 });
