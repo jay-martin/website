@@ -46,7 +46,7 @@ button {
 }
 
 /*************** Hide Mobile Elements **********************************************************************/
-#mobile_top_bar, .mobile_blog_container, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {
+#page_title, #mobile_top_bar, .mobile_blog_container, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {
   display: none;
 }
 /*************** Page Color Toggler ************************************************************************/

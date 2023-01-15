@@ -19,7 +19,7 @@
 	display: table;
 }
 /*************** Hide Desktop Elements *****************************************************************************/
-#desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link, .page_color_toggle_container, .blog_container {
+.top_logo_container, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link, .page_color_toggle_container, .blog_container {
 	display: none;
 }
 /*************** Page Box Styling **************************************************************************/
@@ -27,6 +27,10 @@
 	width: 95%;
 }
 .box_level {
+	display: block;
+}
+/*************** Title *********************************************************************/
+#page_title {
 	display: block;
 }
 /*************** Mobile Blog Promotion *********************************************************************/
@@ -113,10 +117,14 @@ section.page_bottom {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 700px) and (max-width: 900px) {
 /********* Hide Desktop Elements *******/
-.page_color_toggle_container, #desktop_programs_container {
+.top_logo_container, .page_color_toggle_container, #desktop_programs_container {
 	display: none;
 }
 #tablet_programs_container {
+	display: block;
+}
+/*************** Title *********************************************************************/
+#page_title {
 	display: block;
 }
 /*************** Mobile page color toggler ******************************************************************/
