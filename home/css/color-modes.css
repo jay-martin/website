@@ -12,6 +12,7 @@
     --top-lines-color: black;
 
     --toggle-position: 0px;
+    --mobile-toggle-position: 0;
     --toggle-color: grey;
   }
 
@@ -29,6 +30,7 @@
     --top-lines-color: #dbdbdb;
 
     --toggle-position: 100px;
+    --mobile-toggle-position: 66.7%;
     --toggle-color: #a6a6a6;
   }
 }
@@ -52,6 +54,7 @@
   --top-lines-color: black;
 
   --toggle-position: 0px;
+  --mobile-toggle-position: 0;
   --toggle-color: grey;
 }
 
@@ -67,6 +70,7 @@
   --top-lines-color: #b5a177;
 
   --toggle-position: 49px;
+  --mobile-toggle-position: 33.3%;
   --toggle-color: #827868;
 }
 
@@ -82,11 +86,12 @@
   --top-lines-color: #dbdbdb;
 
   --toggle-position: 100px;
+  --mobile-toggle-position: 66.7%;
   --toggle-color: #a6a6a6;
 }
 
 /*********************** Transition Settings ******************************************************************************************************/
-body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_toggler {
+body, select, .page_color_toggler, a.sidebar_links, .other_pages a {
   transition: background-color 1s ease, color 1s ease;
 }
 .infobox_left, .infobox_center, .infobox_right, .top_box, .horizontal_line, .horizontal_line_top {
@@ -98,7 +103,7 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
 }
 /*************** Color Settings ****************************************************************************/
 /********** Toggler ***********************/
-#page_color_toggler {
+.page_color_toggler {
   left: var(--toggle-position);
   background-color: var(--toggle-color);
 }
@@ -106,7 +111,7 @@ body, select, #page_color_toggler, a.sidebar_links, .other_pages a, #page_color_
   border-color: var(--base-border) !important;
 }
 .page_color_button_group button {
-  color: var(--low-emphasis-color) !important;
+  color: var(--base-border) !important;
 }
 /********** Page Fundamentals *************/
 body, button {

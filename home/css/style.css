@@ -50,7 +50,7 @@ img.blog_promote_horizontal {
 }
 
 /*************** Hide Mobile Elements **********************************************************************/
-#mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown {
+#mobile_top_bar, .blog_promote_mobile, #blog_promote_mobile_link, .mobile_dropdown, .mobile_page_color_button_group {
   display: none;
 }
 /*************** Page Color Toggler ************************************************************************/
@@ -60,7 +60,7 @@ img.blog_promote_horizontal {
   left: 78.5%;
   width: 21.5%;
 }
-.page_color_button_group {
+.page_color_button_group, .mobile_page_color_button_group {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -70,7 +70,7 @@ img.blog_promote_horizontal {
   border-width: 1.5px;
   width: 150px;
 }
-.page_color_button_group button {
+.page_color_button_group button, .mobile_page_color_button_group button {
   border: none;
   width: 33.33%;
   float: left;
@@ -80,12 +80,12 @@ img.blog_promote_horizontal {
   padding-bottom: 5px;
   border-radius: 30px;
 }
-.page_color_button_group:after {
+.page_color_button_group:after, .mobile_page_color_button_group:after {
   content: "";
   clear: both;
   display: table;
 }
-#page_color_toggler {
+.page_color_toggler {
   position: absolute;
   height: 100%;
   width: 50px;

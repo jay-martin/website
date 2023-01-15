@@ -22,9 +22,11 @@ function toggle_page_color(mode){
     page_color_mode('dark');
 
     // Change browser default rendering to dark
+    /*
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
     }, 200);
+    */
   }
   else if(mode === 'sepia'){
     pageStyle = 'sepia';
@@ -34,9 +36,11 @@ function toggle_page_color(mode){
     page_color_mode('light');
 
     // Change browser default rendering to light
+    /*
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
     }, 200);
+    */
   }
   else if(mode === 'light'){
     pageStyle = 'light';
@@ -46,9 +50,11 @@ function toggle_page_color(mode){
     page_color_mode('light');
 
     // Change browser default rendering to light
+    /*
     setTimeout(function(){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
     }, 200);
+    */
   }
 
   //reset social icon transition speed

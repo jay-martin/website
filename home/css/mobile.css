@@ -45,27 +45,57 @@
 .infobox_left, .infobox_right {
 	border-radius: 10px;
 }
+/*************** Mobile page color toggler ******************************************************************/
+.mobile_page_color_button_group {
+	display: block;
+	border-color: var(--page-bottom-color);
+	margin-top: 20px;
+	font-size: 14px;
+	width: 92.5%;
+}
+.mobile_page_color_button_group button {
+	color: var(--page-bottom-color);
+}
+.page_color_toggler {
+	width: 33.3%;
+	left: var(--mobile-toggle-position);
+}
 /*************** Page bottom ******************************************************************************/
 section.page_bottom {
 	padding-bottom: 80px;
-}
-img.bottom_social_logos {
-	margin-left: 7.5px;
+	margin-top: 20px;
 }
 
-}
+} /** Bracket for @media screen **/
 
 /*********************************************************************************************
 * Some adjustments for tablets
 *********************************************************************************************/
 /* Set title back to middle of screen*/
-@media screen and (min-width: 800px) and (max-width: 900px) {
+@media screen and (min-width: 700px) and (max-width: 900px) {
+/********* Hide Desktop Elements *******/
+.page_color_toggle_container {
+	display: none;
+}
+/*************** Mobile page color toggler ******************************************************************/
+.mobile_page_color_button_group {
+	display: block;
+	border-color: var(--page-bottom-color);
+	margin-top: 30px;
+	font-size: 14px;
+	width: 90%;
+}
+.mobile_page_color_button_group button {
+	color: var(--page-bottom-color);
+}
+.page_color_toggler {
+	width: 33.3%;
+	left: var(--mobile-toggle-position);
+}
 /********* Page Bottom ************/
 section.page_bottom {
 	padding-bottom: 60px;
-}
-img.bottom_social_logos {
-	height: 20px;
+	margin-top: 40px;
 }
 
 }
