@@ -482,10 +482,14 @@
       </div>
 
       <!--End animation button-->
-      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+      <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
 
       <!-- Top Chart -->
       <div id="topchart"></div>
+
+      <!-- Zoom on Lower Incomes -->
+      <label>Zoom on lower incomes: </label>
+      <input type="checkbox" id="top_chart_zoom" oninput='zoom_top_chart()'>
 
     </div> <!--chart end-->
 
