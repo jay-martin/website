@@ -6,95 +6,23 @@ var topChart = c3.generate({
     bindto: '#topchart',
     data: {
         xs: {
-            'childless' :         'x0',
-            'childless_married' : 'x0M',
-
-            'one_child' :         'x1',
-            'one_child_married' : 'x1M',
-
-            'two_child' :         'x2',
-            'two_child_married' : 'x2M',
-
-            'three_child' :         'x3',
-            'three_child_married' : 'x3M',
-
-            'point0' : 'x_point',
-            'point0M' : 'x_point',
-            'point1' : 'x_point',
-            'point1M' : 'x_point',
-            'point2' : 'x_point',
-            'point2M' : 'x_point',
-            'point3' : 'x_point',
-            'point3M' : 'x_point',
+            'ctc'   : 'x',
+            'point' : 'x_point',
         },
         columns: [
-            ['x0M',               0, 7840, 16370, 24210],
-            ['childless_married', 0, 600,  600,   0],
+            ['x',   0, 2500, 13167, 20800, 24800, 200000, 240000],
+            ['ctc', 0, 0,    1600,  1600,  2000,  2000,   0],
 
-            ['x0',        0, 7840, 9800, 17640],
-            ['childless', 0, 600,  600,  0],
-
-            ['x1M',                0, 11750, 28120, 53120],
-            ['one_child_married', 0, 3995,  3995,  0],
-
-            ['x1',        0, 11750, 21560, 46560],
-            ['one_child', 0, 3995,  3995,  0],
-
-            ['x2M',               0, 16510, 28120, 59478],
-            ['two_child_married', 0, 6604,  6604,  0],
-
-            ['x2',        0, 16510, 21560, 52918],
-            ['two_child', 0, 6604,  6604,  0],
-
-            ['x3M',                 0, 16510, 28120, 63398],
-            ['three_child_married', 0, 7430,  7430,  0],
-
-            ['x3',          0, 16510, 21560, 56838],
-            ['three_child', 0, 7430,  7430,  0],
-
-            ['x_point', 20000],
-            ['point0',  0],
-            ['point0M', 322.3],
-            ['point1',  3995],
-            ['point1M', 3995],
-            ['point2',  6604],
-            ['point2M', 6604],
-            ['point3',  7430],
-            ['point3M', 7430],
+            ['x_point', 18000],
+            ['point',   1600],
             
         ],
-        regions: {
-            childless_married   : [ {'style':'dashed'}, ],
-            one_child_married   : [ {'style':'dashed'}, ],
-            two_child_married   : [ {'style':'dashed'}, ],
-            three_child_married : [ {'style':'dashed'}, ],
-        },
         names: {
-            childless:   'Childless',
-            one_child:   'One Child',
-            two_child:   'Two Children',
-            three_child: 'Three Children'
+            ctc: 'Child Tax Credit',
         },
         colors: {
-            childless           : '#6ab6fc',
-            childless_married   : '#6ab6fc',
-            point0              : '#6ab6fc',
-            point0M             : '#6ab6fc',
-
-            one_child           : '#f7c22f',
-            one_child_married   : '#f7c22f',
-            point1              : '#f7c22f',
-            point1M             : '#f7c22f',
-
-            two_child           : '#fa0000',
-            two_child_married   : '#fa0000',
-            point2              : '#fa0000',
-            point2M             : '#fa0000',
-
-            three_child         : green_shade,
-            three_child_married : green_shade,
-            point3              : green_shade,
-            point3M             : green_shade,
+            ctc   : '#6ab6fc',
+            point : '#6ab6fc',
         },
     },
     transition: {
@@ -108,7 +36,7 @@ var topChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['childless_married', 'one_child_married', 'two_child_married', 'three_child_married', 'point0', 'point0M', 'point1', 'point1M', 'point2', 'point2M', 'point3', 'point3M',],
+        hide: ['point'],
     },
     tooltip: {
         show: false
@@ -118,19 +46,18 @@ var topChart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 65000]
+                values: [0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000]
             },
             padding: {left: 0, right: 0},
-            max: 65000,
         },
         y: {
-            label: {text: 'EITC Value', position: 'outer-middle'},
+            label: {text: 'CTC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000,]
             },
-            max: 10000,
-            padding: {top: 0, bottom: 0},
+
+            padding: {top: 85, bottom: 0},
         }
     },
     grid: {
@@ -138,7 +65,7 @@ var topChart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 20000, text: 'Your income'}],
+            lines: [{value: 18000, text: 'Your income'}],
             min: 0,
         },
     }

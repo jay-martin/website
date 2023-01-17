@@ -439,12 +439,28 @@
     <div class="chart">
       <!--User inputs------------------------------>
       <div class="user_inputs" id="user_inputs">
+
+        <!--Filing Status-->
+        <label>I am a</label>
+        <select id="filing_status" oninput="adjust_curve();modify_income();top_chart_outputs();">
+          <option value="single">single filer</option>
+          <option value="hoh" selected>head of household</option>
+          <option value="married">married joint filer</option>
+        </select>
+
+        <!--Number of children-->
+        <label>and I have</label>
+        <select id="num_children" oninput="adjust_curve();modify_income();top_chart_outputs();">
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3 children</option>
+        </select>.
         
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
-          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</div>
+          <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">18,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="70000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+            <input type="range" min="0" max="250000" value="18000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
           </div>
         </div>
 
@@ -452,7 +468,7 @@
 
       <!-- EITC Values -->
       <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-        <!-- <p class="explanation_text" id="eitc-value"></p> -->
+        <p class="explanation_text" id="ctc_output">Your child tax credit is worth <b>$1,600</b></p>
 
         <p class="explanation_text" id="explanation_line1"></p>
         <p class="explanation_text" id="explanation_line2"></p>
@@ -778,12 +794,6 @@
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
-
-<!-- Marriage Penalties Javascript files -->
-<script type="text/javascript" src="./javascript/marriage-penalties/chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/outputs.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/calculate.js"></script>
 
 </body>
 </html>

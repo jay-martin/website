@@ -1,3 +1,6 @@
+
+/********************** Base Tax Liability (w/ Standard Deduction) ************************************************/
+
 /** Returns 2023 tax liability at a given income for a particular filing status
  * @param {string} - string representing the filing status ('married', 'hoh', 'single')
  * @param {integer} - income
@@ -170,9 +173,11 @@ function tax_liability_2022(filingStatus, income){
 	}
 }
 
+/********************** EITC ****************************************************************************************************/
+
 /** Returns the value of the 2023 EITC at a given income for a given filing status and number of children
- * @param {string} - string representing the filing status ('married', 'hoh', 'single')
  * @param {integer} - income
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * @return {float} - value of EITC
  * */
@@ -295,6 +300,99 @@ function eitc_value_2022(income, filingStatus, numChildren){
 	}
 	return benefit;
 }
+
+/********************** CTC ****************************************************************************************************/
+/** Returns the value of the 2023 CTC at a given income for a given filing status and number of children
+ * @param {integer} - income
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - value of CTC
+ * */
+function ctc_value_2023(income, filingStatus, numChildren){
+	// Return 0 conditions
+	if(numChildren === 'none' || income <= 2500){
+		return 0;
+	}
+
+	if(filingStatus === 'single'){
+		if(numChildren === 'one'){
+			if(income < 13167){ return .15 * (income - 2500);}
+			else if(income <= 13850){ return 1600;}
+			else if(income < 17850){ return 1600 + .1 * (income - 13850);}
+			else if(income <= 200000){ return 2000;}
+			else if(income < 240000){ return 2000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'two'){
+			if(income <= 13850){ return .15 * (income - 2500);}
+			else if(income < 23040){ return 1702.5 + .25 * (income - 13850);}
+			else if(income <= 200000){ return 4000;}
+			else if(income < 280000){ return 4000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'three'){
+			if(income <= 13850){ return .15 * (income - 2500);}
+			else if(income <= 24850){ return 1702.5 + .25 * (income - 13850);}
+			else if(income < 30581){ return 4452.5 + .27 * (income - 24850);}
+			else if(income <= 200000){ return 6000;}
+			else if(income < 3200000){ return 6000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+	}
+	else if(filingStatus === 'hoh'){
+		if(numChildren === 'one'){
+			if(income < 13167){ return .15 * (income - 2500);}
+			else if(income <= 20800){ return 1600;}
+			else if(income < 24800){return 1600 + .1 * (income - 20800);}
+			else if(income <= 200000){return 2000;}
+			else if(income < 240000){return 2000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'two'){
+			if(income <= 20800){ return .15 * (income - 2500);}
+			else if(income <= 23833){return 2745 + .25 * (income - 20800);}
+			else if(income < 28800){return 3503.25 + .1 * (income - 23833);}
+			else if(income <= 200000){return 4000;}
+			else if(income < 280000){return 4000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'three'){
+			if(income <= 20800){ return .15 * (income - 2500);}
+			else if(income < 33820){return 2745 + .25 * (income - 20800);}
+			else if(income <= 200000){return 6000;}
+			else if(income < 280000){return 6000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+	}
+	else if(filingStatus === 'married'){
+		if(numChildren === 'one'){
+			if(income < 13167){ return .15 * (income - 2500);}
+			else if(income <= 27700){ return 1600;}
+			else if(income < 31700){return 1600 + .1 * (income - 27700);}
+			else if(income <= 400000){return 2000;}
+			else if(income < 440000){return 2000 - .05 * (income - 400000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'two'){
+			if(income < 23833){ return .15 * (income - 2500);}
+			else if(income <= 27700){ return 3200;}
+			else if(income < 35700){return 3200 + .1 * (income - 27700);}
+			else if(income <= 400000){return 4000;}
+			else if(income < 480000){return 4000 - .05 * (income - 400000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'three'){
+			if(income <= 27700){ return .15 * (income - 2500);}
+			else if(income <= 34500){ return 3780 + .25 * (income - 27700);}
+			else if(income < 39700){return 5480 + .1 * (income - 34500);}
+			else if(income <= 400000){return 6000;}
+			else if(income < 520000){return 6000 - .05 * (income - 400000);}
+			else{return 0;}
+		}
+	}
+}
+
+/********************** Sum Children ****************************************************************************************************/
 
 /** Returns a string representing the number of children for the purposes of calculating the married EITC
  * When the number of children is three or greater, 'three' is returned. This is because their is only one EITC curve for families with more three or more children.

@@ -1,4 +1,10 @@
-/****************************************************************EITC****************************************************************/
+/************************* EITC ****************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2023 single/hoh eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
 function single_eitc_builder_2023(chartName, xName, dataName, numChildren){
 	if(numChildren === 'three'){
 		chartName.load({
@@ -34,6 +40,12 @@ function single_eitc_builder_2023(chartName, xName, dataName, numChildren){
 	}
 }
 
+/** Loads to a c3.js chart a curve for the 2023 married eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
 function married_eitc_builder_2023(chartName, xName, dataName, numChildren){
 	if(numChildren === 'three'){
 		chartName.load({
@@ -69,6 +81,12 @@ function married_eitc_builder_2023(chartName, xName, dataName, numChildren){
 	}
 }
 
+/** Loads to a c3.js chart a curve for the 2022 single/hoh eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
 function single_eitc_builder_2022(chartName, xName, dataName, numChildren){
 	if(numChildren === "none"){
         chartName.load({
@@ -104,6 +122,12 @@ function single_eitc_builder_2022(chartName, xName, dataName, numChildren){
     }
 }
 
+/** Loads to a c3.js chart a curve for the 2022 married eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
 function married_eitc_builder_2022(chartName, xName, dataName, numChildren){
 	if(numChildren === 'three'){
 		chartName.load({
@@ -139,7 +163,12 @@ function married_eitc_builder_2022(chartName, xName, dataName, numChildren){
 	}
 }
 
-/****************************************************************Tax Brackets****************************************************************/
+/************************* Tax Brackets ****************************************************************************************************/
+/** Loads to a c3.js chart a curve of the 2023 tax liability (including standard deduction) of a single taxpayer
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function single_tax_liability_builder_2023(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -150,6 +179,11 @@ function single_tax_liability_builder_2023(chartName, xName, dataName){
 
 }
 
+/** Loads to a c3.js chart a curve of the 2023 tax liability (including standard deduction) of a head of household
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function hoh_tax_liability_builder_2023(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -159,6 +193,11 @@ function hoh_tax_liability_builder_2023(chartName, xName, dataName){
     });
 }
 
+/** Loads to a c3.js chart a curve of the 2023 tax liability (including standard deduction) of a married taxpayer
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function married_tax_liability_builder_2023(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -168,6 +207,11 @@ function married_tax_liability_builder_2023(chartName, xName, dataName){
     });
 }
 
+/** Loads to a c3.js chart a curve of the 2022 tax liability (including standard deduction) of a single taxpayer
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function single_tax_liability_builder_2022(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -178,6 +222,11 @@ function single_tax_liability_builder_2022(chartName, xName, dataName){
 
 }
 
+/** Loads to a c3.js chart a curve of the 2022 tax liability (including standard deduction) of a head of household
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function hoh_tax_liability_builder_2022(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -187,6 +236,11 @@ function hoh_tax_liability_builder_2022(chartName, xName, dataName){
     });
 }
 
+/** Loads to a c3.js chart a curve of the 2022 tax liability (including standard deduction) of a married taxpayer
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * */
 function married_tax_liability_builder_2022(chartName, xName, dataName){
 	chartName.load({
         columns: [
@@ -196,4 +250,127 @@ function married_tax_liability_builder_2022(chartName, xName, dataName){
     });
 }
 
+/************************* CTC ****************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2023 single CTC for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function single_ctc_builder_2023(chartName, xName, dataName, numChildren){
+	if(numChildren === 'three'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13850,  24850,  30581, 200000, 320000],
+    			[dataName, 0, 0,    1702.5, 4452.5, 6000,  6000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'two'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13850,  23040, 200000, 280000],
+    			[dataName, 0, 0,    1702.5, 4000,  4000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'one'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13167, 13850, 17850, 200000, 240000],
+    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'none'){
+		chartName.load({
+    		columns: [
+    			[xName,    0,],
+    			[dataName, 0,],
+			]
+    	});
+	}
+}
+
+/** Loads to a c3.js chart a curve for the 2023 HOH CTC for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function hoh_ctc_builder_2023(chartName, xName, dataName, numChildren){
+	if(numChildren === 'three'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 20800, 33820, 200000, 320000],
+    			[dataName, 0, 0,    2745,  6000,  6000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'two'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 20800, 23833,   28800, 200000, 280000],
+    			[dataName, 0, 0,    2745,  3503.25, 4000,  4000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'one'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13167, 20800, 24800, 200000, 240000],
+    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'none'){
+		chartName.load({
+    		columns: [
+    			[xName,    0,],
+    			[dataName, 0,],
+			]
+    	});
+	}
+}
+
+/** Loads to a c3.js chart a curve for the 2023 married CTC for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
+	if(numChildren === 'three'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 27700, 34500, 39700, 400000, 520000],
+    			[dataName, 0, 0,    3780,  5480,  6000,  6000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'two'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 23833, 27700, 35700, 400000, 480000],
+    			[dataName, 0, 0,    3200,  3200,  4000,  4000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'one'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13167, 27700, 31700, 400000, 440000],
+    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0 ],
+			]
+    	});
+	}
+	else if(numChildren === 'none'){
+		chartName.load({
+    		columns: [
+    			[xName,    0,],
+    			[dataName, 0,],
+			]
+    	});
+	}
+}
 

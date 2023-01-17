@@ -1,23 +1,34 @@
 /******************************************************************************************
  * This file controls adjustments to the Top Chart
  * ****************************************************************************************/
+
 /* Moves the income slider */
 function modify_income(){
     income = user_income.value;
+    filingStatus = filing_status.value;
+    numChildren = num_children.value;
 
     topChart.xgrids([{value: income, text:'Your income'}]);
     topChart.load({
         columns: [
             ['x_point', income],
-
-            ['point0',   eitc_value_2023(income, 'single',  'none')],
-            ['point0M',  eitc_value_2023(income, 'married', 'none')],
-            ['point1',   eitc_value_2023(income, 'single',  'one')],
-            ['point1M',  eitc_value_2023(income, 'married', 'one')],
-            ['point2',   eitc_value_2023(income, 'single',  'two')],
-            ['point2M',  eitc_value_2023(income, 'married', 'two')],
-            ['point3',   eitc_value_2023(income, 'single',  'three')],
-            ['point3M',  eitc_value_2023(income, 'married', 'three')],
+            ['point',   ctc_value_2023(income, filingStatus, numChildren)],
         ]
     });
+}
+
+/* Adjusts the curve according to filing status and number of children */
+function adjust_curve(){
+    numChildren = num_children.value;
+    filingStatus = filing_status.value;
+
+    if(filingStatus === 'single'){
+        single_ctc_builder_2023(topChart, 'x', 'ctc', numChildren);
+    }
+    else if(filingStatus === 'hoh'){
+        hoh_ctc_builder_2023(topChart, 'x', 'ctc', numChildren);
+    }
+    else if(filingStatus === 'married'){
+        married_ctc_builder_2023(topChart, 'x', 'ctc', numChildren);
+    }
 }
