@@ -4,7 +4,7 @@
  * (2) Adjust the position of the left sidebar on scroll
  * (3) Adjust the color of the Twitter & Substack icons
  * (4) Expands the mobile dropdown
- * (5) Highlights a reference when an in-line citation from the notes section is clicked
+ * (5) Highlights a reference or note when a citation is clicked
  * (6) Expands and collapses the list of programs/bills in the page list
  * (7) Opens and closes the top chart highlights
  * (8) Opens and closes appendix sections
@@ -230,7 +230,10 @@ function close_dropdown(){
 }
 
 /*************************** 5. References Highlighting ******************************/
-/** Adds a yellow highlight when the user clicks in inline-citation
+const ref_items = document.querySelectorAll('.ref_item');
+const note_items = document.querySelectorAll('.note_item');
+
+/** Adds a yellow highlight to a reference
  * @param {string} - the html id of the reference to be highlighted
  * */
 function highlight_ref(ref){
@@ -240,10 +243,21 @@ function highlight_ref(ref){
   document.getElementById(ref).classList.add('highlighted');
 }
 
+/** Adds a yellow highlight to a note
+ * @param {string} - the html id of the note to be highlighted
+ * */
 function highlight_note(note){
+  // Clear any existing notes highlight
   note_items.forEach(note_items => {
-    note_item.sclassList.remove('highlighted');
+    note_items.classList.remove('highlighted');
   });
+
+  // Clear any existing references highlight
+  ref_items.forEach(ref_items => {
+    ref_items.classList.remove('highlighted');
+  });
+
+  // Add highlight to selected note
   document.getElementById(note).classList.add('highlighted');
 }
 

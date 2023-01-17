@@ -4,7 +4,6 @@
  * ****************************************************************************************/
 
 //setup for page calculations
-const ref_items = document.querySelectorAll('.ref_item');
 programsHeight = 0;
 billsHeight = 0;
 var isMobile = false;
