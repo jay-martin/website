@@ -183,17 +183,20 @@ $(document).ready(function(){
 // Used to keep track of whether the dropdown is currently open or currently closes
 navbarClicked = false;
 
-// Opens and closes the dropdown menu
+// Opens and closes the dropdown menu when the open/close icon is clicked
 function reveal_dropdown(){
+  // Opens the dropdown menu
   if(navbarClicked === false){
 
-    // dropdown animation
+    // dropdown reveal animation
     $('#mobile_dropdown').removeClass('collapse_dropdown');
     $('#mobile_dropdown').addClass('reveal_dropdown');
 
+    // Maintain page position of mobile navbar
     $('#mobile_navbar').removeClass('maintain_navbar_position_up');
     $('#mobile_navbar').addClass('maintain_navbar_position_down');
     
+    // Push down page with the dropdown menu animation
     $('body').removeClass('push_up_page');
     $('body').addClass('push_down_page');
 
@@ -202,13 +205,17 @@ function reveal_dropdown(){
 
     navbarClicked = true;
   }
+  // Closes the dropdown menu
   else{
+    // dropdown close animation
     $('#mobile_dropdown').removeClass('reveal_dropdown');
     $('#mobile_dropdown').addClass('collapse_dropdown');
     
+    // Maintain page position of mobile navbar
     $('#mobile_navbar').removeClass('maintain_navbar_position_down');
     $('#mobile_navbar').addClass('maintain_navbar_position_up');
     
+    // Page pulls up with the dropdown menu animation
     $('body').removeClass('push_down_page');
     $('body').addClass('push_up_page');
 
@@ -219,17 +226,24 @@ function reveal_dropdown(){
   }
 }
 
+// Closes the dropdown menu when a "Go To Page Section" link is clicked
 function close_dropdown(){
+  // Set scroll behavior to auto so that the correct portion of the page will be underneath the dropdown without any delay
   $('html').css('scroll-behavior', 'auto');
+
+  // Change icon to open
   $('#navigation_bar_button').toggleClass('open');
+
+  // Collapse the dropdown menu
   reveal_dropdown();
 
+  // Reset scroll behavior to smooth
   setTimeout(function(){
     $('html').css('scroll-behavior', 'smooth');
   }, 100);
 }
 
-/*************************** 5. References Highlighting ******************************/
+/*************************** 5. References/Notes Highlighting ******************************/
 const ref_items = document.querySelectorAll('.ref_item');
 const note_items = document.querySelectorAll('.note_item');
 
@@ -237,9 +251,12 @@ const note_items = document.querySelectorAll('.note_item');
  * @param {string} - the html id of the reference to be highlighted
  * */
 function highlight_ref(ref){
+  // Clear any references highlight
   ref_items.forEach(ref_items => {
     ref_items.classList.remove('highlighted');
   });
+
+  // Add highlight to selected reference
   document.getElementById(ref).classList.add('highlighted');
 }
 
@@ -335,7 +352,7 @@ function adjust_bottom_apendix_border(){
   }
 }
 
-/** Rotates icon icon by 180 degrees
+/** Rotates icon by 180 degrees
  * @param {string} - id of icon to be rotated
  * */
 var icon_isRotated = new Object();
