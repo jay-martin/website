@@ -143,3 +143,75 @@ var tabletCTCChart = c3.generate({
         },
     }
 });
+
+/********************** Animation ********************************************************************************/
+/* Moves the income slider */
+function ctc_modify_income(income, filingStatus, numChildren){
+    ctcChart.xgrids([{value: income,}]);
+    ctcChart.load({
+        columns: [
+            ['x_point', income],
+            ['point',   ctc_value_2023(income, filingStatus, numChildren)],
+        ]
+    });
+}
+
+// Initiate animation
+ctc_stage = 0;
+var ctc_timeout;
+function ctc_animation() {
+    // Start the animation loop.
+    if(ctc_stage == 0){
+        ctc_timeout = setTimeout(ctc_stage_1, 0);
+    }
+    else if(ctc_stage == 1){
+        ctc_timeout = setTimeout(ctc_stage_2, 0);
+    }
+    else if(ctc_stage == 2){
+        ctc_timeout = setTimeout(ctc_stage_3, 0);
+    }
+    else if(ctc_stage == 3){
+        ctc_timeout = setTimeout(ctc_stage_4, 0);
+    }
+}
+
+// Cancel the pending setTimeout calls (triggered when user scrolls off of html element)
+function mouse_out_ctc(event) {
+    clearTimeout(ctc_timeout);
+}
+
+//Stage 1
+function ctc_stage_1(){
+    single_ctc_builder_2023(ctcChart, 'x', 'ctc', 'two');
+    ctc_modify_income(100000, 'single', 'two');
+
+    ctc_stage++;
+    ctc_timeout = setTimeout(ctc_stage_2, 1000);
+}
+
+//Stage 2
+function ctc_stage_2(){
+    hoh_ctc_builder_2023(ctcChart, 'x', 'ctc', 'three');
+    ctc_modify_income(100000, 'hoh', 'three');
+
+    ctc_stage++;
+    ctc_timeout = setTimeout(ctc_stage_3, 1000);
+}
+
+//Stage 3
+function ctc_stage_3(){
+    single_ctc_builder_2023(ctcChart, 'x', 'ctc', 'one');
+    ctc_modify_income(100000, 'single', 'one');
+
+    ctc_stage++;
+    ctc_timeout = setTimeout(ctc_stage_4, 1000);
+}
+
+//Stage 4
+function ctc_stage_4(){
+    hoh_ctc_builder_2023(ctcChart, 'x', 'ctc', 'one');
+    ctc_modify_income(18000, 'hoh', 'one');
+
+    ctc_stage = 0;
+    ctc_timeout = setTimeout(ctc_stage_1, 1000);
+}
