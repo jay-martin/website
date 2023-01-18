@@ -1,0 +1,7 @@
+/******************* Hide Points ******************************/
+/* Top Chart */
+.c3-circles-credit_amount, .c3-circles-credit_rate {
+  display: none;
+}
+
+/******************* Opacity Settings ******************************/

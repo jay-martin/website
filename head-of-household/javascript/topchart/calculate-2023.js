@@ -5,7 +5,7 @@
 
 /** Returns the difference in tax liability between a single filer and a head of household at a given income & itemized deductions value
  * @param {integer} - income
- * @paragm {integer} - value of itemized deductions
+ * @param {integer} - value of itemized deductions
  * @return {float} - tax difference
  * */
 function hoh_tax_difference_2023(income, itemDeduct){
@@ -16,7 +16,7 @@ function hoh_tax_difference_2023(income, itemDeduct){
 }
 
 /** Returns an array of two arrays containing: (1) the x-values for c3.js; (2) the difference in tax liability between single & hoh filing statuses
- * @paragm {integer} - value of itemized deductions
+ * @param {integer} - value of itemized deductions
  * @return {array of two arrays of floats} - first array contains x-values, second contains difference in tax liability between single & hoh filing statuses
  * */
 function hoh_chart_values_2023(itemDeduct){
@@ -36,8 +36,20 @@ function hoh_chart_values_2023(itemDeduct){
 	return [combined_brackets, tax_difference];
 }
 
+function hoh_chart_values_2023_with_cdcc(itemDeduct){
+	//single_zero_value = 31329.17; // occurs during 12% tax bracket
+	//hoh_zero_value = 38508.33; // occurs during 12% tax bracket
+
+}
+
+function hoh_chart_values_2023_with_nonrefundable_ctc(itemDeduct, numChildren){
+	//single_zero_value = 31329.17; // occurs during 12% tax bracket
+	//hoh_zero_value = 38508.33; // occurs during 12% tax bracket
+
+}
+
 /** Returns effective single tax bracket values when adjusted for a given itemized deductions value
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function single_adjusted_brackets_2023(itemDeduct){
@@ -55,7 +67,7 @@ function single_adjusted_brackets_2023(itemDeduct){
 }
 
 /** Returns effective hoh tax bracket values when adjusted for a given itemized deductions value
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function hoh_adjusted_brackets_2023(itemDeduct){
@@ -73,7 +85,7 @@ function hoh_adjusted_brackets_2023(itemDeduct){
 }
 
 /** Returns either the standard deduction or the itemized deduction depending upon which a single taxpayer would use
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {integer} - larger of the single standard deduction and param itemDeduct
  * */
 function single_deduction_2023(itemDeduct){
@@ -87,7 +99,7 @@ function single_deduction_2023(itemDeduct){
 }
 
 /** Returns either the standard deduction or the itemized deduction depending upon which a head of household would use
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {integer} - larger of the HOH standard deduction and param itemDeduct
  * */
 function hoh_deduction_2023(itemDeduct){
@@ -101,8 +113,8 @@ function hoh_deduction_2023(itemDeduct){
 }
 
 /** Merges the adjusted single and hoh tax bracket arrays
- * @paragm {array of integers} - adjusted single tax bracket values
- * @paragm {array of integers} - adjusted hoh tax bracket values
+ * @param {array of integers} - adjusted single tax bracket values
+ * @param {array of integers} - adjusted hoh tax bracket values
  * @return {sorted array of integers} - merged single & hoh tax bracket values
  * */
 function combined_brackets_2023(single_tax_brackets, hoh_tax_brackets){
@@ -197,8 +209,42 @@ function single_tax_liability_2023_with_deduction_value(income, deductionValue){
 	}
 }
 
+/** Returns tax liability of a head of household after the NON-refundable portion of the CTC has been applied
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @param {string} - string representing an integer ('none', 'one', 'two', 'three')
+ * @return {integer} - tax owed
+ * */
+hoh_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildren){
+	num_children_integer = num_children_formatting(numChildren);
+	base_tax = hoh_tax_liability_2023_with_deduction_value(income, deductionValue) - (2000 * num_children_integer);
+	if(base_tax <= 0){
+		return 0;
+	}
+	else{
+		return base_tax;
+	}
+}
+
+/** Returns tax liability of a single filer after the NON-refundable portion of the CTC has been applied
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @param {string} - string representing an integer ('none', 'one', 'two', 'three')
+ * @return {integer} - tax owed
+ * */
+single_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildren){
+	num_children_integer = num_children_formatting(numChildren);
+	base_tax = single_tax_liability_2023_with_deduction_value(income, deductionValue) - (2000 * num_children_integer);
+	if(base_tax <= 0){
+		return 0;
+	}
+	else{
+		return base_tax;
+	}
+}
+
 /** Converts string representing an integer into an integer
- * @paragm {string} - string representing an integer ('none', 'one', 'two', 'three')
+ * @param {string} - string representing an integer ('none', 'one', 'two', 'three')
  * @return {integer}
  * */
 function num_children_formatting(num_children_string){

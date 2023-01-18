@@ -5,7 +5,7 @@
 
 /** Returns the difference in tax between a single filer and a head of household at a given income, value of itemized deductions, and number of children
  * @param {integer} - income
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * @return {float} - tax difference
  * */
@@ -17,7 +17,7 @@ function hoh_tax_difference_2022(income, itemDeduct, numChildren){
 }
 
 /** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of two arrays of floats} - 
  * */
 function hoh_chart_values_2022(itemDeduct){
@@ -38,7 +38,7 @@ function hoh_chart_values_2022(itemDeduct){
 }
 
 /** Returns effective single tax bracket values when adjusted for a given itemized deductions value
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function single_adjusted_brackets_2022(itemDeduct){
@@ -56,7 +56,7 @@ function single_adjusted_brackets_2022(itemDeduct){
 }
 
 /** Returns effective hoh tax bracket values when adjusted for a given itemized deductions value
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function hoh_adjusted_brackets_2022(itemDeduct){
@@ -74,7 +74,7 @@ function hoh_adjusted_brackets_2022(itemDeduct){
 }
 
 /** Returns either the standard deduction or the itemized deduction depending upon which a single taxpayer would use
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {integer} - larger of the single standard deduction and param itemDeduct
  * */
 function single_deduction_2022(itemDeduct){
@@ -88,7 +88,7 @@ function single_deduction_2022(itemDeduct){
 }
 
 /** Returns either the standard deduction or the itemized deduction depending upon which a head of household would use
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {integer} - larger of the HOH standard deduction and param itemDeduct
  * */
 function hoh_deduction_2022(itemDeduct){
@@ -102,8 +102,8 @@ function hoh_deduction_2022(itemDeduct){
 }
 
 /** Merges the adjusted single and hoh tax bracket arrays
- * @paragm {array of integers} - adjusted single tax bracket values
- * @paragm {array of integers} - adjusted hoh tax bracket values
+ * @param {array of integers} - adjusted single tax bracket values
+ * @param {array of integers} - adjusted hoh tax bracket values
  * @return {sorted array of integers} - merged single & hoh tax bracket values
  * */
 function combined_brackets_2022(single_tax_brackets, hoh_tax_brackets){
@@ -199,7 +199,7 @@ function single_tax_liability_2022_with_deduction_value(income, deductionValue){
 }
 
 /** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values WHEN INCLUDING THE CTC
- * @paragm {integer} - monetary value of itemized deductions
+ * @param {integer} - monetary value of itemized deductions
  * @return {array of two arrays of floats} - 
  * */
 function tax_difference_with_ctc(itemDeduct, numChildren){
