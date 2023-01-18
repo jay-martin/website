@@ -20,7 +20,7 @@ function hoh_tax_difference_2023(income, itemDeduct){
  * @return {array of two arrays of floats} - first array contains x-values, second contains difference in tax liability between single & hoh filing statuses
  * */
 function hoh_chart_values_2023(itemDeduct){
-	// Calculate reference tax bracket values
+	// Calculate combined tax bracket values
 	combined_brackets = combined_brackets_2023(single_adjusted_brackets_2023(itemDeduct), hoh_adjusted_brackets_2023(itemDeduct));
 
 	// Determine deduction value (standard deduction versus itemized deductions)
@@ -125,10 +125,11 @@ function combined_brackets_2023(single_tax_brackets, hoh_tax_brackets){
  * @return {float} - tax liability
  * */
 function hoh_tax_liability_2023_with_deduction_value(income, deductionValue){
-	hoh__bracket_reference_values = [0, 15700, 59850, 95350, 182100, 231250, 578100];
+	hoh_bracket_reference_values = [0, 15700, 59850, 95350, 182100, 231250, 578100];
+	
 	adjusted_hoh_bracket_values = [];
-	for (var i = 0; i < hoh__bracket_reference_values.length; i++) {
-		adjusted_hoh_bracket_values.push(hoh__bracket_reference_values[i] + deductionValue);
+	for (var i = 0; i < hoh_bracket_reference_values.length; i++) {
+		adjusted_hoh_bracket_values.push(hoh_bracket_reference_values[i] + deductionValue);
 	}
 
 	if(income <= adjusted_hoh_bracket_values[0]){
@@ -164,6 +165,7 @@ function hoh_tax_liability_2023_with_deduction_value(income, deductionValue){
  * */
 function single_tax_liability_2023_with_deduction_value(income, deductionValue){
 	single_bracket_reference_values = [0, 11000, 44725, 95375, 182100, 231250, 578125];
+	
 	adjusted_single_bracket_values = [];
 	for (var i = 0; i < single_bracket_reference_values.length; i++) {
 		adjusted_single_bracket_values.push(single_bracket_reference_values[i] + deductionValue);
@@ -193,6 +195,27 @@ function single_tax_liability_2023_with_deduction_value(income, deductionValue){
 	else{
 		return .37 * (income - adjusted_single_bracket_values[6]) + 174238.25;
 	}
+}
+
+/** Converts string representing an integer into an integer
+ * @paragm {string} - string representing an integer ('none', 'one', 'two', 'three')
+ * @return {integer}
+ * */
+function num_children_formatting(num_children_string){
+    numChildren = 1;
+    if(num_children_string === 'two'){
+        numChildren = 2;
+    }
+    else if(num_children_string === 'three'){
+        numChildren = 3;
+    }
+    else if(num_children_string === 'four'){
+        numChildren = 4;
+    }
+    else if(num_children_string === 'five'){
+        numChildren = 5;
+    }
+    return numChildren;
 }
 
 

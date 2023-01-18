@@ -9,31 +9,11 @@
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * @return {float} - tax difference
  * */
-function tax_difference_at_income_2022(income, itemDeduct, numChildren){
-	if(tax_credit_switch.checked){
-		taxDif = tax_difference_with_ctc(itemDeduct, numChildren);
-	}
-	else{
-		taxDif = hoh_chart_values_2022(itemDeduct);
-	}
+function hoh_tax_difference_2022(income, itemDeduct, numChildren){
+	single_deduction = single_deduction_2023(itemDeduct);
+	hoh_deduction = hoh_deduction_2023(itemDeduct);
 
-    i=0;
-    while(income > taxDif[0][i]){
-        i++;
-    }
-
-    user_dif = 0;
-    if(i === 0){
-        user_dif = 0
-    }
-    else if(taxDif[1][i] != taxDif[1][i-1]){
-        factor = (income - taxDif[0][i-1]) / (taxDif[0][i] - taxDif[0][i-1]);
-        user_dif = (taxDif[1][i] - taxDif[1][i-1]) * factor + taxDif[1][i-1];
-    }
-    else{
-        user_dif = taxDif[1][i];
-    }
-    return user_dif;
+    return single_tax_liability_2022_with_deduction_value(income, single_deduction) - hoh_tax_liability_2022_with_deduction_value(income, hoh_deduction);
 }
 
 /** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values
@@ -41,52 +21,20 @@ function tax_difference_at_income_2022(income, itemDeduct, numChildren){
  * @return {array of two arrays of floats} - 
  * */
 function hoh_chart_values_2022(itemDeduct){
-	/* Calculate reference tax bracket values */
-	single_tax_brackets = single_adjusted_brackets_2022(itemDeduct);
-	hoh_tax_brackets    = hoh_adjusted_brackets_2022(itemDeduct);
+	// Calculate combined tax bracket values
 	combined_brackets   = combined_brackets_2022(single_tax_brackets, hoh_tax_brackets);
 
-	/* Calculate tax owed at reference tax bracket values */
-	single_taxes = single_taxes_2022(single_tax_brackets, combined_brackets);
-	hoh_taxes = hoh_taxes_2022(hoh_tax_brackets, combined_brackets);
+	// Determine deduction value (standard deduction versus itemized deductions)
+	single_deduction = single_deduction_2022(itemDeduct);
+	hoh_deduction = hoh_deduction_2022(itemDeduct);
 
-	/* Calculate the difference in taxes between single and hoh */
-	taxDif = [];
-	for (var i = 0; i < single_taxes.length; i++) {
-		taxDif.push(single_taxes[i] - hoh_taxes[i]);
+	// Calculate the difference in taxes between single and hoh
+	tax_difference = [];
+	for (var i = 0; i < combined_brackets.length; i++) {
+		tax_difference.push(single_tax_liability_2022_with_deduction_value(single_deduction) - hoh_tax_liability_2022_with_deduction_value(hoh_deduction));
 	}
 
-	return [combined_brackets, taxDif];
-}
-
-/** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values WHEN INCLUDING THE CTC
- * @paragm {integer} - monetary value of itemized deductions
- * @return {array of two arrays of floats} - 
- * */
-function tax_difference_with_ctc(itemDeduct, numChildren){
-	/* Calculate reference tax bracket values */
-	single_tax_brackets = single_adjusted_brackets_2022(itemDeduct);
-	hoh_tax_brackets    = hoh_adjusted_brackets_2022(itemDeduct);
-	combined_brackets   = combined_brackets_2022(single_tax_brackets, hoh_tax_brackets);
-
-	/* Modify combined_brackets to include effects of the CTC */
-	combined_brackets = brackets_after_ctc(combined_brackets, numChildren);
-
-	/* Calculate taxes owed at reference values */
-	single_taxes = single_taxes_2022(single_tax_brackets, combined_brackets);
-	hoh_taxes = hoh_taxes_2022(hoh_tax_brackets, combined_brackets);
-
-	/* Apply CTC to tax owed */
-	single_taxes = taxes_after_ctc(single_taxes, numChildren);
-	hoh_taxes = taxes_after_ctc(hoh_taxes, numChildren);
-
-	/* Calculate the difference in taxes between single and hoh */
-	taxDif = [];
-	for (var i = 0; i < single_taxes.length; i++) {
-		taxDif.push(single_taxes[i] - hoh_taxes[i]);
-	}
-
-	return [combined_brackets, taxDif];
+	return [combined_brackets, tax_difference];
 }
 
 /** Returns effective single tax bracket values when adjusted for a given itemized deductions value
@@ -94,7 +42,11 @@ function tax_difference_with_ctc(itemDeduct, numChildren){
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function single_adjusted_brackets_2022(itemDeduct){
+	
+	// Determine whether the standard deduction or itemized deductions will be used
 	deduction = single_deduction_2022(itemDeduct);
+
+	// Calculate new bracket values
 	baseline_brackets = [0, 10275, 41775, 89075, 170050, 215950, 539900];
 	new_brackets = [0, 0,  0,  0,   0,  0,  0];
 	for (var i = 0; i < new_brackets.length; i++) {
@@ -108,7 +60,11 @@ function single_adjusted_brackets_2022(itemDeduct){
  * @return {array of integers} - income values for adjusted tax brackets
  * */
 function hoh_adjusted_brackets_2022(itemDeduct){
+
+	// Determine whether the standard deduction or itemized deductions will be used
 	deduction = hoh_deduction_2022(itemDeduct);
+
+	// Calculate new bracket values
 	baseline_brackets = [0, 14650, 55900, 89050, 170050, 215950, 539900];
 	new_brackets = [0, 0,  0,  0,   0,  0,  0];
 	for (var i = 0; i < new_brackets.length; i++) {
@@ -164,68 +120,112 @@ function combined_brackets_2022(single_tax_brackets, hoh_tax_brackets){
 	return combined_brackets;
 }
 
-/** Calculates the taxes owed for single filers at specified income values, which have been adjusted for the itemized deduction value
- * @paragm {array of integers} - adjusted single tax bracket values
- * @paragm {array of integers} - merged adjusted & hoh tax bracket values
- * @return {array of floats} - tax owed at the incomes specified in the combined tax bracket array
+/** Returns 2022 HOH tax liability at a given income for a particular deduction amount
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @return {float} - tax liability
  * */
-function single_taxes_2022(single_brackets, combined_brackets){
-	single_tax_reference_values = [0, 1027.5, 4807.5, 15213.5, 34647.5, 49335.5, 162718];
-	tax_rates = [0, .1, .12, .22, .24, .32, .35, .37];
-	single_taxes = [];
-	j = 0;
-	for (var i = 0; i < combined_brackets.length; i++) {
-		if(combined_brackets[i] <= single_brackets[j]){
-			if(j === 0){
-				single_taxes.push(0);
-			}
-			else{
-				amt = tax_rates[j] * (combined_brackets[i] - single_brackets[j-1]) + single_tax_reference_values[j-1];
-				single_taxes.push(amt);
-			}
-		}
-		else if(combined_brackets[i]===600000){
-			single_taxes.push(single_taxes[single_taxes.length - 1]);
-		}
-		else{
-			j++;
-			amt = tax_rates[j] * (combined_brackets[i] - single_brackets[j-1]) + single_tax_reference_values[j-1];
-			single_taxes.push(amt);
-		}
+function hoh_tax_liability_2022_with_deduction_value(income, deductionValue){
+	hoh_bracket_reference_values = [0, 14650, 55900, 89050, 170050, 215950, 539900];
+	
+	adjusted_hoh_bracket_values = [];
+	for (var i = 0; i < hoh__bracket_reference_values.length; i++) {
+		adjusted_hoh_bracket_values.push(hoh__bracket_reference_values[i] + deductionValue);
 	}
-	return single_taxes;
+
+	if(income <= adjusted_hoh_bracket_values[0]){
+		return 0;
+	}
+	else if(income <= adjusted_hoh_bracket_values[1]){
+		return .1 * (income - adjusted_hoh_bracket_values[0]);
+	}
+	else if(income <= adjusted_hoh_bracket_values[2]){
+		return .12 * (income - adjusted_hoh_bracket_values[1]) + 1465;
+	}
+	else if(income <= adjusted_hoh_bracket_values[3]){
+		return .22 * (income - adjusted_hoh_bracket_values[2]) + 6415;
+	}
+	else if(income <= adjusted_hoh_bracket_values[4]){
+		return .24 * (income - adjusted_hoh_bracket_values[3]) + 13708;
+	}
+	else if(income <= adjusted_hoh_bracket_values[5]){
+		return .32 * (income - adjusted_hoh_bracket_values[4]) + 33148;
+	}
+	else if(income <= adjusted_hoh_bracket_values[6]){
+		return .35 * (income - adjusted_hoh_bracket_values[5]) + 47836;
+	}
+	else{
+		return .37 * (income - adjusted_hoh_bracket_values[6]) + 161218.5;
+	}
 }
 
-/** Calculates the taxes owed for heads of households at specified income values, which have been adjusted for the itemized deduction value
- * @paragm {array of integers} - adjusted HOH tax bracket values
- * @paragm {array of integers} - merged adjusted & hoh tax bracket values
- * @return {array of floats} - tax owed at the incomes specified in the combined tax bracket array
+/** Returns 2023 single filer tax liability at a given income for a particular deduction amount
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @return {float} - tax liability
  * */
-function hoh_taxes_2022(hoh_brackets, combined_brackets){
-	hoh_tax_reference_values = [0, 1465, 6415, 13708, 33148, 47836, 161218.5];
-	tax_rates = [0, .1, .12, .22, .24, .32, .35, .37];
-	hoh_taxes = [];
-	j = 0;
-	for (var i = 0; i < combined_brackets.length; i++) {
-		if(combined_brackets[i] <= hoh_brackets[j]){
-			if(j === 0){
-				hoh_taxes.push(0);
-			}
-			else{
-				amt = tax_rates[j] * (combined_brackets[i] - hoh_brackets[j-1]) + hoh_tax_reference_values[j-1];
-				hoh_taxes.push(amt);
-			}
-		}
-		else if(combined_brackets[i]===600000){
-			hoh_taxes.push(hoh_taxes[hoh_taxes.length - 1]);
-		}
-		else{
-			j++;
-			amt = tax_rates[j] * (combined_brackets[i] - hoh_brackets[j-1]) + hoh_tax_reference_values[j-1];
-			hoh_taxes.push(amt);
-		}
+function single_tax_liability_2022_with_deduction_value(income, deductionValue){
+	single_bracket_reference_values = [0, 10275, 41775, 89075, 170050, 215950, 539900];
+
+	adjusted_single_bracket_values = [];
+	for (var i = 0; i < single_bracket_reference_values.length; i++) {
+		adjusted_single_bracket_values.push(single_bracket_reference_values[i] + deductionValue);
 	}
-	return hoh_taxes;
+
+	if(income <= adjusted_single_bracket_values[0]){
+		return 0;
+	}
+	else if(income <= adjusted_single_bracket_values[1]){
+		return .1 * (income - adjusted_single_bracket_values[0]);
+	}
+	else if(income <= adjusted_single_bracket_values[2]){
+		return .12 * (income - adjusted_single_bracket_values[1]) + 1027.5;
+	}
+	else if(income <= adjusted_single_bracket_values[3]){
+		return .22 * (income - adjusted_single_bracket_values[2]) + 4807.5;
+	}
+	else if(income <= adjusted_single_bracket_values[4]){
+		return .24 * (income - adjusted_single_bracket_values[3]) + 15213.5;
+	}
+	else if(income <= adjusted_single_bracket_values[5]){
+		return .32 * (income - adjusted_single_bracket_values[4]) + 34647.5;
+	}
+	else if(income <= adjusted_single_bracket_values[6]){
+		return .35 * (income - adjusted_single_bracket_values[5]) + 49335.5;
+	}
+	else{
+		return .37 * (income - adjusted_single_bracket_values[6]) + 162718;
+	}
+}
+
+/** Returns an array of two arrays containing the x-values c3.js will need to render the chart and the tax difference at each of those values WHEN INCLUDING THE CTC
+ * @paragm {integer} - monetary value of itemized deductions
+ * @return {array of two arrays of floats} - 
+ * */
+function tax_difference_with_ctc(itemDeduct, numChildren){
+	/* Calculate reference tax bracket values */
+	single_tax_brackets = single_adjusted_brackets_2022(itemDeduct);
+	hoh_tax_brackets    = hoh_adjusted_brackets_2022(itemDeduct);
+	combined_brackets   = combined_brackets_2022(single_tax_brackets, hoh_tax_brackets);
+
+	/* Modify combined_brackets to include effects of the CTC */
+	combined_brackets = brackets_after_ctc(combined_brackets, numChildren);
+
+	/* Calculate taxes owed at reference values */
+	single_taxes = single_taxes_2022(single_tax_brackets, combined_brackets);
+	hoh_taxes = hoh_taxes_2022(hoh_tax_brackets, combined_brackets);
+
+	/* Apply CTC to tax owed */
+	single_taxes = taxes_after_ctc(single_taxes, numChildren);
+	hoh_taxes = taxes_after_ctc(hoh_taxes, numChildren);
+
+	/* Calculate the difference in taxes between single and hoh */
+	taxDif = [];
+	for (var i = 0; i < single_taxes.length; i++) {
+		taxDif.push(single_taxes[i] - hoh_taxes[i]);
+	}
+
+	return [combined_brackets, taxDif];
 }
 
 function brackets_after_ctc(combined_brackets_2022, numChildren){
@@ -279,25 +279,4 @@ function taxes_after_ctc(taxes, numChildren){
 		taxes[i] = taxes[i] - 1400 * numChildren;
 	}
 	return taxes;
-}
-
-/** Converts string representing an integer into an integer
- * @paragm {string} - string representing an integer ('none', 'one', 'two', 'three')
- * @return {integer}
- * */
-function num_children_formatting(num_children_string){
-    numChildren = 1;
-    if(num_children_string === 'two'){
-        numChildren = 2;
-    }
-    else if(num_children_string === 'three'){
-        numChildren = 3;
-    }
-    else if(num_children_string === 'four'){
-        numChildren = 4;
-    }
-    else if(num_children_string === 'five'){
-        numChildren = 5;
-    }
-    return numChildren;
 }
