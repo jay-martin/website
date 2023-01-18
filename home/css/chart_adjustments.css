@@ -19,6 +19,11 @@
   display: none;
 }
 
+/* CDCC Chart */
+.c3-circles-credit_rate, .c3-circles-credit_amount {
+  display: none;
+}
+
 /******************* Opacity ******************************/
 /* Two Tiers Chart */
 .c3-area-total_hidden {
