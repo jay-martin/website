@@ -177,21 +177,54 @@ function hoh_animation() {
     else if(hoh_stage == 2){
         hoh_timeout = setTimeout(hoh_stage_3, 0);
     }
-    else if(hoh_stage == 3){
-        hoh_timeout = setTimeout(hoh_stage_4, 0);
-    }
 }
 
 // Cancel the pending setTimeout calls (triggered when user scrolls off of html element)
-function mouse_out_ctc(event) {
+function mouse_out_hoh(event) {
     clearTimeout(hoh_timeout);
 }
 
 //Stage 1
 function hoh_stage_1(){
-    
+    savings = tax_liability_2023('single', 150000) - tax_liability_2023('hoh', 150000);
+    HOHchart.xgrids([{value: 150000}]);
+    HOHchart.load({
+        columns: [
+            ['x_point', 150000],
+            ['point',   savings],
+        ]
+    });
 
     hoh_stage++;
     hoh_timeout = setTimeout(hoh_stage_2, 1000);
 }
 
+//Stage 2
+function hoh_stage_2(){
+    savings = tax_liability_2023('single', 500000) - tax_liability_2023('hoh', 500000);
+    HOHchart.xgrids([{value: 500000}]);
+    HOHchart.load({
+        columns: [
+            ['x_point', 500000],
+            ['point',   savings],
+        ]
+    });
+
+    hoh_stage++;
+    hoh_timeout = setTimeout(hoh_stage_3, 1000);
+}
+
+//Stage 3
+function hoh_stage_3(){
+    savings = tax_liability_2023('single', 50000) - tax_liability_2023('hoh', 50000);
+    HOHchart.xgrids([{value: 50000}]);
+    HOHchart.load({
+        columns: [
+            ['x_point', 50000],
+            ['point',   savings],
+        ]
+    });
+
+    hoh_stage = 0;
+    hoh_timeout = setTimeout(hoh_stage_1, 1000);
+}
