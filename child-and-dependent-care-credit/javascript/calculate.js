@@ -1,4 +1,29 @@
-/************************* Controls ********************************************************************************************************************************************/
+/************************* CDCC Rate **********************************************************************************************************************************************/
+/** Returns the credit rate of the CDCC at a given income
+ * @param {integer} - income
+ * @return {float} - credit rate expressed as a decimal
+ * */
+function cdcc_rate(income){
+    if(income <= 15000){
+        return .35;
+    }
+    else if(income <= 43000){
+        floor = Math.floor( ( (income-1) / 1000) ) - 15;
+        if(floor % 2 == 0){
+            multiple = floor / 2;
+        }
+        else{
+            multiple = (floor - 1) / 2;
+        }
+        return .34 - (multiple / 100);
+    }
+    else{
+        return .2;
+    }
+}
+
+/************************* CDCC Amount ********************************************************************************************************************************************/
+/************ Controls *********************************************************/
 /** Returns the value of the CDCC for a given filing status and number of children at a given income
  * @param {integer} - income
  * @param {string} - filing status
@@ -59,7 +84,7 @@ function married_cdcc_amount_2023(income, numChildren){
     }
 }
 
-/************************* Single ********************************************************************************************************************************************/
+/************ Single *********************************************************/
 /** Returns the value of the CDCC for single filers with one child at a given income
  * @param {integer} - income
  * @return {float} - value of CDCC
@@ -101,7 +126,7 @@ function single_cdcc_amount_2023_two_plus_children(income){
     }
 }
 
-/************************* HOH ********************************************************************************************************************************************/
+/************ HOH *********************************************************/
 /** Returns the value of the CDCC for heads of households with one child at a given income
  * @param {integer} - income
  * @return {float} - value of CDCC
@@ -140,7 +165,7 @@ function hoh_cdcc_amount_2023_two_plus_children(income){
     }
 }
 
-/************************* Married ********************************************************************************************************************************************/
+/************ Married *********************************************************/
 /** Returns the value of the CDCC for heads of households with one child at a given income
  * @param {integer} - income
  * @return {float} - value of CDCC
@@ -179,7 +204,7 @@ function married_cdcc_amount_2023_two_plus_children(income){
     }
 }
 
-/************************* Phaseout ********************************************************************************************************************************************/
+/************ Phaseout *********************************************************/
 /** Returns the value of the CDCC in the step-wise phaseout for filers with one child
  * @param {integer} - income
  * @return {float} - value of CDCC

@@ -208,7 +208,7 @@ button.chart_notes_button:hover {
 .c3 text {
   fill: var(--base-text);
 }
-.c3-grid line,  .c3-axis-x line,  .c3-axis-y line,  .c3-axis-x path,  .c3-axis-y path {
+.c3-grid line,  .c3-axis-x line,  .c3-axis-y line, .c3-axis-y2 line, .c3-axis-x path,  .c3-axis-y path, .c3-axis-y2 path {
   stroke: var(--base-text) !important; /* sometimes does not transition without !important tag */
 }
 /********** Appendix ****************/
