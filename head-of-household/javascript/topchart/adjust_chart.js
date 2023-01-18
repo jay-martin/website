@@ -7,17 +7,17 @@ function zoomHOHGraph(){
     if(zoom_switch.checked === true){
         user_income.max = "100000";
         HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
-        HOHchart.axis.max({x: 60000});
+        HOHchart.axis.max({x: 70000});
         setTimeout(function () {
-            HOHchart.axis.max({y: 1500});
+            HOHchart.axis.max({y: 2000});
         }, 500);
     }
     else{
         user_income.max = "600000";
         HOHchart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
-        HOHchart.axis.max({y: 4000});
+        HOHchart.axis.max({y: 4500});
         setTimeout(function () {
-            HOHchart.axis.max({x: 600000});
+            HOHchart.axis.max({x: 620000});
         }, 500);
     }
 }
@@ -26,16 +26,17 @@ function zoomHOHGraph(){
 function modifyIncome_HOH(){
     income = user_income.value;
     itemDeduct = itemized_deductions.value;
-    numChildren = num_children_formatting(num_children.value);
+    //numChildren = num_children_formatting(num_children.value);
 
-    value = tax_difference_at_income(income, itemDeduct, numChildren);
+    //value = tax_difference_at_income_2022(income, itemDeduct, numChildren);
+    savings = hoh_tax_difference_2023(income, itemDeduct);
     HOHchart.xgrids([{value: income, text:'Your income'}]);
     HOHchart.load({
-            columns: [
-                ['x_point', income],
-                ['point',   value],
-            ]
-        });
+        columns: [
+            ['x_point', income],
+            ['point',   savings],
+        ]
+    });
 }
 
 /* Adjusts the chart according to user input */
@@ -43,7 +44,7 @@ function modifyGraph_HOH(){
     itemDeduct = itemized_deductions.value;
     numChildren = num_children_formatting(num_children.value);
 
-    tax_no_ctc = tax_difference(itemDeduct);
+    tax_no_ctc = hoh_chart_values_2022(itemDeduct);
     brackets_no_ctc = tax_no_ctc[0];
     tax_dif_no_ctc = tax_no_ctc[1];
 

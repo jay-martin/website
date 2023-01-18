@@ -436,7 +436,7 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">50,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();deductType()">
+            <input type="range" min="0" max="620000" value="50000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();deductType()">
           </div>
         </div>
 
@@ -501,18 +501,15 @@
         <p class="explanation_text" id="explanation_line9"></p>
       </div>
 
-      <!--Zoom switch-->
-      <label class="switch_label" id="zoom_label">
-        Click to zoom on lower incomes:
-        <input type="checkbox" class="zoom_button" name="zoom" id="zoom_switch" oninput="zoomHOHGraph();">
-        <span class="checkmark"></span>
-      </label>
-
       <!--End animation button-->
       <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
 
-      <!--Run HOH Benefit Graph Script-->
+      <!-- HOH Chart -->
       <div id="HOHchart"></div>
+
+      <!--Zoom switch-->
+      <label>Zoom on lower incomes:</label>
+      <input type="checkbox" class="zoom_button" name="zoom" id="zoom_switch" oninput="zoomHOHGraph();">
 
     </div> <!--chart end-->
 
@@ -885,9 +882,12 @@
 
 <!-- Top Chart Javascript files -->
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/calculate.js"></script>
+<script type="text/javascript" src="./javascript/topchart/calculate-2022.js"></script>
+<script type="text/javascript" src="./javascript/topchart/calculate-2023.js"></script>
 <script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
+
+<!-- Top Chart Animation files -->
 <script type="text/javascript" src="./javascript/topchart/animations/universal.js"></script>
 <script type="text/javascript" src="./javascript/topchart/animations/marriage_penalty_animation.js"></script>
 <script type="text/javascript" src="./javascript/topchart/animations/poor_people_animation.js"></script>

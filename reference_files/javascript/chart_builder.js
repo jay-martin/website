@@ -374,3 +374,44 @@ function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
 	}
 }
 
+/************************* HOH Tax Savings ****************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2023 married CTC for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
+	if(numChildren === 'three'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 27700, 34500, 39700, 400000, 520000],
+    			[dataName, 0, 0,    3780,  5480,  6000,  6000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'two'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 23833, 27700, 35700, 400000, 480000],
+    			[dataName, 0, 0,    3200,  3200,  4000,  4000,   0],
+			]
+    	});
+	}
+	else if(numChildren === 'one'){
+		chartName.load({
+    		columns: [
+    			[xName,    0, 2500, 13167, 27700, 31700, 400000, 440000],
+    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0 ],
+			]
+    	});
+	}
+	else if(numChildren === 'none'){
+		chartName.load({
+    		columns: [
+    			[xName,    0,],
+    			[dataName, 0,],
+			]
+    	});
+	}
+}

@@ -41,7 +41,7 @@ function tax_liability_2023(filingStatus, income){
 			return .1 * (income - 20800);
 		}
 		else if(income > 36500 && income <= 80650){
-			return .12 * (income - 36500) + 1580;
+			return .12 * (income - 36500) + 1570;
 		}
 		else if(income > 80650 && income <= 116150){
 			return .22 * (income - 80650) + 6868;
@@ -170,6 +170,82 @@ function tax_liability_2022(filingStatus, income){
 		else{
 			return .37 * (income - 673750) + 174254.5;
 		}
+	}
+}
+
+/** Returns 2023 HOH tax liability at a given income for a particular deduction amount
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @return {float} - tax liability
+ * */
+function hoh_tax_liability_2023_with_deduction_value(income, deductionValue){
+	hoh__bracket_reference_values = [0, 15700, 59850, 95350, 182100, 231250, 578100];
+	adjusted_hoh_bracket_values = [];
+	for (var i = 0; i < hoh__bracket_reference_values.length; i++) {
+		adjusted_hoh_bracket_values.push(hoh__bracket_reference_values[i] + deductionValue);
+	}
+
+	if(income <= adjusted_hoh_bracket_values[0]){
+		return 0;
+	}
+	else if(income <= adjusted_hoh_bracket_values[1]){
+		return .1 * (income - adjusted_hoh_bracket_values[0]);
+	}
+	else if(income <= adjusted_hoh_bracket_values[2]){
+		return .12 * (income - adjusted_hoh_bracket_values[1]) + 1570;
+	}
+	else if(income <= adjusted_hoh_bracket_values[3]){
+		return .22 * (income - adjusted_hoh_bracket_values[2]) + 6868;
+	}
+	else if(income <= adjusted_hoh_bracket_values[4]){
+		return .24 * (income - adjusted_hoh_bracket_values[3]) + 14678;
+	}
+	else if(income <= adjusted_hoh_bracket_values[5]){
+		return .32 * (income - adjusted_hoh_bracket_values[4]) + 35498;
+	}
+	else if(income <= adjusted_hoh_bracket_values[6]){
+		return .35 * (income - adjusted_hoh_bracket_values[5]) + 51226;
+	}
+	else{
+		return .37 * (income - adjusted_hoh_bracket_values[6]) + 172623.5;
+	}
+}
+
+/** Returns 2023 single filer tax liability at a given income for a particular deduction amount
+ * @param {integer} - income
+ * @param {integer} - value of deductions
+ * @return {float} - tax liability
+ * */
+function single_tax_liability_2023_with_deduction_value(income, deductionValue){
+	single_bracket_reference_values = [0, 11000, 44725, 95375, 182100, 231250, 578125];
+	adjusted_single_bracket_values = [];
+	for (var i = 0; i < single_bracket_reference_values.length; i++) {
+		adjusted_single_bracket_values.push(single_bracket_reference_values[i] + deductionValue);
+	}
+
+	if(income <= adjusted_single_bracket_values[0]){
+		return 0;
+	}
+	else if(income <= adjusted_single_bracket_values[1]){
+		return .1 * (income - adjusted_single_bracket_values[0]);
+	}
+	else if(income <= adjusted_single_bracket_values[2]){
+		return .12 * (income - adjusted_single_bracket_values[1]) + 1100;
+	}
+	else if(income <= adjusted_single_bracket_values[3]){
+		return .22 * (income - adjusted_single_bracket_values[2]) + 5147;
+	}
+	else if(income <= adjusted_single_bracket_values[4]){
+		return .24 * (income - adjusted_single_bracket_values[3]) + 16290;
+	}
+	else if(income <= adjusted_single_bracket_values[5]){
+		return .32 * (income - adjusted_single_bracket_values[4]) + 37104;
+	}
+	else if(income <= adjusted_single_bracket_values[6]){
+		return .35 * (income - adjusted_single_bracket_values[5]) + 52832;
+	}
+	else{
+		return .37 * (income - adjusted_single_bracket_values[6]) + 174238.25;
 	}
 }
 

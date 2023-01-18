@@ -8,23 +8,23 @@ document.getElementById('item_or_stand').innerHTML = 'You would use the <em>stan
 
 /* Calculates tax savings from the head of household status*/
 function difference_hoh(){
-    numChildren = num_children_formatting(num_children.value);
-    user_dif = tax_difference_at_income(user_income.value, itemized_deductions.value, numChildren);
-    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
+    tax_difference = hoh_tax_difference_2023(user_income.value, itemized_deductions.value);
+
+    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you <b>$' + tax_difference.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '</b> compared to filing as single.';
 }
 
 /* Writes to page whether user would itemize or use the standard deduction */
 function deductType(){
-    single_deduct = single_deduction(itemized_deductions.value);
-    hoh_deduct = hoh_deduction(itemized_deductions.value);
+    single_deduct = single_deduction_2023(itemized_deductions.value);
+    hoh_deduct = hoh_deduction_2023(itemized_deductions.value);
 
-    if(single_deduct===12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as both a single filer and a head of household.';
+    if(single_deduct===13850 && hoh_deduct===20800){
+        document.getElementById('item_or_stand').innerHTML = 'You would use the <b>standard deduction</b> as both a single filer and a head of household.';
     }
-    else if(single_deduct>12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the <em>standard deduction</em> as a head of household but would <em>itemize</em> as a single filer.';
+    else if(single_deduct>13850 && hoh_deduct===20800){
+        document.getElementById('item_or_stand').innerHTML = 'You would use the <b>standard deduction</b> as a head of household but would <b>itemize</b> as a single filer.';
     }
     else{
-        document.getElementById('item_or_stand').innerHTML = 'You would <em>itemize</em> your deductions as both a single filer and head of household.';
+        document.getElementById('item_or_stand').innerHTML = 'You would <b>itemize</b> your deductions as both a single filer and head of household.';
     }
 }

@@ -59,7 +59,7 @@ var ctcChart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000,]
             },
-            padding: {bottom: 0},
+            padding: {bottom: 0, top: 10},
         }
     },
     grid: {
