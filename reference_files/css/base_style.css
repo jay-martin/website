@@ -36,7 +36,7 @@ p.inline {
   margin: 0px;
 }
 p.top {
-  margin-top: 5px;
+  margin-top: -5px;
 }
 sup {
   line-height: 0;
@@ -55,6 +55,7 @@ a:hover {
 .article_tag {
   font-size: 90%;
   margin-left: 20px;
+  margin-bottom: 12.5px;
 }
 .zen_font {
   font-family: 'Zen Antique Soft', serif;
