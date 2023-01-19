@@ -31,6 +31,10 @@ function cdcc_rate(income){
  * @return {float} - value of CDCC
  * */
 function cdcc_amount_2023(income, filingStatus, numChildren){
+    if(numChildren === 'none'){
+        return 0;
+    }
+
     if(filingStatus === 'single'){
         return single_cdcc_amount_2023(income, numChildren);
     }

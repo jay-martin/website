@@ -4,4 +4,7 @@
   display: none;
 }
 
-/******************* Opacity Settings ******************************/
+/* Reformed CDCC Low-Income Exclusion Chart */
+.c3-circles-one_child_credit_amount, .c3-circles-two_child_credit_amount, .c3-circles-one_child_vertical_line, .c3-circles-two_child_vertical_line {
+  display: none;
+}
