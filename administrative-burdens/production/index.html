@@ -16,37 +16,18 @@
   <meta property="og:image" content=""/> <!-- Add path to image -->
   <meta property="og:site_name" content="The Welfare of Families"/>
 
-  <!-- CSS Files -->
+  <!-- Base CSS -->
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
 
-  <!-- CSS Color Files -->
+  <!-- Color CSS -->
    <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
   <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="../reference_files/css/dark-mode.css">
   <link rel="stylesheet" media="(prefers-color-scheme: light)" href="../reference_files/css/light-mode.css">
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
-
-  <!-- JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-  <!-- Computer Modern -->
-  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
-  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
-  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
-
-  <!-- Latin Modern -->
-  <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-sans.css" type="text/css" charset="utf-8" />
-
-  <!-- MathJax -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <!-- Outputs -->
-  <script type="text/javascript" src="./javascript/outputs.js"></script>
-  <script type="text/javascript" src="./javascript/ssi_criteria.js"></script>
 </head>
 
 <div class="logo">
@@ -71,7 +52,7 @@
 
 <!--Mobile navbar-->
 <div class="mobile_navbar" id='mobile_navbar'>
-  <a href='../' class="navbar_logo">The Welfare of Families</a>
+  <a href="../" class="navbar_logo">The Welfare of Families</a>
   <div class="navigation_button_container">
     <div class="open_close_button" id="navigation_bar_button">
       <span></span>
@@ -941,12 +922,32 @@
 
 </section> <!-- Bottom section -->
 
+<!-- Render-blocking resources-->
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!-- Computer Modern -->
+<link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+<link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+<link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+<!-- Latin Modern -->
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-sans.css" type="text/css" charset="utf-8" />
+
+<!-- MathJax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
+
+<!-- Outputs -->
+<script type="text/javascript" src="./javascript/outputs.js"></script>
+<script type="text/javascript" src="./javascript/ssi_criteria.js"></script>
 
 </body>
 </html>
