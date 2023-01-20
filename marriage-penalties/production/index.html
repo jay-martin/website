@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Marriage Penalties</title>
+  <meta name="description" content="Policymakers have foolishly concluded that a tying of the knot should be paired with an emptying of the pockets."/>
+
+  <!-- Page basics -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Marriage Penalties"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="Policymakers have foolishly concluded that a tying of the knot should be paired with an emptying of the pockets." />
+  <meta property="og:image" content=""/> <!-- Add path to image -->
+  <meta property="og:site_name" content="The Welfare of Families"/>
+
+  <!-- CSS Files -->
+  <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
+  <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
+
+  <!-- CSS Color Files -->
+  <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
+  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="../reference_files/css/dark-mode.css">
+  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="../reference_files/css/light-mode.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- Computer Modern -->
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <link rel="stylesheet" href="../reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- Latin Modern -->
+  <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-sans.css" type="text/css" charset="utf-8" />
+  
+  <!-- CSS for charts -->
+  <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/ca0c7f000f.js" crossorigin="anonymous"></script>
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<div class="logo">
+  <a href="../">
+    <svg class="logo-svg" width="204mm" height="63mm" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+    </svg>
+  </a>
+</div>
+
+<div class="page_color_toggle_container">
+  <div class="page_color_button_group">
+    <button onclick="toggle_page_color('light')">Light</button>
+    <button onclick="toggle_page_color('sepia')">Sepia</button>
+    <button onclick="toggle_page_color('dark')">Dark</button>
+    <div class="page_color_toggler" ></div>
+  </div>
+</div>
+
+<body>
+
+<!--Mobile Navigation Bar------------------------------------------------------------------------------------------------------------>
+<div class="mobile_navbar" id='mobile_navbar'>
+  <a href='../' class="navbar_logo">The Welfare of Families</a>
+  <div class="navigation_button_container">
+    <div class="open_close_button" id="navigation_bar_button">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div><!--Mobile Navbar-->
+
+<!--Mobile dropdown-->
+<div class='mobile_dropdown' id='mobile_dropdown'>
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Jump To Page Section</b></div>
+  <div class="mobile_dropdown_jump_to">
+    <a href="#overview" onclick="close_dropdown();">1. Overview</a>
+    <a href="#hoh" onclick="close_dropdown();">2. Head of Household</a>
+    <a href="#eitc" onclick="close_dropdown();">3. EITC</a>
+    <a href="#ssi" onclick="close_dropdown();">4. SSI</a>
+    <a href="#references" onclick="close_dropdown();">5. References</a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Overview Pages</b></div>
+  <div class="mobile_dropdown_jump_to">
+    <a href="../why-we-need-family-benefits/">Why We Need Family Benefits</a>
+    <a href="../problems-overview/">The Major Problems</a>
+    <a href="../fixing-family-benefits/">Fixing Family Benefits</a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Problems</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../two-tiers-of-welfare/">Two Tiers of Welfare</a></td>
+      <td><a href="../marriage-penalties/">Marriage Penalties</a></td>
+    </tr>
+    <tr>
+      <td><a href="../marginal-tax/">Marginal Tax Rates</a></td>
+      <td><a href="../asset-tests/">Asinine Asset Tests</a></td>
+    </tr>
+    <tr>
+      <td><a href="../administrative-burdens/">Administrative Burdens</a></td>
+      <td><a href="../over-reliance-on-tax-code/">Over-Reliance on Tax Code</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Programs</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../child-tax-credit/">Child Tax Credit</a></td>
+      <td><a href="../earned-income-tax-credit/">Earned Income Tax Credit</a></td>
+    </tr>
+    <tr>
+      <td><a href="../head-of-household/">Head of Household</a></td>
+      <td><a href="../child-and-dependent-care-credit/">CDCC</a></td>
+    </tr>
+    <tr>
+      <td><a href="../snap/">SNAP (Food Stamps)</a></td>
+      <td><a href="../temporary-assistance-for-needy-families/">TANF</a></td>
+    </tr>
+    <tr>
+      <td><a href="../women-infants-and-children/">WIC</a></td>
+      <td><a href="../medicaid/">Medicaid & CHIP</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Bills</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../family-security-act/">Family Security Act</a></td>
+      <td><a href="../build-back-better/">Build Back Better</a></td>
+    </tr>
+    <tr>
+      <td><a href="../end-child-poverty-act/">End Child Poverty Act</a></td>
+      <td><a href="../ssi-restoration-act/">SSI Restoration Act</a></td>
+    </tr>
+    <tr>
+      <td><a href="../working-families-tax-relief-act/">Working Families Tax<br>Relief Act</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class="mobile_dropdown_socials_left">
+    <div class="mobile_dropdown_socials_text"><b>Share Article</b></div>
+    <br>
+    <a class="mobile_dropdown_link" id="mobile_dropdown_twitter_share_icon" href="https://twitter.com/jaydavidmartin1" target="_blank">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a>
+
+    <a class="mobile_dropdown_link" href="https://facebook.com" target="_blank">
+      <svg class='mobile_dropdown_icon' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1365.3333 1365.3333" xml:space="preserve">
+        <g id="g26" transform="matrix(1.3333333,0,0,-1.3333333,0,1365.3333)">
+          <g id="g28" transform="scale(0.1)">
+            <path class="social_icon social-base-color st0"
+               d="m 10240,5120 c 0,2827.7 -2292.3,5120 -5120,5120 C 2292.3,10240 0,7947.7 0,5120 0,2564.46 1872.31,446.301 4320,62.1992 V 3640 H 3020 v 1480 h 1300 v 1128 c 0,1283.2 764.38,1992 1933.9,1992 560.17,0 1146.1,-100 1146.1,-100 V 6880 H 6754.38 C 6118.35,6880 5920,6485.33 5920,6080.43 V 5120 H 7340 L 7113,3640 H 5920 V 62.1992 C 8367.69,446.301 10240,2564.46 10240,5120"/>
+            <path class="st1" 
+               d="m 7113,3640 227,1480 H 5920 v 960.43 c 0,404.9 198.35,799.57 834.38,799.57 H 7400 v 1260 c 0,0 -585.93,100 -1146.1,100 C 5084.38,8240 4320,7531.2 4320,6248 V 5120 H 3020 V 3640 H 4320 V 62.1992 C 4580.67,21.3008 4847.84,0 5120,0 c 272.16,0 539.33,21.3008 800,62.1992 V 3640 h 1193" />
+          </g>
+        </g>
+      </svg>
+    </a>
+
+    <a class="mobile_dropdown_link" href="https://www.linkedin.com" target="_blank">
+      <svg 
+        class='mobile_dropdown_icon social-base-color' 
+        enable-background="new 0 0 48 48" 
+        id="Layer_1" 
+        version="1.1" 
+        viewBox="0 0 48 48" 
+        xml:space="preserve" xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+          <circle class='st0' cx="24" cy="24" r="24"/>
+          <path class="st1" d="M17.4,34.9h-4.6V20.1h4.6V34.9z M14.9,18.2L14.9,18.2c-1.7,0-2.8-1.1-2.8-2.6c0-1.5,1.1-2.6,2.8-2.6  c1.7,0,2.8,1.1,2.8,2.6C17.7,17.1,16.7,18.2,14.9,18.2z M35.9,34.9h-5.3v-7.7c0-2-0.8-3.4-2.6-3.4c-1.4,0-2.1,0.9-2.5,1.8  c-0.1,0.3-0.1,0.8-0.1,1.2v8h-5.2c0,0,0.1-13.6,0-14.8h5.2v2.3c0.3-1,2-2.5,4.6-2.5c3.3,0,5.9,2.1,5.9,6.7V34.9z" fill="#FFFFFF"/>
+      </svg>
+    </a> 
+
+    <a class="mobile_dropdown_link" href="https://reddit.com" target="_blank">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="85.45 85.45 170.9 170.9" style="enable-background:new 0 0 341.8 341.8;" xml:space="preserve">
+        <circle class="st0" cx="170.9" cy="170.9" r="85.5"/>
+        <path class="st1" d="M227.9,170.9c0-6.9-5.6-12.5-12.5-12.5c-3.4,0-6.4,1.3-8.6,3.5c-8.5-6.1-20.3-10.1-33.3-10.6l5.7-26.7
+        l18.5,3.9c0.2,4.7,4.1,8.5,8.9,8.5c4.9,0,8.9-4,8.9-8.9c0-4.9-4-8.9-8.9-8.9c-3.5,0-6.5,2-7.9,5l-20.7-4.4c-0.6-0.1-1.2,0-1.7,0.3
+        c-0.5,0.3-0.8,0.8-1,1.4l-6.3,29.8c-13.3,0.4-25.2,4.3-33.8,10.6c-2.2-2.1-5.3-3.5-8.6-3.5c-6.9,0-12.5,5.6-12.5,12.5
+        c0,5.1,3,9.4,7.4,11.4c-0.2,1.2-0.3,2.5-0.3,3.8c0,19.2,22.3,34.7,49.9,34.7s49.9-15.5,49.9-34.7c0-1.3-0.1-2.5-0.3-3.7
+        C224.8,180.4,227.9,176,227.9,170.9z M142.4,179.8c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9c0,4.9-4,8.9-8.9,8.9
+        C146.4,188.7,142.4,184.7,142.4,179.8z M192.1,203.3c-6.1,6.1-17.7,6.5-21.1,6.5c-3.4,0-15.1-0.5-21.1-6.5c-0.9-0.9-0.9-2.4,0-3.3
+        c0.9-0.9,2.4-0.9,3.3,0c3.8,3.8,12,5.2,17.9,5.2s14-1.4,17.9-5.2c0.9-0.9,2.4-0.9,3.3,0C193,201,193,202.4,192.1,203.3z
+         M190.5,188.7c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9C199.4,184.7,195.4,188.7,190.5,188.7z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="mobile_dropdown_socials_right">
+    <div class="mobile_dropdown_socials_text"><b>Follow</b></div>
+    <br>
+    <a class="mobile_dropdown_link" id="mobile_dropdown_twitter_follow_icon" href="https://twitter.com/jaydavidmartin1" target="_blank">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a>
+    <a class="mobile_dropdown_link" href="https://twitter.com/jaydavidmartin1" target="_blank">
+      <svg class='mobile_dropdown_icon social-base-color' viewBox="0 0 185.22762 182.55765" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs2" />
+        <g id="layer1" transform="translate(-5.9926524,-25.078399)">
+         <ellipse class="st0" style="stroke:#ffffff;stroke-width:3.54801" cx="99.419487" cy="117.98199" rx="72.991524" ry="70.789192" />
+         <ellipse class="st0" style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none" cx="98.606461" cy="116.35722" rx="92.613808" ry="91.278824" />
+          <path class="st1" d="M 146.00158,102.18036 H 52.63849 V 89.619127 h 93.36761 v 12.561233 z m -93.36309,11.38305 v 58.41223 l 46.683811,-26.0879 46.683799,26.0879 V 113.56341 Z M 146.0061,65.674815 H 52.63849 v 12.561252 h 93.36761 z" style="stroke-width:4.42919" />
+        </g>
+      </svg>
+    </a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+  <div class='mobile_dropdown_header'><b>Page Color</b></div>
+
+  <!-- Mobile Page Color Toggle -->
+  <div class="page_color_button_group">
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('light');mobile_page_toggle();">Light</button>
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('sepia');mobile_page_toggle();">Sepia</button>
+    <button class="page_color_button_mobile_color" onclick="toggle_page_color('dark');mobile_page_toggle();">Dark</button>
+    <div class="mobile_page_color_toggler"></div>
+  </div>
+
+</div> <!-- mobile_dropdown -->
+
+<!--Left side bar-------------------------------------------------------------------------------------------------------------->
+<div class="left_side_bar">
+
+  <div class="left_side_bar_title_text">Jump To:</div>
+  <div class="left_side_bar_horizontal_line"></div>
+  <ul class="left_side_bar_list">
+    <li><a class="sidebar_links" href="#top">Top</a></li>
+    <li><a class="sidebar_links" href="#overview">Overview</a></li>
+    <li><a class="sidebar_links" href="#hoh">Head of Household</a></li>
+    <li><a class="sidebar_links" href="#eitc">EITC</a></li>
+    <li><a class="sidebar_links" href="#ssi">SSI</a></li>
+    <li><a class="sidebar_links" href="#references">References</a></li>
+  </ul>
+
+  <div class="left_side_bar_title_text">Share:</div>
+  <div class="left_side_bar_horizontal_line"></div>
+
+<div class="left_side_bar_social_icons_container">
+
+    <a class="left_sidebar_social_icons_link" href="https://twitter.com/intent/tweet?text=Yo these marriage penalties are whack&url=https%3A%2F%2Fwww.peoplespolicyproject.org%2F2022%2F12%2F22%2Fus-workers-need-a-non-accrued-paid-sick-leave-guarantee%2F&via=jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#twitter_svg_left_side_bar');">
+      <svg class='social_icon social-base-color left_side_bar_social_logos' id='twitter_svg_left_side_bar' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" id='twitter_svg_left_side_bar_path' d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.peoplespolicyproject.org%2F2022%2F12%2F22%2Fus-workers-need-a-non-accrued-paid-sick-leave-guarantee%2F" target="_blank" onmouseenter="change_social_fill_forward('facebook', '#facebook_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#facebook_svg_left_side_bar');">
+      <svg 
+        class='social_icon social-base-color left_side_bar_social_logos' 
+        version="1.1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        x="0px" y="0px" 
+        viewBox="0 0 1365.3333 1365.3333"
+        xml:space="preserve">
+        <g id="g26" transform="matrix(1.3333333,0,0,-1.3333333,0,1365.3333)">
+          <g id="g28" transform="scale(0.1)">
+            <path class="social_icon social-base-color st0" id="facebook_svg_left_side_bar"
+               d="m 10240,5120 c 0,2827.7 -2292.3,5120 -5120,5120 C 2292.3,10240 0,7947.7 0,5120 0,2564.46 1872.31,446.301 4320,62.1992 V 3640 H 3020 v 1480 h 1300 v 1128 c 0,1283.2 764.38,1992 1933.9,1992 560.17,0 1146.1,-100 1146.1,-100 V 6880 H 6754.38 C 6118.35,6880 5920,6485.33 5920,6080.43 V 5120 H 7340 L 7113,3640 H 5920 V 62.1992 C 8367.69,446.301 10240,2564.46 10240,5120"/>
+            <path class="st1" id='facebook_svg_left_side_bar_path'
+               d="m 7113,3640 227,1480 H 5920 v 960.43 c 0,404.9 198.35,799.57 834.38,799.57 H 7400 v 1260 c 0,0 -585.93,100 -1146.1,100 C 5084.38,8240 4320,7531.2 4320,6248 V 5120 H 3020 V 3640 H 4320 V 62.1992 C 4580.67,21.3008 4847.84,0 5120,0 c 272.16,0 539.33,21.3008 800,62.1992 V 3640 h 1193" />
+          </g>
+        </g>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://www.linkedin.com" target="_blank" onmouseenter="change_social_fill_forward('linkedin', '#linkedin_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#linkedin_svg_left_side_bar');">
+      <svg 
+        class='social_icon social-base-color left_side_bar_social_logos' 
+        id='linkedin_svg_left_side_bar'
+        enable-background="new 0 0 48 48" 
+        id="Layer_1" 
+        version="1.1" 
+        viewBox="0 0 48 48" 
+        xml:space="preserve" xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+          <circle class='st0' cx="24" cy="24" r="24"/>
+          <path class="st1" id='linkedin_svg_left_side_bar_path' d="M17.4,34.9h-4.6V20.1h4.6V34.9z M14.9,18.2L14.9,18.2c-1.7,0-2.8-1.1-2.8-2.6c0-1.5,1.1-2.6,2.8-2.6  c1.7,0,2.8,1.1,2.8,2.6C17.7,17.1,16.7,18.2,14.9,18.2z M35.9,34.9h-5.3v-7.7c0-2-0.8-3.4-2.6-3.4c-1.4,0-2.1,0.9-2.5,1.8  c-0.1,0.3-0.1,0.8-0.1,1.2v8h-5.2c0,0,0.1-13.6,0-14.8h5.2v2.3c0.3-1,2-2.5,4.6-2.5c3.3,0,5.9,2.1,5.9,6.7V34.9z" fill="#FFFFFF"/>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://www.reddit.com/submit?url=http://https://www.peoplespolicyproject.org/2022/12/22/us-workers-need-a-non-accrued-paid-sick-leave-guarantee/" target="_blank" onmouseenter="change_social_fill_forward('reddit', '#reddit_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#reddit_svg_left_side_bar');">
+    <svg class='social_icon social-base-color left_side_bar_social_logos' id='reddit_svg_left_side_bar' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="85.45 85.45 170.9 170.9" style="enable-background:new 0 0 341.8 341.8;" xml:space="preserve">
+        <circle class="st0" cx="170.9" cy="170.9" r="85.5"/>
+        <path class="st1" id='reddit_svg_left_side_bar_path' d="M227.9,170.9c0-6.9-5.6-12.5-12.5-12.5c-3.4,0-6.4,1.3-8.6,3.5c-8.5-6.1-20.3-10.1-33.3-10.6l5.7-26.7
+        l18.5,3.9c0.2,4.7,4.1,8.5,8.9,8.5c4.9,0,8.9-4,8.9-8.9c0-4.9-4-8.9-8.9-8.9c-3.5,0-6.5,2-7.9,5l-20.7-4.4c-0.6-0.1-1.2,0-1.7,0.3
+        c-0.5,0.3-0.8,0.8-1,1.4l-6.3,29.8c-13.3,0.4-25.2,4.3-33.8,10.6c-2.2-2.1-5.3-3.5-8.6-3.5c-6.9,0-12.5,5.6-12.5,12.5
+        c0,5.1,3,9.4,7.4,11.4c-0.2,1.2-0.3,2.5-0.3,3.8c0,19.2,22.3,34.7,49.9,34.7s49.9-15.5,49.9-34.7c0-1.3-0.1-2.5-0.3-3.7
+        C224.8,180.4,227.9,176,227.9,170.9z M142.4,179.8c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9c0,4.9-4,8.9-8.9,8.9
+        C146.4,188.7,142.4,184.7,142.4,179.8z M192.1,203.3c-6.1,6.1-17.7,6.5-21.1,6.5c-3.4,0-15.1-0.5-21.1-6.5c-0.9-0.9-0.9-2.4,0-3.3
+        c0.9-0.9,2.4-0.9,3.3,0c3.8,3.8,12,5.2,17.9,5.2s14-1.4,17.9-5.2c0.9-0.9,2.4-0.9,3.3,0C193,201,193,202.4,192.1,203.3z
+         M190.5,188.7c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9C199.4,184.7,195.4,188.7,190.5,188.7z"/>
+      </svg>
+    </a> 
+
+  </div> <!-- left side bar social icons -->
+
+</div> <!--Left side bar-->
+
+<!--Title--------------------------------------------------------------------------------------------------------------->
+<div class="title_container">
+  <div class="category">Problems with American Family Benefits</div>
+  <h1 id="page_title">Marriage Penalties</h1>
+
+ <div class="name">By Jay Martin 
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" id="twitter_black" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg');" onmouseleave="change_social_fill_backward('#twitter_svg');">
+      <svg class='social_icon social-base-color top_social_icons' id='twitter_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+        <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+          C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+          c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+          c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+          c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+          c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+        </svg></a> 
+
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" id="substack_black" onmouseenter="change_social_fill_forward('substack', '#substack_svg');" onmouseleave="change_social_fill_backward('#substack_svg');">
+      <svg class='social_icon social-base-color top_social_icons' id='substack_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+      </svg></a>
+  </div>
+
+  <div class="page_description"><em>Policymakers have foolishly concluded that a tying of the knot should be paired with an emptying of the pockets.</em></div>
+</div><!--Title container-->
+
+<!--Left side-------------------------------------------------->
+<div class="left_side">
+  <div class="other_pages" id='other_pages_id'>
+    <a href="../">Home</a>
+    <a href="../overview/">Overview</a>
+    <a href="../fixing-family-benefits/">Fixing Family Benefits</a>
+    <a href="../two-tiers-of-welfare/">Two Tiers of Welfare</a>
+    <a href="../marriage-penalties/">Marriage Penalties</a>
+    <a href="../marginal-tax/">Marginal Tax Rates</a>
+    <a href="../asset-tests/">Asinine Asset Tests</a>
+    <a href="../administrative-burdens/">Administrative Burdens</a>
+    <a href="../over-reliance-on-tax-code/">Over-Reliance on Tax Code</a>
+    <div class="programs_container" id="programs_container" onmouseleave="hide_programs('programs');">
+      <div class="programs_title" onmouseover="show_programs('programs');">
+        <div class="programs_title_text">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+      </div>
+      <div class="programs" id="programs">
+        <a href="../child-tax-credit/">The Child Tax Credit</a>
+        <a href="../earned-income-tax-credit/">The Earned Income Tax</br>Credit</a>
+        <a href="../head-of-household/">The Head of Household</br>Filing Status</a>
+        <a href="../child-and-dependent-care-credit/">The Child & Dependent</br>Care Credit</a>
+        <a href="../snap/">SNAP (Food Stamps)</a>
+        <a href="../temporary-assistance-for-needy-families/">Temporary Assistance for</br>Needy Families</a>
+        <a href="../women-infants-and-children/">WIC</a>
+        <a href="../medicaid/">Medicaid & CHIP</a>
+      </div>
+    </div><!--Programs container-->
+    <div class="programs_container" id="bills_container" onmouseleave="hide_programs('bills');">
+      <div class="programs_title" onmouseover="show_programs('bills');">
+        <div class="programs_title_text">Bills <div class="programs_title_symbol">&#x25BC;</div></div>
+      </div>
+      <div class="programs" id="bills">
+        <a href="../family-security-act/">Family Security Act</a>
+        <a href="../build-back-better/">Build Back Better Act</a>
+        <a href="../end-child-poverty-act/">End Child Poverty Act</a>
+        <a href="../ssi-restoration-act/">SSI Restoration Act</a>
+        <a href="../working-families-tax-relief-act/">Working Families Tax<br>Relief Act</a>
+      </div>
+    </div><!--Bills container-->
+  </div>
+</div>
+
+<!--Center-------------------------------------------->
+<div class="center">
+
+  <div class = "chart">
+    
+    <!--User inputs-->
+    <div class="user_inputs" id="user_inputs">
+
+      <!--Benefit Selector-->
+      <label for="benefit_selector">Show me the</label>
+      <select id="benefit_selector" oninput="switch_chart()">
+        <option value="eitc">Earned Income Tax Credit</option>
+        <option value="hoh">Head of Household Filing Status</option>
+      </select>.
+
+      <div id="eitc_user_inputs">
+        <!--Person 1 number of old children-->
+        <label for="numChildrenPerson1">I have</label>
+        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income('children')">
+          <option value="none">no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>
+
+        <!--Person 2 number of old children-->
+        <label for="numChildrenPerson2">and my partner has</label>
+        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income('children')" >
+          <option value="none">no children</option>
+          <option value="one" >1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>.
+      </div> <!-- EITC user inputs-->
+
+      <div id='hoh_user_inputs'>
+        <!--Partner filing status-->
+        <label for="person2_filing_status">My partner's filing status is:</label>
+        <select name="person2_filing_status" id="person2_filing_status" oninput="modify_person2_filing_status();modify_income();">
+          <option value="single">Single Filer</option>
+          <option value="hoh">Head of Household</option>
+        </select>
+      </div>
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text" id="income_slider_text"> I have an income of $<output id="person1_income_output">30,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
+        </div>
+      </div>
+
+      <!--Power Users: Person 1 arbitrary income-->
+      <div class="arbitray_income_container" id="person1_arbitrary_income_container">
+        <label for="person1_arbitray_income">Input your income:</label>
+        <input type="number" class="arbitrary_income" id="person1_arbitray_income" name="person1_arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modify_income();">
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
+        </div>
+      </div>
+
+      <!--Power Users: Person 2 arbitrary income-->
+      <div class="arbitray_income_container" id="person2_arbitrary_income_container">
+        <label for="arbitray_income">Input your partner's income:</label>
+        <input type="number" class="arbitrary_income" id="person2_arbitray_income" name="person2_arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modify_income();">
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!--Center Explanation Box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="individual_values"></p>
+      <p class="explanation_text" id="married_value"></p>
+      <p class="explanation_text" id="marriage_penalty_output"></p>
+
+      <p class="explanation_text" id="explanation_line1"></p>
+      <p class="explanation_text" id="explanation_line2"></p>
+      <p class="explanation_text" id="explanation_line3"></p>
+      <p class="explanation_text" id="explanation_line4"></p>
+      <p class="explanation_text" id="explanation_line5"></p>
+      <p class="explanation_text" id="explanation_line6"></p>
+      <p class="explanation_text" id="explanation_line7"></p>
+      <p class="explanation_text" id="explanation_line8"></p>
+      <p class="explanation_text" id="explanation_line9"></p>
+      <p class="explanation_text" id="explanation_line10"></p>
+      <p class="explanation_text" id="explanation_line11"></p>
+      <p class="explanation_text" id="explanation_line12"></p>
+
+    </div>
+
+    <!-- End animation button -->
+    <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled />
+
+    <!-- Marriage Penalties Chart -->
+    <div class='chart_actual' id="MPchart"></div>
+
+    <!-- Chart Title & Logo -->
+  <!--
+    <div class='chart_title_logo_container'>
+      <div>
+        <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+          <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+          <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+        </svg>
+      </div>
+      <div class='chart_byline zen_font'><div class='float_right'>Chart by @jaydavidmartin1</div></div>
+    </div>
+  -->
+
+    <!--Power users-->
+  <!--
+    <div class="power_users_container">
+      <h3>Power Users</h3>
+      <label class="switch_label" id="arbitrary_income_label">
+        Arbitrary income:
+        <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  -->
+
+  </div> <!--chart end-->
+
+  <!-- Mobile Highlights -->
+  <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+    <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
+
+    <div class="loader_container" id="mobile_loader_container">
+      <div class="loader" id="highlights_loader"></div>
+      Loading
+    </div>
+
+    <div class="highlights_content" id="mobile_highlights_content">
+      
+      <button type="button" class="top_button" onclick="show_explanation(1)">What are marriage penalties?</button>
+      <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container1">
+        <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+        <input type="submit" class="small_button animation_button" id="animation1_button_mobile" value="Play animation" onclick="animation1()" />
+      </div>
+
+      <button type="button" onclick="show_explanation(2)">Who faces marriage penalties?</button>
+      <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container2">
+        <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="small_button animation_button" id="animation2_button_mobile" value="Play animation" onclick="animation2()" />
+      </div>
+
+      <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Who faces marriage bonuses?</button>
+      <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container3">
+        <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+        <input type="submit" class="small_button animation_button" id="animation3_button_mobile" value="Play animation" onclick="animation3()"/>
+      </div>
+    </div> <!--highlights_content-->
+  
+  </div> <!--Mobile Highlights-->
+
+</div> <!--Center-->
+
+<!--Right Side-------------------------------------------->
+<div class = "right_side">
+
+  <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+    <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+    <div class="loader_container" id="loader_container">
+      <div class="loader" id="highlights_loader"></div>
+      Loading
+    </div>
+
+    <div class="highlights_content" id="highlights_content">
+      
+      <button type="button" class="top_button" onclick="show_explanation(1)">What are marriage penalties?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container1">
+        <p class="explanation" id="highlights_explanation1_text">When two people are single, they are each eligible for separate EITC benefits. But when they get married, they are eligible for only one, married joint filer EITC. Because of the structure of the EITC, often times the value of the married EITC is less than the sum of the two individual EITC's. This difference is called a <em>marriage penalty</em>.</p>
+        <input type="submit" class="small_button animation_button" id="animation1_button" value="Play animation" onclick="animation1()" />
+      </div>
+
+      <button type="button" onclick="show_explanation(2)">Who faces marriage penalties?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container2">
+        <p class="explanation" id="highlights_explanation2_text">Itemized deductions reduce the benefit of the HOH filing status because much of its benefit derives from the larger HOH standard deduction compared to filing as single.</p>
+        <input type="submit" class="small_button animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
+      </div>
+
+      <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Who faces marriage bonuses?</button>
+      <div class="explanation_and_animation_button_container" id="highlights_container3">
+        <p class="explanation" id="highlights_explanation3_text">Some very low-income couples incur marriage bonuses. This generally occurs when two people each have children of their own and are in the phase-in region of their respective single EITC's. When they get married, the number of children attributed to their tax unit increases, so they become eligible for a larger EITC curve than either was eligible for before, which can result in a larger benefit than the sum of their individual EITC's. Bonuses can also occur for low-income couples in which one person has a child and the other does not. Bonuses can also occur if one partner has an income close to zero and the other is in the phase-out region of their EITC.</p>
+        <input type="submit" class="small_button animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
+      </div>
+    </div> <!--highlights_content-->
+  
+  </div> <!--Highlights Container-->
+
+</div> <!--right_side-->
+
+<!-- Overview ----------------------------------------------------------------------------------------------------------------------------------------->
+<div class = 'center_no_side_elements' id='overview'>
+  <h2>What are Marriage Penalties?</h2>
+</div> <!--Overview-->
+
+<!-- Blog Promotion Horizontal ----------------------------------------------------------------------------------------------------------------------------------------->
+<div class = 'center_no_side_elements'>
+
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_container'>
+      <div class='blog_grid_item blog_grid_item_left'>
+        <svg
+           class="blog_svg"
+           viewBox="0 0 174.41969 171.98259"
+           version="1.1"
+           id="svg5"
+           xmlns="http://www.w3.org/2000/svg"
+           xmlns:svg="http://www.w3.org/2000/svg">
+          <defs
+             id="defs2" />
+          <g
+             id="layer1"
+             transform="translate(-18.804621,-47.23762)">
+            <ellipse
+               style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+               id="path788"
+               cx="106.01447"
+               cy="133.22891"
+               rx="83.221352"
+               ry="82.002792" />
+            <text
+               class="blog_logo_J"
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+               x="66.595787"
+               y="182.87247"
+               id="text1014"><tspan
+                 id="tspan1012"
+                 style="stroke-width:6"
+                 x="66.595787"
+                 y="182.87247">J</tspan></text>
+          </g>
+        </svg>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>A splendid little Substack newsletter</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Covering economics, the welfare state, and more</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Arrives right in your inbox, as if by magic</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item blog_grid_item_right'>
+        <div class='blog_text'>Click here for delectable insights</div>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<!-- Head of Household---------------------------------------------------------------------------------------------------------------------------------->
+<div class = 'center_no_side_elements' id='hoh'>
+  <h2>Head of Household</h2>
+  <div class="article_tag"><em>Program Page: <a class='articel_tag_link' href="../head-of-household/" target="_blank">Head of Household</a> </em></div>
+
+  <p class="top">
+    The head of household status creates some pretty sizeable marriage penalties. A family of four in which both parents make $30,000, for instance, could save between $798 and $1,596 by getting a divorce, depending on how they claim their dependents. They can reach pretty ridiculous levels at higher incomes (though at higher incomes they probably have less effect on behavior): two heads of households making $80,000 each would incur a penalty of over $6,000 if they married.
+  </p>
+
+  <p>
+    It's important to note that it doesn't require careful cherry picking to find these penalties. About x% of marriages are between a childless person and a person with at least one child. If the childless person makes at least $14,000 and the head of household at least $20,000, then they are guaranteed a marriage penalty of over $600 unless one of them is high earner. About y% of marriages are between two people who each have children of their own. In this case, as long as both of them earn at least $19,000 then they are guaranteed to incur a penalty of at least $1,000, with penalties approaching $2,000 common.
+  </p>
+
+  <!----------- HOH Tax Chart-------------->
+  <div class = "chart">
+    <h3 class='chart_title'>Head of Household Creates Marriage Penalties</h3>
+
+    <!--Person 1 filing status-->
+    <label for="hoh_tax_person1_filing_status">I am a </label>
+    <select id="hoh_tax_person1_filing_status" oninput='hoh_tax_modify_person1();hoh__tax_modify_income();hoh_tax_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh" selected>head of household</option>
+    </select>
+
+    <!--Person 2 filing status-->
+    <label for="hoh_tax_person2_filing_status">and my partner is a </label>
+    <select id="hoh_tax_person2_filing_status" oninput='hoh_tax_modify_person2();hoh_tax_modify_income();hoh_tax_outputs();' >
+      <option value="single">single filer</option>
+      <option value="hoh">head of household</option>
+    </select>.
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="hoh_tax_person2_income_output">40,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Center box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="hoh_tax_individual"></p>
+      <p class="explanation_text" id="hoh_tax_married"></p>
+      <p class="explanation_text" id="hoh_tax_penalty"></p>
+    </div>
+
+    <!-- HOH Tax Chart-->
+    <div id="hoh_tax_chart"></div>
+
+  </div> <!-- chart container-->
+
+  <p>
+    When paired with the EITC, the marriage penalties can be astounding. A couple with two children between them and $60,000 in income could lose nearly $7,000—over 11% of their income—from getting married. That
+  </p>
+
+</div> <!-- center -->
+
+<!-- Vertical Blog Promotion ---------------------------------------------------------------------------------------------------------------------------------->
+<div class='vertical_blog_container page_right'>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_grid_item vertical_blog vertical_blog_logo'>
+      <svg
+         class="vertical_blog_svg"
+         viewBox="0 0 174.41969 171.98259"
+         version="1.1"
+         id="svg5"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:svg="http://www.w3.org/2000/svg">
+        <defs
+           id="defs2" />
+        <g
+           id="layer1"
+           transform="translate(-18.804621,-47.23762)">
+          <ellipse
+             style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+             id="path788"
+             cx="106.01447"
+             cy="133.22891"
+             rx="83.221352"
+             ry="82.002792" />
+          <text
+             class="blog_logo_J"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+             x="66.595787"
+             y="182.87247"
+             id="text1014"><tspan
+               id="tspan1012"
+               style="stroke-width:6"
+               x="66.595787"
+               y="182.87247">J</tspan></text>
+        </g>
+      </svg>
+    </div>
+    <div class='blog_grid_item vertical_blog vertical_blog_logo'><div class='blog_text zen_font'>Read the blog</div></div>
+  </a>
+  <div class='horizontal_line'></div>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_grid_item vertical_blog'>
+      <div class='blog_text'>Marco Rubio's—and America's—Obsession with Framing Everything as a Tax Cut</div>
+    </div>
+  </a>
+  <div class='horizontal_line'></div>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_grid_item vertical_blog'>
+      <div class='blog_text'>America is Devoting Less—Not More—of its Resources to the Military</div>
+    </div>
+  </a>
+  <div class='horizontal_line'></div>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+  <div class='blog_grid_item vertical_blog'>
+      <div class='blog_text'>When the US Redistributed Land: Japan's 1946 Land Reform</div>
+    </div>
+  </a>
+  <div class='horizontal_line'></div>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_grid_item vertical_blog'>
+      <div class='blog_text'>Welfare is Already Cradle to Grave, or How We've Designed Policy to Be Invisible</div>
+    </div>
+  </a>
+  <div class='horizontal_line'></div>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_grid_item vertical_blog'>
+      <div class='blog_text'>Coming Soon: A Series on the history of the American Welfare State, from poorhouses to the ARP</div>
+    </div>
+  </a>
+</div>
+<!-- End vertical blog promotion --------------------->
+
+<div class = 'center_no_side_elements'>
+  <h3>The Solution</h3>
+  <p>
+    The way you eliminate the marriage penalties inherent in the head of household filing status is very simple: you eliminate it entirely and plough the savings into a universal child benefit. This takes advantage of a convenient fact: that the single and married filing statuses are already set up in such a way that they do not create marriage penalties.
+  </p>
+
+  <div class = "chart">
+    <h3 class='chart_title'>Single Filer Status Does Not Create Marriage Penalties</h3>
+
+    <!--Person 1 filing status-->
+    <label for="single_tax_person1_filing_status">I am a </label>
+    <select id="single_tax_person1_filing_status">
+      <option value="single">single filer</option>
+    </select>
+
+    <!--Person 2 filing status-->
+    <label for="single_tax_person2_filing_status">and my partner is a </label>
+    <select id="single_tax_person2_filing_status">
+      <option value="single">single filer</option>
+    </select>.
+
+    <!--Person 1 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text" id="income_slider_text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Person 2 income slider-->
+    <div class="slidecontainer"> 
+      <div class="slider-text">My partner has an income of $<output id="single_tax_person2_income_output">40,000</output>:</div>
+      <div class="slider-actual">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
+      </div>
+    </div>
+
+    <!--Center box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="single_tax_individual_values"></p>
+      <p class="explanation_text" id="single_tax_married_value"></p>
+      <p class="explanation_text" id="single_tax_bonus"></p>
+    </div>
+
+    <div id="single_tax_chart"></div> <!--Div for single/married tax chart-->
+
+  </div> <!-- chart container-->
+
+</div> <!--HOH fix section end-->
+
+<!--Earned Income Tax Credit---------------------------------------------------------------------------------------------------------------------------------->
+<section class = 'center_no_side_elements' id='eitc'>
+  <h2>The Earned Income Tax Credit</h2>
+  <div class="article_tag"><em>Program Page: <a href="../earned-income-tax-credit/" target="_blank">Earned Income Tax Credit</a> </em></div>
+
+  <p class="top">
+    The EITC...
+  </p>
+
+  <h3>Constructing an EITC with Minimal Marriage Penalties</h3>
+
+  <!-------- Explanation chart --------->
+  <div class = "chart" id="eitc_explainer_chart_container">
+
+    <h3 class="box_title">Constructing an EITC with Minimal Marriage Penalties</h3>
+    <div class='explainer_chart_text_title'><b>The Basic Idea:</b> A marriage consists of <em>two</em> people, each of whom would receive their own EITC if single. Therefore, to prevent marriage penalties, the married EITC should equal the sum of the two individual EITC's each would receive if single.</div>
+
+    <div class="center_explanation_box" id="eitc_explainer_center_box">
+      <div class="explainer_text_container" id="eitc_explainer_text_container">
+        <div class='explainer_chart_step' id="eitc_explainer_start_prompt">Click next to start animation</div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step0" style="display:none;">
+          <div class="step_number"><b>Basics:</b></div>
+          <div class="step_text">
+            <div class="step_text_line0" id="eitc_explainer_step0A_text">We'll start with the single one-child EITC and think about how we'd construct the married</div>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0B_text">EITC so that marriage penalties are minimized.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0C_text">Think about two people who are each eligible for the EITC. That's <b>two</b> EITC's. </div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0D_text">But if they get married, they'll file their taxes jointly and receive only <b>one</b> EITC.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0E_text">So if their one married EITC is worth less than the sum of their two individual EITC's,</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0F_text">then they'd <em>lose</em> money as a result of getting married.</div>
+            </div></br>
+          </div> <!--step text-->
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step0-1" style="display:none;">
+          <div class="step_number"><b>Basics:</b></div>
+          <div class="step_text">
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1A_text">So the basic idea is this:</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1B_text">When two people get married, their married EITC should be worth the sum of the</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line0" id="eitc_explainer_step0-1C_text">two individual EITC's that they would receive if they were single.</div>
+            </div></br>
+          </div> <!--step text-->
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step1" style="display:none;">
+          <div class="step_number"><b>Step 1:</b></div>
+          <div class="step_text">
+            <div class="step_text_line" id="eitc_explainer_step1A_text">First, let's consider how large the maximum married benefit should be.</div>
+            <div class="line_container">
+              <div class="step_text_line" id="eitc_explainer_step1B_text">If two people each receive the maximum individual benefit of $3,000,</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line" id="eitc_explainer_step1C_text">then their combined benefit would be $6,000.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line" id="eitc_explainer_step1D_text">Thus, if they get married, they should continue to receive $6,000.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line" id="eitc_explainer_step1E_text">That's double the individual max, so the married EITC max should be twice as large.</div>
+            </div>
+          </div> <!--step text-->
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step2" style="display:none;">
+          <div class="step_number"><b>Step 2:</b></div>
+          <div class="step_text">
+            <div class="step_text_line2" id="eitc_explainer_step2A_text">Next, consider two people who are each at the very end of the phase-in region.</div>
+            <div class="line_container">
+              <div class="step_text_line2" id="eitc_explainer_step2B_text">They each have incomes of $10,000 and EITC's worth $3,000.</div>
+            </div></br>
+            <div class="step_text_line2" id="eitc_explainer_step2C_text">So, if they marry, their EITC should equal $6,000 at their combined income of $20,000.</div>
+            <div class="line_container">
+              <div class="step_text_line2" id="eitc_explainer_step2D_text">Notice that this simply extends the individual phase-in.</div>
+            </div></br>
+            <div class="step_text_line2" id="eitc_explainer_step2E_text">Therefore, to ensure that two people in the phase-in region do not face a marriage penalty,</div>
+            <div class="line_container">
+              <div class="step_text_line2" id="eitc_explainer_step2F_text">the married EITC should phase-in at least as fast as the individual EITC up to the new max.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step3" style="display:none;">
+          <div class="step_number"><b>Step 3:</b></div>
+          <div class="step_text">
+            <div class="step_text_line3" id="eitc_explainer_step3A_text">Third, consider two people who each have incomes right at the edge of the plateau.</div>
+            <div class="line_container">
+              <div class="step_text_line3" id="eitc_explainer_step3B_text">They each have incomes of $15,000 and receive EITC's worth $3,000.</div>
+            </div></br>
+            <div class="step_text_line3" id="eitc_explainer_step3C_text">If they marry, then at their combined income of $30,000 their EITC should be worth $6,000.</div>
+            <div class="step_text_line3" id="eitc_explainer_step3D_text">$30,000 is twice as large as $15,000, so the married plateau should not end until at least</div>
+            <div class="line_container">
+              <div class="step_text_line3" id="eitc_explainer_step3E_text">double the income at which the individual EITC plateau ends.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step4" style="display:none;">
+          <div class="step_number"><b>Step 4:</b></div>
+          <div class="step_text">
+            <div class="step_text_line4" id="eitc_explainer_step4A_text">Finally, consider two people who each have incomes right at the end of the phaseout.</div>
+            <div class="line_container">
+              <div class="step_text_line4" id="eitc_explainer_step4B_text">They each have incomes of $30,000, for a combined income of $60,000.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line4" id="eitc_explainer_step4C_text">Notice that if their combined income drops below $60,000, then their EITC will be nonzero.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line4" id="eitc_explainer_step4D_text">Hence, if they married, they should receive a nonzero EITC of the same value.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line4" id="eitc_explainer_step4E_text">Notice that their married EITC should not reach $0 until $60,000 in income.</div>
+            </div></br>
+            <div class="line_container">
+              <div class="step_text_line4" id="eitc_explainer_step4F_text">Thus, the married EITC should not reach $0 until double the income of the individual EITC.</div>
+            </div></br>
+          </div>
+        </div>
+
+        <div class='explainer_chart_step' id="eitc_explainer_step5" style="display:none;">
+          <div class="step_number"><b>End Result:</b></div>
+          <div class="step_text">
+            A married EITC in which doubling individual income leads to a benefit twice as large. This ensures that any time two people combine their incomes when they marry, their married EITC is at least as large as the sum of their two individual EITC's (at least until one spouse has an income above $30,000).
+          </div>
+        </div>
+
+      </div> <!-- text container -->
+
+      <div class="forward_back_buttons">
+        <input type="submit" class="small_button explainer_button" id="eitc_explainer_back_button" value="Back" onclick="eitc_explainer_back();" disabled>
+        <input type="submit" class="small_button explainer_button" id="eitc_explainer_next_button" value="Next" onclick="eitc_explainer_next();">
+      </div>
+
+    </div> <!-- explanation box -->
+
+    <div id="eitc_explainer_chart"></div> <!--Div for standard credit chart-->
+  </div>
+
+  <p>
+    In the module below, you can play around with the EITC outlined above and compare it to the current EITC. You'll notice that the new EITC is superior to the current one and does, in fact, eliminate all marriage penalties except for those inherent to phaseouts.
+  </p>
+
+  <!-------- Reformed EITC Chart -------->
+  <div class = "chart_wide">
+
+    <input type="submit" class="small_button wide_show_values_button" id="eitc_fix_outputs_button" value="Show Values" onclick="show_eitc_fix_values();" >
+
+    <div class="wide_inputs">
+      <!--EITC Type-->
+    <!--
+      <label for="eitc_reform_type">Show: </label>
+      <select name="eitc_reform_type" id="eitc_reform_type" oninput="eitc_reform_adjust_married();eitc_reform_modify_income();eitc_reform_outputs();">
+        <option value="default">Default</option>
+        <option value="slope">Slope Marriage Bonus</option>
+        <option value="value">Larger EITC Marriage Bonus</option>
+        <option value="both">Both Marriage Bonuses</option>
+      </select>
+    -->
+
+      <!--Person 1 number of old children-->
+      <label for="eitc_fix_person1_numchildren">I have</label>
+      <select name="eitc_fix_person1_numchildren" id="eitc_fix_person1_numchildren" oninput="eitc_reform_adjust_existing_person1();" >
+        <option value="one" selected>1 child</option>
+      </select>
+
+      <!--Person 2 number of old children-->
+      <label for="eitc_fix_person2_numchildren">and partner has</label>
+      <select name="eitc_fix_person2_numchildren" id="eitc_fix_person2_numchildren" oninput="eitc_reform_adjust_existing_person2();" >
+        <option value="one" selected>1 child</option>
+      </select>.
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text" id="income_slider_text">I have an income of $<output id="eitc_reform_person1_income_output">15,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="15000" step="1000" class="slider" id="eitc_reform_person1_income" oninput="eitc_reform_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+        </div>
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <div class="slider-text">My partner has an income of $<output id="eitc_reform_person2_income_output">20,000</output>:</div>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="20000" step="1000" class="slider" id="eitc_reform_person2_income" oninput="eitc_reform_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_reform_modify_income();eitc_reform_outputs();">
+        </div>
+      </div>
+
+    </div> <!-- wide inputs -->
+
+    <div class="inner_chart_left">
+      <h3 class='chart_wide_name'>Reformed EITC</h3>
+      <div class="center_explanation_box" id='eitc_fix_outputs' hidden>
+        <p class="explanation_text" id="eitc_reform_individual"></p>
+        <p class="explanation_text" id="eitc_reform_married"></p>
+        <p class="explanation_text" id="eitc_reform_penalty"></p>
+      </div>
+
+      <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    </div> <!--Inner left chart container-->
+
+    <div class="inner_chart_right">
+      <h3 class='chart_wide_name'>Current EITC</h3>
+      <div class="center_explanation_box" id='existing_outputs' hidden>
+        <p class="explanation_text" id="existing_individual"></p>
+        <p class="explanation_text" id="existing_married"></p>
+        <p class="explanation_text" id="existing_penalty"></p>
+      </div>
+
+      <div id="exisiting_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    </div> <!--Inner right chart container-->
+  
+  </div> <!-- chart container -->
+
+  <p>
+    One thing that you'll notice is that the reformed married EITC is quite a bit larger than the existing married EITC: the max benefit is over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've slyly tried to fit a big benefit boost in for married people—this is the bare minimum required to eliminate marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, it turns out, save a lot of money. And by all appearances, Congress has prioritized saving money over ensuring marriage is not discouraged. 
+  </p>
+
+  <p>
+    This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we'll need to do a more substantial reform of the EITC.
+  </p>
+
+  <h3>There are more issues</h3>
+  <p>
+    Even if you're on board with an EITC boost for married people (it's not a bad idea in itself!), a big problem remains. So far, we've only dealt with two curves: the 1-child single EITC and the 2-child married EITC that a couple would jump up to. This obscures the complexity of the reform, because the EITC doesn't consist of only two curves: it consists of <em>eight</em>. The structure of the EITC is frankly a bit absurd. Words you'd generally want to associate with a policy are things like "simple", "elegant", and "easy to understand". The EITC instead brings to mind words like "convoluted", "ugly", and "perplexing". Just look at it:
+  </p>
+
+  <div id="eitc_2023"></div>
+
+  <video id='spongebob_meme' height="100%" width="100%" controls width="320">
+    <source src="./video/eitc2023meme.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <input type="submit" class="small_button center_floating_button" id="meme_button" value="Meme Version" onclick="show_spongebob_meme();" >
+  </br>
+
+  <p>
+    This differentiation by number of children makes it quite difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations. A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's single EITC's for one, two, and three+ children, so we also have to consider married couples with one, two, three, four, five, and six+ children.
+  </p>
+
+  <p>
+    To truly eliminate marriage penalties, the only way to handle this is to deal with the <em>worst</em> case. i.e. the case that necessitates the largest benefit. If you design the EITC around a child combination other than the worst case, then you get marriage penalties. So, for instance, the three child benefit needs to be designed around a two-child parent marrying a one-child parent, because adding up the single two-child and single one-child EITC's results in a larger benefit than adding up the single three-child and single childless EITC's. If we didn't do this, and instead constructed the three-child married EITC to accomodate a three-child parent marrying a childless person, then any couple in which one spouse has two children and the other one child would face substantial marriage penalties.
+  </p>
+
+  <p>
+    At the same time, the phase-in for the single three-child EITC is steeper than the phase-in for either the two-child or one-child EITC. Which means that our married three-child EITC is going to need to phase in at least as fast as the single three-child EITC, or else we'd create marriage penalties for three-child—zero-child couples who have incomes that put them in the phase-in region.
+  </p>
+
+  <p>
+    This necessity to deal with the worst-case itself creates some complications. Notice that if a parent with two children married another parent with two children, then they have <em>four</em> children. The current EITC doesn't have a married four-child EITC—it shoves them into the 3+ children EITC. But if we were to construct the married 3+ children curve around the idea of the couple having three children, then couples with more than three children would face marriage penalties. And as the number of children increases (up to six), these marriage penalties grow larger and larger, until they're stupid large. Under the current EITC, for instance, when a parent with three or more children marries another parent with three or more children, they can face marriage penalties of over <b>$10,000</b>!
+  </p>
+
+  <p>
+    This means that, if we really want to eliminate marriage penalties, we'll either need to create married EITC's for people with four, five, and six or more children, or we'll have to set the married three+ children EITC at the worst case possibility of 6+ children. The former would cost less but would substantially increase the complexity of the EITC, so I'll consider the latter possibility. Either way, however, the largest married EITC (for 6+ children) is going to have to be much, much larger than the current largest EITC.
+  </p>
+
+  <p>
+    All of these considerations together result in the below, ghastly EITC:
+  </p>
+
+  <div id="eitc_fix_all_curves"></div>
+
+  <p>
+    The childless EITC is constructed straightforwardly from the process we used above to build a (mostly) marriage-penalty free EITC (i.e. it's "double" the single EITC). The married two-child EITC is exactly the one we constructed in the previous section, only with a steeper phase-in to prevent marriage penalties among two children–zero children couples. The married three or more children EITC shows the worst-case possibility of a parent with three or more children marrying someone else with three or more children. And the married one-child EITC—the EITC for a person with one child who marries a childless person—takes the single one-child EITC and increases the maximum value by $600, the largest benefit a childless person can receive.
+  </p>
+
+  <p>
+    I hope it is evident by now that the current structure of the EITC, based around differentiating beneficiaries by the number of children that they have, makes it painfully difficult to build an EITC benefit structure that doesn't have marriage penalties. Fortunately, there's no law of the universe that says we have to construct it this way. It's just a policy choice, so we can reformulate the EITC along whatever lines we like. And, as I'll explain in the next two sections, it's not only marriage penalties: there are a many reasons why we should restructure the EITC.
+  </p>
+
+  <h3>Solution 1: Simplifying the EITC</h3>
+  <p>
+    So, you've come to terms with the fact that the EITC as currently structured makes it impossibly difficult to eliminate marriage penalties. You might be feeling sad that such a vaunted policy turns out to be irredeemably flawed, destined to encourage family dysfunction. Now, I will add salt to the wound, and lay out a number of other ways in which the EITC as currently constructed is deeply broken.
+  </p>
+
+  <p>
+    In this section I'll operate within the EITC's basic logic—that it should include a phase-in to "encourage work" and a phase-out to "target" the benefit at low-and-working class people and reduce the sticker price. In the next section, I'll challenge that logic and argue for a more substantial reform.
+  </p>
+
+  <p>
+    Along with the infeasibility of eliminating marriage penalties, there are three additional reasons why the current practice of stratigying benificiaires by the number of children that they have is bad:
+  </p>
+
+  <h4>1. It's needlessly complicated</h4>
+  <p>
+    The tax code is already complicated and confusing.
+  </p>
+
+  <p>
+    As the Treasury Deparment notes: "It can be challenging to distinguish between the portion of a credit that offsets an individual tax liability versus the portion that is refundable...Whether a tax credit results in a refund instead of a reduction in tax liability depends on all of the taxpayers' characteristics, such as income, deductions, and other credits claimed, and is not simply driven by the credit itself...The IRS’s risk assessments on refundable tax credits have consistently concluded that overclaims are not rooted in internal control deficiencies, but instead are due to the complexities of verifying eligibility, including unavailability of relevant third party data, for refundable tax credits within the time periods prescribed by the tax system."<span class="tooltip" id='note'><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=193' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 191. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
+  </p>
+
+  <p>
+    According to the Treasury Department, "faced with the complexities of claiming certain refundable credits...50 percent of taxpayers claiming refundable credits use paid preparers".<span class="tooltip" id='note9'><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span> The complexity of the EITC, in other words, effectively siphons billions of dollars intended for low-income people into the coffers of H&R Block, Turbotax and the like.
+  </p>
+
+  <p>
+    The complexity of the EITC also results in lower-income people being audited at considerably higher rates than middle and upper class people.<span class="tooltip" id='note6'><a class="refs" href="#notes"><sup>[TRAC]</sup></a><span class="tooltiptext"><a href='https://trac.syr.edu/reports/706/#a_f1' target="_blank">"IRS Audits Few Millionaires But Targeted Many Low-Income Families in FY 2022"</a> (January 4, 2023). <em>TRAC</em>. Syracuse University. <a href='https://web.archive.org/web/20230111145540/https://trac.syr.edu/reports/706/' target="_blank">Archived</a> from the original on January 11, 2023.</span></span> Headlines do tend to exaggerate this somewhat: according to the Congressional Research Service, it is true that the audit rate for people who receive the EITC is several times higher than for people who do not, but this represents and increase from a 0.3% audit rate to a 1% audit rate.<span class="tooltip" id='note8'><a class="refs" href="#notes"><sup>[CRS-EITC]</sup></a><span class="tooltiptext">Crandall-Hollick, Margot L. (June 13, 2022). <a href='https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">"Audits of EITC Returns: By the Numbers"</a><i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220925202752/https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on September 25, 2022.</span></span> In 2022, the IRS conducted 310,081 refundable credit exams.<span class="tooltip" id='note7'><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
+  </p>
+
+  <p>
+    This complexity not only produces headaches for EITC claimants, but also results in additional costs to the government in the form of improper payments and additional overhead costs required to audit and recover these payments. In 2022, for instance, the Treasury Department estimated that roughly $18 billion in EITC payments (32% of the total) was sent out improperly, representing 10% of the <a href='https://www.irs.gov/newsroom/the-tax-gap' target='_blank'>tax gap</a>.<span class="tooltip" id='note7'><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=50' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 48. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span> The comparatively simpler child tax credit, by contrast, had an improper payment rate half that and made up only 3% of the tax gap. The IRS then has to expend significant resources detecting and auditing improper payments, which is made considerably more challenging by the EITC's eligibility rules, which depend upon complicated family relationships and residency arrangements that can be difficult to verify. Indeed, over 90% of improper payments result from "Inability to Authenticate Eligibility: Data Needed Does Not Exist", i.e. payments in which the IRS was simply unable to determine whether eligibility criteria have been met.<span class="tooltip" id='note'><a class="refs" href="#notes"><sup>[TAS]</sup></a><span class="tooltiptext"><a href='https://www.taxpayeradvocate.irs.gov/wp-content/uploads/2020/07/ARC18_Volume1_MSP_06_ImproperEarnedIncome.pdf' target="_blank">"Taxpayer Advocate Service 2018 Annual Report to Congress: Improper Earned Income Tax Credit Payments"</a> <i class="fa fa-file-pdf-o"></i> (2018). p. 91–104.<em>Taxpayer Advocate Service</em>. Internal Revenue Service. <a href='https://web.archive.org/web/20220119143320/https://www.taxpayeradvocate.irs.gov/wp-content/uploads/2020/07/ARC18_Volume1_MSP_06_ImproperEarnedIncome.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 19, 2022.</span></span>
+  </p>
+
+  <p>
+    Both the IRS and the Treasury have repeatedly made it clear that the root cause of overpayments is the complexity of the EITC and the tax system more broadly, not becuase of fraud. As the Treasury notes, "the IRS has continuously deployed costly enforcement tools to lower the error rate" with "minimal impact".<span class="tooltip" id='note'><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=247' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 245. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
+  </p>
+
+  <p>
+    Finally, the complexity of the EITC and of the tax system more broadly results in many people not claiming the EITC despite being eligible for it. Both the IRS and non-government studies consistently find that roughly 20% of people eligible for the EITC do not claim it.<span class="tooltip" id='note7'><a class="refs" href="#notes"><sup>[IRS]</sup></a><span class="tooltiptext"><a href='https://www.eitc.irs.gov/eitc-central/participation-rate-by-state/eitc-participation-rate-by-states' target="_blank">"EITC Participation Rate by States Tax Years 2012 through 2019"</a> (2022). <em>Internal Revenue Service</em>. <a href='https://web.archive.org/web/20221127121426/https://www.eitc.irs.gov/eitc-central/participation-rate-by-state/eitc-participation-rate-by-states' target="_blank">Archived</a> from the original on November 27, 2022.</span></span><span class="tooltip" id='note8'><a class="refs" href="#notes"><sup>[Hamad]</sup></a><span class="tooltiptext">Hamad, Rita; Gosliner, Wendi; Brown, Erika M.; Hoskote, Mekhala; Jackson, Kaitlyn; Esparza, Elsa M.; Fernald, Lia C. H. (December 2022). <a href='https://www.healthaffairs.org/doi/10.1377/hlthaff.2022.00713' target="_blank">"Understanding Take-Up Of The Earned Income Tax Credit Among Californians With Low Income"</a><i class="fa fa-file-pdf-o"></i>. <em>Health Affairs</em>. <b>41</b> (12). DOI: <a href='https://doi.org/10.1377/hlthaff.2022.00713' target="_blank">10.1377/hlthaff.2022.00713</a>.</span></span> Around 25 million people claim the EITC annually,<span class="tooltip" id='note'><a class="refs" href="#notes"><sup>[IRS-2]</sup></a><span class="tooltiptext"><a href='https://www.eitc.irs.gov/eitc-central/statistics-for-tax-returns-with-eitc/statistics-for-tax-returns-with-the-earned-income' target="_blank">"Statistics for Tax Returns with the Earned Income Tax Credit (EITC)"</a> (2022). <em>Internal Revenue Service</em>. <a href='https://web.archive.org/web/20221127130451/https://www.eitc.irs.gov/eitc-central/statistics-for-tax-returns-with-eitc/statistics-for-tax-returns-with-the-earned-income' target="_blank">Archived</a> from the original on November 27, 2022.</span></span> which means that over 6 million people who are eligible for the EITC do not claim it.
+  </p>
+
+  <h4>2. It's incoherent—the EITC is trying to be both a wage subsidy and a family benefit</h4>
+
+  <h4>3. Childless workers receive little—and may even be hurt by the EITC</h4>
+
+  <p>
+    The childless EITC is a pittance compared to the EITC's for families. You have to squint just to see it on the chart. The consequence of this is severe: according to the Center on Budget and Policy Priorities (CBPP), more than <b><em>5 million</em></b> childless workers are taxed into poverty each year.<span class="tooltip" id='note5'><a class="refs" href="#notes"><sup>[Marr-2]</sup></a><span class="tooltiptext">Marr, Chuck; Huang, Yixuan (March 2, 2020). <a href='https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">"Childless Adults Are Lone Group Taxed Into Poverty"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">Archived</a> from the original on December 21, 2022.</span></span> The childless EITC is simply much too small to offset the income and payroll taxes owed by childless people near the poverty line, and as a result they end up in poverty after their taxes are subtracted.
+  </p>
+
+  <p>
+    This is a feature that is unique to childless people: they are the only group that can be taxed into poverty.<span class="tooltip" id='note5'><a class="refs" href="#notes"><sup>[Marr-2]</sup></a><span class="tooltiptext">Marr, Chuck; Huang, Yixuan (March 2, 2020). <a href='https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">"Childless Adults Are Lone Group Taxed Into Poverty"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">Archived</a> from the original on December 21, 2022.</span></span> People with children who have incomes above the poverty line are spared this fate by the child tax credit and the much larger EITC's that they are eligible for. The childless EITC, by contrast, just isn't up for the job.
+  </p>
+
+  <p>
+    This is a problem that should be remedied: no one who works enough to keep themselves out of poverty should see the federal government shove them back down into it. The simplest solution, naturally, is to raise the childless EITC, as has been proposed by Senators Sherrod Brown, Michael Bennet, Richard Durbin, and Ron Wyden in the <a href='https://www.brown.senate.gov/imo/media/doc/Working%20Families%20Tax%20Relief%20Act_Press%20OnePager_FINAL.pdf' target='_blank'>Working Families Tax Relief Act</a>. This is a worthwhile reform, and it should be supported. This page, however, is principally about eliminating marriage penalties, and this targeted reform would not do that. So instead we will remedy this deleterious feature of the EITC within a broader reform that is designed to simultaneously reduce marriage penalties while also addressing all of the criticisms I have laid out above.
+  </p>
+
+  <h4>The Proposal</h4>
+  <p>
+    In this proposal, I simplify and rationalize the EITC. We'll collapse it down to just two benefits: a single benefit and a married benefit. We'll construct them as we did in the section above to minimize marriage penalties. This redesign results in an EITC that is:
+  </p>
+
+  <ol>
+    <li><b>Pro-Marriage:</b> It largely eliminates marriage penalties.</li>
+    <li><b>Simple:</b> It makes the program easy to understand, simplifying an already complicated tax code and reducing improper payments</li>
+    <li><b>Coherent:</b> It gives the EITC a coherent purpose: it's a wage supplement for working class people, simple as that.</li>
+    <li><b>A fair shake:</b> There's no reason to largely exclude low-income childless people from the EITC—they need help too.</li>
+    <li><b>Pro-Work:</b> The EITC is designed to encourage work, so it is profoundly strange that we've largely excluded childless people—who make up a large share of prime working age people—from it. The redesign extends the EITC's work encouraging properties to childless people.</li>
+  </ol>
+
+  <h3 class='chart_wide_name'>Reformed EITC</h3>
+  <div id="simpler_eitc"></div>
+
+  <h4>Comparison with the Family Security Act</h4>
+  <div class="article_tag"><em>See also: <a href="../family-security-act/" target="_blank">Family Security Act</a> </em></div>
+
+  <p class="top">
+    You might notice that this reform is similar in nature to the EITC Mitt Romney proposed in the <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both proposals simplify the EITC, and accompany it with an increased child benefit. And as I also will advocate later in this page, Romney proposes eliminating the head of household filing status and putting the savings towards the child benefit. There are, however, some differences between the two proposals, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
+  </p>
+
+  <h3 class='chart_wide_name' style="margin-bottom: 15px">Family Security Act EITC</h3>
+  <div id="fsa_eitc"></div>
+
+  <p>
+    With Romney's proposal, it should be noted, he went to lengths to ensure that the policy is revenue neutral, whereas I have been more lackadaisical with funding. This placed particularly strong constraints on his EITC reform, as he relied on it to provide nearly half of the funding for the FSA's enhanced child benefit. While I don't know his exact thought process, these funding constraints seems like they could be a major reason he didn't fully consolidate the program into one single and one married benefit, instead maintaining separate benefits for childless people and for parents. He likely needed to do that because raising the childless benefit up to the value of the benefit for parents would substantially reduce the amount of revenue his EITC reform would save, and thus push his proposal into the red; conversely, dropping the benefit for parents down to the childless benefit would be such a substantial benefit reduction compared to the current EITC that virtually all working class people would see their benefits cut substantially even with the larger child benefit.
+  </p>
+
+  <p>
+    Under similar budgetary constraints, the EITC reform I proposed might need to be similarly altered. These alterations, however, have major drawbacks. While Romney's EITC generally reduces marriage penalties, it is still a good ways from eliminating them. The phase-out, of course, inherently imposes marriage penalties, but there are also marriage penalties for many couples in which each partner has children of their own. These marriage penalties are generally not as severe as those that currently exist, but they can be as large as $1,000.
+  </p>
+
+  <p>
+    The reductions to the EITC for parents are also a bit overzealous (alternatively, the child benefit increase is not large enough). Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced, according to the CBPP.<span class="tooltip" id="note1"><a class="refs" href="#notes" onclick="highlight_note('note1-bottom');"><sup>[1]</sup></a><span class="tooltiptext">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). <a href='https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">"Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">Archived</a> from the original on October 21, 2022.</span></span> The FSA would still reduce child poverty substantially,<span class="tooltip" id="note2"><a class="refs" href="#notes" onclick="highlight_note('note2-bottom');"><sup>[2]</sup></a><span class="tooltiptext">The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half <a href='#Hammond' onclick="highlight_ref('Hammond')">(Hammond, Orr 2021)</a>, while the FSA 2.0 would reduce child poverty by 13% <a href='#Orr' onclick="highlight_ref('Orr')">(Orr, McCabe 2022)</a>.</span></span> but it would certainly have a greater impact if either (1) the EITC were not so sharply cut, or (2) the EITC reductions were fully offset by benefit enhancements elsewhere.
+  </p>
+
+  <p>
+    The latter option would be preferable, as a child benefit is in general superior to the EITC, but it would require more revenue than a less sharp reduction to the EITC. In any case, the <em>structure</em> of Romeny's EITC is a big step in the right direction, and it is likely only for budgetary reasons that he did not go the full ways to the structure I have proposed.
+  </p>
+
+  <h3>Solution 2: Child Benefits & the Standard Credit</h3>
+  <p>
+    So we've got a reformed EITC that mostly eliminates marriage penalties. However, with the EITC's basic design principle there's just no way to completely eliminate them: phase-out necessarily produce marriage penalties. Fortunately for those of us who would prefer not to discourage marriage, there are good reasons to doubt two fundamental aspects of the EITC: that it should include a phase-in and a phase-out.
+  </p>
+
+  <h4>1. Phase-Outs Discourage Marriage</h4>
+  <p>
+    As we've already established, there's just no way to eliminate marriage penalties without eliminating phase-outs. 
+  </p>
+
+  <h4>2. Phase-Outs Discourage Work</h4>
+  <div class="article_tag"><em>See also: <a href="../marginal-tax/" target="_blank">Marginal Tax Rates</a> </em></div>
+
+  <p class="top">
+    The EITC is designed to promote work by topping up the wages people make from work. In economic terms, the EITC makes use of the <a href="https://en.wikipedia.org/wiki/Substitution_effect" target="_blank">substitution effect</a>: by increasing the wage of an additional hour of work, the EITC increases the cost of not working, and thus increases the incentive to work more (to "substitute" additional wages for additional hours of leisure). It must be noted that there is a countervailing <a href="https://www.investopedia.com/terms/i/incomeeffect.asp" target="_blank">income effect</a>—as income rises, people demand a higher quantity of goods, including a higher quantity of leisure–but research suggests that the substitution effect dominates.
+  </p>
+
+  <p>
+    In more intutitive language, all this is saying is that if your wage is, say, $15 an hour, then the phase-in region of the one-child EITC increases this to $20.10 an hour. When you're considering whether to work additional hours, that $20.10 an hour makes the additional work more appealing than the $15 an hour wage would.
+  </p>
+
+  <p>
+    However, this only holds in the phase-in region. The plateau has little effect on work incentives, and the phase-out <em>reverses</em> the incentives. In the phase-out, additional hours of work <em>reduce</em> the amount of the EITC. For example, the one-child EITC phases out at a rate of $210.60 per $1,000 in additional earned income. This means that if you work enough to earn an additional $1,000, your income in fact only rises by $789.40.
+  </p>
+
+  <p>
+    This puts the substitition and income effects into reverse. The EITC phase-out <b>reduces</b> additional wages, and thus reduces the cost of not working additional hours, and thus reduces the incentive to work more. Again, the income effect works in the opposite direction, but the substitutiton effect appears to dominate, which accords with intution: very few people would suspect that taxes <em>increase</em> the incentive to work, and all the EITC phase-out is doing is imposing an effective tax (you can read more about effective marginal tax rates <a href="../marginal-tax/" target="_blank">here</a>).
+  </p>
+
+  <p>
+    Importantly, other programs like <a href="../snap/" target="_blank">SNAP ("food stamps")</a> and <a href="../ssi/" target="_blank">Supplemental Security Income</a> (cash payments to disabled people who are unable to work) also impose effective taxes. As a result, they can compound on top of each other to produce very large effective tax rates: an additional $100 of earned income, for instance, can cause a $21.06 loss in the EITC, <em>and</em> a $24 loss in SNAP benefits, <em>and</em> a $50 loss in SSI benefits, resulting in only $3.96 of actual new income (and this is before income and payroll tax). Together these create large work disincentives—additional work results in very little additional income.
+  </p>
+
+  <p>
+    There is really only one way to solve this: <em>don't impose phase outs on working class people</em>.
+  </p>
+
+  <h4>3. The phase-out is really just an inferior way to fund the program</h4>
+
+  <h4>All Together</h4>
+  <p>
+    We've now established that phase-outs necessarily <b>discourage marriage <em>and</em> discourage work.</b> And the only arguments in their favor—that they reduce the cost of the EITC and "target" benefits to lower-income people—turn out to be a mirage. It is just much less effective to concentrate effective taxes onto a small group of people who fall into the phase-out than it is to give everyone the benefit and spread out the taxes.
+  </p>
+
+  <p>
+    So if we take the reformed EITC I proposed in the section above and eliminate the phase-out, we end up with something like this:
+  </p>
+
+  <p>
+    This is a big improvement, but you'll probably notice that there's something pernicious about this. We're giving everyone a cash benefit—except for poor people! This is, on its face, absurd. Poor people are precisely the people who most need financial assistance—it is the very definition of poverty that they do not have enough money. Just as it'd be nonsensical to establish a food bank that's available to everyone <em>except</em> those who are starving, it's ludicrous to provide a cash benefit to everyone except for those in poverty.
+  </p>
+
+  <p>
+    So if we eliminate the phase-in, we end up with the below tax credit:
+  </p>
+
+  <p>
+    What we have here is a <b>standard credit</b>. While this might be a significant departure from the EITC, it's really quite similar to something that is widely accepted in our tax system: the standard deduction. 
+  </p>
+  
+
+  <!-- Standard credit chart -->
+  <div class = "chart">
+    <h3 class="box_title">The Standard Credit</h3>
+  <div id="standard_credit_chart"></div> 
+  
+  </div><!-- chart container -->
+
+  <p>
+    The standard credit is not a perfect policy. It has the hallmark problems of a benefit delivered through the tax code rather than through direct spending. You can read about these problems [[[here]]]], and Matt Bruenig has <a href=https://www.peoplespolicyproject.org/2021/02/15/who-should-administer-a-new-child-benefit-program/ target="_blank">written</a> <a href="https://www.peoplespolicyproject.org/2022/03/07/the-child-tax-credit-cannot-be-administered/" target="_blank">extensively</a> <a href="https://www.peoplespolicyproject.org/2021/10/13/new-child-tax-credit-is-not-reaching-the-poorest-families/" target="_blank">about</a> them with regards to the child tax credit at the <a href='https://www.peoplespolicyproject.org/' target="_blank">People's Policy Project</a>. In short, tax benefits can end up excluding poor people because people with low incomes are not required to file tax returns, but without a tax return the IRS can't send them a check. This is one reason it's become an increasingly popular proposal to replace the child tax credit, administered by the IRS, with a monthly child benefit administered by the Social Security Administration, which doesn't have this problem.
+  </p>
+
+  <p>
+    I'm proposing a standard credit rather than a direct spending program, however, because it strikes me as something that politicians and the general public would be more amenable to. As the political scientists <a href=https://www.bucknell.edu/fac-staff/chris-ellis target="_blank">Christopher Ellis</a> and <a href=https://www.maxwell.syr.edu/directory/christopher-faricy target="_blank">Christopher Faricy</a> demonstrate in their book <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion toward Social Tax Expenditures</a></em>, "public support for a wide variety of social benefits is significantly higher when those benefits are framed as being delivered through tax breaks rather than framed as direct government spending".<span class="tooltip" id='note3'><a class="refs" href="#notes" onclick="highlight_note('note3-bottom');"><sup>[3]</sup></a><span class="tooltiptext">Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>" (<a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a>). For the full book, see <a href="#Ellis-book" onclick="highlight_ref('Ellis-book');">(Ellis, Faricy 2021)</a>.</span></span>
+  </p>
+
+  <p>
+    The standard credit fits this mold: it's a "tax cut", not a direct spending program. And as tax cuts go, a standard credit feels in nature a lot like the standard deduction, which is very popular. Additionally, since the standard credit does not necessarily have to replace the EITC—you can easily have both at the same time—a standard credit also offers the alternative pathway of first instituting it as a non-refundable credit, which could make it more amenable to Republicans and the handful of Democratic politicians who are still deeply wed to the idea of phase-ins. Then, with the non-refundable standard credit in place, it becomes a simple and cheap reform to later make it refundable. 
+  </p>
+
+</section>
+
+<!--SSI-------------------------------------------------------------------------------------------------------------------------------------------->
+<section class = 'center_no_side_elements' id='ssi'>
+  <h2>Supplemental Security Income</h2>
+  <div class="article_tag"><em>Program Page: <a href="../ssi/" target="_blank">Supplemental Security Income</a> </em></div>
+
+</section>
+
+<!--References section---------------------------------------------------------------------------------------------------------------------------->
+<section class=center_no_side_elements id="references">
+
+  <div class="notes">
+    <h2 id="notes">Notes</h2>
+    <ol class="notes_list">
+      <li class="note_item" id="note1-bottom"><a class="refs" href="#note1">^</a> <a href="#Marr" onclick="highlight_ref('Marr')">Marr et al. 2022</a></li>
+
+      <li class="note_item" id="note2-bottom"><a class="refs" href="#note1">^</a> The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half (<a href="#Hammond" onclick="highlight_ref('Hammond');">Hammond, Orr 2021</a>), while the FSA 2.0 would reduce child poverty by 13% (<a href="#Orr" onclick="highlight_ref('Orr')">Orr, McCabe 2022</a>).</li>
+
+      <li class="note_item" id="note3-bottom"><a class="refs" href="#note3">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>" (<a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a>). For the full book, see <a href="#Ellis-book" onclick="highlight_ref('Ellis-book')">Ellis, Faricy 2021</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note4">^</a> <a href="#Marr-2" onclick="highlight_ref('Marr-2')">Marr, Huang 2020</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note5">^</a> <a href="#Marr-2" onclick="highlight_ref('Marr-2')">Marr, Huang 2020</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note6">^</a> <a href="#TRAC" onclick="highlight_ref('TRAC')">TRAC 2023</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note7">^</a> <a href="#Treasury" onclick="highlight_ref('Treasury')">Treasury Department 2022</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note8">^</a> <a href="#Crandall-Hollick" onclick="highlight_ref('Crandall-Hollick')">Crandall-Hollick 2022</a>.</li>
+
+      <li class="note_item"><a class="refs" href="#note9">^</a> <a href="#Treasury" onclick="highlight_ref('Treasury')">Treasury Department 2022</a>.</li>
+    </ol>
+  </div>
+
+  <div class="references">
+    <h2>References</h2>
+    <ul class="references_list" id="references_list">
+      <li class="ref_item" id="Treasury"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</li>
+
+      <li class="ref_item" id="Crandall-Hollick">Crandall-Hollick, Margot L. (June 13, 2022). <a href='https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">"Audits of EITC Returns: By the Numbers"</a> <i class="fa fa-file-pdf-o"></i>.. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220925202752/https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i>. from the original on June 14, 2022.</li>
+
+      <li class="ref_item" id="IRS-1"><a href='https://www.eitc.irs.gov/eitc-central/participation-rate-by-state/eitc-participation-rate-by-states' target="_blank">"EITC Participation Rate by States Tax Years 2012 through 2019"</a> (2022). <em>Internal Revenue Service</em>. <a href='https://web.archive.org/web/20221127121426/https://www.eitc.irs.gov/eitc-central/participation-rate-by-state/eitc-participation-rate-by-states' target="_blank">Archived</a> from the original on November 27, 2022.</li>
+
+      <li class="ref_item" id="Ellis-book">Ellis, Christopher; Faricy, Christopher (2021). <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion Toward Social Tax Expenditures</a></em>. Russell Sage Foundation. ISBN 978-0871544407.</li>
+
+      <li class="ref_item" id="Ellis">Ellis, Christopher; Faricy, Christopher (May 20, 2021). <a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">"America’s messy tax code is actually quite popular"</a>. <em>Fortune</em>. <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
+
+      <li class="ref_item" id="Hamad">Hamad, Rita; Gosliner, Wendi; Brown, Erika M.; Hoskote, Mekhala; Jackson, Kaitlyn; Esparza, Elsa M.; Fernald, Lia C. H. (December 2022). <a href='https://www.healthaffairs.org/doi/10.1377/hlthaff.2022.00713' target="_blank">"Understanding Take-Up Of The Earned Income Tax Credit Among Californians With Low Income"</a><i class="fa fa-file-pdf-o"></i>. <em>Health Affairs</em>. <b>41</b> (12). DOI: <a href='https://doi.org/10.1377/hlthaff.2022.00713' target="_blank">10.1377/hlthaff.2022.00713</a>.</li>
+
+      <li class="ref_item" id="Hammond">Hammond, Samuel; Orr, Robert (February 4, 2021). <a href="https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/">"Factsheet: Senator Romney’s Family Security Act"</a>. <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20220813063420/https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/ target="_blank">Archived</a> from the original on August 13, 2022.</li>
+
+      <li class="ref_item" id="Elias">Ilin, Elias; Kotlikoff, Laurence J.; Pitts, Melinda (October 2022). <a href=https://www.nber.org/papers/w30159 target="_blank">"Is Our Fiscal System Discouraging Marriage? A New Look at the Marriage Tax"</a>. <em>NBER Working Paper 30159</em>. DOI: <a href="https://doi.org/10.3386/w30159" target="_blank">10.3386/w30159</a>.</li>
+
+      <li class="ref_item" id="TRAC"><a href='https://trac.syr.edu/reports/706/#a_f1' target="_blank">"IRS Audits Few Millionaires But Targeted Many Low-Income Families in FY 2022"</a> (January 4, 2023). <em>TRAC</em>. Syracuse University. <a href='https://web.archive.org/web/20230111145540/https://trac.syr.edu/reports/706/' target="_blank">Archived</a> from the original on January 11, 2023.</li>
+
+      <li class="ref_item" id="Lajoie">Lajoie, Taylor (June 23, 2020). "<a href="https://taxfoundation.org/marriage-penalty-marriage-tax-penalty" target="_blank">When Marriage Doesn’t Pay: Analysis and Options for Addressing Marriage and Second-Earner Penalties</a>". <em>Tax Foundation</em>. <a href=https://web.archive.org/web/20220922005553/https://taxfoundation.org/marriage-penalty-marriage-tax-penalty/ target="_blank">Archived</a> from the original on September 22, 2022. </li>
+
+      <li class="ref_item" id="Marr">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). <a href=https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">"Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It"</a>. <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Archived</a> from the original on October 21, 2022.</li>
+
+      <li class="ref_item" id="Marr-2">Marr, Chuck; Huang, Yixuan (March 2, 2020). <a href=https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty target="_blank">"Childless Adults Are Lone Group Taxed Into Poverty"</a>. <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty target="_blank">Archived</a> from the original on December 21, 2022.</li>
+
+      <li class="ref_item" id="Orr-2">Orr, Robert (June 28, 2022). "<a href=https://www.niskanencenter.org/head-of-household-filing-status-is-a-flawed-way-to-help-children/ target="_blank">Head of household filing status is a flawed way to help children</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20220915230504/https://www.niskanencenter.org/head-of-household-filing-status-is-a-flawed-way-to-help-children/ target="_blank">Archived</a> from the original on September 15, 2022.</li>
+
+      <li class="ref_item" id="Orr">Orr, Robert; McCabe, Joshua (June 15, 2022). <a href=https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">"Analysis of the Family Security Act 2.0"</a>. <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20221127210837/https://www.niskanencenter.org/analysis-of-the-family-security-act-2-0/ target="_blank">Archived</a> from the original on November 27, 2022.</li>
+
+      <li class="ref_item" id="Pomerleau">Pomerleau, Kyle (April 2015). <a href=https://files.taxfoundation.org/legacy/docs/TaxFoundation_FF464_0.pdf target="_blank">"Understanding the Marriage Penalty and Marriage Bonus"</a> <i class="fa fa-file-pdf-o"></i>. <em>Tax Foundation</em>. <a href=https://web.archive.org/web/20210301102001/https://files.taxfoundation.org/legacy/docs/TaxFoundation_FF464_0.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on March 1, 2021.</li>
+
+      <li class="ref_item" id="IRS-2"><a href='https://www.eitc.irs.gov/eitc-central/statistics-for-tax-returns-with-eitc/statistics-for-tax-returns-with-the-earned-income' target="_blank">"Statistics for Tax Returns with the Earned Income Tax Credit (EITC)"</a> (2022). <em>Internal Revenue Service</em>. <a href='https://web.archive.org/web/20221127130451/https://www.eitc.irs.gov/eitc-central/statistics-for-tax-returns-with-eitc/statistics-for-tax-returns-with-the-earned-income' target="_blank">Archived</a> from the original on November 27, 2022.</li>
+
+      <li class="ref_item" id="Wilcox">Wilcox, W. Bradford; Price, Joseph P.; Rachidi, Angela (2016). <a href=https://ifstudies.org/ifs-admin/resources/marriage-penalty-hep-2016.pdf target="_blank">"Marriage, Penalized: Does Social Welfare Policy Affect Family Formation?"</a> <i class="fa fa-file-pdf-o"></i>. <em>American Enterprise Institute & Institute for Family Studies</em>. <a href=https://web.archive.org/web/20220708012449/https://ifstudies.org/ifs-admin/resources/marriage-penalty-hep-2016.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 8, 2022.</li>
+
+      <li class="ref_item" id="Krumholz">Krumholz, Willis (October 7, 2019). <a href=https://ifstudies.org/blog/family-breakdown-and-americas-welfare-system target="_blank">"Family Breakdown and America’s Welfare System"</a>. <em>Institute for Family Studies</em>. <a href=https://web.archive.org/web/20220806161909/https://ifstudies.org/blog/family-breakdown-and-americas-welfare-system target="_blank">Archived</a> from the original on August 6, 2022.</li>
+    </ul>
+  </div>
+
+</section> <!--References section-->
+
+<!--Bottom section---------------------------------------------------------------------------------------------------------------------------------->
+<section class="page_bottom">
+  <div id="bottom_socials">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#twitter_bottom_svg');">
+       <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='twitter_bottom_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+          <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+            C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+            c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+            c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+            c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+            c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+      </svg></a> 
+
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('substack', '#substack_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#substack_bottom_svg');">
+      <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='substack_bottom_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    </svg></a>
+
+  </div> <!-- bottom social logos -->
+
+  <div id="bottom_logo">The Welfare of Families</div>
+  <div id="bottom_name">A Project by Jay Martin</div>
+
+  <div id="cc_container">
+
+        <div id="cc_logos">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+        <g>
+          <circle class="cc-circle" cx="37.785" cy="28.501" r="28.836"/>
+          <path class="st0" d="M37.441-3.5c8.951,0,16.572,3.125,22.857,9.372c3.008,3.009,5.295,6.448,6.857,10.314
+            c1.561,3.867,2.344,7.971,2.344,12.314c0,4.381-0.773,8.486-2.314,12.313c-1.543,3.828-3.82,7.21-6.828,10.143
+            c-3.123,3.085-6.666,5.448-10.629,7.086c-3.961,1.638-8.057,2.457-12.285,2.457s-8.276-0.808-12.143-2.429
+            c-3.866-1.618-7.333-3.961-10.4-7.027c-3.067-3.066-5.4-6.524-7-10.372S5.5,32.767,5.5,28.5c0-4.229,0.809-8.295,2.428-12.2
+            c1.619-3.905,3.972-7.4,7.057-10.486C21.08-0.394,28.565-3.5,37.441-3.5z M37.557,2.272c-7.314,0-13.467,2.553-18.458,7.657
+            c-2.515,2.553-4.448,5.419-5.8,8.6c-1.354,3.181-2.029,6.505-2.029,9.972c0,3.429,0.675,6.734,2.029,9.913
+            c1.353,3.183,3.285,6.021,5.8,8.516c2.514,2.496,5.351,4.399,8.515,5.715c3.161,1.314,6.476,1.971,9.943,1.971
+            c3.428,0,6.75-0.665,9.973-1.999c3.219-1.335,6.121-3.257,8.713-5.771c4.99-4.876,7.484-10.99,7.484-18.344
+            c0-3.543-0.648-6.895-1.943-10.057c-1.293-3.162-3.18-5.98-5.654-8.458C50.984,4.844,44.795,2.272,37.557,2.272z M37.156,23.187
+            l-4.287,2.229c-0.458-0.951-1.019-1.619-1.685-2c-0.667-0.38-1.286-0.571-1.858-0.571c-2.856,0-4.286,1.885-4.286,5.657
+            c0,1.714,0.362,3.084,1.085,4.113c0.724,1.029,1.791,1.544,3.201,1.544c1.867,0,3.181-0.915,3.944-2.743l3.942,2
+            c-0.838,1.563-2,2.791-3.486,3.686c-1.484,0.896-3.123,1.343-4.914,1.343c-2.857,0-5.163-0.875-6.915-2.629
+            c-1.752-1.752-2.628-4.19-2.628-7.313c0-3.048,0.886-5.466,2.657-7.257c1.771-1.79,4.009-2.686,6.715-2.686
+            C32.604,18.558,35.441,20.101,37.156,23.187z M55.613,23.187l-4.229,2.229c-0.457-0.951-1.02-1.619-1.686-2
+            c-0.668-0.38-1.307-0.571-1.914-0.571c-2.857,0-4.287,1.885-4.287,5.657c0,1.714,0.363,3.084,1.086,4.113
+            c0.723,1.029,1.789,1.544,3.201,1.544c1.865,0,3.18-0.915,3.941-2.743l4,2c-0.875,1.563-2.057,2.791-3.541,3.686
+            c-1.486,0.896-3.105,1.343-4.857,1.343c-2.896,0-5.209-0.875-6.941-2.629c-1.736-1.752-2.602-4.19-2.602-7.313
+            c0-3.048,0.885-5.466,2.658-7.257c1.77-1.79,4.008-2.686,6.713-2.686C51.117,18.558,53.938,20.101,55.613,23.187z"/>
+        </g>
+      </svg></a>
+
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+          <g>
+            <circle class="cc-circle" cx="37.637" cy="28.806" r="28.276"/>
+            <g>
+              <path class="st0" d="M37.443-3.5c8.988,0,16.57,3.085,22.742,9.257C66.393,11.967,69.5,19.548,69.5,28.5c0,8.991-3.049,16.476-9.145,22.456
+                C53.879,57.319,46.242,60.5,37.443,60.5c-8.649,0-16.153-3.144-22.514-9.43C8.644,44.784,5.5,37.262,5.5,28.5
+                c0-8.761,3.144-16.342,9.429-22.742C21.101-0.415,28.604-3.5,37.443-3.5z M37.557,2.272c-7.276,0-13.428,2.553-18.457,7.657
+                c-5.22,5.334-7.829,11.525-7.829,18.572c0,7.086,2.59,13.22,7.77,18.398c5.181,5.182,11.352,7.771,18.514,7.771
+                c7.123,0,13.334-2.607,18.629-7.828c5.029-4.838,7.543-10.952,7.543-18.343c0-7.276-2.553-13.465-7.656-18.571
+                C50.967,4.824,44.795,2.272,37.557,2.272z M46.129,20.557v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557
+                c0-0.572,0.2-1.057,0.599-1.457c0.401-0.399,0.887-0.6,1.457-0.6h13.144c0.533,0,1.01,0.2,1.428,0.6
+                C45.918,19.5,46.129,19.986,46.129,20.557z M33.042,12.329c0-3.008,1.485-4.514,4.458-4.514s4.457,1.504,4.457,4.514
+                c0,2.971-1.486,4.457-4.457,4.457S33.042,15.3,33.042,12.329z"/>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div> <!-- CC logos -->
+
+    <div id="cc_description">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</br>You are free to share, copy, and adapt the material for any purpose, including commercial purposes, so long as appropriate credit is given.</div>
+
+  </div> <!-- CC container -->
+
+</section> <!-- Bottom section -->
+
+<!-- Reference Javascript -->
+<script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
+
+<!-- Page specific functionality -->
+<script type="text/javascript" src="./javascript/page_specific_functionality.js"></script>
+
+<!-- Page specific color changes for light/sepia/dark modes -->
+<script type="text/javascript" src="./javascript/color_changes.js"></script>
+
+<!-- Top Chart Javascipt Files -->
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/calculate.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/eitc/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/hoh/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/hoh/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/both/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/both/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/basic-overview-animation.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/marriage-bonus-animation.js"></script>
+
+<!-- HOH Tax Javascript Files -->
+<script type="text/javascript" src="./javascript/hoh-tax/chart.js"></script>
+<script type="text/javascript" src="./javascript/hoh-tax/outputs.js"></script>
+<script type="text/javascript" src="./javascript/hoh-tax/adjust-chart.js"></script>
+
+<!-- Single Tax Javascipt Files -->
+<script type="text/javascript" src="./javascript/single-tax/chart.js"></script>
+<script type="text/javascript" src="./javascript/single-tax/outputs.js"></script>
+<script type="text/javascript" src="./javascript/single-tax/adjust-chart.js"></script>
+
+<!-- EITC Explainer Javascript Files -->
+<script type="text/javascript" src="./javascript/eitc-explainer/chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc-explainer/chart-animations.js"></script>
+
+<!-- EITC Comparison Javascript Files -->
+<script type="text/javascript" src="./javascript/eitc-comparison/reformed-eitc-chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc-comparison/current-eitc-chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc-comparison/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc-comparison/outputs.js"></script>
+
+<!-- Static Charts -->
+<script type="text/javascript" src="./javascript/static-charts/2023-eitc/chart.js"></script>
+<script type="text/javascript" src="./javascript/static-charts/ugly-fix-eitc/chart.js"></script>
+<script type="text/javascript" src="./javascript/static-charts/fsa-eitc/chart.js"></script>
+<script type="text/javascript" src="./javascript/static-charts/reformed-eitc/chart.js"></script>
+
+<!-- Standard Credit -->
+<script type="text/javascript" src="./javascript/standard-credit/chart.js"></script>
+<script type="text/javascript" src="./javascript/standard-credit/chart-animation.js"></script>
+
+</body>
+</html>

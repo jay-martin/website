@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Child and Dependent Care Credit</title>
-  <meta name="description" content="Sure, we already have a child tax credit. But how about another, worse one?"/>
+  <title>Over-Reliance on Tax Code</title>
+  <meta name="description" content=""/>
 
   <!-- Page basics -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +10,9 @@
   <meta name="color-scheme" content="light dark" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="The Child and Dependent Care Credit"/>
+  <meta property="og:title" content="Over-Reliance on Tax Code"/>
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Sure, we already have a child tax credit. But how about another, worse one?" />
+  <meta property="og:description" content="" />
   <meta property="og:image" content=""/> <!-- Add path to image -->
   <meta property="og:site_name" content="The Welfare of Families"/>
   
@@ -103,15 +103,13 @@
   <div class='mobile_dropdown_header'><b>Jump To Page Section</b></div>
   <div class="mobile_dropdown_jump_to">
     <a href="#overview" onclick="close_dropdown();">1. Overview</a>
-    <a href="#exclusion" onclick="close_dropdown();">2. Exclusion of Poor Familes</a>
-    <a href="#complexity" onclick="close_dropdown();">3. Complexity</a>
-    <a href="#marriage-penalties" onclick="close_dropdown();">4. Marriage Penalties</a>
-    <a href="#marginal-tax-rates" onclick="close_dropdown();">5. Marginal Tax Rates</a>
-    <a href="#solution-1" onclick="close_dropdown();">6. Reform I: Simplified, Refundable CDCC</a>
-    <a href="#tax-code-administration" onclick="close_dropdown();">7. Should It Be a Tax Credit</a>
-    <a href="#solution-1" onclick="close_dropdown();">8. Reform II: Replace CDCC</a>
-    <a href="#solution-1" onclick="close_dropdown();">9. Reform III: Eliminate CDCC</a>
-    <a href="#references" onclick="close_dropdown();">10. References</a>
+    <a href="#child-poverty" onclick="close_dropdown();">2. Child Poverty</a>
+    <a href="#exclusion" onclick="close_dropdown();">3. Exclusion of Poor Familes</a>
+    <a href="#complexity" onclick="close_dropdown();">4. Complexity</a>
+    <a href="#phase-out" onclick="close_dropdown();">5. There's No Need for a Phase-Out</a>
+    <a href="#solution" onclick="close_dropdown();">6. Solution: Universal Benefit</a>
+    <a href="#bills" onclick="close_dropdown();">7. Bills</a>
+    <a href="#references" onclick="close_dropdown();">8. References</a>
   </div>
 
   <div class="mobile_dropdown_horizontal_line"></div>
@@ -285,14 +283,13 @@
   <ul class="left_side_bar_list">
     <li><a class="sidebar_links" href="#top">Top</a></li>
     <li><a class="sidebar_links" href="#overview">Overview</a></li>
+    <li><a class="sidebar_links" href="#child-poverty">Child Poverty Reduction</a></li>
     <li><a class="sidebar_links" href="#exclusion">Exclusion of Poor Families</a></li>
     <li><a class="sidebar_links" href="#complexity">Complexity</a></li>
-    <li><a class="sidebar_links" href="#marriage-penalties">Marriage Penalties</a></li>
-    <li><a class="sidebar_links" href="#marginal-tax-rates">Marginal Tax Rates</a></li>
-    <li><a class="sidebar_links" href="#reform-1">Reform 1: Refundable</a></li>
-    <li><a class="sidebar_links" href="#tax-code-administration">Should It Be a Tax Credit?</a></li>
-    <li><a class="sidebar_links" href="#reform-2">Reform 2: Direct Spending</a></li>
-    <li><a class="sidebar_links" href="#reform-3">Reform 3: Child Benefit</a></li>
+    <li><a class="sidebar_links" href="#phase-out">Phase-Out</a></li>
+    <li><a class="sidebar_links" href="#tax-code-administration">Administration Through Tax Code</a></li>
+    <li><a class="sidebar_links" href="#solution">Solution: Universal Child Benefit</a></li>
+    <li><a class="sidebar_links" href="#bills">Bills</a></li>
     <li><a class="sidebar_links" href="#references">References</a></li>
   </ul>
 
@@ -368,8 +365,8 @@
 
 <!-- Title -->
 <div class="title_container">
-  <div class="category">Programs</div>
-  <h1 id="page_title">The Child and Dependent Care Credit</h1>
+  <div class="category">Problems</div>
+  <h1 id="page_title">Over-Reliance on the Tax Code</h1>
 
   <div class="name">By Jay Martin 
     <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" id="twitter_black" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg');" onmouseleave="change_social_fill_backward('#twitter_svg');">
@@ -388,7 +385,7 @@
       </svg></a>
   </div>
   
-  <div class="page_description"><em>Sure, we already have a child tax credit. But how about another, worse one?</em></div>
+  <div class="page_description"><em>Description</em></div>
 </div><!--Title container-->
 
 <!--Top section containing page links (left), chart module (center), and highlights (right)-------------------------------------------->
@@ -441,36 +438,21 @@
 
     <div class="chart">
       <!--User inputs------------------------------>
-      <div class="user_inputs">
-
-        <!--Filing Status-->
-        <label>I am a</label>
-        <select id="filing_status" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
-          <option value="single" selected>single filer</option>
-          <option value="hoh">head of household</option>
-          <option value="married">married joint filer</option>
-        </select>
-
-        <!--Number of children-->
-        <label>and I have</label>
-        <select id="num_children" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
-          <option value="one" selected>1 child</option>
-          <option value="two">2+ children</option>
-        </select> under the age of 13.
+      <div class="user_inputs" id="user_inputs">
         
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
           <div class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</div>
           <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+            <input type="range" min="0" max="70000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
           </div>
         </div>
 
       </div> <!--user_inputs container-->
 
-      <!-- Top Chart Outputs -->
+      <!-- EITC Values -->
       <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-        <p class="explanation_text" id="credit_amount">You can subtract up to <b>$615</b> from your taxes</p>
+        <!-- <p class="explanation_text" id="eitc-value"></p> -->
 
         <p class="explanation_text" id="explanation_line1"></p>
         <p class="explanation_text" id="explanation_line2"></p>
@@ -501,7 +483,7 @@
       </div>
 
       <div class="highlights_content" id="mobile_highlights_content">
-        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child and dependent care crdit? </button>
+        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child tax credit? </button>
         <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container1">
           <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
           <input type="submit" class="small_button animation_button" id="animation1_button_mobile" value="Play animation" onclick="initialize_animation()" />
@@ -513,7 +495,7 @@
           <input type="submit" class="small_button animation_button" id="animation2_button_mobile" value="Play animation" onclick="animation2()" />
         </div>
 
-        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Does the CDCC produce marriage penalties?</button>
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Does the CTC produce marriage penalties?</button>
         <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container3">
           <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
           <input type="submit" class="small_button animation_button" id="animation3_button_mobile" value="Play animation" onclick="animation3()"/>
@@ -538,7 +520,7 @@
       </div>
 
       <div class="highlights_content" id="highlights_content">
-        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child and dependent care credit? </button>
+        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child tax credit? </button>
         <div class="explanation_and_animation_button_container" id="highlights_container1">
           <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
           <input type="submit" class="small_button animation_button" id="animation1_button" value="Play animation" onclick="initialize_animation()" />
@@ -550,7 +532,7 @@
           <input type="submit" class="small_button animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
         </div>
 
-        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Does the CDCC produce marriage penalties?</button>
+        <button type="button" class="bottom_button" id="bottom_button" onclick="show_explanation(3)">Does the CTC produce marriage penalties?</button>
         <div class="explanation_and_animation_button_container" id="highlights_container3">
           <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
           <input type="submit" class="small_button animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
@@ -565,7 +547,7 @@
 </section> <!--Top section-->
 
 <section class = 'center_no_side_elements' id="overview">
-  <h2>What is the Child and Dependent Care Credit?</h2>
+  <h2>The Fiscalization of Family Benefits</h2>
 </section>
 
 <!-- Blog Promotion ----------------------------------------------------------------------------------------------------------------------------------------->
@@ -628,312 +610,8 @@
 
 </div>
 
-<section class = 'center_no_side_elements' id="exclusion">
-  <h2>The CDCC Excludes Poor Families</h2>
-  <div class="article_tag"><em>See also: <a href="../two-tiers-of-welfare/" target="_blank">Two Tiers of Welfare</a> </em></div>
-</section>
-
-<section class = 'center_no_side_elements' id="complexity">
-  <h2>The CDCC Is Needlessly Complicated</h2>
-  <div class="article_tag"><em>See also: <a href="../administrative-burdens/" target="_blank">Administrative Burdens</a> </em></div>
-
-  <div class="chart">
-    <h3 class='chart_title'>The CDCC Is Overly Complicated</h3>
-
-    <!--User inputs------------------------------>
-    <div class="user_inputs" id="user_inputs">
-
-      <!--Filing Status-->
-      <label>I am a</label>
-      <select id="complexity_filing_status" oninput="build_cdcc_amount_chart(complexityChart, 'complexity_filing_status', 'complexity_num_children');complexity_chart_adjust_y_axis();complexity_modify_income();complexity_chart_outputs()">
-        <option value="single" selected>single filer</option>
-        <option value="hoh">head of household</option>
-        <option value="married">married joint filer</option>
-      </select>
-
-      <!--Number of children-->
-      <label>and I have</label>
-      <select id="complexity_num_children" oninput="build_cdcc_amount_chart(complexityChart, 'complexity_filing_status', 'complexity_num_children');complexity_modify_income();complexity_chart_adjust_y_axis();complexity_chart_outputs();">
-        <option value="one" selected>1 child</option>
-        <option value="two">2+ children</option>
-      </select> under the age of 13.
-      
-      <!--Income slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text"> I have an income of $<output id="complexity_income_output">20,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="complexity_income" oninput="complexity_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_outputs();complexity_modify_income()">
-        </div>
-      </div>
-
-    </div> <!--user_inputs container-->
-
-    <!-- Complexity Outputs -->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
-      <p class="explanation_text" id="complexity_credit_rate">The credit rate at your income is: <b>32%</b></p>
-      <p class="explanation_text" id="complexity_credit_amount">You can subtract up to <b>$615</b> from your taxes.</p>
-    </div>
-
-    <!-- Complexity Chart -->
-    <div id="complexity_chart"></div>
-
-  </div> <!--chart end-->
-
-</section>
-
-<section class = 'center_no_side_elements' id="marriage-penalties">
-  <h2>The CDCC Can Produce Marriage Penalties</h2>
-  <div class="article_tag"><em>See also: <a href="../marriage-penalties/" target="_blank">Marriage Penalties</a> </em></div>
-
-  <div class="chart">
-    <h3 class='chart_title'>The CDCC Can Produce Marriage Penalties</h3>
-
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
-
-      <!--Filing Status-->
-      <label>As individuals, I would file as a </label>
-      <select id="mp_person1_filing_status" oninput="mp_chart_outputs();mp_chart_caution();">
-        <option value="single" selected>single filer</option>
-        <option value="hoh">head of household</option>
-      </select>
-
-      <!--Filing Status-->
-      <label>and my partner would file as a </label>
-      <select id="mp_person2_filing_status" oninput="mp_chart_outputs();mp_chart_caution();">
-        <option value="single" selected>single filer</option>
-        <option value="hoh">head of household</option>
-      </select>.
-      <br>
-
-      <!--Person 1 number of children-->
-      <label>I have</label>
-      <select id="mp_person1_num_children" oninput="mp_chart_outputs()">
-        <option value="one" selected>1 child</option>
-        <option value="two">2+ children</option>
-      </select>
-
-      <!--Person 2 number of children-->
-      <label>under the age of 13 and my partner has</label>
-      <select id="mp_person2_num_children" oninput="mp_chart_outputs()">
-        <option value="none">no children</option>
-        <option value="one" selected>1 child</option>
-        <option value="two">2+ children</option>
-      </select> under the age of 13.
-      
-      <!--Person 1 Income slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text"> I have an income of $<output id="mp_person1_income_output">25,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="25000" step="500" class="slider" id="mp_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();">
-        </div>
-      </div>
-
-      <!--Person 2 Income slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text"> My partner has an income of $<output id="mp_person2_income_output">25,000</output>:</div>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="25000" step="500" class="slider" id="mp_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();">
-        </div>
-      </div>
-
-    </div> <!--user_inputs container-->
-
-    <!-- Marriage Penalties Outputs -->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
-      <p class="explanation_text" id="mp_individual_credit_amounts"></p>
-      <p class="explanation_text" id="mp_married_credit_amount"></p>
-      <p class="explanation_text" id="mp_marriage_penalty"></p>
-      <p class="explanation_text" id="mp_chart_caution_output" style="display:none"><em><b>Caution</b>: This value may be misleading as the head of household filing status itself contributes to the potential marriage penalty.</em></p>
-    </div>
-
-    <!-- Marriage Penalties Chart -->
-    <div id="marriage_penalty_chart"></div>
-
-  </div> <!--chart end-->
-
-</section>
-
-<section class = 'center_no_side_elements' id="marginal-tax">
-  <h2>The CDCC Modestly Contributes to High Marginal Tax Rates on Working Class Families</h2>
-  <div class="article_tag"><em>See also: <a href="../marginal-tax/" target="_blank">Marginal Tax Rates</a> </em></div>
-</section>
-
-<section class = 'center_no_side_elements' id="reform-1">
-  <h2>Reform 1: Simplified, Refundable CDCC</h2>
-</section>
-
-<section class = 'center_no_side_elements' id="tax-code-administration">
-  <h2>Should Childcare Subsidization Be a Tax Credit?</h2>
-  <div class="article_tag"><em>See also: <a href="../over-reliance-on-tax-code/" target="_blank">Over-Reliance on Tax Code</a> </em></div>
-
-  <p class="top">
-    We've established how a refunabable CDCC would be a substantial improvement over the current, non-refundable CDCC. Refundability, however, does not fix all of the issues with the CDCC. 
-  </p>
-
-  <p class="top">
-    Unlike the EITC and CTC, which are based only on income, the CDCC is based on the amount of money a family spends on childcare. Low-income people, however, don't have much money, so they can't spend much on childcare, and hence they can't use much of the credit, even though it is refundable.
-  </p>
-
-  <p>
-    Consider how this would occur <em>even if the CDCC had a credit rate of 100%</em>. In this case, for every dollar a family spent on childcare, the government would credit them back one dollar (up to the cap). If there were no cap, then, in principle, childcare would be completely free—however much money a family spent on childcare, the government would credit them back the full value.
-  </p>
-
-  <p>
-    And yet, even though this CDCC would seemingly make childcare completely free, low income people wouldn't actually be able to afford much childcare. Why? Because daycare centers, babysitters, and nannies have to be paid at the point-of-service, whereas tax credits are delivered only once per year at tax season. It's little comfort to a low-income family that the ~$800 it would cost to put their child in a day care center for a month will be credited back to them 8 months from now: they have to pay the daycare <em>now</em>. And the only place they can get that money is out of their bank account. But a great many families simply cannot afford to pull $800 out of their bank account—they need that money for food, rent, transportation etc.—so they won't actually be able to pay the childcare bill despite the government ultimately covering the full cost.
-
-  <p>
-    <b>The decision to structure childcare subsidization as a tax credit thus makes possible the remarkable feat of making childcare completely free and yet simultaneously unafforadable to low-income families.</b>
-  </p>
-
-  <p>
-    The problem only becomes more severe for lower credit rates—and begins to affect middle-class families as well. At lower credit rates, not only do families have to wait for tax season to receive the credit, but they must also pay a portion of the cost of childcare. The current CDCC, for instance, has a maximum credit rate of 35%, meaning that (if it were refundable) even at its most generous families would have to cover 65% of the cost of childcare. This has two consequnces. First, refundability would not compensate for the fact that a 35% discount is simply not enough to make childcare affordable to low and even many middle-income families. Second, lower credit rates increase the regressivity of the CDCC.
-  </p>
-
-  <p>
-    To get a sense of this second point, consider an example. The goal of this example will be to figure out how much income a family would need to make to be able to claim the full value of the CDCC. There are two steps to this. First, we'll have to make a reasonable assumption about what portion of income a family can afford to devote to childcare. Clearly, families can't spend all of their money on childcare—they still have to pay for other essentials like food and housing. Additionally, since the discount provided by the credit is only delivered at the end of the year, families must cover the full cost of childcare over the year, i.e. month-to-month they have to ensure that there's enough money left over in the bank after covering 100% of the cost of childcare to afford everything else they need. In step two, after we've determined how much money a family can afford to spend on childcare, we can calculate how much of the credit they will receive by multiplying the amount of money they spend on childcare by the credit rate.
-  </p>
-
-  <p>
-    This is straightforward to determine when the credit rate is 100%. In this case, however much money a family can afford to spend on childcare during the year (when they have to cover the cost themselves) equals the value of the CDCC they claim on their tax returns, up to the cap. The credit caps for the CDCC are quite complicated (see, <em><a href="#complexity">"The CDCC is Needlessly Complicated"</a></em>), so we'll keep our calculations simple by saying that the credit max is a uniform $1,000 for one-child families and $2,000 for families with two or more children. If we assume that a typical working class family can afford to spend 10% of their income in a given month on childcare, then a one-child family would need to make $10,000 to claim the full credit (assuming they make about the same amount of money each month), since at $10,000 they are able to afford $83 worth of child care per month and thus claim the full $1,000 CDCC at the end of the year. A family with two or more children would then need to make $20,000 to be able to claim the full $2,000 credit.
-  </p>
-
-  <p>
-    How would a lower credit rate affect this? Well, with a 35% credit rate (the CDCC's current largest rate) and 10% of income devoted to childcare, a one-child families would need to make \($1\text{,}000 / (.35 \times .1) \approx $28\text{,}500 \) before they can claim the full $1,000 credit. Families with two or more children would need to make an even larger \( \sim $57\text{,}000 \) before they can claim the full $2,000 credit. This excludes quite a lot of people from the full value of the credit!
-  </p>
-
-  <div class="chart">
-    <h3 class='chart_title'>Refundable CDCC Inacessible to Many Families</h3>
-    <p class='chart_description'>Refundable credits are delivered as a lump sum payment at the end of the tax year. Families thus have to cover the full cost of child care until the end of the tax year. Many families, however, cannot afford to cover this cost.</p>
-
-    <div class='chart_horizontal_line'></div>
-
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
-
-      <!--Credit rate slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text">The credit rate is: <output id="tax_credit_credit_rate_output">35</output>%</div>
-        <div class="slider-actual">
-          <input type="range" min="1" max="100" value="35" step="1" class="slider" id="tax_credit_credit_rate" oninput="tax_credit_credit_rate_output.innerText = this.value.toString();tax_credit_outputs();adjust_tax_credit_chart();">
-        </div>
-      </div>
-
-      <!--Credit max slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text">The credit maximum is: $<output id="tax_credit_credit_maxium_one_child_output">1,000</output>/$<output id="tax_credit_credit_maxium_two_child_output">2,000</output></div>
-        <div class="slider-actual">
-          <input type="range" min="200" max="5000" value="1000" step="100" class="slider" id="tax_credit_credit_maximum" oninput="tax_credit_credit_maxium_one_child_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_credit_credit_maxium_two_child_output.innerText = (this.value * 2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_credit_outputs();adjust_tax_credit_chart();">
-        </div>
-      </div>
-
-      <!--Income shart slider-->
-      <div class="slidecontainer"> 
-        <div class="slider-text">Families can afford to devote <output id="tax_credit_income_share_output">10</output>% of income to childcare</div>
-        <div class="slider-actual">
-          <input type="range" min="1" max="100" value="10" step="1" class="slider" id="tax_credit_income_share" oninput="tax_credit_income_share_output.innerText = this.value.toString();tax_credit_outputs();adjust_tax_credit_chart();">
-        </div>
-      </div>
-
-    </div> <!--user_inputs container-->
-
-    <!-- Tax Credit? Outputs -->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
-      <p class="explanation_text" id="tax_credit_one_child_families_output">Families with one child need an income of <b>$28,571</b> to receive the full child care credit.</p>
-      <p class="explanation_text" id="tax_credit_two_child_families_output">Families with two or more children need an income of <b>$57,142</b> to receive the full child care credit.</p>
-    </div>
-
-    <div id="reformed_cdcc"></div>
-  </div>
-
-  <p>
-    The CDCC would need to be fundamentally reworked to actually make it accessible to low-income families. The only real way to do this while retaining its structure as a tax credit is to design it like the premium tax credits, which cover all or part of the cost of the health insurance premium of a silver plan purchased on the ACA exchanges. Just as with the CDCC, if the premium tax credits were delivered as a lump-sum payments at the end of the year, then many low-income people would basically not be able to use them because they can't afford to cover the full cost of the premium until their tax refund comes in. 
-  </p>
-
-  <p>
-    So, instead, the government "advances" the credit to the taxpayer by paying the credit to their insurer directly. That sounds easy enough, but it raises a question: why implement the premium tax credits <em>as a tax credit</em> if they're just paying insurers directly? They do it this way because, like the CDCC, the value of the credit phases down with income. For 2023, the "premium contribution"—the amount of the premium the taxpayer has to pay themselves, expressed as a percent of income—is 0% for people with incomes below 150% of the poverty line, i.e. the government pays the full premium. However, above 150% of the poverty line the premium contribution grows, i.e. the value of the credit decreases. But herein lies a problem: when someone signs up for a year of health insurance, they don't know exactly what their income is going to be over the next year—the year hasn't happend yet! So the government basically has two options: (1) determine the value of the credit the taxpayer is eligible for based on <em>last year's</em> income, and then pay out that credit amount regardless of what the taxpayer's actual income is over the present year; or (2) guess what the taxpayer's income will be over the year and then reconcile any discrepancy between estimated and actual income at the end of the year. 
-  </p>
-
-  <p>
-    Both of these options have major pitfalls, since people's incomes vary from year to year. For whatever reason—perhaps so that people whose incomes decrease eventually get the full amount they are eligible for—the government has gone with option 2: the IRS estimates what your income will be over the next year, pays your insurer accordingly, and then at tax season reconciles the difference by either charging you for any overpayment or refunding you for underpayment.
-  </p> 
-
-  <p>
-    This is basically what the government would have to do to make the CDCC, as a refundable tax credit, accessible to low-income people. Instead of making you cover the entire cost of childcare over the year, then sending you a check at the end of the year for the value of the CDCC, the IRS would pay a portion of your daycare bill up-front and then at the end of the year determine whether they overpaid or underpaid, and either charge or refund you the difference. If the credit rate is low, of course, then many low income families would still not be able to afford childcare. If we were to make the CDCC refundable at the current credit max of 35%, for instance, then many low-income families would still not be able to afford childcare because a 35% discount just doesn't bring the cost of childcare within their budget. But this can be easily remedied within the tax credit design: just set the credit rate for low incomes very high—perhaps 100%.
-  </p>
-
-  <p>
-    This would be a major improvement. Since people wouldn't have to cover the full cost for a year and wait for a refund–they'd simply see their childcare discounted at the counter–we've gone a long way to remedying the problem of low-income people being unable to temporarily cover the full cost. But have we fixed the problem entirely? And is this actually a good program design? No, not really.
-  </p>
-
-  <p>
-    As I mentioned before, administering a tax credit in this way has major pitfalls. The IRS has to estimate what your income will be over the year, and they are not clairvoyant: they are frequently going to be wrong. This creates two problems. First, it means that over the year many families will have to bear higher childcare costs than they are supposed to. Many families have income reductions from one year to the next—a parent gets laid off, or decides to reduce work hours to spend more time taking care of the kids etc.—so the IRS, which has to use prior year's income to estimate present-year income, is going to overestimate their income. As a result, the IRS could conclude that the family is eligible for a lower credit rate than they actually will be, and thus they won't discount that families childcare by as much as the should. This means that, over the year, this family is going to have to pay higher childcare costs than they should, and only at the end of the year will they receive a refund for the amount that should have been paid out over the year. 
-  </p>
-
-  <p>
-    Remember that the whole reason we structured the credit this way was to prevent this exact situation. We didn't want low-income people to pass on childcare the CDCC ought to have made affordable to them because they can't afford to cover the cost until the refund arrives. And yet, this is precisely what can occur to families who face a year-to-year income reduction. The number of affected families will be much smaller—that's why it's still an improvement—but we haven't actually solved the problem entirely.
-  </p>
-
-  <p>
-    Additionally, reconciling the credit at the end of the year can create problems for families whose incomes rises. In this case, the IRS will <em>over</em>-estimate their income, and thus could determine they are eligible for a higher credit rate than they are will be. The IRS will pay out too much, and then at the end of the year they'll hit the family with a bill for the overpayments. This might not be too big an issue for high income taxpayers, but for low-income taxpayers a surprise bill can be a major financial shock. It can completely throw off their budget—they suddenly don't have as much money for food, rent, transportation etc.—and it can put innocent families into the precarious situation of being debtors to the IRS.
-  </p>
-
-  <p>
-    This problem, at least, can be remedied by including "safe harbors"—basically, not requiring people with certain incomes to pay back any overpayments. However, unless the safe harbor applies to everybody, it inevitably creates, at best, a major headache and, at worse, a financial disaster for people who have incomes above the safe harbor income range. And safe harbors do nothing to solve the issue of underpayment during throughout the year.
-  </p>
-
-  <p>
-    So, administering a refundable CDCC in this way requires complicating the program with safe harbors and doesn't completely solve the problem of low-income families being unable to cover the cost of childcare until the once-a-year refund hits. What to do?
-  </p>
-
-  <p>
-    Well, left unspoken throughout this discussion is the root cause of this problem: phasing the credit rate down with income. Under-payment and over-payment only occurs because the IRS will sometimes estimate that a family is eligible for a different credit rate then they actually will be. Based on prior years' income, the IRS estimates that the family is eligible for a 30% credit rate, but the family's income turns out to be lower than the IRS expected, so the family was actually eligible for a 35% rate. That's how these sorts of problems would occur.
-  </p>
-
-  <p>
-    But if everyone is eligible for the same credit rate, then the IRS will never misestimate a family's credit rate—they don't have to estimate it, it's the same for everyone!
-  </p>
-
-  <p>
-    This does naturally lead to some questions about the structure of the program. The only way to make childcare affordable to low-income families is through a high credit rate. People with little money to spare will simply need most or all of the cost covered, or else they won't be able to afford it. But if we're applying the same credit rate to everybody, that means we're also paying for most or all of the cost of childcare for middle-class and even rich families. 
-  </p>
-
-  <p>
-    Many people will take issue with this, preferring to "target" the program to people with lower incomes to reduce the sticker-price of the program. This is just fundamentally quite challenging to do effectively while accomplishing the purported goal of targetting: to focus benefits on lower and perhaps middle-income families. A phaseout is necessarily going to produce all the problems described above. Still, we can design a "targetted" refundable CDCC that is much better than the existing CDCC. It could look something like this:
-  </p>
-
-  <p>
-    This CDCC maintains a uniform high benefit rate for low-income and working-class families. That makes childcare affordable while also largely preventing over-payments and under-payments for people in this income range. The credit rate then decreases as income rises.
-  </p>
-
-  <p>
-    This would be an improvement, but it retains the problems described above. Additionally, since we're starting from a higher credit rate, the benefit reductions as a result of an increase an income gets larger. As described in the page <em><a href='../marginal-tax/' target="_blank">Marginal Tax Rates</a></em>, this reduces the incentive to work, since working additional hours—and hence increasing your income—can cause a reduction in benefits.
-  </p>
-
-  <p>
-    So with this option included, we can now consider a more dramatic reform: a universal childcare benefit. I discuss this, and the reasons not to be scared by what appears to be the huge cost of the program, at length in the next section. But first, let's wrap back to the question originally proposed at the beginning of this section: should the childcare subsidization be a tax credit? 
-  </p>
-
-  <p>
-    In this page, we first examined the problems with the non-refundable aspect of the CDCC, most importantly its exclusion of poor families. We tried out a refundable CDCC, like the one in <a href="../build-back-better/" target="_blank">Build Back Better</a>, but concluded that it still locks out many low-income families. So we proposed administering the CDCC like the premium tax credits–paying them out to childcare centers in advance and then reconciling any over-payment or under-payment at tax season. This, as we have just gone over, has a series of problems itself. So the only way we can truly make childcare affordable to low-income and working-class families <em>without</em> all of these associated problems is by providing a universal, high credit rate to everybody.
-  </p>
-
-  <p>
-    Finally, then, we have to ask: if our programs is simply covering much of the cost of childcare for everybody, and there's no need to "reconcile" payments at the end of the year because everybody receives the same benefit, then do we need to administer this through the tax code? The answer is clearly no. In fact, the tax system doesn't come into play at all with such a program, since the "tax credit" has already been paid out—you don't get to subtract it from your taxes—and there's no need to remedy any over-payments or under-payments because there are no over-payments and under-payments. The only thing designating this benefit as a tax benefit would do is have the IRS administer the program rather than another agency. And there's no reason to do this. Why would we have an agency that specializes in processing tax returns administer a program that sends out payments to childcare centers across the country? There are agencies that are better equipped to handle such a task, like the Social Security Administration, which has decades of experience sending out payments to large numbers of hospitals.
-  </p>
-
-  <p>
-    We should, in other words, convert the program from a tax credit to a direct spending program.
-  </p>
-
-</section>
-
-<section class = 'center_no_side_elements' id="reform-2">
-  <h2>Reform 2: Replace CDCC with Direct Spending Program</h2>
-</section>
-
-<section class = 'center_no_side_elements' id="reform-3">
-  <h2>Reform 3: Eliminate the CDCC and Put the Savings Towards a Child Benefit</h2>
+<section class = 'center_no_side_elements' id="child-poverty">
+  <h2>Refundability Complicates Monthly Benefits</h2>
 </section>
 
 <!--References section---------------------------------------------------------------------------------------------->
@@ -951,25 +629,8 @@
   <div class="references" id="references">
     <h2>References</h2>
     <ul class="references_list" id="references_list">
-      <li class="ref_item" id="Brown">Brown, Patrick T. (February 2021). <a href='https://www.jec.senate.gov/public/_cache/files/afc93ce5-7e97-4be1-a683-1993f7fc45ed/2-21-child-care-choices.pdf' target="_blank">"Expanding Child Care Choices: Reforming the Child and Dependent Care Tax Credit to Improve Family Affordability (SCP Report No. 2-21)"</a> <i class="fa fa-file-pdf-o"></i>. <em>Social Capital Project</em>. Joint Economic Committee. <a href='https://web.archive.org/web/20221216221542/https://www.jec.senate.gov/public/_cache/files/afc93ce5-7e97-4be1-a683-1993f7fc45ed/2-21-child-care-choices.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on December 16, 2022.</li>
-
-      <li class="ref_item" id="Crandall-Hollick">Crandall-Hollick, Margot L.; Boyle, Connor F. (February 1, 2021). <a href='https://crsreports.congress.gov/product/pdf/R/R44993' target="_blank">"Child and Dependent Care Tax Benefits: How They Work and Who Receives Them"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220901064453/https://crsreports.congress.gov/product/pdf/R/R44993' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on September 1, 2022.</li>
-
-      <li class="ref_item" id="Crandall-Hollick">Crandall-Hollick, Margot L.; Falk, Gene (December 5, 2017). <a href='https://crsreports.congress.gov/product/pdf/R/R45035' target="_blank">"The Child and Dependent Care Credit: Impact of Selected Policy Options"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220708150050/https://crsreports.congress.gov/product/pdf/R/R45035' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 8, 2022.</li>
-
-      <li class="ref_item" id="Crandall-Hollick">Crandall-Hollick, Margot L. (May 10, 2021). <a href='https://crsreports.congress.gov/product/pdf/IN/IN11645' target="_blank">"The Child and Dependent Care Tax Credit (CDCTC): Temporary Expansion for 2021 Under the American Rescue Plan Act of 2021 (ARPA; P.L. 117-2)"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220916221416/https://crsreports.congress.gov/product/pdf/IN/IN11645' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on September 16, 2022.</li>
-
-      <li class="ref_item" id="TPC"><a href='https://www.taxpolicycenter.org/briefing-book/how-does-tax-system-subsidize-child-care-expenses' target="_blank">"How does the tax system subsidize child care expenses?"</a> (May 2021). <em>Tax Policy Center</em>. <a href='https://web.archive.org/web/20221119002040/https://www.taxpolicycenter.org/briefing-book/how-does-tax-system-subsidize-child-care-expenses' target="_blank">Archived</a> from the original on November 19, 2022.</li>
-
-      <li class="ref_item" id="Maag">Maag, Elaine (October 27, 2003). <a href='https://www.urban.org/sites/default/files/publication/58741/1000579-Recent-Expansions-to-the-Child-And-Dependent-Care-Tax-Credit.PDF' target="_blank">"Recent Expansions to the Child and Depenent Care Credit"</a> <i class="fa fa-file-pdf-o"></i>. <em>Tax Policy Center</em>. <a href='https://web.archive.org/web/20220729144635/https://www.urban.org/sites/default/files/publication/58741/1000579-Recent-Expansions-to-the-Child-And-Dependent-Care-Tax-Credit.PDF' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 29, 2022.</li>
-
-      <li class="ref_item" id="IRS"><a href='https://www.irs.gov/pub/irs-pdf/p503.pdf' target="_blank">"Publication 503: Child and Dependent Care Expenses"</a> <i class="fa fa-file-pdf-o"></i> (2022). <em>Internal Revenue Service</em>. <a href='https://web.archive.org/web/20230117154144/https://www.irs.gov/pub/irs-pdf/p503.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 17, 2023.</li>
-
-      <li class="ref_item" id="Rogers">Rogers, Luke P. (November 2018). <a href='https://www.sciencedirect.com/science/article/abs/pii/S0094119018300792' target="_blank">"Give credit where? The incidence of child care tax credits"</a>. <em>Journal of Urban Economics</em>. <b>108</b>: 51–71. DOI: <a href='https://doi.org/10.1016/j.jue.2018.10.002' target="_blank">10.1016/j.jue.2018.10.002</a>.</li>
-
-      <li class="ref_item" id="Viard">Viard, Alan D. (September 27, 2010). <a href='https://www.aei.org/wp-content/uploads/2011/10/On-the-Margin-Sep-27-2010.pdf' target="_blank">"The Child Care Tax Credit: Not Just Another Middle-Income Tax Break"</a> <i class="fa fa-file-pdf-o"></i>. <em>Tax Notes</em>. <a href='https://web.archive.org/web/20210115135431/https://www.aei.org/wp-content/uploads/2011/10/On-the-Margin-Sep-27-2010.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 15, 2021.</li>
-
-      <li class="ref_item" id="Wolters">Wolters, Benjamin; McHenry, Kathyln; Smith, Linda K. (2021). <a href='https://bipartisanpolicy.org/download/?file=/wp-content/uploads/2021/05/BPC_CDCTC_Report_V3.pdf' target="_blank">"The Effects of the Child and Dependent Care Tax Credit on Child Care Affordability"</a> <i class="fa fa-file-pdf-o"></i>. <em>Bipartisan Policy Center</em>. <a href='https://web.archive.org/web/20221130003334/https://bipartisanpolicy.org/download/?file=/wp-content/uploads/2021/05/BPC_CDCTC_Report_V3.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 30, 2022.</li>
+      <li class="ref_item" id="Crandall-Hollick">Ferrarini, Tommy; Nelson, Kenneth; Höög, Helena (July 2012). <a href='https://gini-research.org/wp-content/uploads/2021/03/DP_49_The-Fiscalization-of-Child-Benefits-in-OECD-Countries.pdf' target="_blank">"The Fiscalization of Child Benefits in OECD Countries"</a> <i class="fa fa-file-pdf-o"></i>. <em>GINI</em>. <a href='https://web.archive.org/web/20220526045731/https://gini-research.org/wp-content/uploads/2021/03/DP_49_The-Fiscalization-of-Child-Benefits-in-OECD-Countries.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on May 26, 2022.</li>
+    </ul>
   </div>
 
 </section> <!--References section-->
@@ -1062,25 +723,16 @@
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
-<!-- Chart Builder, Calculations, Income Sliders & Outputs -->
-<script type="text/javascript" src="./javascript/chart_builder.js"></script>
-<script type="text/javascript" src="./javascript/calculate.js"></script>
-<script type="text/javascript" src="./javascript/chart_sliders.js"></script>
-
-<script type="text/javascript" src="./javascript/outputs.js"></script>
-
-<!-- Top Chart -->
+<!-- Top Chart Javascript files -->
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
 
-<!-- Complexity Chart -->
-<script type="text/javascript" src="./javascript/complexity-chart/chart.js"></script>
-
-<!-- Marriage Penalty Chart -->
-<script type="text/javascript" src="./javascript/marriage-penalty-chart/chart.js"></script>
-
-<!-- Reformed CDCC Chart -->
-<script type="text/javascript" src="./javascript/reformed-cdcc/chart.js"></script>
-<script type="text/javascript" src="./javascript/reformed-cdcc/adjust_chart.js"></script>
+<!-- Marriage Penalties Javascript files -->
+<script type="text/javascript" src="./javascript/marriage-penalties/chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/outputs.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/calculate.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>The Welfare of Families</title>
+  <meta name="description" content="An interactive website exploring all that's right and all that's wrong with the American welfare state."/>
+  
+  <!-- Page basics -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Welfare of Families"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="An interactive website exploring all that's right and all that's wrong with the American welfare state." />
+  <meta property="og:image" content=""/> <!-- Add path to image -->
+  <meta property="og:site_name" content="The Welfare of Families"/>
+
+  <!-- CSS Files -->
+  <link href="./home/css/color-modes.css" type="text/css" rel="stylesheet" />
+  <link href="./home/css/style.css" type="text/css" rel="stylesheet" />
+  <link href="./home/css/mobile.css" type="text/css" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="./reference_files/images/logo/favicon.png">
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- Computer Modern -->
+  <link rel="stylesheet" href="./reference_files/fonts/computer_modern/Sans/cmun-sans.css"></link>
+  <link rel="stylesheet" href="./reference_files/fonts/computer_modern/Serif/cmun-serif.css"></link>
+  <link rel="stylesheet" href="./reference_files/fonts/computer_modern/Classical Serif Italic/cmun-classical-serif-italic.css"></link>
+
+  <!-- Latin Modern -->
+  <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-sans.css" type="text/css" charset="utf-8" />
+
+  <!-- CSS for charts -->
+  <link href="./reference_files/c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./home/css/chart_adjustments.css" rel="stylesheet">
+
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="./reference_files/c3-0.7.20/c3.min.js"></script>
+</head>
+
+<body>
+
+<!--Top--------------------------------------------------------------------------------------------------------------->
+<!-- Desktop Page Color Toggle -->
+<div class="page_color_toggle_container">
+  <div class="page_color_button_group">
+    <button onclick="toggle_page_color('light')">Light</button>
+    <button onclick="toggle_page_color('sepia')">Sepia</button>
+    <button onclick="toggle_page_color('dark')">Dark</button>
+    <div class="page_color_toggler"></div>
+  </div>
+</div>
+
+<section class="top">
+
+  <h1 id="page_title">The Welfare of Families</h1>
+  <div class='top_logo_container'>
+    <svg class='top_logo_svg' viewBox="0 0 236.88928 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <text xml:space="preserve" x="-0.16252223" y="15.940749">
+        <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.1667px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
+          x="-0.16252223" y="15.940749">The Welfare of Families
+        </tspan>
+      </text>
+    </svg>
+  </div>
+  <div class="name">A Project by Jay Martin
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" id="twitter_black" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg');" onmouseleave="change_social_fill_backward('#twitter_svg');">
+      <svg class='social_icon social-base-color top_social_icons' id='twitter_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+        <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+          C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+          c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+          c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+          c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+          c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+        </svg></a> 
+
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" id="substack_black" onmouseenter="change_social_fill_forward('substack', '#substack_svg');" onmouseleave="change_social_fill_backward('#substack_svg');">
+      <svg class='social_icon social-base-color top_social_icons' id='substack_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+      </svg></a>
+  </div>
+
+  <div class="horizontal_line_top"></div>
+
+  <table class="top_bar" id="desktop_top_bar">
+    <tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_overview')">Overview</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_problems')">Problems</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
+    </tr>
+  </table>
+
+  <table class="top_bar" id="mobile_top_bar">
+    <tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_overview')">Overview</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_problems')">Problems</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_bills')">Bills</th>
+    </tr>
+  </table>
+
+  <div class="horizontal_line"></div>
+
+    <div class="desktop_dropdown">
+      <!-- Overview -->
+      <div class="table_container" id="table_container_overview">
+        <table class="dropdown_menu" id="overview_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./introduction/">Introduction</a></th>
+            <th class="dropdown_menu_column_top"><a href="./why-we-need-family-benefits/">Why We Need Family Benefits</a></th>
+            <th class="dropdown_menu_column_top"><a href="./problems-overview/">The Major Problems</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./fixing-family-benefits/">Fixing Family Benefits</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="table_container_problems">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./two-tiers-of-welfare/">Two Tiers of Welfare</a></th>
+            <th class="dropdown_menu_column_top"><a href="./marriage-penalties/">Marriage Penalties</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./marginal-tax/">Marginal Tax Rates</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="./asset-tests/">Asinine Asset Tests</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./administrative-burdens/">Administrative Burdens</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./over-reliance-on-tax-code/">Over-Reliance on the Tax Code</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Programs -->
+      <div class="table_container" id="table_container_programs">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./child-tax-credit/">The Child Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="./earned-income-tax-credit/">The Earned Income Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="./head-of-household/">Head of Household</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="./child-and-dependent-care-credit/">Child and Dependent Care Credit</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./supplemental-nutrition-assistance-program/">SNAP (Food Stamps)</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./temporary-assistance-for-needy-families/">TANF</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="./women-infants-children/">WIC</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="./medicaid/">Medicaid & CHIP</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="table_container_bills">
+        <table class="dropdown_menu" id="bills_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./family-security-act/">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="./build-back-better/">Build Back Better</a></th>
+            <th class="dropdown_menu_column_top"><a href="./end-child-poverty-act/">End Child Poverty Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="./ssi-restoration-act/">SSI Restoration Act</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="./working-families-tax-relief-act/">Working Families Tax Relief Act</a></th>
+          </tr>
+        </table>
+     </div>
+
+    </div> <!-- Desktop dropdown -->
+
+    <div class="mobile_dropdown">
+
+      <!-- Overview -->
+      <div class="table_container" id="mobile_table_container_overview">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./introduction/">Introduction</a></th>
+            <th class="dropdown_menu_column_top"><a href="./why-we-need-family-benefits/">Family Benefits</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./problems-overview/">Problems Overview</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="./fixing-family-benefits/">Fixing Family Benefits</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="mobile_table_container_problems">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
+            <th class="dropdown_menu_column_top"><a href="./marriage-penalties/">Marriage Penalties</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle">Marginal Tax Rates</th>
+            <th class="dropdown_menu_column_middle">Asinine Asset Tests</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">Administrative Burdens</th>
+            <th class="dropdown_menu_column_bottom">Tax Code Over-Reliance</th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Programs -->
+      <div class="table_container" id="mobile_table_container_programs">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./child-tax-credit/">Child Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="./earned-income-tax-credit/">Earned Income Tax Credit</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="./head-of-household/">Head of Household</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./child-and-dependent-care-credit/">CDCC</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="./supplemental-nutrition-assistance-program/">SNAP (Food Stamps)</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./temporary-assistance-for-needy-families/">TANF</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="">WIC</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="./medicaid/">Medicaid & CHIP</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="mobile_table_container_bills">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="./family-security-act/">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="./build-back-better/">Build Back Better</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="./end-child-poverty-act/">End Child Poverty Act</a></th>
+            <th class="dropdown_menu_column_middle"><a href="./ssi-restoration-act/">SSI Restoration Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="./working-families-tax-relief-act/">Working Families Tax Relief Act</a></th>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+  <div class="horizontal_line"></div>
+</section>
+
+<!--Pages Container------------------------------------------------------------------------------------------------------------------------->
+<div class="box_container">
+
+  <!--Overview Pages--------------------------------------------------------------------------------------------------------------->
+  <h2>Overview Pages</h2>
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./introduction/">
+        <div class="chart_container" id="introduction_chart" ></div>
+        <div class='box_words'>
+          <div class="box_title">Introduction</div>
+          <div class="box_description"><em>Description</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./why-we-need-family-benefits/">
+        <div class="chart_container" id="why_we_need_chart" ></div>
+        <div class='box_words'>
+          <div class="box_title">Why We Need Family Benefits</div>
+          <div class="box_description"><em>Description</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./problems-overview/">
+        <div class="chart_container" id="problems_overview_chart" ></div>
+        <div class='box_words'>
+          <div class="box_title">An Overview of the Major Problems</div>
+          <div class="box_description"><em>All that's wrong with the current system.</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./fixing-family-benefits/">
+        <div class="chart_container" id="fixing_family_benefits_chart" ></div>
+        <div class='box_words'>
+          <div class="box_title">Fixing Family Benefits</div>
+          <div class="box_description"><em>An alternative to the current system</em></div>
+        </div>
+      </a>
+    </div>
+  </div> <!-- Box Level-->
+
+<!--
+    <div class='infobox_left blog_promotion_square'>
+      <a id="blog_logo_link" href="https://twitter.com/jaydavidmartin1" target="_blank">
+        <div class='blog_square_center'>
+          <svg
+             class='blog_square_logo'
+             viewBox="0 0 174.41969 171.98259"
+             version="1.1"
+             id="svg5"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:svg="http://www.w3.org/2000/svg">
+            <defs
+               id="defs2" />
+            <g
+               id="layer1"
+               transform="translate(-18.804621,-47.23762)">
+              <ellipse
+                 class='blog_square_logo_circle'
+                 style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+                 id="path788"
+                 cx="106.01447"
+                 cy="133.22891"
+                 rx="83.221352"
+                 ry="82.002792" />
+              <text
+                 class='blog_square_logo_J'
+                 xml:space="preserve"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:none;stroke-dasharray:none"
+                 x="66.595787"
+                 y="182.87247"
+                 id="text1014"><tspan
+                   id="tspan1012"
+                   style="stroke-width:7"
+                   x="66.595787"
+                   y="182.87247">J</tspan></text>
+            </g>
+          </svg>
+          <div class='blog_square_logo_text'>Read the Substack</div>
+        </div> 
+      </a> 
+      <div class='blog_square_horizontal_line'></div>
+      <div class='article_grid'>
+        <div class="grid-item left-grid-item">
+          <div class="grid-item-text">America's Obsession with Framing Everything as a Tax Cut</div>
+        </div>
+        <div class="grid-item">
+          <div class="grid-item-text">America is Devoting Less—Not More—Of Its Resources to the Military</div>
+        </div>
+        <div class="grid-item left-grid-item bottom-grid-item">
+          <div class="grid-item-text">When the US Redistributed Land: Japan's 1946 Land Reform</div>
+        </div>
+        <div class="grid-item bottom-grid-item">
+          <div class="grid-item-text">Coming Soon: A Series on the History of the American Welfare State</div>
+        </div>
+      </div>
+      <div class='blog_square_horizontal_line'></div>
+    </div> 
+  </div>
+-->
+
+  <!-- Desktop/Tablet Blog Promotion------------------------------------------------------------------------------------------------------------>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+    <div class='blog_container'>
+      <div class='blog_grid_item blog_grid_item_left'>
+        <svg
+           class="blog_svg"
+           viewBox="0 0 174.41969 171.98259"
+           version="1.1"
+           id="svg5"
+           xmlns="http://www.w3.org/2000/svg"
+           xmlns:svg="http://www.w3.org/2000/svg">
+          <defs
+             id="defs2" />
+          <g
+             id="layer1"
+             transform="translate(-18.804621,-47.23762)">
+            <ellipse
+               style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+               id="path788"
+               cx="106.01447"
+               cy="133.22891"
+               rx="83.221352"
+               ry="82.002792" />
+            <text
+               class="blog_logo_J"
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+               x="66.595787"
+               y="182.87247"
+               id="text1014"><tspan
+                 id="tspan1012"
+                 style="stroke-width:6"
+                 x="66.595787"
+                 y="182.87247">J</tspan></text>
+          </g>
+        </svg>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>A splendid little Substack newsletter</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Covering economics, the welfare state, and more</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Arrives right in your inbox, as if by magic</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item blog_grid_item_right'>
+        <div class='blog_text'>Click here for delectable insights</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Mobile Blog Promotion------------------------------------------------------------------------------------------------------------>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank">
+  <div class='mobile_blog_container'>
+    <div class='mobile_blog_logo_container'>
+      <svg
+         class="mobile_blog_svg"
+         viewBox="0 0 174.41969 171.98259"
+         version="1.1"
+         id="svg5"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:svg="http://www.w3.org/2000/svg">
+        <defs
+           id="defs2" />
+        <g
+           id="layer1"
+           transform="translate(-18.804621,-47.23762)">
+          <ellipse
+             style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+             id="path788"
+             cx="106.01447"
+             cy="133.22891"
+             rx="83.221352"
+             ry="82.002792" />
+          <text
+             class="blog_logo_J"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+             x="66.595787"
+             y="182.87247"
+             id="text1014"><tspan
+               id="tspan1012"
+               style="stroke-width:6"
+               x="66.595787"
+               y="182.87247">J</tspan></text>
+        </g>
+      </svg>
+      <div class="mobile_blog_text large_font old_mincho">A Splendid Little Newsletter</div>
+      <div class="mobile_blog_horizontal_line"></div>
+      <div class="mobile_blog_text small_font">Covering Economics, the Welfare State, and More</div>
+      <div class="mobile_blog_horizontal_line"></div>
+      <div class="mobile_blog_text small_font old_mincho">Subscribe on Substack</div>
+    </div>
+  </div>
+  
+  <!--Problems----------------------------------------------------------------------------------------------------------------->
+  <h2 class="next_section" id="Characteristics">Problems with Existing Family Benefits</h2>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./two-tiers-of-welfare/" onmouseenter="poor_families_animation()" onmouseleave="mouse_out_poor_families()">
+        <div class="chart_container" id="poor_families_chart" ></div>
+        <div class='box_words'>
+          <div class="box_title">Two Tiers of Welfare</div>
+          <div class="box_description"><em>Poor families are deliberately excluded from many family benefits</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./marriage-penalties/" onmouseenter="marriage_penalties_animation()" onmouseleave="mouse_out_marriage_penalties()">
+        <div class="chart_container" id="marriage_penalties_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Marriage Penalties</div>
+          <div class="box_description"><em>You like your partner and want to marry them? Well, I hope you don't also like money.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./marginal-tax/">
+        <div class="chart_container" id="marginal_tax_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Marginal Tax Rates</div>
+          <div class="box_description"><em>Work doesn't pay when means tests impose punishing marginal tax rates on working class families</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./asset-tests/">
+        <div class="chart_container" id="asset_tests_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Asinine Asset tests</div>
+          <div class="box_description"><em>Want to save money but also not starve? Too bad.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./administrative-burdens/">
+        <div class="image_container" id="admin_image_container"><img src="./home/images/admin.png" alt="Chart of EITC and CTC Benefits"></div>
+        <div class='box_words'>
+          <div class="box_title">Administrative Burdens</div>
+          <div class="box_description"><em>It's hard being poor. Complicated eligibility tests make it even harder.</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_left'>
+      <a href="./over-reliance-on-tax-code/">
+        <div class="chart_container" id="over_reliance_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Over-Reliance on the Tax Code</div>
+          <div class="box_description"><em>It's hard being poor. Complicated eligibility tests make it even harder.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!--Desktop/Mobile: Programs---------------------------------------------------------------------------------------------------------------->
+  <div id="desktop_programs_container">
+    <h2 class="next_section">Major Programs (And How They Can Be Improved)</h2>
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./child-tax-credit/" onmouseenter="ctc_animation()" onmouseleave="mouse_out_ctc()">
+          <div class="chart_container" id="ctc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Child Tax Credit</div>
+            <div class="box_description"><em>The fundamental—and problematic—family benefit</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_center'>
+        <a href="./earned-income-tax-credit/" onmouseenter="eitc_animation()" onmouseleave="mouse_out_eitc()">
+          <div class="chart_container" id="eitc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Earned Income Tax Credit</div>
+            <div class="box_description"><em>What if we did a wage subsidy, but not really? And what if we also made it a pillar of our family benefits, for some reason?</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_right'>
+        <a href="./head-of-household/" onmouseenter="hoh_animation()" onmouseleave="mouse_out_hoh()">
+          <div class="chart_container" id="head_of_household_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Head of Household Filing Status</div>
+            <div class="box_description"><em>The American obsession with convoluted benefits administered through the tax code</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./child-and-dependent-care-credit/" onmouseenter="cdcc_animation()" onmouseleave="mouse_out_cdcc()">
+          <div class="chart_container" id="cdcc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Child and Dependent Care Credit</div>
+            <div class="box_description"><em>Sure, we already have a child tax credit, but how about another, worse one?</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_center'>
+        <a href="./supplemental-nutrition-assistance-program/">
+          <div class="chart_container" id="snap_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">SNAP (Food Stamps)</div>
+            <div class="box_description"><em>I simply wouldn't make reducing hunger so complicated</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_right'>
+        <a href="./temporary-assistance-for-needy-families/">
+          <div class="chart_container" id="tanf_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Temporary Assistance for Needy Families</div>
+            <div class="box_description"><em>Brett Favre's favorite social benefit</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./women-infants-children/">
+          <div class="chart_container" id="wic_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Supplemental Nutrition for Women, Infants, and Children (WIC)</div>
+            <div class="box_description"><em>A program that only exists because SNAP isn't enough to feed your baby</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_center'>
+        <a href="./medicaid/">
+          <div class="chart_container" id="medicaid_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Medicaid & Premium Tax Credits</div>
+            <div class="box_description"><em>Providing health insurance to children is good.</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_right'>
+        <a href="./temporary-assistance-for-needy-families/">
+          <div class="chart_container" id="tanf_2_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Temporary Assistance for Needy Families</div>
+            <div class="box_description"><em>Brett Favre's favorite social benefit</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- Desktop: Programs Container -->
+
+  <!--Tablet: Programs----------------------------------------------------------------------------------------------------------------->
+  <div id='tablet_programs_container'>
+    <h2 class="next_section">Major Programs</h2>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./child-tax-credit/">
+          <div class="chart_container" id="tablet_ctc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Child Tax Credit</div>
+            <div class="box_description"><em>The fundamental—and problematic—family benefit</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_right'>
+        <a href="./earned-income-tax-credit/">
+          <div class="chart_container" id="tablet_eitc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Earned Income Tax Credit</div>
+            <div class="box_description"><em>What if we did a wage subsidy, but not really? And what if we also made it a pillar of our family benefits, for some reason?</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./head-of-household/">
+          <div class="chart_container" id="tablet_head_of_household_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Head of Household Filing Status</div>
+            <div class="box_description"><em>The American obsession with convoluted benefits administered through the tax code</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_right'>
+        <a href="./child-and-dependent-care-credit/">
+          <div class="chart_container" id="tablet_cdcc_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">The Child and Dependent Care Credit</div>
+            <div class="box_description"><em>Sure, we already have a child tax credit, but how about another, worse one?</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./supplemental-nutrition-assistance-program/">
+          <div class="chart_container" id="tablet_snap_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">SNAP (Food Stamps)</div>
+            <div class="box_description"><em>I simply wouldn't make reducing hunger so complicated</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_left'>
+        <a href="./temporary-assistance-for-needy-families/">
+          <div class="chart_container" id="tablet_tanf_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Temporary Assistance for Needy Families</div>
+            <div class="box_description"><em>Brett Favre's favorite social benefit</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="box_level">
+      <div class='infobox_left'>
+        <a href="./women-infants-children/">
+          <div class="chart_container" id="tablet_wic_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Supplemental Nutrition for Women, Infants, and Children (WIC)</div>
+            <div class="box_description"><em>A program that only exists because SNAP isn't enough to feed your baby</em></div>
+          </div>
+        </a>
+      </div>
+      <div class='infobox_left'>
+        <a href="./medicaid/">
+          <div class="chart_container" id="tablet_medicaid_chart" ></div>
+          <div class='box_words'>
+            <div class="box_title">Medicaid & Premium Tax Credits</div>
+            <div class="box_description"><em>Providing health insurance to children is good.</em></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- Tablet Major Programs -->
+
+  <br>
+
+  <!--Bills--------------------------------------------------------------------------------------------------------------->
+  <h2>Bill Analysis</h2>
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./family-security-act/">
+        <div class="chart_container" id="family_security_act_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the Family Security Act</div>
+          <div class="box_description"><em>A Promising Overhaul that Could Use a Few Touchups</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./build-back-better/">
+        <div class="chart_container" id="build_back_better_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of Build Back Better</div>
+          <div class="box_description"><em>Fundamentally Uncreative, but an Improvement Nonetheless</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./end-child-poverty-act/">
+        <div class="chart_container" id="end_child_poverty_act_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the End Child Poverty Act</div>
+          <div class="box_description"><em>A Promising Reform that Could Use a Few Touchups</em></div>
+        </div>
+      </a>
+    </div>
+    <div class='infobox_right'>
+      <a href="./ssi-restoration-act/">
+        <div class="chart_container" id="ssi_restoration_act_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the SSI Restoration Act</div>
+          <div class="box_description"><em>A worthwhile incremental reform</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="box_level">
+    <div class='infobox_left'>
+      <a href="./working-families-tax-relief-act/">
+        <div class="chart_container" id="working_families_tax_relief_chart"></div>
+        <div class='box_words'>
+          <div class="box_title">Analysis of the Working Families Tax Relief Act</div>
+          <div class="box_description"><em>It Certainly Doesn't Shake Things Up, but It's Worthwhile Nonetheless.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Mobile Page Color Toggle -->
+<div class="mobile_page_color_button_group">
+  <button onclick="toggle_page_color('light')">Light</button>
+  <button onclick="toggle_page_color('sepia')">Sepia</button>
+  <button onclick="toggle_page_color('dark')">Dark</button>
+  <div class="page_color_toggler"></div>
+</div>
+
+<!--Bottom section---------------------------------------------------------------------------------------------------------------------------------->
+<section class="page_bottom">
+  <div id="bottom_socials">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#twitter_bottom_svg');">
+       <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='twitter_bottom_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+          <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+            C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+            c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+            c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+            c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+            c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+      </svg></a> 
+
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('substack', '#substack_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#substack_bottom_svg');">
+      <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='substack_bottom_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    </svg></a>
+
+  </div> <!-- bottom social logos -->
+
+  <div id="bottom_logo">The Welfare of Families</div>
+  <div id="bottom_name">A Project by Jay Martin</div>
+
+  <div id="cc_container">
+
+    <div id="cc_logos">
+      <a class="social_links" rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+        <g>
+          <circle class="cc-circle" cx="37.785" cy="28.501" r="28.836"/>
+          <path class="st0" d="M37.441-3.5c8.951,0,16.572,3.125,22.857,9.372c3.008,3.009,5.295,6.448,6.857,10.314
+            c1.561,3.867,2.344,7.971,2.344,12.314c0,4.381-0.773,8.486-2.314,12.313c-1.543,3.828-3.82,7.21-6.828,10.143
+            c-3.123,3.085-6.666,5.448-10.629,7.086c-3.961,1.638-8.057,2.457-12.285,2.457s-8.276-0.808-12.143-2.429
+            c-3.866-1.618-7.333-3.961-10.4-7.027c-3.067-3.066-5.4-6.524-7-10.372S5.5,32.767,5.5,28.5c0-4.229,0.809-8.295,2.428-12.2
+            c1.619-3.905,3.972-7.4,7.057-10.486C21.08-0.394,28.565-3.5,37.441-3.5z M37.557,2.272c-7.314,0-13.467,2.553-18.458,7.657
+            c-2.515,2.553-4.448,5.419-5.8,8.6c-1.354,3.181-2.029,6.505-2.029,9.972c0,3.429,0.675,6.734,2.029,9.913
+            c1.353,3.183,3.285,6.021,5.8,8.516c2.514,2.496,5.351,4.399,8.515,5.715c3.161,1.314,6.476,1.971,9.943,1.971
+            c3.428,0,6.75-0.665,9.973-1.999c3.219-1.335,6.121-3.257,8.713-5.771c4.99-4.876,7.484-10.99,7.484-18.344
+            c0-3.543-0.648-6.895-1.943-10.057c-1.293-3.162-3.18-5.98-5.654-8.458C50.984,4.844,44.795,2.272,37.557,2.272z M37.156,23.187
+            l-4.287,2.229c-0.458-0.951-1.019-1.619-1.685-2c-0.667-0.38-1.286-0.571-1.858-0.571c-2.856,0-4.286,1.885-4.286,5.657
+            c0,1.714,0.362,3.084,1.085,4.113c0.724,1.029,1.791,1.544,3.201,1.544c1.867,0,3.181-0.915,3.944-2.743l3.942,2
+            c-0.838,1.563-2,2.791-3.486,3.686c-1.484,0.896-3.123,1.343-4.914,1.343c-2.857,0-5.163-0.875-6.915-2.629
+            c-1.752-1.752-2.628-4.19-2.628-7.313c0-3.048,0.886-5.466,2.657-7.257c1.771-1.79,4.009-2.686,6.715-2.686
+            C32.604,18.558,35.441,20.101,37.156,23.187z M55.613,23.187l-4.229,2.229c-0.457-0.951-1.02-1.619-1.686-2
+            c-0.668-0.38-1.307-0.571-1.914-0.571c-2.857,0-4.287,1.885-4.287,5.657c0,1.714,0.363,3.084,1.086,4.113
+            c0.723,1.029,1.789,1.544,3.201,1.544c1.865,0,3.18-0.915,3.941-2.743l4,2c-0.875,1.563-2.057,2.791-3.541,3.686
+            c-1.486,0.896-3.105,1.343-4.857,1.343c-2.896,0-5.209-0.875-6.941-2.629c-1.736-1.752-2.602-4.19-2.602-7.313
+            c0-3.048,0.885-5.466,2.658-7.257c1.77-1.79,4.008-2.686,6.713-2.686C51.117,18.558,53.938,20.101,55.613,23.187z"/>
+        </g>
+      </svg></a>
+
+      <a class="social_links" rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+          <g>
+            <circle class="cc-circle" cx="37.637" cy="28.806" r="28.276"/>
+            <g>
+              <path class="st0" d="M37.443-3.5c8.988,0,16.57,3.085,22.742,9.257C66.393,11.967,69.5,19.548,69.5,28.5c0,8.991-3.049,16.476-9.145,22.456
+                C53.879,57.319,46.242,60.5,37.443,60.5c-8.649,0-16.153-3.144-22.514-9.43C8.644,44.784,5.5,37.262,5.5,28.5
+                c0-8.761,3.144-16.342,9.429-22.742C21.101-0.415,28.604-3.5,37.443-3.5z M37.557,2.272c-7.276,0-13.428,2.553-18.457,7.657
+                c-5.22,5.334-7.829,11.525-7.829,18.572c0,7.086,2.59,13.22,7.77,18.398c5.181,5.182,11.352,7.771,18.514,7.771
+                c7.123,0,13.334-2.607,18.629-7.828c5.029-4.838,7.543-10.952,7.543-18.343c0-7.276-2.553-13.465-7.656-18.571
+                C50.967,4.824,44.795,2.272,37.557,2.272z M46.129,20.557v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557
+                c0-0.572,0.2-1.057,0.599-1.457c0.401-0.399,0.887-0.6,1.457-0.6h13.144c0.533,0,1.01,0.2,1.428,0.6
+                C45.918,19.5,46.129,19.986,46.129,20.557z M33.042,12.329c0-3.008,1.485-4.514,4.458-4.514s4.457,1.504,4.457,4.514
+                c0,2.971-1.486,4.457-4.457,4.457S33.042,15.3,33.042,12.329z"/>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div> <!-- CC logos -->
+
+    <div id="cc_description">This work is licensed under a Creative Commons Attribution 4.0 International License.</br>You are free to share, copy, and adapt the material for any purpose, including commercial purposes, so long as appropriate credit is given.</div>
+
+  </div> <!-- CC container -->
+
+</section> <!-- Bottom section -->
+
+</body>
+
+<!-- Page functionality -->
+<script src="./home/javascript/page_functionality.js"></script>
+
+<!-- Universal Charts Scripts -->
+<script src="./home/javascript/charts/chart-colors.js"></script>
+<script type="text/javascript" src="./reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="./reference_files/javascript/chart_builder.js"></script>
+
+<!-- Overview Charts Scripts -->
+<script src="./home/javascript/charts/overview/introduction.js"></script>
+<script src="./home/javascript/charts/overview/why-we-need.js"></script>
+<script src="./home/javascript/charts/overview/problems-overview.js"></script>
+<script src="./home/javascript/charts/overview/fixing-family-benefits.js"></script>
+
+<!-- Problems Charts Scripts -->
+<script src="./home/javascript/charts/problems/two-tiers.js"></script>
+<script src="./home/javascript/charts/problems/marriage-penalties.js"></script>
+<script src="./home/javascript/charts/problems/marginal-tax.js"></script>
+<script src="./home/javascript/charts/problems/asset-test.js"></script>
+<script src="./home/javascript/charts/problems/over-reliance.js"></script>
+
+<!-- Bills Charts Scripts -->
+<script src="./home/javascript/charts/bills/family-security-act.js"></script>
+<script src="./home/javascript/charts/bills/build-back-better.js"></script>
+<script src="./home/javascript/charts/bills/end-child-poverty-act.js"></script>
+<script src="./home/javascript/charts/bills/ssi-restoration-act.js"></script>
+<script src="./home/javascript/charts/bills/working-families-tax-relief-act.js"></script>
+
+<!-- Programs Charts Scripts -->
+<script src="./home/javascript/charts/programs/ctc.js"></script>
+<script src="./home/javascript/charts/programs/eitc.js"></script>
+<script src="./home/javascript/charts/programs/head-of-household.js"></script>
+<script src="./home/javascript/charts/programs/cdcc.js"></script>
+<script src="./home/javascript/charts/programs/snap.js"></script>
+<script src="./home/javascript/charts/programs/tanf.js"></script>
+<script src="./home/javascript/charts/programs/wic.js"></script>
+<script src="./home/javascript/charts/programs/medicaid.js"></script>
+<script src="./home/javascript/charts/programs/tanf-2.js"></script>
+
+</html>
