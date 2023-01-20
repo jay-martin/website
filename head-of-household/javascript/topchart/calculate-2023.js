@@ -215,6 +215,7 @@ function single_tax_liability_2023_with_deduction_value(income, deductionValue){
  * @param {string} - string representing an integer ('none', 'one', 'two', 'three')
  * @return {integer} - tax owed
  * */
+/*
 hoh_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildren){
 	num_children_integer = num_children_formatting(numChildren);
 	base_tax = hoh_tax_liability_2023_with_deduction_value(income, deductionValue) - (2000 * num_children_integer);
@@ -225,6 +226,7 @@ hoh_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildre
 		return base_tax;
 	}
 }
+*/
 
 /** Returns tax liability of a single filer after the NON-refundable portion of the CTC has been applied
  * @param {integer} - income
@@ -232,6 +234,7 @@ hoh_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildre
  * @param {string} - string representing an integer ('none', 'one', 'two', 'three')
  * @return {integer} - tax owed
  * */
+/*
 single_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChildren){
 	num_children_integer = num_children_formatting(numChildren);
 	base_tax = single_tax_liability_2023_with_deduction_value(income, deductionValue) - (2000 * num_children_integer);
@@ -242,6 +245,7 @@ single_tax_liability_2023_with_nonrefundable_ctc(income, deductionValue, numChil
 		return base_tax;
 	}
 }
+*/
 
 /** Converts string representing an integer into an integer
  * @param {string} - string representing an integer ('none', 'one', 'two', 'three')

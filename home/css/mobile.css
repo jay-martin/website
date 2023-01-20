@@ -117,14 +117,14 @@ section.page_bottom {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 700px) and (max-width: 900px) {
 /********* Hide Desktop Elements *******/
-.top_logo_container, .page_color_toggle_container, #desktop_programs_container {
+#page_title, .page_color_toggle_container, #desktop_programs_container {
 	display: none;
 }
 #tablet_programs_container {
 	display: block;
 }
 /*************** Title *********************************************************************/
-#page_title {
+.top_logo_container {
 	display: block;
 }
 /*************** Mobile page color toggler ******************************************************************/
