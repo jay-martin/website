@@ -2,7 +2,7 @@
  * This file contains the functions that 
  * (1) Toggles between light, sepia, and dark modes
  * (2) Adjust the position of the left sidebar on scroll
- * (3) Adjust the color of the Twitter & Substack icons
+ * (3) Adjust the color of social media icons
  * (4) Expands the mobile dropdown
  * (5) Highlights a reference or note when a citation is clicked
  * (6) Expands and collapses the list of programs/bills in the page list
@@ -109,6 +109,11 @@ redditOrange = '#FF5700'
  * @param {string} - the html id of the svg element to be changed
  * */
 function change_social_fill_forward(platform, id){
+  // No color change on mobile devices and tablets
+  if(displayWidth < 900){
+    return;
+  }
+
   path = id + '_path';
   if(platform == 'twitter'){
     $(id).removeClass('social-base-color').removeClass('social-page-bottom-base-color').addClass('twitter-blue');
@@ -147,7 +152,7 @@ function page_bottom_change_social_fill_backward(id){
   $(id).removeClass('twitter-blue').removeClass('facebook-blue').removeClass('reddit-orange').removeClass('substack-orange').addClass('social-page-bottom-base-color');
 }
 
-/** Adjusts the fill of an svg image
+/** UNUSED: Adjusts the fill of an svg image
  * @param {string} - the html id of the svg element to be changed
  * @param {string} - hex code of the color that the svg fill is changed to
  * */
@@ -155,7 +160,7 @@ function change_svg_fill(id, newColor){
   $(id).css('fill', newColor);
 }
 
-/** Sets the display of one element to none & another element to inline-block
+/** UNUSED: Sets the display of one element to none & another element to inline-block
  *  Intended to be used to switch out two elements that are in the same place and only one of which is shown at a time
  * @param {string} - the html id of the element to be removed
  * @param {string} - the html id of the element to be displayed
@@ -165,7 +170,7 @@ function switch_icon(idCurrent, idNew){
 	document.getElementById(idNew).style.display = 'inline-block';
 }
 
-/** Changes the text color of an html element
+/** BELIEVED UNUSED (not completley sure): Changes the text color of an html element
  * @param {string} - the html id of the div to be changed
  * @param {string} - hex code of the color that the text is changed to
  * */
