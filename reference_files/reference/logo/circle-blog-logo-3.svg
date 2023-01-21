@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="174.41969mm"
+   height="210.53664mm"
+   viewBox="0 0 174.41969 210.53663"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <rect
+       x="13.869256"
+       y="631.05115"
+       width="649.54352"
+       height="168.74261"
+       id="rect1034" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-18.804621,-47.23762)">
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:7.977;stroke-dasharray:none"
+       id="path788"
+       cx="106.01447"
+       cy="133.22891"
+       rx="83.221352"
+       ry="82.002792" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:none;fill-opacity:1;stroke:#000000;stroke-width:6;stroke-dasharray:none"
+       x="68.220528"
+       y="182.87247"
+       id="text1014"><tspan
+         id="tspan1012"
+         style="fill:none;fill-opacity:1;stroke-width:6;stroke-dasharray:none"
+         x="68.220528"
+         y="182.87247">J</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.354273,0,0,0.354273,15.016353,-7.88179)"
+       id="text1032"
+       style="font-size:96px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';white-space:pre;shape-inside:url(#rect1034);display:inline;fill:#020202;fill-opacity:0.987234;stroke:#000000;stroke-width:4.53543;stroke-dasharray:none"><tspan
+         x="13.869141"
+         y="727.53078"
+         id="tspan1098">Jay Martin</tspan></text>
+  </g>
+</svg>

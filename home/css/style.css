@@ -46,7 +46,7 @@ button {
 }
 
 /*************** Hide Mobile Elements **********************************************************************/
-#page_title, #mobile_top_bar, .mobile_blog_container, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {
+#page_title, .mobile_logo_svg, #mobile_top_bar, .mobile_blog_container, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {
   display: none;
 }
 /*************** Page Color Toggler ************************************************************************/
@@ -101,8 +101,6 @@ section.top {
 svg.top_logo_svg {
   width: 50%;
   margin-top: 30px;
-  stroke: var(--base-text);
-  fill: var(--base-text);
 }
 #page_title {
   font-size: 300%;

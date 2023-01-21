@@ -1,12 +1,17 @@
 @media screen and (max-width: 700px) {
 
 /*************** Title Section ****************************************************************************/
-#page_title {
-	font-size: 250%;
-	line-height: 1em;
-}
 .bottom_social_logos {
 	height: 12.5px;
+}
+svg.mobile_logo_svg {
+	display: block;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	stroke: var(--base-text);
+  fill: var(--base-text);
 }
 /*************** Top Bar **********************************************************************************/
 .top_bar {
@@ -19,7 +24,7 @@
 	display: table;
 }
 /*************** Hide Desktop Elements *****************************************************************************/
-.top_logo_container, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link, .page_color_toggle_container, .blog_container {
+svg.top_logo_svg, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal, #blog_promote_horizontal_link, .page_color_toggle_container, .blog_container {
 	display: none;
 }
 /*************** Page Box Styling **************************************************************************/
@@ -27,10 +32,6 @@
 	width: 95%;
 }
 .box_level {
-	display: block;
-}
-/*************** Title *********************************************************************/
-#page_title {
 	display: block;
 }
 /*************** Mobile Blog Promotion *********************************************************************/
@@ -117,7 +118,7 @@ section.page_bottom {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 700px) and (max-width: 900px) {
 /********* Hide Desktop Elements *******/
-#page_title, .page_color_toggle_container, #desktop_programs_container {
+.page_color_toggle_container, #desktop_programs_container {
 	display: none;
 }
 #tablet_programs_container {
@@ -126,6 +127,9 @@ section.page_bottom {
 /*************** Title *********************************************************************/
 .top_logo_container {
 	display: block;
+}
+svg.top_logo_svg {
+	width: 65%;
 }
 /*************** Mobile page color toggler ******************************************************************/
 .mobile_page_color_button_group {

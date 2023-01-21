@@ -142,6 +142,10 @@ button {
   border: solid;
   border-color: var(--base-border);
 }
+svg.top_logo_svg {
+  stroke: var(--base-text);
+  fill: var(--base-text);
+}
 /********** Infoboxes *****************/
 .infobox_left, .infobox_center, .infobox_right, .top_box {
   border: solid;
