@@ -519,6 +519,7 @@ h3.chart_title {
 }
 p.chart_description {
   font-family: "Computer Modern Classical Serif Italic";
+  font-style: italic;
   font-size: 16px;
   margin-top: -2.5px;
   margin-bottom: 7.5px;
