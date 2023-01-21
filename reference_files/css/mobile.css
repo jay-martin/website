@@ -108,8 +108,27 @@ ol, ul {
   margin-left: 15px;
   width: 80%;
 }
+/* old */
 #page_title {
   font-size: 180%;
+}
+svg.page-title {
+  display: block;
+  height: 30px;
+  margin-left: 15px;
+  margin-top: 12.5px;
+}
+svg.page-title-two-line {
+  display: block;
+  height: 60px;
+  margin-left: 15px;
+  margin-top: 12.5px;
+}
+text.page-title-text {
+  text-anchor: start;
+}
+g.transform-title {
+  transform: translate(0px, 25px);
 }
 .name, .page_description {
   font-size: 120%;
@@ -520,6 +539,18 @@ svg.mobile_page_color_icon {
 }
 #page_title {
   font-size: 40px;
+}
+svg.page-title {
+  display: block;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+svg.page-title-two-line {
+  display: block;
+  height: 90px;
+  margin-left: 0px;
+  margin-top: 10px;
 }
 .name, .page_description {
   font-size: 22.5px;

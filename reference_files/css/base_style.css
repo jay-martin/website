@@ -223,27 +223,37 @@ svg.top-logo {
 }
 /*********************** Title ********************************************************************/
 .title_container {
-  padding-top: 20px;
+  padding-top: 25px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
   text-align: center;
+  line-height: 1.1em;
 }
 .category {
   display: none;
 }
-#page_title {
-  margin-bottom: 4px;
-  font-size: 240%;
-  line-height: 1.1em;
+svg.page-title {
+  height: 37.5px;
+  overflow: visible;
+}
+svg.page-title-two-line {
+  height: 75px;
+  overflow: visible;
+}
+text.page-title-text {
+  text-anchor: middle;
+}
+g.transform-title {
+  transform: translate(150px, 27.5px);
 }
 .name {
   font-family: 'Zen Antique Soft', serif;
   line-height: 2em;
   font-size: 18px;
   margin-bottom: 5px;
-  margin-top: 8px;
+  margin-top: 0px;
   text-decoration: none;
 }
 a.my_socials {
