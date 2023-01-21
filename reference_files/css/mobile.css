@@ -11,7 +11,7 @@
 }
 a.navbar_logo {
   color: var(--base-text) !important;
-  transition: color 1s ease
+  transition: color 1s ease;
 }
 button.open_icon:hover, button.close_icon{
   background-color: var(--base-background);
@@ -114,9 +114,6 @@ ol, ul {
 .name, .page_description {
   font-size: 120%;
 }
-img.top_social_icons {
-  height: 15px;
-}
 #top_substack_loco {
   margin-left: 5px;
 }
@@ -174,34 +171,19 @@ img.top_social_icons {
   z-index: 2;
 }
 a.navbar_logo {
-  font-family: 'Zen Antique Soft', serif;
-  font-size: 120%;
-  text-align: left;
-  text-decoration: none;
   display: inline-block;
-  width: 60%;
   margin-left: 15px;
   margin-top: 1vh;
-  border: none;
 }
-button.open_icon, button.close_icon {
-  float: right;
-  margin-right: 5px;
-  margin-top: .4vh;
-  margin-bottom: 1px;
-  width: 9%;
-  border: none;
-  font-size: 100%;
-  vertical-align: top;
-}
-button.close_icon {
-  display: none;
+svg.navbar-logo {
+  height: 17.5px;
+  margin-top: 12px;
 }
 /*********************** Responsive Open/Close Button *******************************************************************/
 .navigation_button_container {
   float: right;
   margin-right: 5%;
-  margin-top: .8vh;
+  margin-top: 9px;
   height: 30px;
 }
 .open_close_button {
@@ -483,10 +465,15 @@ a.navbar_logo {
 button.open_icon, button.close_icon {
   margin-right: 2%;
 }
-/*********************** Dropdown **************************************************************************/
+/*********************** Navbar **************************************************************************/
 a.navbar_logo {
   font-size: 24px;
 }
+svg.navbar-logo {
+  height: 20px;
+  margin-top: 7.5px;
+}
+/*********************** Dropdown **************************************************************************/
 .two_columns {
   width: 90%;
   margin-top: 15px;
@@ -508,10 +495,6 @@ table.mobile_dropdown_table {
 }
 .mobile_dropdown_blog_promote {
   margin-left: 5%;
-  margin-top: 10px;
-}
-img.mobile_dropdown_blog_promote_image {
-  height: 50px;
   margin-top: 10px;
 }
 .page_color_button_group {
@@ -558,16 +541,9 @@ svg.mobile_page_color_icon {
 #blog_promote_horizontal_link {
   display: block;
 }
-img.blog_promote_horizontal {
-  margin-top: 10px;
-  width: 100%;
-}
 /*********************** Page Bottom **************************************************************************/
 section.page_bottom {
   padding-bottom: 60px;
-}
-img.bottom_social_logos {
-  height: 20px;
 }
 
 } /***** End Tablet Media Query *******/

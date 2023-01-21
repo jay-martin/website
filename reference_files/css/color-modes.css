@@ -178,6 +178,10 @@ table,  th,  tr,  td {
   border-color: var(--base-border);
 }
 /********** Page Top *****************/
+.logo-color {
+  fill: var(--base-text);
+  stroke: var(--base-text);
+}
 #logo-span1,  #logo-span2 {
   fill: var(--base-text);
 }
