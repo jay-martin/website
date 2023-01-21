@@ -5,6 +5,7 @@
 .mobile_navbar {
   background-color: var(--base-background);
   border-bottom: solid;
+  border-width: 1px;
   border-color: var(--base-border);
   transition: all 1s ease;
 }
@@ -23,7 +24,6 @@ button.open_icon:hover, button.close_icon{
   border-bottom: 1px solid;
   border-color: var(--base-text);
   background-color: var(--base-background);
-  transition: all 1s ease;
 }
 .mobile_dropdown_horizontal_line {
   border: solid;
@@ -277,6 +277,9 @@ button.close_icon {
   margin-bottom: 4px;
   margin-top: 10px;
 }
+#top_mobile_dropdown_header {
+  margin-top: 20px;
+}
 .mobile_dropdown_horizontal_line {
   height: 0;
   width: 95%;
@@ -328,7 +331,6 @@ a.mobile_dropdown_link {
   height: 27.5px;
   margin-left: 0px;
   margin-top: 5px;
-
   transition: fill 1s ease;
 }
 #mobile_dropdown_twitter_share_icon, #mobile_dropdown_twitter_follow_icon {
@@ -344,7 +346,7 @@ svg.mobile_page_color_icon {
 }
 .page_color_button_group {
   margin-left: 2.5%;
-  margin-bottom: 60px;
+  margin-bottom: 140px;
   margin-top: 10px;
   width: 252px;
   border-color: var(--base-border) !important;
@@ -514,6 +516,7 @@ img.mobile_dropdown_blog_promote_image {
 }
 .page_color_button_group {
   margin-left: 5%;
+  margin-bottom: 80px;
 }
 svg.mobile_page_color_icon {
   height: 25px;
