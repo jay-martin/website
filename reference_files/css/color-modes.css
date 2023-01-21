@@ -49,11 +49,12 @@ button {
 
   --box-color: #f5f3f2;
   --slider: #d3d3d3;
-  --page-bottom-color: #858585;
+  --page-bottom-color: #575757;
 
   --toggle-position: 0px;
   --mobile-toggle-position: 0px;
   --toggle-color: grey;
+  --toggle-text: #575757;
 
   --category-color: #582cfc;
 }
@@ -81,7 +82,8 @@ button {
 
   --toggle-position: 49px;
   --mobile-toggle-position: 84px;
-  --toggle-color: #827868;
+  --toggle-color: #8a7851;
+  --toggle-text: #8a7851;
 
   --category-color: #582cfc;
 }
@@ -110,6 +112,7 @@ button {
   --toggle-position: 100px;
   --mobile-toggle-position: 168px;
   --toggle-color: #a6a6a6;
+  --toggle-text: #dbdbdb;
 
   --category-color: #b19cff;
 }
@@ -124,7 +127,7 @@ button {
   border-color: var(--base-border);
 }
 .page_color_button_group button {
-  color: var(--base-border);
+  color: var(--toggle-text);
 }
 /********** Page Fundamentals *************/
 body {

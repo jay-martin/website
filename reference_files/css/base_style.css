@@ -604,9 +604,10 @@ svg.chart-logo {
 .arbitray_income_container {
   display: none;
 }
-h3.power_users_header {
+h2.power_users_header {
   font-family: 'Latin Modern Sans';
   margin-top: 0px;
+  font-size: 16px;
 }
 input.arbitrary_income {
   width: 80px;

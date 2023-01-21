@@ -17,11 +17,12 @@
 
   --box-color: #f5f3f2;
   --slider: #d3d3d3;
-  --page-bottom-color: #858585;
+  --page-bottom-color: #575757;
 
   --toggle-position: 0px;
   --mobile-toggle-position: 0px;
   --toggle-color: grey;
+  --toggle-text: #575757;
 
   --category-color: #582cfc;
 }

@@ -3,17 +3,18 @@
   :root {
     --base-background: white;
     --base-text: black;
-    --base-border: #cfcfcf;
+    --base-border: #adadad;
     --base-link: #0000EE;
     --base-link-visited: #551A8B;
     --low-emphasis-color: #bdbdbd;
-    --page-bottom-color: #858585;
+    --page-bottom-color: #575757;
 
     --top-lines-color: black;
 
     --toggle-position: 0px;
     --mobile-toggle-position: 0;
     --toggle-color: grey;
+    --toggle-text: #575757;
   }
 
 }
@@ -33,6 +34,7 @@
     --toggle-position: 100px;
     --mobile-toggle-position: 66.7%;
     --toggle-color: #a6a6a6;
+    --toggle-text: #dbdbdb;
   }
 }
 
@@ -46,11 +48,11 @@
 .light-mode {
   --base-background: white;
   --base-text: black;
-  --base-border: #cfcfcf;
+  --base-border: #adadad;
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
   --low-emphasis-color: #bdbdbd;
-  --page-bottom-color: #858585;
+  --page-bottom-color: #575757;
   --infobox-hover-color: rgba(239, 239, 240, .3);
 
   --top-lines-color: black;
@@ -58,6 +60,7 @@
   --toggle-position: 0px;
   --mobile-toggle-position: 0;
   --toggle-color: grey;
+  --toggle-text: #575757;
 }
 
 .sepia {
@@ -75,6 +78,7 @@
   --toggle-position: 49px;
   --mobile-toggle-position: 33.3%;
   --toggle-color: #827868;
+  --toggle-text: #8a7851;
 }
 
 .dark-mode {
@@ -92,6 +96,7 @@
   --toggle-position: 100px;
   --mobile-toggle-position: 66.7%;
   --toggle-color: #a6a6a6;
+  --toggle-text: #dbdbdb;
 }
 
 /*********************** Transition Settings ******************************************************************************************************/
@@ -115,7 +120,7 @@ body, select, .page_color_toggler, a.sidebar_links, .other_pages a {
   border-color: var(--base-border) !important;
 }
 .page_color_button_group button {
-  color: var(--base-border) !important;
+  color: var(--toggle-text) !important;
 }
 /********** Page Fundamentals *************/
 body, button {
