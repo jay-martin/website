@@ -118,7 +118,7 @@ section.page_bottom {
 /* Set title back to middle of screen*/
 @media screen and (min-width: 700px) and (max-width: 900px) {
 /********* Hide Desktop Elements *******/
-.page_color_toggle_container, #desktop_programs_container {
+svg.mobile_logo_svg, .page_color_toggle_container, #desktop_programs_container {
 	display: none;
 }
 #tablet_programs_container {

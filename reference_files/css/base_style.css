@@ -281,6 +281,7 @@ a.blog_promotion_link_container {
 .blog_grid_item {
   font-family: "Computer Modern Classical Serif Italic";
   font-size: 21px;
+  font-style: italic;
   text-align: center;
   vertical-align: middle;
   line-height: 1.5em;
