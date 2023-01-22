@@ -7,7 +7,7 @@
     --base-link: #0000EE;
     --base-link-visited: #551A8B;
     --low-emphasis-color: #bdbdbd;
-    --page-bottom-color: #575757;
+    --infobox-hover-color: rgba(239, 239, 240, .3);
 
     --top-lines-color: black;
 
@@ -26,7 +26,6 @@
     --base-link: #86acf0;
     --base-link-visited: #bd86f1;
     --low-emphasis-color: #dbdbdb;
-    --page-bottom-color: #dbdbdb;
     --infobox-hover-color: rgba(239, 239, 240, 0.05);
 
     --top-lines-color: #dbdbdb;
@@ -52,7 +51,6 @@
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
   --low-emphasis-color: #bdbdbd;
-  --page-bottom-color: #575757;
   --infobox-hover-color: rgba(239, 239, 240, .3);
 
   --top-lines-color: black;
@@ -70,7 +68,6 @@
   --base-link: #0000EE;
   --base-link-visited: #551A8B;
   --low-emphasis-color: #b5a177;
-  --page-bottom-color: #8a7c5e;
   --infobox-hover-color: rgba(227, 210, 184, .15);
 
   --top-lines-color: #b5a177;
@@ -88,7 +85,6 @@
   --base-link: #86acf0;
   --base-link-visited: #bd86f1;
   --low-emphasis-color: #dbdbdb;
-  --page-bottom-color: #dbdbdb;
   --infobox-hover-color: rgba(239, 239, 240, 0.05);
 
   --top-lines-color: #dbdbdb;
@@ -164,15 +160,15 @@ svg.top_logo_svg {
 /********** Page Bottom *************/
 section.page_bottom {
   border-top: solid;
-  border-color: var(--page-bottom-color);
-  color: var(--page-bottom-color);
+  border-color: var(--base-text);
+  color: var(--base-text);
 }
 /********** Social Icons ************/
 .social-base-color {
   fill: var(--base-text);
 }
 .social-page-bottom-base-color {
-  fill: var(--page-bottom-color);
+  fill: var(--base-text);
 }
 /* social media circle icons */
 path.st1, circle.cc-circle {

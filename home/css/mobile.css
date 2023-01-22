@@ -87,6 +87,9 @@ svg.top_logo_svg, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal
 .infobox_left, .infobox_center, .infobox_right {
 	border-radius: 10px;
 }
+.infobox_left:hover, .infobox_center:hover, .infobox_right:hover {
+  background-color: var(--base-background);
+}
 /*************** Mobile page color toggler ******************************************************************/
 .mobile_page_color_button_group {
 	display: block;
@@ -131,6 +134,10 @@ svg.mobile_logo_svg, .page_color_toggle_container, #desktop_programs_container {
 }
 svg.top_logo_svg {
 	width: 65%;
+}
+/*************** Infobox Adjustments *********************************************************************/
+.infobox_left:hover, .infobox_center:hover, .infobox_right:hover {
+  background-color: var(--base-background);
 }
 /*************** Mobile page color toggler ******************************************************************/
 .mobile_page_color_button_group {

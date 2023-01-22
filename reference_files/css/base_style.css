@@ -53,12 +53,64 @@ a:hover {
     overflow-y: hidden;
 }
 .article_tag {
-  font-size: 90%;
   margin-left: 20px;
   margin-bottom: 12.5px;
 }
 .zen_font {
   font-family: 'Zen Antique Soft', serif;
+}
+/*********************** Page Positioning **********************************************************/
+.top {
+}
+.left_side{
+  display: inline-block;
+  vertical-align: top;
+  width: 18%;
+  padding-right: 2.5%;
+  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
+}
+.center{
+  display: inline-block;
+  vertical-align: top;
+  width: 56.8%;
+  margin-right: 0px;
+}
+.center_no_side_elements {
+  width: 56.8%;
+  margin-left: 20.8%;
+}
+.right_side {
+  display: inline-block;
+  vertical-align: top;
+  width: 21.5%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
+}
+section.page_bottom {
+  position: relative;
+  border-top: solid;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 75px;
+  padding-bottom: 40px;
+  line-height: 1.5em;
+}
+.float_right {
+  float: right;
+}
+/*********************** Desktop: hide mobile elements **********************************************************/
+.mobile_navbar, .mobile_dropdown {
+  display: none;
+}
+#mobile_highlights {
+  display: none;
+}
+#blog_promote_horizontal_link, #blog_promote_mobile_link {
+  display: none;
 }
 /*********************** User Inputs **********************************************************/
 select {
@@ -115,65 +167,15 @@ video {
   margin-left: auto;
   margin-right: auto;
 }
-/*********************** Page Positioning **********************************************************/
-.top {
-}
-.left_side{
-  display: inline-block;
-  vertical-align: top;
-  width: 18%;
-  padding-right: 2.5%;
-  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
-}
-.center{
-  display: inline-block;
-  vertical-align: top;
-  width: 56.8%;
-  margin-right: 0px;
-}
-.center_no_side_elements {
-  width: 56.8%;
-  margin-left: 20.8%;
-}
-.right_side {
-  display: inline-block;
-  vertical-align: top;
-  width: 21.5%;
-  margin-right: 0px;
-  margin-left: 0px;
-  margin-bottom: 20px;
-  height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
-}
-section.page_bottom {
-  position: relative;
-  border-top: solid;
-  font-size: 12px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  margin-top: 75px;
-  padding-bottom: 40px;
-  line-height: 1.5em;
-}
-.float_right {
-  float: right;
-}
-/*********************** Desktop: hide mobile elements **********************************************************/
-.mobile_navbar, .mobile_dropdown {
-  display: none;
-}
-#mobile_highlights {
-  display: none;
-}
-#blog_promote_horizontal_link, #blog_promote_mobile_link {
-  display: none;
-}
 /***********************Top elements********************************************************************/
 .logo {
   width: 200px;
   position: absolute;
   margin-left: 30px;
   margin-top: 25px;
+}
+a.top_logo_link:hover {
+  text-decoration: none;
 }
 svg.logo-svg {
   width: 125px;

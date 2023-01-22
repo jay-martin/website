@@ -63,9 +63,9 @@ h2, h3, h4 {
   padding-right: 10px;
 }
 p {
-  font-size: 110%;
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 18px;
 }
 ol, ul {
   margin-left: 10px;
@@ -188,12 +188,12 @@ g.transform-title {
 }
 a.navbar_logo {
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 12.5px;
   margin-top: 1vh;
 }
 svg.navbar-logo {
-  height: 17.5px;
-  margin-top: 12px;
+  height: 15px;
+  margin-top: 14.25px;
 }
 /*********************** Responsive Open/Close Button *******************************************************************/
 .navigation_button_container {
@@ -483,12 +483,25 @@ a.navbar_logo {
 button.open_icon, button.close_icon {
   margin-right: 2%;
 }
+/*********************** Text *********************************************************************/
+p {
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 18px;
+}
+h2, h3, h4 {
+  padding-left: 0;
+  padding-right: 0;
+}
 /*********************** Navbar **************************************************************************/
 a.navbar_logo {
   font-size: 24px;
 }
+a.navbar_logo:hover {
+  text-decoration: none;
+}
 svg.navbar-logo {
-  height: 20px;
+  height: 17.5px;
   margin-top: 7.5px;
 }
 /*********************** Dropdown **************************************************************************/
