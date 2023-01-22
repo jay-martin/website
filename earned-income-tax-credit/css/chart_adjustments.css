@@ -1,6 +1,6 @@
 /******************* Hide Points ******************************/
 /* Top Chart */
-.c3-circles-childless, .c3-circles-childless_married, .c3-circles-one_child, .c3-circles-one_child_married, .c3-circles-two_child, .c3-circles-two_child_married, .c3-circles-three_child, .c3-circles-three_child_married {
+.c3-circles-eitc {
   display: none;
 }
 
@@ -9,8 +9,13 @@
   display: none;
 }
 
+/* Complexity */
+.c3-circles-childless, .c3-circles-childless_married, .c3-circles-one_child, .c3-circles-one_child_married, .c3-circles-two_child, .c3-circles-two_child_married, .c3-circles-three_child, .c3-circles-three_child_married {
+  display: none;
+}
+
 /******************* Opacity Settings ******************************/
-/* Setting opacity of hidden area to 0 for all modes deals with both sepia and dark modes */
+/* Marriage Penalties */
 .c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-hoh_maried, .c3-area-hoh_combined, .c3-area-both_white, .c3-area-both_white_positive, .c3-area-both_white_negative {
   opacity: 0 !important;
 }

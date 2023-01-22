@@ -457,12 +457,30 @@
     <div class="chart">
       <!--User inputs------------------------------>
       <div class="user_inputs" id="user_inputs">
+
+        <!--Number of children-->
+        <label>I am a
+        <select id="filing_status" oninput="top_chart_builder('filing_status');top_chart_outputs();">
+          <option value="single" selected>single filer or head of household</option>
+          <option value="married">married joint filer</option>
+        </select>
+        </label>
+
+        <!--Number of children-->
+        <label>who has
+        <select id="top_num_children" oninput="top_chart_builder('num_children');top_chart_outputs();">
+          <option value="none">no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3+ children</option>
+        </select>.
+        </label>
         
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
           <label for="user_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="70000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+            <input type="range" min="0" max="50000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs();">
           </div>
         </div>
 
@@ -470,17 +488,7 @@
 
       <!-- EITC Values -->
       <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-        <!-- <p class="explanation_text" id="eitc-value"></p> -->
-        <ul class="explanation_list">
-          <li id="childless_li">Childless Single: <b>$0</b></li>
-          <li id="childless_married_li">Childless Married: <b>$322.30</b></li>
-          <li id="one_child_li">One Child Single/HOH: <b>$3,995</b></li>
-          <li id="one_child_married_li">One Child Married: <b>$3,995</b></li>
-          <li id="two_child_li">Two Child Single/HOH: <b>$6,604</b></li>
-          <li id="two_child_married_li">Two Child Married: <b>$6,604</b></li>
-          <li id="three_child_li">Three Child Single/HOH: <b>$7,430</b></li>
-          <li id="three_child_married_li">Three Child Married: <b>$7,430</b></li>
-        </ul>
+        <p class="explanation_text" id="eitc-value">Your EITC is worth <b>$3,995</b></p>
 
         <p class="explanation_text" id="explanation_line1"></p>
         <p class="explanation_text" id="explanation_line2"></p>
@@ -653,7 +661,7 @@
     <!--User inputs-->
     <div class="user_inputs">
 
-      <!--Person 1 number of old children-->
+      <!--Person 1 number of children-->
       <label>I have
       <select id="mp_person1_children" oninput="mp_modify_person1();mp_modify_married();mp_modify_income('children')">
         <option value="none">no children</option>
@@ -663,7 +671,7 @@
       </select>
       </label>
 
-      <!--Person 2 number of old children-->
+      <!--Person 2 number of children-->
       <label>and my partner has
       <select id="mp_person2_children" oninput="mp_modify_person2();mp_modify_married();mp_modify_income('children')" >
         <option value="none">no children</option>
@@ -710,6 +718,46 @@
 <section class = 'center_no_side_elements' id="complexity">
   <h2>The EITC Is Needlessly Complicated</h2>
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
+
+  <div class="chart">
+    <h3 class='chart_title'>The EITC Is Needlessly Complicated</h3>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+      
+      <!--Income slider-->
+      <div class="slidecontainer" id="income_slider_container"> 
+        <label for="complexity_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="complexity_chart_output">20,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="65000" value="20000" step="500" class="slider" id="complexity_income" oninput="complexity_chart_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_modify_income();complexity_chart_outputs()">
+        </div>
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!-- Outputs -->
+    <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+      <!-- <p class="explanation_text" id="eitc-value"></p> -->
+      <ul class="explanation_list">
+        <li id="childless_li">Childless Single: <b>$0</b></li>
+        <li id="childless_married_li">Childless Married: <b>$322.30</b></li>
+        <li id="one_child_li">One Child Single/HOH: <b>$3,995</b></li>
+        <li id="one_child_married_li">One Child Married: <b>$3,995</b></li>
+        <li id="two_child_li">Two Child Single/HOH: <b>$6,604</b></li>
+        <li id="two_child_married_li">Two Child Married: <b>$6,604</b></li>
+        <li id="three_child_li">Three Child Single/HOH: <b>$7,430</b></li>
+        <li id="three_child_married_li">Three Child Married: <b>$7,430</b></li>
+      </ul>
+    </div>
+
+    <!--End animation button-->
+    <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+
+    <!-- Top Chart -->
+    <div id="complexity_chart"></div>
+
+  </div> <!--chart end-->
+
 </section>
 
 <section class = 'center_no_side_elements' id="marginal-tax-rates">
@@ -879,6 +927,11 @@
 <script type="text/javascript" src="./javascript/marriage-penalties/outputs.js"></script>
 <script type="text/javascript" src="./javascript/marriage-penalties/adjust-chart.js"></script>
 <script type="text/javascript" src="./javascript/marriage-penalties/calculate.js"></script>
+
+<!-- Complexity Chart Javascript files -->
+<script type="text/javascript" src="./javascript/complexity/chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity/outputs.js"></script>
 
 </body>
 </html>
