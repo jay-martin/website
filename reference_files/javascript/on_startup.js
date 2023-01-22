@@ -146,7 +146,7 @@ function desktop_prepare_resize(){
 	// Hide highlights, show loader
 	$('#loader_container').css('display', 'block');
 	$('#highlights_content').css('visibility', 'hidden');
-	$('#programs').css('visibility', 'hidden');
+	$('#programs, #bills').css('visibility', 'hidden');
 
 	// Adjust borders
 	$('#highlights').css('border', 'none');
@@ -158,7 +158,7 @@ function desktop_prepare_resize(){
 
 	//Expand highlights & programs
 	$('.explanation_and_animation_button_container').css('height', '100%');
-	$('#programs').css('height', '100%');
+	$('#programs, #bills').css('height', '100%');
 
 	//run the inititalization function
 	desktop_or_mobile_intialize();

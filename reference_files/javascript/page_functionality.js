@@ -286,20 +286,45 @@ function highlight_note(note){
 }
 
 /**************************** 6. Programs & Bills Dropdown *******************************************/
-//Shows the list of programs
-function show_programs(id){
-  if(id == 'programs'){
-    document.getElementById(id).style.height = programsHeight;
-  }
-  else if(id == 'bills'){
-    document.getElementById(id).style.height = billsHeight;
-  }
-}
+//Show the list of programs
+$('#programs_title').mouseover(function(){
+  document.getElementById('programs').style.height = programsHeight;
+});
 
-//Hides the list of programs
-function hide_programs(id){
-	document.getElementById(id).style.height = '0px';
-}
+//Hide the list of programs
+$('#programs_container').mouseleave(function(){
+  document.getElementById('programs').style.height = '0px';
+});
+
+//Shows the list of bills
+$('#bills_title').mouseover(function(){
+  document.getElementById('bills').style.height = billsHeight;
+});
+
+//Hide the list of bills
+$('#bills_container').mouseleave(function(){
+  document.getElementById('bills').style.height = '0px';
+});
+
+//For tablets: Show/Hide programs on click
+$('#programs_container').click(function(){
+  if(document.getElementById('programs').style.height == '0px'){
+    document.getElementById('programs').style.height = programsHeight;
+  }
+  else{
+    document.getElementById('programs').style.height = '0px';
+  }
+});
+
+//For tablets: Show/Hide bills on click
+$('#bills_container').click(function(){
+  if(document.getElementById('bills').style.height == '0px'){
+    document.getElementById('bills').style.height = billsHeight;
+  }
+  else{
+    document.getElementById('bills').style.height = '0px';
+  }
+});
 
 /*********************************** 7. Highlights ***********************************/
 /** Opens and closes highlight boxes
