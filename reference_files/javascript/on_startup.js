@@ -13,7 +13,7 @@ var highlights = document.getElementsByClassName("explanation_and_animation_butt
 var highlights_mobile = document.getElementsByClassName("mobile_explanation_and_animation_button_container");
 var appendices = document.getElementsByClassName("appendix");
 
-//Create universal array of highlights heights
+//Create universal array of highlights & appendix heights
 highlights_heights = [];
 mobile_highlights_heights = [];
 appendix_heights = new Object();
@@ -33,14 +33,21 @@ $(document).ready(function(){
 });
 
 //Handle screen resize events
-var windowWidth = $(window).width();
+//var windowWidth = $(window).width();
 $(window).on('resize', function() {
-	if ($(this).width() !== windowWidth) {
-    	windowWidth = $(this).width();
-    	prepare_resize();
+	if ($(this).width() !== displayWidth) {
+    	displayWidth = $(this).width();
+
+    	if(displayWidth < 900){
+    		mobile_prepare_resize();
+    	}
+    	else{
+    		desktop_prepare_resize();
+    	}
   	}
 });
 
+//Determine whether to use the desktop or mobile page initialization function
 function desktop_or_mobile_intialize(){
 	if(displayWidth < 900){
 		initialize_mobile_page();
@@ -52,6 +59,7 @@ function desktop_or_mobile_intialize(){
 	}
 }
 
+//Desktop page initialization function
 function initialize_page(){
 	//calculate programs height and set to zero
 	programsHeight = window.getComputedStyle(document.getElementById('programs')).height;
@@ -93,14 +101,9 @@ function initialize_page(){
 		$('#loader_container').css('display', 'none');
 		$('#highlights_content, #programs, #bills').css('visibility', 'visible');
 	}, 50);
-
-	/*
-	setTimeout(function () {
-		$('.highlights').css({'transition' : 'border 1s ease'});
-	}, 100);
-	*/
 }
 
+//Mobile page initialization function
 function initialize_mobile_page(){
 	// calculate highlights heights, and then set to zero
 	for (var i = 0; i < highlights_heights.length; i++) {
@@ -138,7 +141,8 @@ function initialize_mobile_page(){
 	}, 100);
 }
 
-function prepare_resize(){
+//Prepare for desktop resize: show loader, hide & expand highlights and programs, then re-initialize
+function desktop_prepare_resize(){
 	// Hide highlights, show loader
 	$('#loader_container').css('display', 'block');
 	$('#highlights_content').css('visibility', 'hidden');
@@ -155,6 +159,15 @@ function prepare_resize(){
 	//Expand highlights & programs
 	$('.explanation_and_animation_button_container').css('height', '100%');
 	$('#programs').css('height', '100%');
+
+	//run the inititalization function
+	desktop_or_mobile_intialize();
+}
+
+//Prepare for mobile resize: show loader, hide & expand mobile highlights, then re-initialize
+function mobile_prepare_resize(){
+	//Expand highlights
+	$('.mobile_explanation_and_animation_button_container').css('height', '100%');
 
 	//run the inititalization function
 	desktop_or_mobile_intialize();
