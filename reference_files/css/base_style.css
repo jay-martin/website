@@ -552,12 +552,6 @@ p.chart_description {
   right: 10px;
   top: 15px;
 }
-/*******User Inputs**************/
-.user_inputs {
-  overflow: hidden;
-  height: 100%;
-  transition: height 1s ease; 
-}
 /*******Center Explanation Box****/
 .center_explanation_box {
   border: solid;
@@ -572,7 +566,7 @@ p.chart_description {
   scrollbar-width: none;  /* Firefox */
 }
 .center_explanation_box:scrollbar { 
-    display: none;  /* Safari and Chrome */
+  display: none;  /* Safari and Chrome */
 }
 input[type=submit].end_animation {
   font-family: "Computer Modern Sans";
@@ -674,36 +668,43 @@ ul.notes_list {
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
+/*******User Inputs**************/
+.user_inputs {
+  overflow: hidden;
+  height: 100%;
+  transition: height 1s ease; 
+}
 /*******Slider Formatting********/
 .slidecontainer {
-  width: 100%;
+  width: 99.5%;
+  z-index: 10;
 }
 /*Display income */
 .slider-text {
   display: inline-block;
-  width: 40%;
   line-height: 1.3em;
+  width: 40%;
 }
 .slider-actual {
   display: inline-block;
   vertical-align: top;
-  margin-left: 0%;
-  margin-right: 0%;
-  width: 55%;
+  width: 60%;
+  float: right;
 }
-.slider {
+input[type=range].slider {
   -webkit-appearance: none;
   width: 100%;
   height: 8px;
   border-radius: 15px;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.9;
   transition: opacity .2s;
+  box-shadow: none !important;
 }
-.slider:hover {
+input[type=range].slider:hover {
   opacity: 1;
 }
-.slider::-webkit-slider-thumb {
+input[type=range].slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
@@ -712,7 +713,7 @@ ul.notes_list {
   cursor: pointer;
   border-radius: 50%;
 }
-.slider::-moz-range-thumb {
+input[type=range].slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
   background: #1DA1F2;

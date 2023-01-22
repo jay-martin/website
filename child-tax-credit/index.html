@@ -427,7 +427,7 @@
 
     <div class="chart">
       <!--User inputs------------------------------>
-      <div class="user_inputs" id="user_inputs">
+      <div class="user_inputs">
 
         <!--Filing Status-->
         <label>I am a
@@ -447,8 +447,8 @@
         </select></label>.
         
         <!--Income slider-->
-        <div class="slidecontainer" id="income_slider_container"> 
-          <label for="user_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">18,000</output>:</label>
+        <div class="slidecontainer"> 
+          <label for="user_income" class="slider-text"> I have an income of $<output id="income_output">18,000</output>:</label>
           <div class="slider-actual">
             <input type="range" min="0" max="250000" value="18000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
           </div>

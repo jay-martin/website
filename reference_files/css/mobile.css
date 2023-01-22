@@ -136,20 +136,13 @@ g.transform-title {
   font-size: 120%;
 }
 /*********************** Chart *****************************************************************************/
-#income_slider_container {
-  margin-top: 10px;
-}
-#income_slider_text {
-  display: block;
-  line-height: 1.2em;
-  width: 100%;
-}
+/************ Chart Sliders ******************/
 .slider-actual {
-  width: 95%;
+  float: none;
+  width: 99.5%;
   margin-left: auto;
   margin-right: auto;
 }
-/************ Chart Sliders ******************/
 .slider-text {
   width: 100%;
 }
