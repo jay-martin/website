@@ -17,6 +17,8 @@
   --green: green;
   --highlighted: yellow;
 
+  --c3-grid-line: #949494;
+
   --small-button-background: #f5f3f2;
   --small-button-hover: #dedede;
   --small-button-disabled-background: #fafafa;
@@ -45,6 +47,8 @@
   --green: green;
   --highlighted: yellow;
 
+  --c3-grid-line: #949494;
+
   --small-button-background: #f5e4cb;
   --small-button-hover: #e3d2b8;
   --small-button-disabled-background: #f5e4cb;
@@ -72,6 +76,8 @@
   --red: #ff4845;
   --green: #00d100;
   --highlighted: #545400;
+
+  --c3-grid-line: #dbdbdb;
 
   --small-button-background: #242424;
   --small-button-hover: #6e6e6e;
@@ -189,8 +195,11 @@ button.chart_notes_button:hover {
 .c3 text {
   fill: var(--base-text);
 }
-.c3-grid line,  .c3-axis-x line,  .c3-axis-y line, .c3-axis-y2 line, .c3-axis-x path,  .c3-axis-y path, .c3-axis-y2 path {
+.c3-axis-x line,  .c3-axis-y line, .c3-axis-y2 line, .c3-axis-x path,  .c3-axis-y path, .c3-axis-y2 path {
   stroke: var(--base-text) !important; /* sometimes does not transition without !important tag */
+}
+.c3-grid line {
+  stroke: var(--c3-grid-line) !important;
 }
 /********** Appendix ****************/
 .appendix_container {

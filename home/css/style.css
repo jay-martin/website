@@ -41,9 +41,6 @@ button {
 .next_section {
   margin-top: 15px;
 }
-#Characteristics {
-  margin-top: 5px;
-}
 
 /*************** Hide Mobile Elements **********************************************************************/
 svg.mobile_logo_svg, #mobile_top_bar, .mobile_blog_container, .mobile_dropdown, .mobile_page_color_button_group, #tablet_programs_container {

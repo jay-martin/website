@@ -60,16 +60,14 @@ a:hover {
   font-family: 'Zen Antique Soft', serif;
 }
 /*********************** Page Positioning **********************************************************/
-.top {
-}
-.left_side{
+.left_side {
   display: inline-block;
   vertical-align: top;
   width: 18%;
   padding-right: 2.5%;
   height: 0px; /* prevents elements below from being pushed down the page when the programs dropdown is expanded */
 }
-.center{
+.center {
   display: inline-block;
   vertical-align: top;
   width: 56.8%;
@@ -257,12 +255,14 @@ g.transform-title {
   margin-bottom: 5px;
   margin-top: 0px;
   text-decoration: none;
+  margin-bottom: 0;
 }
 a.my_socials {
   margin-left: 3px;
 }
 .top_social_icons {
   height: 12.5px;
+  overflow: visible;
 }
 .top_social_icons:hover {
   transform: scale(1.1);
@@ -271,6 +271,7 @@ a.my_socials {
   font-family: "Computer Modern Classical Serif Italic";
   font-size: 17px;
   line-height: 1.5em;
+  margin-top: 0;
 }
 /***********************Blog promotion ********************************************************************/
 .blog_container {

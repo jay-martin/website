@@ -35,8 +35,6 @@ svg.top_logo_svg, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal
 /*************** Mobile Blog Promotion *********************************************************************/
 .mobile_blog_container {
   display: block;
-  font-family: "Computer Modern Classical Serif Italic";
-
   border-radius: 10px;
   margin: 5px;
   margin-bottom: 20px;
@@ -67,7 +65,6 @@ svg.top_logo_svg, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal
 	margin-bottom: 10px;
 }
 .mobile_blog_text {
-	font-size: 22px;
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -76,12 +73,15 @@ svg.top_logo_svg, #desktop_top_bar, .desktop_dropdown, .blog_promotoe_horizontal
 .large_font {
 	font-size: 24px;
 }
-.old_mincho {
-	font-family: 'Zen Old Mincho', serif;
-}
 .small_font {
 	font-size: 18px;
 	line-height: 1.2em;
+}
+.old_mincho {
+	font-family: 'Zen Old Mincho', serif;
+}
+.classical_serif {
+	font-family: "Computer Modern Classical Serif Italic";
 }
 /*************** Infobox adjustments ***********************************************************************/
 .infobox_left, .infobox_center, .infobox_right {

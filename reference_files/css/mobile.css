@@ -91,12 +91,11 @@ ol, ul {
   margin-right: 1%;
   overflow: hidden;
 }
-
 /*********************** Title *****************************************************************************/
 .title_container {
   width: 100%;
   padding-top: 60px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 .category {
   font-family: 'Zen Antique Soft', serif;
@@ -191,9 +190,12 @@ a.navbar_logo {
   margin-left: 12.5px;
   margin-top: 1vh;
 }
+a.navbar_logo:hover {
+  text-decoration: none;
+}
 svg.navbar-logo {
   height: 15px;
-  margin-top: 14.25px;
+  margin-top: 15px;
 }
 /*********************** Responsive Open/Close Button *******************************************************************/
 .navigation_button_container {
@@ -204,7 +206,7 @@ svg.navbar-logo {
 }
 .open_close_button {
   width: 25px;
-  height: 30px;
+  height: 15px;
   position: relative;
   margin: auto;
   margin-top: 50%;
