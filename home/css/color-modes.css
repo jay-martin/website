@@ -16,7 +16,6 @@
     --toggle-position: 0px;
     --mobile-toggle-position: 0;
     --toggle-color: grey;
-    --toggle-text: #575757;
   }
 
 }
@@ -36,8 +35,7 @@
 
     --toggle-position: 100px;
     --mobile-toggle-position: 66.7%;
-    --toggle-color: #a6a6a6;
-    --toggle-text: #dbdbdb;
+    --toggle-color: #dbdbdb;
   }
 }
 
@@ -64,7 +62,6 @@
   --toggle-position: 0px;
   --mobile-toggle-position: 0;
   --toggle-color: grey;
-  --toggle-text: #575757;
 }
 
 .sepia {
@@ -82,8 +79,7 @@
 
   --toggle-position: 49px;
   --mobile-toggle-position: 33.3%;
-  --toggle-color: #827868;
-  --toggle-text: #8a7851;
+  --toggle-color: #8a7851;
 }
 
 .dark-mode {
@@ -101,8 +97,7 @@
 
   --toggle-position: 100px;
   --mobile-toggle-position: 66.7%;
-  --toggle-color: #a6a6a6;
-  --toggle-text: #dbdbdb;
+  --toggle-color: #dbdbdb;
 }
 
 /*************** Color Settings ****************************************************************************/
@@ -115,7 +110,7 @@
   border-color: var(--base-border) !important;
 }
 .page_color_button_group button {
-  color: var(--toggle-text) !important;
+  color: var(--toggle-color) !important;
 }
 /********** Page Fundamentals *************/
 body, button {

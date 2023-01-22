@@ -32,7 +32,6 @@
   --toggle-position: 0px;
   --mobile-toggle-position: 0px;
   --toggle-color: grey;
-  --toggle-text: #575757;
 
   --category-color: #582cfc;
 }
@@ -62,7 +61,6 @@
   --toggle-position: 49px;
   --mobile-toggle-position: 84px;
   --toggle-color: #8a7851;
-  --toggle-text: #8a7851;
 
   --category-color: #582cfc;
 }
@@ -91,8 +89,7 @@
 
   --toggle-position: 100px;
   --mobile-toggle-position: 168px;
-  --toggle-color: #a6a6a6;
-  --toggle-text: #dbdbdb;
+  --toggle-color: #dbdbdb;
 
   --category-color: #b19cff;
 }
@@ -107,7 +104,7 @@
   border-color: var(--base-border);
 }
 .page_color_button_group button {
-  color: var(--toggle-text);
+  color: var(--toggle-color);
 }
 /********** Page Fundamentals *************/
 body {
