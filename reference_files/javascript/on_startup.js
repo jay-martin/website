@@ -29,6 +29,7 @@ for (var i = 0; i < highlights.length; i++) {
 var displayWidth = window.innerWidth;
 $(document).ready(function(){
 	desktop_or_mobile_intialize(); // Kept as a separate function because the function is needed for window resize events
+	set_transition_settings(); // Transitions must be set at 0s initially or when the page is first loaded (i.e. CSS is not cached) it initially loads the wrong colors then very visibly transtions to the correct colors
 });
 
 //Handle screen resize events
@@ -159,16 +160,17 @@ function prepare_resize(){
 	desktop_or_mobile_intialize();
 }
 
-/** Dark Mode **/
-// Check for dark mode
-/**
-$(document).ready(function(){
-	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-	if (prefersDarkScheme.matches) {
-	  $('body').addClass('dark-mode');
-	} else {
-	  $('body').removeClass('dark-mode');
-	}
-});
-**/
+// Set transition settings for user change of light/sepia/dark mode
+function set_transition_settings(){
+	$('body, select, .page_color_toggler, a.sidebar_links, .other_pages a').css('transition', 'background-color 1s ease, color 1s ease');
+	$('.chart, .chart_wide, .highlights').css('transition', 'border 1s ease');
+	$('.center_explanation_box').css('transition', 'background-color 1s ease, border 1s ease, height 1s ease');
+	$('.slider').css('transition', 'background-color 1s ease, border 1s ease');
+	$('#logo-span1, #logo-span2').css('transition', 'fill 1s ease-out');
+	$('.logo-color').css('transition', 'fill 1s ease, stroke 1s ease');
+
+	// 15s transitions
+	$('.social_icon, .st1').css('transition', 'fill .15s ease');
+	$('button').css('transition', 'background-color .1s ease');
+}
 

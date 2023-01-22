@@ -6,29 +6,6 @@
 .linkedin-blue {fill: #1686B0;}
 .white-fill {fill: white;}
 
-/*********************** Transition Settings ******************************************************************************************************/
-body, select, .page_color_toggler, a.sidebar_links, .other_pages a {
-  transition: background-color 1s ease, color 1s ease;
-}
-.chart, .chart_wide, .highlights {
-  transition: border 1s ease;
-}
-.center_explanation_box, .slider {
-  /* For some reason, .center_explanation_box and .slider requires the !important tag or it will switch colors immediately*/
-  transition: background-color 1s ease, border 1s ease !important; 
-}
-/***** Some elements need fast transition by default *****/
-.social_icon, .st1 {
-  transition: fill .15s ease;
-}
-/* input[type=submit].animation_button, input[type=submit].end_animation */
-button {
-  transition: background-color .1s ease;
-}
-#logo-span1, #logo-span2 {
-  transition: fill 1s ease-out;
-}
-
 /*********************** Color Modes *********************************************************************************************************/
 .light-mode {
   --base-background: white;

@@ -173,21 +173,27 @@ function top_chart_adjust_x_axis(){
     // adjust x-axis max
     if(numChildren === 'none' && filingStatus === 'single'){
         topChart.axis.max({x: 20000});
+        user_income.max = 20000;
     }
     else if(numChildren === 'none' && filingStatus === 'married'){
         topChart.axis.max({x: 25000});
+        user_income.max = 25000;
     }
     else if(numChildren === 'one' && filingStatus === 'single'){
         topChart.axis.max({x: 50000});
+        user_income.max = 50000;
     }
     else if( (numChildren === 'two' && filingStatus === 'single') || (numChildren === 'one' && filingStatus === 'married') ){
         topChart.axis.max({x: 55000});
+        user_income.max = 55000;
     }
     else if( (numChildren === 'three' && filingStatus === 'single') || (numChildren === 'two' && filingStatus === 'married') ){
         topChart.axis.max({x: 60000});
+        user_income.max = 60000;
     }
     else if(numChildren === 'three' && filingStatus === 'married'){
         topChart.axis.max({x: 65000});
+        user_income.max = 65000;
     }
 }
 

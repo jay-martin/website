@@ -3,6 +3,7 @@
  * (1) Toggles between light, sepia, and dark modes
  * (2) Adjust the color of the Twitter & Substack icons
  * (3) Opens and closes the top dropdown menus
+ * (4) Set the transtion settings after the page has been loaded (needed for when users don't have CSS cached)
  * ****************************************************************************************/
 
 /******************************** 1. Page color toggle ******************************/
@@ -219,4 +220,15 @@ function close_dropdown(menuID){
 		currentExpanded = '';
 	}, 1000);
 }
+
+/******************************** 4. Set Transition Settings *************************************************/
+$(document).ready(function(){
+	$('body, select, .page_color_toggler, a.sidebar_links, .other_pages a').css('transition', 'background-color 1s ease, color 1s ease');
+	$('.infobox_left, .infobox_center, .infobox_right, .top_box, .horizontal_line, .horizontal_line_top').css('transition', 'border 1s ease');
+	$('svg.top_logo_svg').css('transition', 'fill 1s ease, stroke 1s ease');
+
+	// 15s transitions
+	$('.social_icon').css('transition', 'fill .15s ease');
+});
+
 

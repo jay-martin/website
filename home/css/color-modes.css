@@ -95,17 +95,6 @@
   --toggle-text: #dbdbdb;
 }
 
-/*********************** Transition Settings ******************************************************************************************************/
-body, select, .page_color_toggler, a.sidebar_links, .other_pages a {
-  transition: background-color 1s ease, color 1s ease;
-}
-.infobox_left, .infobox_center, .infobox_right, .top_box, .horizontal_line, .horizontal_line_top {
-  transition: border 1s ease;
-}
-/***** Some elements need fast transition by default *****/
-.social_icon {
-  transition: fill .15s ease;
-}
 /*************** Color Settings ****************************************************************************/
 /********** Toggler ***********************/
 .page_color_toggler {

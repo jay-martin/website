@@ -569,7 +569,6 @@ p.chart_description {
   height: 100%;
   overflow: scroll;
   scrollbar-width: none;  /* Firefox */
-  transition: height 1s ease; 
 }
 .center_explanation_box:scrollbar { 
     display: none;  /* Safari and Chrome */

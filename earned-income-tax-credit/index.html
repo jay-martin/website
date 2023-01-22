@@ -477,7 +477,7 @@
         </label>
         
         <!--Income slider-->
-        <div class="slidecontainer" id="income_slider_container"> 
+        <div class="slidecontainer"> 
           <label for="user_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</label>
           <div class="slider-actual">
             <input type="range" min="0" max="50000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs();">
