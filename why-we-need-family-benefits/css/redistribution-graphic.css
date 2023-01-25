@@ -1,0 +1,347 @@
+/******************* Basic SVG Styling ***********************************/
+.svg-animation-container {
+	display: inline-block;
+	width: 49%;
+}
+svg.redistribution-svg {
+	fill: var(--base-text);
+	stroke: var(--base-text);
+	vertical-align: top;
+	height: 400px;
+}
+g.money {
+	fill: none;
+	fill-opacity: 1;
+	stroke-dasharray: none;
+	stroke-opacity: 1;
+	stroke: #00de00;
+}
+
+/******************* No Redistribution Animations ***************************/
+/*********** Left Funnel *************/
+#left1-X, #left2-X, #left3-X, #left4-X, #left5-X, #left6-X {
+   animation: left 3.6s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#left1-Y, #left2-Y, #left3-Y, #left4-Y, #left5-Y, #left6-Y {
+	animation: up-single 3.6s cubic-bezier(.1, .1, .1, .1);
+	animation-iteration-count: infinite;
+}
+#left2-X, #left2-Y {
+   animation-delay: .6s;
+}
+#left3-X, #left3-Y {
+   animation-delay: 1.2s;
+}
+#left4-X, #left4-Y {
+   animation-delay: 1.8s;
+}
+#left5-X, #left5-Y {
+   animation-delay: 2.4s;
+}
+#left6-X, #left6-Y {
+   animation-delay: 3s;
+}
+
+/*********** Right Funnel *************/
+#right1-X, #right2-X, #right3-X, #right4-X, #right5-X, #right6-X {
+	animation: right 3.6s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#right1-Y, #right2-Y, #right3-Y, #right4-Y, #right5-Y, #right6-Y {
+	animation: up-family 3.6s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#right2-X, #right2-Y {
+   animation-delay: .6s;
+}
+#right3-X, #right3-Y {
+   animation-delay: 1.2s;
+}
+#right4-X, #right4-Y {
+   animation-delay: 1.8s;
+}
+#right5-X, #right5-Y {
+   animation-delay: 2.4s;
+}
+#right6-X, #right6-Y {
+   animation-delay: 3s;
+}
+
+/*********** Keyframes *************/
+@keyframes up-single {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-42.5px); }
+}
+@keyframes up-family {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-28px); }
+}
+@keyframes left {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(-24.3px); }
+}
+@keyframes right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(20.5px); }
+}
+
+/*********** Bottom Funnel *************/
+#bottom1-Y, #bottom2-Y {
+	animation: bottom .6s linear;
+	animation-iteration-count: infinite;
+}
+#bottom2Y {
+   animation-delay: .6s;
+}
+@keyframes bottom {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-8px); }
+}
+
+/******************* Redistribution Animations ***************************/
+/*********** Pot to Mother *************/
+#pot-to-mother1-X, #pot-to-mother2-X, #pot-to-mother3-X, #pot-to-mother4-X {
+	animation: pot-to-mother-right 2s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#pot-to-mother1-Y, #pot-to-mother2-Y, #pot-to-mother3-Y, #pot-to-mother4-Y {
+	animation: pot-to-mother-up 2s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#pot-to-mother2-X, #pot-to-mother2-Y {
+	animation-delay: .5s;
+}
+#pot-to-mother3-X, #pot-to-mother3-Y {
+	animation-delay: 1s;
+}
+#pot-to-mother4-X, #pot-to-mother4-Y {
+	animation-delay: 1.5s;
+}
+@keyframes pot-to-mother-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-17px); }
+}
+@keyframes pot-to-mother-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(13px); }
+}
+
+/*********** Pot to Baby *************/
+#pot-to-baby1-X, #pot-to-baby2-X, #pot-to-baby3-X, #pot-to-baby4-X {
+	animation: pot-to-baby-right 2s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#pot-to-baby1-Y, #pot-to-baby2-Y, #pot-to-baby3-Y, #pot-to-baby4-Y {
+	animation: pot-to-baby-up 2s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#pot-to-baby2-X, #pot-to-baby2-Y {
+	animation-delay: .5s;
+}
+#pot-to-baby3-X, #pot-to-baby3-Y {
+	animation-delay: 1s;
+}
+#pot-to-baby4-X, #pot-to-baby4-Y {
+	animation-delay: 1.5s;
+}
+@keyframes pot-to-baby-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-14.5px); }
+}
+@keyframes pot-to-baby-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(7.5px); }
+}
+
+/*********** Pot to Daughter *************/
+#pot-to-daughter1-X, #pot-to-daughter2-X, #pot-to-daughter3-X, #pot-to-daughter4-X {
+	animation: pot-to-daughter-right 2s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#pot-to-daughter1-Y, #pot-to-daughter2-Y, #pot-to-daughter3-Y, #pot-to-daughter4-Y {
+	animation: pot-to-daughter-up 2s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#pot-to-daughter2-X, #pot-to-daughter2-Y {
+	animation-delay: .5s;
+}
+#pot-to-daughter3-X, #pot-to-daughter3-Y {
+	animation-delay: 1s;
+}
+#pot-to-daughter4-X, #pot-to-daughter4-Y {
+	animation-delay: 1.5s;
+}
+@keyframes pot-to-daughter-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-11.5px); }
+}
+@keyframes pot-to-daughter-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(3.5px); }
+}
+
+/*********** Left Worker to Pot *************/
+#left-worker-to-pot1-X, #left-worker-to-pot2-X, #left-worker-to-pot3-X, #left-worker-to-pot4-X {
+	animation: left-worker-to-pot-right 1s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#left-worker-to-pot1-Y, #left-worker-to-pot2-Y, #left-worker-to-pot3-Y, #left-worker-to-pot4-Y {
+	animation: left-worker-to-pot-up 1s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#left-worker-to-pot2-X, #left-worker-to-pot2-Y {
+	animation-delay: .5s;
+}
+@keyframes left-worker-to-pot-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-7.5px); }
+}
+@keyframes left-worker-to-pot-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(3.5px); }
+}
+
+/*********** Right Worker to Pot *************/
+#right-worker-to-pot1-X, #right-worker-to-pot2-X, #right-worker-to-pot3-X, #right-worker-to-pot4-X {
+	animation: right-worker-to-pot-right 1s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#right-worker-to-pot1-Y, #right-worker-to-pot2-Y, #right-worker-to-pot3-Y, #right-worker-to-pot4-Y {
+	animation: right-worker-to-pot-up 1s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#right-worker-to-pot2-X, #right-worker-to-pot2-Y {
+	animation-delay: .5s;
+}
+@keyframes right-worker-to-pot-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-8px); }
+}
+@keyframes right-worker-to-pot-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(-6px); }
+}
+
+/*********** Treasury to Pot *************/
+#treasury-to-pot1-X, #treasury-to-pot2-X, #treasury-to-pot3-X, #treasury-to-pot4-X {
+	animation: treasury-to-pot-right 1s cubic-bezier(.1, .1, .1, .1);
+   animation-iteration-count: infinite;
+}
+#treasury-to-pot1-Y, #treasury-to-pot2-Y, #treasury-to-pot3-Y, #treasury-to-pot4-Y {
+	animation: treasury-to-pot-down 1s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#treasury-to-pot2-X, #treasury-to-pot2-Y {
+	animation-delay: .5s;
+}
+@keyframes treasury-to-pot-down {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(10px); }
+}
+@keyframes treasury-to-pot-right {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(1.5px); }
+}
+
+/*********** Business to Pot *************/
+#bussiness-to-pot1-Y, #bussiness-to-pot2-Y, #bussiness-to-pot3-Y, #bussiness-to-pot4-Y {
+	animation: bussiness-to-pot-up 2.4s linear;
+   animation-iteration-count: infinite;
+}
+#bussiness-to-pot2-Y {
+	animation-delay: .6s;
+}
+#bussiness-to-pot3-Y {
+	animation-delay: 1.2s;
+}
+#bussiness-to-pot4-Y {
+	animation-delay: 1.8s;
+}
+@keyframes bussiness-to-pot-up {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-18px); }
+}
+
+/*********** Left Funnel *************/
+#funnel-left1-X, #funnel-left2-X, #funnel-left3-X, #funnel-left4-X, #funnel-left5-X, #funnel-left6-X {
+   animation: funnel-left-X 3.6s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#funnel-left1-Y, #funnel-left2-Y, #funnel-left3-Y, #funnel-left4-Y, #funnel-left5-Y, #funnel-left6-Y {
+	animation: funnel-left-Y 3.6s cubic-bezier(.1, .1, .1, .1);
+	animation-iteration-count: infinite;
+}
+#funnel-left2-X, #funnel-left2-Y {
+   animation-delay: .6s;
+}
+#funnel-left3-X, #funnel-left3-Y {
+   animation-delay: 1.2s;
+}
+#funnel-left4-X, #funnel-left4-Y {
+   animation-delay: 1.8s;
+}
+#funnel-left5-X, #funnel-left5-Y {
+   animation-delay: 2.4s;
+}
+#funnel-left6-X, #funnel-left6-Y {
+   animation-delay: 3s;
+}
+@keyframes funnel-left-Y {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-42.5px); }
+}
+@keyframes funnel-left-X {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(-24.3px); }
+}
+
+/*********** Right Funnel *************/
+#funnel-right1-X, #funnel-right2-X, #funnel-right3-X, #funnel-right4-X, #funnel-right5-X, #funnel-right6-X {
+   animation: funnel-right-X 3.6s cubic-bezier(0, 0, .41, 1);
+   animation-iteration-count: infinite;
+}
+#funnel-right1-Y, #funnel-right2-Y, #funnel-right3-Y, #funnel-right4-Y, #funnel-right5-Y, #funnel-right6-Y {
+	animation: funnel-right-Y 3.6s cubic-bezier(.1, .1, .1, .1);
+	animation-iteration-count: infinite;
+}
+#funnel-right2-X, #funnel-right2-Y {
+   animation-delay: .6s;
+}
+#funnel-right3-X, #funnel-right3-Y {
+   animation-delay: 1.2s;
+}
+#funnel-right4-X, #funnel-right4-Y {
+   animation-delay: 1.8s;
+}
+#funnel-right5-X, #funnel-right5-Y {
+   animation-delay: 2.4s;
+}
+#funnel-right6-X, #funnel-right6-Y {
+   animation-delay: 3s;
+}
+@keyframes funnel-right-Y {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-42.5px); }
+}
+@keyframes funnel-right-X {
+	from { transform : translateX(0px); }
+  	to { transform : translateX(26px); }
+}
+
+/*********** Bottom Funnel *************/
+#funnel-bottom1-Y, #funnel-bottom2-Y {
+	animation: funnel-bottom-Y .6s linear;
+	animation-iteration-count: infinite;
+}
+#funnel-bottom2-X, #funnel-bottom2-Y {
+   animation-delay: .6s;
+}
+@keyframes funnel-bottom-Y {
+	from { transform : translateY(0px); }
+  	to { transform : translateY(-8px); }
+}
+
+
+
+
