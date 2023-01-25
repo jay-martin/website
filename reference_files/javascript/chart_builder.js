@@ -1,4 +1,5 @@
 /************************* EITC ****************************************************************************************************/
+
 /** Loads to a c3.js chart a curve for the 2023 single/hoh eitc for a given number of children
  * @param {string} - variable name of the c3.js chart
  * @param {string} - variable name of the x variable
@@ -164,6 +165,7 @@ function married_eitc_builder_2022(chartName, xName, dataName, numChildren){
 }
 
 /************************* Tax Brackets ****************************************************************************************************/
+
 /** Loads to a c3.js chart a curve of the 2023 tax liability (including standard deduction) of a single taxpayer
  * @param {string} - variable name of the c3.js chart
  * @param {string} - variable name of the x variable
@@ -251,6 +253,7 @@ function married_tax_liability_builder_2022(chartName, xName, dataName){
 }
 
 /************************* CTC ****************************************************************************************************/
+
 /** Loads to a c3.js chart a curve for the 2023 single CTC for a given number of children
  * @param {string} - variable name of the c3.js chart
  * @param {string} - variable name of the x variable
@@ -375,6 +378,7 @@ function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
 }
 
 /************************* HOH Tax Savings ****************************************************************************************************/
+
 /** Loads to a c3.js chart a curve for the 2023 married CTC for a given number of children
  * @param {string} - variable name of the c3.js chart
  * @param {string} - variable name of the x variable
@@ -414,4 +418,95 @@ function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
 			]
     	});
 	}
+}
+
+/************************* EITC Marriage Penalties ****************************************************************************************************/
+
+/** Loads to given c3.js chart a curve showing the marriage penalties a person faces given their partner's income and the number of children each of them have
+ * @param {string}  - variable name of c3.js chart
+ * @param {string}  - variable name of c3.js x variable
+ * @param {string}  - variable name of c3.js dependent variable
+ * @param {integer} - income of person 2
+ * @param {string}  - string representing the number of children person1 has ('none', 'one', 'two', 'three')
+ * @param {string}  - string representing the number of children person2 has ('none', 'one', 'two', 'three')
+ * */
+function eitc_marriage_penalty_value_chart_builder(chart_name, x_name, data_name, p2_income, p1_children, p2_children){
+    // Calculate combined number of children
+    let combined_children = sum_children(p1_children, p2_children);
+
+    // Person 2 Fixed EITC
+    let p2_eitc = eitc_value_2023(p2_income, 'single', p2_children);
+
+    // x values
+    let x_vals = eitc_marriage_penalty_x_values(p1_children, combined_children, p2_income);
+
+    // Marriage penalty (y) values
+    let y_vals = [];
+    for (i in x_vals) {
+    	married = eitc_value_2023(x_vals[i] + parseInt(p2_income), 'married', combined_children);
+    	combined = p2_eitc + eitc_value_2023(x_vals[i], 'single', p1_children);
+        y_vals.push( married - combined );
+    }
+
+    // Format arrays
+    x_vals.unshift(x_name);
+    y_vals.unshift(data_name);
+
+    // Load values to chart
+    chart_name.load({ columns: [x_vals, y_vals] });
+}
+
+/** Returns formatted x-values for an eitc marriage penalty values chart
+ * @param {string}  - string representing the number of children person1 has ('none', 'one', 'two', 'three')
+ * @param {string}  - string representing the combined number of children ('none', 'one', 'two', 'three')
+ * @param {integer} - income of person 2
+ * @return {array of integers} - formatted x-values
+ * */
+function eitc_marriage_penalty_x_values(person1_children, combined_children, person2_income){
+	const zero_child_values   = [0, 7840,  9800,  17640, 70000];
+	const one_child_values    = [0, 11750, 21560, 46560, 70000];
+	const two_child_values    = [0, 16510, 21560, 52918, 70000];
+	const three_child_values  = [0, 16510, 21560, 56838, 70000];
+
+	let combined_none_values  = [7840  - person2_income, 16379 - person2_income, 24210 - person2_income];
+	let combined_one_values   = [11750 - person2_income, 28120 - person2_income, 53120 - person2_income];
+	let combined_two_values   = [16510 - person2_income, 28120 - person2_income, 59478 - person2_income];
+	let combined_three_values = [16510 - person2_income, 28120 - person2_income, 63398 - person2_income];
+
+	// construct variable name based on combined_children
+	let married_values = 'combined_' + combined_children + '_values';
+
+    if(person1_children === 'none'){
+    	return format_eitc_marriage_penalty_x_values(zero_child_values.concat(eval(married_values)));
+    }
+    else if(person1_children === 'one'){
+    	return format_eitc_marriage_penalty_x_values(one_child_values.concat(eval(married_values)));
+    }
+    else if(person1_children === 'two'){
+    	return format_eitc_marriage_penalty_x_values(two_child_values.concat(eval(married_values)));
+    }
+    else if(person1_children === 'three'){
+    	return format_eitc_marriage_penalty_x_values(three_child_values.concat(eval(married_values)));
+    }
+}
+
+/** Takes in array of integers, removes duplicates, sorts the array, removes values less than zero, and then returns that array
+ * @param  {array of integer}
+ * @return {array of integers}
+ * */
+function format_eitc_marriage_penalty_x_values(x_values){
+	// remove any duplicates
+	let x_values_set = new Set(x_values);
+
+	// sort in ascending order
+	let x_values_sorted = Array.from(x_values_set).sort(function(a,b){return a-b;});
+
+	// remove values below zero
+	let positive_values = [];
+	for (x of x_values_sorted) {
+		if(x >= 0){
+			positive_values.push(x);
+		}
+	}
+	return positive_values;
 }

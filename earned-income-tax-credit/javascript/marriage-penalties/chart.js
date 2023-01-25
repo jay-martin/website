@@ -15,19 +15,6 @@ var MPchart = c3.generate({
             'penalty'       : 'x_horizontal',
             'combined_eitc' : 'x_horizontal',
             'bonus'         : 'x_horizontal',
-
-            'hoh_married'   : 'x_horizontal',
-            'hoh_penalty'   : 'x_horizontal',
-            'hoh_combined'  : 'x_horizontal',
-            'hoh_bonus'     : 'x_horizontal',
-
-            'both_white'          : 'x_horizontal',
-            'both_penalty'        : 'x_horizontal',
-            'both_white_positive' : 'x_horizontal',
-            'both_bonus'          : 'x_horizontal',
-            'both_white_negative' : 'x_horizontal',
-            'both_bonus_negative' : 'x_horizontal',
-            'filler'              : 'x_horizontal',
         },
         columns: [
             ['x3',       0, 11750, 28120, 53120],
@@ -57,19 +44,6 @@ var MPchart = c3.generate({
             'penalty'       : 'area',
             'combined_eitc' : 'area',
             'bonus'         : 'area',
-
-            'hoh_married'   : 'area',
-            'hoh_penalty'   : 'area',
-            'hoh_combined'  : 'area',
-            'hoh_bonus'     : 'area',
-
-            'both_white'          : 'area',
-            'both_penalty'        : 'area',
-            'both_white_positive' : 'area',
-            'both_bonus'          : 'area',
-            'both_white_negative' : 'area',
-            'both_bonus_negative' : 'area',
-            'filler'              : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -93,21 +67,8 @@ var MPchart = c3.generate({
 
             married_eitc: '#eb3734',
             penalty: '#eb3734',
-            combined_eitc: '#eb3734',
+            combined_eitc: '#36D903',
             bonus: '#36D903',
-
-            hoh_married: '#eb3734',
-            hoh_penalty: '#eb3734',
-            hoh_combined: '#eb3734',
-            hoh_bonus: '#36D903',
-
-            both_white   :       '#eb3734',
-            both_penalty :       '#eb3734',
-            both_white_positive: '#eb3734',
-            both_bonus   :       '#36D903',
-            both_white_negative: '#eb3734',
-            both_bonus_negative: '#36D903',
-            filler       :       '#eb3734',
         },
     },
     padding: {

@@ -10,6 +10,7 @@ var MPchart = c3.generate({
             'point1' : 'x_point1',
             'point2' : 'x_point2',
             'point_married' : 'x_point_married',
+            'point_red' : 'x_point_red',
 
             'married_eitc'  : 'x_horizontal',
             'penalty'       : 'x_horizontal',
@@ -120,7 +121,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
+        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_red', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
     },
     tooltip: {
         show: false

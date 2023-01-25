@@ -688,6 +688,59 @@
 
   </div> <!--chart end-->
 
+  <div class = "chart">
+    <h3 class='chart_title'>The EITC Creates Marriage Penalties</h3>
+    
+    <!--User inputs-->
+    <div class="user_inputs">
+
+      <!--Person 1 number of children-->
+      <label>I have
+      <select id="values_person1_children" oninput="adjust_eitc_penalty_values_chart();values_modify_income();values_outputs();">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>
+      </label>
+
+      <!--Person 2 number of children-->
+      <label>and my partner has
+      <select id="values_person2_children" oninput="adjust_eitc_penalty_values_chart();values_modify_income();values_outputs();" >
+        <option value="none">no children</option>
+        <option value="one" >1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select></label>.
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <label for="values_person1_income" class="slider-text"> I have an income of $<output id="values_person1_income_output">30,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="70000" value="30000" step="1000" class="slider" id="values_person1_income" oninput="values_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');values_modify_income();values_outputs();">
+        </div>
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <label for="values_person2_income" class="slider-text"> My partner has an income of $<output id="values_person2_income_output">10,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="values_person2_income" oninput="values_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');adjust_eitc_penalty_values_chart();values_modify_income();values_outputs()">
+        </div>
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!--Center Explanation Box-->
+    <div class="center_explanation_box" id="center_explanations_container">
+      <p class="explanation_text" id="values_output"></p>
+    </div>
+
+    <!-- Marriage Penalties Chart -->
+    <div id="values_chart"></div>
+
+  </div> <!--chart end-->
+
 </section>
 
 <section class = 'center_no_side_elements' id="complexity">
@@ -902,6 +955,10 @@
 <script type="text/javascript" src="./javascript/marriage-penalties/outputs.js"></script>
 <script type="text/javascript" src="./javascript/marriage-penalties/adjust-chart.js"></script>
 <script type="text/javascript" src="./javascript/marriage-penalties/calculate.js"></script>
+
+<script type="text/javascript" src="./javascript/marriage-penalties/penalty-values/chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/penalty-values/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/penalty-values/outputs.js"></script>
 
 <!-- Complexity Chart Javascript files -->
 <script type="text/javascript" src="./javascript/complexity/chart.js"></script>
