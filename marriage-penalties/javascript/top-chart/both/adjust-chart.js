@@ -141,34 +141,38 @@ function both_modify_married(){
 }
 
 function both_modify_income(){
+    // Variables for income
     p1Income = person1_income.value;
     p2Income = person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
+    // Variables for number of children
     combinedChildren = num_children();
     numChildren = 'none';
     if(combinedChildren === 1){numChildren='one';}
     else if(combinedChildren === 2){numChildren='two';}
     else if (combinedChildren > 2){numChildren='three';}
 
+    // Reformed EITC Values
     p1EITC = eitc_value_2023('single', p1Income, person1_children.value);
     p2EITC = eitc_value_2023('single', p2Income, person2_children.value);
     combinedEITC = p1EITC + p2EITC;
     marriedEITC = eitc_value_2023('married', combinedIncome, numChildren);
 
+    // Existing EITC Values
     p1Tax  = tax_liability_2023('hoh', p1Income) - p1EITC;
     p2Tax  = tax_liability_2023(person2_filing_status.value, p2Income) - p2EITC;
     combinedTax = p1Tax + p2Tax;
     marriedTax  = tax_liability_2023('married', combinedIncome) - marriedEITC;
 
-    /* Move xgrids */
+    // Move x-grids
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedTax, text: "Married tax liability"}, {value: combinedTax, text: "Combined individual tax liability"}]);
 
-    /* Move points */
+    // Move points
     MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1Tax], ['x_point2', p2Income], ['point2', p2Tax], ['x_point_married', combinedIncome], ['point_married', marriedTax] ] });
 
-    /* Move stacked eitc value curves */
+    // Move y-grids & penalty region
     penalty = marriedTax - combinedTax;
     if(penalty > 0){
         MPchart.show(['both_white', 'both_penalty']);

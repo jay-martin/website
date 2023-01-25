@@ -48,10 +48,12 @@ function modify_married_eitc(){
 }
 
 function eitc_modify_income(){
+    // Variables for income
     p1Income = person1_income.value;
     p2Income = person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);
 
+    // Variables for number of children
     p1Children = person1_children.value;
     p2Children = person2_children.value;
     numChildren = sum_children(p1Children, p2Children);
@@ -62,14 +64,14 @@ function eitc_modify_income(){
     combinedEITC = p1EITC + p2EITC;
     marriedEITC = eitc_value_2023(combinedIncome, 'married', numChildren);
 
-    /* Move xgrids */
+    // Move x-grids
     MPchart.xgrids([{value: p1Income, text:'Your income'},{value: p2Income, text:"Your partner's income"},{value: combinedIncome, text:"Combined income"}]);
     MPchart.ygrids([{value: 0}, {value: marriedEITC, text: "Your married EITC"}, {value: combinedEITC, text: "Combined individual EITC's"}]);
 
-    /* Move points */
+    // Move points
     MPchart.load({columns: [ ['x_point1', p1Income] , ['point1', p1EITC], ['x_point2', p2Income], ['point2', p2EITC], ['x_point_married', combinedIncome], ['point_married', marriedEITC] ] });
 
-    /* Move stacked eitc value curves */
+    // Move stacked eitc value curves
     penalty = combinedEITC - marriedEITC;
     if(penalty > 0){
         MPchart.show(['married_eitc', 'penalty']);
@@ -83,8 +85,8 @@ function eitc_modify_income(){
         });
     }
     else{
-        MPchart.hide(['married_eitc', 'penalty']);
         MPchart.show(['combined_eitc', 'bonus']);
+        MPchart.hide(['married_eitc', 'penalty']);
         MPchart.load({
             columns: [
                 ['x_horizontal',  0, 120000],

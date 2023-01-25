@@ -95,7 +95,7 @@ var MPchart = c3.generate({
 
             married_eitc: '#eb3734',
             penalty: '#eb3734',
-            combined_eitc: '#eb3734',
+            combined_eitc: '#36D903',
             bonus: '#36D903',
 
             hoh_married: '#eb3734',
