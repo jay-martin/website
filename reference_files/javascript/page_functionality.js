@@ -9,6 +9,7 @@
  * (7) Opens and closes the top chart highlights
  * (8) Opens and closes appendix sections
  * (9) Opens and closes chart notes
+ * (10) Opens and closed center explanation box breakdowns
  * ****************************************************************************************/
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
@@ -425,14 +426,16 @@ var breakdown_states = new Object(); //dictionary to keep track of which chart n
  * @param {string} - the html id of the breadkdown to be opened
  * */
 function open_and_close_breakdown(listID, buttonID){
+  // collapse if open
   if(breakdown_states[listID] === 'open'){
-    document.getElementById(buttonID).innerHTML = 'Collapse';
-    document.getElementById(listID).style.display = 'block';
-    breakdown_states[listID] = 'closed';
-  }
-  else {
     document.getElementById(buttonID).innerHTML = 'Show all';
     document.getElementById(listID).style.display = 'none';
+    breakdown_states[listID] = 'closed';
+  }
+  // open if closed
+  else {
+    document.getElementById(buttonID).innerHTML = 'Collapse';
+    document.getElementById(listID).style.display = 'block';
     breakdown_states[listID] = 'open';
   }
 }
