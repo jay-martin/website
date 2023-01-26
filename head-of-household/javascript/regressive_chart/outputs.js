@@ -5,7 +5,7 @@ function regressive_outputs(){
     income = income_regressive.value;
 
     // HOH Benefit
-    difference = 3886 - tax_difference_at_income(income, '0', 'zero');
+    difference = 4177 - hoh_tax_difference_2023(income, '0');
 
     // Outputs
     document.getElementById('benefit_max_difference').innerHTML = "Your benefit is <b>$" + difference.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> less than the max.";

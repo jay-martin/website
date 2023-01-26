@@ -1,4 +1,4 @@
-function mp_modify_person1(){
+function marriage_penalty_intuitive_adjust_person1(){
     person1_num_children = mp_person1_children.value;
     person2_num_children = mp_person2_children.value;
     if(person1_num_children === person2_num_children){
@@ -15,7 +15,7 @@ function mp_modify_person1(){
     }
 }
 
-function mp_modify_person2(){
+function marriage_penalty_intuitive_adjust_person2(){
     person1_num_children = mp_person1_children.value;
     person2_num_children = mp_person2_children.value;
     if(person1_num_children === person2_num_children){
@@ -39,7 +39,7 @@ function mp_modify_person2(){
     }
 }
 
-function mp_modify_married(){
+function marriage_penalty_intuitive_adjust_married(){
     person1_num_children = mp_person1_children.value;
     person2_num_children = mp_person2_children.value;
     combined_children = sum_children(person1_num_children, person2_num_children);
@@ -47,7 +47,7 @@ function mp_modify_married(){
     married_eitc_builder_2023(MPchart, 'x3', 'married', combined_children);
 }
 
-function mp_modify_income(){
+function marriage_penalty_intuitive_modify_income(){
     p1Income = mp_person1_income.value;
     p2Income = mp_person2_income.value;
     combinedIncome = parseInt(p1Income) + parseInt(p2Income);

@@ -2,19 +2,22 @@ var MPchart = c3.generate({
     bindto: '#marriage_penalties_chart',
     data: {
         xs: {
-            'person1' : 'x1',
-            'person2' : 'x2',
+            'person1'        : 'x1',
+            'person2'        : 'x2',
             'person2_dashed' : 'x2',
-            'married' : 'x3',
+            'married'        : 'x3',
 
-            'point1' : 'x_point1',
-            'point2' : 'x_point2',
-            'point_married' : 'x_point_married',
+            'point1'         : 'x_point1',
+            'point2'         : 'x_point2',
+            'point_married'  : 'x_point_married',
 
-            'married_eitc'  : 'x_horizontal',
-            'penalty'       : 'x_horizontal',
-            'combined_eitc' : 'x_horizontal',
-            'bonus'         : 'x_horizontal',
+            'married_eitc'   : 'x_horizontal',
+            'penalty'        : 'x_horizontal',
+            'combined_eitc'  : 'x_horizontal',
+            'bonus'          : 'x_horizontal',
+
+            'values'         : 'x_values',
+            'values_point'   : 'x_point',
         },
         columns: [
             ['x3',       0, 11750, 28120, 53120],
@@ -44,6 +47,8 @@ var MPchart = c3.generate({
             'penalty'       : 'area',
             'combined_eitc' : 'area',
             'bonus'         : 'area',
+
+            'values' : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -51,24 +56,28 @@ var MPchart = c3.generate({
         groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus'], ['hoh_combined', 'hoh_penalty'], ['hoh_married', 'hoh_bonus'], ['both_white', 'both_penalty'], ['both_white_positive', 'both_bonus'], ['both_white_negative', 'both_bonus_negative'] ], 
         order: false,
         names: {
-            person1: 'Your EITC',
-            person2: "Your Partner's EITC",
-            person2_dashed: "Your Partner's EITC",
-            married: 'EITC if you get married',
+            person1        : 'Your EITC',
+            person2        : "Your Partner's EITC",
+            person2_dashed : "Your Partner's EITC",
+            married        : 'EITC if you get married',
+            values         : 'Marriage Penalty/Bonus'
         },
         colors: {
-            person1: '#6ab6fc',
-            point1:  '#6ab6fc',
-            person2: purple_shade,
-            person2_dashed: purple_shade,
-            point2: purple_shade,
-            married: white_or_black,
-            point_married: white_or_black,
+            person1        : '#6ab6fc',
+            point1         : '#6ab6fc',
+            person2        : purple_shade,
+            person2_dashed : purple_shade,
+            point2         : purple_shade,
+            married        : white_or_black,
+            point_married  : white_or_black,
 
-            married_eitc: '#eb3734',
-            penalty: '#eb3734',
-            combined_eitc: '#36D903',
-            bonus: '#36D903',
+            married_eitc   : '#eb3734',
+            penalty        : '#eb3734',
+            combined_eitc  : '#36D903',
+            bonus          : '#36D903',
+
+            values         : '#eb3734',
+            values_point   : '#eb3734',
         },
     },
     padding: {
@@ -79,7 +88,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
+        hide: ['value', 'values_point', 'married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
     },
     tooltip: {
         show: false

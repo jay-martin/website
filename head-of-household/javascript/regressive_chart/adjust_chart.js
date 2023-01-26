@@ -12,67 +12,42 @@ function zoom_regressive(){
     else{
         income_regressive.max = "600000";
         regressiveChart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
-        regressiveChart.axis.max({x: 600000});
+        regressiveChart.axis.max({x: 620000});
     }
 }
 
 /* Moves the income slider */
 function modify_income_regressive(){
-    income = income_regressive.value;
-    itemDeduct = '0';
-    numChildren = 'none';
+    let income = income_regressive.value;
+    let item_deduct = '0';
 
-    value = tax_difference_at_income(income, itemDeduct, numChildren);
+    let savings = hoh_tax_difference_2023(income, item_deduct);
     regressiveChart.load({
         columns: [
             ['x_point',   income],
-            ['point',     value],
-            ['point_top', 3886],
+            ['point',     savings],
+            ['point_top', 4177],
 
-            ['x_line',          income, income],
-            ['difference_line', value,  3886],
+            ['x_line',          income,  income],
+            ['difference_line', savings, 4177],
         ]
     });
 }
 
 /* Adjusts the chart according to user input */
 function modify_chart_regressive(){
-    itemDeduct = itemized_deductions.value;
-    numChildren = num_children_formatting(num_children.value);
+    let tax_values = hoh_chart_values_2023(itemized_deductions.value);
+    let x_values = tax_values[0];
+    let y_values = tax_values[1];
 
-    tax_no_ctc = tax_difference(itemDeduct);
-    brackets_no_ctc = tax_no_ctc[0];
-    tax_dif_no_ctc = tax_no_ctc[1];
+    // format arrays
+    x_values.unshift('x');
+    y_values.unshift('HOH_Savings');
 
-    brackets_no_ctc.unshift('x');
-    tax_dif_no_ctc.unshift('HOH_Savings');
-
-    if(tax_credit_switch.checked === false){
-        HOHchart.hide('after_ctc');
-        HOHchart.load({
-            columns: [
-                brackets_no_ctc,
-                tax_dif_no_ctc,
-            ]
-        });
-    }
-    else{
-        HOHchart.show('after_ctc');
-        
-        tax_with_ctc = tax_difference_with_ctc(itemDeduct, numChildren);
-        brackets_with_ctc = tax_with_ctc[0];
-        tax_dif_with_ctc = tax_with_ctc[1];
-
-        brackets_with_ctc.unshift('x3');
-        tax_dif_with_ctc.unshift('after_ctc'); 
-
-        HOHchart.load({
-            columns: [
-                brackets_no_ctc,
-                tax_dif_no_ctc,
-                brackets_with_ctc,
-                tax_dif_with_ctc,
-            ]
-        });
-    }
+    HOHchart.load({
+        columns: [
+            x_values,
+            y_values,
+        ]
+    });
 }
