@@ -1,4 +1,4 @@
-function hoh_modify_person1(){
+function marriage_penalty_intuitive_adjust_person1(){
     if(marriage_penalty_person1_filing_status.value === 'single' && marriage_penalty_person2_filing_status.value === 'single'){
         single_tax_liability_builder_2023(marriagePenaltyChart, 'x1', 'person1');
 
@@ -37,7 +37,7 @@ function hoh_modify_person1(){
     }
 }
 
-function hoh_modify_person2(){
+function marriage_penalty_intuitive_adjust_person2(){
     if(marriage_penalty_person2_filing_status.value === 'single' && marriage_penalty_person1_filing_status.value === 'hoh'){
         marriagePenaltyChart.show('person2');
         marriagePenaltyChart.hide('person2_dashed');
@@ -78,11 +78,11 @@ function hoh_modify_person2(){
     }
 }
 
-function hoh_modify_married(){
+function marriage_penalty_intuitive_adjust_married(){
     married_tax_liability_builder_2023(marriagePenaltyChart, 'x3', 'married');
 }
 
-function hoh_modify_income(){
+function marriage_penalty_intuitive_modify_income(){
     // Incomes
     p1Income = marriage_penalty_person1_income.value;
     p2Income = marriage_penalty_person2_income.value;

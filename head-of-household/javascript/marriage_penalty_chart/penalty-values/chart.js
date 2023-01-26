@@ -6,11 +6,11 @@ var valuesChart = c3.generate({
             'point'   : 'x_point',
         },
         columns: [
-            ['x',       0,    1750, 11750, 18120, 21560, 43120, 46560, 70000],
-            ['penalty', 2815, 2815, -585,  -585,  -1134, -1134, -585,  -585],
+            ['x',       0,    9700, 20800, 36500, 77150, 80650, 116150, 178450, 202900, 252050, 300000],
+            ['penalty', 1688, 718, -614,   -928,  -928, -1278, -1278,  -32,     -32,    3900,   9174.5],
 
-            ['x_point', 30000],
-            ['point',   -1134],
+            ['x_point', 80000],
+            ['point',   -1213],
         ],
         types: {
             'penalty': 'area',
@@ -61,7 +61,7 @@ var valuesChart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 30000, text: 'Your income'},]
+            lines: [{value: 80000, text: 'Your income'},]
         },
         y: {
             lines: [{value: 0,},]

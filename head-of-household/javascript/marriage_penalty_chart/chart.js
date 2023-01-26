@@ -26,6 +26,9 @@ var marriagePenaltyChart = c3.generate({
             'point1' : 'x_point1',
             'point2' : 'x_point2',
             'point_married' : 'x_point_married',
+
+            'values'        : 'x_values',
+            'values_point'  : 'x_values_point',
         },
         columns: [
             ['x3',      0, 27700, 49700, 117150, 218450, 391900, 490200, 721450],
@@ -53,6 +56,8 @@ var marriagePenaltyChart = c3.generate({
             'penalty'      : 'area',
             'married_tax'  : 'area',
             'bonus'        : 'area',
+
+            'values'       : 'area',
         },
         regions: {
             person2_dashed : [ {'style':'dashed'}, ],
@@ -64,6 +69,8 @@ var marriagePenaltyChart = c3.generate({
             person2: "Your Partner's Tax Schedule",
             person2_dashed: "Your Partner's Tax Schedule",
             married: 'Your Married Tax Schedule',
+
+            values: 'Marriage Penalty/Bonus',
         },
         colors: {
             person1: '#6ab6fc',
@@ -78,7 +85,10 @@ var marriagePenaltyChart = c3.generate({
             penalty      : 'red',
 
             married_tax : '#36D903',
-            bonus       : '#36D903',      
+            bonus       : '#36D903',    
+
+            values : '#eb3734',
+            values_point : '#eb3734',
         },
     },
     padding: {
@@ -89,7 +99,7 @@ var marriagePenaltyChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point1', 'point2', 'point_married', 'married_tax', 'bonus', 'combined_tax', 'penalty', 'person2_dashed'],
+        hide: ['values', 'values_point', 'point1', 'point2', 'point_married', 'married_tax', 'bonus', 'combined_tax', 'penalty', 'person2_dashed'],
     },
     tooltip: {
         show: false
