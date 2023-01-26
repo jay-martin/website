@@ -1,7 +1,7 @@
 /*Default values */
-document.getElementById('marriage_penalty_individual').innerHTML = "You owe <b>$6,800</b> in taxes and your partner owes <b>$2,918</b>, for a combined tax liability of <b>$9,718</b>.";
+document.getElementById('marriage_penalty_individual').innerHTML = "You owe <b>$6,790</b> in taxes and your partner owes <b>$2,918</b>, for a combined tax liability of <b>$9,708</b>.";
 document.getElementById('marriage_penalty_married').innerHTML =    "With a combined income of $120,000, if you married you would owe <b>$10,921</b> in taxes.";
-document.getElementById('marriage_penalty_bonus').innerHTML =      "Thus, if you married your family's taxes would <b><p class='inline red'>increase by $1,203</p></b>.";
+document.getElementById('marriage_penalty_bonus').innerHTML =      "Thus, if you married your family's taxes would <b><p class='inline red'>increase by $1,213</p></b>.";
 
 function marriage_penalty_outputs(){
     p1Income = marriage_penalty_person1_income.value;

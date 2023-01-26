@@ -422,7 +422,7 @@ function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
 
 /************************* EITC Marriage Penalties ****************************************************************************************************/
 
-/** Loads to given c3.js chart a curve showing the marriage penalties a person faces given their partner's income and the number of children each of them have
+/** Loads to given c3.js chart a curve showing the EITC marriage penalties a person faces given their partner's income and the number of children each of them have
  * @param {string}  - variable name of c3.js chart
  * @param {string}  - variable name of c3.js x variable
  * @param {string}  - variable name of c3.js dependent variable
@@ -510,3 +510,66 @@ function format_eitc_marriage_penalty_x_values(x_values){
 	}
 	return positive_values;
 }
+
+
+/************************* HOH Marriage Penalties ****************************************************************************************************/
+/** Loads to given c3.js chart a curve showing the HOH marriage penalties a person faces given their partner's income and the number of children each of them have
+ * @param {string}  - variable name of c3.js chart
+ * @param {string}  - variable name of c3.js x variable
+ * @param {string}  - variable name of c3.js dependent variable
+ * @param {integer} - income of person 2
+ * */
+function hoh_marriage_penalty_value_chart_builder(chart_name, x_name, data_name, p2_income, p1_filing_status, p2_filing_status){
+    // Person 2 Fixed Tax Liability
+    let p2_tax_liability = tax_liability_2023(p2_filing_status, p2_income);
+
+    // x values
+    let x_vals = hoh_marriage_penalty_x_values(p2_income, p1_filing_status, p2_filing_status);
+
+    // Marriage penalty (y) values
+    let y_vals = [];
+    for (i in x_vals) {
+    	married = tax_liability_2023('married', x_vals[i] + parseInt(p2_income));
+    	combined = p2_tax_liability + tax_liability_2023(p1_filing_status, x_vals[i]);
+        y_vals.push( combined - married );
+    }
+
+    // Format arrays
+    x_vals.unshift(x_name);
+    y_vals.unshift(data_name);
+
+    // Load values to chart
+    chart_name.load({ columns: [x_vals, y_vals] });
+}
+
+/** Returns formatted x-values for an HOH marriage penalty values chart
+ * @param {integer} - income of person 2
+ * @return {array of integers} - formatted x-values
+ * */
+function hoh_marriage_penalty_x_values(person2_income, person1_filing_status, person2_filing_status){
+	// const hoh_values    = [0, 20800, 36500, 80650, 116150, 202900, 252050, 598900, 650000];
+	// const single_values = [0, 13850, 24850, 58575, 109225, 195950, 245100, 591975, 650000];
+
+	const hoh_values    = [0, 20800, 36500, 80650, 116150, 202900, 252050, 300000];
+	const single_values = [0, 13850, 24850, 58575, 109225, 195950, 245100, 300000];
+
+	let married_values  = cut_married_values([27700 - person2_income, 49700 - person2_income, 117150 - person2_income, 218450 - person2_income, 391900 - person2_income, 490200 - person2_income, 721450 - person2_income]);
+
+	if(person1_filing_status === 'single'){
+		return format_eitc_marriage_penalty_x_values(single_values.concat(married_values));
+	}
+	else if(person1_filing_status === 'hoh'){
+		return format_eitc_marriage_penalty_x_values(hoh_values.concat(married_values));
+	}
+}
+
+function cut_married_values(x_values){
+	let less_than_300k = [];
+	for (x of x_values) {
+		if(x < 300000){
+			less_than_300k.push(x);
+		}
+	}
+	return less_than_300k;
+}
+
