@@ -46,6 +46,7 @@ function switch_marriage_penalty_chart_type(){
 			// axis
 			marriagePenaltyChart.internal.config.axis_y_tick_values = [0, 5000, 10000, 15000, 20000, 25000, 30000];
 			marriagePenaltyChart.internal.config.axis_y_max = 30000;
+			marriagePenaltyChart.axis.labels({y: 'Tax Liability'});
 			// legend
 			marriagePenaltyChart.legend.show(['person1', 'person2', 'person2_dashed', 'married']);
 			marriagePenaltyChart.legend.hide(['values']);

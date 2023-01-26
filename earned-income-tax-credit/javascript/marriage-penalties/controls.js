@@ -13,6 +13,9 @@ function switch_marriage_penalty_chart_type(){
 		// legend
 		MPchart.legend.show(['person1', 'person2', 'person2_dashed', 'married']);
 		MPchart.legend.hide(['values']);
+
+		//axis
+		MPchart.axis.labels({y: 'EITC Value'});
 		
 		// curves
 		MPchart.hide(['values', 'values_point']);
