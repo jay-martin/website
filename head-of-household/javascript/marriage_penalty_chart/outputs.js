@@ -44,9 +44,6 @@ function marriage_penalty_intuitive_outputs(){
 }
 
 /****************************** Values Chart *********************************/
-// Default values
-document.getElementById('values_output').innerHTML = "With your partner's income fixed at <b>$40,000</b>, if your income was <b>$80,000</b> you would face a <b><p class='inline red'>marriage penalty</p></b> of <b><p class='inline red'>$1,213</p></b>";
-
 function marriage_penalty_values_outputs(){
     p1_income = marriage_penalty_person1_income.value;
     p2_income = marriage_penalty_person2_income.value;
