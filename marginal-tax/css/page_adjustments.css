@@ -1,43 +1,24 @@
-/****************************************** Benefits selection ********************************************/
+/************ Benefits selection ************************************************************/
 .many_select_container {
   font-size: 90%;
   line-height: 27.5px;
   margin-bottom: 5px;
 }
-/***************************************** Adjustements to center explanation box *****************************************/
-.center_explanation_box {
-	padding-bottom: 0px;
-}
+/************ Adjustements to center explanation box *****************************************/
 .center_explanation_box_text_container {
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
-.tax_and_benefit_breakdown {
-  padding-top: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 90%;
+.explanation_text {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+#benefits_breakdown_button {
+	display: none;
 }
 #marginal_tax_rate {
   margin-bottom: 0px;
   padding-bottom: 0px;
-}
-.show_all_button{
-	display: none;
-	width: 15%;
-	height: 100%;
-	border: none;
-	text-align: left;
-	margin-left: 10px;
-	padding: 0px;
-  color: var(--base-border);
-  background-color: var(--center-explanation-box);
-}
-.show_all_button:hover {
-	background-color: var(--center-explanation-box);
-}
-#benefit_loss_text {
-	display: inline-block;
 }
 #benefits_breakdown {
 	display: none;
@@ -45,29 +26,15 @@
 	padding-bottom: 0px;
 	padding-left: 20px;
 }
-.benefits_breakdown_item {
-	padding: 0;
-}
 #rounding_disclaimer {
 	font-size: 60%;
 	margin-top: 0px;
 	padding-bottom: 0px;
 	display: none;
 }
-.explanation_text {
-	margin-bottom: 0px;
-	margin-top: 0px;
-}
-/******************************* Table adjustments ***************/
+/************* Table adjustments ************************************************************/
 table.FPL {
   float: right;
   margin-top: 8px;
 }
-/******************************* Appendix ***********************/
-/* 
-#appendix-snap, #appendix-ssi, #appendix-ptc, #appendix-csr {
-	display: none;
-}
-*/
-
 

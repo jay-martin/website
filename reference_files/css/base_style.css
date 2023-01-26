@@ -35,6 +35,9 @@ p.inline {
   display: inline-block;
   margin: 0px;
 }
+.inline-block {
+  display: inline-block;
+}
 p.top {
   margin-top: -5px;
 }
@@ -579,6 +582,29 @@ input[type=submit].end_animation {
 }
 input[type=submit].end_animation:disabled:hover {
   cursor: default;
+}
+.show_all_button_container {
+  display: inline-block;
+  border: none;
+  margin-left: 10px;
+}
+button.show_all_button {
+  height: 100%;
+  width: fit-content;
+  text-align: left;
+  padding: 0px;
+  color: var(--base-border);
+  background-color: var(--center-explanation-box);
+  border: none;
+}
+.center_box_breakdown {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 90%;
+}
+li.breakdown_item {
+  padding: 0;
 }
 /********** Chart Logo *************/
 .chart_title_logo_container {

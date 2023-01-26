@@ -418,4 +418,22 @@ function open_and_close_chart_notes(chartID){
   }
 }
 
+/******************************** 10. Open/Close Center Box Breakdown ******************************/
+var breakdown_states = new Object(); //dictionary to keep track of which chart notes are open
+
+/** Reveals benefits breakdown when the "show all" button is clicked
+ * @param {string} - the html id of the breadkdown to be opened
+ * */
+function open_and_close_breakdown(listID, buttonID){
+  if(breakdown_states[listID] === 'open'){
+    document.getElementById(buttonID).innerHTML = 'Collapse';
+    document.getElementById(listID).style.display = 'block';
+    breakdown_states[listID] = 'closed';
+  }
+  else {
+    document.getElementById(buttonID).innerHTML = 'Show all';
+    document.getElementById(listID).style.display = 'none';
+    breakdown_states[listID] = 'open';
+  }
+}
 

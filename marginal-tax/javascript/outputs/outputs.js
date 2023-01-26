@@ -3,16 +3,13 @@
  * as well as the function that reveal the highlights when clicked
  * ****************************************************************************************/
 
-/*Default values */
+// Default values
 document.getElementById('marginal_tax_rate').innerHTML = 'On an additional dollar of income, you face an effective marginal tax rate of <b>12%</b>.';
 document.getElementById('tax_liability').innerHTML = '<b>12¢</b> in income tax.';
 document.getElementById('benefit_loss_text').innerHTML = 'You have not selected any benefits.';
 
-/* store whether the benefits breakdown container has been opened */
-show_benefits_isClicked = false;
-
-/* Outputs to screen the marginal tax rate*/
-function output1(){
+// Outputs to screen the marginal tax rate
+function top_chart_outputs(){
 	income = user_income.value;
     numChildren = num_children.value;
     householdSize = household_size('single', numChildren);
@@ -29,10 +26,10 @@ function output1(){
     benefitLoss = eitc + ctc + snap + ptc + ssi;
     taxRate = taxLiability + benefitLoss;
 
-    /* Default is for the rounding disclaimer not to be displayed. If any output requires decimal places, the rounding disclaimer will be triggered */
+    // Default is for the rounding disclaimer not to be displayed. If any output requires decimal places, the rounding disclaimer will be triggered
     //document.getElementById('rounding_disclaimer').style.display = 'none';
 
-    /*format taxRate that there is a decimal if values are not a whole number, but no decimal if it is a whole number */
+    // format taxRate that there is a decimal if values are not a whole number, but no decimal if it is a whole number
     if(taxRate.toFixed(2) - Math.floor(taxRate) !== 0){
     	taxRate_formatted = taxRate.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     	//document.getElementById('rounding_disclaimer').style.display = 'block';
@@ -42,14 +39,14 @@ function output1(){
     }
     document.getElementById('marginal_tax_rate').innerHTML = 'On an additonal dollar of income, you face an effective marginal tax rate of <b>' + taxRate_formatted + '%</b>.';
 
-    /* Format taxLiability */
+    // Format taxLiability
     if(taxLiability.toFixed(2) - Math.floor(taxLiability) !== 0){
     	taxLiability_formatted = taxLiability.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     	//document.getElementById('rounding_disclaimer').style.display = 'block';
     }
     else{taxLiability_formatted = taxLiability.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 
-    /* Conditionals for taxes */
+    // Conditionals for taxes
     if(isActive['income_tax'] && isActive['fica']){
     	document.getElementById('tax_liability').innerHTML = '<b>' + taxLiability_formatted + '¢</b> in income and payroll tax.';
     }
@@ -63,27 +60,28 @@ function output1(){
     	document.getElementById('tax_liability').innerHTML = 'You have not selected any taxes.'
     }
 
-    /* Format benefitLoss */
+    // Format benefitLoss
     if(benefitLoss.toFixed(2) - Math.floor(benefitLoss) !== 0){benefitLoss_formatted = benefitLoss.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
     else{benefitLoss_formatted = benefitLoss.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 
-    /* Conditionals for benefits */
+    // Conditionals for benefits
     numBenefitsActive = isActive['eitc'] + isActive['ctc'] + isActive['snap'] + isActive['ptc'] + isActive['ssi'];
     if(numBenefitsActive == 0){
     	document.getElementById('benefit_loss_text').innerHTML = 'You have not selected any benefits.'
-    	document.getElementById('show_all_button').style.display = 'none';
-    	/* The below is needed to reset the benefits breakdown after a user first selects several benefit and then unselects all of them  */
-    	show_benefits_isClicked = true;
-    	show_benefits_breakdown();
+    	document.getElementById('benefits_breakdown_button').style.display = 'none';
+    	
+    	// The below is needed to reset the benefits breakdown after a user first selects several benefit and then unselects all of them 
+    	breakdown_states['benefits_breakdown'] = 'closed';
+    	open_and_close_breakdown('benefits_breakdown', 'benefits_breakdown_button');
 
     }
     else{
-		document.getElementById('show_all_button').style.display = 'inline-block';
+		document.getElementById('benefits_breakdown_button').style.display = 'inline-block';
 
     	if(benefitLoss >= 0){
     		document.getElementById('benefit_loss_text').innerHTML = '<b>' + benefitLoss_formatted + '¢</b> of lost benefits.';
     	}
-    	else{
+    	else {
     		benefitLoss = benefitLoss * -1;
     		if(benefitLoss.toFixed(2) - Math.floor(benefitLoss) !== 0){benefitLoss_formatted = benefitLoss.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 		    else{benefitLoss_formatted = benefitLoss.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
@@ -91,7 +89,7 @@ function output1(){
     	}
     }
 
-    /* Function that determines which benefits to display in the benefits breakdown */
+    // function that determines which benefits to display in the benefits breakdown
     benefits_breakdown(eitc, ctc, snap, ptc, ssi);
 }
 
@@ -160,19 +158,5 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 	}
 	else{
 		document.getElementById('ssi_marginal').style.display = 'none';
-	}
-}
-
-/* Reveals benefits breakdown when the "show all" button is clicked */
-function show_benefits_breakdown(){
-	if(show_benefits_isClicked === false){
-		document.getElementById('show_all_button').innerHTML = 'Collapse';
-		document.getElementById('benefits_breakdown').style.display = 'block';
-		show_benefits_isClicked = true;
-	}
-	else{
-		document.getElementById('show_all_button').innerHTML = 'Show all';
-		document.getElementById('benefits_breakdown').style.display = 'none';
-		show_benefits_isClicked = false;
 	}
 }

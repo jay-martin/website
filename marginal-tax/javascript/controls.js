@@ -16,7 +16,6 @@ var isActive = {
 /******************************************************** Controls for benefit buttons *******************************************************/
 function add_benefit(benefit){
 	id = '#' + benefit + '_button';
-	console.log(id);
 
 	if(isActive[benefit]){
 		isActive[benefit] = false;

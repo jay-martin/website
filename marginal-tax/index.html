@@ -426,20 +426,20 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="small_button selected_button" id='income_tax_button' value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); output1()">
-          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();output1();">
-          <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); output1()">
+          <input type="submit" class="small_button selected_button" id='income_tax_button' value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();top_chart_outputs();">
+          <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); top_chart_outputs()">
         </div>
 
         <!--Disability Status-->
       <!--
         <div class="dropdown" id="disability_container">
           I am a
-          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();load_data();modifyIncome();output1();">
+          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();load_data();modifyIncome();top_chart_outputs();">
             <option value="not_disabled">non-disabled</option>
             <option value="disabled">disabled</option>
           </select>
@@ -457,7 +457,7 @@
         <!--Number of children-->
         <div class="dropdown" id="num_children_container">
           <label>who has
-          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();adjust_axes_numChildren();output1();">
+          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();adjust_axes_numChildren();top_chart_outputs();">
             <option value="none">no children</option>
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
@@ -469,7 +469,7 @@
         <!--Employer-sponsored healthcare-->
       <!--
         <div class="dropdown" id="disability_container">
-          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();load_data();modifyIncome();output1();">
+          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();load_data();modifyIncome();top_chart_outputs();">
             <option value="no_employer">do not have</option>
             <option value="employer">have</option>
           </select>
@@ -481,14 +481,14 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <label for="user_income" class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">15,000</output> this year:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output1();adjust_arbitrary_income();">
+            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();top_chart_outputs();adjust_arbitrary_income();">
           </div>
         </div>
 
         <!--Power Users: Arbitrary income-->
         <div class="arbitray_income_container" id="arbitray_income_container">
           <label for="arbitray_income">Input income:</label>
-          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modifyIncome();output1();">
+          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modifyIncome();top_chart_outputs();">
           (Income slider now moves in dollar increments)
         </div>
 
@@ -498,15 +498,20 @@
       <div class="center_explanation_box" id="center_explanations_container"> <!--Center box-->
         <div class="center_explanation_box_text_container">
           <p class="explanation_text" id="marginal_tax_rate"></p>
-          <ul class="tax_and_benefit_breakdown">
+          <ul class="center_box_breakdown">
             <li id="tax_liability"></li>
-            <li id="benefit_loss"><div id="benefit_loss_text"></div><button class="show_all_button" id="show_all_button" onclick="show_benefits_breakdown();">Show all</button></li>
-              <ul class="tax_and_benefit_breakdown" id="benefits_breakdown">
-                <li class="benefits_breakdown_item" id="eitc_marginal"></li>
-                <li class="benefits_breakdown_item" id="ctc_marginal"></li>
-                <li class="benefits_breakdown_item" id="snap_marginal"></li>
-                <li class="benefits_breakdown_item" id="ptc_marginal"></li>
-                <li class="benefits_breakdown_item" id="ssi_marginal"></li>
+            <li id="benefit_loss">
+              <div class="inline-block" id="benefit_loss_text"></div>
+              <div class="show_all_button_container">
+                <button class="show_all_button" id="benefits_breakdown_button" onclick="open_and_close_breakdown('benefits_breakdown', 'benefits_breakdown_button');">Show all</button>
+              </div>
+            </li>
+              <ul class="center_box_breakdown" id="benefits_breakdown">
+                <li class="breakdown_item" id="eitc_marginal"></li>
+                <li class="breakdown_item" id="ctc_marginal"></li>
+                <li class="breakdown_item" id="snap_marginal"></li>
+                <li class="breakdown_item" id="ptc_marginal"></li>
+                <li class="breakdown_item" id="ssi_marginal"></li>
               </ul>
           </ul>
           <!--<p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>-->
