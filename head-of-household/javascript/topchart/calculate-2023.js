@@ -29,8 +29,8 @@ function hoh_chart_values_2023(itemDeduct){
 
 	// Calculate the difference in taxes between single and hoh
 	tax_difference = [];
-	for (var i = 0; i < combined_brackets.length; i++) {
-		tax_difference.push(single_tax_liability_2023_with_deduction_value(single_deduction) - hoh_tax_liability_2023_with_deduction_value(hoh_deduction));
+	for(income of combined_brackets){
+		tax_difference.push(hoh_tax_difference_2023(income, itemDeduct));
 	}
 
 	return [combined_brackets, tax_difference];
@@ -124,9 +124,9 @@ function combined_brackets_2023(single_tax_brackets, hoh_tax_brackets){
 	// Sort in ascending order
 	combined_brackets = Array.from(brackSet).sort(function(a,b){return a-b;});
 
-	// Add $0 and $600,000
+	// Add $0 and $620,000
 	combined_brackets.unshift(0);
-	combined_brackets.push(600000);
+	combined_brackets.push(620000);
 
 	return combined_brackets;
 }
