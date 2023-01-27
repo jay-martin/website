@@ -571,6 +571,34 @@ p.chart_description {
 .center_explanation_box:scrollbar { 
   display: none;  /* Safari and Chrome */
 }
+p.explanation_text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.show_all_button_container {
+  display: inline-block;
+  margin: 0;
+}
+button.show_all_button {
+  height: fit-content;
+  width: fit-content;
+  text-align: left;
+  font-size: 80%;
+  padding: 0px;
+  margin-left: 10px;
+  color: var(--base-border);
+  background-color: var(--center-explanation-box);
+  border: none;
+}
+ul.center_box_breakdown {
+  padding-top: 0px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-size: 95%;
+}
+li.breakdown_item {
+  padding: 0;
+}
 input[type=submit].end_animation {
   font-family: "Computer Modern Sans";
   float: right;
@@ -582,29 +610,6 @@ input[type=submit].end_animation {
 }
 input[type=submit].end_animation:disabled:hover {
   cursor: default;
-}
-.show_all_button_container {
-  display: inline-block;
-  border: none;
-  margin-left: 10px;
-}
-button.show_all_button {
-  height: 100%;
-  width: fit-content;
-  text-align: left;
-  padding: 0px;
-  color: var(--base-border);
-  background-color: var(--center-explanation-box);
-  border: none;
-}
-.center_box_breakdown {
-  padding-top: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 90%;
-}
-li.breakdown_item {
-  padding: 0;
 }
 /********** Chart Logo *************/
 .chart_title_logo_container {

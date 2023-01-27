@@ -7,3 +7,10 @@
 .children_dropdown {
   display: inline-block;
 }
+@media screen and (max-width: 700px) {
+  #marriage_penalty_breakdown_button {
+    display: block;
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}

@@ -17,11 +17,12 @@
 	display: none;
 }
 #marginal_tax_rate {
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   padding-bottom: 0px;
 }
 #benefits_breakdown {
 	display: none;
+	margin-top: 5px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	padding-left: 20px;

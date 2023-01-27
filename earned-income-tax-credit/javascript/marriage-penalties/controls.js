@@ -6,9 +6,7 @@ function switch_marriage_penalty_chart_type(){
 		mp_person2_income.max = '60000';
 
 		// Outputs
-		document.getElementById('mp_married_value').style.display = 'block';
-		document.getElementById('mp_marriage_penalty').style.display = 'block';
-		marriage_penalty_intuitive_outputs();
+		marriage_penalty_outputs();
 
 		// legend
 		MPchart.legend.show(['person1', 'person2', 'person2_dashed', 'married']);
@@ -31,9 +29,7 @@ function switch_marriage_penalty_chart_type(){
 		mp_person2_income.max = '70000';
 
 		// Outputs
-		marriage_penalty_values_outputs();
-		document.getElementById('mp_married_value').style.display = 'none';
-		document.getElementById('mp_marriage_penalty').style.display = 'none';
+		marriage_penalty_outputs();
 
 		// y & x grids
 		MPchart.ygrids([ {value: 0,} ]);
@@ -100,15 +96,5 @@ function marriage_penalty_modify_person2_income(){
 	else if(marriage_penalty_chart_type.value === 'values'){
 		marriage_penalties_values_adjust_chart();
 		marriage_penalties_values_modify_income();
-	}
-}
-
-/************************* Outputs *********************************/
-function marriage_penalty_outputs(){
-	if(marriage_penalty_chart_type.value === 'intuitive'){
-		marriage_penalty_intuitive_outputs();
-	}
-	else if(marriage_penalty_chart_type.value === 'values'){
-		marriage_penalty_values_outputs();
 	}
 }

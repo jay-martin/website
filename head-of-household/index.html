@@ -767,9 +767,13 @@
 
     <!--Center box-->
     <div class="center_explanation_box" id="marriage_penalties_center_explanation_box">
-      <p class="explanation_text" id="marriage_penalty_individual"></p>
-      <p class="explanation_text" id="marriage_penalty_married"></p>
-      <p class="explanation_text" id="marriage_penalty_bonus"></p>
+      <p class="explanation_text inline-block" id="marriage_penalty_bonus"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="marriage_penalty_breakdown" style="display:none">
+        <li id="marriage_penalty_individual"></li>
+        <li id="marriage_penalty_married"></li>
+        <li id="marriage_penalty_explanation_line"></li>
+      </ul>
     </div>
 
     <div id="marriage_penalty_chart"></div> <!--Div for single/married tax chart-->

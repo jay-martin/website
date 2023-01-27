@@ -688,9 +688,13 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="mp_individual_values"></p>
-      <p class="explanation_text" id="mp_married_value"></p>
-      <p class="explanation_text" id="mp_marriage_penalty"></p>
+      <p class="explanation_text inline-block" id="mp_marriage_penalty"><button class="show_all_button" id="mp_breakdown_button" onclick="open_and_close_breakdown('mp_breakdown', 'mp_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="mp_breakdown" style="display:none">
+        <li id="mp_individual_values"></li>
+        <li id="mp_married_value"></li>
+        <li id="mp_explanation_line"></li>
+      </ul>
     </div>
 
     <!-- End animation button -->
