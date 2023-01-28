@@ -47,7 +47,7 @@ function switch_tax_chart_type(chart_name){
 
 		// y & x grids
 		chart.ygrids([ {value: 0,} ]);
-		chart.xgrids([ {value: hoh_tax_person1_income.value, text: 'Your Income'} ]);
+		chart.xgrids([ {value: person1_income_element.value, text: 'Your Income'} ]);
 
 		// curves
 		chart.hide(['person1', 'person2', 'person2_dashed', 'married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'point1', 'point2', 'point_married']);

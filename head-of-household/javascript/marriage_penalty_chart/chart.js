@@ -8,7 +8,7 @@ else{
     hoh_fix_tick = [0, 20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000];
 }
 
-var marriagePenaltyChart = c3.generate({
+var marriage_penalty_chart = c3.generate({
     bindto: '#marriage_penalty_chart',
     data: {
         xs: {
@@ -18,10 +18,10 @@ var marriagePenaltyChart = c3.generate({
             'married' : 'x3',
 
             'combined_tax' : 'x_horizontal',
-            'penalty'      : 'x_horizontal',
+            'tax_penalty'  : 'x_horizontal',
 
             'married_tax'  : 'x_horizontal',
-            'bonus'        : 'x_horizontal',
+            'tax_bonus'    : 'x_horizontal',
 
             'point1' : 'x_point1',
             'point2' : 'x_point2',
@@ -41,7 +41,7 @@ var marriagePenaltyChart = c3.generate({
 
             ['x_horizontal', 0,    200000],
             ['combined_tax', 9718, 9718],
-            ['penalty',      1203, 1203],
+            ['tax_penalty',  1203, 1203],
 
             ['x_point1', 80000],
             ['point1',   6800],
@@ -53,16 +53,16 @@ var marriagePenaltyChart = c3.generate({
         hide: ['person2_dashed'],
         types: {
             'combined_tax' : 'area',
-            'penalty'      : 'area',
+            'tax_penalty'  : 'area',
             'married_tax'  : 'area',
-            'bonus'        : 'area',
+            'tax_bonus'    : 'area',
 
             'values'       : 'area',
         },
         regions: {
             person2_dashed : [ {'style':'dashed'}, ],
         },
-        groups: [ ['married_tax', 'bonus'], ['combined_tax', 'penalty'] ], 
+        groups: [ ['married_tax', 'tax_bonus'], ['combined_tax', 'tax_penalty'] ], 
         order: false,
         names: {
             person1: 'Your Tax Schedule',
@@ -82,12 +82,12 @@ var marriagePenaltyChart = c3.generate({
             point_married: white_or_black,
 
             combined_tax : 'red',
-            penalty      : 'red',
+            tax_penalty  : 'red',
 
             married_tax : '#36D903',
-            bonus       : '#36D903',    
+            tax_bonus   : '#36D903',    
 
-            values : '#eb3734',
+            values       : '#eb3734',
             values_point : '#eb3734',
         },
     },
@@ -99,7 +99,7 @@ var marriagePenaltyChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['values', 'values_point', 'point1', 'point2', 'point_married', 'married_tax', 'bonus', 'combined_tax', 'penalty', 'person2_dashed'],
+        hide: ['values', 'values_point', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'person2_dashed'],
     },
     tooltip: {
         show: false

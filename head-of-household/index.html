@@ -723,8 +723,8 @@
     <h3 class='chart_title'>Head of Household Creates Marriage Penalties</h3>
 
     <!--Chart type-->
-    <label for="marriage_penalty_chart_typle">Show chart as: </label>
-    <select id="marriage_penalty_chart_type" oninput="switch_marriage_penalty_chart_type()" >
+    <label for="marriage_penalty_chart_type">Show chart as: </label>
+    <select id="marriage_penalty_chart_type" oninput="switch_tax_chart_type('marriage_penalty')" >
       <option value="intuitive">Intuitive</option>
       <option value="values">Values</option>
     </select>
@@ -733,16 +733,14 @@
 
     <!--Person 1 filing status-->
     <label for="marriage_penalty_person1_filing_status">I am a </label>
-    <select id="marriage_penalty_person1_filing_status" oninput='marriage_penalty_adjust_person1_filing_status();
-      marriage_penalty_outputs();' >
+    <select id="marriage_penalty_person1_filing_status" oninput="tax_adjust_person1_filing_status('marriage_penalty');" >
       <option value="single">single filer</option>
       <option value="hoh" selected>head of household</option>
     </select>
 
     <!--Person 2 filing status-->
     <label for="marriage_penalty_person2_filing_status">and my partner is a </label>
-    <select id="marriage_penalty_person2_filing_status" oninput='marriage_penalty_adjust_person2_filing_status();
-      marriage_penalty_outputs();' >
+    <select id="marriage_penalty_person2_filing_status" oninput="tax_adjust_person2_filing_status('marriage_penalty');" >
       <option value="single">single filer</option>
       <option value="hoh">head of household</option>
     </select>.
@@ -751,8 +749,7 @@
     <div class="slidecontainer"> 
       <label for="marriage_penalty_person1_income" class="slider-text" id="income_slider_text">I have an income of $<output id="marriage_penalty_person1_income_output">80,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');marriage_penalty_modify_person1_income();
-          marriage_penalty_outputs();">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('marriage_penalty')">
       </div>
     </div>
 
@@ -760,14 +757,13 @@
     <div class="slidecontainer"> 
       <label for="marriage_penalty_person2_income" class="slider-text">My partner has an income of $<output id="marriage_penalty_person2_income_output">40,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');marriage_penalty_modify_person2_income();
-          marriage_penalty_outputs();">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('marriage_penalty');">
       </div>
     </div>
 
     <!--Center box-->
     <div class="center_explanation_box" id="marriage_penalties_center_explanation_box">
-      <p class="explanation_text inline-block" id="marriage_penalty_bonus"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
+      <p class="explanation_text inline-block" id="marriage_penalty_penalty"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="marriage_penalty_breakdown" style="display:none">
         <li id="marriage_penalty_individual"></li>
@@ -912,6 +908,12 @@
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
+<!-- Tax chart reference files -->
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/controls.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/values-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/outputs.js"></script>
+
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
@@ -934,12 +936,7 @@
 
 <!-- Marriage Penalty Chart Javascript Files -->
 <script type="text/javascript" src="./javascript/marriage_penalty_chart/chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage_penalty_chart/controls.js"></script>
-<script type="text/javascript" src="./javascript/marriage_penalty_chart/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage_penalty_chart/outputs.js"></script>
-
-<script type="text/javascript" src="./javascript/marriage_penalty_chart/penalty-values/chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage_penalty_chart/penalty-values/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage_penalty_chart/default-outputs.js"></script>
 
 </body>
 </html>
