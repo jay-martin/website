@@ -422,16 +422,23 @@
     <div class="user_inputs" id="user_inputs">
 
       <!--Benefit Selector-->
-      <label for="benefit_selector">Show me the</label>
-      <select id="benefit_selector" oninput="switch_chart()">
+      <label for="top_chart_benefit_selector">Show me the</label>
+      <select id="top_chart_benefit_selector" oninput="top_chart_change_benefit()">
         <option value="eitc">Earned Income Tax Credit</option>
         <option value="hoh">Head of Household Filing Status</option>
       </select>
 
+      <!--Chart type-->
+      <label for="top_chart_chart_type">and show chart as: </label>
+      <select id="top_chart_chart_type" oninput="top_chart_switch_chart_type();" >
+        <option value="intuitive" selected>Intuitive</option>
+        <option value="values">Values</option>
+      </select>
+
       <div id="eitc_user_inputs">
         <!--Person 1 number of old children-->
-        <label for="numChildrenPerson1">I have</label>
-        <select name="person1Children" id="person1_children" oninput="modify_person1();modify_married();modify_income('children')">
+        <label for="top_chart_person1_children">I have</label>
+        <select id="top_chart_person1_children" oninput="top_chart_adjust_person1_children();">
           <option value="none">no children</option>
           <option value="one" selected>1 child</option>
           <option value="two">2 children</option>
@@ -439,8 +446,8 @@
         </select>
 
         <!--Person 2 number of old children-->
-        <label for="numChildrenPerson2">and my partner has</label>
-        <select name="person2Children" id="person2_children" oninput="modify_person2();modify_married();modify_income('children')" >
+        <label for="top_chart_person2_children">and my partner has</label>
+        <select id="top_chart_person2_children" oninput="top_chart_adjust_person2_children();" >
           <option value="none">no children</option>
           <option value="one" >1 child</option>
           <option value="two">2 children</option>
@@ -449,19 +456,26 @@
       </div> <!-- EITC user inputs-->
 
       <div id='hoh_user_inputs'>
-        <!--Partner filing status-->
-        <label for="person2_filing_status">My partner's filing status is:</label>
-        <select name="person2_filing_status" id="person2_filing_status" oninput="modify_person2_filing_status();modify_income();">
+        <!--Person 1 filing status-->
+        <label for="top_chart_person1_filing_status">I am a</label>
+        <select id="top_chart_person1_filing_status" oninput="top_chart_adjust_person1_filing_status();">
           <option value="single">Single Filer</option>
+          <option value="hoh" selected>Head of Household</option>
+        </select>
+
+        <!--Person 2 filing status-->
+        <label for="top_chart_person2_filing_status"> and my partner is a</label>
+        <select id="top_chart_person2_filing_status" oninput="top_chart_adjust_person2_filing_status();">
+          <option value="single" selected>Single Filer</option>
           <option value="hoh">Head of Household</option>
         </select>
       </div>
 
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
-        <label for="person1_income" class="slider-text"> I have an income of $<output id="person1_income_output">30,000</output>:</label>
+        <label for="top_chart_person1_income" class="slider-text"> I have an income of $<output id="person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="top_chart_person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_adjust_person1_income();">
         </div>
       </div>
 
@@ -473,9 +487,9 @@
 
       <!--Person 2 income slider-->
       <div class="slidecontainer"> 
-        <label for="person2_income" class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</label>
+        <label for="top_chart_person2_income" class="slider-text"> My partner has an income of $<output id="person2_income_output">10,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income('income-slider');adjust_arbitrary_income();">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="top_chart_person2_income" oninput="person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_adjust_person2_income();">
         </div>
       </div>
 
@@ -489,22 +503,26 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="individual_values"></p>
-      <p class="explanation_text" id="married_value"></p>
-      <p class="explanation_text" id="marriage_penalty_output"></p>
+      <p class="explanation_text inline-block" id="top_chart_penalty"><button class="show_all_button" id="top_chart_breakdown_button" onclick="open_and_close_breakdown('top_chart_breakdown', 'top_chart_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="top_chart_breakdown" style="display:none">
+        <li id="top_chart_individual"></li>
+        <li id="top_chart_married"></li>
+        <li id="top_chart_explanation_line"></li>
+      </ul>
 
-      <p class="explanation_text" id="explanation_line1"></p>
-      <p class="explanation_text" id="explanation_line2"></p>
-      <p class="explanation_text" id="explanation_line3"></p>
-      <p class="explanation_text" id="explanation_line4"></p>
-      <p class="explanation_text" id="explanation_line5"></p>
-      <p class="explanation_text" id="explanation_line6"></p>
-      <p class="explanation_text" id="explanation_line7"></p>
-      <p class="explanation_text" id="explanation_line8"></p>
-      <p class="explanation_text" id="explanation_line9"></p>
-      <p class="explanation_text" id="explanation_line10"></p>
-      <p class="explanation_text" id="explanation_line11"></p>
-      <p class="explanation_text" id="explanation_line12"></p>
+      <p class="explanation_text hidden" id="explanation_line1"></p>
+      <p class="explanation_text hidden" id="explanation_line2"></p>
+      <p class="explanation_text hidden" id="explanation_line3"></p>
+      <p class="explanation_text hidden" id="explanation_line4"></p>
+      <p class="explanation_text hidden" id="explanation_line5"></p>
+      <p class="explanation_text hidden" id="explanation_line6"></p>
+      <p class="explanation_text hidden" id="explanation_line7"></p>
+      <p class="explanation_text hidden" id="explanation_line8"></p>
+      <p class="explanation_text hidden" id="explanation_line9"></p>
+      <p class="explanation_text hidden" id="explanation_line10"></p>
+      <p class="explanation_text hidden" id="explanation_line11"></p>
+      <p class="explanation_text hidden" id="explanation_line12"></p>
 
     </div>
 
@@ -512,7 +530,7 @@
     <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled />
 
     <!-- Marriage Penalties Chart -->
-    <div class='chart_actual' id="MPchart"></div>
+    <div class='chart_actual' id="top_chart"></div>
 
     <!-- Chart Title & Logo -->
   <!--
@@ -693,25 +711,34 @@
   <div class = "chart">
     <h3 class='chart_title'>Head of Household Creates Marriage Penalties</h3>
 
+    <!--Chart type-->
+    <label for="hoh_tax_chart_type">Show chart as: </label>
+    <select id="hoh_tax_chart_type" oninput="switch_tax_chart_type('hoh_tax')" >
+      <option value="intuitive">Intuitive</option>
+      <option value="values">Values</option>
+    </select>
+
+    <br>
+
     <!--Person 1 filing status-->
     <label for="hoh_tax_person1_filing_status">I am a </label>
-    <select id="hoh_tax_person1_filing_status" oninput='hoh_tax_modify_person1();hoh__tax_modify_income();hoh_tax_outputs();' >
+    <select id="hoh_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('hoh_tax');" >
       <option value="single">single filer</option>
       <option value="hoh" selected>head of household</option>
     </select>
 
     <!--Person 2 filing status-->
     <label for="hoh_tax_person2_filing_status">and my partner is a </label>
-    <select id="hoh_tax_person2_filing_status" oninput='hoh_tax_modify_person2();hoh_tax_modify_income();hoh_tax_outputs();' >
+    <select id="hoh_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('hoh_tax');" >
       <option value="single">single filer</option>
       <option value="hoh">head of household</option>
     </select>.
 
     <!--Person 1 income slider-->
     <div class="slidecontainer"> 
-      <label for="hoh_tax_person1_income" class="slider-text" id="income_slider_text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</label>
+      <label for="hoh_tax_person1_income" class="slider-text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('hoh_tax');">
       </div>
     </div>
 
@@ -719,19 +746,22 @@
     <div class="slidecontainer"> 
       <label for="hoh_tax_person2_income" class="slider-text">My partner has an income of $<output id="hoh_tax_person2_income_output">40,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');hoh_tax_modify_income();hoh_tax_outputs();">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('hoh_tax');">
       </div>
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="hoh_tax_individual"></p>
-      <p class="explanation_text" id="hoh_tax_married"></p>
-      <p class="explanation_text" id="hoh_tax_penalty"></p>
+    <div class="center_explanation_box">
+      <p class="explanation_text inline-block" id="hoh_tax_penalty"><button class="show_all_button" id="hoh_tax_breakdown_button" onclick="open_and_close_breakdown('hoh_tax_breakdown', 'hoh_tax_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="hoh_tax_breakdown" style="display:none">
+        <li id="hoh_tax_individual"></li>
+        <li id="hoh_tax_married"></li>
+        <li id="hoh_tax_explanation_line"></li>
+      </ul>
     </div>
 
-    <!-- HOH Tax Chart-->
-    <div id="hoh_tax_chart"></div>
+    <div id="hoh_tax_chart"></div> <!--Div for single/married tax chart-->
 
   </div> <!-- chart container-->
 
@@ -819,26 +849,36 @@
     The way you eliminate the marriage penalties inherent in the head of household filing status is very simple: you eliminate it entirely and plough the savings into a universal child benefit. This takes advantage of a convenient fact: that the single and married filing statuses are already set up in such a way that they do not create marriage penalties.
   </p>
 
+  <!----------- Single Filer Tax Chart-------------->
   <div class = "chart">
     <h3 class='chart_title'>Single Filer Status Does Not Create Marriage Penalties</h3>
 
+    <!--Chart type-->
+    <label for="single_tax_chart_type">Show chart as: </label>
+    <select id="single_tax_chart_type" oninput="switch_tax_chart_type('single_tax')" >
+      <option value="intuitive">Intuitive</option>
+      <option value="values">Values</option>
+    </select>
+
+    <br>
+
     <!--Person 1 filing status-->
     <label for="single_tax_person1_filing_status">I am a </label>
-    <select id="single_tax_person1_filing_status">
+    <select id="single_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('single_tax');" >
       <option value="single">single filer</option>
     </select>
 
     <!--Person 2 filing status-->
     <label for="single_tax_person2_filing_status">and my partner is a </label>
-    <select id="single_tax_person2_filing_status">
+    <select id="single_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('single_tax');" >
       <option value="single">single filer</option>
     </select>.
 
     <!--Person 1 income slider-->
     <div class="slidecontainer"> 
-      <label for="single_tax_person1_income" class="slider-text" id="income_slider_text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</label>
+      <label for="single_tax_person1_income" class="slider-text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
+        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('single_tax');">
       </div>
     </div>
 
@@ -846,15 +886,19 @@
     <div class="slidecontainer"> 
       <label for="single_tax_person2_income" class="slider-text">My partner has an income of $<output id="single_tax_person2_income_output">40,000</output>:</label>
       <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');single_tax_modify_income();single_tax_outputs();">
+        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('single_tax');">
       </div>
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text" id="single_tax_individual_values"></p>
-      <p class="explanation_text" id="single_tax_married_value"></p>
-      <p class="explanation_text" id="single_tax_bonus"></p>
+    <div class="center_explanation_box">
+      <p class="explanation_text inline-block" id="single_tax_penalty"><button class="show_all_button" id="single_tax_breakdown_button" onclick="open_and_close_breakdown('single_tax_breakdown', 'single_tax_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="single_tax_breakdown" style="display:none">
+        <li id="single_tax_individual"></li>
+        <li id="single_tax_married"></li>
+        <li id="single_tax_explanation_line"></li>
+      </ul>
     </div>
 
     <div id="single_tax_chart"></div> <!--Div for single/married tax chart-->
@@ -868,9 +912,73 @@
   <h2>The Earned Income Tax Credit</h2>
   <div class="article_tag"><em>Program Page: <a href="../earned-income-tax-credit/index.html" target="_blank">Earned Income Tax Credit</a> </em></div>
 
-  <p class="top">
-    The EITC...
-  </p>
+  <div class = "chart">
+    <h3 class='chart_title'>The EITC Creates Marriage Penalties</h3>
+    
+    <!--User inputs-->
+    <div class="user_inputs">
+
+      <!--Chart type-->
+      <label for="eitc_marriage_penalty_chart_type">Show chart as: </label>
+      <select id="eitc_marriage_penalty_chart_type" oninput="switch_eitc_marriage_penalty_chart_type('eitc_marriage_penalty');" >
+        <option value="intuitive">Intuitive</option>
+        <option value="values" selected>Values</option>
+      </select>
+
+      <br>
+
+      <!--Person 1 number of children-->
+      <label>I have
+      <select id="eitc_marriage_penalty_person1_children" oninput="eitc_marriage_penalty_adjust_person1_num_children('eitc_marriage_penalty')">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select>
+      </label>
+
+      <!--Person 2 number of children-->
+      <label>and my partner has
+      <select id="eitc_marriage_penalty_person2_children" oninput="eitc_marriage_penalty_adjust_person2_num_children('eitc_marriage_penalty');" >
+        <option value="none">no children</option>
+        <option value="one" >1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3+ children</option>
+      </select></label>
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <label for="eitc_marriage_penalty_person1_income" class="slider-text"> I have an income of $<output id="eitc_marriage_penalty_person1_income_output">30,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="eitc_marriage_penalty_person1_income" oninput="eitc_marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person1_income('eitc_marriage_penalty');">
+        </div>
+      </div>
+
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <label for="eitc_marriage_penalty_person2_income" class="slider-text"> My partner has an income of $<output id="eitc_marriage_penalty_person2_income_output">10,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="eitc_marriage_penalty_person2_income" oninput="eitc_marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person2_income('eitc_marriage_penalty');">
+        </div>
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!--Center Explanation Box-->
+    <div class="center_explanation_box">
+      <p class="explanation_text inline-block" id="eitc_marriage_penalty_penalty"><button class="show_all_button" id="eitc_marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('eitc_marriage_penalty_breakdown', 'eitc_marriage_penalty_breakdown_button');">Show All</button>
+      </p>
+      <ul class="center_box_breakdown" id="eitc_marriage_penalty_breakdown" style="display:none">
+        <li id="eitc_marriage_penalty_individual"></li>
+        <li id="eitc_marriage_penalty_married"></li>
+        <li id="eitc_marriage_penalty_explanation_line"></li>
+      </ul>
+    </div>
+
+    <!-- Chart -->
+    <div id="eitc_marriage_penalty_chart"></div>
+
+  </div> <!--chart end-->
 
   <h3>Constructing an EITC with Minimal Marriage Penalties</h3>
 
@@ -1511,30 +1619,44 @@
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
-<!-- Top Chart Javascipt Files -->
+<!-- Default Outputs -->
+<script type="text/javascript" src="./javascript/default-outputs.js"></script>
+
+<!-- Tax chart reference files -->
+<script type="text/javascript" src="./javascript/reference-files/tax-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/tax-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/tax-chart/values-chart.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/tax-chart/outputs.js"></script>
+
+<!-- EITC chart reference files -->
+<script type="text/javascript" src="./javascript/reference-files/eitc-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/eitc-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/eitc-chart/values-chart.js"></script>
+<script type="text/javascript" src="./javascript/reference-files/eitc-chart/outputs.js"></script>
+
+<!-- Top Chart -->
 <script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/eitc/calculate.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/eitc/outputs.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/eitc/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/hoh/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/hoh/outputs.js"></script>
+
+
 <script type="text/javascript" src="./javascript/top-chart/both/adjust-chart.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/both/outputs.js"></script>
+
+
+<!-- Top Animations -->
 <script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/animations/basic-overview-animation.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/animations/marriage-bonus-animation.js"></script>
 
 <!-- HOH Tax Javascript Files -->
 <script type="text/javascript" src="./javascript/hoh-tax/chart.js"></script>
-<script type="text/javascript" src="./javascript/hoh-tax/outputs.js"></script>
-<script type="text/javascript" src="./javascript/hoh-tax/adjust-chart.js"></script>
 
 <!-- Single Tax Javascipt Files -->
 <script type="text/javascript" src="./javascript/single-tax/chart.js"></script>
-<script type="text/javascript" src="./javascript/single-tax/outputs.js"></script>
-<script type="text/javascript" src="./javascript/single-tax/adjust-chart.js"></script>
+
+<!-- EITC Base Chart -->
+<script type="text/javascript" src="./javascript/eitc-base/chart.js"></script>
 
 <!-- EITC Explainer Javascript Files -->
 <script type="text/javascript" src="./javascript/eitc-explainer/chart.js"></script>

@@ -8,21 +8,27 @@ else{
     hoh_fix_tick = [0, 20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000];
 }
 
-var singleTaxChart = c3.generate({
+var single_tax_chart = c3.generate({
     bindto: '#single_tax_chart',
     data: {
         xs: {
-            'person1' : 'x1',
-            'person2' : 'x2',
+            'person1'        : 'x1',
+            'person2'        : 'x2',
             'person2_dashed' : 'x2',
-            'married' : 'x3',
+            'married'        : 'x3',
 
-            'married_tax' : 'x_horizontal',
-            'bonus'       : 'x_horizontal',
+            'married_tax'    : 'x_horizontal',
+            'tax_bonus'      : 'x_horizontal',
 
-            'point1' : 'x_point1',
-            'point2' : 'x_point2',
-            'point_married' : 'x_point_married',
+            'combined_tax'   : 'x_horizontal',
+            'tax_penalty'    : 'x_horizontal',
+
+            'point1'         : 'x_point1',
+            'point2'         : 'x_point2',
+            'point_married'  : 'x_point_married',
+
+            'values'         : 'x_values',
+            'values_point'   : 'x_values_point',
         },
         columns: [
             ['x3',      0, 27700, 49700, 117150, 218450, 391900, 490200, 721450],
@@ -34,7 +40,7 @@ var singleTaxChart = c3.generate({
 
             ['x_horizontal', 0,     200000],
             ['married_tax',  10921, 10921 ],
-            ['bonus',        1858,  1858],
+            ['tax_bonus',    1858,  1858],
 
             ['x_point1', 80000],
             ['point1',   9861],
@@ -45,29 +51,38 @@ var singleTaxChart = c3.generate({
         ],
         types: {
            'married_tax' : 'area',
-           'bonus'       : 'area',
+           'tax_bonus'   : 'area',
+
+           'values'      : 'area',
         },
         regions: {
             person2: [ {'style':'dashed'}, ],
         },
-        groups: [ ['married_tax', 'bonus'] ], 
+        groups: [ ['married_tax', 'tax_bonus'] ], 
         order: false,
         names: {
-            person1: 'Your Tax Schedule',
-            person2: "Your Partner's Tax Schedule",
-            married: 'Your Married Tax Schedule',
+            person1 : 'Your Tax Schedule',
+            person2 : "Your Partner's Tax Schedule",
+            married : 'Your Married Tax Schedule',
+
+            values  : 'Marriage Penalty/Bonus',
         },
         colors: {
-            person1: '#6ab6fc',
-            point1:  '#6ab6fc',
-            person2: purple_shade,
-            person2_dashed: purple_shade,
-            point2: purple_shade,
-            married: white_or_black,
-            point_married: white_or_black,
+            person1 : '#6ab6fc',
+            point1  : '#6ab6fc',
 
-            married_tax : '#36D903',
-            bonus       : '#36D903',      
+            person2        : purple_shade,
+            person2_dashed : purple_shade,
+            point2         : purple_shade,
+
+            married        : white_or_black,
+            point_married  : white_or_black,
+
+            married_tax    : '#36D903',
+            tax_bonus      : '#36D903',    
+
+            values         : '#eb3734',
+            values_point   : '#eb3734',  
         },
     },
     padding: {
@@ -78,7 +93,7 @@ var singleTaxChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point1', 'point2', 'point_married', 'married_tax', 'bonus'],
+        hide: ['values', 'values_point', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus'],
     },
     tooltip: {
         show: false

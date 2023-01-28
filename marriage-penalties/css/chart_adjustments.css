@@ -1,16 +1,16 @@
 /******************* Hide Points ******************************/
-/* Top chart */
-.c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus, .c3-circles-person2_dashed, .c3-circles-hoh_penalty, .c3-circles-hoh_married, .c3-circles-hoh_comined, .c3-circles-hoh_bonus, .c3-circles-both_married, .c3-circles-both_penalty, .c3-circles-filler {
+/* EITC & Tax chart */
+.c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-person2_dashed, .c3-circles-values {
   display: none;
 }
 
-/* HOH Tax */
-.c3-circles-combined_tax {
+/* EITC Chart */
+.c3-circles-married_eitc, .c3-circles-combined_eitc, .c3-circles-penalty_eitc, .c3-circles-bonus_eitc {
   display: none;
 }
 
-/* Single Tax */
-.c3-circles-married_tax {
+/* Tax Chart */
+.c3-circles-married_tax, .c3-circles-combined_tax, .c3-circles-tax_penalty, .c3-circles-tax_bonus {
   display: none;
 }
 
@@ -46,10 +46,7 @@
 
 /******************* Opacity ******************************/
 /* Top chart */
-.c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-hoh_maried, .c3-area-hoh_combined, .c3-area-both_white, .c3-area-both_white_positive, .c3-area-both_white_negative {
-  opacity: 0 !important;
-}
-.c3-area-married_tax {
+.c3-area-married_eitc, .c3-area-combined_eitc, .c3-area-married_tax, .c3-area-combined_tax {
   opacity: 0 !important;
 }
 .c3-area-combined, .c3-area-married_value {

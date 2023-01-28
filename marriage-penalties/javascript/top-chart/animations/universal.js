@@ -31,7 +31,7 @@ function initialize_animation_currently_closed(){
 	p2Income = person2_income.value;
 	p1Children = person1_children.value;
 	p2Children = person2_children.value;
-	axisMax = MPchart.axis.max();
+	axisMax = top_chart.axis.max();
 
 	/*make end animation button visible */
 	document.getElementById('end_animation_button').style.display = 'block';
@@ -87,7 +87,7 @@ function initialize_animation_currently_closed(){
 		document.getElementById('center_explanations_container').style.height = totalHeight + 'px';
 
 		/* Clear xgrids */
-		MPchart.xgrids([]);
+		top_chart.xgrids([]);
 
 		/*fade out text*/
 		document.getElementById('individual_values').style.color = '#f5f3f2';
@@ -136,8 +136,8 @@ function initialize_animation_already_open(){
 	document.getElementById('explanation_line12').style.color = '#f5f3f2';
 
 	/* clear xgrids and ygrids*/
-	MPchart.xgrids([]);
-	MPchart.ygrids([]);
+	top_chart.xgrids([]);
+	top_chart.ygrids([]);
 
 	timer = 1000;
 	setTimeout(function () {
@@ -182,10 +182,10 @@ function end_animation(){
 	person2_children.value = p2Children;
 
 	/* remove regions */
-	MPchart.regions.remove({classes: ['penalty']});
+	top_chart.regions.remove({classes: ['penalty']});
 
 	/* revert x-axis */
-	MPchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];
+	top_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -223,8 +223,8 @@ function end_animation(){
 		document.getElementById('explanation_line12').innerHTML = '';
 
 		/* show charts */
-		MPchart.show();
-		MPchart.focus();
+		top_chart.show();
+		top_chart.focus();
 	}, timer);
 
 	timer += 1000;

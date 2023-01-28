@@ -1,6 +1,6 @@
 /* Hide HOH user inputs on page load (loads with EITC chart)*/
 #hoh_user_inputs {
-	display: none;
+	/* display: none; */
 }
 
 .box_title {
@@ -10,7 +10,10 @@
 	font-size: 120%;
 }
 
-/* Center text box */
+.hidden {
+	display: none;
+}
+/************************* Explainer chart *******************************/
 #eitc_explainer_chart_container {
 	position: relative; /* needed to position buttons */
 }
@@ -103,7 +106,12 @@
 	padding: 0;
 }
 
-/* Mobile adjustments */
+/************************* Spongebob Meme *******************************/
+#spongebob_meme {
+	display: none;
+}
+
+/************************* Mobile Adjustments *******************************/
 @media screen and (max-width: 800px) {
 	.step_number {
 		width: 15%;
@@ -114,10 +122,5 @@
 	.forward_back_buttons {
 		margin-top: 257.5px;
 	}
-}
-
-/****** Spongebob meme ****/
-#spongebob_meme {
-	display: none;
 }
 
