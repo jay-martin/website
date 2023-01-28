@@ -1,4 +1,4 @@
-var MPchart = c3.generate({
+var marriage_penalty_chart = c3.generate({
     bindto: '#marriage_penalties_chart',
     data: {
         xs: {
@@ -12,12 +12,12 @@ var MPchart = c3.generate({
             'point_married'  : 'x_point_married',
 
             'married_eitc'   : 'x_horizontal',
-            'penalty'        : 'x_horizontal',
+            'penalty_eitc'   : 'x_horizontal',
             'combined_eitc'  : 'x_horizontal',
-            'bonus'          : 'x_horizontal',
+            'bonus_eitc'     : 'x_horizontal',
 
             'values'         : 'x_values',
-            'values_point'   : 'x_point',
+            'values_point'   : 'x_values_point',
         },
         columns: [
             ['x3',       0, 11750, 28120, 53120],
@@ -30,10 +30,10 @@ var MPchart = c3.generate({
 
             ['x_horizontal',  0,    60000],
             ['married_eitc',  2097, 2097],
-            ['penalty',       1134, 1134],
+            ['penalty_eitc',       1134, 1134],
 
             ['combined_eitc',],
-            ['bonus',],
+            ['bonus_eitc',],
 
             ['x_point1', 30000],
             ['point1',   2646],
@@ -44,16 +44,16 @@ var MPchart = c3.generate({
         ],
         types: {
             'married_eitc'  : 'area',
-            'penalty'       : 'area',
+            'penalty_eitc'  : 'area',
             'combined_eitc' : 'area',
-            'bonus'         : 'area',
+            'bonus_eitc'    : 'area',
 
             'values' : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
         },
-        groups: [['married_eitc', 'penalty'], ['combined_eitc', 'bonus'], ['hoh_combined', 'hoh_penalty'], ['hoh_married', 'hoh_bonus'], ['both_white', 'both_penalty'], ['both_white_positive', 'both_bonus'], ['both_white_negative', 'both_bonus_negative'] ], 
+        groups: [['married_eitc', 'penalty_eitc'], ['combined_eitc', 'bonus_eitc'], ], 
         order: false,
         names: {
             person1        : 'Your EITC',
@@ -72,9 +72,9 @@ var MPchart = c3.generate({
             point_married  : white_or_black,
 
             married_eitc   : '#eb3734',
-            penalty        : '#eb3734',
+            penalty_eitc   : '#eb3734',
             combined_eitc  : '#36D903',
-            bonus          : '#36D903',
+            bonus_eitc     : '#36D903',
 
             values         : '#eb3734',
             values_point   : '#eb3734',
@@ -88,7 +88,7 @@ var MPchart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['value', 'values_point', 'married_eitc', 'penalty', 'combined_eitc', 'bonus', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
+        hide: ['value', 'values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
     },
     tooltip: {
         show: false

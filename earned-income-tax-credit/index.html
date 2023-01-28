@@ -637,8 +637,8 @@
     <div class="user_inputs">
 
       <!--Chart type-->
-      <label for="marriage_penalty_chart_typle">Show chart as: </label>
-      <select id="marriage_penalty_chart_type" oninput="switch_marriage_penalty_chart_type()" >
+      <label for="marriage_penalty_chart_type">Show chart as: </label>
+      <select id="marriage_penalty_chart_type" oninput="switch_eitc_marriage_penalty_chart_type('marriage_penalty')" >
         <option value="intuitive">Intuitive</option>
         <option value="values">Values</option>
       </select>
@@ -647,8 +647,7 @@
 
       <!--Person 1 number of children-->
       <label>I have
-      <select id="mp_person1_children" oninput="marriage_penalty_adjust_person1_num_children();
-        marriage_penalty_outputs();">
+      <select id="marriage_penalty_person1_children" oninput="eitc_marriage_penalty_adjust_person1_num_children('marriage_penalty')">
         <option value="none">no children</option>
         <option value="one" selected>1 child</option>
         <option value="two">2 children</option>
@@ -658,8 +657,7 @@
 
       <!--Person 2 number of children-->
       <label>and my partner has
-      <select id="mp_person2_children" oninput="marriage_penalty_adjust_person2_num_children();
-        marriage_penalty_outputs();" >
+      <select id="marriage_penalty_person2_children" oninput="eitc_marriage_penalty_adjust_person2_num_children('marriage_penalty')" >
         <option value="none">no children</option>
         <option value="one" >1 child</option>
         <option value="two">2 children</option>
@@ -668,19 +666,17 @@
 
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
-        <label for="mp_person1_income" class="slider-text"> I have an income of $<output id="mp_person1_income_output">30,000</output>:</label>
+        <label for="marriage_penalty_person1_income" class="slider-text"> I have an income of $<output id="mp_person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="mp_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');marriage_penalty_modify_person1_income();
-            marriage_penalty_outputs();">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person1_income('marriage_penalty');">
         </div>
       </div>
 
       <!--Person 2 income slider-->
       <div class="slidecontainer"> 
-        <label for="mp_person2_income" class="slider-text"> My partner has an income of $<output id="mp_person2_income_output">10,000</output>:</label>
+        <label for="marriage_penalty_person2_income" class="slider-text"> My partner has an income of $<output id="mp_person2_income_output">10,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="mp_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');marriage_penalty_modify_person2_income();
-            marriage_penalty_outputs();">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person2_income('marriage_penalty')">
         </div>
       </div>
 
@@ -688,12 +684,12 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p class="explanation_text inline-block" id="mp_marriage_penalty"><button class="show_all_button" id="mp_breakdown_button" onclick="open_and_close_breakdown('mp_breakdown', 'mp_breakdown_button');">Show All</button>
+      <p class="explanation_text inline-block" id="marriage_penalty_penalty"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
       </p>
-      <ul class="center_box_breakdown" id="mp_breakdown" style="display:none">
-        <li id="mp_individual_values"></li>
-        <li id="mp_married_value"></li>
-        <li id="mp_explanation_line"></li>
+      <ul class="center_box_breakdown" id="marriage_penalty_breakdown" style="display:none">
+        <li id="marriage_penalty_individual"></li>
+        <li id="marriage_penalty_married"></li>
+        <li id="marriage_penalty_explanation_line"></li>
       </ul>
     </div>
 
@@ -914,13 +910,21 @@
 <script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
 
+<!-- Tax chart reference files -->
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/controls.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/values-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/outputs.js"></script>
+
+<!-- EITC chart reference files -->
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/controls.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/values-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/outputs.js"></script>
+
 <!-- Marriage Penalties Javascript files -->
 <script type="text/javascript" src="./javascript/marriage-penalties/chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/controls.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/outputs.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/adjust-chart.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/calculate.js"></script>
-<script type="text/javascript" src="./javascript/marriage-penalties/penalty-values/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/default-outputs.js"></script>
 
 <!-- Complexity Chart Javascript files -->
 <script type="text/javascript" src="./javascript/complexity/chart.js"></script>
