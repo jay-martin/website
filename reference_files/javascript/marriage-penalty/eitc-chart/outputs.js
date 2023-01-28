@@ -32,10 +32,10 @@ function eitc_marriage_penalty_outputs(chart_name){
     }
 
     // chart type-specific outputs
-    if(chart_type.value === 'intuitive'){
+    if(chart_type === 'intuitive'){
         document.getElementById(line1).innerHTML = eitc_marriage_penalty_intuitive_outputs(chart_name, penalty);
     }
-    else if(chart_type.value === 'values'){
+    else if(chart_type === 'values'){
         document.getElementById(line1).innerHTML = eitc_marriage_penalty_values_outputs(chart_name, penalty, p1_income, p2_income);
     }
 }

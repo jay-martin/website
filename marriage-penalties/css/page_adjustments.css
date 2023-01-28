@@ -107,7 +107,7 @@
 }
 
 /************************* Mobile Adjustments *******************************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
 	.step_number {
 		width: 15%;
 	}
@@ -117,5 +117,12 @@
 	.forward_back_buttons {
 		margin-top: 257.5px;
 	}
+
+	#top_chart_breakdown_button, #hoh_tax_breakdown_button, #single_tax_breakdown_button, #eitc_marriage_penalty_breakdown_button {
+    display: block;
+    margin-left: 0;
+    margin-top: 5px;
+  }
 }
+
 
