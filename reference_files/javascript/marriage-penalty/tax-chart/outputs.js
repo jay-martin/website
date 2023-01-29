@@ -64,7 +64,7 @@ function tax_values_outputs(chart_name, penalty, p1_income, p2_income){
         penalty_text = "With your partner's income fixed at <b>$" + p2_income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your income of <b>$" + p1_income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, you face a <b><p class='inline red'>marriage penalty</p></b> of <b><p class='inline red'>$" + penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</p></b>";
     }
     else if(penalty.toFixed(0) == 0){
-        penalty_text = "Your family's taxes would <b>not change</b>";
+        penalty_text = "With your partner's income fixed at <b>$" + p2_income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b> and your income of <b>$" + p1_income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + "</b>, your family's taxes would <b>remain unchanged</b>"
     }
     else {
         bonus = penalty * -1;

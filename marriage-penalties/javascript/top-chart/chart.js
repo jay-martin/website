@@ -21,7 +21,6 @@ var top_chart_chart = c3.generate({
             'point2'        : 'x_point2',
             'point_married' : 'x_point_married',
 
-            'values'        : 'x_values',
             'values_point'  : 'x_values_point',
         },
         columns: [
@@ -57,8 +56,6 @@ var top_chart_chart = c3.generate({
             'tax_penalty'  : 'area',
             'married_tax'  : 'area',
             'tax_bonus'    : 'area',
-
-            'values'       : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -70,7 +67,9 @@ var top_chart_chart = c3.generate({
             person2        : "Your Partner's EITC",
             person2_dashed : "Your Partner's EITC",
             married        : 'EITC if you get married',
-            values         : 'Marriage Penalty/Bonus',
+
+            y_red1         : 'Marriage Penalty',
+            y_green1       : 'Marriage Bonus',
         },
         colors: {
             person1 : '#6ab6fc',
@@ -92,9 +91,6 @@ var top_chart_chart = c3.generate({
             tax_bonus     : '#36D903',  
             combined_tax  : 'red',
             tax_penalty   : 'red',
-
-            values        : '#eb3734',
-            values_point  : '#eb3734',
         },
     },
     padding: {
@@ -105,7 +101,7 @@ var top_chart_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['values', 'values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'person2_dashed',],
+        hide: ['values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'person2_dashed', 'y_green2', 'y_green3', 'y_green4', 'y_red2', 'y_red3', 'y_red4' ],
     },
     tooltip: {
         show: false

@@ -16,7 +16,6 @@ var marriage_penalty_chart = c3.generate({
             'combined_eitc'  : 'x_horizontal',
             'bonus_eitc'     : 'x_horizontal',
 
-            'values'         : 'x_values',
             'values_point'   : 'x_values_point',
         },
         columns: [
@@ -47,8 +46,6 @@ var marriage_penalty_chart = c3.generate({
             'penalty_eitc'  : 'area',
             'combined_eitc' : 'area',
             'bonus_eitc'    : 'area',
-
-            'values' : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -60,7 +57,10 @@ var marriage_penalty_chart = c3.generate({
             person2        : "Your Partner's EITC",
             person2_dashed : "Your Partner's EITC",
             married        : 'EITC if you get married',
-            values         : 'Marriage Penalty/Bonus'
+            values         : 'Marriage Penalty/Bonus',
+
+            y_red1         : 'Marriage Penalty',
+            y_green1       : 'Marriage Bonus',
         },
         colors: {
             person1        : '#6ab6fc',
@@ -75,9 +75,6 @@ var marriage_penalty_chart = c3.generate({
             penalty_eitc   : '#eb3734',
             combined_eitc  : '#36D903',
             bonus_eitc     : '#36D903',
-
-            values         : '#eb3734',
-            values_point   : '#eb3734',
         },
     },
     padding: {
@@ -88,7 +85,7 @@ var marriage_penalty_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['value', 'values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'both_white', 'both_penalty', 'both_white_positive', 'both_bonus', 'both_white_negative', 'both_bonus_negative', 'filler'],
+        hide: ['values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'hoh_married', 'hoh_penalty', 'hoh_combined', 'hoh_bonus', 'person2_dashed', 'y_green2', 'y_green3', 'y_green4', 'y_red2', 'y_red3', 'y_red4' ],
     },
     tooltip: {
         show: false

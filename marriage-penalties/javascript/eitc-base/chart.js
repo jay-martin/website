@@ -1,28 +1,33 @@
+let eitc_marriage_penalty_xy_pairs = {
+    'person1'        : 'x1',
+    'person2'        : 'x2',
+    'person2_dashed' : 'x2',
+    'married'        : 'x3',
+
+    'married_eitc'   : 'x_horizontal',
+    'penalty_eitc'   : 'x_horizontal',
+    
+    'combined_eitc'  : 'x_horizontal',
+    'bonus_eitc'     : 'x_horizontal',
+
+    'point1'         : 'x_point1',
+    'point2'         : 'x_point2',
+    'point_married'  : 'x_point_married',
+
+    'values_point'   : 'x_values_point',
+    'y_green1'       : 'x_green1',
+    'y_red1'         : 'x_red1',
+};
+
 var eitc_marriage_penalty_chart = c3.generate({
     bindto: '#eitc_marriage_penalty_chart',
     data: {
-        xs: {
-            'person1'        : 'x1',
-            'person2'        : 'x2',
-            'person2_dashed' : 'x2',
-            'married'        : 'x3',
-
-            'married_eitc'   : 'x_horizontal',
-            'penalty_eitc'   : 'x_horizontal',
-            
-            'combined_eitc'  : 'x_horizontal',
-            'bonus_eitc'     : 'x_horizontal',
-
-            'point1'         : 'x_point1',
-            'point2'         : 'x_point2',
-            'point_married'  : 'x_point_married',
-
-            'values'         : 'x_values',
-            'values_point'   : 'x_values_point',
-        },
+        xs: eitc_marriage_penalty_xy_pairs,
         columns: [
-            ['x_values', 0, 1750, 11750, 18120, 21560, 43120, 46560, 70000],
-            ['values',   2815.3, 2815.3, -584.6999999999998, -584.6999999999998, -1134.4119999999998, -1134.412, -584.7, -584.7],
+            ['x_green1', 0, 1750, 10030.29411764706],
+            ['y_green1', 2815.3, 2815.3, 0],
+            ['x_red1', 10030.29411764706, 11750, 18120, 21560, 43120, 46560, 70000],
+            ['y_red1', 0, -584.6999999999998, -584.6999999999998, -1134.4119999999998, -1134.412, -584.7, -584.7],
 
             ['x_values_point',  30000],
             ['values_point',    -1134],
@@ -33,7 +38,8 @@ var eitc_marriage_penalty_chart = c3.generate({
             'combined_eitc' : 'area',
             'bonus_eitc'    : 'area',
 
-            'values'        : 'area',
+            'y_red1'        : 'area',
+            'y_green1'      : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -45,7 +51,9 @@ var eitc_marriage_penalty_chart = c3.generate({
             person2        : "Your Partner's EITC",
             person2_dashed : "Your Partner's EITC",
             married        : 'EITC if you get married',
-            values         : 'Marriage Penalty/Bonus',
+
+            y_red1         : 'Marriage Penalty',
+            y_green1       : 'Marriage Bonus',
         },
         colors: {
             person1        : '#6ab6fc',
@@ -61,8 +69,9 @@ var eitc_marriage_penalty_chart = c3.generate({
             combined_eitc  : '#36D903',
             bonus_eitc     : '#36D903',
 
-            values         : '#eb3734',
             values_point   : '#eb3734',
+            y_red1         : '#eb3734',
+            y_green1       : '#36D903',
         },
     },
     padding: {
@@ -73,7 +82,7 @@ var eitc_marriage_penalty_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['value', 'values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', ],
+        hide: ['values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'y_green2', 'y_green3', 'y_green4', 'y_red2', 'y_red3', 'y_red4' ],
     },
     tooltip: {
         show: false

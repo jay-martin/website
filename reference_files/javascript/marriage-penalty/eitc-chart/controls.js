@@ -1,5 +1,8 @@
 /************************* Switch chart ***************************************/
 function switch_eitc_marriage_penalty_chart_type(chart_name){
+	const values_data_names   = ['values_point', 'y_red1', 'y_red2', 'y_red3', 'y_red4', 'y_green1', 'y_green2', 'y_green3', 'y_green4'];
+	const eitc_intuitive_data_names = ['person1', 'person2', 'person2_dashed', 'married', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married'];
+
 	let chart      = eval(chart_name + '_chart');
 	let chart_type = eval(chart_name + '_chart_type').value;
 
@@ -16,14 +19,14 @@ function switch_eitc_marriage_penalty_chart_type(chart_name){
 
 		// legend
 		chart.legend.show(['person1', 'person2', 'person2_dashed', 'married']);
-		chart.legend.hide(['values']);
+		chart.legend.hide(['y_red1', 'y_green1']);
 
 		//axis
 		chart.axis.labels({y: 'EITC Value'});
 		
 		// curves
-		chart.hide(['values', 'values_point']);
-		chart.show(['person1', 'person2', 'person2_dashed', 'married', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married']);
+		chart.hide(values_data_names);
+		chart.show(eitc_intuitive_data_names);
 		eitc_marriage_penalty_intuitive_modify_income(chart_name);
 		eitc_marriage_penalty_intuitive_adjust_married(chart_name);
 		eitc_marriage_penalty_intuitive_adjust_person1(chart_name);
@@ -48,11 +51,12 @@ function switch_eitc_marriage_penalty_chart_type(chart_name){
 
 		// legend
 		chart.legend.hide(['person1', 'person2', 'person2_dashed', 'married']);
-		chart.legend.show(['values']);
+		chart.legend.show(['y_red1', 'y_green1']);
 
 		// curves
-		chart.hide(['person1', 'person2', 'person2_dashed', 'married', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married']);
-		chart.show(['values', 'values_point']);
+		chart.hide(eitc_intuitive_data_names);
+		// values chart builder runs chart.show() on proper curves, but not on values_point
+		chart.show(['values_point']);
 		eitc_marriage_penalty_values_modify_income(chart_name);
 		eitc_marriage_penalty_values_adjust_chart(chart_name);
 	}

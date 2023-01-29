@@ -1,5 +1,8 @@
 /************************* Switch chart ***************************************/
 function switch_tax_chart_type(chart_name){
+	const values_data_names       = ['values_point', 'y_red1', 'y_red2', 'y_red3', 'y_red4', 'y_green1', 'y_green2', 'y_green3', 'y_green4'];
+	const tax_intuitive_data_name = ['person1', 'person2', 'person2_dashed', 'married', 'combined_tax', 'tax_penalty', 'married_tax', 'tax_bonus', 'point1', 'point2', 'point_married'];
+
 	let chart      = eval(chart_name + '_chart');
 	let chart_type = eval(chart_name + '_chart_type').value;
 
@@ -24,8 +27,8 @@ function switch_tax_chart_type(chart_name){
 		chart.legend.hide(['values']);
 
 		// curves
-		chart.hide(['values', 'values_point']);
-		chart.show(['person1', 'person2', 'person2_dashed', 'married', 'combined_tax', 'tax_penalty', 'married_tax', 'tax_bonus', 'point1', 'point2', 'point_married']);
+		chart.hide(values_data_names);
+		chart.show(tax_intuitive_data_name);
 		tax_intuitive_adjust_person1(chart_name);
 		tax_intuitive_adjust_person2(chart_name);
 		tax_intuitive_modify_income(chart_name);
@@ -50,8 +53,8 @@ function switch_tax_chart_type(chart_name){
 		chart.xgrids([ {value: person1_income_element.value, text: 'Your Income'} ]);
 
 		// curves
-		chart.hide(['person1', 'person2', 'person2_dashed', 'married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'point1', 'point2', 'point_married']);
-		chart.show(['values', 'values_point']);
+		chart.hide(tax_intuitive_data_name);
+		chart.show(['values_point']);
 		tax_values_adjust_chart(chart_name);
 		tax_values_modify_income(chart_name);
 	}

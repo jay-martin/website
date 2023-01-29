@@ -8,7 +8,7 @@
 .c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-married_eitc, .c3-circles-penalty, .c3-circles-combined_eitc, .c3-circles-bonus, .c3-circles-person2_dashed, .c3-circles-hoh_penalty, .c3-circles-hoh_married, .c3-circles-hoh_comined, .c3-circles-hoh_bonus, .c3-circles-both_married, .c3-circles-both_penalty, .c3-circles-filler {
   display: none;
 }
-.c3-circles-values {
+.c3-circles-y_green1, .c3-circles-y_green2, .c3-circles-y_green3, .c3-circles-y_green4, .c3-circles-y_red1, .c3-circles-y_red2, .c3-circles-y_red3, .c3-circles-y_red4 {
   display: none;
 }
 
