@@ -149,6 +149,7 @@ function top_chart_change_benefit(){
 
 	if(top_chart_chart_type.value === 'values'){
 		multiple_policies_marriage_penalty_values_adjust_chart('top_chart');
+		multiple_policies_marriage_penalty_values_modify_income('top_chart');
 		multiple_policies_marriage_penalty_values_adjust_axes();
 	}
 	else if(top_chart_chart_type.value === 'intuitive'){
@@ -160,7 +161,6 @@ function multiple_policies_marriage_penalty_values_adjust_axes(){
 	if(isActive['eitc'] && isActive['hoh']){
 		top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];
 		top_chart_chart.axis.max({x: 70000});
-		multiple_policies_marriage_penalty_values_modify_income('top_chart');
 	}
 	else if(isActive['eitc']){
 		top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];

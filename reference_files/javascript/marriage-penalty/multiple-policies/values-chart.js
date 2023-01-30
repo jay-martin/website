@@ -88,6 +88,7 @@ function multiple_policies_marriage_penalty_values_chart_builder(chart, x_name, 
     let combined_children = sum_children(p1_children, p2_children)
 
     // person 2 fixed values
+    let p2_value = 0;
     if(isActive['eitc'] && isActive['hoh']){
         p2_value = tax_liability_2023(p2_filing_status, p2_income) - eitc_value_2023(p2_income, 'single', p2_children);
     }
@@ -103,6 +104,7 @@ function multiple_policies_marriage_penalty_values_chart_builder(chart, x_name, 
     let eitc_x_vals = eitc_marriage_penalty_x_values(p1_children, combined_children, p2_income);
 
     // combine x values
+    let x_vals = [];
     if(isActive['eitc'] && isActive['hoh']){
         x_vals = format_marriage_penalty_x_values(hoh_x_vals.concat(eitc_x_vals));
     }
@@ -128,7 +130,7 @@ function multiple_policies_marriage_penalty_values_chart_builder(chart, x_name, 
         }
         else if(isActive['hoh']){
             combined_tax = p2_value + tax_liability_2023(p1_filing_status, x_vals[i]);
-            married_tax  = p2_value + tax_liability_2023('married', x_vals[i] + parseInt(p2_income));
+            married_tax  = tax_liability_2023('married', x_vals[i] + parseInt(p2_income));
             y_vals.push( combined_tax - married_tax );
         }
     }
