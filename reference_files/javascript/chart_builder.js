@@ -405,6 +405,19 @@ function format_marriage_penalty_x_values(x_values){
  * @return {array of arrays of floats} - formatted arrays for the c3.js chart
  * */
 function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
+    // get current color
+    let current_color = '';
+    j = 0;
+    while(y_vals[j] == 0){
+        if(y_vals[j] > 0){
+            current_color = 'green';
+        }
+        else{
+            current_color = 'red';
+        }
+        j++;
+    }
+
     let array_of_x_val_arrays = [];
     let array_of_y_val_arrays = [];
     let current_x_vals = [];
@@ -413,7 +426,6 @@ function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
     let x_previous = x_vals[0];
     let green_number = 1;
     let red_number = 1;
-    let current_color = '';
     let i = 0;
     while(i < y_vals.length){
         if(y_previous > 0 && y_vals[i] < 0 || y_previous < 0 && y_vals[i] > 0){
@@ -454,17 +466,7 @@ function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
             current_y_vals.push(y_vals[i]);
 
             // format arrays
-            if(current_color === ''){
-                if(y_previous < 0){
-                    current_x_vals.unshift('x_red' + red_number.toString() );
-                    current_y_vals.unshift('y_red' + red_number.toString() );
-                }
-                else {
-                    current_x_vals.unshift('x_green' + green_number.toString() );
-                    current_y_vals.unshift('y_green' + green_number.toString() );
-                }
-            }
-            else if(current_color === 'red'){
+            if(current_color === 'red'){
                 current_x_vals.unshift('x_red' + red_number.toString() );
                 current_y_vals.unshift('y_red' + red_number.toString() );
             }
