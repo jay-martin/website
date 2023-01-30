@@ -377,3 +377,186 @@ function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
 	}
 }
 
+/************************* Marriage Penalties ****************************************************************************************************/
+/** Takes in array of integers, removes duplicates, sorts the array, removes values less than zero, and then returns that array
+ * @param  {array of integer}
+ * @return {array of integers}
+ * */
+function format_marriage_penalty_x_values(x_values){
+    // remove any duplicates
+    let x_values_set = new Set(x_values);
+
+    // sort in ascending order
+    let x_values_sorted = Array.from(x_values_set).sort(function(a,b){return a-b;});
+
+    // remove values below zero
+    let positive_values = [];
+    for (x of x_values_sorted) {
+        if(x >= 0){
+            positive_values.push(x);
+        }
+    }
+    return positive_values;
+}
+
+/** Returns the green and red regions of the eitc values chart
+ * @param {array of floats}  - x values for entire chart
+ * @param {array of floats}  - y values for entire chart
+ * @return {array of arrays of floats} - formatted arrays for the c3.js chart
+ * */
+function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
+    let array_of_x_val_arrays = [];
+    let array_of_y_val_arrays = [];
+    let current_x_vals = [];
+    let current_y_vals = [];
+    let y_previous = y_vals[0];
+    let x_previous = x_vals[0];
+    let green_number = 1;
+    let red_number = 1;
+    let current_color = '';
+    let i = 0;
+    while(i < y_vals.length){
+        if(y_previous > 0 && y_vals[i] < 0 || y_previous < 0 && y_vals[i] > 0){
+            // add last point to current arrays
+            root = linear_root(x_previous, y_previous, x_vals[i], y_vals[i]);
+            current_x_vals.push(root);
+            current_y_vals.push(0);
+
+            // format arrays & update data name number
+            if(y_previous > 0){
+                current_x_vals.unshift('x_green' + green_number.toString() );
+                current_y_vals.unshift('y_green' + green_number.toString() );
+                current_color = 'red';
+                green_number++;
+            }
+            else {
+                current_x_vals.unshift('x_red' + red_number.toString() );
+                current_y_vals.unshift('y_red' + red_number.toString() );
+                current_color = 'green';
+                red_number++;
+            }
+
+            // add finished arrays to their respective array of columns
+            array_of_x_val_arrays.push(current_x_vals);
+            array_of_y_val_arrays.push(current_y_vals);
+
+            // restart arrays
+            current_x_vals = [root];
+            current_y_vals = [0];
+
+            // for loop condition
+            y_previous = y_vals[i];
+            x_previous = x_vals[i];
+        }
+        else if(x_vals[i] == x_max){
+            // add last point to current arrays
+            current_x_vals.push(x_vals[i]);
+            current_y_vals.push(y_vals[i]);
+
+            // format arrays
+            if(current_color === ''){
+                if(y_previous < 0){
+                    current_x_vals.unshift('x_red' + red_number.toString() );
+                    current_y_vals.unshift('y_red' + red_number.toString() );
+                }
+                else {
+                    current_x_vals.unshift('x_green' + green_number.toString() );
+                    current_y_vals.unshift('y_green' + green_number.toString() );
+                }
+            }
+            else if(current_color === 'red'){
+                current_x_vals.unshift('x_red' + red_number.toString() );
+                current_y_vals.unshift('y_red' + red_number.toString() );
+            }
+            else {
+                current_x_vals.unshift('x_green' + green_number.toString() );
+                current_y_vals.unshift('y_green' + green_number.toString() );
+            }
+
+            // add finished arrays to their respective array of columns
+            array_of_x_val_arrays.push(current_x_vals);
+            array_of_y_val_arrays.push(current_y_vals);
+
+            // ends loop
+            i++;
+        }
+        else {
+            current_x_vals.push(x_vals[i]);
+            current_y_vals.push(y_vals[i]);
+            y_previous = y_vals[i];
+            x_previous = x_vals[i];
+            i++;
+        }       
+    }
+
+    return [array_of_x_val_arrays, array_of_y_val_arrays];
+}
+
+/** Returns formatting data for the c3.js eitc marriage penalties values chart
+ * @param  {array of arrays of floats} - formatted x-value arrays of red & green regions (e.g. [ ['x_green1', x1, x2, x3], ['x_green2', x3, x4, x5] ])
+ * @param  {array of arrays of floats} - formatted y-value arrays of red & green regions (e.g. [ ['y_green1', y1, y2, y3], ['y_green2', y3, y4, y5] ])
+ * @return {array of three objects}
+ *      0. xy_pairs    : object of key-value pairs showing which data names pair with which x names (e.g. 'y_green1' : 'x_green1')
+ *      1. line_types  : object of key-value pairs specifying that each line is an area curve (e.g. 'y_green1' : 'area')
+ *      2. line_colors : object of key-value pairs specifying the color of each curve (e.g. 'y_green1' : '#36D903', 'y_red1' : '#eb3734')
+ * */
+function marriage_penalty_values_formatting_data(array_of_x_val_arrays, array_of_y_val_arrays){
+    // add x:y pair assignments, chart types, and colors to c3.js chart object
+    let xy_pairs = new Object();
+    let line_types = new Object;
+    let line_colors = new Object;
+    for(i in array_of_x_val_arrays){
+        // x:y pairs
+        current_x = array_of_x_val_arrays[i][0];
+        current_y = array_of_y_val_arrays[i][0];
+        xy_pairs[current_y] = current_x;
+
+        // chart type
+        line_types[current_y] = 'area';
+
+        // chart color
+        if(current_y.includes('green')){
+            line_colors[current_y] = '#36D903';
+        }
+        else{
+            line_colors[current_y] = '#eb3734';
+        }
+    }
+    return [xy_pairs, line_types, line_colors]
+}
+
+/** Returns the names of the lines that should be hidden and the names of the lines that should be shown
+ * @param  {array of arrays of floats} - formatted y-value arrays of red & green regions (e.g. [ ['y_green1', y1, y2, y3], ['y_green2', y3, y4, y5] ])
+ * @return {array of two arrays of strings}
+ *      0. show_lines : array of lines that should be shown on the chart (e.g. ['y_green1', 'y_red1'])
+ *      1. hide_lines : array of lines that should be hidden on the chart (e.g. ['y_green2', 'y_red2',...] )
+ * */
+function marriage_penalty_values_hide_and_show_lines(array_of_y_val_arrays){
+    const all_lines = ['y_red1', 'y_red2', 'y_red3', 'y_red4', 'y_green1', 'y_green2', 'y_green3', 'y_green4'];
+    let show_lines  = [];
+    let hide_lines  = [];
+    for(y of array_of_y_val_arrays){
+        show_lines.push(y[0]);
+    }
+    for(line of all_lines){
+        if(show_lines.includes(line)){
+            // do nothing
+        }
+        else{
+            hide_lines.push(line);
+        }
+    }
+    return [show_lines, hide_lines];
+}
+
+/** Returns the root of a linear equation given two points on the line (x_previous, y_previous), (x_current, y_current)
+ * @param {integer} - x coordinate of first point
+ * @param {integer} - y coordinate of first point
+ * @param {integer} - x coordinate of second point
+ * @param {integer} - y coordinate of second point
+ * */
+function linear_root(x_previous, y_previous, x_current, y_current){
+    slope = (y_current - y_previous) / (x_current - x_previous);
+    return x_previous - (y_previous / slope);
+}
+

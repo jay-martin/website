@@ -29,7 +29,7 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	MPchart.data.colors({
+	top_chart_chart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
 		person2 : '#cb3ede',
@@ -37,7 +37,15 @@ function dark_mode(){
 		point2: '#cb3ede',
 	});
 
-	singleTaxChart.data.colors({
+	hoh_tax_chart.data.colors({
+		married       : '#dbdbdb',
+		point_married : '#dbdbdb',
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
+	});
+
+	single_tax_chart.data.colors({
 		married       : '#dbdbdb',
 		point_married : '#dbdbdb',
 		person2 : '#cb3ede',
@@ -95,7 +103,7 @@ function dark_mode(){
 
 // Changes for light/sepia mode
 function light_mode(){
-	MPchart.data.colors({
+	top_chart_chart.data.colors({
 		married       : 'black',
 		point_married : 'black',
 		person2 : '#770087',
@@ -103,7 +111,15 @@ function light_mode(){
 		point2 : '#770087',
 	});
 
-	singleTaxChart.data.colors({
+	hoh_tax_chart.data.colors({
+		married       : 'black',
+		point_married : 'black',
+		person2 : '#770087',
+		person2_dashed : '#770087',
+		point2 : '#770087',
+	});
+
+	single_tax_chart.data.colors({
 		married       : 'black',
 		point_married : 'black',
 		person2 : '#770087',

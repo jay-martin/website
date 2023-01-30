@@ -421,20 +421,25 @@
     <!--User inputs-->
     <div class="user_inputs" id="user_inputs">
 
-      <!--Benefit Selector-->
-      <label for="top_chart_benefit_selector">Show me the</label>
-      <select id="top_chart_benefit_selector" oninput="top_chart_change_benefit()">
-        <option value="eitc">Earned Income Tax Credit</option>
-        <option value="hoh">Head of Household Filing Status</option>
-      </select>
-
       <!--Chart type-->
-      <label for="top_chart_chart_type">and show chart as: </label>
+      <label for="top_chart_chart_type">Show chart as: </label>
       <select id="top_chart_chart_type" oninput="top_chart_switch_chart_type();" >
-        <option value="intuitive" selected>Intuitive</option>
-        <option value="values">Values</option>
+        <option value="intuitive">Intuitive</option>
+        <option value="values" selected>Values</option>
       </select>
 
+      <!--Benefits selection-->
+      <div class="many_select_container" id="benefits_selection_container">
+        <div style="display:inline-block;" id="policy_select_text">Select which policies to display:</div>
+        <input type="submit" class="benefit_button small_button selected_button" id='eitc_button' value="Earned Income Tax Credit" onClick="push_benefit_button('eitc')">
+        <input type="submit" class="benefit_button small_button" id="hoh_button" value="Head of Household Filing Status" onClick="push_benefit_button('hoh')">
+      <!--
+        <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onClick="push_benefit_button('snap')">
+        <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income (SSI)" onClick="push_benefit_button('ssi')">
+      -->
+      </div>
+
+      <!-- Number of children -->
       <div id="top_chart_num_children_inputs">
         <!--Person 1 number of old children-->
         <label for="top_chart_person1_children">I have</label>
@@ -455,11 +460,11 @@
         </select>
       </div> <!-- EITC user inputs-->
 
+      <!-- Filing Status -->
       <div id='top_chart_filing_status_inputs' style="display:none">
         <!--Person 1 filing status-->
         <label for="top_chart_person1_filing_status">I am a</label>
         <select id="top_chart_person1_filing_status" oninput="top_chart_adjust_person1_filing_status();">
-          <option value="single">Single Filer</option>
           <option value="hoh" selected>Head of Household</option>
         </select>
 
@@ -475,14 +480,14 @@
       <div class="slidecontainer"> 
         <label for="top_chart_person1_income" class="slider-text"> I have an income of $<output id="person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="top_chart_person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_adjust_person1_income();">
+          <input type="range" min="0" max="70000" value="30000" step="1000" class="slider" id="top_chart_person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_adjust_person1_income();">
         </div>
       </div>
 
       <!--Power Users: Person 1 arbitrary income-->
       <div class="arbitray_income_container" id="person1_arbitrary_income_container">
         <label for="person1_arbitray_income">Input your income:</label>
-        <input type="number" class="arbitrary_income" id="person1_arbitray_income" name="person1_arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modify_income();">
+        <input type="number" class="arbitrary_income" id="person1_arbitray_income" name="person1_arbitray_income" min="0" max="700000" oninput="arbitrary_income_input();modify_income();">
       </div>
 
       <!--Person 2 income slider-->
@@ -921,8 +926,8 @@
       <!--Chart type-->
       <label for="eitc_marriage_penalty_chart_type">Show chart as: </label>
       <select id="eitc_marriage_penalty_chart_type" oninput="switch_eitc_marriage_penalty_chart_type('eitc_marriage_penalty');" >
-        <option value="intuitive">Intuitive</option>
-        <option value="values" selected>Values</option>
+        <option value="intuitive" selected>Intuitive</option>
+        <option value="values">Values</option>
       </select>
 
       <br>
@@ -1622,18 +1627,22 @@
 <!-- Default Outputs -->
 <script type="text/javascript" src="./javascript/default-outputs.js"></script>
 
-<!-- Values chart reference files -->
-<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/values-chart/adjust-values-chart.js"></script>
-
 <!-- Tax chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/values-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/outputs.js"></script>
 
 <!-- EITC chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/intuitive-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/values-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/outputs.js"></script>
+
+<!-- Multipe policies chart reference files -->
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/multiple-policies/controls.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/multiple-policies/values-chart.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/marriage-penalty/multiple-policies/outputs.js"></script>
 
 <!-- Top Chart -->
 <script type="text/javascript" src="./javascript/top-chart/chart.js"></script>

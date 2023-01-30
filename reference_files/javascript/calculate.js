@@ -285,11 +285,11 @@ function eitc_value_2023(income, filingStatus, numChildren){
 			else{benefit = 0;}
 		}
 	}
-	if(filingStatus==="single" || filingStatus==="hoh"){
+	if(filingStatus === "single" || filingStatus === "hoh"){
 		if(numChildren === 'three'){
 			if(income < 16510){benefit = .45 * income;}
 			else if(income >= 16510 && income <= 21560){benefit = 7430;}
-			else if(income >  21560 && income <  53120){benefit = 7430 - .2106 * (income - 21560);}
+			else if(income >  21560 && income <  56838){benefit = 7430 - .2106 * (income - 21560);}
 			else{benefit = 0;}
 		}
 		else if(numChildren === 'two'){
@@ -304,7 +304,7 @@ function eitc_value_2023(income, filingStatus, numChildren){
 			else if(income >  21560 && income <  46560){benefit = 3995 - .1598 * (income - 21560);}
 			else{benefit = 0;}
 		}
-		else{
+		else {
 			if(income < 7840){benefit = .0765 * income;}
 			else if(income >= 7840 && income <= 9800 ){benefit = 600;}
 			else if(income >  9800 && income <  17640){benefit = 600 - .0765 * (income - 9800);}

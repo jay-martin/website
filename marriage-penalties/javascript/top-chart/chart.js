@@ -22,8 +22,19 @@ var top_chart_chart = c3.generate({
             'point_married' : 'x_point_married',
 
             'values_point'  : 'x_values_point',
+            'y_green1'      : 'x_green1',
+            'y_red1'        : 'x_red1',
+
         },
         columns: [
+            ['x_green1', 0, 1750, 10030.29411764706],
+            ['y_green1', 2815.3, 2815.3, 0],
+            ['x_red1', 10030.29411764706, 11750, 18120, 21560, 43120, 46560, 70000],
+            ['y_red1', 0, -584.6999999999998, -584.6999999999998, -1134.4119999999998, -1134.412, -584.7, -584.7],
+
+            ['x_values_point',  30000],
+            ['values_point',    -1134],
+            /* 
             ['x3',       0, 11750, 28120, 53120],
             ['married',  0, 3995,  3995,  0],
             ['x1',       0, 11750, 21560, 46560],
@@ -45,6 +56,7 @@ var top_chart_chart = c3.generate({
             ['point2',   585],
             ['x_point_married', 40000],
             ['point_married',   2097],
+            */
         ],
         types: {
             'married_eitc'  : 'area',
@@ -56,6 +68,9 @@ var top_chart_chart = c3.generate({
             'tax_penalty'  : 'area',
             'married_tax'  : 'area',
             'tax_bonus'    : 'area',
+
+            'y_red1'        : 'area',
+            'y_green1'      : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -91,6 +106,10 @@ var top_chart_chart = c3.generate({
             tax_bonus     : '#36D903',  
             combined_tax  : 'red',
             tax_penalty   : 'red',
+
+            values_point   : '#eb3734',
+            y_red1         : '#eb3734',
+            y_green1       : '#36D903',
         },
     },
     padding: {
@@ -114,16 +133,17 @@ var top_chart_chart = c3.generate({
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000]
             },
             padding: {left: 0, right: 30},
-            max: 60000,
+            max: 70000,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
+                // values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
+                values: [-13000, -12000, -11000, -10000, -9000, -8000, -7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
             },
-            padding: {bottom: 0, top: 0},
-            max: 5000,
+            padding: {bottom: 10, top: 10},
+            // max: 5000,
         }
     },
     grid: {
@@ -131,10 +151,16 @@ var top_chart_chart = c3.generate({
           front: false
         },
         x: {
+            /*
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]
+            */
+            lines: [{value: 30000, text: 'Your income'}]
         },
         y: {
+            /*
             lines: [{value: 0}, {value: 2097, text: "Your married EITC"}, {value: 3231, text: "Combined individual EITC's"}, ]
+            */
+            lines: [{value: 0}, ]
         }
     },
 });

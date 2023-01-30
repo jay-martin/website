@@ -555,7 +555,7 @@ p.chart_description {
   right: 10px;
   top: 15px;
 }
-/*******Center Explanation Box****/
+/******* Center Explanation Box ****/
 .center_explanation_box {
   border: solid;
   border-width: 1px;
@@ -676,7 +676,7 @@ input.download_button {
 input.download_button:hover{
   background-color: #d1d1d1
 }
-/******Chart notes*************/
+/****** Chart notes *************/
 button.chart_notes_button {
   font-size: 12px;
   margin-top: 5px;
@@ -699,13 +699,13 @@ ul.notes_list {
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
-/*******User Inputs**************/
+/******* User Inputs **************/
 .user_inputs {
   overflow: hidden;
   height: 100%;
   transition: height 1s ease; 
 }
-/*******Slider Formatting********/
+/******* Slider Formatting ********/
 .slidecontainer {
   width: 99.5%;
   z-index: 10;
@@ -750,6 +750,11 @@ input[type=range].slider::-moz-range-thumb {
   background: #1DA1F2;
   cursor: pointer;
   border-radius: 50%;
+}
+/************* Benefits selection **********/
+.many_select_container {
+  line-height: 27.5px;
+  margin-bottom: 5px;
 }
 /***************** Highlights (Top Right) *************************************/
 .highlights {
