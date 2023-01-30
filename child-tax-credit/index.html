@@ -436,8 +436,8 @@
         <label>I am a
         <select id="filing_status" oninput="adjust_curve();modify_income();top_chart_outputs();">
           <option value="single">single filer</option>
-          <option value="hoh" selected>head of household</option>
-          <option value="married">married joint filer</option>
+          <option value="hoh">head of household</option>
+          <option value="married" selected>married joint filer</option>
         </select>
         </label>
 
@@ -459,7 +459,7 @@
 
       </div> <!--user_inputs container-->
 
-      <!-- EITC Values -->
+      <!-- Outputs -->
       <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
         <p class="explanation_text" id="ctc_output">Your child tax credit is worth <b>$1,600</b></p>
 
@@ -631,11 +631,109 @@
 <section class = 'center_no_side_elements' id="exclusion">
   <h2>The CTC Excludes Poor Families</h2>
   <div class="article_tag"><em>See also: <a href="../two-tiers-of-welfare/index.html" target="_blank">Two Tiers of Welfare</a> </em></div>
+
+  <div class='chart'>
+    <h3 class='chart_title'>The CTC Exludes Poor Families</h3>
+
+    <div class="user_inputs" id="user_inputs">
+
+      <!--Filing Status-->
+      <label>I am a
+      <select id="exclusion_filing_status" oninput="exclusion_outputs();exclusion_adjust_chart();exclusion_modify_income();">
+        <option value="single">single filer</option>
+        <option value="hoh">head of household</option>
+        <option value="married" selected>married joint filer</option>
+      </select>
+      </label>
+
+      <!--Number of children-->
+      <label>and I have
+      <select id="exclusion_num_children" oninput="exclusion_outputs();exclusion_adjust_chart();exclusion_modify_income();">
+        <option value="one">1 child</option>
+        <option value="two" selected>2 children</option>
+        <option value="three">3 children</option>
+      </select></label>.
+
+      <!--Income slider-->
+      <div class="slidecontainer" id="income_slider_container"> 
+        <label for="exclusion_income" class="slider-text"> I have an income of $<output id="exclusion_income_output">15,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="15000" step="500" class="slider" id="exclusion_income" oninput="exclusion_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');exclusion_outputs();exclusion_modify_income();">
+        </div>
+      </div>
+    </div>
+
+    <!--Outputs-->
+    <div class="center_explanation_box">
+      <p class="explanation_text" id="exclusion_output"></p>
+    </div>
+
+    <div id="exclusion_chart"></div>
+
+  </div>
+
 </section>
 
 <section class = 'center_no_side_elements' id="complexity">
   <h2>The CTC Is Needlessly Complicated</h2>
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
+
+  <div class="chart">
+    <h3 class='chart_title'>The CTC Is Needlessly Complicated</h3>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+      
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <label for="complexity_income" class="slider-text"> I have an income of $<output id="complexity_income_output">18,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="50000" value="18000" step="1000" class="slider" id="complexity_income" oninput="complexity_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_outputs();complexity_chart_modify_income();">
+        </div>
+      </div>
+
+    </div> <!--user_inputs container-->
+
+    <!-- Outputs -->
+    <div class="center_explanation_box">
+     <table class="output_table" id="complexity_output_table">
+      <tr>
+        <th></th>
+        <th class="underline">Single Filer</th>
+        <th class="underline">Head of Household</th>
+        <th class="underline">Married</th>
+      </tr>
+      <tr>
+        <th>One Child</th>
+        <td id='one_child_single_output'><b>$2,000</b></td>
+        <td id='one_child_hoh_output'><b>$1,600</b></td>
+        <td id='one_child_married_output'><b>$1,600</b></td>
+      </tr>
+      <tr>
+        <th>Two Children</th>
+        <td id='two_child_single_output'><b>$2,740</b></td>
+        <td id='two_child_hoh_output'><b>$2,325</b></td>
+        <td id='two_child_married_output'><b>$2,325</b></td>
+      </tr>
+      <tr>
+        <th>Three Children</th>
+        <td id='three_child_single_output'><b>$2,740</b></td>
+        <td id='three_child_hoh_output'><b>$2,325</b></td>
+        <td id='three_child_married_output'><b>$2,325</b></td>
+      </tr>
+      <tr>
+        <th>Four Children</th>
+        <td id='four_child_single_output'><b>$2,740</b></td>
+        <td id='four_child_hoh_output'><b>$2,325</b></td>
+        <td id='four_child_married_output'><b>$2,325</b></td>
+      </tr>
+      </table>
+    </div>
+
+    <!-- Complexity Chart -->
+    <div id="complexity_chart"></div>
+
+  </div> <!--chart end-->
 </section>
 
 <section class = 'center_no_side_elements' id="tax-code-administration">
@@ -808,6 +906,17 @@
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
 <script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
+
+<!-- Exclusion Chart -->
+<script type="text/javascript" src="./javascript/exclusion-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/exclusion-chart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/exclusion-chart/outputs.js"></script>
+
+<!-- Complexity Chart -->
+<script type="text/javascript" src="./javascript/complexity/chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity/outputs.js"></script>
+
 
 </body>
 </html>

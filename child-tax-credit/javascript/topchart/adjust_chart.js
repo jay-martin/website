@@ -4,9 +4,9 @@
 
 /* Moves the income slider */
 function modify_income(){
-    income = user_income.value;
-    filingStatus = filing_status.value;
-    numChildren = num_children.value;
+    let income = user_income.value;
+    let filingStatus = filing_status.value;
+    let numChildren = num_children.value;
 
     topChart.xgrids([{value: income, text:'Your income'}]);
     topChart.load({
@@ -18,9 +18,10 @@ function modify_income(){
 }
 
 /* Adjusts the curve according to filing status and number of children */
+var previous_filing_status = 'married';
 function adjust_curve(){
-    numChildren = num_children.value;
-    filingStatus = filing_status.value;
+    let numChildren = num_children.value;
+    let filingStatus = filing_status.value;
 
     if(filingStatus === 'single'){
         single_ctc_builder_2023(topChart, 'x', 'ctc', numChildren);

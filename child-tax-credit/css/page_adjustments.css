@@ -7,3 +7,17 @@
 .children_dropdown {
   display: inline-block;
 }
+
+/****** Complexity outputs *********/
+table.output_table {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+table.output_table td, table.output_table th {
+  border: none;
+  line-height: 1.75em;
+}
+.underline {
+  text-decoration: underline;
+}

@@ -4,4 +4,17 @@
   display: none;
 }
 
+/* Regressive Chart */
+.c3-circles-max_benefit, .c3-circles-outline {
+  display: none;
+}
+
+/* Complexity Chart */
+.c3-circles-one_child_single, .c3-circles-one_child_hoh, .c3-circles-one_child_married, .c3-circles-two_child_single, .c3-circles-two_child_hoh, .c3-circles-two_child_married, .c3-circles-three_child_single, .c3-circles-three_child_hoh, .c3-circles-three_child_married, .c3-circles-four_child_single, .c3-circles-four_child_hoh, .c3-circles-four_child_married {
+  display: none;
+}
+
 /******************* Opacity Settings ******************************/
+.c3-area-ctc {
+  opacity: 0 !important;
+}

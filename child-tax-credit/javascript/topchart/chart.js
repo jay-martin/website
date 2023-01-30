@@ -10,10 +10,10 @@ var topChart = c3.generate({
             'point' : 'x_point',
         },
         columns: [
-            ['x',   0, 2500, 13167, 20800, 24800, 200000, 240000],
-            ['ctc', 0, 0,    1600,  1600,  2000,  2000,   0],
+            ['x',    0, 2500, 13167, 27700, 31700, 400000, 440000],
+            ['ctc',  0, 0,    1600,  1600,  2000,  2000,   0 ],
 
-            ['x_point', 18000],
+            ['x_point', 20000],
             ['point',   1600],
             
         ],
@@ -46,9 +46,9 @@ var topChart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000]
+                values: [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000]
             },
-            padding: {left: 0, right: 0},
+            padding: {left: 0, right: 10},
         },
         y: {
             label: {text: 'CTC Value', position: 'outer-middle'},
@@ -56,7 +56,6 @@ var topChart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000,]
             },
-
             padding: {top: 85, bottom: 0},
         }
     },
@@ -65,7 +64,7 @@ var topChart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 18000, text: 'Your income'}],
+            lines: [{value: 20000, text: 'Your income'}],
             min: 0,
         },
     }

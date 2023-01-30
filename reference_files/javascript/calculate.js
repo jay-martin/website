@@ -414,6 +414,14 @@ function ctc_value_2023(income, filingStatus, numChildren){
 			else if(income < 3200000){ return 6000 - .05 * (income - 200000);}
 			else{return 0;}
 		}
+		else if(numChildren === 'four'){
+			if(income <= 13850){ return .15 * (income - 2500);}
+			else if(income <= 24850){return .25 * (income - 13850) + 1702.5;}
+			else if(income < 37989){return .27 * (income - 24850) + 4452.5;}
+			else if(income <= 200000){return 8000;}
+			else if(income < 360000){return 8000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
 	}
 	else if(filingStatus === 'hoh'){
 		if(numChildren === 'one'){
@@ -437,6 +445,14 @@ function ctc_value_2023(income, filingStatus, numChildren){
 			else if(income < 33820){return 2745 + .25 * (income - 20800);}
 			else if(income <= 200000){return 6000;}
 			else if(income < 280000){return 6000 - .05 * (income - 200000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'four'){
+			if(income <= 20800){ return .15 * (income - 2500);}
+			else if(income <= 36500){ return .25 * (income - 20800) + 2745;}
+			else if(income < 41426){ return .27 * (income - 36500) + 6670;}
+			else if(income <= 200000){return 8000;}
+			else if(income < 360000){ return 8000 - .05 * (income - 200000);}
 			else{return 0;}
 		}
 	}
@@ -463,6 +479,13 @@ function ctc_value_2023(income, filingStatus, numChildren){
 			else if(income < 39700){return 5480 + .1 * (income - 34500);}
 			else if(income <= 400000){return 6000;}
 			else if(income < 520000){return 6000 - .05 * (income - 400000);}
+			else{return 0;}
+		}
+		else if(numChildren === 'four'){
+			if(income <= 27700){ return .15 * (income - 2500);}
+			else if(income <  44580){ return .25 * (income - 27700) + 3780;}
+			else if(income <= 400000){ return 8000;}
+			else if(income < 5600000){ return 8000 - .05 * (income - 200000);}
 			else{return 0;}
 		}
 	}
