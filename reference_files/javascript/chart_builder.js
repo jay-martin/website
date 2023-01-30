@@ -408,14 +408,14 @@ function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
     // get current color
     let current_color = '';
     j = 0;
-    while(y_vals[j] == 0){
-        if(y_vals[j] > 0){
-            current_color = 'green';
-        }
-        else{
-            current_color = 'red';
-        }
+    while(y_vals[j].toFixed(0) == 0){
         j++;
+    }
+    if(y_vals[j] > 0 ){
+        current_color = 'green';
+    }
+    else{
+        current_color = 'red';
     }
 
     let array_of_x_val_arrays = [];
