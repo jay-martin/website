@@ -29,7 +29,7 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	topChart.data.colors({
+	top_chart_chart.data.colors({
 		point: '#dbdbdb',
 	});
 
@@ -40,11 +40,19 @@ function dark_mode(){
 		person2_dashed : '#cb3ede',
 		point2: '#cb3ede',
 	});
+
+	regressive_chart.data.colors({
+		married       : '#dbdbdb',
+		point_married : '#dbdbdb', 
+		person2 : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2: '#cb3ede',
+	});
 }
 
 // Changes for light/sepia mode
 function light_mode(){
-	topChart.data.colors({
+	top_chart_chart.data.colors({
 		point: 'black',
 	});
 

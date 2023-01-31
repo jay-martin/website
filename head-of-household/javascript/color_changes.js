@@ -6,11 +6,11 @@
 /****** Page Load Colors ******/
 if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
     white_or_black = '#dbdbdb';
-    purple_shade = '#cb3ede';
+    purple_shade   = '#cb3ede';
 }
 else{
     white_or_black = 'black';
-    purple_shade = '#770087';
+    purple_shade   = '#770087';
 }
 
 /** Controls page-specific changes that must be made when toggling between light, sepia, and dark modes
@@ -31,34 +31,34 @@ function dark_mode(){
 		point: '#dbdbdb',
 	});
 
-	regressiveChart.data.colors({
-		outline : '#dbdbdb',
+	regressive_chart.data.colors({
+		HOH_Savings : '#dbdbdb',
 	});
 
-	marriagePenaltyChart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb', 
-		person2 : '#cb3ede',
+	marriage_penalty_chart.data.colors({
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb', 
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
 	});
 }
 
 // Changes for light/sepia mode
 function light_mode(){
-		HOHchart.data.colors({
+	HOHchart.data.colors({
 		point: 'black',
 	});
 
-	regressiveChart.data.colors({
-		outline : 'black',
+	regressive_chart.data.colors({
+		HOH_Savings : 'black',
 	});
 
-	marriagePenaltyChart.data.colors({
-		married       : 'black',
-		point_married : 'black', 
-		person2 : '#770087',
+	marriage_penalty_chart.data.colors({
+		married        : 'black',
+		point_married  : 'black', 
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
 	});
 }

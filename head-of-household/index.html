@@ -686,29 +686,37 @@
   <div class='chart'>
     <h3 class='chart_title'>Head of Household is Regressive</h3>
 
-    <div class="user_inputs" id="user_inputs">
+    <div class="user_inputs" id="regressive_inputs_container">
       <!--Income slider-->
-      <div class="slidecontainer" id="income_slider_container"> 
+      <div class="slidecontainer"> 
         <label for="income_regressive" class="slider-text"> I have an income of $<output id="income_regressive_output">50,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="620000" value="50000" step="1000" class="slider" id="income_regressive" oninput="income_regressive_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_regressive();regressive_outputs();">
+          <input type="range" min="0" max="620000" value="50000" step="1000" class="slider" id="regressive_income" oninput="income_regressive_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income_regressive();regressive_outputs();">
         </div>
       </div>
     </div>
 
     <!--Calculate HOH savings-->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
+    <div class="center_explanation_box" id="regressive_outputs_container">
       <p class="explanation_text" id="benefit_max_difference"></p>
     </div>
 
     <div id="regressive_chart"></div>
 
-    <!--Zoom switch-->
-    <label class="switch_label" id="zoom_label_regressive">
+    <!-- Chart Options -->
+    <div class="chart_options_container">
+      <label class="switch_label" id="zoom_label_regressive">
       Click to zoom on lower incomes:
-      <input type="checkbox" class="zoom_button" id="zoom_switch_regressive" oninput="zoom_regressive();">
-      <span class="checkmark"></span>
-    </label>
+        <input type="checkbox" class="zoom_button" id="zoom_switch_regressive" oninput="zoom_regressive();">
+        <span class="checkmark"></span>
+      </label>
+
+      <label>Hide Inputs & Outputs:
+      <input type="checkbox" id="regressive_hide_income_switch" oninput="hide_income_and_outputs('regressive', false, []);regressive_hide_line();">
+      </label>
+
+    </div>
+
   </div>
 
 </section>
