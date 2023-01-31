@@ -2,7 +2,7 @@
  * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
-var complexityChart = c3.generate({
+var complexity_chart = c3.generate({
     bindto: '#complexity_chart',
     data: {
         xs: {

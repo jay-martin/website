@@ -1,8 +1,3 @@
-/******************************************************************************************
- * This file contains the functions that outputs to the screen EITC values
- * ****************************************************************************************/
-
-/* Outputs EITC Values */
 function complexity_chart_outputs(){
     let income = complexity_income.value;
 
@@ -15,12 +10,12 @@ function complexity_chart_outputs(){
     let three_single  = eitc_value_2023(income, 'single',  'three').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     let three_married = eitc_value_2023(income, 'married', 'three').toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-    document.getElementById('childless_li').innerHTML = 'Childless Single: <b>$' + zero_single + '</b>';
-    document.getElementById('childless_married_li').innerHTML = 'Childless Married: <b>$' + zero_married + '</b>';
-    document.getElementById('one_child_li').innerHTML = 'One Child Single/HOH: <b>$' + one_single + '</b>';
-    document.getElementById('one_child_married_li').innerHTML = 'One Child Married: <b>$' + one_married + '</b>';
-    document.getElementById('two_child_li').innerHTML = 'Two Child Single/HOH: <b>$' + two_single + '</b>';
-    document.getElementById('two_child_married_li').innerHTML = 'Two Child Married: <b>$' + two_married + '</b>';
-    document.getElementById('three_child_li').innerHTML = 'Three Child Single/HOH: <b>$' + three_single + '</b>';
-    document.getElementById('three_child_married_li').innerHTML = 'Three Child Married: <b>$' + three_married + '</b>';
+    document.getElementById('zero_child_single_output').innerHTML   = '<b>$' + zero_single   + '</b>';
+    document.getElementById('zero_child_married_output').innerHTML  = '<b>$' + zero_married  + '</b>';
+    document.getElementById('one_child_single_output').innerHTML    = '<b>$' + one_single    + '</b>';
+    document.getElementById('one_child_married_output').innerHTML   = '<b>$' + one_married   + '</b>';
+    document.getElementById('two_child_single_output').innerHTML    = '<b>$' + two_single    + '</b>';
+    document.getElementById('two_child_married_output').innerHTML   = '<b>$' + two_married   + '</b>';
+    document.getElementById('three_child_single_output').innerHTML  = '<b>$' + three_single  + '</b>';
+    document.getElementById('three_child_married_output').innerHTML = '<b>$' + three_married + '</b>';
 }

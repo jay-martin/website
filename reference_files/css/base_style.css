@@ -590,6 +590,7 @@ button.show_all_button {
   background-color: var(--center-explanation-box);
   border: none;
 }
+/***** Breakdown ****/
 ul.center_box_breakdown {
   padding-top: 0px;
   margin-top: -10px;
@@ -599,6 +600,20 @@ ul.center_box_breakdown {
 li.breakdown_item {
   padding: 0;
 }
+/***** Output Table ****/
+table.output_table {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+table.output_table td, table.output_table th {
+  border: none;
+  line-height: 1.75em;
+}
+.underline {
+  text-decoration: underline;
+}
+/***** End Animation Button ****/
 input[type=submit].end_animation {
   font-family: "Computer Modern Sans";
   float: right;

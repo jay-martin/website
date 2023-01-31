@@ -1,12 +1,9 @@
-/******************************************************************************************
- * This file controls adjustments to the Complexity Chart
- * ****************************************************************************************/
-/* Moves the income slider */
+// Moves the income slider
 function complexity_chart_modify_income(){
     income = complexity_income.value;
 
-    complexityChart.xgrids([{value: income, text:'Your income'}]);
-    complexityChart.load({
+    complexity_chart.xgrids([{value: income, text:'Your income'}]);
+    complexity_chart.load({
         columns: [
             ['x_point', income],
 
@@ -20,4 +17,19 @@ function complexity_chart_modify_income(){
             ['point3M',  eitc_value_2023(income, 'married', 'three')],
         ]
     });
+}
+
+// Hides the points and x-grids
+function complexity_hide_points_and_x_grid(){
+    let is_checked = complexity_hide_income_switch.checked;
+    let income     = complexity_income.value;
+
+    if(is_checked){
+        complexity_chart.xgrids([]);
+        complexity_chart.hide(['point0', 'point0M', 'point1', 'point1M', 'point2', 'point2M', 'point3', 'point3M',]);
+    }
+    else {
+        complexity_chart.xgrids([ {value: income , text: 'Your Income'} ]);
+        complexity_chart.show(['point0', 'point0M', 'point1', 'point1M', 'point2', 'point2M', 'point3', 'point3M',]);
+    }
 }

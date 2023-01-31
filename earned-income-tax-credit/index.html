@@ -711,7 +711,7 @@
     <h3 class='chart_title'>The EITC Is Needlessly Complicated</h3>
 
     <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <div class="user_inputs" id="complexity_inputs_container">
       
       <!--Income slider-->
       <div class="slidecontainer" id="income_slider_container"> 
@@ -724,24 +724,50 @@
     </div> <!--user_inputs container-->
 
     <!-- Outputs -->
-    <div class="center_explanation_box" >
-      <ul class="explanation_list">
-        <li id="childless_li">Childless Single: <b>$0</b></li>
-        <li id="childless_married_li">Childless Married: <b>$322.30</b></li>
-        <li id="one_child_li">One Child Single/HOH: <b>$3,995</b></li>
-        <li id="one_child_married_li">One Child Married: <b>$3,995</b></li>
-        <li id="two_child_li">Two Child Single/HOH: <b>$6,604</b></li>
-        <li id="two_child_married_li">Two Child Married: <b>$6,604</b></li>
-        <li id="three_child_li">Three Child Single/HOH: <b>$7,430</b></li>
-        <li id="three_child_married_li">Three Child Married: <b>$7,430</b></li>
-      </ul>
+    <div class="center_explanation_box" id="complexity_outputs_container" >
+
+      <table class="output_table" id="complexity_output_table">
+        <tr>
+          <th></th>
+          <th class="underline">Single Filer/HOH</th>
+          <th class="underline">Married</th>
+        </tr>
+        <tr>
+          <th>Childless</th>
+          <td id='zero_child_single_output'><b>$0</b></td>
+          <td id='zero_child_married_output'><b>$322</b></td>
+        </tr>
+        <tr>
+          <th>One Children</th>
+          <td id='one_child_single_output'><b>$3,995</b></td>
+          <td id='one_child_married_output'><b>$3,995</b></td>
+        </tr>
+        <tr>
+          <th>Two Children</th>
+          <td id='two_child_single_output'><b>$6,604</b></td>
+          <td id='two_child_married_output'><b>$6,604</b></td>
+        </tr>
+        <tr>
+          <th>Three+ Children</th>
+          <td id='three_child_single_output'><b>$7,430</b></td>
+          <td id='three_child_married_output'><b>$7,430</b></td>
+        </tr>
+      </table>
     </div>
 
     <!--End animation button-->
     <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
 
-    <!-- Top Chart -->
+    <!-- Chart -->
     <div id="complexity_chart"></div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container">
+
+      <label>Hide Inputs & Outputs:
+      <input type="checkbox" id="complexity_hide_income_switch" oninput="hide_income_and_outputs('complexity', false, []);complexity_hide_points_and_x_grid();">
+      </label>
+    </div>
 
   </div> <!--chart end-->
 
@@ -902,14 +928,14 @@
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
-<script type="text/javascript" src="./javascript/color_changes.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
 
 <!-- Top Chart Javascript files -->
-<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
 
-<!-- EITC chart reference files -->
+<!-- Marriage Penalty chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/intuitive-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/values-chart.js"></script>
@@ -921,7 +947,7 @@
 
 <!-- Complexity Chart Javascript files -->
 <script type="text/javascript" src="./javascript/complexity/chart.js"></script>
-<script type="text/javascript" src="./javascript/complexity/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity/adjust-chart.js"></script>
 <script type="text/javascript" src="./javascript/complexity/outputs.js"></script>
 
 </body>
