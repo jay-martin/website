@@ -29,38 +29,14 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	top_chart_chart.data.colors({
-		point: '#dbdbdb',
-	});
-
-	MPchart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb', 
-		person2 : '#cb3ede',
-		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
-	});
-
-	regressive_chart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb', 
-		person2 : '#cb3ede',
-		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+	exclusion_chart.data.colors({
+		'ctc' : '#dbdbdb',
 	});
 }
 
 // Changes for light/sepia mode
 function light_mode(){
-	top_chart_chart.data.colors({
-		point: 'black',
-	});
-
-	MPchart.data.colors({
-		married       : 'black',
-		point_married : 'black', 
-		person2 : '#770087',
-		person2_dashed : '#770087',
-		point2 : '#770087',
+	exclusion_chart.data.colors({
+		'ctc' : 'black',
 	});
 }

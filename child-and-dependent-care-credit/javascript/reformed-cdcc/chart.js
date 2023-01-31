@@ -44,13 +44,12 @@ var reformedCDCC = c3.generate({
         order: false,
         colors: {
             one_child_credit_amount : '#f7c22f',
+            one_child_vertical_line : '#f7c22f',
+            one_child_point         : '#f7c22f',
+
             two_child_credit_amount : '#6ab6fc',
-
-            one_child_vertical_line : white_or_black,
-            one_child_point         : white_or_black,
-
-            two_child_vertical_line : white_or_black,
-            two_child_point         : white_or_black,
+            two_child_vertical_line : '#6ab6fc',
+            two_child_point         : '#6ab6fc',
         },
     },
     transition: {

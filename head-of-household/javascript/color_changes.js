@@ -27,10 +27,6 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	HOHchart.data.colors({
-		point: '#dbdbdb',
-	});
-
 	regressive_chart.data.colors({
 		HOH_Savings : '#dbdbdb',
 	});
@@ -46,10 +42,6 @@ function dark_mode(){
 
 // Changes for light/sepia mode
 function light_mode(){
-	HOHchart.data.colors({
-		point: 'black',
-	});
-
 	regressive_chart.data.colors({
 		HOH_Savings : 'black',
 	});

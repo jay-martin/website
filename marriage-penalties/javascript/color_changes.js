@@ -30,64 +30,72 @@ function page_color_mode(mode){
 // Changes for dark mode
 function dark_mode(){
 	top_chart_chart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb',
-		person2 : '#cb3ede',
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
 	});
 
 	hoh_tax_chart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb',
-		person2 : '#cb3ede',
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
 	});
 
 	single_tax_chart.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb',
-		person2 : '#cb3ede',
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
+	});
+
+	eitc_marriage_penalty_chart.data.colors({
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
+		person2_dashed : '#cb3ede',
+		point2         : '#cb3ede',
 	});
 
 	eitcExplainer.data.colors({
 		married_plateau  : '#dbdbdb',
-		married_phasein   : '#dbdbdb',
+		married_phasein  : '#dbdbdb',
 		married_phaseout : '#dbdbdb',
 		point_married    : '#dbdbdb',
 	});
 
 	eitcReform.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb',
-		person2 : '#cb3ede',
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
 	});
 
 	existingEITC.data.colors({
-		married       : '#dbdbdb',
-		point_married : '#dbdbdb',
-		person2 : '#cb3ede',
+		married        : '#dbdbdb',
+		point_married  : '#dbdbdb',
+		person2        : '#cb3ede',
 		person2_dashed : '#cb3ede',
-		point2: '#cb3ede',
+		point2         : '#cb3ede',
 	});
 
 	eitc2023.data.colors({
-		three_single : '#03c900',
-		three_married: '#03c900',
+		three_single  : '#03c900',
+		three_married : '#03c900',
 	});
 
 	eitc2023_full_fix.data.colors({
-		three_single : '#03c900',
-		three_married: '#03c900',
+		three_single  : '#03c900',
+		three_married : '#03c900',
 	});
 
 	simplerEITC.data.colors({
-		married: '#dbdbdb',
+		married : '#dbdbdb',
 	});
 
 	fsaEITC.data.colors({
@@ -104,27 +112,35 @@ function dark_mode(){
 // Changes for light/sepia mode
 function light_mode(){
 	top_chart_chart.data.colors({
-		married       : 'black',
-		point_married : 'black',
-		person2 : '#770087',
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
 	});
 
 	hoh_tax_chart.data.colors({
-		married       : 'black',
-		point_married : 'black',
-		person2 : '#770087',
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
 	});
 
 	single_tax_chart.data.colors({
-		married       : 'black',
-		point_married : 'black',
-		person2 : '#770087',
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
+	});
+
+	eitc_marriage_penalty_chart.data.colors({
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
+		person2_dashed : '#770087',
+		point2         : '#770087',
 	});
 
 	eitcExplainer.data.colors({
@@ -135,33 +151,33 @@ function light_mode(){
 	});
 
 	eitcReform.data.colors({
-		married       : 'black',
-		point_married : 'black',
-		person2 : '#770087',
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
 	});
 
 	existingEITC.data.colors({
-		married       : 'black',
-		point_married : 'black',
-		person2 : '#770087',
+		married        : 'black',
+		point_married  : 'black',
+		person2        : '#770087',
 		person2_dashed : '#770087',
-		point2 : '#770087',
+		point2         : '#770087',
 	});
 
 	eitc2023.data.colors({
-		three_single : '#0c6300',
-		three_married: '#0c6300',
+		three_single  : '#0c6300',
+		three_married : '#0c6300',
 	});
 
 	eitc2023_full_fix.data.colors({
-		three_single : '#0c6300',
-		three_married: '#0c6300',
+		three_single  : '#0c6300',
+		three_married : '#0c6300',
 	});
 
 	simplerEITC.data.colors({
-		married: 'black',
+		married : 'black',
 	});
 
 	fsaEITC.data.colors({

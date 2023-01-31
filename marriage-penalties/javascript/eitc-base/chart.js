@@ -45,25 +45,12 @@ var eitc_marriage_penalty_chart = c3.generate({
             ['point2',   585],
             ['x_point_married', 40000],
             ['point_married',   2097],
-
-            /*
-            ['x_green1', 0, 1750, 10030.29411764706],
-            ['y_green1', 2815.3, 2815.3, 0],
-            ['x_red1', 10030.29411764706, 11750, 18120, 21560, 43120, 46560, 70000],
-            ['y_red1', 0, -584.6999999999998, -584.6999999999998, -1134.4119999999998, -1134.412, -584.7, -584.7],
-
-            ['x_values_point',  30000],
-            ['values_point',    -1134],
-            */
         ],
         types: {
             'married_eitc'  : 'area',
             'penalty_eitc'  : 'area',
             'combined_eitc' : 'area',
             'bonus_eitc'    : 'area',
-
-            'y_red1'        : 'area',
-            'y_green1'      : 'area',
         },
         regions: {
             person2_dashed: [ {'style':'dashed'}, ],
@@ -92,10 +79,6 @@ var eitc_marriage_penalty_chart = c3.generate({
             penalty_eitc   : '#eb3734',
             combined_eitc  : '#36D903',
             bonus_eitc     : '#36D903',
-
-            values_point   : '#eb3734',
-            y_red1         : '#eb3734',
-            y_green1       : '#36D903',
         },
     },
     padding: {
