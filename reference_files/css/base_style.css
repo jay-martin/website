@@ -632,11 +632,11 @@ svg.chart-logo {
   width: 100px;
   margin-top: 0;
 }
-/********** Power Users *************/
+/********** Chart Options *************/
 .chart_attributes {
   font-size: 90%;
 }
-.power_users_container {
+.chart_options_container {
   font-size: 80%;
   line-height: 1.5em;
   padding-bottom: 10px;

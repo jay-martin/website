@@ -5,9 +5,6 @@ var exclusion_chart = c3.generate({
             'ctc'             : 'x',
             'max_benefit'     : 'x',
             'difference_line' : 'x_line',
-
-            'point_top'    : 'x_point',
-            'point_bottom' : 'x_point',
         },
         columns: [
             ['x',           0,    2500, 23833, 27700, 35700, 400000, 480000],
@@ -24,16 +21,12 @@ var exclusion_chart = c3.generate({
         groups: [ ['max_benefit', 'ctc'] ], 
         order: false,
         names: {
-            // outline: 'Child Tax Credit',
             ctc : 'Child Tax Credit',
             max_benefit: 'Max Benefit',
         },
         colors: {
-            ctc     : white_or_black,
-            // outline : white_or_black,
-
-            max_benefit :     'red',
-            point_top   :     'red',
+            ctc             : white_or_black,
+            max_benefit     : 'red',
             difference_line : 'red',
         },
     },

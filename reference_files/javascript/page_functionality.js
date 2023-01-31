@@ -10,6 +10,7 @@
  * (8) Opens and closes appendix sections
  * (9) Opens and closes chart notes
  * (10) Opens and closed center explanation box breakdowns
+ * (11) Hides the inputs and outputs of charts
  * ****************************************************************************************/
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
@@ -442,6 +443,32 @@ function open_and_close_breakdown(listID, buttonID){
     document.getElementById(buttonID).innerHTML = 'Collapse';
     document.getElementById(listID).style.display = 'block';
     breakdown_states[listID] = 'open';
+  }
+}
+
+/******************************** 11. Hide chart Inputs/Outpus ******************************/
+function hide_income_and_outputs(chart_name, remove_points, points){
+  let is_checked        = eval(chart_name + '_hide_income_switch').checked;
+  let chart             = eval(chart_name + '_chart');
+  let income            = eval(chart_name + '_income').value;
+  let inputs_container  = chart_name + '_inputs_container';
+  let outputs_container = chart_name + '_outputs_container';
+
+  if(is_checked){
+    document.getElementById(inputs_container).style.display  = 'none';
+    document.getElementById(outputs_container).style.display = 'none';
+    if(remove_points){
+      chart.hide(points);
+      chart.xgrids([]);
+    }
+  }
+  else {
+    document.getElementById(inputs_container).style.display  = 'block';
+    document.getElementById(outputs_container).style.display = 'block';
+    if(remove_points){
+      chart.show(points);
+      chart.xgrids([ {value: income, text: 'Your Income'}]);
+    }
   }
 }
 

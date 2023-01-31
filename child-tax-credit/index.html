@@ -430,11 +430,11 @@
 
     <div class="chart">
       <!--User inputs------------------------------>
-      <div class="user_inputs">
+      <div class="user_inputs" id="top_chart_inputs_container">
 
         <!--Filing Status-->
         <label>I am a
-        <select id="filing_status" oninput="adjust_curve();modify_income();top_chart_outputs();">
+        <select id="top_chart_filing_status" oninput="adjust_curve();modify_income();top_chart_outputs();">
           <option value="single">single filer</option>
           <option value="hoh">head of household</option>
           <option value="married" selected>married joint filer</option>
@@ -443,7 +443,7 @@
 
         <!--Number of children-->
         <label>and I have
-        <select id="num_children" oninput="adjust_curve();modify_income();top_chart_outputs();">
+        <select id="top_chart_num_children" oninput="adjust_curve();modify_income();top_chart_outputs();">
           <option value="one" selected>1 child</option>
           <option value="two">2 children</option>
           <option value="three">3 children</option>
@@ -451,16 +451,16 @@
         
         <!--Income slider-->
         <div class="slidecontainer"> 
-          <label for="user_income" class="slider-text"> I have an income of $<output id="income_output">18,000</output>:</label>
+          <label for="top_chart_income" class="slider-text"> I have an income of $<output id="income_output">18,000</output>:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="250000" value="18000" step="1000" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+            <input type="range" min="0" max="250000" value="18000" step="1000" class="slider" id="top_chart_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
           </div>
         </div>
 
       </div> <!--user_inputs container-->
 
       <!-- Outputs -->
-      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+      <div class="center_explanation_box" id="top_chart_outputs_container"> 
         <p class="explanation_text" id="ctc_output">Your child tax credit is worth <b>$1,600</b></p>
 
         <p class="explanation_text" id="explanation_line1"></p>
@@ -480,10 +480,17 @@
       <!-- Top Chart -->
       <div id="topchart"></div>
 
-      <!-- Zoom on Lower Incomes -->
-      <label>Zoom on lower incomes:
-      <input type="checkbox" id="top_chart_zoom" oninput='zoom_top_chart()'>
+      <!-- Chart Options -->
+      <div class="chart_options_container">
+
+        <label>Zoom on lower incomes:
+        <input type="checkbox" id="top_chart_zoom" oninput='zoom_top_chart()'>
+        </label>
+
+      <label>Hide Inputs & Outputs:
+      <input type="checkbox" id="top_chart_hide_income_switch" oninput="hide_income_and_outputs('top_chart', true, ['point']);">
       </label>
+      </div>
 
     </div> <!--chart end-->
 
@@ -635,7 +642,7 @@
   <div class='chart'>
     <h3 class='chart_title'>The CTC Exludes Poor Families</h3>
 
-    <div class="user_inputs" id="user_inputs">
+    <div class="user_inputs" id="exclusion_inputs_container">
 
       <!--Filing Status-->
       <label>I am a
@@ -664,11 +671,18 @@
     </div>
 
     <!--Outputs-->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="exclusion_outputs_container">
       <p class="explanation_text" id="exclusion_output"></p>
     </div>
 
     <div id="exclusion_chart"></div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container">
+      <label>Hide Inputs & Outputs:
+      <input type="checkbox" id="exclusion_hide_income_switch" oninput="hide_income_and_outputs('exclusion', false, []);exclusion_hide_points_and_x_grid();">
+      </label>
+    </div>
 
   </div>
 
@@ -685,7 +699,7 @@
     <div class="user_inputs">
       
       <!--Income slider-->
-      <div class="slidecontainer"> 
+      <div class="slidecontainer" id="complexity_inputs_container"> 
         <label for="complexity_income" class="slider-text"> I have an income of $<output id="complexity_income_output">18,000</output>:</label>
         <div class="slider-actual">
           <input type="range" min="0" max="50000" value="18000" step="1000" class="slider" id="complexity_income" oninput="complexity_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_outputs();complexity_chart_modify_income();">
@@ -695,7 +709,7 @@
     </div> <!--user_inputs container-->
 
     <!-- Outputs -->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="complexity_outputs_container">
      <table class="output_table" id="complexity_output_table">
       <tr>
         <th></th>
@@ -732,6 +746,14 @@
 
     <!-- Complexity Chart -->
     <div id="complexity_chart"></div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container">
+
+      <label>Hide Inputs & Outputs:
+      <input type="checkbox" id="complexity_hide_income_switch" oninput="hide_income_and_outputs('complexity', false, []);complexity_hide_points_and_x_grid();">
+      </label>
+    </div>
 
   </div> <!--chart end-->
 </section>
@@ -899,8 +921,9 @@
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
-<!-- Page specific color changes for light/sepia/dark modes -->
-<script type="text/javascript" src="./javascript/color_changes.js"></script>
+<!-- Page Funcionality -->
+<script type="text/javascript" src="./javascript/chart-functionality.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
 
 <!-- Top Chart Javascript files -->
 <script type="text/javascript" src="./javascript/topchart/chart.js"></script>

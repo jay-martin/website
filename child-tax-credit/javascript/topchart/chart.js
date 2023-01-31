@@ -2,7 +2,7 @@
  * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
-var topChart = c3.generate({
+var top_chart_chart = c3.generate({
     bindto: '#topchart',
     data: {
         xs: {
