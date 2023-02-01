@@ -4,6 +4,11 @@
   display: none;
 }
 
+/* Bizarre Chart */
+.c3-circles-childcare_cost_max, .c3-circles-credit_rate_line {
+  display: none;
+}
+
 /* Complexity Chart */
 .c3-circles-single_one, .c3-circles-single_two, .c3-circles-hoh_one, .c3-circles-hoh_two, .c3-circles-married_one, .c3-circles-married_two {
   display: none;
@@ -20,6 +25,12 @@
 }
 
 /******************* Opacity Settings ******************************/
+/* Bizarre Chart */
+.c3-area-single_one, .c3-area-hoh_one, .c3-area-married_one {
+  opacity: .3 !important;
+}
+
+/* Marriage Penalties */
 .c3-area-combined_tax, .c3-area-married_tax {
   opacity: 0 !important;
 }

@@ -622,6 +622,24 @@
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
 
   <div class="chart">
+    <h3 class='chart_title'>The CDCC's Bizarre Design</h3>
+    <p class='chart_description'>The CDCC employs a bizarre step-wise credit rate formula that serves no meaningful purpose other than making your taxes more complicated.</p>
+
+    <div class='chart_horizontal_line'></div>
+
+    <!-- Outputs -->
+    <div class="center_explanation_box" id='bizarre_outputs_container'>
+      <p class="explanation_text" id="bizarre_output">Play Animation</p>
+    </div>
+
+    <input type="submit" class="small_button animation_button" value="Play animation" onclick="start_bizarre_animation()" />
+
+    <!-- Complexity Chart -->
+    <div id="bizarre_chart"></div>
+
+  </div> <!--chart end-->
+
+  <div class="chart">
     <h3 class='chart_title'>The CDCC Is Needlessly Complicated</h3>
 
       <!--User inputs------------------------------>
@@ -1097,6 +1115,11 @@
 <!-- Top Chart -->
 <script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/adjust-chart.js"></script>
+
+<!-- Bizarre Chart -->
+<script type="text/javascript" src="./javascript/bizarre-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/bizarre-chart/animation.js"></script>
+<script type="text/javascript" src="./javascript/bizarre-chart/construct-rate.js"></script>
 
 <!-- Complexity Chart -->
 <script type="text/javascript" src="./javascript/complexity-chart/chart.js"></script>
