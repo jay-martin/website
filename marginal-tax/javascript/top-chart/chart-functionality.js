@@ -113,3 +113,65 @@ function arbitrary_income_input(){
 function adjust_arbitrary_income(){
     arbitray_income.value = income;
 }
+
+/* Zooms on lower incomes */
+function zoom_chart(){
+    if(chart_type.value === 'EMTR'){
+        if(zoom_dropdown.value === 'default'){
+            user_income.max = "100000";
+            chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+            chart.axis.max({x: 100000});
+        }
+        else if(zoom_dropdown.value === 'higher'){
+            user_income.max = "600000";
+            chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+            chart.axis.max({x: 600000});
+        }
+        else if(zoom_dropdown.value === 'lower'){
+            user_income.max = "40000";
+            chart.internal.config.axis_x_tick_values = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000];
+            chart.axis.max({x: 40000});
+        }
+    }
+    else {
+        if(zoom_dropdown.value === 'default'){
+            user_income.max = "100000";
+            chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+            chart.axis.max({x: 100000});
+
+            setTimeout(function () {
+                chart.internal.config.axis_y_tick_values = [-8000, -7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000];
+                chart.axis.max({y: 8000});
+                chart.axis.min({y: -4000})
+            }, 500);
+        }
+        else if(zoom_dropdown.value === 'lower'){
+            user_income.max = "40000";
+            chart.internal.config.axis_x_tick_values = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000];
+            chart.axis.max({x: 40000});
+
+            setTimeout(function () {
+                chart.internal.config.axis_y_tick_values = [-8000, -7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000];
+                chart.axis.max({y: 8000});
+                chart.axis.min({y: -4000})
+            }, 500);
+        }
+        else if(zoom_dropdown.value === 'higher'){
+            user_income.max = "600000";
+            chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+            chart.axis.max({x: 600000});
+
+            setTimeout(function () {
+                chart.internal.config.axis_y_tick_values = [-600000, -500000, -400000, -300000, -200000, -100000, 0, 100000, 200000, 300000, 400000, 500000, 600000];
+                chart.axis.max({y: 100000});
+                chart.axis.min({y: -200000});
+            }, 500);
+        }
+    }
+    /* adjust for particular selection of charts */
+    /*
+    setTimeout(function () {
+        adjust_y_axis_ei();
+    }, 500);
+    */
+}

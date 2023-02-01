@@ -537,17 +537,14 @@
       <!--c3.js chart-->
       <div class="chart_actual" id="chart"></div>
 
-      <!-- Chart download button ---->
-      <input type="submit" class="small_button" id="download_chart_button" value="Download Screenshot" onclick="exportChartToPng('chart');">
-
       <!--Chart attributes-->
       <div class="chart_attributes">
         <!--Zoom selection-->
         <div class="dropdown" id="zoom_dropdown_container">
           <label>Show higher/lower income:
           <select class="dropdown" name="zoom_level" id="zoom_dropdown" oninput="zoom_chart()">
-            <option value="default">Default</option>
             <option value="lower">Lower</option>
+            <option value="default" selected>Default</option>
             <option value="higher">Higher</option>
           </select>
           </select>
@@ -562,12 +559,9 @@
           </select>
           </label>
         </div>
-      </div>
 
-      <!--Power users-->
-      <div class="power_users_container">
+        <br>
 
-        <h2 class="power_users_header">Power Users</h3>
         <!--Arbitrary income switch-->
         <label class="switch_label" id="arbitrary_income_label">
           Arbitrary income:
@@ -1617,21 +1611,22 @@
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
 
-<script type="text/javascript" src="../reference_files/javascript/create_png.js"></script>
-
 <!-- Page specific color changes for light/sepia/dark modes -->
-<script type="text/javascript" src="./javascript/color_changes.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
 
 <!-- Javascript files -->
-<script type="text/javascript" src="./javascript/chart/chart.js"></script>
-<script type="text/javascript" src="./javascript/controls.js"></script>
-<script type="text/javascript" src="./javascript/calculate/calculate_marginal.js"></script>
-<script type="text/javascript" src="./javascript/calculate/calculate_benefit.js"></script>
-<script type="text/javascript" src="./javascript/chart/chart_functionality.js"></script>
-<script type="text/javascript" src="./javascript/chart/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/chart/adjust_curves.js"></script> 
-<script type="text/javascript" src="./javascript/outputs/outputs.js"></script>
-<script type="text/javascript" src="./javascript/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/calculate/calculate-marginal.js"></script>
+<script type="text/javascript" src="./javascript/calculate/calculate-benefit.js"></script>
+
+<!-- Top Chart -->
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-axes.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-curves.js"></script> 
+<!-- Animations -->
+<script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
 
 </body>
 </html>
