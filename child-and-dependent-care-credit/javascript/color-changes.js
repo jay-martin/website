@@ -29,10 +29,16 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-
+    mp_chart.data.colors({
+        married : '#dbdbdb',
+        point_married : '#dbdbdb',
+    });
 }
 
 // Changes for light/sepia mode
 function light_mode(){
-
+    mp_chart.data.colors({
+        married : 'black',
+        point_married : 'black',
+    });
 }

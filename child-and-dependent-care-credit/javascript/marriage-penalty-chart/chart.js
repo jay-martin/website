@@ -5,7 +5,6 @@ var mp_chart = c3.generate({
             'person1_base_tax' : 'x_p1_base',
 
             'person1'       : 'x_p1',
-            'person2'       : 'x_p2',
             'married'       : 'x_m',
 
             'combined_tax'  : 'x_horizontal',
@@ -55,9 +54,6 @@ var mp_chart = c3.generate({
             person1       : '#6ab6fc',
             point_person1 : '#6ab6fc',
 
-            person2       : purple_shade,
-            point_person2 : purple_shade,
-
             married       : white_or_black,
             point_married : white_or_black,
 
@@ -105,7 +101,7 @@ var mp_chart = c3.generate({
             label: {text: 'Tax Liability After Maximum CDCC', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 500, 1000, 1500, 2000, 2500, 3000]
+                values: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000]
             },
             min: 0,
             max: 3000,
