@@ -2,48 +2,89 @@
  * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
-var complexityChart = c3.generate({
+var complexity_chart = c3.generate({
     bindto: '#complexity_chart',
     data: {
         xs: {
-            'credit_rate'   : 'x_credit_rate',
-            'credit_amount' : 'x_credit_amount',
-            
-            'point_credit_rate' : 'x_point',
-            'point_credit_amount' : 'x_point',
+            'single_one'  : 'x_single_one',
+            'single_two'  : 'x_single_two',
+
+            'hoh_one'     : 'x_hoh_one',
+            'hoh_two'     : 'x_hoh_two',
+
+            'married_one' : 'x_married_one',
+            'married_two' : 'x_married_two',
+
+            'single_one_point'  : 'x_point',
+            'single_two_point'  : 'x_point',
+
+            'hoh_one_point'     : 'x_point',
+            'hoh_two_point'     : 'x_point',
+
+            'married_one_point' : 'x_point',
+            'married_two_point' : 'x_point',
         },
         columns: [
-            ['x_credit_amount', 0, 13850, 23000, 23001, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
-            ['credit_amount',   0, 0,     915,   900,   900,   870,   870,   840,   840,   810,   810,   780,   780,   750,   750,   720,   720,   690,   690,   660,   660,   630,   630,   600,   600],
 
-            ['x_credit_rate', 0,   15000, 15001, 17000, 17001, 19000, 19001, 21000, 21001, 23000, 23001, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
-            ['credit_rate',   .35, .35,   .34,   .34,   .33,   .33,   .32,   .32,   .31,   .31,   .30,   .30,   .29,   .29,   .28,   .28,   .27,   .27,   .26,   .26,   .25,   .25,   .24,   .24,   .23,   .23,   .22,   .22,   .21,   .21,   .20,   .20],
+            ['x_single_two', 0, 13850, 24850, 29183, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
+            ['single_two',   0, 0,     1100,  1620,  1620,  1560,  1560,  1500,  1500,  1440,  1440,  1380,  1380,  1320,  1320,  1260,  1260,  1200,  1200],
 
-            ['x_point',             20000],
-            ['point_credit_amount', 615],
-            ['point_credit_rate',   .32],
+            ['x_hoh_two', 0, 20800, 35200, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
+            ['hoh_two',   0, 0,     1440,  1440,  1380,  1380,  1320,  1320,  1260,  1260,  1200,  1200],
+
+            ['x_married_two', 0, 27700, 40900, 41000, 41001, 43000, 43001, 60000],
+            ['married_two',   0, 0,     1320,  1320,  1260,  1260,  1200,  1200],
+
+            ['x_single_one', 0, 13850, 23000, 23001, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
+            ['single_one',   0, 0,     915,   900,   900,   870,   870,   840,   840,   810,   810,   780,   780,   750,   750,   720,   720,   690,   690,   660,   660,   630,   630,   600,   600],
+
+            ['x_hoh_one', 0, 20800, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
+            ['hoh_one',   0, 0,     820,   810,   810,   780,   780,   750,   750,   720,   720,   690,   690,   660,   660,   630,   630,   600,   600],
+
+            ['x_married_one', 0, 27700, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 60000],
+            ['married_one',   0, 0,     730,   720,   720,   690,   690,   660,   660,   630,   630,   600,   600],
+
+            ['x_point',           26000],
+            ['single_two_point',  1238],
+            ['single_one_point',  870],
+            ['hoh_two_point',     520],
+            ['hoh_one_point',     520],
+            ['married_two_point', 0],
+            ['married_one_point', 0],
             
         ],
-        axes: {
-            credit_rate         : 'y',
-            point_credit_rate   : 'y',
-            credit_amount       : 'y2',
-            point_credit_amount : 'y2',
-        },
         names: {
-            credit_rate:   'Credit Rate',
-            credit_amount: 'Credit Amount',
+            credit_rate : 'Credit Rate',
+
+            single_one  : 'Single, One Child',
+            single_two  : 'Single, Two Children',
+            hoh_one     : 'HOH, One Child',
+            hoh_two     : 'HOH, Two Children',
+            married_one : 'Married, One Child',
+            married_two : 'Married, Two Children',
         },
         types: {
-            'credit_amount' : 'area',
+
         },
         colors: {
-            credit_rate       : '#6ab6fc',
-            point_credit_rate : '#6ab6fc',
+            single_one       : '#6ab6fc',
+            single_one_point : '#6ab6fc',
+            single_two       : '#0065c2',
+            single_two_point : '#0065c2',
 
-            credit_amount       : '#f7c22f',
-            point_credit_amount : '#f7c22f',
+            hoh_one       : '#f7c22f',
+            hoh_one_point : '#f7c22f',
+            hoh_two       : '#856100',
+            hoh_two_point : '#856100',
+
+            married_one       : '#fa0000',
+            married_one_point : '#fa0000',
+            married_two       : '#6e0000',
+            married_two_point : '#6e0000',
         },
+    },
+    size: {
+        height: 375,
     },
     transition: {
         duration: 400,
@@ -56,7 +97,7 @@ var complexityChart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point_credit_rate', 'point_credit_amount'],
+        hide: ['point_credit_rate', 'point_credit_amount', 'single_one_point', 'single_two_point', 'hoh_one_point', 'hoh_two_point', 'married_one_point', 'married_two_point',],
     },
     tooltip: {
         show: false
@@ -73,23 +114,12 @@ var complexityChart = c3.generate({
         },
         y: {
             show: true,
-            label: {text: 'Credit Rate', position: 'outer-middle'},
-            tick: {
-                format: d3.format('.0%'),
-                values: [0, .05, .1, .15, .2, .25, .3, .35, .4]
-            },
-            max: .4,
-            min: 0,
-            padding: {top: 0, bottom: 0},
-        },
-        y2: {
-            show: true,
-            label: {text: 'Credit Amount', position: 'outer-middle'},
+            label: {text: 'Maximum Usable Amount of Credit', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
                 values: [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250]
             },
-            max: 1200,
+            max: 2000,
             padding: {top: 0, bottom: 0},
         },
     },
@@ -98,7 +128,7 @@ var complexityChart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 20000, text: 'Your income'}],
+            lines: [{value: 26000, text: 'Your income'}],
             min: 0,
         },
     }

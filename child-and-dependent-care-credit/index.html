@@ -433,12 +433,13 @@
   <div class="center">
 
     <div class="chart">
+
       <!--User inputs------------------------------>
-      <div class="user_inputs">
+      <div class="user_inputs" id="user_inputs">
 
         <!--Filing Status-->
         <label>I am a
-        <select id="filing_status" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
+        <select id="top_filing_status" oninput="build_cdcc_amount_chart(top_chart, 'top_filing_status', 'top_num_children');top_chart_adjust_y_axis();top_modify_income();top_chart_outputs()">
           <option value="single" selected>single filer</option>
           <option value="hoh">head of household</option>
           <option value="married">married joint filer</option>
@@ -447,42 +448,30 @@
 
         <!--Number of children-->
         <label>and I have
-        <select id="num_children" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
+        <select id="top_num_children" oninput="build_cdcc_amount_chart(top_chart, 'top_filing_status', 'top_num_children');top_modify_income();top_chart_adjust_y_axis();top_chart_outputs();">
           <option value="one" selected>1 child</option>
           <option value="two">2+ children</option>
         </select> under the age of 13.
         </label>
         
         <!--Income slider-->
-        <div class="slidecontainer" id="income_slider_container"> 
-          <label for="user_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</label>
+        <div class="slidecontainer"> 
+          <label for="top_income" class="slider-text"> I have an income of $<output id="top_income_output">20,000</output>:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+            <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="top_income" oninput="top_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_outputs();top_modify_income()">
           </div>
         </div>
 
       </div> <!--user_inputs container-->
 
-      <!-- Top Chart Outputs -->
-      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
-        <p class="explanation_text" id="credit_amount">You can subtract up to <b>$615</b> from your taxes</p>
-
-        <p class="explanation_text" id="explanation_line1"></p>
-        <p class="explanation_text" id="explanation_line2"></p>
-        <p class="explanation_text" id="explanation_line3"></p>
-        <p class="explanation_text" id="explanation_line4"></p>
-        <p class="explanation_text" id="explanation_line5"></p>
-        <p class="explanation_text" id="explanation_line6"></p>
-        <p class="explanation_text" id="explanation_line7"></p>
-        <p class="explanation_text" id="explanation_line8"></p>
-        <p class="explanation_text" id="explanation_line9"></p>
+      <!-- Outputs -->
+      <div class="center_explanation_box">
+        <p class="explanation_text" id="top_credit_rate">The credit rate at your income is <b>32%</b>, meaning you are eligible to subtract up to <b>$960</b> from your taxes.</p>
+        <p class="explanation_text" id="top_credit_amount">With your tax liability of $615, you are only able to subtract up to <b>$615</b> from your taxes.</p>
       </div>
 
-      <!--End animation button-->
-      <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
-
-      <!-- Top Chart -->
-      <div id="topchart"></div>
+      <!-- Chart -->
+      <div id="top_chart"></div>
 
     </div> <!--chart end-->
 
@@ -633,48 +622,57 @@
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
 
   <div class="chart">
-    <h3 class='chart_title'>The CDCC Is Overly Complicated</h3>
+    <h3 class='chart_title'>The CDCC Is Needlessly Complicated</h3>
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs" id="user_inputs">
-
-      <!--Filing Status-->
-      <label>I am a
-      <select id="complexity_filing_status" oninput="build_cdcc_amount_chart(complexityChart, 'complexity_filing_status', 'complexity_num_children');complexity_chart_adjust_y_axis();complexity_modify_income();complexity_chart_outputs()">
-        <option value="single" selected>single filer</option>
-        <option value="hoh">head of household</option>
-        <option value="married">married joint filer</option>
-      </select>
-      </label>
-
-      <!--Number of children-->
-      <label>and I have
-      <select id="complexity_num_children" oninput="build_cdcc_amount_chart(complexityChart, 'complexity_filing_status', 'complexity_num_children');complexity_modify_income();complexity_chart_adjust_y_axis();complexity_chart_outputs();">
-        <option value="one" selected>1 child</option>
-        <option value="two">2+ children</option>
-      </select> under the age of 13.
-      </label>
-      
-      <!--Income slider-->
-      <div class="slidecontainer"> 
-        <label for="complexity_income" class="slider-text"> I have an income of $<output id="complexity_income_output">20,000</output>:</label>
-        <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="complexity_income" oninput="complexity_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_outputs();complexity_modify_income()">
+      <!--User inputs------------------------------>
+      <div class="user_inputs" id="complexity_inputs_container">
+        
+        <!--Income slider-->
+        <div class="slidecontainer"> 
+          <label for="complexity_income" class="slider-text"> I have an income of $<output id="complexity_income_output">26,000</output>:</label>
+          <div class="slider-actual">
+            <input type="range" min="0" max="60000" value="26000" step="500" class="slider" id="complexity_income" oninput="complexity_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');complexity_chart_modify_income();complexity_chart_outputs();">
+          </div>
         </div>
+
+      </div> <!--user_inputs container-->
+
+      <!-- Outputs -->
+      <div class="center_explanation_box" id='complexity_outputs_container'>
+        <table class="output_table" id="complexity_output_table">
+        <tr>
+          <th></th>
+          <th class="underline">Single Filer</th>
+          <th class="underline">Head of Household</th>
+          <th class="underline">Married</th>
+        </tr>
+        <tr>
+          <th>One Child</th>
+          <td id='one_child_single'><b>$870</b></td>
+          <td id='one_child_hoh'><b>$520</b></td>
+          <td id='one_child_married'><b>$0</b></td>
+        </tr>
+        <tr>
+          <th>Two+ Children</th>
+          <td id='two_child_single'><b>$1,238</b></td>
+          <td id='two_child_hoh'><b>$520</b></td>
+          <td id='two_child_married'><b>$0</b></td>
+        </tr>
+      </table>
       </div>
 
-    </div> <!--user_inputs container-->
+      <!-- Complexity Chart -->
+      <div id="complexity_chart"></div>
 
-    <!-- Complexity Outputs -->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
-      <p class="explanation_text" id="complexity_credit_rate">The credit rate at your income is: <b>32%</b></p>
-      <p class="explanation_text" id="complexity_credit_amount">You can subtract up to <b>$615</b> from your taxes.</p>
-    </div>
+      <!-- Chart Options -->
+      <div class="chart_options_container">
 
-    <!-- Complexity Chart -->
-    <div id="complexity_chart"></div>
+        <label>Hide Inputs & Outputs:
+        <input type="checkbox" id="complexity_hide_income_switch" oninput="hide_income_and_outputs('complexity', false, []);complexity_hide_points_and_x_grid();">
+        </label>
+      </div>
 
-  </div> <!--chart end-->
+    </div> <!--chart end-->
 
 </section>
 
@@ -686,11 +684,11 @@
     <h3 class='chart_title'>The CDCC Can Produce Marriage Penalties</h3>
 
     <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <div class="user_inputs" id="mp_inputs_container">
 
       <!--Filing Status-->
       <label>As individuals, I would file as a
-      <select id="mp_person1_filing_status" oninput="mp_chart_outputs();mp_chart_caution();">
+      <select id="mp_person1_filing_status" oninput="mp_chart_outputs();mp_chart_caution();build_tax_after_cdcc_chart('mp');cdcc_marriage_penalty_modify_income();">
         <option value="single" selected>single filer</option>
         <option value="hoh">head of household</option>
       </select>
@@ -698,7 +696,7 @@
 
       <!--Filing Status-->
       <label>and my partner would file as a
-      <select id="mp_person2_filing_status" oninput="mp_chart_outputs();mp_chart_caution();">
+      <select id="mp_person2_filing_status" oninput="mp_chart_outputs();mp_chart_caution();build_tax_after_cdcc_chart('mp');cdcc_marriage_penalty_modify_income();">
         <option value="single" selected>single filer</option>
         <option value="hoh">head of household</option>
       </select>.
@@ -707,7 +705,7 @@
 
       <!--Person 1 number of children-->
       <label>I have
-      <select id="mp_person1_num_children" oninput="mp_chart_outputs()">
+      <select id="mp_person1_num_children" oninput="mp_chart_outputs();build_tax_after_cdcc_chart('mp');cdcc_marriage_penalty_modify_income();">
         <option value="one" selected>1 child</option>
         <option value="two">2+ children</option>
       </select>
@@ -715,7 +713,7 @@
 
       <!--Person 2 number of children-->
       <label>under the age of 13 and my partner has
-      <select id="mp_person2_num_children" oninput="mp_chart_outputs()">
+      <select id="mp_person2_num_children" oninput="mp_chart_outputs();build_tax_after_cdcc_chart('mp');cdcc_marriage_penalty_modify_income();">
         <option value="none">no children</option>
         <option value="one" selected>1 child</option>
         <option value="two">2+ children</option>
@@ -724,9 +722,9 @@
       
       <!--Person 1 Income slider-->
       <div class="slidecontainer"> 
-        <label for="mp_person1_income" class="slider-text"> I have an income of $<output id="mp_person1_income_output">25,000</output>:</label>
+        <label for="mp_person1_income" class="slider-text"> I have an income of $<output id="mp_person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="25000" step="500" class="slider" id="mp_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();">
+          <input type="range" min="0" max="60000" value="30000" step="500" class="slider" id="mp_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();cdcc_marriage_penalty_modify_income();">
         </div>
       </div>
 
@@ -734,14 +732,14 @@
       <div class="slidecontainer"> 
         <label for="mp_person2_income" class="slider-text"> My partner has an income of $<output id="mp_person2_income_output">25,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="25000" step="500" class="slider" id="mp_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();">
+          <input type="range" min="0" max="60000" value="25000" step="500" class="slider" id="mp_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');mp_chart_outputs();build_tax_after_cdcc_chart('mp');cdcc_marriage_penalty_modify_income();">
         </div>
       </div>
 
     </div> <!--user_inputs container-->
 
-    <!-- Marriage Penalties Outputs -->
-    <div class="center_explanation_box"> <!--Subcontainter for eitc values-->
+    <!-- Outputs -->
+    <div class="center_explanation_box" id="mp_outputs_container">
       <p class="explanation_text" id="mp_individual_credit_amounts"></p>
       <p class="explanation_text" id="mp_married_credit_amount"></p>
       <p class="explanation_text" id="mp_marriage_penalty"></p>
@@ -750,6 +748,18 @@
 
     <!-- Marriage Penalties Chart -->
     <div id="marriage_penalty_chart"></div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container">
+
+      <label>Hide Outputs:
+      <input type="checkbox" id="mp_hide_outputs_switch" oninput="cdcc_mp_hide_outputs();">
+      </label>
+
+      <label>Hide Inputs:
+      <input type="checkbox" id="mp_hide_inputs_switch" oninput="cdcc_mp_hide_inputs();">
+      </label>
+    </div>
 
   </div> <!--chart end-->
 
@@ -1077,27 +1087,29 @@
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
-<script type="text/javascript" src="./javascript/color_changes.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
 
-<!-- Chart Builder, Calculations, Income Sliders & Outputs -->
-<script type="text/javascript" src="./javascript/chart_builder.js"></script>
+<!-- Chart Builder, Calculations, & Outputs -->
+<script type="text/javascript" src="./javascript/chart-builder.js"></script>
 <script type="text/javascript" src="./javascript/calculate.js"></script>
-<script type="text/javascript" src="./javascript/chart_sliders.js"></script>
-
 <script type="text/javascript" src="./javascript/outputs.js"></script>
 
 <!-- Top Chart -->
-<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-chart.js"></script>
 
 <!-- Complexity Chart -->
 <script type="text/javascript" src="./javascript/complexity-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity-chart/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/complexity-chart/outputs.js"></script>
 
 <!-- Marriage Penalty Chart -->
 <script type="text/javascript" src="./javascript/marriage-penalty-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalty-chart/adjust-chart.js"></script>
 
 <!-- Reformed CDCC Chart -->
 <script type="text/javascript" src="./javascript/reformed-cdcc/chart.js"></script>
-<script type="text/javascript" src="./javascript/reformed-cdcc/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/reformed-cdcc/adjust-chart.js"></script>
 
 </body>
 </html>

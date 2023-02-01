@@ -4,7 +4,22 @@
   display: none;
 }
 
+/* Complexity Chart */
+.c3-circles-single_one, .c3-circles-single_two, .c3-circles-hoh_one, .c3-circles-hoh_two, .c3-circles-married_one, .c3-circles-married_two {
+  display: none;
+}
+
+/* Marriage Penalty Chart */
+.c3-circles-person1, .c3-circles-married, .c3-circles-combined_tax, .c3-circles-penalty, .c3-circles-married_tax, .c3-circles-bonus {
+  display: none;
+} 
+
 /* Reformed CDCC Low-Income Exclusion Chart */
 .c3-circles-one_child_credit_amount, .c3-circles-two_child_credit_amount, .c3-circles-one_child_vertical_line, .c3-circles-two_child_vertical_line {
   display: none;
+}
+
+/******************* Opacity Settings ******************************/
+.c3-area-combined_tax, .c3-area-married_tax {
+  opacity: 0 !important;
 }

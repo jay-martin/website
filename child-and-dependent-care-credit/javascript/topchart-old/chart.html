@@ -1,0 +1,53 @@
+<div class="chart">
+  <!--User inputs------------------------------>
+  <div class="user_inputs">
+
+    <!--Filing Status-->
+    <label>I am a
+    <select id="filing_status" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
+      <option value="single" selected>single filer</option>
+      <option value="hoh">head of household</option>
+      <option value="married">married joint filer</option>
+    </select>
+    </label>
+
+    <!--Number of children-->
+    <label>and I have
+    <select id="num_children" oninput="build_cdcc_amount_chart(topChart, 'filing_status', 'num_children');top_chart_adjust_y_axis();modify_income();top_chart_outputs()">
+      <option value="one" selected>1 child</option>
+      <option value="two">2+ children</option>
+    </select> under the age of 13.
+    </label>
+    
+    <!--Income slider-->
+    <div class="slidecontainer" id="income_slider_container"> 
+      <label for="user_income" class="slider-text" id="income_slider_text"> I have an income of $<output id="income_output">20,000</output>:</label>
+      <div class="slider-actual">
+        <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="user_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modify_income();top_chart_outputs()">
+      </div>
+    </div>
+
+  </div> <!--user_inputs container-->
+
+  <!-- Top Chart Outputs -->
+  <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+    <p class="explanation_text" id="credit_amount">You can subtract up to <b>$615</b> from your taxes</p>
+
+    <p class="explanation_text" id="explanation_line1"></p>
+    <p class="explanation_text" id="explanation_line2"></p>
+    <p class="explanation_text" id="explanation_line3"></p>
+    <p class="explanation_text" id="explanation_line4"></p>
+    <p class="explanation_text" id="explanation_line5"></p>
+    <p class="explanation_text" id="explanation_line6"></p>
+    <p class="explanation_text" id="explanation_line7"></p>
+    <p class="explanation_text" id="explanation_line8"></p>
+    <p class="explanation_text" id="explanation_line9"></p>
+  </div>
+
+  <!--End animation button-->
+  <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+
+  <!-- Top Chart -->
+  <div id="topchart"></div>
+
+</div> <!--chart end-->

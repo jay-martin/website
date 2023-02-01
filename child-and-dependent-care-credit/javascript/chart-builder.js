@@ -53,7 +53,19 @@ function build_cdcc_amount_chart(chart_name, filing_status_name, num_children_na
     }
 }
 
+// Adjusts the y-axes of the top chart
+function top_chart_adjust_y_axis(){
+    num_children = top_num_children.value;
+    if(num_children === 'one'){
+        top_chart.axis.max({y2: 1200});
+    }
+    else if(num_children === 'two'){
+        top_chart.axis.max({y2: 2400});
+    }
+}
+
 /* Adjusts the y-axis for the top chart */
+/* 
 function top_chart_adjust_y_axis(){
     numChildren = num_children.value;
     if(numChildren === 'one'){
@@ -63,15 +75,5 @@ function top_chart_adjust_y_axis(){
         topChart.axis.max({y: 2000});
     }
 }
-
-/* Adjusts the y-axes for the complexity chart */
-function complexity_chart_adjust_y_axis(){
-    numChildren = complexity_num_children.value;
-    if(numChildren === 'one'){
-        complexityChart.axis.max({y2: 1200});
-    }
-    else if(numChildren === 'two'){
-        complexityChart.axis.max({y2: 2400});
-    }
-}
+*/
 
