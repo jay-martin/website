@@ -61,7 +61,7 @@
 
   --toggle-position: 0px;
   --mobile-toggle-position: 0;
-  --toggle-color: grey;
+  --toggle-color: #545454;
 }
 
 .sepia {
@@ -79,7 +79,7 @@
 
   --toggle-position: 49px;
   --mobile-toggle-position: 33.3%;
-  --toggle-color: #8a7851;
+  --toggle-color: #594e35;
 }
 
 .dark-mode {
@@ -107,10 +107,10 @@
   background-color: var(--toggle-color);
 }
 .page_color_button_group {
-  border-color: var(--base-border) !important;
+  border-color: var(--base-text) !important;
 }
 .page_color_button_group button {
-  color: var(--toggle-color) !important;
+  color: var(--base-text) !important;
 }
 /********** Page Fundamentals *************/
 body, button {
