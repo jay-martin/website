@@ -11,6 +11,7 @@
  * (9) Opens and closes chart notes
  * (10) Opens and closed center explanation box breakdowns
  * (11) Hides the inputs and outputs of charts
+ * (12) Tooltip functionality
  * ****************************************************************************************/
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
@@ -465,4 +466,9 @@ function hide_income_and_outputs(chart_name, remove_points, points){
     }
   }
 }
+
+/******************************** 12. Tooltip onhover/onclick ******************************/
+// body needs to triger a click for tooltip:onhover to disable on mobile devices
+$('body').click(function(){ });
+
 
