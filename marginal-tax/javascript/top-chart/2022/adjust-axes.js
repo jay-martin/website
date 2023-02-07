@@ -16,7 +16,7 @@ function adjust_axis_labels(){
     }
 }
 
-/* Adjusts axis when  number of children is changed */
+/* Adjusts axis when number of children is changed */
 function adjust_axes_numChildren(){
 	numChildren = num_children.value;
 	if(numChildren === 'three'){

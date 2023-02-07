@@ -435,20 +435,9 @@
           <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); top_chart_outputs()">
         </div>
 
-        <!--Disability Status-->
-      <!--
-        <div class="dropdown" id="disability_container">
-          I am a
-          <select class="dropdown" name="disability_status" id="disability_status" oninput="disable_ssi();load_data();modifyIncome();top_chart_outputs();">
-            <option value="not_disabled">non-disabled</option>
-            <option value="disabled">disabled</option>
-          </select>
-        </div>
-      -->
-
         <!--Filing status-->
         <label for="filingstatus">I am a</label>
-        <select name="filingstatus" id="filingstatus" oninput="">
+        <select id="filingstatus" oninput="load_data();top_chart_outputs();">
           <option value="married">married joint filer</option>
           <option value="hoh">head of household</option>
           <option value="single" selected>single filer</option>
@@ -457,7 +446,7 @@
         <!--Number of children-->
         <div class="dropdown" id="num_children_container">
           <label>who has
-          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();adjust_axes_numChildren();top_chart_outputs();">
+          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();top_chart_outputs();">
             <option value="none">no children</option>
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
@@ -465,17 +454,6 @@
           </select> under the age of 18.
           </label>
         </div>
-
-        <!--Employer-sponsored healthcare-->
-      <!--
-        <div class="dropdown" id="disability_container">
-          <select class="dropdown" name="healthcare_status" id="healthcare_status" oninput="disable_healthcare();load_data();modifyIncome();top_chart_outputs();">
-            <option value="no_employer">do not have</option>
-            <option value="employer">have</option>
-          </select>
-        </div>
-        employer-sponsored health insurance.
-      -->
 
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
@@ -510,8 +488,8 @@
                 <li class="breakdown_item" id="eitc_marginal"></li>
                 <li class="breakdown_item" id="ctc_marginal"></li>
                 <li class="breakdown_item" id="snap_marginal"></li>
-                <li class="breakdown_item" id="ptc_marginal"></li>
                 <li class="breakdown_item" id="ssi_marginal"></li>
+                <li class="breakdown_item" id="ptc_marginal"></li>
               </ul>
           </ul>
           <!--<p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>-->
@@ -555,7 +533,7 @@
           <label>Show chart as:
           <select class="dropdown" name="chart_type" id="chart_type" oninput="switch_chart()">
             <option value="EMTR" selected>effective marginal tax rates</option>
-            <option value="EI">post-tax-and-transfer income</option>
+            <!--<option value="EI">post-tax-and-transfer income</option>-->
           </select>
           </label>
         </div>
@@ -600,20 +578,30 @@
       <button class="chart_notes_button" id="top_chart_notes_button" onclick="open_and_close_chart_notes('top_chart_notes')">View Chart Notes</button>
       <div class="chart_notes_container" id="top_chart_notes" hidden>
         <ul class="notes_list">
+          <h3 class="notes_headers">General</h3>
           <li>This chart deals only with taxes on labor income. Taxes on consumption (e.g. sales tax) and income from ownership (e.g. capital gains & property tax) are not included.</li>
           <li>This chart shows only federal taxes and benefits. Many state have additional taxes and benefits that appreciably affect marginal tax rates.</li>
+          <li>This chart shows marginal tax rates for the 48 contiguous states and Washington D.C. Residents of American Samoa, Guam, the Northern Mariana Islands, Puerto Rico, and the U.S. Virgin Islands do not pay federal income tax. SSI is not available in American Samoa, Guam, Puerto Rico, and the U.S. Virgin Islands. SNAP is not available in American Samoa, Puerto Rico, and the Northern Mariana Islands. While SNAP is available in Alaska and Hawaii (as well as Guam and the US Virgin Islands), benefits are calculated using different poverty line figures.</li>
           <li>It is assumed that modified adjusted gross income (MAGI) equals gross income.</li>
           <li>This chart only considers costs faced in a single year. However, lifetime earnings affect old-age benefits. This imposes a real cost—earnings today affect benefits years down the line—but is outside of the scope of this chart. See <a href="#Altig" onclick="highlight('Altig');">Altig & Auerbach 2020</a> for a study incorporating lifetime earnings into effective tax rates.</li>
-          <li>Eligibility for SNAP and SSI is based on monthly income, whereas eligibility for most other programs considered here, as well as income tax liability, are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#snap_appendix_icon'>Appendix: SNAP</a>. For details on how SSI marginal tax rates are calculated, see: <a href='#ssi_appendix_icon'>Appendix: SSI</a>.</li>
-          <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>), work requirements, and wage reductions that can be attributed to the employer FICA tax. Able-bodied adults without dependents (ABAWD) can only receive SNAP for three months every three years unless they satisfy work requirements. SNAP and SSI both include rather onerous asset tests for most recipients (they are waived for people who are both categorically eligible and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty)</a>. This chart does not show SNAP benefits for the small proportion of recipients who are both categorically eligible and have gross incomes exceeding 130% of the federal poverty line.</li> 
+          <li>This chart does not take into consideration asset tests (see page: <a href="./index.html" target="_blank"><em>Asinine Asset Tests</em></a>) and work requirements. Able-bodied adults without dependents (ABAWD) can only receive SNAP for three months every three years unless they satisfy work requirements. SNAP and SSI both include rather onerous asset tests for most recipients (they are waived for people who are both categorically eligible and live in states that use <a href=https://www.fns.usda.gov/snap/broad-based-categorical-eligibility>broad-based categorical eligibilty)</a>.</li> 
+          <h3 class="notes_headers">Personal Income Tax</h3>
           <li>Personal income tax is calculated using the standard deduction.</li>
-          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse. For most people, this has no effect on their payroll tax liability; however, tax rates will differ for higher income couples in which one parter has earnings exceeding Social Security's maximum taxable earnings ($147,000 in 2022). See <a href='#fica_appendix_icon'>Appendix: FICA</a> for further details.</li>
-          <li>Eligibility for several benefits is based on the federal poverty line. This chart shows benefit levels based on the poverty line for the 48 contiguous states and Washington D.C. The poverty line differs in Alaska, Hawaii, and the US territories.
+          <h3 class="notes_headers">FICA</h3>
+          <li>When calculating the FICA payroll taxes of married couples, it is assumed that each spouse generates half of the couple's combined income. This simplification allows a married couple's FICA marginal tax rate to be shown as a single curve with only one dependent variable (combined gross income). However, FICA payroll taxes are assessed separately on the wages of each spouse. For most families, this has no effect on their combined payroll tax liability. However, tax rates will differ for higher income couples in which one parter has earnings exceeding Social Security's maximum taxable earnings ($160,200 in 2023) and if one partner has earnings subject to the additional Medicare tax (wages above $200,000).
+          <li>This chart does not take into consideration wage reductions that can be attributed to the employer FICA tax.</li>
+          <h3 class="notes_headers">SNAP</h3>
+          <li>In most states, emergency SNAP allotments from the COVID-19 pandemic end in March 2023, i.e. for three months in 2023 SNAP benefits are higher than they will be for the rest of the year. For simplicity, I calculate SNAP benefits as if the standard SNAP benefits applied throughout the entire year.</li>
+          <li>Eligibility for SNAP is based on monthly income, whereas income tax and eligibility for most other programs are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SNAP marginal tax rates are calculated, see: <a href='#snap_appendix_icon'>Appendix: SNAP</a>.</li>
           <li>Net income for SNAP benefits is calculated using the SNAP standard deduction and the 20% earnings deduction. Additional deductions that some recipients are eligible for are not included. See <a href='#snap_appendix_icon'>Appendix: SNAP</a> for details on how SNAP marginal tax rates are calculated.</li>
-          <li>This chart shows SNAP benefits for people in the 48 contiguous states and Washington D.C. SNAP maximum allotments and standard deductions differ in Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, and the Northern Mariana Islands, each of which operate separate food assistance programs.</li>
+          <li>This chart does not show SNAP benefits for the small proportion of recipients who are both categorically eligible for SNAP and have gross incomes exceeding 130% of the federal poverty line.</li>
+          <h3 class="notes_headers">SSI</h3>
+          <li>Eligibility for SSI is based on monthly income, whereas income tax and eligibility for most other programs are based on annual income. To display these together in a single chart based on annual income, it is assumed that monthly income is uniform over the tax year. For details on how SSI marginal tax rates are calculated, see: <a href='#ssi_appendix_icon'>Appendix: SSI</a>.</li>
+          <h3 class="notes_headers">Premium Tax Credits</h3>
+          <li>Premium tax credits are calculated using the formula that is in effect from 2021 through 2025. In 2026, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.</li>
+          <li>The incomes at which the premium tax credits no longer imposes marginal tax rates are calculated using national average costs for silver plans purchased through the ACA exchanges. See <a href='#ptc_appendix_icon'>Appendix: Medicaid and Premium Tax Credits</a> for more details.</li>
           <li>For the purpose of calculating marginal tax rates and benefit values, Medicaid and Premium Tax Credits are treated as one program. The monetary value of Medicaid is considered to be equal to the premium of a silver plan purchased through the ACA exchanges. This is necessary for continuity, but obscures substantive differences between Medicaid and subsidized private health insurance. For the shortcomings of this method and details on how marginal tax rates are calculated for premium tax credits, see: <a href='#ptc_appendix_icon'>Appendix: Medicaid and Premium Tax Credits</a>.</li>
-          <li>This chart shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
-          <li>This chart uses the premium tax credit formula that is in effect from 2021 through 2025. In 2026, the credit formula is scheduled to revert to a separate, narrower formula established by the Affordable Care Act.
+          <li>This chart implicitly shows Medicaid under the expansion instituted by the Affordable Care Act. Medicaid has not been expanded in Alabama, Georgia, Florida, Kansas, Mississippi, North Carolina, South Carolina, Tennessee, Texas, Wisconsin, and Wyoming.</li>
         </ul>
       </div>
 
@@ -800,6 +788,7 @@
         SNAP is based around the idea that recipients should dedicate 30% of their income towards food purchases, with SNAP making up any shortfall between the 30% contribution and the amount of money needed to purchase a "nutritionally adequate low-cost diet".<span class="tooltip" id='note1'><a class="refs" href="#notes"><sup>[1]</sup></a><span class="tooltiptext">Aussenberg, Randy Allison (October 4, 2022). <a class='tooltip_link' href=https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">"Supplemental Nutrition Assistance Program (SNAP): A Primer on Eligibility and Benefits"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a class='tooltip_link' href=https://web.archive.org/web/20220604075253/https://crsreports.congress.gov/product/pdf/R/R42505 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 4, 2022.</span></span> Consequently, the SNAP benefit formula takes a maximum benefit, defined as the amount of money needed to purchase such a diet (which varies by household size), and then subtracts from that 30% of net income: $$\text{Benefit} = \text{Maximum Benefit} - \text{30% of Net Income} $$
       </p>
 
+<!--
       <p>
         In 2022, maximum benefits were:<span class="tooltip" id='note2'><a class="refs" href="#notes"><sup>[2]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf' target="_blank">"USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments"</a>. <em>United States Department of Agriculture</em>. <a class='tooltip_link' href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a> from the original on August 9, 2022.</span></span>
       </p>
@@ -836,6 +825,44 @@
           <td>$11,904</td>
         </tr>
       </table>
+-->
+
+      <p>
+        In 2023, maximum benefits were:<span class="tooltip" id='note2'><a class="refs" href="#notes"><sup>[2]</sup></a><span class="tooltiptext"><a href="https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">"SNAP – Fiscal Year 2023 Cost-of-Living Adjustments"</a> <i class="fa fa-file-pdf-o"></i> (August 2022). <em>United States Department of Agriculture (USDA)</em>. <a href="https://web.archive.org/web/20221006005505/https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">Archived</a> from the original on October 6, 2022.</span></span>
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Maximum Benefit</th>
+          <th>Maximum Possible Annual Benefit</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$281/month</td>
+          <td>$3,372</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$516/month</td>
+          <td>$6,192</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$740/month</td>
+          <td>$8,880</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$939/month</td>
+          <td>$11,268</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$1,116/month</td>
+          <td>$13,392</td>
+        </tr>
+      </table>
 
       <p>
         Note that these are the values for the 48 contiguous states and Washington D.C. They differ for Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, or the Northern Mariana Islands.
@@ -845,6 +872,7 @@
         Net income is calculated by subtracting from gross income a number of deductions. I include the two universally-available deductions: the SNAP standard deduction (this is separate from the standard deduction used for personal income tax) and the earned income deduction, which allows recipients to deduct 20% of their gross income. Some recipients can use additional deductions, like the deduction for court-order child support, but we will not consider them here. This results in the following formula for net income: $$ \text{Net Income} = \text{Gross Income} - .2 (\text{Gross Income}) - \text{Standard Deduction}$$ $$= .8 (\text{Gross Income}) - \text{Standard Deduction}$$
       </p>
 
+<!--
       <p>
         In 2022, SNAP standard deductions were:<span class="tooltip" id='note3'><a class="refs" href="#notes"><sup>[3]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a>. <em>Texas Health and Human Services Commission</em>. <a class='tooltip_link' href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on June 24, 2022.</span></span>
       </p>
@@ -871,6 +899,34 @@
           <td>$2,580</td>
         </tr>
       </table>
+-->
+
+      <p>
+        In 2023, SNAP standard deductions were:<span class="tooltip" id='note3'><a class="refs" href="#notes"><sup>[3]</sup></a><span class="tooltiptext"><a href="https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">"SNAP – Fiscal Year 2023 Cost-of-Living Adjustments"</a> <i class="fa fa-file-pdf-o"></i> (August 2022). <em>United States Department of Agriculture (USDA)</em>. <a href="https://web.archive.org/web/20221006005505/https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">Archived</a> from the original on October 6, 2022.</span></span>
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Monthly Standard Deduction</th>
+          <th>Annualized Standard Deduction</th>
+        </tr>
+        <tr>
+          <td>Four or less</td>
+          <td>$193/month</td>
+          <td>$2,316</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$225/month</td>
+          <td>$2,700</td>
+        </tr>
+        <tr>
+          <td>Six or More</td>
+          <td>$258/month</td>
+          <td>$3,096</td>
+        </tr>
+      </table>
 
       <p>
         Note that these are the values for the 48 contiguous states and Washington D.C. They differ for Alaska, Hawaii, Guam, and the US Virgin Islands. SNAP is not available in Puerto Rico, American Samoa, or the Northern Mariana Islands.
@@ -885,11 +941,35 @@
       </p>
 
       <p>
-        A $1 increase in income thus results in a $0.24 loss in benefits, which means the effective marginal tax rate is 24%. Intuitively, you can think of it this way: when gross income increases by $1, the 20% earnings deduction rises by $0.20, resulting in additional net income of only $0.80. Since recipients are required to dedicate 30% of their net income to food purchases, the overall result of a $1 increase in gross income is a .3($0.80)=$0.24 decrease in benefits. 
+        A $1 increase in income thus results in a $0.24 loss in benefits, which means the effective marginal tax rate is 24%. Intuitively, you can think of it this way: when gross labor income increases by $1, the 20% earnings deduction rises by $0.20, resulting in additional net income of only $0.80. Since recipients are required to dedicate 30% of their net income to food purchases, the overall result of a $1 increase in gross income is a .3($0.80)=$0.24 decrease in benefits. 
       </p>
 
       <p>
-        There is one additional consideration we must take into account. While SNAP's benefit formula naturally phases down to $0, SNAP also includes both a gross income max and a net income max. SNAP eligibility abruptly cuts off if gross income exceeds 130% percent of the poverty line <em>or</em> if net income exceeds 100% of the poverty line. These limits are listed by family size in the table below.<span class="tooltip" id='note4'><a class="refs" href="#notes"><sup>[4]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a>. <em>Texas Health and Human Services Commission</em>. <a class='tooltip_link' href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on June 24, 2022.</span></span>
+        This, however, only holds when net income is greater than 0. When net income is less than zero, the SNAP benefit is simply the benefit max. There is thus a 0% marginal tax rate until gross income reaches the level at which net income is greater than zero. We determine this by solving \(.8I - SD = 0 \) for \(I\), which results in \(I = 1.25 SD\). These values for different family sizes are listed in the table below:
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Annualized Gross Income at Which Annualized Net Income Exceeds $0</th>
+        </tr>
+        <tr>
+          <td>Four or less</td>
+          <td>$2,895</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$3,375</td>
+        </tr>
+        <tr>
+          <td>Six or More</td>
+          <td>$3,870</td>
+        </tr>
+      </table>
+
+<!-- 
+      <p>
+        There is one additional consideration we must take into account. While SNAP's benefit formula naturally phases down to $0, SNAP also includes a net income max and a gross income max. SNAP eligibility abruptly cuts off if gross income exceeds 130% percent of the poverty line <em>or</em> if net income exceeds 100% of the poverty line. These limits are listed by family size in the table below.<span class="tooltip" id='note4'><a class="refs" href="#notes"><sup>[4]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a>. <em>Texas Health and Human Services Commission</em>. <a class='tooltip_link' href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on June 24, 2022.</span></span>
       </p>
 
       <table style="width:100%">
@@ -936,10 +1016,274 @@
           <td>$31,044</td>
         </tr>
       </table>
+-->
 
       <p>
-        For many recipients, these income maxes result in a benefit cliff (i.e. a point at which their benefit suddenly drops to zero even though their calculated benefit under the benefit formula is positive).
+        There is one additional consideration we must take into account. While SNAP's benefit formula naturally phases down to $0, SNAP also includes a net income limit of 100% of the federal poverty line and a gross income limit of 130% of the poverty line. In other words, SNAP eligibility will abruptly cut off if either gross income exceeds 130% percent of the poverty line <em>or</em> net income exceeds 100% of the poverty line. These limits are listed by family size in the table below.<span class="tooltip" id='note4'><a class="refs" href="#notes"><sup>[4]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a> (October 2022). <em>Texas Health and Human Services Commission</em>. <a class='tooltip_link' href="https://web.archive.org/web/20230201234631/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on February 1, 2023.</span></span>
       </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Gross Income Limit</th>
+          <th>Annualized Gross Income Limit</th>
+          <th>Net Income Limit</th>
+          <th>Annualized Net Income Limit</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$1,473/month</td>
+          <td>$17,676</td>
+          <td>$1,133/month</td>
+          <td>$13,596</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$1,984/month</td>
+          <td>$23,808</td>
+          <td>$1,525/month</td>
+          <td>$18,312</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$2,495/month</td>
+          <td>$29,940</td>
+          <td>$1,920/month</td>
+          <td>$23,040</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$3,007/month</td>
+          <td>$36,084</td>
+          <td>$2,313/month</td>
+          <td>$27,756</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$3,518/month</td>
+          <td>$42,216</td>
+          <td>$2,706/month</td>
+          <td>$32,472</td>
+        </tr>
+      </table>
+
+      <p>
+        We need to determine which max, if either, beneficiaries will hit. The maximum eligible gross income \(I_{max} \) can be determined by finding the minimum of the gross income limit and net income limit. From the gross income limit, \( I_{max} = 1.3 PL \). From the net income limit, \( \text{Net Income Limit} = PL = .8I_{max} - SD \), so \(I_{max} = 1.25 (PL + SD) \). The condition is then \(I_{max} = \text{min} \{1.3 PL, 1.25 (PL + SD)\} \).
+      </p>
+
+      <p>
+        We can plug in the values for each family size to determine which is the min. For households with one person, for instance, the standard deduction equals about \(.17PL\), so \(1.25 (PL + SD) = 1.25(PL + .17PL) \approx 1.46 PL\). Therefore, \(I_{max} = 1.3PL \). Indeed, the <b>gross</b> income limit is the limiting factor for all family sizes considered, so \(I_{max} = 1.3PL \) in all cases.
+      </p>
+
+      <p>
+        We might pause for a minute to wonder why the net income limit even exists, as the net income limit will <em>always</em> exceed the gross income limit simply as a result of the standard deduction. That is because in states with broad-based eligibility, people who are eligible for TANF or SSI are <em>categorically eligible</em> for SNAP, meaning they are not subject to the gross income limit. In this case, it is the net income limit that caps the gross income at which people are eligible for SNAP benefits. (You might notice that it is still somewhat nonsensical—the benefit formula is already based off of net income, so why not just let it phase down to $0?)
+      </p>
+
+    <!--
+      <p>
+        You can see from this that the gross income limit is meant to cap the amount of additional deductions beneficiaries can claim against their net income. We aren't including these additional deductions in our analysis, so the net income condition \(I_{max} = 1.25 (PL - SD) \) will always be the limiting factor.
+      </p>
+    -->
+
+      <p>
+        Next, we need to determine whether \(I_{max} \) is less than the income \(I_{zero}\) at which the benefit \(B\) reaches zero. We simply solve \(B(I) = 0 = B_{max} -.3(.8I_{zero} - SD ) \). This results in \( I_{zero} = 1.25( \frac{10}{3} B_{max} + SD ) \). We compare this with \(I_{max}\) by plugging in the relevant values. The results of these calculations are listed in the table below.
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Gross Income at Which Gross Income Limit is Hit</th>
+          <th>Gross Income at Which Calculated Benefit Reaches Zero</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$17,676</td>
+          <td>$16,945</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$23,808</td>
+          <td>$28,695</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$29,940</td>
+          <td>$39,895</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$36,084</td>
+          <td>$49,848</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$42,216</td>
+          <td>$59,175</td>
+        </tr>
+      </table>
+
+      <p>
+        Rather unsurprisingly, the gross income limit does indeed tend work as a limit—for all household sizes except single-person households, benefits cut off before the calculated benefit reaches $0. This means that households with more than one person face a <b>benefit cliff</b> at the gross income limit. On our chart, this manifests as a vertical line: an additional dollar of income over the gross income limits results in much more than a dollar reduction in SNAP benefits (to keep the axes reasonable, the actual EMTR of the benefit cliff—which is over 100,000%, is not depicted in its entirety). We can calculate the size of the benefit cliff by plugging \( I_{max} \) into the benefit formula, i.e. \( B(I_{max}) = B_{max} - .3 (.8 I_{max} - SD ) \), for households with more than one person. These values are shown in the table below:
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Family Size</th>
+          <th>Eligibility Cutoff Income</th>
+          <th>Size of Benefit Cliff</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$16,945</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$23,808</td>
+          <td>$1,173</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$29,940</td>
+          <td>$2,389</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$36,084</td>
+          <td>$3,303</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$42,216</td>
+          <td>$4,070</td>
+        </tr>
+      </table>
+
+      <p>
+        As you can see, the gross income limit results in sizeable benefit cliffs.
+      </p>
+
+      <p>
+        Now we have all that we need to fully describe the marginal tax rates of the SNAP program under our assumptions. From \( $0 \) to $1 below \(1.25SD\), the marginal tax rate is 0%, since net income is less than $0 and hence the benefit remains \(B_{max}\). For households with more than one person, from \(1.25SD\) to $1 below the gross income limit (\(1.3PL \)), the marginal tax rate is 24%, since a dollar of additional income results in a 24 cent reduction in benefits. For single-person households, from \(1.25SD\) to $16,945 (the income at which the calculated benefit reaches $0), the marginal tax rate is 24%. For households with more than one person, at the gross income limit the marginal tax rate is some very large number, since a dollar of additional income results in thousands of dollars of lost benefits. Above the gross income limit/$16,945, the marginal tax rate is 0%, since there are no benefits to lose. The precise values are listed in the tables below:
+      </p>
+
+      <table style="width:49%">
+        <caption style="font-size:120%;"><b>Family Size: One</b></caption>
+        <tr>
+          <th>Gross Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $2,895</td>
+          <td>$3,372</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$2,895–$16,944</td>
+          <td>$3,372\(–\).3(\(.8I-\)$2,316)</td>
+          <td>24%</td>
+        </tr>
+        <tr>
+          <td>Above $16,944</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <table style="width:49%;float:right">
+        <caption style="font-size:120%;"><b>Family Size: Two</b></caption>
+        <tr>
+          <th>Gross Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $2,895</td>
+          <td>$6,192</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$2,895–$23,807</td>
+          <td>$6,192\(–\).3(.8\(I-\)$2,316)</td>
+          <td>24%</td>
+        </tr>
+        <tr>
+          <td>$23,808</td>
+          <td>$1,173</td>
+          <td>117,300%</td>
+        </tr>
+        <tr>
+          <td>Above $23,808</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <p></p>
+      <br>
+      <br>
+
+      <table style="width:49%">
+        <caption style="font-size:120%;"><b>Family Size: Three</b></caption>
+        <tr>
+          <th>Gross Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $2,895</td>
+          <td>$8,880</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$2,895–$29,939</td>
+          <td>$8,880\(–\).3(\(.8I-\)$2,316)</td>
+          <td>24%</td>
+        </tr>
+        <tr>
+          <td>$29,940</td>
+          <td>$2,389</td>
+          <td>238,900%</td>
+        </tr>
+        <tr>
+          <td>Above $29,940</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <table style="width:49%;float:right">
+        <caption style="font-size:120%;"><b>Family Size: Four</b></caption>
+        <tr>
+          <th>Gross Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $2,895</td>
+          <td>$11,268</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$2,895–$36,083</td>
+          <td>$11,268\(–\).3(.8\(I-\)$2,316)</td>
+          <td>24%</td>
+        </tr>
+        <tr>
+          <td>$36,084</td>
+          <td>$3,303</td>
+          <td>330,300%</td>
+        </tr>
+        <tr>
+          <td>Above $36,084</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <p></p>
+      <br>
 
     </div> <!--Appendix: SNAP-->
 
@@ -951,27 +1295,28 @@
       </table>
     </button>
     <div class="appendix" id="appendix2">
-      <h3>Calculating SSI Effective Marginal Tax Rates In Isolation</h3>
+      <h3>Calculating SSI Effective Marginal Tax Rates</h3>
       <p>
         SSI imposes very high marginal tax rates. Nominally, it is 100%: every dollar of earned or unearned income (unearned includes in-kind benefits like food and shelter provided by other people) results in a $1 reduction in SSI benefits. However, SSI excludes the first $20 of any income (earned or unearned) made in a month, the first $65 of earned income made in a month, one-half of earned income above the first $65 (and any remainder from the $20 exclusion), and several quarterly exclusions for infrequent or irregular unearned income.(supCRS SSI Long: 17) Note that these figures are not adjusted for inflation each year—they have been the same since 1972.(supCRS SSI Long: 18) 
       </p>
 
       <p>
-        Income after these exclusions is referred to as <em>countable income</em>, and SSI imposes a 100% effective marginal tax rate on countable income. EMTR's on <em>gross income</em>, however, are less than 100%, because some of it is exempted.
+        Income after these exclusions is referred to as <em>countable income</em>, and SSI imposes a 100% effective marginal tax rate on countable income. EMTR's on <em>gross income</em>, however, are less than 100%, because some of gross income is exempted when computing countable income.
       </p>
 
       <p>
-        Before we get into the marginal tax rate calculations, let's review the assumptions I make. First, this chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, we will not include the $20 exclusion, since this can be applied to non-labor income. So for our calculations, we will exclude the first $65 of monthly income plus one-half of additional monthly income. 
+        Several assumptions I've made will affect the marginal tax rates we calculate. First, this chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, I will not include the $20 exclusion, which can be applied to non-labor income. So, for our calculations, only the first $65 of monthly income plus one-half of additional monthly income is exempted. 
       </p>
 
       <p>
-        Second, the chart looks at income on an annual basis, while SSI is based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this will deviate from many people's actual benefits. A person who made all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. In practice, though, these differences are small enough that they hardly register on the chart.
+        Second, the chart looks at income on an annual basis, while SSI benefit amounts are based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this means our calculations can deviate from people's actual benefits. A person who makes all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. The consequence of this is that the amount of income subject to a 0% marginal tax rate is slightly extended. In practice, though, these discrepancies are small enough that they would hardly be visible on the chart.
       </p>
 
       <p>
-        Note also that this chart does not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets include "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). Because the chart does not take into consideration these asset limits, the chart can indicate that somebody would receive an SSI benefit even though they would be disqualified by the asset test. Consider, for instance, an individual who receives the max benefit of $841/month. Over six months, they would receive $5,046. If they were to save $2,100 of that, then the next time SSI eligibility is checked it will be noticed that this person's bank account exceeds $2,000 and benefits will be cut off, even if they otherwise satisfy the income requirements. Our calculations do not consider this possibility. For more information on asset tests, see the page <em><a href="" target="_blank">Asinine Asset Tests</a></em>.
+        Finally, I do not take into consideration asset tests. SSI has a $2,000 asset limit for individuals and a $3,000 asset limit for married couples in which both spouses are SSI-eligible. Assets include "cash or other liquid assets or any real or personal property that an individual (or spouse, if any) owns and could convert to cash to be used for his or her support and maintenance".(sup: CRS SSI Long) SSI excludes one car and a house from the asset test (how, you might ask, is someone supposed to buy a car or a house when they can never save more than $2,000?). Because I do not take into consideration these asset limits, our calculations may indicate that somebody would receive an SSI benefit even though they would be disqualified by the asset test. For more information on asset tests, see the page <em><a href="../asset-tests/index.html" target="_blank">Asinine Asset Tests</a></em>.
       </p>
 
+<!--
       <p>
         With these considerations in mind, we can now go about determining the benefit values and effective marginal tax rates of SSI for labor income. SSI has a maximum benefit, adjusted for inflation each year. In 2022, these figures were:<a class="refs" id="note8" href="#notes"><sup>8</sup></a> (fix sup)
       </p>
@@ -993,9 +1338,32 @@
           <td>$15,132</td>
         </tr>
       </table>
+-->
 
       <p>
-        Note that the married couple maximimum only applies if <em>both</em> spouses are eligible for SSI. A person who is married to someone who is non-SSI-eligible receives the individual benefit. This benefit schedule also has one very bad, probably unintended consequence: it imposes an appreciable marriage penalty on disabled people. It does this in two ways. First, the maximum benefit is not double the individual benefit. Imagine two disabled people who are dating but not married. If they both receive the maximum benefit, then they receive a combined total of \( \$841 \times 2 = \$1682 \). However, if they were to marry, their benefit would drop to \( \$1261\), a $421 decrease. Over the year, that's up to $5,052 of lost income as a result of getting married. The second way SSI imposes a marriage penalty is by not doubling the first-of-the-month exemption. Both individuals and married couples have a $65/month earned income exemption, so getting married halves the exemption the couple receives. While we're on the topic, I'll add that the asset test also imposes a marriage penalty: it is $2,000 for an individual and only $3,000 for a married couple, meaning that a disabled couple would see their asset limit cut by 25% if they were to marry.
+        With these considerations in mind, we can now go about determining the benefit values and effective marginal tax rates of SSI on labor income. SSI benefits are calculated by subtracting from a maximum benefit, adjusted for inflation each year. In 2023, these figures were:<span class="tooltip" id=''><a class="refs" href="#notes"><sup>[SSA]</sup></a><span class="tooltiptext"><a href='https://www.ssa.gov/news/press/factsheets/colafacts2023.pdf' target="_blank">"Fact Sheet: 2023 Social Security Changes"</a> (2022). <em>Social Security Administration</em>. <a href="https://web.archive.org/web/20230123060234/https://www.ssa.gov/news/press/factsheets/colafacts2023.pdf" target="=_blank">Archived</a> from the original on January 23, 2023.</span></span>
+      </p>
+
+      <table style="width:100%">
+        <tr>
+          <th>Household Type</th>
+          <th>Maximum Benefit</th>
+          <th>Annualized Maximum Benefit</th>
+        </tr>
+        <tr>
+          <td>Individual</td>
+          <td>$914/month</td>
+          <td>$10,968</td>
+        </tr>
+        <tr>
+          <td>Married Couple</td>
+          <td>$1,371/month</td>
+          <td>$16,452</td>
+        </tr>
+      </table>
+
+      <p>
+        Note that the married couple maximimum only applies if <em>both</em> spouses are eligible for SSI. A person who is married to someone who is non-SSI-eligible receives the individual benefit. You may notice that this results in sizeable marriage penalties for disabled people. You can read more about these at the page <em><a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a></em>.
       </p>
 
       <p>
@@ -1003,17 +1371,18 @@
       </p>
 
       <p>
-         Since first $780 of income is excluded, there is no decrease in SSI benefits for the first $780 in income. This means there is a 0% effective marginal tax rate on the first $779 (at $780, an additional dollar of income results in $781 of income, so there is a non-zero EMTR): $$EMTR_{I < \text{\$780} } = 0\% $$
+         Since the first $780 of income is excluded, there is no decrease in SSI benefits for the first $780 in income. This means there is a 0% effective marginal tax rate on the first $779 (at $780, an additional dollar of income results in $781 of income, so there is a non-zero EMTR): $$EMTR_{I < \text{\$780} } = 0\% $$
       </p>
 
       <p>
-        Half of labor income above the first $750 is exempted. Clearly, this is a 50% effective marginal tax rate, though I'll still run through the calculation. The EMTR is the loss in benefits as a result of a $1 increase in income, i.e. \( B(I+1) - B(I) \). The EMTR is thus: $$EMTR_{I \geq \text{\$780}}(I) = B_{max} - .5((I+1) - 780) - (B_{max} - .5(I-780)) = 50\% $$
+        Half of labor income above the first $780 is exempted, and a 100% marginal tax is imposed on the remaining 50%. Clearly, this results in a 50% effective marginal tax rate: $$EMTR_{I \geq \text{\$780}}(I) = B_{max} - .5((I+1) - 780) - (B_{max} - .5(I-780)) = 50\% $$
       </p>
 
       <p>
         Finally, we have to take into consideration when the benefit equals $0. Once the benefit hits $0, the EMTR drops to 0%, since there is no more benefit to lose as a result of additional income. The calculation is straightforward, we just set \(B(I)\) for income greater than $780 equal to zero and solve: \(I= 2(B_{max} + 390) \). The benefits thus reaches zero at the following values:
       </p>
 
+<!--
       <table style="width:90%">
         <tr>
           <th>Household Type</th>
@@ -1028,11 +1397,28 @@
           <td>$31,044</td>
         </tr>
       </table>
+-->
+
+      <table style="width:100%">
+        <tr>
+          <th>Household Type</th>
+          <th>Zero Benefit Income</th>
+        </tr>
+        <tr>
+          <td>Individual</td>
+          <td>$22,716</td>
+        </tr>
+        <tr>
+          <td>Married Couple</td>
+          <td>$33,684</td>
+        </tr>
+      </table>
 
       <p>
         Now we have a full accounting of benefits and effective marginal tax rates. These are shown in the tables below:
       </p>
 
+<!--
       <table style="width:45%">
         <caption style="font-size:120%;"><b>Individual</b></caption>
         <tr>
@@ -1081,10 +1467,60 @@
         </tr>
       </table>
 
-      <p>
-         Note that the benefit at a particular level income is in general <em>lower</em> when unearned income is included. A disabled individual who makes $15,000 exclusively from earned income, for instance, would receives a benefit of \( $10,092-.5($15,000 - $780) = $2,982 \), while a disabled individual who makes $15,000 exclusively from unearned income would receive a benefit of \( $10,092 - ($15,000 - $240) = $0\). Thus, these figures in-effect represent the <em>maximum</em> benefit disabled people can receive at a given income.
-      </p>
+-->
 
+    <table style="width:49%">
+        <caption style="font-size:120%;"><b>Individual</b></caption>
+        <tr>
+          <th>Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $780</td>
+          <td>$10,968</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$780–$22,715</td>
+          <td>$10,968\(–\).5(\(I-\)$780)</td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td>Above $22,715</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <table style="width:49%;float:right">
+        <caption style="font-size:120%;"><b>Married Couple</b></caption>
+        <tr>
+          <th>Income</th>
+          <th>Benefit</th>
+          <th>EMTR</th>
+        </tr>
+        <tr>
+          <td>Less than $780</td>
+          <td>$16,452</td>
+          <td>0%</td>
+        </tr>
+        <tr>
+          <td>$780–$33,683</td>
+          <td>$16,452\(–\).5(\(I-\)$780)</td>
+          <td>50%</td>
+        </tr>
+        <tr>
+          <td>Above $33,683</td>
+          <td>$0</td>
+          <td>0%</td>
+        </tr>
+      </table>
+
+      <p></p>
+      <p></p>
+
+<!--
       <h3>SSI Effective Marginal Tax Rates Considering Other Programs</h3>
       <p>
         The above section shows the benefit values and EMTR's of SSI when considering SSI in isolation from other programs. However, other benefits can affect SSI benefit amounts. We will now consider how SSI interects with the other programs displayed in our chart.
@@ -1121,6 +1557,7 @@
       <p>
         Notice that we now have a strange situation where the person in our first example receives no benefits, while the person in our second example receives SNAP benefits, <em>even though they both have identical incomes</em>. Benefits can thus be path-dependent. And notice that, remarkably, the person in our second example remains eligible for SNAP only because they are categorically eligible as a result of their eligibility for SSI; however, they in fact exceed the SSI financial limits and are only eligible for it as a result of their eligibility for SNAP. We have a crazy eligibility feedback loop!
       </p>
+  -->
 
     </div><!--Appendix: SSI-->
 
@@ -1132,6 +1569,7 @@
       </table>
     </button>
     <div class="appendix appendix_bottom" id="appendix3">
+    <!--
       <h3>Including Medicaid & the Premium Tax Credits Together</h3>
       Premium tax credit: Benchmark Plan Premium – Required Premium Contribution = Premium Tax Credit Amount </br>
 
@@ -1139,17 +1577,46 @@
       <p>
         The biggest shortcoming of this method is that Medicaid tends to pay for a larger share of people's medical bills than silver plans. Silver plans by definition have high out-of-pocket costs, whereas Medicaid has low out-of-pocket costs. The average silver plan deductible, for instance, is over $4,000 and the copayment is 30% of costs. (EDIT: there are cost-sharing reductions). Medicaid deductibles and copayments vary by state, but in general Medicaid's deductibles and copayments are lower for people just below 150% of the poverty line than silver plan's are for people just above 150% of the poverty line. This means that there's a very real financial penalty for going over the Medicaid income limit, even if the government covers the full cost of your silver plan premium.
       </p>
+    -->
 
       <h3>Calculating Premium Tax Credit Effective Marginal Tax Rates</h3>
       <p>
         Under the Inflation Reduction Act, the required contribution percentages instituted by the American Rescue Plan Act were extended through 2025. These are shown in the below left table, obtained from the text of the American Rescue Plan Act.<span class="tooltip" id='note5'><a class="refs" href="#notes"><sup>[5]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf#page=181' target="_blank">Text of the American Rescue Plan Act</a> <i class="fa fa-file-pdf-o"></i>. <em>Congress.gov</em>. The table is on page 181 of the document (page included in hyperlink). <a class='tooltip_link' href="https://web.archive.org/web/20230106212115/https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf" target="=_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 6, 2023.</span></span>
 
 
-        They are based on the federal poverty line, shown in the below right table.<span class="tooltip" id='note6'><a class="refs" href="#notes"><sup>[6]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.healthcare.gov/glossary/federal-poverty-level-fpl/' target="_blank">"Federal poverty level (FPL)"</a>. <em>Healthcare.gov</em>. <a class='tooltip_link' href="https://web.archive.org/web/20230107032322/https://www.healthcare.gov/glossary/federal-poverty-level-fpl/" target="=_blank">Archived</a> from the original on January 7, 2023.</span></span>
+        They are based on the federal poverty line, shown in the below right table.<span class="tooltip" id='note6'><a class="refs" href="#notes"><sup>[6]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines' target="_blank">"HHS Poverty Guidelines for 2023"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>. <a class='tooltip_link' href="https://web.archive.org/web/20230127192259/https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="=_blank">Archived</a> from the original on January 27, 2023.</span></span>
       </p>
 
       <img class="table" src="./images/arp_table.png" alt="Table from the American Rescue Plan Act" style="width:45%;">
 
+      <table class="FPL" style="width:45%">
+        <tr>
+          <th>Family Size</th>
+          <th>2023 Poverty Level</th>
+        </tr>
+        <tr>
+          <td>One</td>
+          <td>$14,850</td>
+        </tr>
+        <tr>
+          <td>Two</td>
+          <td>$19,720</td>
+        </tr>
+        <tr>
+          <td>Three</td>
+          <td>$24,860</td>
+        </tr>
+        <tr>
+          <td>Four</td>
+          <td>$30,000</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>$35,140</td>
+        </tr>
+      </table>
+
+    <!--
       <table class="FPL" style="width:45%">
         <tr>
           <th>Family Size</th>
@@ -1176,21 +1643,22 @@
           <td>$32,470</td>
         </tr>
       </table>
+    -->
 
       <p>
         Note that here household incomes refers to modified adjusted gross income (MAGI), so income used to determine the required contribution does <em>not</em> include the standard deduction/itemized deductions. Note also that for the purposes of this chart, we assume that users have no untaxed foreign income and no tax-exempt interest, so MAGI equals AGI. We also assume that user's gross income equals their AGI, so the income users input into the chart is assumed to be exactly the income used to calculate the the required contribution.
       </p>
 
       <p>
-        Within each group, the premium percentages scale linearly (e.g. at 175% of the poverty line, the required contribution percentage is 1%). That makes the calculation of the required contribution percentage for income in dollars (rather than as a percent of the poverty line) fairly straightforward, since it is just a linear equation. With \(h_1\) denoting the initial household income in dollars of a particular income tier, \(h_2\) the final income in dollars, \(p_1\) the initial premium percentage, and \(p_2\) the final premium percentage, the required contribution as a percent of income at income \(I\) is: $$ C_{\text{%}}(I) =  \frac{p_2 - p_1}{h_2 - h_1} (I - h_1) + p_1$$
+        Within each group, the premium percentages scale linearly (e.g. at 175% of the poverty line, the required contribution percentage is 1%). So with \(h_1\) denoting the initial household income in dollars of a particular income tier, \(h_2\) the final income in dollars, \(p_1\) the initial premium percentage, and \(p_2\) the final premium percentage, the required contribution as a percent of income at income \(I\) is: $$ C_{\text{%}}(I) =  \frac{p_2 - p_1}{h_2 - h_1} (I - h_1) + p_1$$
       </p>
 
       <p>
-        The required contribution in dollars is thus: $$ C(I) = C_{\%}(I) \times I = \left( \frac{p_2 - p_1}{h_2 - h_1} (I - h_1) + p_1 \right) \times I = \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right)$$
+        The required contribution in dollars is thus: $$ C(I) = C_{\%}(I) \times I = \frac{p_2 - p_1}{h_2 - h_1} I^2 + I \left(p_1 - \frac{h_1 (p_2 - p_1)}{h_2 - h_1} \right)$$
       </p>
 
       <p>
-        The primary consequence of this equation is that it was very tedious for me to type it into Javascript, wasting 15 minutes that could have been spent on more productive activities like wage labor or rewatching Dune. Additionally, there are two important secondary consequences. First, this equation is quadratic: within an income tier, the higher your income, the more dollars you have to contribute to the premium as a result of an additional dollar of income. Intuitevly, this occurs simply because the premium grows by a constant <em>percentage of income</em> for every dollar of additional income; so as income grows, the dollar value of this percentage grows. Second, the equation demonstrates that it is actually quite complicated for people to determine the value of their premium tax credit. This is made more complicated still by the fact that the advance premium tax credits paid out in a given year to insurers on behalf of a recipient is based upon the recipient's <em>expected</em> income in that year. So anyone attempting to plan around the premium tax credit has to compare the benefit they are currently receiving, which the IRS determines by guessing what their income will be that year, with the true value that will be determined at the end of the year when they file their taxes and their precise annual income is known.
+        The primary consequence of this equation is that it was very tedious for me to type it into Javascript, wasting 15 minutes that could have been spent on more productive activities like wage labor or rewatching Dune. Additionally, there are two important secondary consequences. First, this equation is quadratic: within an income tier, the higher your income, the more dollars you have to contribute to the premium as a result of an additional dollar of income. Intuitively, this occurs simply because the premium grows by a constant <em>percentage of income</em> for every dollar of additional income; so as income grows, the dollar value of this percentage grows. Second, the equation demonstrates that it is actually quite complicated for people to determine the value of their premium tax credit. This is made more complicated still by the fact that the advance premium tax credits paid out in a given year to insurers on behalf of a recipient is based upon the recipient's <em>expected</em> income in that year. So anyone attempting to plan around the premium tax credit has to compare the benefit they are currently receiving, which the IRS determines by guessing what their income will be that year, with the true value that will be determined at the end of the year when they file their taxes and their precise annual income is known.
       </p>
 
       <p>
@@ -1198,19 +1666,19 @@
       </p>
 
       <p>
-        (You can confirm that the only difference between this and the derivative of \(C(I)\) is the addition of the constant \(\frac{p_2 - p_1}{h_2 - h_1}\)). 
+        You can confirm that the only difference between this and the derivative of \(C(I)\) is the addition of the constant \(\frac{p_2 - p_1}{h_2 - h_1}\). 
      </p>
 
       <p>
-        So, for instance, a person in a two-member household with an income of $35,000 faces an EMTR of \( \frac{.02}{36,620 - 27,465} (2(35,000) - 27,465 + 1 ) = 9.29 \% \). Recall that this is just another way of saying that if a person in a two-member household who has made $35,000 so far this year were to increases their income by $1, the amount of their health insurance premium that the government covers would decrease by 9.29 cents.
+        So, for instance, a person in a two-member household with an income of $35,000 (between 150% and 200% of the poverty line) faces an EMTR of \( \frac{.02}{39,440 - 29,580} (2(35,000) - 29,580 + 1 ) = 8.2 \% \). In other words, if person in a two-member household who has made $35,000 so far this year were to increases their income by $1, the amount of their health insurance premium that the government would cover decreases by 8.2 cents (when actually filing taxes, the final calculation is rounded to the nearest dollar).
       </p>
 
       <p>
-        We can check the correctness of our equation. Since the EMTR tells us by how much the required contribution grows for an additional dollar of income, it stands that we can calculate the required contribution at a particular income by summing the EMTRs up to $1 below that income. And when we check our equation this way, we see that we always get the correct result. For instance, if you plug \( \sum_{i=27,465}^{36619} \frac{.02}{36,620 - 27465}(2i - 27,465 + 1) \) into a scientific calculator, the result is $732.40. The statutorily defined required contribution at $36,620 is 2% of income, or $732.40, exactly as our equation said it would be.
+        We can check the correctness of our equation. Since the EMTR tells us by how much the required contribution grows (in dollars) for an additional dollar of income, it stands that we can calculate the required contribution at a particular income by summing the EMTRs up to $1 below that income. If we want to know the required contribution at 225% of the poverty line for a person in a two-person household ($44,370), for instance, we get: $$ \sum_{i=29,580}^{39,439} \left( \frac{.02 - 0}{39,440 - 29,580}(2i - 29,580 + 1) \right) + \sum_{i=39,440}^{44,369} \left( \frac{.04-.02}{49,300 - 39,400}(2i - 39,400 + 1) + .02 \right) $$ $$ = \$1,331.10 $$ The statutorily defined required contribution at $44,370 is 3% of income, or $1,331.10, exactly as our equation said it would be.
       </p>
 
       <p>
-        We can simply things for the income tier above 400% of the poverty line. If you plug into the above equation, you can see that the EMTR above 400% is a constant 8.5%. You can also get an intuiton for this by stripping things back and considering how the required contribution grows for an additional dollar within this income tier. Since the premium contribution percentage above 400% of the poverty line is 8.5%, for an additional dollar of income the required contribution grows by: $$EMTR_{\text{400+%}}(I) = \Delta \text{premium contribution} = .085(I + 1) - .085I = 8.5 \% $$
+        We can simply things for the income tier above 400% of the poverty line. If you plug into the above equation (with \(p_1 = p_2 = .085\)), you can see that the EMTR above 400% is a constant 8.5%. It is straightforward to see why: an additional dollar of income results in the premium contribution growing by: $$EMTR_{\geq \text{400%}}(I) = \Delta \text{premium contribution} = .085(I + 1) - .085I = 8.5 \% $$
       </p>
 
       <p>
@@ -1218,21 +1686,21 @@
       </p>
 
       <p>
-        We can also simplify things for the three income tiers from 150% to 300% of the poverty line. If you run the numbers you'll notice that the required contribution percentage for each of these three tiers scale at <em>the same rate</em>. This means we can consider them as one income group, and calculate any premium contribution within them using \( p_2 = .6 \) and \(p_1 = 0 \), as well as the corresponding income tier values for 300% and 150% of the poverty line. That makes our equation for this combined income tier a little simpler: $$EMTR_{ \text{150–300%} }(I) = \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I - h_{\text{150%}} + 1)$$
+        We can also simplify things for the three income tiers from 150% to 300% of the poverty line. If you run the numbers you'll notice that the required contribution percentage for each of these three tiers scale at <em>the same rate</em>. This means we can consider them as one income group, and calculate any premium contribution within them using \( p_2 = .06 \) and \(p_1 = 0 \), as well as the corresponding income tier values for 300% and 150% of the poverty line. That makes our equation for this combined income tier a little simpler: $$EMTR_{ \text{150%–300%} }(I) = \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I - h_{\text{150%}} + 1)$$
       </p>
 
       <p>
-        It also means that we only have one other equation: for the 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300–400%} }(I) = \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
+        It also means that we only have one other equation, for the 300–400% of the poverty line tier. Here, \(p_2 = .085 \) and \(p_1 = .06 \), so our equation is: $$ EMTR_{ \text{300%–400%} }(I) = \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06$$
 
       <p>
-        Now we have just have to take into account the cost of the premium. While the required contribition technically grows indefinitely, the actual amount someone has to pay for their premium does not. Basically, once someone's required contribution equals their premium, they are paying the full cost of the premium, so additional income doesn't impose any additional costs on them.
+        Now we have just have to take into account the cost of the premium. While the required contribition technically grows indefinitely, the actual amount someone has to pay for their premium does not. Once someone's required contribution equals their premium, they are paying the full cost of the premium, so additional income doesn't impose any additional costs.
       </p>
 
       <p>
-        Premium tax credits are based on the cost of a silver plan on the ACA exchanges. Costs vary by state and age, so to keep things simple we'll use 2022 national average silver plan premiums for 40 year olds (the median age in the United States is 38). These are shown in the tables below.<a class="refs" id="note7" href="#notes"><sup>7</sup></a>
+        Premium tax credits are based on the cost of a silver plan on the ACA exchanges. Costs vary by state and age, so to keep things simple we'll use the 2023 national average silver plan premiums for 40 year olds (the median age in the United States is 39<span class="tooltip" id='note7'><a class="refs" href="#notes"><sup>[ref]</sup></a><span class="tooltiptext"><a class='tooltip_link' href='https://www.statista.com/statistics/241494/median-age-of-the-us-population/' target="_blank">"Median age of the resident population of the United States from 1960 to 2021"</a>. <em>Statista</em>. <a class='tooltip_link' href="https://web.archive.org/web/20221212225231/https://www.statista.com/statistics/241494/median-age-of-the-us-population/" target="=_blank">Archived</a> from the original on December 12, 2022.</span></span>). These are shown in the tables below.<span class="tooltip" id='note7'><a class="refs" href="#notes"><sup>[7]</sup></a><span class="tooltiptext">Masterson, Les; Megna, Michelle (January 2, 2023) <a class='tooltip_link' href='https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/' target="_blank">"How Much Does Health Insurance Cost?"</a>. <em>Forbes</em>. <a class='tooltip_link' href="https://web.archive.org/web/20230202045333/https://www.forbes.com/advisor/health-insurance/how-much-does-health-insurance-cost/" target="=_blank">Archived</a> from the original on February 2, 2023.</span></span>
       </p>
 
-        <table style="width:45%">
+        <table style="width:49%">
         <tr>
           <th>Household Type</th>
           <th>Average Silver Plan Premium</th>
@@ -1255,7 +1723,7 @@
         </tr>
       </table>
 
-      <table style="width:45%">
+      <table style="width:49%;float:right">
         <tr>
           <th>Household Type</th>
           <th>Average Silver Plan Premium</th>
@@ -1282,7 +1750,7 @@
         Once a person's required contribution equals the cost of the premium their effective marginal tax rate drops to 0%, since they face no additional costs for income made after this point. For every household type, this occurs above 400% of the poverty line, so we can calculate each by determining when 8.5% of income equals the cost of the premium. These values are shown in the table below, rounded to the nearest dollar.
       </p>
 
-      <table style="width:45%">
+      <table style="width:49%">
         <tr>
           <th>Household Type</th>
           <th>Full Premium Income</th>
@@ -1305,7 +1773,7 @@
         </tr>
       </table>
 
-      <table style="width:45%">
+      <table style="width:49%;float:right">
         <tr>
           <th>Household Type</th>
           <th>Full Premium Income</th>
@@ -1329,10 +1797,10 @@
       </table>
 
       <p>
-        Now we have a full description of the effective marginal tax rates of the premium tax credits. The table below shows the equations to calculate our EMTRs. The income tier values (the \(h\)'s) come from the poverty level table, and the required contribution=premium values come from the table above.
+        We now have a full description of the effective marginal tax rates of the premium tax credits, shown in the table below. The income tier values (the \(h\)'s) come from the poverty level table, and the required contribution=premium values come from the table above.
       </p>
 
-      <table style="width:90%">
+      <table style="width:100%">
         <tr>
           <th>Income Tier</th>
           <th>Effective Marginal Tax Rate</th>
@@ -1343,11 +1811,11 @@
         </tr>
         <tr>
           <td>150–300% of Poverty Line</td>
-          <td>$$ \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I + h_{\text{150%}} + 1) $$</td>
+          <td>$$ \frac{.06}{h_{\text{300%}} - h_{\text{150%}}} (2I - h_{\text{150%}} + 1) $$</td>
         </tr>
         <tr>
           <td>300–400% of Poverty Line</td>
-          <td>$$ \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I + h_{\text{300%}} + 1) + .06 $$</td>
+          <td>$$ \frac{.025}{h_{\text{400%}} - h_{\text{300%}}} (2I - h_{\text{300%}} + 1) + .06 $$</td>
         </tr>
         <tr>
           <td>400% of Poverty Line up to Required Contribution=Premium</td>
@@ -1358,10 +1826,6 @@
           <td>$$ 0\% $$</td>
         </tr>
       </table>
-
-      <p>
-        For those interested in the precise values for each household type of income tiers, marginal tax rates, and when the required contribution equals the premium, this is available for download here: ____.excel
-      </p>
 
     </div>
 
@@ -1453,23 +1917,19 @@
   <div class="notes">
     <h2 id="notes">Notes</h2>
     <ol class="notes_list">
-      <li class="note_item" id='note-item1'><a class="refs" href="#note1">^</a> Information on SNAP benefits sourced from <a href="#Aussenberg" onclick="highlight_ref('Aussenberg')">Aussenberg 2022</a>.</li>
+      <li class="note_item"><a class="refs" href="#note1">^</a> <a href="#Aussenberg" onclick="highlight_ref('Aussenberg')">Aussenberg 2022</a>.</li>
 
-      <li class="note_item"><a class="refs" href="#note2">^</a> <a href='https://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf' target="_blank">"USDA Memorandum August 16, 2021: SNAP - Fiscal Year 2022 Cost-of-Living Adjustments"</a>. <em>United States Department of Agriculture</em>. <a href="https://web.archive.org/web/20220809111651/http://fns-prod.azureedge.us/sites/default/files/resource-files/2022-SNAP-COLA-%20Maximum-Allotments.pdf" target="=_blank">Archived</a> from the original on August 9, 2022.</li>
+      <li class="note_item"><a class="refs" href="#note2">^</a> <a href="#USDA" onclick="highlight_ref('USDA')">USDA 2022</a></li>
 
-      <li class="note_item"><a class="refs" href="#note3">^</a> <a href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a>. <em>Texas Health and Human Services Commission</em>. <a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on June 24, 2022.</li>
+      <li class="note_item"><a class="refs" href="#note3">^</a> <a href="#USDA" onclick="highlight_ref('USDA')">USDA 2022</a></li>
 
-      <li class="note_item"><a class="refs" href="#note4">^</a> <a href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a>. <em>Texas Health and Human Services Commission</em>. <a href="https://web.archive.org/web/20220624220401/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on June 24, 2022.</li>
+      <li class="note_item"><a class="refs" href="#note4">^</a> <a href="#TX-HHS" onclick="highlight_ref('TX-HHS')">Texas Health and Human Services Commission 2022</a></li>
 
       <li class="note_item"><a class="refs" href="#note5">^</a> <a href="https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf#page=181" target="blank_">Text of the American Rescue Plan Act</a>. <em>Congress.gov</em>. The table is on page 181 of the document (page included in hyperlink). <a href='https://web.archive.org/web/20230106212115/https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf' >Archived</a> from the original on January 6, 2023.</li>
 
       <li class="note_item"><a class="refs" href="#note6">^</a> <a href='https://www.healthcare.gov/glossary/federal-poverty-level-fpl/' target="_blank">"Federal poverty level (FPL)"</a>. <em>Healthcare.gov</em>. <a href="https://web.archive.org/web/20230107032322/https://www.healthcare.gov/glossary/federal-poverty-level-fpl/" target="=_blank">Archived</a> from the original on January 7, 2023.</li>
 
       <li class="note_item"><a class="refs" href="#note7">^</a> <a href="#Masterson" onclick="highlight_ref('Masterson')">Masterson & Megna 2022.</a></li>
-
-      <li class="note_item"><a class="refs" href="#note8">^</a> Information on the way cost-sharing reductions work was obtained from <a href="#Fernandez" onclick="highlight_ref('Fernandez');">Fernandez 2022.</a></li>
-
-      <li class="note_item"><a class="refs" href="#note9">^</a> Information regarding silver loading, excluding that dealing with marginal tax rates, was sourced from <a href="#Fernandez" onclick="highlight_ref('Fernandez');">Fernandez 2022.</a></li>
 
       <li class="note_item"><a class="refs" href="#note10">^</a> <a href="#Aron-Dine" onclick="highlight_ref('Aron-Dine')">Aron-Dine 2019.</a></li>
     </ol>
@@ -1486,9 +1946,15 @@
 
       <li class="ref_item" id="Aussenberg">Aussenberg, Randy Allison; Falk, Gene (February 25, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">"The Supplemental Nutrition Assistance Program (SNAP): Categorical Eligibility"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220704025011/https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 4, 2022. </li>
 
+      <li class="ref_item" id="TX-HHS"><a href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a> (October 2022). <em>Texas Health and Human Services Commission</em>. <a href="https://web.archive.org/web/20230201234631/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on February 1, 2023.</li>
+
       <li class="ref_item">Chien, Nina; Macartney, Suzanne (March 2019). <a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">"Marginal Tax Rate Series"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
 
+      <li class="ref_item"><a href='https://www.ssa.gov/news/press/factsheets/colafacts2023.pdf' target="_blank">"Fact Sheet: 2023 Social Security Changes"</a> (2022). <em>Social Security Administration</em>. <a href="https://web.archive.org/web/20230123060234/https://www.ssa.gov/news/press/factsheets/colafacts2023.pdf" target="=_blank">Archived</a> from the original on January 23, 2023.</li>
+
       <li class="ref_item" id="Fernandez">Fernandez, Bernadette (November 7, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">"Health Insurance Premium Tax Credit and Cost-Sharing Reductions"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20221115222325/https://crsreports.congress.gov/product/pdf/R/R44425 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on November 15, 2022.</li>
+
+      <li class="ref_item" id="HHS"><a href='https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines' target="_blank">"HHS Poverty Guidelines for 2023"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>. <a href="https://web.archive.org/web/20230127192259/https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="=_blank">Archived</a> from the original on January 27, 2023.</li>
 
       <li class="ref_item" id="CBO"><a href=https://www.cbo.gov/sites/default/files/cbofiles/attachments/43722-Supplemental_Material-MarginalTaxRates.pdf target="_blank">"Illustrative Examples of Effective Marginal Tax Rates Faced by Married and Single Taxpayers: Supplemental Material for Effective Marginal Tax Rates for Low- and Moderate-Income Workers"</a> <i class="fa fa-file-pdf-o"></i> (November 2012). <em>Congressional Budget Office</em>. <a href=https://web.archive.org/web/20221219080129/https://www.cbo.gov/sites/default/files/cbofiles/attachments/43722-Supplemental_Material-MarginalTaxRates.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on December 19, 2022.</li>
 
@@ -1499,6 +1965,8 @@
       <li class="ref_item" id="Morton">Morton, William R. (May 16, 2018). <a href=https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">"Social Security Disability Insurance (SSDI) and Supplemental Security Income (SSI): Eligibility, Benefits, and Financing"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220505081615/https://crsreports.congress.gov/product/pdf/R/R44948 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on May 5, 2022.</li>
 
       <li class="ref_item" id="Morton">Morton, William R. (November 22, 2022). <a href=https://crsreports.congress.gov/product/pdf/IF/IF10482 target="_blank">"Supplemental Security Income (SSI)"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>.</li>
+
+      <li class="ref_item" id="USDA"><a href="https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">"SNAP – Fiscal Year 2023 Cost-of-Living Adjustments"</a> <i class="fa fa-file-pdf-o"></i> (August 2022). <em>United States Department of Agriculture (USDA)</em>. <a href="https://web.archive.org/web/20221006005505/https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">Archived</a> from the original on October 6, 2022.</li>
 
       <li class="ref_item" id="VCU"><a href=https://vcu-ntdc.org/resources/resourceDetail.cfm?id=1 target="_blank">"Understanding the Supplemental Security Income (SSI) Program"</a> (2022). <em>Virginia Commonwealth University</em>.</li>
 
@@ -1614,17 +2082,17 @@
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color-changes.js"></script>
 
-<!-- Javascript files -->
-<script type="text/javascript" src="./javascript/calculate/calculate-marginal.js"></script>
-<script type="text/javascript" src="./javascript/calculate/calculate-benefit.js"></script>
+<!-- Calculation Files -->
+<script type="text/javascript" src="./javascript/calculate/shared.js"></script>
+<script type="text/javascript" src="./javascript/calculate/2023/2023-marginal-tax-values.js"></script>
 
 <!-- Top Chart -->
-<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/adjust-axes.js"></script>
-<script type="text/javascript" src="./javascript/top-chart/adjust-curves.js"></script> 
+<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
+
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/2023/adjust-emtr.js"></script> 
+<script type="text/javascript" src="./javascript/top-chart/2023/outputs.js"></script>
 <!-- Animations -->
 <script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
 

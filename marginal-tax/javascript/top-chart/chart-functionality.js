@@ -3,23 +3,6 @@
  * the range of the axes, disabling/enabling policy buttons based on user inputs
  * ****************************************************************************************/
 
-/* Moves the income slider */
-function modifyIncome(){
-    income = user_income.value;
-    /* move xgrid */
-    chart.xgrids([{value: income, text:'Your income'}]);
-
-    /* if EMTR chart, adjust point */
-    if(chart_type.value === 'EMTR'){
-        val = tax_and_transfer_at_income_marginal(income, num_children.value, filingstatus.value)[6];
-        chart.load({columns: [ ['x_point', income], ['point', val] ] });
-    }
-    /* if income chart, adjust tangent curve */
-    else if(chart_type.value === 'EI'){
-        add_tangent_line(income, num_children.value);
-    }
-}
-
 /* Power Users: Function for JQuery UI slider that enables the user to manipulate the ranges of the x and y axes */
 $( function() {
     $( "#x_axis_range" ).slider({
@@ -103,7 +86,7 @@ function show_arbitrary_income(){
 
 /* Power Users: Adjusts the income slider if arbitrary input box is adjusted */
 function arbitrary_income_input(){
-    income = arbitray_income.value;
+    let income = arbitray_income.value;
     user_income.value = income;
     user_income_output.innerText = income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     user_income.step = "1";
@@ -111,6 +94,7 @@ function arbitrary_income_input(){
 
 /* Power Users: adjusts arbitrary input box if income slider is moved */
 function adjust_arbitrary_income(){
+    let income = arbitray_income.value;
     arbitray_income.value = income;
 }
 

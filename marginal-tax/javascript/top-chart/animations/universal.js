@@ -1,12 +1,11 @@
-income = 0;
-itemized = 0;
-numberChildren = '';
+var save_income;
+var save_num_children;
 
-axisMax = 0;
-restoreInputHeight = '';
-restoreExplanationsHeight = '';
+var axis_max = 0;
+var restoreInputHeight = '';
+var restoreExplanationsHeight = '';
 
-animationOpen = false;
+var animationOpen = false;
 
 function initialize_animation(){
 	/* reset revert animation button to disabled (needed if an earlier animation has already been reverted)*/
@@ -25,9 +24,9 @@ function initialize_animation_currently_closed(){
 	animationOpen = true;
 
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	income = user_income.value;
-	numberChildren = num_children.value;
-	axisMax = chart.axis.max();
+	save_income = user_income.value;
+	save_num_children = num_children.value;
+	axis_max = chart.axis.max();
 
 	/* Reset explanation text color to black */
 	document.getElementById('explanation_line1').style.color = 'black';
@@ -98,9 +97,9 @@ function initialize_animation_currently_closed(){
 
 function initialize_animation_already_open(){
 	/* Assign current user inputs to global variables so the chart and outputs can be restored when animation is ended*/
-	income = user_income.value;
-	numberChildren = num_children.value;
-	axisMax = chart.axis.max();
+	save_income = user_income.value;
+	save_num_children = num_children.value;
+	axis_max = chart.axis.max();
 
 	/* Disable play animation buttons */
 	document.getElementById("end_animation_button").disabled = true;
@@ -157,8 +156,8 @@ function end_animation(){
 	animationOpen = false;
 
 	/* reset values */
-	user_income.value = income;
-	num_children.value = numberChildren;
+	user_income.value = save_income;
+	num_children.value = save_num_children;
 
 	/* fade out text */
 	document.getElementById('explanation_line1').style.color = '#f5f3f2';
@@ -208,7 +207,7 @@ function end_animation(){
 		chart.ygrids([]);
 
 		/* reset axis max */
-		chart.axis.max(axisMax);
+		chart.axis.max(axis_max);
 
 		/* Fade output values back in */
 		document.getElementById('item_or_stand').style.color = 'black';

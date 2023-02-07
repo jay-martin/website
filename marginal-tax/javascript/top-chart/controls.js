@@ -1,17 +1,27 @@
-/******************************************************************************************
- * This file contains the functions that control the loading of data to the chart
- * ****************************************************************************************/
-personal_income_tax_isActive = true;
-
 var isActive = {
 	income_tax : true,
-	fica : false,
-	eitc : false,
-	ctc : false,
-	snap : false,
-	ptc : false,
-	ssi : false,
+	fica       : false,
+	eitc       : false,
+	ctc        : false,
+	snap       : false,
+	ssi        : false,
+	ptc        : false,
 };
+
+/******************************************************** Move the income slider *******************************************************/
+function modifyIncome(){
+    let income = user_income.value;
+    
+    // move xgrid 
+    chart.xgrids([{value: income, text:'Your income'}]);
+
+    if(chart_type.value === 'EMTR'){
+        emtr_modify_income();
+    }
+    else if(chart_type.value === 'EI'){
+        add_tangent_line(income, num_children.value);
+    }
+}
 
 /******************************************************** Controls for benefit buttons *******************************************************/
 function add_benefit(benefit){
@@ -21,9 +31,9 @@ function add_benefit(benefit){
 		isActive[benefit] = false;
 		$(id).removeClass('selected_button');
 		load_data();
-		chart.unload(benefit);
+		//chart.unload(benefit);
 	}
-	else{
+	else {
 		isActive[benefit] = true;
 		$(id).addClass('selected_button');
 		load_data();
@@ -59,6 +69,7 @@ function disable_healthcare(){
 function load_data(){
 	if(chart_type.value === 'EMTR'){
 		load_emtr_data();
+		emtr_modify_income();
 	}
 	else{
 		load_ei_data();
@@ -102,9 +113,9 @@ function switch_to_ei(){
 /* Controls whether the y-axis is adjusted for the EMTR or EI graph based on user selection of chart */
 function adjust_y_axis(){
 	if(chart_type.value === 'EMTR'){
-		adjust_y_axis_emtr();
+		//adjust_y_axis_emtr();
 	}
 	else{
-		adjust_y_axis_ei();
+		//adjust_y_axis_ei();
 	}
 }

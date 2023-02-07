@@ -714,6 +714,11 @@ ul.notes_list {
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
+h3.notes_headers {
+  margin-top: 0;
+  margin-left: -15px;
+  text-decoration: underline;
+}
 /******* User Inputs **************/
 .user_inputs {
   overflow: hidden;

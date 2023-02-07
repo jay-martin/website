@@ -29,8 +29,8 @@ var chart = c3.generate({
             point: 'x_point',
         },
         columns: [
-            ['x',     0, 13849, 13850, 24849, 24850, 58574, 58575, 109224, 109225, 195224, 195225, 245099, 245100, 591974, 591975, 600000],
-            ['total', 0, 0,     10,    10,    12,    12,    22,    22,     24,     24,     32,     32,     35,     35,     37,     37],
+            ['x',                   0, 12949, 12950, 23224, 23225, 54724, 54725, 102024, 102025, 182999, 183000, 228899, 228900, 552849, 552850, 600000],
+            ['total',               0, 0,     10,    10,    12,    12,    22,    22,     24,     24,     32,     32,     35,     35,     37,     37],
 
             // Listed empty so that point is positioned above
             ['x_tangent',],
@@ -83,7 +83,7 @@ var chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point', 'income_tax_and_transfer', 'tangent_line'],
+        hide: 'point',
     },
     tooltip: {
         show: false
@@ -106,7 +106,7 @@ var chart = c3.generate({
                     },
                 values: [-60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
             },
-            padding: {top: 10, bottom: 5},
+            padding: {top: 19, bottom: 5},
         }
     },
     grid: {

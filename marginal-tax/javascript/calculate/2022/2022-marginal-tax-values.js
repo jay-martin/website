@@ -13,25 +13,15 @@ function tax_and_transfer_at_income_marginal(income, numChildren, filingStatus){
 	householdSize = household_size(filingStatus, numChildren);
 
 	personalVal = personal_at_income_marginal(income);
-	ficaVal = fica_at_income_marginal(income);
-	eitcVal = eitc_at_income_marginal(income, numChildren);
-	ctcVal = ctc_at_income_marginal(income, numChildren);
-	snapVal = snap_at_income_marginal(income, householdSize);
-	ptcVal = ptc_at_income_marginal(income, numChildren);
-	ssiVal = ssi_at_income_marginal(income);
-	totalVal = personalVal + ficaVal + eitcVal + ctcVal + snapVal + ptcVal + ssiVal;
+	ficaVal     = fica_at_income_marginal(income);
+	eitcVal     = eitc_at_income_marginal(income, numChildren);
+	ctcVal      = ctc_at_income_marginal(income, numChildren);
+	snapVal     = snap_at_income_marginal(income, householdSize);
+	ptcVal      = ptc_at_income_marginal(income, numChildren);
+	ssiVal      = ssi_at_income_marginal(income);
+	totalVal    = personalVal + ficaVal + eitcVal + ctcVal + snapVal + ptcVal + ssiVal;
 
 	return [personalVal, ficaVal, eitcVal, ctcVal, snapVal, ptcVal, totalVal];
-}
-
-/** Returns the EMTR of all benefits of a particular point
- * @param {integer} - income
- * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
- * @return {float} - effective marginal tax rate
- * */
-function slope_at_point(income, numChildren){
-	householdSize = household_size('single', numChildren);
-	return (personal_at_income_marginal(income) + fica_at_income_marginal(income) + eitc_at_income_marginal(income, numChildren) + ctc_at_income_marginal(income, numChildren) + snap_at_income_marginal(income, householdSize) + ptc_at_income_marginal(income, numChildren) + ssi_at_income_marginal(income)) / 100;
 }
 
 /** Returns the x-values needed for c3.js to render the EMTR chart
@@ -175,7 +165,7 @@ function fica_at_income_marginal(income){
 		else if(income >= 147000 && income <200000){
 			return 1.45;
 		}
-		else{
+		else {
 			return 2.35;
 		}
 	}
@@ -404,7 +394,6 @@ function ptc_at_income_marginal(income, numChildren){
 	return 0;
 }
 
-/* PROBLEM: SSI affects SNAP */
 /** Returns the effective marginal tax rate of SSI at a given income
  * @param {integer} - income
  * @return {float} - effective marginal tax rate
@@ -420,36 +409,5 @@ function ssi_at_income_marginal(income){
 	}
 	/* value needed for calculations when ssi is not active */
 	return 0;
-}
-
-/** Returns the number of people in a household given the number of adults (determined from marital status) and the number of children
- * @param {integer} - income
- * @param {string} - string representing filing status of the user ('married', 'hoh', 'single')
- * @param {string} - string representing number of children ('none', 'one', 'two', 'three')
- * @return {integer} - number of people in the household
- * */
-function household_size(filingStatus, numChildrenString){
-	/* Calculate the number of adults */
-	if(filingStatus === 'married'){
-		numberAdults = 2;
-	}
-	else{
-		numberAdults = 1;
-	}
-
-	/* calculate the number of children */
-	if(numChildrenString === 'none'){
-		numberChildren = 0;
-	}
-	else if(numChildrenString === 'one'){
-		numberChildren = 1;
-	}
-	else if(numChildrenString === 'two'){
-		numberChildren = 2;
-	}
-	else{
-		numberChildren = 3;
-	}
-	return numberAdults + numberChildren;
 }
 

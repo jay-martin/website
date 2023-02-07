@@ -10,21 +10,21 @@ document.getElementById('benefit_loss_text').innerHTML = 'You have not selected 
 
 // Outputs to screen the marginal tax rate
 function top_chart_outputs(){
-	income = user_income.value;
-    numChildren = num_children.value;
-    householdSize = household_size('single', numChildren);
+	let income = user_income.value;
+    let numChildren = num_children.value;
+    let householdSize = household_size('single', numChildren);
 
-    personal = personal_at_income_marginal(income);
-    fica = fica_at_income_marginal(income);
-    eitc = eitc_at_income_marginal(income, numChildren);
-    ctc = ctc_at_income_marginal(income, numChildren);
-    snap = snap_at_income_marginal(income, householdSize);
-    ptc = ptc_at_income_marginal(income, numChildren);
-    ssi = ssi_at_income_marginal(income);
+    let personal = personal_at_income_marginal(income);
+    let fica = fica_at_income_marginal(income);
+    let eitc = eitc_at_income_marginal(income, numChildren);
+    let ctc = ctc_at_income_marginal(income, numChildren);
+    let snap = snap_at_income_marginal(income, householdSize);
+    let ptc = ptc_at_income_marginal(income, numChildren);
+    let ssi = ssi_at_income_marginal(income);
 
-    taxLiability = personal + fica;
-    benefitLoss = eitc + ctc + snap + ptc + ssi;
-    taxRate = taxLiability + benefitLoss;
+    let taxLiability = personal + fica;
+    let benefitLoss = eitc + ctc + snap + ptc + ssi;
+    let taxRate = taxLiability + benefitLoss;
 
     // Default is for the rounding disclaimer not to be displayed. If any output requires decimal places, the rounding disclaimer will be triggered
     //document.getElementById('rounding_disclaimer').style.display = 'none';
