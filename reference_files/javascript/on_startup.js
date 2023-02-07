@@ -3,10 +3,27 @@
  * needed to render the page.
  * ****************************************************************************************/
 
-// Automatically numerically label all references
-var references = document.getElementsByClassName("tooltip");
+// Generate reference formatting
+const references = document.getElementsByClassName("tooltip");
+const notes = document.getElementById("notes_list");
 let ref_number = 1;
 for(refs of references){
+	// generate note at bottom of page
+	let note_upper_link  = "<li class='note_item' id='note" + ref_number + "-bottom'><a class='refs' href='#note" + ref_number + "-inline'>^</a> ";
+	let note_bottom_link = "";
+	if(typeof refs.dataset.ref_name !== 'undefined'){
+		note_bottom_link = "<a href='#" + refs.dataset.ref_link + "' onclick='highlight_ref(&quot;" + refs.dataset.ref_link + "&quot;)'>" + refs.dataset.ref_name + "</a></li>";
+	}
+	else if(typeof refs.dataset.ref_long_text !== 'undefined'){
+		note_bottom_link = refs.dataset.ref_long_text + '</li>';
+	}
+	let full_note = note_upper_link + note_bottom_link;
+	$(notes).append(full_note);
+
+	// set attributes of in-line citation
+	refs.id = "note" + ref_number + "-inline";
+	let onclick_attribute = "highlight_note('note" + ref_number + "-bottom')";
+	refs.firstChild.setAttribute('onclick', onclick_attribute);
 	refs.firstChild.innerHTML = '<sup>[' + ref_number + ']</sup>';
 	ref_number++;
 }
