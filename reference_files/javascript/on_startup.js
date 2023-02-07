@@ -3,6 +3,14 @@
  * needed to render the page.
  * ****************************************************************************************/
 
+// Automatically numerically label all references
+var references = document.getElementsByClassName("tooltip");
+let ref_number = 1;
+for(refs of references){
+	refs.firstChild.innerHTML = '<sup>[' + ref_number + ']</sup>';
+	ref_number++;
+}
+
 //setup for page calculations
 programsHeight = 0;
 billsHeight = 0;
