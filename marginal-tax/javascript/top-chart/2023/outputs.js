@@ -71,7 +71,7 @@ function top_chart_outputs(){
     	document.getElementById('benefits_breakdown_button').style.display = 'none';
     	
     	// The below is needed to reset the benefits breakdown after a user first selects several benefit and then unselects all of them 
-    	breakdown_states['benefits_breakdown'] = 'open';
+    	is_open['benefits_breakdown'] = true;
     	open_and_close_breakdown('benefits_breakdown', 'benefits_breakdown_button');
 
     }

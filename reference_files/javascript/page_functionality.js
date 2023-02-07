@@ -14,6 +14,7 @@
  * ****************************************************************************************/
 // Current page style ('light', 'sepia', or 'dark')
 pageStyle = 'light';
+var is_open = new Object(); //dictionary to keep track of states of elements that open and close
 
 /******************************** 1. Page color toggle ******************************/
 /** Controls toggling between light, sepia, and dark modes
@@ -333,7 +334,7 @@ $(document).ready(function(){
 
 });
 
-/*********************************** 7. Highlights ***********************************/
+/*********************************** 7. Open/Close Highlights ***********************************/
 /** Opens and closes highlight boxes
  * @param {string} - the html id of the highlight to be opened/closed
  * */
@@ -357,20 +358,17 @@ function show_explanation(identifier){
 }
 
 /*********************************** 8. Open/Close Appendix *********************/
-var isOpen = new Object(); //dictionary to keep track of which chart notes are open
-
 /** Opens and closes the portions of the page
  * @param {string} - the html id of the element that is opened/closed
  * */
-var isOpen_heights = new Object();
-function open_and_close_page_portion(id){
-  if(isOpen_heights[id] === 'open'){
-    isOpen_heights[id] = 'closed';
-    document.getElementById(id).style.height = '0px';
+function open_and_close_page_portion(appendix_id){
+  if(is_open[appendix_id]){
+    is_open[appendix_id] = false;
+    document.getElementById(appendix_id).style.height = '0px';
   }
   else{
-    isOpen_heights[id] = 'open';
-    document.getElementById(id).style.height = appendix_heights[id];
+    is_open[appendix_id] = true;
+    document.getElementById(appendix_id).style.height = appendix_heights[appendix_id];
   }
 }
 
@@ -407,42 +405,38 @@ function rotate_icon_180(id){
 }
 
 /*********************************** 9. Open/Close Chart Notes *********************/
-var chartNotes = new Object(); //dictionary to keep track of which chart notes are open
-
 /** Opens and closes the notes section below a chart
  * @param {string} - the html id of the notes section to be opened
  * */
 function open_and_close_chart_notes(chartID){
-  if(chartNotes[chartID] === 'open'){
-    chartNotes[chartID] = 'closed';
+  if(is_open[chartID]){
+    is_open[chartID] = false;
     document.getElementById(chartID).hidden = true;
     document.getElementById(chartID + '_button').innerHTML = 'View Chart Notes';
   }
-  else{
-    chartNotes[chartID] = 'open';
+  else {
+    is_open[chartID] = true;
     document.getElementById(chartID).hidden = false;
     document.getElementById(chartID + '_button').innerHTML = 'Close Chart Notes';
   }
 }
 
 /******************************** 10. Open/Close Center Box Breakdown ******************************/
-var breakdown_states = new Object(); //dictionary to keep track of which chart notes are open
-
 /** Reveals benefits breakdown when the "show all" button is clicked
  * @param {string} - the html id of the breadkdown to be opened
  * */
 function open_and_close_breakdown(listID, buttonID){
   // collapse if open
-  if(breakdown_states[listID] === 'open'){
+  if(is_open[listID]){
     document.getElementById(buttonID).innerHTML = 'Show all';
     document.getElementById(listID).style.display = 'none';
-    breakdown_states[listID] = 'closed';
+    is_open[listID] = false;
   }
   // open if closed
   else {
     document.getElementById(buttonID).innerHTML = 'Collapse';
     document.getElementById(listID).style.display = 'block';
-    breakdown_states[listID] = 'open';
+    is_open[listID] = true;
   }
 }
 

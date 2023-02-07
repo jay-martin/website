@@ -76,11 +76,16 @@ function initialize_page(){
 		document.getElementById(id).style.height = "0px";
 	}
 
-	//calculate the heights of each of the appendices and then set each to zero
+	//calculate the heights of each of the appendices and then set each to zero, unless the appendix is already open, in which case set to new height
 	for (var i = 0; i < appendices.length; i++) {
 		appendix_id = 'appendix' + (i+1).toString();
 		appendix_heights[appendix_id] = window.getComputedStyle(document.getElementById(appendix_id)).height;
-		document.getElementById(appendix_id).style.height = "0px";
+		if(is_open[appendix_id]){
+			document.getElementById(appendix_id).style.height = appendix_heights[appendix_id];
+		}
+		else{
+			document.getElementById(appendix_id).style.height = "0px";
+		}
 	}
 
 	//make highlights and programs visible, set highlights & programs height transition time to .5s ease
@@ -116,7 +121,12 @@ function initialize_mobile_page(){
 	for (var i = 0; i < appendices.length; i++) {
 		appendix_id = 'appendix' + (i+1).toString();
 		appendix_heights[appendix_id] = window.getComputedStyle(document.getElementById(appendix_id)).height;
-		document.getElementById(appendix_id).style.height = "0px";
+		if(is_open[appendix_id]){
+			document.getElementById(appendix_id).style.height = appendix_heights[appendix_id];
+		}
+		else{
+			document.getElementById(appendix_id).style.height = "0px";
+		}
 	}
 
 	// make highlights visible
@@ -143,6 +153,7 @@ function initialize_mobile_page(){
 
 //Prepare for desktop resize: show loader, hide & expand highlights and programs, then re-initialize
 function desktop_prepare_resize(){
+	console.log('in desktop_prepare_resize');
 	// Hide highlights, show loader
 	$('#loader_container').css('display', 'block');
 	$('#highlights_content').css('visibility', 'hidden');
@@ -156,9 +167,13 @@ function desktop_prepare_resize(){
 		'border-width'  : '1.5px'
 	});
 
-	//Expand highlights & programs
+	//Expand highlights, programs, and appendices
 	$('.explanation_and_animation_button_container').css('height', '100%');
 	$('#programs, #bills').css('height', '100%');
+	for (var i = 0; i < appendices.length; i++) {
+		appendix_id = 'appendix' + (i+1).toString();
+		document.getElementById(appendix_id).style.height = "100%";
+	}
 
 	//run the inititalization function
 	desktop_or_mobile_intialize();
@@ -166,8 +181,12 @@ function desktop_prepare_resize(){
 
 //Prepare for mobile resize: show loader, hide & expand mobile highlights, then re-initialize
 function mobile_prepare_resize(){
-	//Expand highlights
+	//Expand highlights & appendices
 	$('.mobile_explanation_and_animation_button_container').css('height', '100%');
+	for (var i = 0; i < appendices.length; i++) {
+		appendix_id = 'appendix' + (i+1).toString();
+		document.getElementById(appendix_id).style.height = "100%";
+	}
 
 	//run the inititalization function
 	desktop_or_mobile_intialize();
