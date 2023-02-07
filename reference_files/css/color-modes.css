@@ -1,10 +1,65 @@
-/*********************** Universal Colors *********************************************************************************************************/
-.twitter-blue {fill: #1D9BF0;}
-.facebook-blue {fill: #1778F2;}
-.reddit-orange {fill: #FF5700;}
-.substack-orange {fill: #ff6700;}
-.linkedin-blue {fill: #1686B0;}
-.white-fill {fill: white;}
+/********************** Default Load Colors *********************************************************************************************************/
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --base-background: white;
+    --base-text: black;
+    --base-border: #adadad;
+    --base-link: #0000EE;
+    --base-link-visited: #551A8B;
+    --red: red;
+    --green: green;
+    --highlighted: yellow;
+
+    --c3-grid-line: #949494;
+
+    --small-button-background: #f5f3f2;
+    --small-button-hover: #dedede;
+    --small-button-disabled-background: #fafafa;
+    --small-button-disabled-border-text: #b8b8b8;
+
+    --low-emphasis-color: #bdbdbd;
+
+    --box-color: #f5f3f2;
+    --slider: #d3d3d3;
+
+    --toggle-position: 0px;
+    --mobile-toggle-position: 0px;
+    --toggle-color: grey;
+
+    --category-color: #582cfc;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --base-background: #242424;
+    --base-text: #dbdbdb;
+    --base-border: #dbdbdb;
+    --base-link: #86acf0;
+    --base-link-visited: #bd86f1;
+    --red: #ff4845;
+    --green: #00d100;
+    --highlighted: #545400;
+
+    --c3-grid-line: #dbdbdb;
+
+    --small-button-background: #242424;
+    --small-button-hover: #6e6e6e;
+    --small-button-disabled-background: #242424;
+    --small-button-disabled-border-text: #8c8c8c;
+
+    --low-emphasis-color: #dbdbdb;
+
+    --box-color: #474747;
+    --slider: #d3d3d3;
+
+    --toggle-position: 100px;
+    --mobile-toggle-position: 168px;
+    --toggle-color: #dbdbdb;
+
+    --category-color: #b19cff;
+  }
+}
 
 /*********************** Color Modes *********************************************************************************************************/
 .light-mode {
@@ -231,4 +286,12 @@ button.chart_notes_button:hover {
 path.st1, circle.cc-circle {
   fill: var(--base-background);
 }
+
+/*********************** Universal Colors *********************************************************************************************************/
+.twitter-blue {fill: #1D9BF0;}
+.facebook-blue {fill: #1778F2;}
+.reddit-orange {fill: #FF5700;}
+.substack-orange {fill: #ff6700;}
+.linkedin-blue {fill: #1686B0;}
+.white-fill {fill: white;}
 

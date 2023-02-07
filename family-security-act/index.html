@@ -20,14 +20,12 @@
   <link rel="stylesheet preload" href="../reference_files/css/fonts/fonts.css" as="style"></link>
 
   <!-- Base CSS -->
-   <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
   <link href="../reference_files/css/base_style.css" type="text/css" rel="stylesheet" />
   <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
 
   <!-- Color CSS -->
-  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="../reference_files/css/dark-mode.css">
-  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="../reference_files/css/light-mode.css">
+  <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
 
   <!-- Chart CSS -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
@@ -36,6 +34,23 @@
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
 </head>
+
+<body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'sepia'){
+    document.body.className = 'sepia';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+</script>
 
 <!-- Logo -->
 <div class="logo">
@@ -58,8 +73,6 @@
     <div class="page_color_toggler"></div>
   </div>
 </div>
-
-<body>
 
 <!--Mobile navbar-->
 <div class="mobile_navbar" id='mobile_navbar'>

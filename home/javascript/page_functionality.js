@@ -16,46 +16,25 @@ function toggle_page_color(mode){
   $('button').css('transition', 'background-color 1s ease');
 
   if(mode === 'dark'){
-    pageStyle = 'dark';
     document.body.className = 'dark-mode';
+    localStorage.setItem('color-mode', 'dark');
 
     // Page specific changes
     page_color_mode('dark');
-
-    // Change browser default rendering to dark
-    /*
-    setTimeout(function(){
-      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
-    }, 200);
-    */
   }
   else if(mode === 'sepia'){
-    pageStyle = 'sepia';
     document.body.className = 'sepia';
+    localStorage.setItem('color-mode', 'sepia');
 
     // Page specific changes
     page_color_mode('light');
-
-    // Change browser default rendering to light
-    /*
-    setTimeout(function(){
-      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
-    }, 200);
-    */
   }
   else if(mode === 'light'){
-    pageStyle = 'light';
     document.body.className = 'light-mode';
+    localStorage.setItem('color-mode', 'light');
 
     // Page specific changes
     page_color_mode('light');
-
-    // Change browser default rendering to light
-    /*
-    setTimeout(function(){
-      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
-    }, 200);
-    */
   }
 
   //reset social icon transition speed

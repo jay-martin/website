@@ -24,10 +24,8 @@
   <link href="../reference_files/css/mobile.css" type="text/css" rel="stylesheet" />
   <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
 
-  <!-- Color CSS -->
+  <!-- Color Modes -->
   <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
-  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="../reference_files/css/dark-mode.css">
-  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="../reference_files/css/light-mode.css">
 
   <!-- Chart CSS -->
   <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
@@ -38,6 +36,21 @@
 </head>
 
 <body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'sepia'){
+    document.body.className = 'sepia';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+</script>
 
 <!-- Logo -->
 <div class="logo">

@@ -178,7 +178,6 @@ function initialize_mobile_page(){
 
 //Prepare for desktop resize: show loader, hide & expand highlights and programs, then re-initialize
 function desktop_prepare_resize(){
-	console.log('in desktop_prepare_resize');
 	// Hide highlights, show loader
 	$('#loader_container').css('display', 'block');
 	$('#highlights_content').css('visibility', 'hidden');

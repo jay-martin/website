@@ -4,7 +4,17 @@
  * ****************************************************************************************/
 
 /****** Page Load Colors ******/
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+if(color_preference === 'dark'){
+    white_or_black = '#dbdbdb';
+    purple_shade = '#cb3ede';
+    green_shade = '#03c900';
+}
+else if(color_preference === 'sepia' || color_preference === 'light'){
+    white_or_black = 'black';
+    purple_shade = '#770087';
+    green_shade = '#0c6300';
+}
+else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
     white_or_black = '#dbdbdb';
     purple_shade   = '#cb3ede';
 }

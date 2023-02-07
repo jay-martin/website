@@ -13,8 +13,6 @@
  * (11) Hides the inputs and outputs of charts
  * (12) Tooltip functionality
  * ****************************************************************************************/
-// Current page style ('light', 'sepia', or 'dark')
-pageStyle = 'light';
 var is_open = new Object(); //dictionary to keep track of states of elements that open and close
 
 /******************************** 1. Page color toggle ******************************/
@@ -28,8 +26,8 @@ function toggle_page_color(mode){
   $('.mobile_dropdown').css('transition', 'all 1s ease');
 
   if(mode === 'dark'){
-    pageStyle = 'dark';
     document.body.className = 'dark-mode';
+    localStorage.setItem('color-mode', 'dark');
 
     // Page specific changes
     page_color_mode('dark');
@@ -40,8 +38,8 @@ function toggle_page_color(mode){
     }, 200);
   }
   else if(mode === 'sepia'){
-    pageStyle = 'sepia';
     document.body.className = 'sepia';
+    localStorage.setItem('color-mode', 'sepia');
 
     // Page specific changes
     page_color_mode('sepia');
@@ -52,8 +50,8 @@ function toggle_page_color(mode){
     }, 200);
   }
   else if(mode === 'light'){
-    pageStyle = 'light';
     document.body.className = 'light-mode';
+    localStorage.setItem('color-mode', 'light');
 
     // Page specific changes
     page_color_mode('light');

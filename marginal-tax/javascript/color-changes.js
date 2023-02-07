@@ -4,10 +4,16 @@
  * ****************************************************************************************/
 
 /****** Page Load Colors ******/
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+if(color_preference === 'dark'){
+	white_or_black = '#dbdbdb';
+}
+else if(color_preference === 'sepia' || color_preference === 'light'){
+	white_or_black = 'black';
+}
+else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
     white_or_black = '#dbdbdb';
 }
-else{
+else {
     white_or_black = 'black';
 }
 

@@ -29,6 +29,21 @@
 </head>
 
 <body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'sepia'){
+    document.body.className = 'sepia';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+</script>
 
 <!--Top--------------------------------------------------------------------------------------------------------------->
 <!-- Desktop Page Color Toggle -->

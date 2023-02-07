@@ -25,8 +25,6 @@
 
   <!-- Color CSS -->
   <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
-  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="../reference_files/css/dark-mode.css">
-  <link rel="stylesheet" media="(prefers-color-scheme: light)" href="../reference_files/css/light-mode.css">
 
   <!-- Animation CSS -->
   <link href="./css/redistribution-graphic.css" type="text/css" rel="stylesheet" />
@@ -37,6 +35,21 @@
 </head>
 
 <body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'sepia'){
+    document.body.className = 'sepia';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+</script>
 
 <!-- Logo -->
 <div class="logo">
