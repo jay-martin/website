@@ -64,13 +64,13 @@ function eitc_marriage_penalty_values_outputs(chart_name, penalty, p1_income, p2
     return eitc_marriage_penalty_append_button(chart_name, penalty_text);
 }
 
-/****************************** Append Button *******************************************************************************/
+/****************************** Show All Button *******************************************************************************/
 function eitc_marriage_penalty_append_button(chart_name, penalty_text){
     let show_all_text = eval(chart_name + '_show_all_button_text');
     let collapse_text = eval(chart_name + '_collapse_button_text');
     let breakdown_id  = chart_name + '_breakdown';
 
-    if(breakdown_states[breakdown_id] === 'open'){
+    if(is_open[breakdown_id] === 'open'){
         return penalty_text + collapse_text;
     }
     else {
