@@ -471,4 +471,19 @@ function hide_income_and_outputs(chart_name, remove_points, points){
 // body needs to triger a click for tooltip:onhover to disable on mobile devices
 $('body').click(function(){ });
 
+$('.tooltip').mouseover(function(){ 
+  let window_width = $(window).innerWidth();
+  let element_position = $(this).offset()['left'];
+  let window_remaining = parseFloat(window_width) - parseFloat(element_position);
+  
+  if(window_remaining < 260){
+    $('.tooltip .tooltiptext').css('margin-left', '-265px');
+    $('.tooltip .tooltiptext').addClass('tooltip-right');
+  }
+  else{
+    $('.tooltip .tooltiptext').css('margin-left', '-17.5px');
+    $('.tooltip .tooltiptext').removeClass('tooltip-right');
+  }
+});
+
 

@@ -953,25 +953,29 @@ a.refs {
   position: absolute;
   z-index: 1;
   bottom: 110%;
-  margin-left: -17.5px;
   opacity: 0;
   transition: opacity .3s;
   width: max-content;
-  max-width: 250px;
-
   color: var(--base-text);
   font-size: 13px;
   line-height: 1.5em;
   text-align: left;
+
+  max-width: 250px;
+  margin-left: -17.5px;
 }
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
-  left: 7px;
   border-width: 5px;
   border-style: solid;
   border-color: var(--base-border) transparent transparent transparent;
+
+  left: 7px;
+}
+.tooltiptext.tooltip-right::after {
+  left: 254px;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;
