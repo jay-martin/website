@@ -31,7 +31,7 @@
 
   --toggle-position: 0px;
   --mobile-toggle-position: 0px;
-  --toggle-color: grey;
+  --toggle-color: #545454;
 
   --category-color: #582cfc;
 }
@@ -60,7 +60,7 @@
 
   --toggle-position: 49px;
   --mobile-toggle-position: 84px;
-  --toggle-color: #8a7851;
+  --toggle-color: #594e35;
 
   --category-color: #582cfc;
 }
@@ -101,10 +101,10 @@
   background-color: var(--toggle-color);
 }
 .page_color_button_group {
-  border-color: var(--base-border);
+  border-color: var(--base-text);
 }
 .page_color_button_group button {
-  color: var(--toggle-color);
+  color: var(--base-text);
 }
 /********** Page Fundamentals *************/
 body {
