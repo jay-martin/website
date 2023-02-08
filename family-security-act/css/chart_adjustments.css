@@ -1,0 +1,22 @@
+/******************* Hide Points ******************************/
+/* Top Chart */
+.c3-circles-ctc, .c3-circles-eitc, .c3-circles-hoh, .c3-circles-fsa_ca, .c3-circles-fsa_eitc, .c3-circles-difference {
+  display: none;
+}
+
+/* Child Benefit Chart */
+.c3-circles-FSA_CA, .c3-circles-CTC, .c3-circles-dif {
+  display: none;
+}
+
+/* HOH Chart */
+.c3-circles-HOH_Savings {
+  display: none;
+}
+
+/* EITC Chart */
+.c3-circles-FSA_EITC, .c3-circles-EITC, .c3-circles-dif {
+  display: none;
+}
+
+/******************* Opacity Settings ******************************/

@@ -55,12 +55,9 @@
 <!-- Logo -->
 <div class="logo">
   <a class="top_logo_link" href="../index.html" aria-label="Go to Homepage">
-    <svg class='logo-color navbar-logo' viewBox="0 0 240 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" style="overflow:visible">
-      <text xml:space="preserve" x="-0.16252223" y="15.940749">
-        <tspan style="font-size:21.1667px;font-family:'Zen Antique Soft';stroke-width:0;"
-          x="-0.16252223" y="15.940749">The Welfare of Families
-        </tspan>
-      </text>
+    <svg class="top-logo logo-color" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;"><tspan x="183.97852" y="418.98599"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'">of Families</tspan></tspan></text>
     </svg>
   </a>
 </div>
@@ -439,18 +436,18 @@
   <div class = "chart">
 
     <!--User inputs-->
-    <div class="user_inputs" id="user_inputs">
+    <div class="user_inputs">
 
       <!--FSA 1.0 or 2.0-->
-      <label for="fsa1_or_2_all">Show me the </label>
-      <select name="fsa1or2all" id="fsa1_or_2_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+      <label for="top_chart_fsa1_or_2">Show me the </label>
+      <select id="top_chart_fsa1_or_2" oninput="adjust_top_chart();top_chart_outputs();">
         <option value="one">FSA 1.0</option>
         <option value="two" selected>FSA 2.0</option>
       </select>
 
       <!--Sub chart select-->
       <label for="subchart_select">and break down by </label>
-      <select name="subchartSelect" id="subchart_select" oninput="all_modify_chart();modify_benefit_outputs_all()">
+      <select id="subchart_select" oninput="adjust_top_chart();top_chart_outputs();">
         <option value="all">all benefits</option>
         <option value="ca">child benefit/CTC</option>
         <option value="eitc">EITC</option>
@@ -460,16 +457,16 @@
       </br>
 
       <!--Filing status-->
-      <label for="filingstatus">I am a</label>
-      <select name="filingstatus" id="filingstatus_all" oninput="modify_benefit_outputs_all();all_modify_chart();disable_hoh()">
+      <label for="top_chart_filing_status">I am a</label>
+      <select id="top_chart_filing_status" oninput="adjust_top_chart();top_chart_outputs();">
         <option value="married">married joint filer</option>
         <option value="hoh">head of household</option>
         <option value="single">single filer</option>
       </select>
 
      <!--Number of old children-->
-      <label for="numOldChildren_all">who has</label>
-      <select name="OldChildren_all" id="numOldChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+      <label for="top_chart_num_old_children">who has</label>
+      <select id="top_chart_num_old_children" oninput="adjust_top_chart();top_chart_outputs();">
         <option value="none">no children</option>
         <option value="one" selected>1 child</option>
         <option value="two">2 children</option>
@@ -477,8 +474,8 @@
       between the ages of 6 and 17 and 
 
       <!--Number of young children-->
-      <label for="numYoungChildren_all"></label>
-      <select name="YoungChildren_all" id="numYoungChildren_all" oninput="modify_benefit_outputs_all();all_modify_chart()">
+      <label for="top_chart_num_young_children"></label>
+      <select id="top_chart_num_young_children" oninput="adjust_top_chart();top_chart_outputs();">
         <option value="none">no children</option>
         <option value="one">1 child</option>
         <option value="two">2 children</option>
@@ -487,17 +484,9 @@
       
       <!--Income slider-->
       <div class="slidecontainer"> 
-        <label for="myRange_income_all" class="slider-text"> I have an income of $<output id="rangeValue_all">20,000</output>.</label>
+        <label for="top_chart_income" class="slider-text"> I have an income of $<output id="top_chart_income_output">20,000</output>.</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="myRange_income_all" oninput="rangeValue_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_income(); modify_benefit_outputs_all()">
-        </div>
-      </div>
-
-      <!--Itemized deductions slider-->
-      <div class="slidecontainer" hidden> 
-        <label for="myRange_ID_all" class="slider-text"> I have $<output id="rangeValue_ID_all">4,000</output> in itemized deductions.</label>
-        <div class="slider-actual">
-          <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID_all" oninput="rangeValue_ID_all.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); all_modify_chart(); modify_benefit_outputs_all()">
+          <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="top_chart_income" oninput="top_chart_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); top_chart_modify_income();top_chart_outputs();">
         </div>
       </div>
 
@@ -505,41 +494,40 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="center_explanations_container">
-      <p id="allFSAtotal"></p>
-      <p id="allCurrent"></p>
-      <p id="allHOH" class='allHOH'></p>
-      <div class = "difference_container">
-        <p class="allDifference_class" id="allDifference"></p>
-        <p class="allDifference_color_class" id="allDifference_color"></p>
-      </div>
+      <p id="top_chart_fsa_output"></p>
+      <p id="top_chart_current_output"></p>
+      <p id="top_chart_difference_output"></p>
     </div>
 
-    <div class="switches_all">
-    <!--Zoom switch: Phase-In-->
+    <!--chart-->
+    <div id="top_chart"></div>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+
+      <!--Zoom switch: Phase-In-->
       <label class="switch">
-        Click to zoom on lower incomes:
-        <input type="checkbox" name="zoom_phasein_all" id="zoom_switch_all_phasein" oninput='all_zoom_chart()'>
+        Zoom on lower incomes:
+        <input type="checkbox" name="zoom_phasein_all" id="zoom_switch_all_phasein" oninput='top_chart_zoom()'>
         <span class="slider round"></span>
       </label>
       </br>
 
       <!--Only change in benefit switch-->
       <label class="switch">
-        Click to display only the difference in benefits:
-        <input type="checkbox" name="diffInBen_all" id="only_diff_switch_all" oninput="only_dif_function_all()">
+        Display only the difference in benefits:
+        <input type="checkbox" id="top_chart_only_difference_switch" oninput="top_chart_only_show_difference_curve()">
         <span class="slider round"></span>
       </label>
 
       <!--Hide benefit curve switch-->
       <label class="switch">
-        Click to hide difference in benefits:
-        <input type="checkbox" name="hideDiff_all" id="hide_diff_switch_all" oninput="hide_dif_function_all()">
+        Hide difference in benefits:
+        <input type="checkbox" id="top_chart_hide_difference_switch" oninput="top_chart_hide_difference_curve()">
         <span class="slider round"></span>
       </label>
-    </div>
 
-    <!--chart placement-->
-    <div id="master_chart_all"></div>
+    </div>
   
   </div><!-----Top chart------->
 
@@ -779,30 +767,35 @@
       <p id="CA_benefit_difference"></p>
     </div>
 
-    <!--Zoom switch: Phase-In-->
-    <label class="switch">
-      Click to zoom on phase-in:
-      <input type="checkbox" name="zoom_phasein" id="zoom_switch_CA_phasein" oninput="zoom_CA_graph_phasein();">
-      <span class="slider round"></span>
-    </label>
-
-    <!--Zoom switch: Phase-Out-->
-    <label class="switch">
-      Click to zoom on phase-out:
-      <input type="checkbox" name="zoom_phaseout" id="zoom_switch_CA_phaseout" oninput="zoom_CA_graph_phaseout();">
-      <span class="slider round"></span>
-    </label>
-    </br>
-
-    <!--Only change in benefit switch-->
-    <label class="switch">
-      Click to display only the difference in benefits:
-      <input type="checkbox" name="diffInBen_CA" id="diffInBen_CA_switch" oninput="diffInBen_CA_function();">
-      <span class="slider round"></span>
-    </label>
-
     <!--Child Benefit Chart-->
     <div id="CAchart"></div>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+
+      <!--Zoom switch: Phase-In-->
+      <label class="switch">
+        Zoom on phase-in:
+        <input type="checkbox" name="zoom_phasein" id="zoom_switch_CA_phasein" oninput="zoom_CA_graph_phasein();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Zoom switch: Phase-Out-->
+      <label class="switch">
+        Zoom on phase-out:
+        <input type="checkbox" name="zoom_phaseout" id="zoom_switch_CA_phaseout" oninput="zoom_CA_graph_phaseout();">
+        <span class="slider round"></span>
+      </label>
+      </br>
+
+      <!--Only change in benefit switch-->
+      <label class="switch">
+        Display only the difference in benefits:
+        <input type="checkbox" name="diffInBen_CA" id="diffInBen_CA_switch" oninput="diffInBen_CA_function();">
+        <span class="slider round"></span>
+      </label>
+
+    </div>
 
   </div> <!-----Child allowance chart------->
 
@@ -843,16 +836,18 @@
       <p id="HOH_savings"></p>
     </div>
 
-    <!--Zoom switch-->
-    <label class="switch">
-      Click to zoom:
-      <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
-      <span class="slider round"></span>
-    </label>
-    </br>
-
     <!--HOH Chart-->
     <div id="HOHchart"></div>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+      <!--Zoom switch-->
+      <label class="switch">
+        Zoom on lower incomes:
+        <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
+        <span class="slider round"></span>
+      </label>
+    </div>
 
   </div> <!-----HOH Chart------->
 
@@ -871,7 +866,7 @@
 
     <!--Filing status-->
     <label for="filingstatus_eitc">I am a</label>
-    <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="master_adjust_chart();output_eitc()">
+    <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="eitc_adjust_chart();output_eitc()">
       <option value="married">married joint filer</option>
       <option value="hoh">head of household</option>
       <option value="single">single filer</option>
@@ -879,7 +874,7 @@
 
     <!--Number of children-->
     <label for="numchildren_eitc">who has</label>
-    <select name="children_eitc" id="numchildren_eitc" oninput="master_adjust_chart();output_eitc()">
+    <select name="children_eitc" id="numchildren_eitc" oninput="eitc_adjust_chart();output_eitc()">
       <option value="three">3 or more children</option>
       <option value="two">2 children</option>
       <option value="one" selected>1 child</option>
@@ -903,15 +898,20 @@
       <p id="diffEITC"></p>
     </div>
 
-    <!--Only change in benefit switch-->
-    <label class="switch">
-      Click to display only the difference in benefits:
-      <input type="checkbox" name="diffInBen_EITC" id="diffInBen_EITC_switch" oninput="diffInBen_EITC_function();">
-      <span class="slider round"></span>
-    </label>
-
     <!--EITC Chart-->
     <div id="chart"></div>
+
+    <!--User inputs------------------------------>
+    <div class="user_inputs">
+
+      <!--Only change in benefit switch-->
+      <label class="switch">
+        Display only the difference in benefits:
+        <input type="checkbox" name="diffInBen_EITC" id="diffInBen_EITC_switch" oninput="diffInBen_EITC_function();">
+        <span class="slider round"></span>
+      </label>
+
+    </div>
 
   </div> <!-----EITC Chart------->
 
@@ -923,21 +923,13 @@
   <div class="notes">
     <h2 id="notes">Notes</h2>
     <ol class="notes_list">
-      <li><a class="refs" href="#note1">^</a> <a href="#Marr" onclick="highlight_ref('Marr')">Marr et al. 2022</a></li>
 
-      <li><a class="refs" href="#note1">^</a> The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half (<a href="#Hammond" onclick="highlight_ref('Hammond')">Hammond, Orr 2021</a>), while the FSA 2.0 would reduce child poverty by 13% (<a href="#Orr">Orr, McCabe 2022</a>).</li>
-
-      <li><a class="refs" href="#note3">^</a> Ellis and Faricy have summarized the thesis of their book in an article for <em>Fortune</em>: "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>" (<a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a>). For the full book, see <a href="#Ellis-book" onclick="highlight_ref('Ellis-book')">Ellis, Faricy 2021</a>.</li>
     </ol>
   </div>
 
   <div class="references">
     <h2>References</h2>
     <ul class="references_list" id="references_list">
-      <li class="ref_item" id="Ellis-book">Ellis, Christopher; Faricy, Christopher (2021). <em><a href=https://www.russellsage.org/publications/other-side-coin target="_blank">The Other Side of the Coin: Public Opinion Toward Social Tax Expenditures</a></em>. Russell Sage Foundation. ISBN 978-0871544407.</li>
-
-      <li class="ref_item" id="Ellis">Ellis, Christopher; Faricy, Christopher (May 20, 2021). "<a href=https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">America’s messy tax code is actually quite popular</a>". <em>Fortune</em>. <a href=https://web.archive.org/web/20220703115100/https://fortune.com/2021/05/20/tax-deductions-file-government-spending-income/ target="_blank">Archived</a> from the original on July 3, 2022.</li>
-
       <li class="ref_item" id="Hammond">Hammond, Samuel; Orr, Robert (February 4, 2021). "<a href="https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/">Factsheet: Senator Romney’s Family Security Act</a>". <em>Niskanen Center</em>. <a href=https://web.archive.org/web/20220813063420/https://www.niskanencenter.org/factsheet-senator-romneys-family-security-act/ target="_blank">Archived</a> from the original on August 13, 2022.</li>
 
       <li class="ref_item" id="Marr">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). "<a href=https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It</a>". <em>Center on Budget and Policy Priorities</em>. <a href=https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low target="_blank">Archived</a> from the original on October 21, 2022.</li>
@@ -1048,32 +1040,35 @@
 <!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
 <!-- Top Chart Javascript Files -->
-<script type="text/javascript" src="./javascript/all/all_master_chart.js"></script>
-<script type="text/javascript" src="./javascript/all/subcharts/all_adjust_eitc.js"></script>
-<script type="text/javascript" src="./javascript/all/subcharts/all_adjust_ca.js"></script>
-<script type="text/javascript" src="./javascript/all/subcharts/all_adjust_hoh.js"></script>
-<script type="text/javascript" src="./javascript/all/subcharts/all_adjust_all.js"></script>
-<script type="text/javascript" src="./javascript/all/all_calculate.js"></script>
-<script type="text/javascript" src="./javascript/all/all_output.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/top-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/calculate.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-chart.js"></script>
 
 <!-- Child Allowance Javascript Files -->
-<script type="text/javascript" src="./javascript/childbenefit/ca_calculate.js"></script>
-<script type="text/javascript" src="./javascript/childbenefit/ca_master_chart.js"></script>
-<script type="text/javascript" src="./javascript/childbenefit/ca_adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/childbenefit/chart.js"></script>
+<script type="text/javascript" src="./javascript/childbenefit/controls.js"></script>
+<script type="text/javascript" src="./javascript/childbenefit/calculate.js"></script>
+<script type="text/javascript" src="./javascript/childbenefit/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/childbenefit/outputs.js"></script>
 
 <!-- HOH Javascript Files -->
-<script type="text/javascript" src="./javascript/hoh/HOH_calculate.js"></script>
-<script type="text/javascript" src="./javascript/hoh/HOH_chart.js"></script>
+<script type="text/javascript" src="./javascript/hoh/chart.js"></script>
+<script type="text/javascript" src="./javascript/hoh/outputs.js"></script>
+<script type="text/javascript" src="./javascript/hoh/calculate.js"></script>
 
 <!-- EITC Javascript Files -->
-<script type="text/javascript" src="./javascript/EITC/EITC_calculate.js"></script>
-<script type="text/javascript" src="./javascript/EITC/EITC_master_chart.js"></script>
-<script type="text/javascript" src="./javascript/EITC/EITC_adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc/chart.js"></script>
+<script type="text/javascript" src="./javascript/eitc/calculate.js"></script>
+<script type="text/javascript" src="./javascript/eitc/outputs.js"></script>
+<script type="text/javascript" src="./javascript/eitc/adjust-chart.js"></script>
 
 </body>
 </html>

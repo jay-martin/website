@@ -1,19 +1,25 @@
-/*Default values */
-document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you $' + 862 + '.';
-document.getElementById('item_or_stand').innerHTML = 'You would use the standard deduction as both a single filer and head of household.';
-
 /*DEFAULT GRAPH: Standard deduction for both single filer & HOH */
 var HOHchart = c3.generate({
     bindto: '#HOHchart',
     data: {
-        x: 'x',
+        xs: {
+            'HOH_Savings' : 'x',
+            'point'       : 'x_point',
+        },
         columns: [
             ['x',            0, 12950, 19400, 23225, 34050, 54725, 75300, 102025, 108450, 183000, 189450, 228900, 235350, 552850, 559300, 600000],
-            ['HOH_Savings',  0, 0,     645,   645,   861.5, 861.5, 2919,  2919,   3047.5, 3047.5, 3563.5, 3563.5, 3757,   3757,   3886,   3886]
+            ['HOH_Savings',  0, 0,     645,   645,   861.5, 861.5, 2919,  2919,   3047.5, 3047.5, 3563.5, 3563.5, 3757,   3757,   3886,   3886],
+
+            ['x_point', 50000],
+            ['point',   862],
         ],
         names: {
             HOH_Savings: 'HOH Tax Savings',
-        }
+        },
+        colors: {
+            HOH_Savings : '#f7c22f',
+            point       : '#f7c22f',
+        },
     },
     padding: {
         bottom: 0,
@@ -21,16 +27,11 @@ var HOHchart = c3.generate({
         left: 70,
         right: 22,
     },
-    color: {
-        pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
-    },
     legend: {
-        position: 'bottom'
+        position: 'bottom',
+        hide: ['point'],
     },
     tooltip: {
-        show: false
-    },
-    point: {
         show: false
     },
     axis: {
@@ -84,31 +85,18 @@ function zoomHOHGraph(){
 
 /* Moves the income slider */
 function modifyIncome_HOH(){
+    let income = myRange_HOH.value;
     setTimeout(function () {
-        HOHchart.xgrids([{value: myRange_HOH.value, text:'Your income'}]);
+        HOHchart.xgrids([{value: income, text:'Your income'}]);
     }, );
-}
 
-/* Calculates tax savings from the head of household status*/
-function difference_hoh(){
-    user_dif = taxDifferenceatIncomeValue(myRange_HOH.value, myRange_ID.value);
-    document.getElementById('HOH_savings').innerHTML = 'The head of household filing status saves you $' + user_dif.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.';
-}
-
-/* Writes to page whether user would itemize or use the standard deduction */
-function deductType(){
-    single_deduct = single_deduction();
-    hoh_deduct = hoh_deduction();
-
-    if(single_deduct===12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the standard deduction as both a single filer and head of household.';
-    }
-    else if(single_deduct>12950 && hoh_deduct===19400){
-        document.getElementById('item_or_stand').innerHTML = 'You would use the standard deduction as a head of household but would itemize as a single filer.';
-    }
-    else{
-        document.getElementById('item_or_stand').innerHTML = 'You would itemize your deductions as both a single filer and head of household.';
-    }
+    difference = taxDifferenceatIncomeValue(income, myRange_ID.value);
+    HOHchart.load({ 
+        columns: [
+            ['x_point', income],
+            ['point', difference],
+        ]
+    });
 }
 
 /* Adjusts the chart according to user input */

@@ -1,28 +1,42 @@
-/*TASKS */
-/*1. Adjust slider values when phaseout zoom-in is engaged. Currently you can slide below the income range displayed. */
-/*2. Benefit curve goes past axis max for some phaseout zoom ins  */
-
-/*Default values */
-document.getElementById('fsa_CA_benefit').innerHTML = 'Under the Family Security Act, your child benefit is $3,000.';
-document.getElementById('CTC_benefit').innerHTML = 'Under existing law (2022), your child tax credit is $2,000.';
-document.getElementById('CA_benefit_difference').innerHTML = 'Your child benefit increases by $1,000.';
-
 /*DEFAULT GRAPH: Married with one older child */
 var CAchart = c3.generate({
     bindto: '#CAchart',
     data: {
-        x: 'x',
+        xs: {
+            'FSA_CA' : 'x',
+            'CTC'    : 'x',
+            'dif'    : 'x',
+
+            'current_point'    : 'x_point',
+            'fsa_point'        : 'x_point',
+            'difference_point' : 'x_point',
+        },
         columns: [
             ['x',        0, 2500,  10000, 11833, 25900, 31900, 400000, 440000, 460000, 550000],
             ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0,      0],
             ['CTC',      0, 0,     1125,  1400,  1400,  2000,  2000,   0,      0,      0],
-            ['dif',      0, 750,   1875,  1600,  1600,  1000,  1000,   1000,   0,      0]
+            ['dif',      0, 750,   1875,  1600,  1600,  1000,  1000,   1000,   0,      0],
+
+            ['x_point', 60000],
+            ['fsa_point', 3000],
+            ['current_point', 2000],
+            ['difference_point', 1000],
         ],
         names: {
             FSA_CA: 'Family Security Act Child Benefit',
             EITC: 'Current Child Tax Credit (2022)',
             dif: 'Change in Benefit'
-        }
+        },
+        colors: {
+            FSA_CA : '#f7c22f',
+            fsa_point : '#f7c22f',
+
+            CTC : '#6ab6fc',
+            current_point : '#6ab6fc',
+
+            dif       : 'red',
+            difference_point : 'red',
+        },
     },
     padding: {
         bottom: 0,
@@ -30,16 +44,11 @@ var CAchart = c3.generate({
         left: 70,
         right: 20,
     },
-    color: {
-        pattern: ['#f7c22f', '#6ab6fc', '#eb3734']
-    },
     legend: {
-        position: 'bottom'
+        position: 'bottom',
+        hide: ['fsa_point', 'current_point', 'difference_point'],
     },
     tooltip: {
-        show: false
-    },
-    point: {
         show: false
     },
     axis: {
@@ -72,32 +81,6 @@ var CAchart = c3.generate({
         }
     }
 });
-
-function modifyCAGraph(){
-    if(fsa1_or_2_CA.value==="one"){
-        modifyCAGraph1(filingstatus_ca.value, numYoungChildren.value, numOldChildren.value);
-    }
-    else{
-        modifyCAGraph2(filingstatus_ca.value, numYoungChildren.value, numOldChildren.value);
-    }
-}
-
-/* Moves the income slider */
-function modifyIncome_CA(){
-    CAchart.xgrids([{value: myRange_CA.value, text:'Your income'}]);
-}
-
-/* Outputs benefit values */
-function new_benefits_CA(){
-    numYoung = num_young(numYoungChildren.value);
-    numOld = num_old(numOldChildren.value);
-
-    benefits = child_benefit_difference(myRange_CA.value, filingstatus_ca.value, numYoung, numOld, fsa1_or_2_CA.value);
-
-    document.getElementById('fsa_CA_benefit').innerHTML = 'Under the Family Security Act, your child benefit is $' + benefits[0].toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    document.getElementById('CTC_benefit').innerHTML = 'Under existing law (2022), your child tax credit is $' + benefits[1].toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    document.getElementById('CA_benefit_difference').innerHTML = 'Your child benefit increases by $' + benefits[2].toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
 
 /* Hides or shows curves based on user input*/
 function diffInBen_CA_function(){

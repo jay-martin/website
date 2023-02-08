@@ -1,3 +1,25 @@
+/* Moves income xgrids */
+function modifyIncome(){
+    let income = myRange.value;
+    setTimeout(function () {
+        chart.xgrids([{value: income, text:'Your income'}]);
+    }, );
+
+    numChildren = num_children_eitc(numchildren_eitc.value);
+    fsa = fsa_eitc_calculate(myRange.value, filingstatus_eitc.value, numChildren);
+    current = existingEITC(myRange.value, filingstatus_eitc.value, numChildren);
+    difference = fsa-current;
+
+    chart.load({ 
+        columns: [
+            ['x_point',       income],
+            ['fsa_point',     fsa],
+            ['current_point', current],
+            ['difference_point',    difference],
+        ]
+    })
+}
+
 /* Adjusts the eitc chart according to user filing status and number of children inputs */
 function modify_eitc_chart(filingStatus, numChildren){
     if (filingStatus==="married"){
@@ -126,4 +148,5 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
     }
+    modifyIncome();
 }

@@ -34,3 +34,31 @@ function current_total_benefit(income, filingStatus, numYoung, numOld, itemDeduc
 
 	return ctc+eitc;
 }
+
+function num_young(numYoung){
+	young = 0;
+	if(numYoung === "none"){
+		young = 0;
+	}
+	else if(numYoung === "one"){
+		young = 1;
+	}
+	if(numYoung === "two"){
+		young = 2;
+	}
+	return young;
+}
+
+function num_old(numOld){
+	old = 0;
+	if(numOld === "none"){
+		old = 0;
+	}
+	else if(numOld === "one"){
+		old = 1;
+	}
+	if(numOld === "two"){
+		old = 2;
+	}
+	return old;
+}
