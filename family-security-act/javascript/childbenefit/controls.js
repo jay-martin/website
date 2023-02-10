@@ -1,27 +1,27 @@
 function modifyCAGraph(){
     if(fsa1_or_2_CA.value==="one"){
-        modifyCAGraph1(filingstatus_ca.value, numYoungChildren.value, numOldChildren.value);
+        modifyCAGraph1(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
     }
     else{
-        modifyCAGraph2(filingstatus_ca.value, numYoungChildren.value, numOldChildren.value);
+        modifyCAGraph2(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
     }
     modifyIncome_CA();
 }
 
 /* Moves the income slider */
 function modifyIncome_CA(){
-    let income = myRange_CA.value;
-    CAchart.xgrids([{value: income, text:'Your income'}]);
+    let income = child_benefit_income.value;
+    child_benefit_chart.xgrids([{value: income, text:'Your income'}]);
 
-    numYoung = num_young(numYoungChildren.value);
-    numOld = num_old(numOldChildren.value);
-    benefits = child_benefit_difference(income, filingstatus_ca.value, numYoung, numOld, fsa1_or_2_CA.value);
+    numYoung = num_young(child_benefit_young_children.value);
+    numOld = num_old(child_benefit_old_children.value);
+    benefits = child_benefit_difference(income, child_benefit_filing_status.value, numYoung, numOld, fsa1_or_2_CA.value);
 
     let fsa_benefit = benefits[0];
     let current_benefit = benefits[1];
     let difference = benefits[2];
 
-    CAchart.load({
+    child_benefit_chart.load({
         columns: [
             ['x_point', income],
             ['fsa_point', fsa_benefit],
@@ -30,4 +30,24 @@ function modifyIncome_CA(){
         ]
     });
 
+}
+
+function child_benefit_description_generator(){
+    let filing_status  = capitalize_filing_status(child_benefit_filing_status.value);
+    let old_children   = capitalize_num_children(child_benefit_old_children.value);
+    let young_children = capitalize_num_children(child_benefit_young_children.value);
+
+    // Generate description based on current user inputs
+    document.getElementById('child_benefit_title_description').innerHTML = filing_status + ", " + old_children + " Age 6–17 and " + young_children + " Age 0–5";
+
+    // Generate title based on whether FSA 1.0 or 2.0
+    if(child_benefit_screenshot_mode_switch.checked == false){
+        document.getElementById('child_benefit_title').innerHTML = 'The Family Security Act: Child Benefit';
+    }
+    else if(fsa1_or_2_CA.value == 'one'){
+        document.getElementById('child_benefit_title').innerHTML = 'Family Security Act 1.0: Child Benefit';
+    }
+    else {
+        document.getElementById('child_benefit_title').innerHTML = 'Family Security Act 2.0: Child Benefit';
+    }
 }

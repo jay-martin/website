@@ -13,12 +13,12 @@ function modifyIncome(){
     let income = user_income.value;
     
     // move xgrid 
-    chart.xgrids([{value: income, text:'Your income'}]);
+    top_chart_chart.xgrids([{value: income, text:'Your income'}]);
 
-    if(chart_type.value === 'EMTR'){
+    if(top_chart_type.value === 'EMTR'){
         emtr_modify_income();
     }
-    else if(chart_type.value === 'EI'){
+    else if(top_chart_type.value === 'EI'){
         add_tangent_line(income, num_children.value);
     }
 }
@@ -31,7 +31,7 @@ function add_benefit(benefit){
 		isActive[benefit] = false;
 		$(id).removeClass('selected_button');
 		load_data();
-		//chart.unload(benefit);
+		//top_chart_chart.unload(benefit);
 	}
 	else {
 		isActive[benefit] = true;
@@ -64,10 +64,10 @@ function disable_healthcare(){
     }
 }
 
-/******************************************************** Controls for chart loading *******************************************************/
+/******************************************************** Controls for top_chart_chart loading *******************************************************/
 /* Controls whether EMTR or EI data will be loaded */
 function load_data(){
-	if(chart_type.value === 'EMTR'){
+	if(top_chart_type.value === 'EMTR'){
 		load_emtr_data();
 		emtr_modify_income();
 	}
@@ -76,9 +76,9 @@ function load_data(){
 	}
 }
 
-/* Controls the switch from the EMTR chart to the EI chart & vice versa */
-function switch_chart(){
-	if(chart_type.value === 'EMTR'){
+/* Controls the switch from the EMTR top_chart_chart to the EI top_chart_chart & vice versa */
+function switch_top_chart_chart(){
+	if(top_chart_type.value === 'EMTR'){
 		switch_to_emtr();
 	}
 	else{
@@ -86,9 +86,9 @@ function switch_chart(){
 	}
 }
 
-/* Controls the switch to the EMTR chart */
+/* Controls the switch to the EMTR top_chart_chart */
 function switch_to_emtr(){
-	chart.unload({ids: ['income_tax_and_transfer', 'tangent_line']});
+	top_chart_chart.unload({ids: ['income_tax_and_transfer', 'tangent_line']});
 	setTimeout(function () {
 		adjust_y_axis_emtr();
 		adjust_axis_labels();
@@ -100,9 +100,9 @@ function switch_to_emtr(){
 
 }
 
-/* Controls the switch to the EI chart */
+/* Controls the switch to the EI top_chart_chart */
 function switch_to_ei(){
-	chart.unload({ids: ['personal_income_tax', 'fica', 'eitc', 'ctc', 'snap', 'total']});
+	top_chart_chart.unload({ids: ['personal_income_tax', 'fica', 'eitc', 'ctc', 'snap', 'total']});
 	adjust_axis_labels();
 	adjust_y_axis_ei();
 	setTimeout(function () {
@@ -110,9 +110,9 @@ function switch_to_ei(){
 	}, 500);
 }
 
-/* Controls whether the y-axis is adjusted for the EMTR or EI graph based on user selection of chart */
+/* Controls whether the y-axis is adjusted for the EMTR or EI graph based on user selection of top_chart_chart */
 function adjust_y_axis(){
-	if(chart_type.value === 'EMTR'){
+	if(top_chart_type.value === 'EMTR'){
 		//adjust_y_axis_emtr();
 	}
 	else{

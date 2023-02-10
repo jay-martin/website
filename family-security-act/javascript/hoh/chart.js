@@ -114,3 +114,22 @@ function modifyGraph_HOH(){
         ]
     });
 }
+
+var hoh_previous_income = 50000;
+function hoh_screenshot_mode(){
+    hoh_previous_income = myRange_HOH.value;
+    if(hoh_screenshot_mode_switch.checked){
+        document.getElementById('hoh_inputs').style.display = 'none';
+        document.getElementById('hoh_outputs').style.display = 'none';
+        $('#hoh_container').css('border', 'none');
+        HOHchart.hide(['point']);
+        HOHchart.xgrids([]);
+    }
+    else {
+        document.getElementById('hoh_inputs').style.display = 'block';
+        document.getElementById('hoh_outputs').style.display = 'block';
+        $('#hoh_container').css('border', 'solid');
+        HOHchart.show(['point']);
+        HOHchart.xgrids([{value: hoh_previous_income, text: 'Your income'}]);
+    }
+}

@@ -435,9 +435,12 @@
   <!--Center------------------------------------------------------>
   <div class="center">
 
-    <div class="chart">
+    <div class="chart" id="top_chart_container">
+      <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Head of Household Tax Savings (2023)</h3>
+      <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
+
       <!--User inputs------------------------------>
-      <div class="user_inputs" id="user_inputs">
+      <div class="user_inputs" id="top_chart_inputs">
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
           <label for="user_income" class="slider-text">I have an income of $<output id="income_output">50,000</output>:</label>
@@ -493,8 +496,8 @@
 
       </div> <!--user_inputs container-->
 
-      <!--Calculate HOH savings-->
-      <div class="center_explanation_box" id="center_explanations_container"> <!--Subcontainter for eitc values-->
+      <!--Outputs-->
+      <div class="center_explanation_box" id="top_chart_outputs">
         <p class="explanation_text" id="item_or_stand"></p>
         <p class="explanation_text" id="HOH_savings"></p>
 
@@ -515,15 +518,40 @@
       <!-- HOH Chart -->
       <div id="HOHchart"></div>
 
-      <!--Zoom switch-->
-      <label>Zoom on lower incomes:
-        <input type="checkbox" class="zoom_button" id="zoom_switch" oninput="zoom_top_chart();">
-      </label>
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Options -->
+      <div class="chart_options_container" id="top_chart_options_container">
+
+        <!--Zoom switch-->
+        <label>Zoom on lower incomes:
+          <input type="checkbox" class="zoom_button" id="zoom_switch" oninput="zoom_top_chart();">
+        </label>
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
 
     </div> <!--chart end-->
 
     <!-- Mobile Highlights -->
-    <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+    <div class = "mobile_highlights" id="mobile_highlights"> 
       <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
       <div class="loader_container" id="mobile_loader_container">
@@ -694,12 +722,13 @@
 <!-------------------------Regressive----------------------------------------->
 <section class = 'center_no_side_elements' id="regressive">
   <h2>Head of Household is Regressive</h2>
-  <div class="article_tag"><em>See also: <a href="../poor-exclusion/index.html" target="_blank">The Exclusion of Poor Families</a> </em></div>
+  <div class="article_tag"><em>See also: <a href="../two-tiers-of-welfare/index.html" target="_blank">Two Tiers of Welfare</a> </em></div>
 
-  <div class='chart'>
-    <h3 class='chart_title'>Head of Household is Regressive</h3>
+  <div class='chart' id='regressive_container'>
+    <h3 class='chart_title' id='regressive_title'>Head of Household is Regressive</h3>
+    <h4 class='chart_description' id="regressive_title_description" style="display:none;"></h4>
 
-    <div class="user_inputs" id="regressive_inputs_container">
+    <div class="user_inputs" id="regressive_inputs">
       <!--Income slider-->
       <div class="slidecontainer"> 
         <label for="income_regressive" class="slider-text"> I have an income of $<output id="income_regressive_output">50,000</output>:</label>
@@ -710,22 +739,26 @@
     </div>
 
     <!--Calculate HOH savings-->
-    <div class="center_explanation_box" id="regressive_outputs_container">
+    <div class="center_explanation_box" id="regressive_outputs">
       <p class="explanation_text" id="benefit_max_difference"></p>
     </div>
 
     <div id="regressive_chart"></div>
 
     <!-- Chart Options -->
-    <div class="chart_options_container">
+    <div class="chart_options_container" id='regressive_options_container'>
+      
       <label class="switch_label" id="zoom_label_regressive">
-      Click to zoom on lower incomes:
+      Zoom on lower incomes:
         <input type="checkbox" class="zoom_button" id="zoom_switch_regressive" oninput="zoom_regressive();">
         <span class="checkmark"></span>
       </label>
 
-      <label>Hide Inputs & Outputs:
-      <input type="checkbox" id="regressive_hide_income_switch" oninput="hide_income_and_outputs('regressive', false, []);regressive_hide_line();">
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="regressive_screenshot_mode_switch" oninput="screenshot_mode('regressive', 'exclusion', ['difference_line'], '', false);">
+        <span class="slider round"></span>
       </label>
 
     </div>
@@ -740,50 +773,56 @@
   <h2>Head of Household Creates Marriage Penalties</h2>
   <div class="article_tag"><em>See also: <a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a> </em></div>
 
-  <div class = "chart">
-    <h3 class='chart_title'>Head of Household Creates Marriage Penalties</h3>
+  <div class = "chart" id="marriage_penalty_container">
+    <h3 class='chart_title' id='marriage_penalty_title'>Head of Household Creates Marriage Penalties</h3>
+    <h4 class='chart_description' id="marriage_penalty_title_description" style="display:none;"></h4>
 
-    <!--Chart type-->
-    <label for="marriage_penalty_chart_type">Show chart as: </label>
-    <select id="marriage_penalty_chart_type" oninput="switch_tax_chart_type('marriage_penalty')" >
-      <option value="intuitive">Intuitive</option>
-      <option value="values">Values</option>
-    </select>
+    <!--User inputs------------------------------>
+    <div class="user_inputs" id="marriage_penalty_inputs">
 
-    <br>
+      <!--Chart type-->
+      <label for="marriage_penalty_chart_type">Show chart as: </label>
+      <select id="marriage_penalty_chart_type" oninput="switch_tax_chart_type('marriage_penalty')" >
+        <option value="intuitive">Intuitive</option>
+        <option value="values">Values</option>
+      </select>
 
-    <!--Person 1 filing status-->
-    <label for="marriage_penalty_person1_filing_status">I am a </label>
-    <select id="marriage_penalty_person1_filing_status" oninput="tax_adjust_person1_filing_status('marriage_penalty');" >
-      <option value="single">single filer</option>
-      <option value="hoh" selected>head of household</option>
-    </select>
+      <br>
 
-    <!--Person 2 filing status-->
-    <label for="marriage_penalty_person2_filing_status">and my partner is a </label>
-    <select id="marriage_penalty_person2_filing_status" oninput="tax_adjust_person2_filing_status('marriage_penalty');" >
-      <option value="single">single filer</option>
-      <option value="hoh">head of household</option>
-    </select>.
+      <!--Person 1 filing status-->
+      <label for="marriage_penalty_person1_filing_status">I am a </label>
+      <select id="marriage_penalty_person1_filing_status" oninput="tax_adjust_person1_filing_status('marriage_penalty');" >
+        <option value="single">single filer</option>
+        <option value="hoh" selected>head of household</option>
+      </select>
 
-    <!--Person 1 income slider-->
-    <div class="slidecontainer"> 
-      <label for="marriage_penalty_person1_income" class="slider-text" id="income_slider_text">I have an income of $<output id="marriage_penalty_person1_income_output">80,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('marriage_penalty')">
+      <!--Person 2 filing status-->
+      <label for="marriage_penalty_person2_filing_status">and my partner is a </label>
+      <select id="marriage_penalty_person2_filing_status" oninput="tax_adjust_person2_filing_status('marriage_penalty');" >
+        <option value="single">single filer</option>
+        <option value="hoh">head of household</option>
+      </select>.
+
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <label for="marriage_penalty_person1_income" class="slider-text" id="income_slider_text">I have an income of $<output id="marriage_penalty_person1_income_output">80,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('marriage_penalty')">
+        </div>
       </div>
-    </div>
 
-    <!--Person 2 income slider-->
-    <div class="slidecontainer"> 
-      <label for="marriage_penalty_person2_income" class="slider-text">My partner has an income of $<output id="marriage_penalty_person2_income_output">40,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('marriage_penalty');">
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <label for="marriage_penalty_person2_income" class="slider-text">My partner has an income of $<output id="marriage_penalty_person2_income_output">40,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('marriage_penalty');">
+        </div>
       </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box" id="marriage_penalties_center_explanation_box">
+    <div class="center_explanation_box" id="marriage_penalty_outputs">
       <p class="explanation_text inline-block" id="marriage_penalty_penalty"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="marriage_penalty_breakdown" style="display:none">
@@ -793,7 +832,33 @@
       </ul>
     </div>
 
-    <div id="marriage_penalty_chart"></div> <!--Div for single/married tax chart-->
+    <!-- Chart -->
+    <div id="marriage_penalty_chart"></div>
+
+    <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Options -->
+      <div class="chart_options_container" id="marriage_penalty_options_container">
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="marriage_penalty_screenshot_mode_switch" oninput="screenshot_mode('marriage_penalty', 'marriage_penalty', ['values_point'], 'marriage_penalty_person1_income', false);">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
 
   </div> <!-- chart container-->
 
@@ -915,7 +980,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- MathJax -->
@@ -926,6 +991,9 @@
 <!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
+
+<!-- Chart Reference Files-->
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 
@@ -939,16 +1007,16 @@
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
 <!-- Top Chart Javascript files -->
-<script type="text/javascript" src="./javascript/topchart/chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/calculate-2022.js"></script>
-<script type="text/javascript" src="./javascript/topchart/calculate-2023.js"></script>
-<script type="text/javascript" src="./javascript/topchart/adjust_chart.js"></script>
-<script type="text/javascript" src="./javascript/topchart/outputs.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/calculate-2022.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/calculate-2023.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust_chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
 
 <!-- Top Chart Animation files -->
-<script type="text/javascript" src="./javascript/topchart/animations/universal.js"></script>
-<script type="text/javascript" src="./javascript/topchart/animations/marriage_penalty_animation.js"></script>
-<script type="text/javascript" src="./javascript/topchart/animations/poor_people_animation.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/marriage_penalty_animation.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/animations/poor_people_animation.js"></script>
 
 <!-- Regressive Chart Javascript Files -->
 <script type="text/javascript" src="./javascript/regressive_chart/chart.js"></script>

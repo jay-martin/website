@@ -76,5 +76,29 @@ function zoom_top_chart(){
     }
 }
 
+function top_chart_description_generator(){
+    let filing_status = capitalize_filing_status(top_chart_filing_status.value);
+    let num_children  = capitalize_num_children(top_chart_num_children.value);
+
+    document.getElementById('top_chart_title_description').innerHTML = filing_status + ', ' + num_children;
+}
+
+var top_chart_previous_income = 20000;
+function top_chart_hide_outputs(){
+    top_chart_previous_income = top_chart_income.value;
+    if(top_chart_hide_outputs_switch.checked){
+        $('#top_chart_outputs').css('display', 'none');
+        $('#top_chart_income_container').css('display', 'none');
+        top_chart_chart.xgrids([]);
+        top_chart_chart.hide(['point']);
+    }
+    else{
+        $('#top_chart_outputs').css('display', 'block');
+        $('#top_chart_income_container').css('display', 'block');
+        top_chart_chart.xgrids([{value: top_chart_previous_income, text: 'Your income'}]);
+        top_chart_chart.show(['point']);
+    }
+}
+
 
 

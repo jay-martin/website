@@ -1,16 +1,16 @@
 /* Moves income xgrids */
 function modifyIncome(){
-    let income = myRange.value;
+    let income = eitc_income.value;
     setTimeout(function () {
-        chart.xgrids([{value: income, text:'Your income'}]);
+        eitc_chart.xgrids([{value: income, text:'Your income'}]);
     }, );
 
     numChildren = num_children_eitc(numchildren_eitc.value);
-    fsa = fsa_eitc_calculate(myRange.value, filingstatus_eitc.value, numChildren);
-    current = existingEITC(myRange.value, filingstatus_eitc.value, numChildren);
+    fsa = fsa_eitc_calculate(eitc_income.value, filingstatus_eitc.value, numChildren);
+    current = existingEITC(eitc_income.value, filingstatus_eitc.value, numChildren);
     difference = fsa-current;
 
-    chart.load({ 
+    eitc_chart.load({ 
         columns: [
             ['x_point',       income],
             ['fsa_point',     fsa],
@@ -24,7 +24,7 @@ function modifyIncome(){
 function modify_eitc_chart(filingStatus, numChildren){
     if (filingStatus==="married"){
         if(numChildren ==="three") {
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 15410, 18000, 26262, 33000, 54000, 59187, 60000],
                 ['FSA_EITC', 0, 2569,  3000,  3000,  3000,  0,     0,     0],
@@ -34,7 +34,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren ==="two") {
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 15290, 18000, 26262, 33000, 54000, 55529, 60000],
                 ['FSA_EITC', 0, 2549,  3000,  3000,  3000,  0,     0,     0],
@@ -44,7 +44,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren === "one"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 10979, 18000, 26262, 33000, 49622, 54000, 60000],
                 ['FSA_EITC', 0, 1830,  3000,  3000,  3000,  625,   0,     0],
@@ -54,7 +54,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren === "none") {
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 7320, 15290, 16000, 20000, 22610, 34000, 60000],
                 ['FSA_EITC', 0, 915,  1911,  2000,  2000,  1627,  0,     0],
@@ -66,7 +66,7 @@ function modify_eitc_chart(filingStatus, numChildren){
     } 
     else if(filingStatus==="hoh"){
         if(numChildren==="three"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 12000, 15410, 20131, 23000, 37000, 53057, 60000],
                 ['FSA_EITC', 0, 2000,  2000,  2000,  2000,  0,     0,     0],
@@ -76,7 +76,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren ==="two"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 12000, 15290, 20131, 23000, 37000, 49399, 60000],
                 ['FSA_EITC', 0, 2000,  2000,  2000,  2000,  0,     0,     0],
@@ -86,7 +86,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren==="one"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 10979, 12000, 20131, 23000, 37000, 43492, 60000],
                 ['FSA_EITC', 0, 1830,  2000,  2000,  2000,  0,     0,     0],
@@ -96,7 +96,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren ==="none"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 7320, 8000, 9160, 10000, 16480, 17000, 60000],
                 ['FSA_EITC', 0, 915,  1000, 1000, 1000,  74,    0,     0],
@@ -108,7 +108,7 @@ function modify_eitc_chart(filingStatus, numChildren){
     }
     else if (filingStatus==="single"){
         if(numChildren==="three"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 12000, 15410, 20131, 23000, 37000, 53057, 60000],
                 ['FSA_EITC', 0, 2000,  2000,  2000,  2000,  0,     0,     0],
@@ -118,7 +118,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren==="two"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 12000, 15290, 20131, 23000, 37000, 49399, 60000],
                 ['FSA_EITC', 0, 2000,  2000,  2000,  2000,  0,     0,     0],
@@ -128,7 +128,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren==="one"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 10979, 12000, 20131, 23000, 37000, 43492, 60000],
                 ['FSA_EITC', 0, 1830,  2000,  2000,  2000,  0,     0,     0],
@@ -138,7 +138,7 @@ function modify_eitc_chart(filingStatus, numChildren){
             });
         }
         if(numChildren==="none"){
-            chart.load({
+            eitc_chart.load({
             columns: [
                 ['x',        0, 7320, 8000, 9160, 10000, 16480, 17000, 60000],
                 ['FSA_EITC', 0, 915,  1000, 1000, 1000,  74,    0,     0],

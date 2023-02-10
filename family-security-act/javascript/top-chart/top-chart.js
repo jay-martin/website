@@ -1,5 +1,5 @@
 /*DEFAULT GRAPH: Married with one child */
-var top_chart = c3.generate({
+var top_chart_chart = c3.generate({
     bindto: '#top_chart',
     data: {
         xs: {
@@ -113,4 +113,38 @@ var top_chart = c3.generate({
         }
     }
 });
+
+function top_chart_hide_inputs_outputs(){
+    if(top_chart_hide_outputs_switch.checked){
+        document.getElementById('top_chart_outputs').style.display = 'none';
+        document.getElementById('top_chart_income_container').style.display = 'none';
+        top_chart_chart.hide(['current_point', 'fsa_point', 'difference_point']);
+        top_chart_chart.xgrids([]);
+    }
+    else {
+        document.getElementById('top_chart_outputs').style.display = 'block';
+        document.getElementById('top_chart_income_container').style.display = 'block';
+        top_chart_chart.show(['current_point', 'fsa_point', 'difference_point']);
+        top_chart_chart.xgrids([{value: eitc_previous_income, text: 'Your income'}]);
+    }
+}
+
+function top_chart_description_generator(){
+    let filing_status  = capitalize_filing_status(top_chart_filing_status.value);
+    let old_children   = capitalize_num_children(top_chart_num_old_children.value);
+    let young_children = capitalize_num_children(top_chart_num_young_children.value);
+
+    // Generate description based on current user inputs
+    document.getElementById('top_chart_title_description').innerHTML = filing_status + ", " + old_children + " Age 6–17 and " + young_children + " Age 0–5";
+
+    // Generate title based on whether FSA 1.0 or 2.0
+    if(top_chart_fsa1_or_2.value == 'one'){
+        document.getElementById('top_chart_title').innerHTML = 'Family Security Act 1.0: Comparison with 2022 Policy';
+    }
+    else {
+        document.getElementById('top_chart_title').innerHTML = 'Family Security Act 2.0: Comparison with 2022 Policy';
+    }
+}
+
+
 

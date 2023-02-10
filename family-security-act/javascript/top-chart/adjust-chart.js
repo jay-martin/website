@@ -12,14 +12,14 @@ function top_chart_adjust_all(filing_status, num_young, num_old, fsa1_or_2){
     difference_x_vals = chart_values['difference_x_vals'];
     difference        = chart_values['difference'];
 
-    top_chart.load({ columns: [current_x_vals, ctc, eitc, hoh, fsa_x_vals, fsa_ca, fsa_eitc, difference_x_vals, difference] });
+    top_chart_chart.load({ columns: [current_x_vals, ctc, eitc, hoh, fsa_x_vals, fsa_ca, fsa_eitc, difference_x_vals, difference] });
     if(top_chart_is_active['hoh']){
-        top_chart.show(['hoh']);
-        top_chart.legend.show(['hoh']);
+        top_chart_chart.show(['hoh']);
+        top_chart_chart.legend.show(['hoh']);
     }
     else{
-        top_chart.hide(['hoh']);
-        top_chart.legend.hide(['hoh']);
+        top_chart_chart.hide(['hoh']);
+        top_chart_chart.legend.hide(['hoh']);
     }
 }
 

@@ -20,8 +20,6 @@ function current_total_benefit(income, filingStatus, numYoung, numOld, itemDeduc
 
 	eitc = existingEITC(income, filingStatus, numChildren);
 	ctc = ctc_value(income, filingStatus, numYoung, numOld);
-	console.log("EITC: " + eitc);
-	console.log("CTC: " + ctc);
 
 	/*
 	if(filingStatus === "hoh"){

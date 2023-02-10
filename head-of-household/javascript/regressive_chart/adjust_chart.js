@@ -25,15 +25,3 @@ function modify_income_regressive(){
         ]
     });
 }
-
-// hides the difference line
-function regressive_hide_line(){
-    let is_checked = regressive_hide_income_switch.checked;
-
-    if(is_checked){
-        regressive_chart.hide(['difference_line', 'point']);
-    }
-    else {
-        regressive_chart.show(['difference_line', 'point']);
-    }
-}

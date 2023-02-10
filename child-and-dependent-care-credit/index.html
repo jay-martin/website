@@ -445,10 +445,12 @@
   <!--Center------------------------------------------------------>
   <div class="center">
 
-    <div class="chart">
+    <div class="chart" id="top_container">
+      <h3 class='chart_title' id="top_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Child and Dependent Care Credit</h3>
+      <h4 class='chart_description' id="top_title_description" style="display:none;"></h4>
 
       <!--User inputs------------------------------>
-      <div class="user_inputs" id="user_inputs">
+      <div class="user_inputs" id="top_inputs">
 
         <!--Filing Status-->
         <label>I am a
@@ -468,7 +470,7 @@
         </label>
         
         <!--Income slider-->
-        <div class="slidecontainer"> 
+        <div class="slidecontainer" id="top_income_container"> 
           <label for="top_income" class="slider-text"> I have an income of $<output id="top_income_output">20,000</output>:</label>
           <div class="slider-actual">
             <input type="range" min="0" max="60000" value="20000" step="500" class="slider" id="top_income" oninput="top_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_outputs();top_modify_income()">
@@ -478,7 +480,7 @@
       </div> <!--user_inputs container-->
 
       <!-- Outputs -->
-      <div class="center_explanation_box">
+      <div class="center_explanation_box" id="top_outputs">
         <p class="explanation_text" id="top_credit_rate">The credit rate at your income is <b>32%</b>, meaning you are eligible to subtract up to <b>$960</b> from your taxes.</p>
         <p class="explanation_text" id="top_credit_amount">With your tax liability of $615, you are only able to subtract up to <b>$615</b> from your taxes.</p>
       </div>
@@ -486,10 +488,42 @@
       <!-- Chart -->
       <div id="top_chart"></div>
 
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Options -->
+      <div class="chart_options_container" id="top_options_container">
+
+        <!--Hide outputs switch-->
+        <label class="switch">
+          Hide outputs:
+          <input type="checkbox" id="top_hide_outputs_switch" oninput="top_hide_outputs()">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="top_screenshot_mode_switch" oninput="screenshot_mode('top', 'basic', ['point_credit_rate', 'point_credit_amount'], 'top_income', true);top_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
+
     </div> <!--chart end-->
 
     <!-- Mobile Highlights -->
-    <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+    <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
       <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
       <div class="loader_container" id="mobile_loader_container">
@@ -652,11 +686,11 @@
 
   </div> <!--chart end-->
 
-  <div class="chart">
+  <div class="chart" id="complexity_container">
     <h3 class='chart_title'>The CDCC Is Needlessly Complicated</h3>
 
       <!--User inputs------------------------------>
-      <div class="user_inputs" id="complexity_inputs_container">
+      <div class="user_inputs" id="complexity_inputs">
         
         <!--Income slider-->
         <div class="slidecontainer"> 
@@ -669,7 +703,7 @@
       </div> <!--user_inputs container-->
 
       <!-- Outputs -->
-      <div class="center_explanation_box" id='complexity_outputs_container'>
+      <div class="center_explanation_box" id='complexity_outputs'>
         <table class="output_table" id="complexity_output_table">
         <tr>
           <th></th>
@@ -695,11 +729,24 @@
       <!-- Complexity Chart -->
       <div id="complexity_chart"></div>
 
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="complexity_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
       <!-- Chart Options -->
       <div class="chart_options_container">
 
-        <label>Hide Inputs & Outputs:
-        <input type="checkbox" id="complexity_hide_income_switch" oninput="hide_income_and_outputs('complexity', false, []);complexity_hide_points_and_x_grid();">
+        <label>Screenshot Mode:
+        <input type="checkbox" id="complexity_screenshot_mode_switch" oninput="complexity_screenshot_mode();">
         </label>
       </div>
 
@@ -1103,7 +1150,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- MathJax -->
@@ -1114,6 +1161,9 @@
 <!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
+
+<!-- Chart reference files-->
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 

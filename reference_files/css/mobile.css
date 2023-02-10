@@ -417,6 +417,17 @@ svg.mobile_page_color_icon {
   margin-left: 0px;
   margin-right: 0px;
 }
+.mobile_highlights {
+  font-family: 'Computer Modern Serif';
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  border-width : 1.5px !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
 /* Hide during page initialization */
 #mobile_highlights_content {
   visibility: hidden;

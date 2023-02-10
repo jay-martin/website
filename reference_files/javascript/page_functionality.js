@@ -10,7 +10,7 @@
  * (8) Opens and closes appendix sections
  * (9) Opens and closes chart notes
  * (10) Opens and closed center explanation box breakdowns
- * (11) Hides the inputs and outputs of charts
+ * (11) Screenshot mode, hide inputs/outputs on chart
  * (12) Tooltip functionality
  * ****************************************************************************************/
 var is_open = new Object(); //dictionary to keep track of states of elements that open and close
@@ -439,7 +439,7 @@ function open_and_close_breakdown(listID, buttonID){
   }
 }
 
-/******************************** 11. Hide chart Inputs/Outpus ******************************/
+/******************************** 11. Screenshot Mode ******************************/
 function hide_income_and_outputs(chart_name, remove_points, points){
   let is_checked        = eval(chart_name + '_hide_income_switch').checked;
   let chart             = eval(chart_name + '_chart');

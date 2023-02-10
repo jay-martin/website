@@ -433,10 +433,12 @@
 <div class="center">
   
   <!--Top Chart---------------------------------------------------->
-  <div class = "chart">
+  <div class = "chart" id="top_chart_container">
+    <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Family Security Act: Comparison with 2022 Policy</h3>
+    <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
 
     <!--User inputs-->
-    <div class="user_inputs">
+    <div class="user_inputs" id="top_chart_inputs">
 
       <!--FSA 1.0 or 2.0-->
       <label for="top_chart_fsa1_or_2">Show me the </label>
@@ -483,7 +485,7 @@
       between the ages of 0 and 5. </br>
       
       <!--Income slider-->
-      <div class="slidecontainer"> 
+      <div class="slidecontainer" id="top_chart_income_container"> 
         <label for="top_chart_income" class="slider-text"> I have an income of $<output id="top_chart_income_output">20,000</output>.</label>
         <div class="slider-actual">
           <input type="range" min="0" max="600000" value="20000" step="1000" class="slider" id="top_chart_income" oninput="top_chart_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); top_chart_modify_income();top_chart_outputs();">
@@ -493,7 +495,7 @@
     </div> <!--user_inputs container-->
 
     <!--Center Explanation Box-->
-    <div class="center_explanation_box" id="center_explanations_container">
+    <div class="center_explanation_box" id="top_chart_outputs">
       <p id="top_chart_fsa_output"></p>
       <p id="top_chart_current_output"></p>
       <p id="top_chart_difference_output"></p>
@@ -502,13 +504,40 @@
     <!--chart-->
     <div id="top_chart"></div>
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="top_chart_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="top_chart_options_container">
 
       <!--Zoom switch: Phase-In-->
       <label class="switch">
         Zoom on lower incomes:
         <input type="checkbox" name="zoom_phasein_all" id="zoom_switch_all_phasein" oninput='top_chart_zoom()'>
+        <span class="slider round"></span>
+      </label>
+
+      <!--Hide outputs switch-->
+      <label class="switch">
+        Hide outputs:
+        <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_inputs_outputs()">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'top_chart_income', true);top_chart_description_generator();">
         <span class="slider round"></span>
       </label>
       </br>
@@ -532,7 +561,7 @@
   </div><!-----Top chart------->
 
   <!-- Mobile Highlights -->
-  <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+  <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
     <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
     <div class="loader_container" id="mobile_loader_container">
@@ -713,65 +742,84 @@
 <div class = 'center_no_side_elements' id='child_benefit'>
   <h2 id="child_allowance">Child Benefit</h2>
 
-  <div class="chart">
-    <h3 class='chart_title'>FSA Child Benefit</h3>
+  <div class="chart" id="child_benefit_container">
+    <h3 class='chart_title' id='child_benefit_title'>The Family Security Act: Child Benefit</h3>
+    <h4 class='chart_description' id="child_benefit_title_description" style="display:none;"></h4>
+
+    <!--User inputs-->
+    <div class="user_inputs" id="child_benefit_inputs">
     
-    <!--FSA 1.0 or 2.0-->
-    <label for="fsa1_or_2_CA">Show me the: </label>
-    <select name="fsa1or2" id="fsa1_or_2_CA" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
-      <option value="one">FSA 1.0</option>
-      <option value="two" selected>FSA 2.0</option>
-    </select>
-    </br>
+      <!--FSA 1.0 or 2.0-->
+      <label for="fsa1_or_2_CA">Show me the: </label>
+      <select name="fsa1or2" id="fsa1_or_2_CA" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+        <option value="one">FSA 1.0</option>
+        <option value="two" selected>FSA 2.0</option>
+      </select>
+      </br>
 
-    <!--Filing status-->
-    <label for="filingstatus_ca">I am a</label>
-    <select name="filingstatus_ca" id="filingstatus_ca" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
-      <option value="married">married joint filer</option>
-      <option value="hoh">head of household</option>
-      <option value="single">single filer</option>
-    </select>
-    .
-    </br>
+      <!--Filing status-->
+      <label for="child_benefit_filing_status">I am a</label>
+      <select id="child_benefit_filing_status" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+        <option value="married">married joint filer</option>
+        <option value="hoh">head of household</option>
+        <option value="single">single filer</option>
+      </select>
+      .
+      </br>
 
-    <!--Number of old children-->
-    <label for="numOldChildren">I have</label>
-    <select name="OldChildren" id="numOldChildren" oninput="modifyCAGraph();new_benefits_CA()">
-      <option value="none">no children</option>
-      <option value="one" selected>1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 6 and 17 and 
+      <!--Number of old children-->
+      <label for="child_benefit_old_children">I have</label>
+      <select id="child_benefit_old_children" oninput="modifyCAGraph();new_benefits_CA()">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 6 and 17 and 
 
-    <!--Number of young children-->
-    <label for="numYoungChildren"></label>
-    <select name="YoungChildren" id="numYoungChildren" oninput="modifyCAGraph();new_benefits_CA()">
-      <option value="none">no children</option>
-      <option value="one">1 child</option>
-      <option value="two">2 children</option>
-    </select>
-    between the ages of 0 and 5. </br>
+      <!--Number of young children-->
+      <label for="child_benefit_young_children"></label>
+      <select id="child_benefit_young_children" oninput="modifyCAGraph();new_benefits_CA()">
+        <option value="none">no children</option>
+        <option value="one">1 child</option>
+        <option value="two">2 children</option>
+      </select>
+      between the ages of 0 and 5. </br>
 
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <label for="myRange_CA" class="slider-text"> I have an income of $<output id="rangeValue_CA">60,000</output>.</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="myRange_CA" oninput="rangeValue_CA.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
+      <!--Income slider-->
+      <div class="slidecontainer" id="child_benefit_income_container"> 
+        <label for="child_benefit_income" class="slider-text"> I have an income of $<output id="child_benefit_income_output">60,000</output>.</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="child_benefit_income" oninput="child_benefit_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
+        </div>
       </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box" id="center_explanations_container">
+    <div class="center_explanation_box" id="child_benefit_outputs">
       <p id="fsa_CA_benefit"></p>
       <p id="CTC_benefit"></p>
       <p id="CA_benefit_difference"></p>
     </div>
 
     <!--Child Benefit Chart-->
-    <div id="CAchart"></div>
+    <div id="child_benefit_chart"></div>
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="child_benefit_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="child_benefit_options_container">
 
       <!--Zoom switch: Phase-In-->
       <label class="switch">
@@ -786,12 +834,34 @@
         <input type="checkbox" name="zoom_phaseout" id="zoom_switch_CA_phaseout" oninput="zoom_CA_graph_phaseout();">
         <span class="slider round"></span>
       </label>
+
+      <!--Hide outputs switch-->
+      <label class="switch">
+        Hide outputs:
+        <input type="checkbox" id="child_benefit_hide_outputs_switch" oninput="child_benefit_hide_outputs()">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="child_benefit_screenshot_mode_switch" oninput="screenshot_mode('child_benefit', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'child_benefit_income', false);child_benefit_description_generator();">
+        <span class="slider round"></span>
+      </label>
+
       </br>
 
       <!--Only change in benefit switch-->
       <label class="switch">
         Display only the difference in benefits:
-        <input type="checkbox" name="diffInBen_CA" id="diffInBen_CA_switch" oninput="diffInBen_CA_function();">
+        <input type="checkbox" id="child_benefit_only_difference_switch" oninput="child_benefit_only_difference_curve();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Hide benefit curve switch-->
+      <label class="switch">
+        Hide difference in benefits:
+        <input type="checkbox" id="child_benefit_hide_difference_switch" oninput="child_benefit_hide_difference_curve()">
         <span class="slider round"></span>
       </label>
 
@@ -811,27 +881,32 @@
 <section class = 'center_no_side_elements' id='hoh'>
   <h2 id="hoh_title">Head of household filing status</h2>
   
-  <div class="chart">
-    <h3 class='chart_title'>The Head of Household Filing Status</h3>
+  <div class="chart" id='hoh_container'>
+    <h3 class='chart_title'>The Head of Household Filing Status (2022)</h3>
 
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <label for="myRange_HOH" class="slider-text"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
-      </div>
-    </div>
+    <!--User inputs-->
+    <div class="user_inputs" id="hoh_inputs">
 
-    <!--Itemized deductions slider-->
-    <div class="slidecontainer"> 
-      <label for="myRange_ID" class="slider-text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
+      <!--Income slider-->
+      <div class="slidecontainer"> 
+        <label for="myRange_HOH" class="slider-text"> I have an income of $<output id="rangeValue_HOH">50,000</output>.</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="600000" value="50000" step="1000" class="slider" id="myRange_HOH" oninput="rangeValue_HOH.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
+        </div>
       </div>
+
+      <!--Itemized deductions slider-->
+      <div class="slidecontainer"> 
+        <label for="myRange_ID" class="slider-text"> I have $<output id="rangeValue_ID">4,000</output> in itemized deductions.</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="25000" value="4000" step="100" class="slider" id="myRange_ID" oninput="rangeValue_ID.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_HOH();difference_hoh();modifyGraph_HOH()">
+        </div>
+      </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box" id="center_explanations_container">
+    <div class="center_explanation_box" id="hoh_outputs">
       <p id="item_or_stand"></p>
       <p id="HOH_savings"></p>
     </div>
@@ -839,12 +914,32 @@
     <!--HOH Chart-->
     <div id="HOHchart"></div>
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="hoh_chart_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="hoh_options_container">
       <!--Zoom switch-->
       <label class="switch">
         Zoom on lower incomes:
         <input type="checkbox" name="zoom" id="zoom_switch_HOH" oninput="zoomHOHGraph();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="hoh_screenshot_mode_switch" oninput="hoh_screenshot_mode()">
         <span class="slider round"></span>
       </label>
     </div>
@@ -858,56 +953,98 @@
 <!------------------EITC ----------------------------------------------------------------------------------------------------------------->
 <section class = 'center_no_side_elements' id='eitc'>
 
-  <h2 id="eitc_title">Earned Income Tax Credit</h2>
+  <h2>Earned Income Tax Credit</h2>
   
   <!--Chart-->
-  <div class="chart">
-    <h3 class='chart_title'>FSA Earned Income Tax Credit</h3>
+  <div class="chart" id="eitc_container">
+    <h3 class='chart_title' id="eitc_title">Family Security Act: Earned Income Tax Credit</h3>
+    <h4 class='chart_description' id="eitc_title_description" style="display:none;"></h4>
 
-    <!--Filing status-->
-    <label for="filingstatus_eitc">I am a</label>
-    <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="eitc_adjust_chart();output_eitc()">
-      <option value="married">married joint filer</option>
-      <option value="hoh">head of household</option>
-      <option value="single">single filer</option>
-    </select>
+    <!--User inputs-->
+    <div class="user_inputs" id="eitc_inputs">
 
-    <!--Number of children-->
-    <label for="numchildren_eitc">who has</label>
-    <select name="children_eitc" id="numchildren_eitc" oninput="eitc_adjust_chart();output_eitc()">
-      <option value="three">3 or more children</option>
-      <option value="two">2 children</option>
-      <option value="one" selected>1 child</option>
-      <option value="none">no children</option>
-    </select>
-    .
-    </br>
+      <!--Filing status-->
+      <label for="filingstatus_eitc">I am a</label>
+      <select name="filingstatus_eitc" id="filingstatus_eitc" oninput="eitc_adjust_chart();output_eitc()">
+        <option value="married">married joint filer</option>
+        <option value="hoh">head of household</option>
+        <option value="single">single filer</option>
+      </select>
 
-    <!--Income slider-->
-    <div class="slidecontainer"> 
-      <label for="myRange" class="slider-text"> I have an income of $<output id="rangeValue">20,000</output>.</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="myRange" oninput="rangeValue.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output_eitc()">
+      <!--Number of children-->
+      <label for="numchildren_eitc">who has</label>
+      <select  id="numchildren_eitc" oninput="eitc_adjust_chart();output_eitc()">
+        <option value="three">3 or more children</option>
+        <option value="two">2 children</option>
+        <option value="one" selected>1 child</option>
+        <option value="none">no children</option>
+      </select>
+      .
+      </br>
+
+      <!--Income slider-->
+      <div class="slidecontainer" id="eitc_income_container"> 
+        <label for="eitc_income" class="slider-text"> I have an income of $<output id="eitc_income_output">20,000</output>.</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="eitc_income" oninput="eitc_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();output_eitc()">
+        </div>
       </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="eitc_outputs">
       <p id="fsaEITC"></p>
       <p id="currEITC"></p>
       <p id="diffEITC"></p>
     </div>
 
     <!--EITC Chart-->
-    <div id="chart"></div>
+    <div id="eitc_chart"></div>
 
-    <!--User inputs------------------------------>
-    <div class="user_inputs">
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="eitc_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="eitc_options_container">
+
+      <!--Hide inputs/outputs switch-->
+      <label class="switch">
+        Hide outputs:
+        <input type="checkbox" id="eitc_hide_outputs_switch" oninput="eitc_hide_outputs()">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="eitc_screenshot_mode_switch" oninput="screenshot_mode('eitc', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'eitc_income', false);eitc_description_generator();">
+        <span class="slider round"></span>
+      </label>
+
+      <br>
 
       <!--Only change in benefit switch-->
       <label class="switch">
         Display only the difference in benefits:
-        <input type="checkbox" name="diffInBen_EITC" id="diffInBen_EITC_switch" oninput="diffInBen_EITC_function();">
+        <input type="checkbox" id="eitc_only_difference_switch" oninput="eitc_only_difference_curve();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Hide benefit curve switch-->
+      <label class="switch">
+        Hide difference in benefits:
+        <input type="checkbox" id="eitc_hide_difference_switch" oninput="eitc_hide_difference_curve()">
         <span class="slider round"></span>
       </label>
 
@@ -1029,7 +1166,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- MathJax -->
@@ -1040,6 +1177,9 @@
 <!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
+
+<!-- Chart reference-->
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->

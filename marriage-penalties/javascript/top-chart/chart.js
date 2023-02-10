@@ -115,7 +115,7 @@ var top_chart_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 65,
+        left: 75,
         right: 20,
     },
     legend: {
@@ -136,7 +136,7 @@ var top_chart_chart = c3.generate({
             max: 70000,
         },
         y: {
-            label: {text: 'EITC Value', position: 'outer-middle'},
+            label: {text: 'Marriage Penalty', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
                 // values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]

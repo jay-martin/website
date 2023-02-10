@@ -2,7 +2,7 @@
  * This file contains the function creating the c3.js chart
  * DEFAULT GRAPH: Standard deduction for both single filer & HOH
  * ****************************************************************************************/
-var HOHchart = c3.generate({
+var top_chart_chart = c3.generate({
     bindto: '#HOHchart',
     data: {
         xs: {

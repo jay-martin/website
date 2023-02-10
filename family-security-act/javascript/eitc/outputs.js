@@ -6,8 +6,8 @@ document.getElementById('diffEITC').innerHTML = "Under the Family Security Act, 
 /* Prints the benefit amounts and the difference between them */
 function output_eitc(){
     numChildren = num_children_eitc(numchildren_eitc.value);
-    fsa = fsa_eitc_calculate(myRange.value, filingstatus_eitc.value, numChildren);
-    current = existingEITC(myRange.value, filingstatus_eitc.value, numChildren);
+    fsa = fsa_eitc_calculate(eitc_income.value, filingstatus_eitc.value, numChildren);
+    current = existingEITC(eitc_income.value, filingstatus_eitc.value, numChildren);
     difference = fsa-current;
 
     document.getElementById('fsaEITC').innerHTML = 'Under the Family Security Act, your EITC is <b>$' + fsa.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',' + '</b>');

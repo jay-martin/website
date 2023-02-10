@@ -15,8 +15,8 @@ function adjust_top_chart(){
 
     if(chart_select === 'all'){
         top_chart_income.max = 600000;
-        top_chart.show(['eitc', 'ctc', 'hoh', 'fsa_eitc', 'fsa_ca']);
-        top_chart.legend.show(['eitc', 'ctc', 'hoh', 'fsa_eitc', 'fsa_ca']);
+        top_chart_chart.show(['eitc', 'ctc', 'hoh', 'fsa_eitc', 'fsa_ca']);
+        top_chart_chart.legend.show(['eitc', 'ctc', 'hoh', 'fsa_eitc', 'fsa_ca']);
         top_chart_is_active['ctc'] = true;
         top_chart_is_active['eitc'] = true;
         if(filing_status === 'hoh'){
@@ -28,29 +28,29 @@ function adjust_top_chart(){
     }
     else if(chart_select === 'eitc'){
         top_chart_income.max = 60000;
-        top_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
+        top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000];
         top_chart_is_active['ctc'] = false;
         top_chart_is_active['eitc'] = true;
         top_chart_is_active['hoh'] = false;
-        top_chart.show(['eitc', 'fsa_eitc']);
-        top_chart.legend.show(['eitc', 'fsa_eitc']);
-        top_chart.hide(['ctc', 'hoh', 'fsa_ca']);
-        top_chart.legend.hide(['ctc', 'hoh', 'fsa_ca']);
+        top_chart_chart.show(['eitc', 'fsa_eitc']);
+        top_chart_chart.legend.show(['eitc', 'fsa_eitc']);
+        top_chart_chart.hide(['ctc', 'hoh', 'fsa_ca']);
+        top_chart_chart.legend.hide(['ctc', 'hoh', 'fsa_ca']);
     }
     else if(chart_select === 'ca'){
-        top_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
+        top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
         top_chart_income.max = 600000;
         top_chart_is_active['ctc'] = true;
         top_chart_is_active['eitc'] = false;
         top_chart_is_active['hoh'] = false;
-        top_chart.show(['ctc', 'hoh', 'fsa_ca']);
-        top_chart.legend.show(['ctc', 'hoh', 'fsa_ca']);
-        top_chart.hide(['eitc', 'fsa_eitc']);
-        top_chart.legend.hide(['eitc', 'fsa_eitc']);
+        top_chart_chart.show(['ctc', 'hoh', 'fsa_ca']);
+        top_chart_chart.legend.show(['ctc', 'hoh', 'fsa_ca']);
+        top_chart_chart.hide(['eitc', 'fsa_eitc']);
+        top_chart_chart.legend.hide(['eitc', 'fsa_eitc']);
     }
     else if(chart_select === 'hoh'){
         top_chart_income.max = 600000;
-        top_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
+        top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
     }
 
     top_chart_adjust_all(filing_status, top_num_young, top_num_old, fsa1_or_2);
@@ -64,7 +64,7 @@ function top_chart_modify_income(){
 	let top_num_old   = num_old(top_chart_num_old_children.value);
 	let top_num_young = num_young(top_chart_num_young_children.value);
 
-    top_chart.xgrids([{value: income, text:'Your income'}]);
+    top_chart_chart.xgrids([{value: income, text:'Your income'}]);
 
     let current_benefit = 0;
     let fsa_benefit     = 0;
@@ -89,7 +89,7 @@ function top_chart_modify_income(){
 
     let difference = fsa_benefit - current_benefit;
 
-    top_chart.load({ columns: [
+    top_chart_chart.load({ columns: [
     		['x_point',          income],
     		['current_point',    current_benefit],
     		['fsa_point',        fsa_benefit],
@@ -103,13 +103,13 @@ function top_chart_modify_income(){
 function top_chart_zoom(){
     if(zoom_switch_all_phasein.checked){
         top_chart_income.max = "60000";
-        top_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
-        top_chart.axis.max({x: 60000});
+        top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+        top_chart_chart.axis.max({x: 60000});
     }
     else{
         top_chart_income.max = "600000";
-        top_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
-        top_chart.internal.config.axis_x_max = undefined;
+        top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+        top_chart_chart.internal.config.axis_x_max = undefined;
         adjust_top_chart(); // needed to kick in the above changes
     }
 }
@@ -117,14 +117,14 @@ function top_chart_zoom(){
 /* Hides or shows benefit curves based on user input*/
 function top_chart_only_show_difference_curve(){
     if(top_chart_only_difference_switch.checked === true){
-        top_chart.hide(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
+        top_chart_chart.hide(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
     }
     else{
         if(top_chart_filing_status.value === 'hoh'){
-            top_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
+            top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
         }
         else{
-            top_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'current_point',]);
+            top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'current_point',]);
         }
     }
 }
@@ -132,10 +132,10 @@ function top_chart_only_show_difference_curve(){
 /* Hides or shows difference curve based on user input*/
 function top_chart_hide_difference_curve(){
     if(top_chart_hide_difference_switch.checked === true){
-        top_chart.hide(['difference', 'difference_point']);
+        top_chart_chart.hide(['difference', 'difference_point']);
     }
     else{
-        top_chart.show(['difference', 'difference_point']);
+        top_chart_chart.show(['difference', 'difference_point']);
     }
 }
 

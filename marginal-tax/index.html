@@ -433,9 +433,12 @@
   <div class="center">
 
     <!--Chart--------------------------------------------->
-    <div class="chart">
+    <div class="chart" id="top_chart_container">
+      <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Effective Marginal Tax Rates (2023)</h3>
+      <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
+
       <!--User inputs--------------------------->
-      <div class="user_inputs" id="user_inputs">
+      <div class="user_inputs" id="top_chart_inputs">
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
@@ -459,7 +462,7 @@
         <!--Number of children-->
         <div class="dropdown" id="num_children_container">
           <label>who has
-          <select class="dropdown" name="num_children" id="num_children" oninput="load_data();top_chart_outputs();">
+          <select class="dropdown" id="num_children" oninput="load_data();top_chart_outputs();">
             <option value="none">no children</option>
             <option value="one" selected>1 child</option>
             <option value="two">2 children</option>
@@ -485,8 +488,9 @@
 
       </div> <!--user_inputs container-->
 
-      <!--Center block values-->
-      <div class="center_explanation_box" id="center_explanations_container"> <!--Center box-->
+      <!--Outputs-->
+      <div class="center_explanation_box" id="top_chart_outputs">
+
         <div class="center_explanation_box_text_container">
           <p class="explanation_text" id="marginal_tax_rate"></p>
           <ul class="center_box_breakdown">
@@ -526,10 +530,24 @@
     -->
 
       <!--c3.js chart-->
-      <div class="chart_actual" id="chart"></div>
+      <div class="chart_actual" id="top_chart"></div>
 
-      <!--Chart attributes-->
-      <div class="chart_attributes">
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Options -->
+      <div class="chart_options_container" id="top_chart_options_container">
+
         <!--Zoom selection-->
         <div class="dropdown" id="zoom_dropdown_container">
           <label>Show higher/lower income:
@@ -542,16 +560,16 @@
         </div>
 
         <!--Type of chart-->
-        <div class="dropdown" id="chart_type_dropdown_container">
+        <div class="dropdown" id="chart_type_dropdown_container" style="visibility:hidden;">
           <label>Show chart as:
-          <select class="dropdown" name="chart_type" id="chart_type" oninput="switch_chart()">
+          <select class="dropdown" id="top_chart_type" oninput="switch_chart()">
             <option value="EMTR" selected>effective marginal tax rates</option>
-            <!--<option value="EI">post-tax-and-transfer income</option>-->
+            <option value="EI">post-tax-and-transfer income</option>
           </select>
           </label>
         </div>
 
-        <br>
+       <br>
 
         <!--Arbitrary income switch-->
         <label class="switch_label" id="arbitrary_income_label">
@@ -565,6 +583,20 @@
           Adjust axes:
           <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
           <span class="checkmark"></span>
+        </label>
+
+        <!--Hide outputs switch-->
+        <label class="switch">
+          Hide outputs:
+          <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();">
+          <span class="slider round"></span>
         </label>
 
         <!--JQuery X-Axis Slider-->
@@ -621,7 +653,7 @@
     </div> <!--chart end-->
 
     <!-- Mobile Highlights -->
-    <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+    <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
       <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
       <div class="loader_container" id="mobile_loader_container">
@@ -2082,7 +2114,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- JQuery UI -->
@@ -2097,6 +2129,7 @@
 <!-- Initialize page -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
 
 <!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color-changes.js"></script>

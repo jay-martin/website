@@ -442,9 +442,12 @@
   <!--Center------------------------------------------------------>
   <div class="center">
 
-    <div class="chart">
+    <div class="chart" id='top_chart_container'>
+      <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Earned Income Tax Credit (2023)</h3>
+      <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
+
       <!--User inputs------------------------------>
-      <div class="user_inputs" id="user_inputs">
+      <div class="user_inputs" id="top_chart_inputs">
 
         <!--Number of children-->
         <label>I am a
@@ -475,7 +478,7 @@
       </div> <!--user_inputs container-->
 
       <!-- EITC Values -->
-      <div class="center_explanation_box">
+      <div class="center_explanation_box" id='top_chart_outputs'>
         <p class="explanation_text" id="eitc-value">Your EITC is worth <b>$3,995</b></p>
 
         <p class="explanation_text" id="explanation_line1"></p>
@@ -493,12 +496,37 @@
       <input type="submit" class="end_animation" name="submit" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
 
       <!-- Top Chart -->
-      <div id="topchart"></div>
+      <div id="top_chart"></div>
+
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Options -->
+      <div class="chart_options_container">
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
 
     </div> <!--chart end-->
 
     <!-- Mobile Highlights -->
-    <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+    <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
       <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
       <div class="loader_container" id="mobile_loader_container">
@@ -643,11 +671,12 @@
   <h2>The EITC Creates Marriage Penalties</h2>
   <div class="article_tag"><em>See also: <a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a> </em></div>
 
-  <div class = "chart">
-    <h3 class='chart_title'>The EITC Creates Marriage Penalties</h3>
+  <div class = "chart" id="marriage_penalty_container">
+    <h3 class='chart_title' id='marriage_penalty_title'>The EITC Creates Marriage Penalties</h3>
+    <h4 class='chart_description' id="marriage_penalty_title_description" style="display:none;"></h4>
     
     <!--User inputs-->
-    <div class="user_inputs">
+    <div class="user_inputs" id="marriage_penalty_inputs">
 
       <!--Chart type-->
       <label for="marriage_penalty_chart_type">Show chart as: </label>
@@ -696,7 +725,7 @@
     </div> <!--user_inputs container-->
 
     <!--Center Explanation Box-->
-    <div class="center_explanation_box" id="center_explanations_container">
+    <div class="center_explanation_box" id="marriage_penalty_outputs">
       <p class="explanation_text inline-block" id="marriage_penalty_penalty"><button class="show_all_button" id="marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('marriage_penalty_breakdown', 'marriage_penalty_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="marriage_penalty_breakdown" style="display:none">
@@ -712,6 +741,31 @@
     <!-- Marriage Penalties Chart -->
     <div id="marriage_penalties_chart"></div>
 
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="marriage_penalty_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="marriage_penalty_options_container">
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="marriage_penalty_screenshot_mode_switch" oninput="screenshot_mode('marriage_penalty', 'marriage_penalty', ['values_point'], 'marriage_penalty_person1_income', false);">
+        <span class="slider round"></span>
+      </label>
+        
+    </div>
+
   </div> <!--chart end-->
 
 </section>
@@ -720,11 +774,11 @@
   <h2>The EITC Is Needlessly Complicated</h2>
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
 
-  <div class="chart">
+  <div class="chart" id="complexity_container">
     <h3 class='chart_title'>The EITC Is Needlessly Complicated</h3>
 
     <!--User inputs------------------------------>
-    <div class="user_inputs" id="complexity_inputs_container">
+    <div class="user_inputs" id="complexity_inputs">
       
       <!--Income slider-->
       <div class="slidecontainer" id="income_slider_container"> 
@@ -737,7 +791,7 @@
     </div> <!--user_inputs container-->
 
     <!-- Outputs -->
-    <div class="center_explanation_box" id="complexity_outputs_container" >
+    <div class="center_explanation_box" id="complexity_outputs" >
 
       <table class="output_table" id="complexity_output_table">
         <tr>
@@ -774,13 +828,28 @@
     <!-- Chart -->
     <div id="complexity_chart"></div>
 
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="complexity_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
     <!-- Chart Options -->
     <div class="chart_options_container">
 
-      <label>Hide Inputs & Outputs:
-      <input type="checkbox" id="complexity_hide_income_switch" oninput="hide_income_and_outputs('complexity', false, []);complexity_hide_points_and_x_grid();">
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="complexity_screenshot_mode_switch" oninput="screenshot_mode('complexity', 'basic', ['point0', 'point0M', 'point1', 'point1M', 'point2', 'point2M', 'point3', 'point3M',], 'complexity_income', false);">
+        <span class="slider round"></span>
       </label>
-    </div>
 
   </div> <!--chart end-->
 
@@ -926,7 +995,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- MathJax -->
@@ -937,6 +1006,9 @@
 <!-- Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
+
+<!-- Chart Reference -->
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 

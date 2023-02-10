@@ -1,8 +1,8 @@
 /******************************************************************************************
- * This file contains the functions that add data to the chart
+ * This file contains the functions that add data to the top_chart_chart
  * ****************************************************************************************/
 
-// Loads EMTR data to the chart
+// Loads EMTR data to the top_chart_chart
 function load_emtr_data(){
 	let numChildren  = num_children.value;
 	let filingStatus = filingstatus.value;
@@ -24,8 +24,8 @@ function load_emtr_data(){
 	x_vals.unshift('x');
 	total.unshift('total');
 
-	// load to chart
-	chart.load({columns: [ x_vals, total ]});
+	// load to top_chart_chart
+	top_chart_chart.load({columns: [ x_vals, total ]});
 }
 
 // Adjusts the EMTR income slider
@@ -36,15 +36,15 @@ function emtr_modify_income(){
 		total = 120;
 	}
 	
-	chart.load({columns: [
+	top_chart_chart.load({columns: [
 			['x_point', income],
 			['point',   total],
 		],
 	});
 }
 
-/** Returns the x-values needed for c3.js to render the effective marginal tax rate chart
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+/** Returns the x-values needed for c3.js to render the effective marginal tax rate top_chart_chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function get_x_values_2023_marginal(filing_status, num_children){
 	let x_vals = [];
@@ -85,7 +85,7 @@ function get_x_values_2023_marginal(filing_status, num_children){
 
 /** Returns the x-values needed for c3.js to render the personal income tax marginal tax rates
  * @param {string} - filing status ('single', 'hoh', 'married')
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function personal_income_tax_x_vals_2023(filing_status){
 	const single_tax_brackets_2023  = [13849, 13859, 24849, 24850, 58574,  58575,  109224, 109225, 195949, 195950, 245099, 245100, 591974, 591975];
@@ -104,7 +104,7 @@ function personal_income_tax_x_vals_2023(filing_status){
 }
 
 /** Returns the x-values needed for c3.js to render the fica payrol taxx marginal tax rates
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function fica_x_vals_2023(){
 	return [160199, 160200, 199999, 200000];
@@ -113,7 +113,7 @@ function fica_x_vals_2023(){
 /** Returns the x-values needed for c3.js to render eitc marginal tax rates
  * @param {string} - filing status ('single', 'hoh', 'married')
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function eitc_x_vals_2023(filing_status, num_children){
 	if(filing_status === 'married'){
@@ -149,7 +149,7 @@ function eitc_x_vals_2023(filing_status, num_children){
 /** Returns the x-values needed for c3.js to render ctc marginal tax rates
  * @param {string} - filing status ('single', 'hoh', 'married')
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function ctc_x_vals_2023(filing_status, num_children){
 	if(filing_status === 'married'){
@@ -198,7 +198,7 @@ function ctc_x_vals_2023(filing_status, num_children){
 
 /** Returns the x-values needed for c3.js to render eitc marginal tax rates
  * @param {integer} - number of people in the household household
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function snap_x_vals_2023(household_size){
 	if(household_size == 1){
@@ -220,7 +220,7 @@ function snap_x_vals_2023(household_size){
 
 /** Returns the x-values needed for c3.js to render SSI marginal tax rates
  * @param {string} - filing status ('single', 'hoh', 'married')
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function ssi_x_vals_2023(filing_status){
 	const ssi_single_2023_x_vals  = [779, 780, 22714, 22716];
@@ -237,7 +237,7 @@ function ssi_x_vals_2023(filing_status){
 /** Returns the x-values needed for c3.js to render premium tax credit marginal tax rates
  * @param {string} - filing status ('single', 'hoh', 'married')
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
- * @return {sorted array of integers} - x-values that will be fed into the c3.js chart
+ * @return {sorted array of integers} - x-values that will be fed into the c3.js top_chart_chart
  * */
 function ptc_x_vals_2023(filing_status, num_children){
 	if(filing_status === 'married'){

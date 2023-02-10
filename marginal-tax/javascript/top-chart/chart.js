@@ -12,8 +12,8 @@ else{
     xTick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,];
 }
 
-var chart = c3.generate({
-    bindto: '#chart',
+var top_chart_chart = c3.generate({
+    bindto: '#top_chart',
     data: {
         xs: {
             total : 'x',
@@ -26,6 +26,7 @@ var chart = c3.generate({
             baseline_income : 'x',
             income_tax_and_transfer : 'x',
             tangent_line : 'x_tangent',
+            
             point: 'x_point',
         },
         columns: [

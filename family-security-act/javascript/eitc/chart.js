@@ -1,6 +1,6 @@
 /*DEFAULT GRAPH: Married with one child */
-var chart = c3.generate({
-    bindto: '#chart',
+var eitc_chart = c3.generate({
+    bindto: '#eitc_chart',
     data: {
         xs: {
             'FSA_EITC' : 'x',
@@ -86,18 +86,62 @@ function eitc_adjust_chart(){
     modify_eitc_chart(filingstatus_eitc.value, numchildren_eitc.value);
 }
 
-/* Displays only the difference in benefits curve */
-function diffInBen_EITC_function(){
-    if(diffInBen_EITC_switch.checked == true){
-        chart.axis.labels({
-            y: 'Difference in Benefit'
-        });
-        chart.hide(['FSA_EITC', 'EITC']);
+function eitc_only_difference_curve(){
+    if(eitc_only_difference_switch.checked == true){
+        eitc_chart.axis.labels({y: 'Difference in Benefit'});
+        eitc_chart.hide(['FSA_EITC', 'EITC', 'current_point', 'fsa_point']);
     }
     else{
-        chart.axis.labels({
-            y: 'Benefit/Benefit Difference'
-        });
-        chart.show();
+        eitc_chart.axis.labels({y: 'Benefit / Benefit Difference'});
+        if(eitc_hide_outputs_switch.checked){
+            eitc_chart.show(['FSA_EITC', 'EITC']);
+        }
+        else{
+            eitc_chart.show();
+        }
     }
 }
+
+function eitc_hide_difference_curve(){
+    if(eitc_hide_difference_switch.checked == true){
+        eitc_chart.axis.labels({y: 'Benefit'});
+        eitc_chart.hide(['dif', 'difference_point']);
+    }
+    else{
+        eitc_chart.axis.labels({ y: 'Benefit / Benefit Difference'});
+        if(eitc_hide_outputs_switch.checked){
+            eitc_chart.show(['dif']);
+        }
+        else{
+            eitc_chart.show();
+        }
+    }
+}
+
+var eitc_previous_income = 20000;
+function eitc_hide_outputs(){
+    eitc_previous_income = eitc_income.value;
+    if(eitc_hide_outputs_switch.checked){
+        document.getElementById('eitc_outputs').style.display = 'none';
+        document.getElementById('eitc_income_container').style.display = 'none';
+        eitc_chart.hide(['current_point', 'fsa_point', 'difference_point']);
+        eitc_chart.xgrids([]);
+    }
+    else {
+        document.getElementById('eitc_outputs').style.display = 'block';
+        document.getElementById('eitc_income_container').style.display = 'block';
+        eitc_chart.show(['current_point', 'fsa_point', 'difference_point']);
+        eitc_chart.xgrids([{value: eitc_previous_income, text: 'Your income'}]);
+    }
+}
+
+function eitc_description_generator(){
+    let filing_status  = capitalize_filing_status(filingstatus_eitc.value);
+    let num_children   = capitalize_num_children(numchildren_eitc.value);
+
+    // Generate description based on current user inputs
+    document.getElementById('eitc_title_description').innerHTML = filing_status + ", " + num_children;
+}
+
+
+

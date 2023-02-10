@@ -429,10 +429,12 @@
 <!--Center-------------------------------------------->
 <div class="center">
 
-  <div class = "chart">
+  <div class = "chart" id="top_chart_container">
+    <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Marriage Penalties (2023)</h3>
+    <h4 class='chart_description long_description' id="top_chart_title_description" style="display:none;"></h4>
     
     <!--User inputs-->
-    <div class="user_inputs" id="user_inputs">
+    <div class="user_inputs" id="top_chart_inputs">
 
       <!--Chart type-->
       <label for="top_chart_chart_type">Show chart as: </label>
@@ -490,7 +492,7 @@
       </div>
 
       <!--Person 1 income slider-->
-      <div class="slidecontainer"> 
+      <div class="slidecontainer" id='top_chart_person1_income_container'> 
         <label for="top_chart_person1_income" class="slider-text"> I have an income of $<output id="person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
           <input type="range" min="0" max="70000" value="30000" step="1000" class="slider" id="top_chart_person1_income" oninput="person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_adjust_person1_income();">
@@ -520,7 +522,7 @@
     </div> <!--user_inputs container-->
 
     <!--Center Explanation Box-->
-    <div class="center_explanation_box" id="center_explanations_container">
+    <div class="center_explanation_box" id="top_chart_outputs">
       <p class="explanation_text inline-block" id="top_chart_penalty"><button class="show_all_button" id="top_chart_breakdown_button" onclick="open_and_close_breakdown('top_chart_breakdown', 'top_chart_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="top_chart_breakdown" style="display:none">
@@ -551,34 +553,41 @@
     <div class='chart_actual' id="top_chart"></div>
 
     <!-- Chart Title & Logo -->
-  <!--
-    <div class='chart_title_logo_container'>
+    <div class='chart_title_logo_container' id="top_chart_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
       <div>
-        <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-          <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
-          <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
-        </svg>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
       </div>
-      <div class='chart_byline zen_font'><div class='float_right'>Chart by @jaydavidmartin1</div></div>
     </div>
-  -->
 
-    <!--Power users-->
-  <!--
-    <div class="power_users_container">
-      <h3>Power Users</h3>
-      <label class="switch_label" id="arbitrary_income_label">
-        Arbitrary income:
-        <input type="checkbox" id="arbitrary_income_switch" oninput="show_arbitrary_income();">
-        <span class="checkmark"></span>
-      </label>
-    </div>
-  -->
+  <!-- Chart Options -->
+  <div class="chart_options_container" id="top_chart_options_container">
+
+    <!--Hide outputs switch-->
+    <label class="switch">
+      Hide outputs:
+      <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
+      <span class="slider round"></span>
+    </label>
+
+    <!--Screenshot mode switch-->
+    <label class="switch">
+      Screenshot mode:
+      <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'marriage_penalty', ['values_point'], 'top_chart_person1_income', true);top_chart_description_generator();">
+      <span class="slider round"></span>
+    </label>
+      
+  </div>
 
   </div> <!--chart end-->
 
   <!-- Mobile Highlights -->
-  <div class = "highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+  <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
     <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
 
     <div class="loader_container" id="mobile_loader_container">
@@ -726,50 +735,56 @@
   </p>
 
   <!----------- HOH Tax Chart-------------->
-  <div class = "chart">
-    <h3 class='chart_title'>Head of Household Creates Marriage Penalties</h3>
+  <div class = "chart" id="hoh_tax_container">
+    <h3 class='chart_title' id='hoh_tax_title'>Head of Household Creates Marriage Penalties</h3>
+    <h4 class='chart_description long_description' id="hoh_tax_title_description" style="display:none;"></h4>
+    
+    <!--User inputs-->
+    <div class="user_inputs" id="hoh_tax_inputs">
 
-    <!--Chart type-->
-    <label for="hoh_tax_chart_type">Show chart as: </label>
-    <select id="hoh_tax_chart_type" oninput="switch_tax_chart_type('hoh_tax')" >
-      <option value="intuitive">Intuitive</option>
-      <option value="values">Values</option>
-    </select>
+      <!--Chart type-->
+      <label for="hoh_tax_chart_type">Show chart as: </label>
+      <select id="hoh_tax_chart_type" oninput="switch_tax_chart_type('hoh_tax')" >
+        <option value="intuitive">Intuitive</option>
+        <option value="values">Values</option>
+      </select>
 
-    <br>
+      <br>
 
-    <!--Person 1 filing status-->
-    <label for="hoh_tax_person1_filing_status">I am a </label>
-    <select id="hoh_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('hoh_tax');" >
-      <option value="single">single filer</option>
-      <option value="hoh" selected>head of household</option>
-    </select>
+      <!--Person 1 filing status-->
+      <label for="hoh_tax_person1_filing_status">I am a </label>
+      <select id="hoh_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('hoh_tax');" >
+        <option value="single">single filer</option>
+        <option value="hoh" selected>head of household</option>
+      </select>
 
-    <!--Person 2 filing status-->
-    <label for="hoh_tax_person2_filing_status">and my partner is a </label>
-    <select id="hoh_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('hoh_tax');" >
-      <option value="single">single filer</option>
-      <option value="hoh">head of household</option>
-    </select>.
+      <!--Person 2 filing status-->
+      <label for="hoh_tax_person2_filing_status">and my partner is a </label>
+      <select id="hoh_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('hoh_tax');" >
+        <option value="single">single filer</option>
+        <option value="hoh">head of household</option>
+      </select>.
 
-    <!--Person 1 income slider-->
-    <div class="slidecontainer"> 
-      <label for="hoh_tax_person1_income" class="slider-text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('hoh_tax');">
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <label for="hoh_tax_person1_income" class="slider-text">I have an income of $<output id="hoh_tax_person1_income_output">80,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="hoh_tax_person1_income" oninput="hoh_tax_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('hoh_tax');">
+        </div>
       </div>
-    </div>
 
-    <!--Person 2 income slider-->
-    <div class="slidecontainer"> 
-      <label for="hoh_tax_person2_income" class="slider-text">My partner has an income of $<output id="hoh_tax_person2_income_output">40,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('hoh_tax');">
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <label for="hoh_tax_person2_income" class="slider-text">My partner has an income of $<output id="hoh_tax_person2_income_output">40,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="hoh_tax_person2_income" oninput="hoh_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('hoh_tax');">
+        </div>
       </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="hoh_tax_outputs">
       <p class="explanation_text inline-block" id="hoh_tax_penalty"><button class="show_all_button" id="hoh_tax_breakdown_button" onclick="open_and_close_breakdown('hoh_tax_breakdown', 'hoh_tax_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="hoh_tax_breakdown" style="display:none">
@@ -779,7 +794,32 @@
       </ul>
     </div>
 
-    <div id="hoh_tax_chart"></div> <!--Div for single/married tax chart-->
+    <div id="hoh_tax_chart"></div>
+
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="hoh_tax_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="hoh_tax_options_container">
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="hoh_tax_screenshot_mode_switch" oninput="screenshot_mode('hoh_tax', 'marriage_penalty', ['values_point'], 'hoh_tax_person1_income', false);marriage_penalty_description_generator('hoh_tax', 'tax');">
+        <span class="slider round"></span>
+      </label>
+        
+    </div>
 
   </div> <!-- chart container-->
 
@@ -868,48 +908,54 @@
   </p>
 
   <!----------- Single Filer Tax Chart-------------->
-  <div class = "chart">
-    <h3 class='chart_title'>Single Filer Status Does Not Create Marriage Penalties</h3>
+  <div class = "chart" id="single_tax_container">
+    <h3 class='chart_title' id='single_tax_title'>Single Filer Status Does Not Create Marriage Penalties</h3>
+    <h4 class='chart_description long_description' id="single_tax_title_description" style="display:none;"></h4>
+    
+    <!--User inputs-->
+    <div class="user_inputs" id="single_tax_inputs">
 
-    <!--Chart type-->
-    <label for="single_tax_chart_type">Show chart as: </label>
-    <select id="single_tax_chart_type" oninput="switch_tax_chart_type('single_tax')" >
-      <option value="intuitive">Intuitive</option>
-      <option value="values">Values</option>
-    </select>
+      <!--Chart type-->
+      <label for="single_tax_chart_type">Show chart as: </label>
+      <select id="single_tax_chart_type" oninput="switch_tax_chart_type('single_tax')" >
+        <option value="intuitive">Intuitive</option>
+        <option value="values">Values</option>
+      </select>
 
-    <br>
+      <br>
 
-    <!--Person 1 filing status-->
-    <label for="single_tax_person1_filing_status">I am a </label>
-    <select id="single_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('single_tax');" >
-      <option value="single">single filer</option>
-    </select>
+      <!--Person 1 filing status-->
+      <label for="single_tax_person1_filing_status">I am a </label>
+      <select id="single_tax_person1_filing_status" oninput="tax_adjust_person1_filing_status('single_tax');" >
+        <option value="single">single filer</option>
+      </select>
 
-    <!--Person 2 filing status-->
-    <label for="single_tax_person2_filing_status">and my partner is a </label>
-    <select id="single_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('single_tax');" >
-      <option value="single">single filer</option>
-    </select>.
+      <!--Person 2 filing status-->
+      <label for="single_tax_person2_filing_status">and my partner is a </label>
+      <select id="single_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('single_tax');" >
+        <option value="single">single filer</option>
+      </select>.
 
-    <!--Person 1 income slider-->
-    <div class="slidecontainer"> 
-      <label for="single_tax_person1_income" class="slider-text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('single_tax');">
+      <!--Person 1 income slider-->
+      <div class="slidecontainer"> 
+        <label for="single_tax_person1_income" class="slider-text">I have an income of $<output id="single_tax_person1_income_output">80,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="80000" step="1000" class="slider" id="single_tax_person1_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person1_income('single_tax');">
+        </div>
       </div>
-    </div>
 
-    <!--Person 2 income slider-->
-    <div class="slidecontainer"> 
-      <label for="single_tax_person2_income" class="slider-text">My partner has an income of $<output id="single_tax_person2_income_output">40,000</output>:</label>
-      <div class="slider-actual">
-        <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('single_tax');">
+      <!--Person 2 income slider-->
+      <div class="slidecontainer"> 
+        <label for="single_tax_person2_income" class="slider-text">My partner has an income of $<output id="single_tax_person2_income_output">40,000</output>:</label>
+        <div class="slider-actual">
+          <input type="range" min="0" max="100000" value="40000" step="1000" class="slider" id="single_tax_person2_income" oninput="single_tax_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');tax_modify_person2_income('single_tax');">
+        </div>
       </div>
+
     </div>
 
     <!--Center box-->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="single_tax_outputs">
       <p class="explanation_text inline-block" id="single_tax_penalty"><button class="show_all_button" id="single_tax_breakdown_button" onclick="open_and_close_breakdown('single_tax_breakdown', 'single_tax_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="single_tax_breakdown" style="display:none">
@@ -919,7 +965,32 @@
       </ul>
     </div>
 
-    <div id="single_tax_chart"></div> <!--Div for single/married tax chart-->
+    <div id="single_tax_chart"></div>
+
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="single_tax_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="single_tax_options_container">
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="single_tax_screenshot_mode_switch" oninput="screenshot_mode('single_tax', 'marriage_penalty', ['values_point'], 'single_tax_person1_income', false);marriage_penalty_description_generator('single_tax', 'tax');">
+        <span class="slider round"></span>
+      </label>
+        
+    </div>
 
   </div> <!-- chart container-->
 
@@ -930,11 +1001,12 @@
   <h2>The Earned Income Tax Credit</h2>
   <div class="article_tag"><em>Program Page: <a href="../earned-income-tax-credit/index.html" target="_blank">Earned Income Tax Credit</a> </em></div>
 
-  <div class = "chart">
-    <h3 class='chart_title'>The EITC Creates Marriage Penalties</h3>
+  <div class = "chart" id="eitc_marriage_penalty_container">
+    <h3 class='chart_title' id='eitc_marriage_penalty_title'>The EITC Creates Marriage Penalties</h3>
+    <h4 class='chart_description long_description' id="eitc_marriage_penalty_title_description" style="display:none;"></h4>
     
     <!--User inputs-->
-    <div class="user_inputs">
+    <div class="user_inputs" id="eitc_marriage_penalty_inputs">
 
       <!--Chart type-->
       <label for="eitc_marriage_penalty_chart_type">Show chart as: </label>
@@ -983,7 +1055,7 @@
     </div> <!--user_inputs container-->
 
     <!--Center Explanation Box-->
-    <div class="center_explanation_box">
+    <div class="center_explanation_box" id="eitc_marriage_penalty_outputs">
       <p class="explanation_text inline-block" id="eitc_marriage_penalty_penalty"><button class="show_all_button" id="eitc_marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('eitc_marriage_penalty_breakdown', 'eitc_marriage_penalty_breakdown_button');">Show All</button>
       </p>
       <ul class="center_box_breakdown" id="eitc_marriage_penalty_breakdown" style="display:none">
@@ -995,6 +1067,31 @@
 
     <!-- Chart -->
     <div id="eitc_marriage_penalty_chart"></div>
+
+    <!-- Chart Title & Logo -->
+    <div class='chart_title_logo_container' id="eitc_marriage_penalty_logo">
+      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+      <div>
+        <div class='float_right'>
+          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="eitc_marriage_penalty_options_container">
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="eitc_marriage_penalty_screenshot_mode_switch" oninput="screenshot_mode('eitc_marriage_penalty', 'marriage_penalty', ['values_point'], 'eitc_marriage_penalty_person1_income', false);marriage_penalty_description_generator('eitc_marriage_penalty', 'eitc');">
+        <span class="slider round"></span>
+      </label>
+        
+    </div>
 
   </div> <!--chart end-->
 
@@ -1220,12 +1317,12 @@
   </p>
 
   <p>
-    This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we'll need to do a more substantial reform of the EITC.
+    This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we'll need a more substantial reform of the EITC.
   </p>
 
   <h3>There are more issues</h3>
   <p>
-    Even if you're on board with an EITC boost for married people (it's not a bad idea in itself!), a big problem remains. So far, we've only dealt with two curves: the 1-child single EITC and the 2-child married EITC that a couple would jump up to. This obscures the complexity of the reform, because the EITC doesn't consist of only two curves: it consists of <em>eight</em>. The structure of the EITC is frankly a bit absurd. Words you'd generally want to associate with a policy are things like "simple", "elegant", and "easy to understand". The EITC instead brings to mind words like "convoluted", "ugly", and "perplexing". Just look at it:
+    Even if you're on board with an EITC boost for married people (it's not a bad idea in itself!), a big problem remains. So far, we've only dealt with two curves: the one-child single EITC and the two-child married EITC that a couple in which each partner has one child would jump up to. This obscures the complexity of the reform, because the EITC doesn't consist of only two curves: it consists of <b><em>eight</em></b>. The structure of the EITC is frankly a bit absurd. Words you'd generally want to associate with a policy are things like "simple", "elegant", and "easy to understand". The EITC instead brings to mind words like "convoluted", "ugly", and "perplexing". Just look at it:
   </p>
 
   <div id="eitc_2023"></div>
@@ -1239,7 +1336,7 @@
   </br>
 
   <p>
-    This differentiation by number of children makes it quite difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations. A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's single EITC's for one, two, and three+ children, so we also have to consider married couples with one, two, three, four, five, and six+ children.
+    The way in which the EITC differentiates benificiaries by the number of children that they have makes it quite difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations (16, to be exact). A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's separate EITC's for one, two, and three+ children, so we have to consider married couples with one, two, three, four, five, and six+ children.
   </p>
 
   <p>
@@ -1282,7 +1379,7 @@
   </p>
 
   <p>
-    Along with the infeasibility of eliminating marriage penalties, there are three additional reasons why the current practice of stratigying benificiaires by the number of children that they have is bad:
+    Along with the infeasibility of eliminating marriage penalties, there are three additional reasons why the current practice of stratifying benificiaires by the number of children that they have is bad:
   </p>
 
   <h4>1. It's needlessly complicated</h4>
@@ -1295,11 +1392,11 @@
   </p>
 
   <p>
-    According to the Treasury Department, "faced with the complexities of claiming certain refundable credits...50 percent of taxpayers claiming refundable credits use paid preparers".<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span> The complexity of the EITC, in other words, effectively siphons billions of dollars intended for low-income people into the coffers of H&R Block, Turbotax and the like.
+    According to the Treasury Department, "faced with the complexities of claiming certain refundable credits...50 percent of taxpayers claiming refundable credits use paid preparers".<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span> The complexity of the EITC, in other words, effectively siphons hundreds of million of dollars intended for low-income people into the coffers of H&R Block, Turbotax and the like.
   </p>
 
   <p>
-    The complexity of the EITC also results in lower-income people being audited at considerably higher rates than middle and upper class people.<span class="tooltip" data-ref_name="TRAC 2023" data-ref_link="TRAC-2023"><a class="refs" href="#notes"><sup>[TRAC]</sup></a><span class="tooltiptext"><a href='https://trac.syr.edu/reports/706/#a_f1' target="_blank">"IRS Audits Few Millionaires But Targeted Many Low-Income Families in FY 2022"</a> (January 4, 2023). <em>TRAC</em>. Syracuse University. <a href='https://web.archive.org/web/20230111145540/https://trac.syr.edu/reports/706/' target="_blank">Archived</a> from the original on January 11, 2023.</span></span> Headlines do tend to exaggerate this somewhat: according to the Congressional Research Service, it is true that the audit rate for people who receive the EITC is several times higher than for people who do not, but this represents and increase from a 0.3% audit rate to a 1% audit rate.<span class="tooltip" data-ref_name="Crandall-Hollick 2022" data-ref_link="CRS-2022A"><a class="refs" href="#notes"><sup>[CRS-EITC]</sup></a><span class="tooltiptext">Crandall-Hollick, Margot L. (June 13, 2022). <a href='https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">"Audits of EITC Returns: By the Numbers"</a><i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220925202752/https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on September 25, 2022.</span></span> In 2022, the IRS conducted 310,081 refundable credit exams.<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
+    The complexity of the EITC also results in lower-income people being audited at considerably higher rates than middle and upper class people.<span class="tooltip" data-ref_name="TRAC 2023" data-ref_link="TRAC-2023"><a class="refs" href="#notes"><sup>[TRAC]</sup></a><span class="tooltiptext"><a href='https://trac.syr.edu/reports/706/#a_f1' target="_blank">"IRS Audits Few Millionaires But Targeted Many Low-Income Families in FY 2022"</a> (January 4, 2023). <em>TRAC</em>. Syracuse University. <a href='https://web.archive.org/web/20230111145540/https://trac.syr.edu/reports/706/' target="_blank">Archived</a> from the original on January 11, 2023.</span></span> Headlines do tend to exaggerate this somewhat: according to the Congressional Research Service, it is true that the audit rate for people who receive the EITC is several times higher than for people who do not, but this represents and increase from a 0.3% audit rate to a 1% audit rate.<span class="tooltip" data-ref_name="Crandall-Hollick 2022" data-ref_link="CRS-2022A"><a class="refs" href="#notes"><sup>[CRS-EITC]</sup></a><span class="tooltiptext">Crandall-Hollick, Margot L. (June 13, 2022). <a href='https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">"Audits of EITC Returns: By the Numbers"</a><i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href='https://web.archive.org/web/20220925202752/https://crsreports.congress.gov/product/pdf/IN/IN11952' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on June 14, 2022.</span></span> In 2022, the IRS conducted 310,081 refundable credit exams.<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=194' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 192. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
   </p>
 
   <p>
@@ -1307,7 +1404,7 @@
   </p>
 
   <p>
-    Both the IRS and the Treasury have repeatedly made it clear that the root cause of overpayments is the complexity of the EITC and the tax system more broadly, not becuase of fraud. As the Treasury notes, "the IRS has continuously deployed costly enforcement tools to lower the error rate" with "minimal impact".<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=247' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 245. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
+    Both the IRS and the Treasury have repeatedly made it clear that the root cause of overpayments is the complexity of the EITC and of the tax system more broadly, not fraud. As the Treasury notes, "the IRS has continuously deployed costly enforcement tools to lower the error rate" with "minimal impact".<span class="tooltip" data-ref_name="Treasury Department 2022" data-ref_link="Treasury-2022"><a class="refs" href="#notes"><sup>[Treasury]</sup></a><span class="tooltiptext"><a href='https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf#page=247' target="_blank">"Agency Financial Report: Fiscal Year 2022"</a> <i class="fa fa-file-pdf-o"></i> (2022). p 245. <em>Treasury Department</em>. <a href='https://web.archive.org/web/20230103085024/https://home.treasury.gov/system/files/266/Treasury-FY-2022-AFR.pdf' target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 3, 2023.</span></span>
   </p>
 
   <p>
@@ -1347,7 +1444,7 @@
   <div id="simpler_eitc"></div>
 
   <h4>Comparison with the Family Security Act</h4>
-  <div class="article_tag"><em>See also: <a href="../family-security-act/index.html" target="_blank">Family Security Act</a> </em></div>
+  <div class="article_tag"><em>See also: <a href="../family-security-act/index.html" target="_blank">Analysis of the Family Security Act</a> </em></div>
 
   <p class="top">
     You might notice that this reform is similar in nature to the EITC Mitt Romney proposed in the <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both proposals simplify the EITC, and accompany it with an increased child benefit. And as I also will advocate later in this page, Romney proposes eliminating the head of household filing status and putting the savings towards the child benefit. There are, however, some differences between the two proposals, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
@@ -1365,16 +1462,16 @@
   </p>
 
   <p>
-    The reductions to the EITC for parents are also a bit overzealous (alternatively, the child benefit increase is not large enough). Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced, according to the CBPP.<span class="tooltip" data-ref_name="Marr et al. 2022" data-ref_link="Marr-2022"><a class="refs" href="#notes"><sup>[1]</sup></a><span class="tooltiptext">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). <a href='https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">"Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">Archived</a> from the original on October 21, 2022.</span></span> The FSA would still reduce child poverty substantially,<span class="tooltip" data-ref_long_text="The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half <a href='#Hammond-2021' onclick='highlight_ref(&quot;Hammond-2021&quot;)'>(Hammond, Orr 2021)</a>, while the FSA 2.0 would reduce child poverty by 13% <a href='#Orr-2022' onclick='highlight_ref(&quot;Orr-2022&quot;)'>(Orr, McCabe 2022)</a>."><a class="refs" href="#notes"><sup>[note-number]</sup></a><span class="tooltiptext">The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half <a href='#Hammond' onclick="highlight_ref('Hammond')">(Hammond, Orr 2021)</a>, while the FSA 2.0 would reduce child poverty by 13% <a href='#Orr' onclick="highlight_ref('Orr')">(Orr, McCabe 2022)</a>.</span></span> but it would certainly have a greater impact if either (1) the EITC were not so sharply cut, or (2) the EITC reductions were fully offset by benefit enhancements elsewhere.
+    The reductions to the EITC for parents are also a bit overzealous (alternatively, the child benefit increase is not large enough). Even though the FSA substantially raises the child benefit, the EITC reductions are so severe that about 7 million single-parent families would see their benefits reduced, according to the CBPP.<span class="tooltip" data-ref_name="Marr et al. 2022" data-ref_link="Marr-2022"><a class="refs" href="#notes"><sup>[1]</sup></a><span class="tooltiptext">Marr, Chuck; Cox, Kris; Hingtgen, Stephanie; Sherman, Arloc; Calame, Sarah; Cook, Jabari (July 6, 2022). <a href='https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">"Romney Child Tax Credit Proposal Is Step Forward But Falls Short, Targets Low-Income Families to Pay for It"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221021040838/https://www.cbpp.org/research/federal-tax/romney-child-tax-credit-proposal-is-step-forward-but-falls-short-targets-low' target="_blank">Archived</a> from the original on October 21, 2022.</span></span> The FSA would still reduce child poverty substantially,<span class="tooltip" data-ref_long_text="The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half <a href='#Hammond-2021' onclick='highlight_ref(&quot;Hammond-2021&quot;)'>(Hammond, Orr 2021)</a>, while the FSA 2.0 would reduce child poverty by 13% <a href='#Orr-2022' onclick='highlight_ref(&quot;Orr-2022&quot;)'>(Orr, McCabe 2022)</a>."><a class="refs" href="#notes"><sup>[note-number]</sup></a><span class="tooltiptext">The Niskanen Center estimates that Romney's original proposal would reduce child poverty by a third and deep child poverty by half <a href='#Hammond' onclick="highlight_ref('Hammond')">(Hammond, Orr 2021)</a>, while the FSA 2.0 would reduce child poverty by 13% <a href='#Orr' onclick="highlight_ref('Orr')">(Orr, McCabe 2022)</a>.</span></span> but it would certainly have a greater impact if either (1) the EITC were not so sharply cut, or (2) the EITC reductions were fully offset by a child benefit larger than that proposed.
   </p>
 
   <p>
-    The latter option would be preferable, as a child benefit is in general superior to the EITC, but it would require more revenue than a less sharp reduction to the EITC. In any case, the <em>structure</em> of Romeny's EITC is a big step in the right direction, and it is likely only for budgetary reasons that he did not go the full ways to the structure I have proposed.
+    The latter option would be preferable, as a child benefit is in general superior to the EITC, but it would require raising more revenue than a less sharp reduction to the EITC. In any case, the <em>structure</em> of Romeny's EITC is a big step in the right direction, and it is likely only for budgetary reasons that he did not go the full ways to the structure I have proposed.
   </p>
 
   <h3>Solution 2: Child Benefits & the Standard Credit</h3>
   <p>
-    So we've got a reformed EITC that mostly eliminates marriage penalties. However, with the EITC's basic design principle there's just no way to completely eliminate them: phase-out necessarily produce marriage penalties. Fortunately for those of us who would prefer not to discourage marriage, there are good reasons to doubt two fundamental aspects of the EITC: that it should include a phase-in and a phase-out.
+    So we've got a reformed EITC that mostly eliminates marriage penalties. However, within the EITC's basic design principle there's just no way to completely eliminate them: phase-outs <em>necessarily</em> produce marriage penalties. Fortunately for those of us who would prefer not to discourage marriage, there are good reasons to doubt two fundamental aspects of the EITC: that it should include a phase-in and a phase-out.
   </p>
 
   <h4>1. Phase-Outs Discourage Marriage</h4>
@@ -1390,7 +1487,7 @@
   </p>
 
   <p>
-    In more intutitive language, all this is saying is that if your wage is, say, $15 an hour, then the phase-in region of the one-child EITC increases this to $20.10 an hour. When you're considering whether to work additional hours, that $20.10 an hour makes the additional work more appealing than the $15 an hour wage would.
+    In more intutitive language, all this is saying is that if your wage is, say, $15 an hour, then the phase-in of the one-child EITC increases this to $20.10 an hour. When you're considering whether to work additional hours, that $20.10 an hour makes the additional work more appealing than the $15 an hour wage would.
   </p>
 
   <p>
@@ -1621,7 +1718,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <!-- Load d3.js and c3.js -->
-<script src="../reference_files/d3/dist/d3.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="../reference_files/c3-0.7.20/c3.min.js"></script>
 
 <!-- MathJax -->
@@ -1629,33 +1726,31 @@
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <!-------------------- Page Functionality -------------------------------------->
-<!-- Reference Javascript -->
+<!-- Basic Reference Javascript -->
 <script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
-<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
-<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
 
-<!-- Page specific functionality -->
+<!-- Page specific functionality/colors -->
 <script type="text/javascript" src="./javascript/page_specific_functionality.js"></script>
-
-<!-- Page specific color changes for light/sepia/dark modes -->
 <script type="text/javascript" src="./javascript/color_changes.js"></script>
 
 <!-- Default Outputs -->
 <script type="text/javascript" src="./javascript/default-outputs.js"></script>
 
+<!-- Chart Reference Files -->
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 <!-- Tax chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/intuitive-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/values-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/tax-chart/outputs.js"></script>
-
 <!-- EITC chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/intuitive-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/values-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/outputs.js"></script>
-
 <!-- Multipe policies chart reference files -->
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/multiple-policies/controls.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/multiple-policies/values-chart.js"></script>

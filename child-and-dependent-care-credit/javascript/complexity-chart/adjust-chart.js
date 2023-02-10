@@ -15,15 +15,23 @@ function complexity_chart_modify_income(){
     });
 }
 
-function complexity_hide_points_and_x_grid(){
-    let is_checked = complexity_hide_income_switch.checked;
+function complexity_screenshot_mode(){
+    let is_checked = complexity_screenshot_mode_switch.checked;
     let income     = complexity_income.value;
 
     if(is_checked){
+        $('#complexity_inputs').css('display', 'none');
+        $('#complexity_outputs').css('display', 'none');
+        $('#complexity_container').css('border', 'none');
+        $('#complexity_logo').css('display', 'grid');
         complexity_chart.xgrids([]);
         complexity_chart.hide(['single_one_point', 'single_two_point', 'hoh_one_point', 'hoh_two_point', 'married_one_point', 'married_two_point',]);
     }
     else {
+        $('#complexity_inputs').css('display', 'block');
+        $('#complexity_outputs').css('display', 'block');
+        $('#complexity_container').css('border', 'solid');
+        $('#complexity_logo').css('display', 'none');
         complexity_chart.xgrids([ {value: income, text: 'Your Income'} ]);
         complexity_chart.show(['single_one_point', 'single_two_point', 'hoh_one_point', 'hoh_two_point', 'married_one_point', 'married_two_point',]);
     }

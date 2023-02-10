@@ -5,7 +5,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -17,7 +17,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 11833, 25900, 31900, 400000, 440000, 460000, 550000],
                     ['FSA_CA',   3000, 3000,  3000,  3000,  3000,  3000,  3000,   1000,   0,      0],
@@ -29,7 +29,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 21167, 25900, 37900, 400000, 480000, 520000, 550000],
                     ['FSA_CA',   6000, 6000,  6000,  6000,  6000,  6000,  6000,   2000,   0,      0],
@@ -42,7 +42,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 11833, 25900, 31900, 400000, 440000, 484000, 550000],
                     ['FSA_CA',   4200, 4200,  4200,  4200,  4200,  4200,  4200,   2200,   0,      0],
@@ -54,7 +54,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 21167, 25900, 37900, 400000, 480000, 544000, 550000],
                     ['FSA_CA',   7200, 7200,  7200,  7200,  7200,  7200,  7200,   3200,   0,      0],
@@ -66,7 +66,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 25900, 30500, 43900, 400000, 520000, 604000],
                     ['FSA_CA',   10200, 10200,  10200, 10200, 10200, 10200, 10200,  4200,   0],
@@ -79,7 +79,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* TWO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 21167, 25900, 37900, 400000, 480000, 568000],
                     ['FSA_CA',   8400, 8400,  8400,  8400,  8400,  8400,  8400,   4400,   0],
@@ -91,7 +91,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 25900, 30500, 43900, 400000, 520000, 628000],
                     ['FSA_CA',   11400, 11400,  11400, 11400, 11400, 11400, 11400,  5400,   0],
@@ -103,7 +103,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 25900, 39833, 46450, 49325, 400000, 560000, 688000],
                     ['FSA_CA',   14400, 14400,  14400, 14400, 14400, 14400, 14400, 14400,  6400,   0],
@@ -119,7 +119,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -131,7 +131,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,   10000, 11833, 19400, 25400, 200000, 240000, 260000],
                     ['FSA_CA',   3000, 3000,   3000,  3000,  3000,  3000,  3000,   1000,   0],
@@ -143,7 +143,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 19400, 21167, 31397, 200000, 280000, 320000],
                     ['FSA_CA',   6000, 6000,  6000,  6000,  6000,  6000,  6000,   2000,   0],
@@ -156,7 +156,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 11833, 19400, 25400, 200000, 240000, 284000],
                     ['FSA_CA',   4200, 4200,  4200,  4200,  4200,  4200,  4200,   2200,   0],
@@ -168,7 +168,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 19400, 21167, 31397, 200000, 280000, 344000],
                     ['FSA_CA',   7200, 7200,  7200,  7200,  7200,  7200,  7200,   3200,   0],
@@ -180,7 +180,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,  10000, 19400, 30500, 34050, 36842, 200000, 320000, 404000],
                     ['FSA_CA',   10200, 10200, 10200, 10200, 10200, 10200, 10200, 10200,  4200,   0],
@@ -193,7 +193,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* TWO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 19400, 21167, 31397, 200000, 280000, 368000],
                     ['FSA_CA',   8400, 8400,  8400,  8400,  8400,  8400,  8400,   4400,   0],
@@ -205,7 +205,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 19400, 30500, 34050, 36842, 200000, 320000, 428000],
                     ['FSA_CA',   11400, 11400,  11400, 11400, 11400, 11400, 11400, 11400,  5400,   0],
@@ -217,7 +217,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 19400, 34050,  39833, 41841, 200000, 360000, 488000],
                     ['FSA_CA',   14400, 14400,  14400, 14400, 14400,  14400, 14400, 14400,  6400,   0],
@@ -233,7 +233,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -241,12 +241,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      0, 0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 11833, 12950, 18950, 200000, 240000, 260000],
                     ['FSA_CA',   3000, 3000,  3000,  3000,  3000,  3000,  3000,   1000,   0],
@@ -254,12 +254,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      3000, 3000,  1875,  1600,  1600,  1000,  1000,   1000,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 320000],
                     ['FSA_CA',   6000, 6000,  6000,  6000,   6000,  6000,   6000,   6000,   2000,   0],
@@ -267,13 +267,13 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      6000, 6000,  4875,  4432.5, 2378,  2172,   2000,   2000,   2000,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 11833, 12950, 18950, 200000, 240000, 282000],
                     ['FSA_CA',   4200, 4200,  4200,  4200,  4200,  4200,  4200,   2200,   0],
@@ -281,12 +281,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      0,    1050,  3075,  2600,  2600,  2200,  2200,   2200,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 344000],
                     ['FSA_CA',   7200, 7200,  7200,  7200,   7200,  7200,   7200,   7200,   3200,   0],
@@ -294,12 +294,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      7200, 7200,  6075,  5632.5, 3578,  3372,   3200,   3200,   3200,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,  10000, 12950,  23225,  30129,  200000, 320000, 404000],
                     ['FSA_CA',   10200, 10200, 10200, 10200,  10200,  10200,  10200,  4200,   0],
@@ -307,13 +307,13 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      10200, 10200, 9075,  8632.5, 6064,   4200,   4200,   4200,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         /* TWO YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,    2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 368000],
                     ['FSA_CA',   8400, 8400,  8400,  8400,   8400,  8400,   8400,   8400,   4400,   0],
@@ -321,12 +321,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      8400, 8400,  7275,  6832.5, 4778,  4572,   4400,   4400,   4400,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,   10000, 12950,  23225,  30129,  200000, 320000, 428000],
                     ['FSA_CA',   11400, 11400,  11400, 11400,  11400,  11400,  11400,  5400,   0],
@@ -334,12 +334,12 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      11400, 11400,  10275, 9832.5, 7264,   5400,   5400,   5400,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0,     2500,  10000, 12950,   23225,  37536,  200000, 360000, 488000],
                     ['FSA_CA',   14400, 14400, 14400, 14400,   14400,  14400,  14400,  6400,   0],
@@ -347,7 +347,7 @@ function modifyCAGraph1(filingStatus, numYoung, numOld){
                     ['dif',      14400, 14400, 13275, 12832.5, 10264,  6400,   6400,   6400,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         /* Graph often needs to adjust the zoom when swithing between e.g. filing statuses */
@@ -367,7 +367,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -379,7 +379,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 25900, 31900, 400000, 440000, 460000, 550000],
                     ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0,      0],
@@ -391,7 +391,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 21167, 25900, 37900, 400000, 480000, 520000, 550000],
                     ['FSA_CA',   0, 1500,  6000,  6000,  6000,  6000,  6000,   2000,   0,      0],
@@ -404,7 +404,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 25900, 31900, 400000, 440000, 484000, 550000],
                     ['FSA_CA',   0, 1050,  4200,  4200,  4200,  4200,  4200,   2200,   0,      0],
@@ -416,7 +416,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 21167, 25900, 37900, 400000, 480000, 544000, 550000],
                     ['FSA_CA',   0, 1800,  7200,  7200,  7200,  7200,  7200,   3200,   0,      0],
@@ -428,7 +428,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 25900, 30500, 43900, 400000, 520000, 604000],
                     ['FSA_CA',   0, 2550,  10200, 10200, 10200, 10200, 10200,  4200,   0],
@@ -441,7 +441,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* TWO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 21167, 25900, 37900, 400000, 480000, 568000],
                     ['FSA_CA',   0, 2100,  8400,  8400,  8400,  8400,  8400,   4400,   0],
@@ -453,7 +453,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 25900, 30500, 43900, 400000, 520000, 628000],
                     ['FSA_CA',   0, 2850,  11400, 11400, 11400, 11400, 11400,  5400,   0],
@@ -465,7 +465,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 25900, 39833, 46450, 49325, 400000, 560000, 688000],
                     ['FSA_CA',   0, 3600,  14400, 14400, 14400, 14400, 14400, 14400,  6400,   0],
@@ -481,7 +481,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -493,7 +493,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 19400, 25400, 200000, 240000, 260000],
                     ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0],
@@ -505,7 +505,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 21167, 31397, 200000, 280000, 320000],
                     ['FSA_CA',   0, 1500,  6000,  6000,  6000,  6000,  6000,   2000,   0],
@@ -518,7 +518,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 19400, 25400, 200000, 240000, 284000],
                     ['FSA_CA',   0, 1050,  4200,  4200,  4200,  4200,  4200,   2200,   0],
@@ -530,7 +530,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 21167, 31397, 200000, 280000, 344000],
                     ['FSA_CA',   0, 1800,  7200,  7200,  7200,  7200,  7200,   3200,   0],
@@ -542,7 +542,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 30500, 34050, 36842, 200000, 320000, 404000],
                     ['FSA_CA',   0, 2550,  10200, 10200, 10200, 10200, 10200, 10200,  4200,   0],
@@ -555,7 +555,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* TWO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 21167, 31397, 200000, 280000, 368000],
                     ['FSA_CA',   0, 2100,  8400,  8400,  8400,  8400,  8400,   4400,   0],
@@ -567,7 +567,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 30500, 34050, 36842, 200000, 320000, 428000],
                     ['FSA_CA',   0, 2850,  11400, 11400, 11400, 11400, 11400, 11400,  5400,   0],
@@ -579,7 +579,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 19400, 34050,  39833, 41841, 200000, 360000, 488000],
                     ['FSA_CA',   0, 3600,  14400, 14400, 14400,  14400, 14400, 14400,  6400,   0],
@@ -595,7 +595,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
         /* NO YOUNG CHILDREN, VARY OLD CHILDREN */
         if(numYoung==="none" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 550000],
                     ['FSA_CA',   0, 0],
@@ -603,12 +603,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="none" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 12950, 18950, 200000, 240000, 260000],
                     ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0],
@@ -616,12 +616,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 750,   1875,  1600,  1600,  1000,  1000,   1000,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="none" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 320000],
                     ['FSA_CA',   0, 1500,  6000,  6000,   6000,  6000,   6000,   6000,   2000,   0],
@@ -629,13 +629,13 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 1500,  4875,  4432.5, 2378,  2172,   2000,   2000,   2000,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         /* ONE YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="one" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 11833, 12950, 18950, 200000, 240000, 282000],
                     ['FSA_CA',   0, 1050,  4200,  4200,  4200,  4200,  4200,   2200,   0],
@@ -643,12 +643,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 1050,  3075,  2600,  2600,  2200,  2200,   2200,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="one" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 344000],
                     ['FSA_CA',   0, 1800,  7200,  7200,   7200,  7200,   7200,   7200,   3200,   0],
@@ -656,12 +656,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 1800,  6075,  5632.5, 3578,  3372,   3200,   3200,   3200,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="one" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,  23225,  30129,  200000, 320000, 404000],
                     ['FSA_CA',   0, 2550,  10200, 10200,  10200,  10200,  10200,  4200,   0],
@@ -669,13 +669,13 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 2550,  9075,  8632.5, 6064,   4200,   4200,   4200,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         /* TWO YOUNG CHILD, VARY OLD CHILDREN */
         if(numYoung==="two" && numOld==="none") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,  21167, 23225,  24658,  200000, 280000, 368000],
                     ['FSA_CA',   0, 2100,  8400,  8400,   8400,  8400,   8400,   8400,   4400,   0],
@@ -683,12 +683,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 2100,  7275,  6832.5, 4778,  4572,   4400,   4400,   4400,   0]
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung==="two" && numOld==="one") {
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,  23225,  30129,  200000, 320000, 428000],
                     ['FSA_CA',   0, 2850,  11400, 11400,  11400,  11400,  11400,  5400,   0],
@@ -696,12 +696,12 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 2850,  10275, 9832.5, 7264,   5400,   5400,   5400,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
         if(numYoung ==="two" && numOld==="two"){
             setTimeout(function () {
-                CAchart.load({
+                child_benefit_chart.load({
                 columns: [
                     ['x',        0, 2500,  10000, 12950,   23225,  37536,  200000, 360000, 488000],
                     ['FSA_CA',   0, 3600,  14400, 14400,   14400,  14400,  14400,  6400,   0],
@@ -709,7 +709,7 @@ function modifyCAGraph2(filingStatus, numYoung, numOld){
                     ['dif',      0, 3600,  13275, 12832.5, 10264,  6400,   6400,   6400,   0] 
                 ]
             });
-            CAchart.axis.max({x: 400000});
+            child_benefit_chart.axis.max({x: 400000});
             });
         }
     } 
