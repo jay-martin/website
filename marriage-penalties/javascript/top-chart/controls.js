@@ -146,6 +146,10 @@ function top_chart_change_benefit(){
 		$('#top_chart_filing_status_inputs').css('display', 'block');
 		tax_outputs('top_chart');
 	}
+	else{
+		top_chart_chart.hide();
+		return;
+	}
 
 	if(top_chart_chart_type.value === 'values'){
 		multiple_policies_marriage_penalty_values_adjust_chart('top_chart');

@@ -4,6 +4,15 @@
 
 // Loads EMTR data to the top_chart_chart
 function load_emtr_data(){
+	// hide curve if no benefits are selected
+	if(Object.values(isActive).every((v) => v === false)){
+		top_chart_chart.hide();
+		return;
+	}
+	else{
+		top_chart_chart.show();
+	}
+
 	let numChildren  = num_children.value;
 	let filingStatus = filingstatus.value;
 	
