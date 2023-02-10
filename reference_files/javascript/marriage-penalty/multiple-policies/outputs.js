@@ -6,6 +6,12 @@ function multiple_policies_marriage_penalty_values_outputs(chart_name){
     let line3      = chart_name + '_married';
     let line4      = chart_name + '_explanation_line';
 
+    // Output warning if all benefits deselected
+    if(Object.values(isActive).every((v) => v === false)){
+        document.getElementById(line1).innerHTML = 'No Benefits Selected';
+        return;
+    }
+
     let p1_children       = eval(chart_name + '_person1_children').value;
     let p2_children       = eval(chart_name + '_person2_children').value;
     let combined_children = sum_children(p1_children, p2_children);

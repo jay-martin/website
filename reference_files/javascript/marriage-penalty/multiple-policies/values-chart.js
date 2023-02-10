@@ -3,6 +3,7 @@
  * */
 function multiple_policies_marriage_penalty_values_modify_income(chart_name){
     let chart = eval(chart_name + '_chart');
+    chart.show(['values_point']); // needed in case all benefits are deselected and then one is reselected
 
     // incomes
     let p1_income = eval(chart_name + '_person1_income').value;

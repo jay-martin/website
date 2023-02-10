@@ -91,6 +91,11 @@ function top_chart_outputs(){
 
     // function that determines which benefits to display in the benefits breakdown
     benefits_breakdown(eitc, ctc, snap, ptc, ssi);
+
+    // Output a no benefits selected warning when all benefits are deselected
+	if(Object.values(isActive).every((v) => v === false)){
+		document.getElementById('marginal_tax_rate').innerHTML = 'No Benefits Selected';
+	}
 }
 
 function benefits_breakdown(eitc, ctc, snap, ptc, ssi){

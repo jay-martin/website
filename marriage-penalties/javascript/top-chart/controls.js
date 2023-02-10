@@ -126,7 +126,15 @@ function push_benefit_button(benefit){
 		}
 		isActive[benefit] = true;
 	}
-	top_chart_change_benefit();
+
+	// All benefits deselected
+	if(Object.values(isActive).every((v) => v === false)){
+		top_chart_chart.hide();
+		multiple_policies_marriage_penalty_values_outputs('top_chart'); // output "no benefit" warning
+	}
+	else{
+		top_chart_change_benefit();
+	}
 }
 
 // Adjusts top chart according to the benefits the user has selected to display
@@ -145,10 +153,6 @@ function top_chart_change_benefit(){
 		$('#top_chart_num_children_inputs').css('display', 'none');
 		$('#top_chart_filing_status_inputs').css('display', 'block');
 		tax_outputs('top_chart');
-	}
-	else{
-		top_chart_chart.hide();
-		return;
 	}
 
 	if(top_chart_chart_type.value === 'values'){
