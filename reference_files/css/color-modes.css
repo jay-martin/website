@@ -190,8 +190,10 @@ input[type=submit].small_button {
   border-color: var(--base-border);
   color: var(--base-text);
 }
-input[type=submit].small_button:hover {
-  background-color: var(--small-button-hover);
+@media screen and (min-width: 900px) {
+  input[type=submit].small_button:hover {
+    background-color: var(--small-button-hover);
+  }
 }
 input[type=submit].small_button:disabled {
   background-color: var(--small-button-disabled-background);
@@ -231,7 +233,7 @@ a.sidebar_links,  .other_pages a {
 /********** Chart Module *************/
 .chart, .chart_wide {
   border-style: solid;
-  border-color: var(--base-border);
+  border-color: var(--base-border) !important;
 }
 .center_explanation_box {
   background-color: var(--box-color);

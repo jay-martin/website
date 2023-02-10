@@ -219,9 +219,9 @@ function mobile_prepare_resize(){
 // Set transition settings for user change of light/sepia/dark mode
 function set_transition_settings(){
 	$('body, select, .page_color_toggler, a.sidebar_links, .other_pages a').css('transition', 'background-color 1s ease, color 1s ease');
-	$('.chart, .chart_wide, .highlights').css('transition', 'border 1s ease');
-	$('.center_explanation_box').css('transition', 'background-color 1s ease, border 1s ease, height 1s ease');
-	$('.slider').css('transition', 'background-color 1s ease, border 1s ease');
+	$('.chart, .chart_wide, .highlights').css('transition', 'border-color 1s ease');
+	$('.center_explanation_box').css('transition', 'background-color 1s ease, border-color 1s ease, height 1s ease');
+	$('.slider').css('transition', 'background-color 1s ease, border-color 1s ease');
 	$('#logo-span1, #logo-span2').css('transition', 'fill 1s ease-out');
 	$('.logo-color').css('transition', 'fill 1s ease, stroke 1s ease');
 

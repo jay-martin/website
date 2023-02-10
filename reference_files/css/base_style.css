@@ -488,8 +488,8 @@ a.left_sidebar_social_icons_link:hover .left_side_bar_social_logos {
 /***************** Chart container *************************************/
 .chart, .chart_wide {
   font-family: "Computer Modern Sans";
-  border-width: 1.5px;
-  border-radius: 5px;
+  border-width: 1.5px !important;
+  border-radius: 5px !important;
   padding: 10px;
   margin-bottom: 10px;
 }
