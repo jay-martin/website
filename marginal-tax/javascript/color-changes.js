@@ -31,14 +31,14 @@ function page_color_mode(mode){
 
 // Changes for dark mode
 function dark_mode(){
-	chart.data.colors({
+	top_chart_chart.data.colors({
 		point: '#dbdbdb',
 	});
 }
 
 // Changes for light mode
 function light_mode(){
-	chart.data.colors({
+	top_chart_chart.data.colors({
 		point: 'black',
 	});
 }
