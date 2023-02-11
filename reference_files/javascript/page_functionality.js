@@ -231,12 +231,15 @@ function reveal_dropdown(){
     $('body').addClass('push_down_page');
 
     //disable scroll
-    //document.body.classList.add("stop-scrolling");
+    $('body').addClass('no-scroll');
 
     navbarClicked = true;
   }
   // Closes the dropdown menu
   else{
+    //re-enable scroll
+    $('body').removeClass('no-scroll');
+
     // dropdown close animation
     $('#mobile_dropdown').removeClass('reveal_dropdown');
     $('#mobile_dropdown').addClass('collapse_dropdown');
@@ -255,6 +258,7 @@ function reveal_dropdown(){
       $('#mobile_navbar').removeClass('maintain_navbar_position_up');
       $('#mobile_dropdown').removeClass('collapse_dropdown');
       $('body').removeClass('push_up_page');
+      // set body to fixed so that scroll is disabled
     }, 1000);
 
     //enable scroll
