@@ -141,6 +141,7 @@ button {
 }
 input[type=submit].small_button {
   font-size: 13px;
+  font-weight: normal;
   cursor: pointer;
   border-radius: 3px;
   border-width: 1.5px !important;
