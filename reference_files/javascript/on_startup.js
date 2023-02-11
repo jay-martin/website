@@ -58,7 +58,6 @@ $(document).ready(function(){
 });
 
 //Handle screen resize events
-//var windowWidth = $(window).width();
 $(window).on('resize', function() {
 	if ($(this).width() !== displayWidth) {
     	displayWidth = $(this).width();

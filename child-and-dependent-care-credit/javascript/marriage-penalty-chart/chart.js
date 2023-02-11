@@ -5,6 +5,7 @@ var mp_chart = c3.generate({
             'person1_base_tax' : 'x_p1_base',
 
             'person1'       : 'x_p1',
+            'person2'       : 'x_p2',
             'married'       : 'x_m',
 
             'combined_tax'  : 'x_horizontal',
@@ -13,11 +14,14 @@ var mp_chart = c3.generate({
             'bonus'         : 'x_horizontal',
 
             'point_person1' : 'x_point',
-            'point_person2' : 'x_point',
+            'point_person2' : 'x_point_person2',
             'point_married' : 'x_point_married',
         },
         columns: [
-            ['x_p1', 0, 13850, 23000, 23001, 24850, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 58575, 60000, 109225, 195950, 245100, 591975],
+            ['x_p2',    0, 13850, 23000, 23001, 24850, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 58575, 60000, 109225, 195950, 245100, 591975],
+            ['person2', 0, 0, 0, 15.100000000000023, 200, 218, 248.1199999999999, 488, 518.1199999999999, 758, 788.1199999999999, 1028, 1058.12, 1298, 1328.12, 1568, 1598.12, 1838, 1868.12, 2108, 2138.12, 2378, 2408.12, 2648, 2678.12, 4547, 4860.5, 15690, 36504, 52232, 173638.25],
+
+            ['x_p1',    0, 13850, 23000, 23001, 24850, 25000, 25001, 27000, 27001, 29000, 29001, 31000, 31001, 33000, 33001, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 58575, 60000, 109225, 195950, 245100, 591975],
             ['person1', 218, 218, 218, 233.0999999999999, 418, 436, 466.1199999999999, 706, 736.1199999999999, 976, 1006.1199999999999, 1246, 1276.12, 1516, 1546.12, 1786, 1816.12, 2056, 2086.12, 2326, 2356.12, 2596, 2626.12, 2866, 2896.12, 4765, 5078.5, 15908, 36722, 52450, 173856.25],
 
             ['x_m',     0, 27700, 35000, 35001, 37000, 37001, 39000, 39001, 41000, 41001, 43000, 43001, 49700, 60000, 117150, 218450, 391900, 490200, 721450],
@@ -32,11 +36,15 @@ var mp_chart = c3.generate({
             ['x_point',       30000],
             ['point_person1', 1126],
 
+            ['x_point_person2', 25000],
+            ['point_person2', 218],
+
             ['x_point_married', 55000],
             ['point_married',   1636],
         ],
         names: {
-            person1: "Your Family's Tax Liability When Filing Separately As Single & After Maximum CDCC Credit",
+            person1: "Your Family's Tax Liability After Maximum CDCC Credit",
+            person2: "Your Partner's Tax Liability After Maximum CDCC Credit",
             married: "Your Family's Tax Liability When Married Filing Jointly & After Maximum CDCC Credit",
         },
         types: {
@@ -45,14 +53,14 @@ var mp_chart = c3.generate({
             'married_tax' : 'area',
             'bonus'      : 'area',
         },
-        regions: {
-            person2: [ {'style':'dashed'}, ],
-        },
         groups: [ ['combined_tax', 'penalty'], ['married_tax', 'bonus'] ], 
         order: false,
         colors: {
             person1       : '#6ab6fc',
             point_person1 : '#6ab6fc',
+
+            person2       : purple_shade,
+            point_person2 : purple_shade,
 
             married       : white_or_black,
             point_married : white_or_black,
@@ -81,7 +89,7 @@ var mp_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['point_person1', 'point_married', 'combined_tax', 'penalty', 'married_tax', 'bonus'],
+        hide: ['point_person1', 'point_person2', 'point_married', 'combined_tax', 'penalty', 'married_tax', 'bonus'],
     },
     tooltip: {
         show: false
@@ -114,10 +122,10 @@ var mp_chart = c3.generate({
           front: false
         },
         y: {
-            lines: [{value: 1126, text: 'Combined Individual Tax', position: 'start'}, {value: 1636, text: 'Married Tax', position: 'start'}],
+            lines: [{value: 1126, text: 'Combined Individual Tax', position: 'start'}, {value: 1636, text: 'Married Tax', position: 'start'}, {value: 218, text: "Your Partner's Minimum Tax Liability", position: 'start'}],
         },
         x: {
-            lines: [{value: 30000, text: 'Your Income'}, {value: 55000, text: 'Combined Income'}],
+            lines: [{value: 30000, text: 'Your Income'}, {value: 25000, text: "Your Partner's Income"}, {value: 55000, text: 'Combined Income'}],
             min: 0,
         },
     }

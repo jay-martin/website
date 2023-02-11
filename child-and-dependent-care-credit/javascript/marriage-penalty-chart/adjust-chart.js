@@ -13,7 +13,7 @@ const married_two_cdcc_x      = [0, 27700, 40900, 41000, 41001, 43000, 43001, 60
 function build_tax_after_cdcc_chart(chart_name){
     let chart = eval(chart_name + '_chart');
 
-    // person 1 nputs
+    // person 1 inputs
     let person1_filing_status = eval(chart_name + '_person1_filing_status').value;
     let person1_num_children  = eval(chart_name + '_person1_num_children').value;
     
@@ -96,14 +96,17 @@ function cdcc_marriage_penalty_modify_income(){
     let tax_difference = married_after_credit_tax - combined_minimum_tax;
 
     // grids
-    mp_chart.xgrids([ {value: person1_income, text:'Your Income'}, {value: combined_income, text:'Combined Income'},]);
-    mp_chart.ygrids([ {value: combined_minimum_tax, text:'Combined Individual Tax', position: 'start'}, {value: married_after_credit_tax, text:'Married Tax', position: 'start'}]);
+    mp_chart.xgrids([ {value: person1_income, text:'Your Income'}, {value: person2_income, text: "Your Partner's Income"}, {value: combined_income, text:'Combined Income'},]);
+    mp_chart.ygrids([ {value: combined_minimum_tax, text:'Combined Individual Tax', position: 'start'}, {value: married_after_credit_tax, text:'Married Tax', position: 'start'}, {value: person2_after_credit_tax, text: "Your Partner's Minimum Tax Liability", position: 'start'}]);
 
     // points
     mp_chart.load({
         columns: [
             ['x_point',       person1_income],
             ['point_person1', combined_minimum_tax],
+
+            ['x_point_person2', person2_income],
+            ['point_person2',   person2_after_credit_tax],
 
             ['x_point_married', combined_income],
             ['point_married',   married_after_credit_tax],

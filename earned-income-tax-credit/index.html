@@ -721,17 +721,17 @@
 
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
-        <label for="marriage_penalty_person1_income" class="slider-text"> I have an income of $<output id="mp_person1_income_output">30,000</output>:</label>
+        <label for="marriage_penalty_person1_income" class="slider-text"> I have an income of $<output id="marriage_penalty_person1_income_output">30,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="mp_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person1_income('marriage_penalty');">
+          <input type="range" min="0" max="60000" value="30000" step="1000" class="slider" id="marriage_penalty_person1_income" oninput="marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person1_income('marriage_penalty');">
         </div>
       </div>
 
       <!--Person 2 income slider-->
       <div class="slidecontainer"> 
-        <label for="marriage_penalty_person2_income" class="slider-text"> My partner has an income of $<output id="mp_person2_income_output">10,000</output>:</label>
+        <label for="marriage_penalty_person2_income" class="slider-text"> My partner has an income of $<output id="marriage_penalty_person2_income_output">10,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="mp_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person2_income('marriage_penalty')">
+          <input type="range" min="0" max="60000" value="10000" step="1000" class="slider" id="marriage_penalty_person2_income" oninput="marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');eitc_marriage_penalty_modify_person2_income('marriage_penalty')">
         </div>
       </div>
 
@@ -1059,9 +1059,14 @@
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/values-chart.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/marriage-penalty/eitc-chart/outputs.js"></script>
 
-<!-- Marriage Penalties Javascript files -->
+<!-- Marriage Penalty Javascript files -->
 <script type="text/javascript" src="./javascript/marriage-penalties/chart.js"></script>
 <script type="text/javascript" src="./javascript/marriage-penalties/default-outputs.js"></script>
+<script type="text/javascript" src="./javascript/marriage-penalties/stacked.js"></script>
+
+<!-- Marriage Penalties Test Javascript files -->
+<script type="text/javascript" src="./javascript/mp/chart.js"></script>
+<script type="text/javascript" src="./javascript/mp/default-outputs.js"></script>
 
 <!-- Complexity Chart Javascript files -->
 <script type="text/javascript" src="./javascript/complexity/chart.js"></script>

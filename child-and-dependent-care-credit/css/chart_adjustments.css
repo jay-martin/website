@@ -15,7 +15,7 @@
 }
 
 /* Marriage Penalty Chart */
-.c3-circles-person1, .c3-circles-married, .c3-circles-combined_tax, .c3-circles-penalty, .c3-circles-married_tax, .c3-circles-bonus {
+.c3-circles-person1, .c3-circles-person2, .c3-circles-married, .c3-circles-combined_tax, .c3-circles-penalty, .c3-circles-married_tax, .c3-circles-bonus {
   display: none;
 } 
 

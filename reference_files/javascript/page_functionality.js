@@ -10,7 +10,7 @@
  * (8) Opens and closes appendix sections
  * (9) Opens and closes chart notes
  * (10) Opens and closed center explanation box breakdowns
- * (11) Screenshot mode, hide inputs/outputs on chart
+ * (11) Hide inputs/outputs on chart
  * (12) Tooltip functionality
  * ****************************************************************************************/
 var is_open = new Object(); //dictionary to keep track of states of elements that open and close
@@ -73,6 +73,13 @@ function toggle_page_color(mode){
 function mobile_page_toggle(){
   document.body.style.marginTop = '100vh';
 }
+
+// check if mobile_page_toggle has been run when switching from mobile to desktop mode
+$(window).on('resize', function() {
+  if ($(this).width() > 900) {
+    document.body.style.marginTop = '0vh';
+  }
+});
 
 /******************************** 2. Left sidebar **********************************/
 var fixedElement = document.querySelector('.left_side_bar');

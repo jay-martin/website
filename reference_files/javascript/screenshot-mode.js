@@ -50,7 +50,7 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
         $(title_id).css('display', 'block');
         $(title_description_id).css('display', 'block');
 
-        // Show logo
+        // Show logo button
         $(logo_id).css('display', 'grid');
 
         // Hide/Adjust page elements
@@ -263,6 +263,29 @@ function intuitive_eitc_marriage_penalty_description_generator(chart_name){
     }
 
     document.getElementById(chart_name + '_title_description').innerHTML = 'A person with ' + person1_children + ' and an income of $' + person1_income + ' and a person with ' + person2_children + ' and an income of $' + person2_income + ' incur a ' + penalty_or_bonus_text + ' of $' + marriage_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/*********************************** Download Button ********************************************************************************************/
+function capture_screenshot(screenshot_container){
+    let element = document.getElementById(screenshot_container);
+    $(element).css('border', 'none');
+ 
+    html2canvas(element).then(canvas => {
+        document.body.appendChild(canvas)
+        return canvas
+    })
+    .then(canvas => {
+        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+        const a = document.createElement('a')
+        a.setAttribute('download', 'my-image.png')
+        a.setAttribute('href', image)
+        a.click()
+        canvas.remove()
+    });
+
+    if(window.innerWidth > 900){
+        $(element).css('border', 'dashed');
+    }
 }
 
 
