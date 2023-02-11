@@ -183,6 +183,7 @@ svg.logo-svg {
 }
 svg.top-logo {
   width: 135px;
+  stroke-width: 5;
 }
 .page_color_toggle_container {
   position: absolute;
