@@ -4,7 +4,7 @@ document.getElementById('CTC_benefit').innerHTML = 'Under existing law (2022), y
 document.getElementById('CA_benefit_difference').innerHTML = "Your child benefit <b><p class='inline green'>increases</p></b> by <b><p class='inline green'>$1,000</p></b>.";
 
 /* Outputs benefit values */
-function new_benefits_CA(){
+function child_benefit_outputs(){
     numYoung = num_young(child_benefit_young_children.value);
     numOld = num_old(child_benefit_old_children.value);
 

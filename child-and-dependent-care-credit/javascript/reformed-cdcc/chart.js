@@ -58,8 +58,8 @@ var reformedCDCC = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 65,
-        right: 40,
+        left: 60,
+        right: 20,
     },
     legend: {
         position: 'bottom',
@@ -76,6 +76,7 @@ var reformedCDCC = c3.generate({
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
             },
             padding: {left: 0, right: 0},
+            height: 45,
         },
         y: {
             label: {text: 'Amount of Credit Claimed', position: 'outer-middle'},

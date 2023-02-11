@@ -23,6 +23,7 @@ function screenshot_mode(chart_name, chart_type, points, income_id, is_top_chart
 function base_screenshot_mode_functionality(chart_name, is_top_chart){
     let switch_is_checked    = eval(chart_name + '_screenshot_mode_switch').checked;
     let hide_outputs_switch  = '#' + chart_name + '_hide_outputs_switch';
+    let hide_outputs_switch_container = '#' + chart_name + '_hide_outputs_switch_container';
 
     let chart                = eval(chart_name + '_chart');
     let chart_container      = '#' + chart_name + '_container';
@@ -32,6 +33,10 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
     let outputs_id           = '#' + chart_name + '_outputs';
     let logo_id              = '#' + chart_name + '_logo';
     let options_container_id = '#' + chart_name + '_options_container';
+
+    // Desktop elements
+    let border_wrapper = '#' + chart_name + '_screenshot_wrapper';
+    let screenshot_frame_switch = '#' + chart_name + '_screenshot_frame_switch_container'
 
     if(switch_is_checked){
         // disable switch
@@ -45,21 +50,35 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
         $(title_id).css('display', 'block');
         $(title_description_id).css('display', 'block');
 
-
         // Show logo
         $(logo_id).css('display', 'grid');
 
         // Hide/Adjust page elements
         $(chart_container).css('border', 'none');
-        $(options_container_id).css('margin-top', '40px');
+        $(hide_outputs_switch_container).css('display', 'none');
         if(is_top_chart){
-          $('.other_pages').css('display', 'none');
+          //$('.other_pages').css('display', 'none');
           $('.highlights').css('display', 'none');
-          //$('.title_container').css('visibility', 'hidden');
         }
         else if(is_top_chart == false){
           $(title_id).css('text-decoration', 'none');
           $(title_id).css('margin-bottom', '0');
+        }
+
+        // screenshot wrapper if on desktop
+        if(window.innerWidth > 900){
+            $(screenshot_frame_switch).css('display', 'inline-block');
+            if($('#' + chart_name + '_hide_screenshot_frame_switch').prop('checked') == false){
+                $(border_wrapper).css('border', 'dashed');
+                $(border_wrapper).css('padding-left', '10px');
+                $(border_wrapper).css('padding-right', '5px');
+                $(border_wrapper).css('padding-top', '5px');
+                $(chart_container).css('padding', '0');
+            }
+        }
+        else{
+            // push down chart options
+            $(options_container_id).css('margin-top', '40px');
         }
     }
     else {
@@ -74,14 +93,19 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
 
         // Show/Adjust page elements
         $(chart_container).css('border', 'solid');
+        $(border_wrapper).css('border', 'none');
+        $(hide_outputs_switch_container).css('display', 'inline-block');
+        $(screenshot_frame_switch).css('display', 'none');
         $(options_container_id).css('margin-top', '10px');
+        $(border_wrapper).css('padding-left', '0px');
+        $(border_wrapper).css('padding-right', '0px');
+        $(border_wrapper).css('padding-top', '0px');
+        $(chart_container).css('padding', '10px');
+
         if(is_top_chart){
           $('.other_pages').css('display', 'block');
           $('.highlights').css('display', 'block');
-
-          // Hide title
           $(title_id).css('display', 'none');
-          $('.title_container').css('visibility', 'visible');
         }
         else if(is_top_chart == false){
           $(title_id).css('text-decoration', 'underline');
@@ -193,7 +217,7 @@ function values_eitc_marriage_penalty_description_generator(chart_name){
     let person2_children = capitalize_num_children(eval(chart_name + '_person2_children').value);
     let person2_income   = eval(chart_name + '_person2_income').value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-    document.getElementById(chart_name + '_title_description').innerHTML = "Marriage Penalties Incurred by a Person with " + person1_children + "<br>When Their Partner Has " + person2_children + " and an Income Fixed at $" + person2_income;
+    document.getElementById(chart_name + '_title_description').innerHTML = "Marriage Penalties Incurred by a Person with " + person1_children + "When Their Partner Has " + person2_children + " and an Income Fixed at $" + person2_income;
 }
 
 function intuitive_tax_marriage_penalty_description_generator(chart_name){
@@ -238,11 +262,24 @@ function intuitive_eitc_marriage_penalty_description_generator(chart_name){
         penalty_or_bonus_text = 'marriage bonus';
     }
 
-    document.getElementById(chart_name + '_title_description').innerHTML = 'A person with ' + person1_children + ' and an income of $' + person1_income + ' and person with ' + person2_children + ' and an income of $' + person2_income + ' incur a ' + penalty_or_bonus_text + ' of $' + marriage_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    document.getElementById(chart_name + '_title_description').innerHTML = 'A person with ' + person1_children + ' and an income of $' + person1_income + ' and a person with ' + person2_children + ' and an income of $' + person2_income + ' incur a ' + penalty_or_bonus_text + ' of $' + marriage_penalty.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 
 /*********************************** Additional Functions ********************************************************************************************/
+// Hides/Shows the desktop screenshot frame guide
+function hide_screenshot_frame_guide(chart_name){
+    let switch_is_checked = eval(chart_name + '_hide_screenshot_frame_switch').checked;
+    let frame             = '#' + chart_name + '_screenshot_wrapper';
+
+    if(switch_is_checked){
+        $(frame).css('border', 'none');
+    }
+    else {
+        $(frame).css('border', 'dashed');
+    }
+}
+
 // Used for auto-generating chart caption
 function capitalize_num_children(num_children){
     if(num_children === 'none'){

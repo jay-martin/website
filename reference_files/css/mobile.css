@@ -136,6 +136,21 @@ g.transform-title {
   font-size: 120%;
 }
 /*********************** Chart *****************************************************************************/
+/************ Chart Title ********************/
+h3.chart_title {
+  font-size: 20px;
+  width: 100%;
+}
+h4.chart_description {
+  width: 90%;
+  font-size: 13px;
+}
+h3.smaller_mobile_title {
+  font-size: 19px;
+}
+.chart_byline {
+  margin-top: 0;
+}
 /************ Chart Sliders ******************/
 .slider-actual {
   float: none;

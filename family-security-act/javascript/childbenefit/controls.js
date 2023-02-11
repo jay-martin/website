@@ -1,15 +1,15 @@
-function modifyCAGraph(){
+function adjust_child_benefit_chart(){
     if(fsa1_or_2_CA.value==="one"){
-        modifyCAGraph1(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
+        adjust_child_benefit_chart_fsa_1(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
     }
     else{
-        modifyCAGraph2(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
+        adjust_child_benefit_chart_fsa_2(child_benefit_filing_status.value, child_benefit_young_children.value, child_benefit_old_children.value);
     }
-    modifyIncome_CA();
+    child_benefit_modify_income();
 }
 
 /* Moves the income slider */
-function modifyIncome_CA(){
+function child_benefit_modify_income(){
     let income = child_benefit_income.value;
     child_benefit_chart.xgrids([{value: income, text:'Your income'}]);
 
@@ -45,9 +45,9 @@ function child_benefit_description_generator(){
         document.getElementById('child_benefit_title').innerHTML = 'The Family Security Act: Child Benefit';
     }
     else if(fsa1_or_2_CA.value == 'one'){
-        document.getElementById('child_benefit_title').innerHTML = 'Family Security Act 1.0: Child Benefit';
+        document.getElementById('child_benefit_title').innerHTML = 'The Family Security Act 1.0:<br>Child Benefit';
     }
     else {
-        document.getElementById('child_benefit_title').innerHTML = 'Family Security Act 2.0: Child Benefit';
+        document.getElementById('child_benefit_title').innerHTML = 'The Family Security Act 2.0:<br>Child Benefit';
     }
 }

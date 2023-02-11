@@ -91,6 +91,7 @@ var top_chart_chart = c3.generate({
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000]
             },
             padding: {left: 0},
+            height: 45,
         },
         y: {
             label: {text: 'Benefit / Benefit Difference', position: 'outer-middle'},
@@ -139,10 +140,10 @@ function top_chart_description_generator(){
 
     // Generate title based on whether FSA 1.0 or 2.0
     if(top_chart_fsa1_or_2.value == 'one'){
-        document.getElementById('top_chart_title').innerHTML = 'Family Security Act 1.0: Comparison with 2022 Policy';
+        document.getElementById('top_chart_title').innerHTML = 'The Family Security Act 1.0:<br>Comparison with 2022 Policy';
     }
     else {
-        document.getElementById('top_chart_title').innerHTML = 'Family Security Act 2.0: Comparison with 2022 Policy';
+        document.getElementById('top_chart_title').innerHTML = 'The Family Security Act 2.0:<br>Comparison with 2022 Policy';
     }
 }
 

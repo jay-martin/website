@@ -13,8 +13,8 @@ var child_benefit_chart = c3.generate({
         },
         columns: [
             ['x',        0, 2500,  10000, 11833, 25900, 31900, 400000, 440000, 460000, 550000],
-            ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0,      0],
-            ['CTC',      0, 0,     1125,  1400,  1400,  2000,  2000,   0,      0,      0],
+            ['FSA_CA',   0, 750,   3000,  3000,  3000,  3000,  3000,   1000,   0],
+            ['CTC',      0, 0,     1125,  1400,  1400,  2000,  2000,   0,],
             ['dif',      0, 750,   1875,  1600,  1600,  1000,  1000,   1000,   0,      0],
 
             ['x_point', 60000],
@@ -59,6 +59,7 @@ var child_benefit_chart = c3.generate({
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000]
             },
             padding: {left: 0},
+            height: 45,
         },
         y: {
             label: {text: 'Benefit / Benefit Difference', position: 'outer-middle'},
@@ -84,10 +85,12 @@ var child_benefit_chart = c3.generate({
 
 function child_benefit_only_difference_curve(){
     if(child_benefit_only_difference_switch.checked == true){
+        child_benefit_chart.axis.labels({y: 'Benefit Difference'});
         child_benefit_chart.hide(['FSA_CA', 'CTC', 'current_point', 'fsa_point']);
     }
     else{
-        if(child_benefit_hide_outputs_switch.checked){
+        child_benefit_chart.axis.labels({y: 'Benefit / Benefit Difference'});
+        if(child_benefit_hide_outputs_switch.checked || child_benefit_screenshot_mode_switch.checked){
             child_benefit_chart.show(['FSA_CA', 'CTC']);
         }
         else{
@@ -98,10 +101,12 @@ function child_benefit_only_difference_curve(){
 
 function child_benefit_hide_difference_curve(){
     if(child_benefit_hide_difference_switch.checked == true){
+        child_benefit_chart.axis.labels({y: 'Benefit'});
         child_benefit_chart.hide(['dif', 'difference_point']);
     }
     else{
-        if(child_benefit_hide_outputs_switch.checked){
+        child_benefit_chart.axis.labels({y: 'Benefit / Benefit Difference'});
+        if(child_benefit_hide_outputs_switch.checked || child_benefit_screenshot_mode_switch.checked){
             child_benefit_chart.show(['dif']);
         }
         else{

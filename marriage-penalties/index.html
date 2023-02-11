@@ -430,6 +430,8 @@
 <div class="center">
 
   <div class = "chart" id="top_chart_container">
+    <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
     <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Marriage Penalties (2023)</h3>
     <h4 class='chart_description long_description' id="top_chart_title_description" style="display:none;"></h4>
     
@@ -550,7 +552,7 @@
     <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled />
 
     <!-- Marriage Penalties Chart -->
-    <div class='chart_actual' id="top_chart"></div>
+    <div id="top_chart"></div>
 
     <!-- Chart Title & Logo -->
     <div class='chart_title_logo_container' id="top_chart_logo">
@@ -565,11 +567,13 @@
       </div>
     </div>
 
-  <!-- Chart Options -->
-  <div class="chart_options_container" id="top_chart_options_container">
+    </div> <!-- Screenshot wrapper -->
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="top_chart_options_container">
 
     <!--Hide outputs switch-->
-    <label class="switch">
+    <label class="switch" id='top_chart_hide_outputs_switch_container'>
       Hide outputs:
       <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
       <span class="slider round"></span>
@@ -579,6 +583,13 @@
     <label class="switch">
       Screenshot mode:
       <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'marriage_penalty', ['values_point'], 'top_chart_person1_income', true);top_chart_description_generator();">
+      <span class="slider round"></span>
+    </label>
+
+    <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+    <label class="switch" id='top_chart_screenshot_frame_switch_container' style="display:none">
+      Hide screenshot frame guide:
+      <input type="checkbox" id="top_chart_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top_chart')">
       <span class="slider round"></span>
     </label>
       
@@ -736,6 +747,8 @@
 
   <!----------- HOH Tax Chart-------------->
   <div class = "chart" id="hoh_tax_container">
+    <div class='screenshot_wrapper' id='hoh_tax_screenshot_wrapper' >
+
     <h3 class='chart_title' id='hoh_tax_title'>Head of Household Creates Marriage Penalties</h3>
     <h4 class='chart_description long_description' id="hoh_tax_title_description" style="display:none;"></h4>
     
@@ -809,6 +822,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="hoh_tax_options_container">
 
@@ -816,6 +831,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="hoh_tax_screenshot_mode_switch" oninput="screenshot_mode('hoh_tax', 'marriage_penalty', ['values_point'], 'hoh_tax_person1_income', false);marriage_penalty_description_generator('hoh_tax', 'tax');">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='hoh_tax_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="hoh_tax_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('hoh_tax')">
         <span class="slider round"></span>
       </label>
         
@@ -909,6 +931,8 @@
 
   <!----------- Single Filer Tax Chart-------------->
   <div class = "chart" id="single_tax_container">
+    <div class='screenshot_wrapper' id='single_tax_screenshot_wrapper' >
+
     <h3 class='chart_title' id='single_tax_title'>Single Filer Status Does Not Create Marriage Penalties</h3>
     <h4 class='chart_description long_description' id="single_tax_title_description" style="display:none;"></h4>
     
@@ -934,7 +958,7 @@
       <label for="single_tax_person2_filing_status">and my partner is a </label>
       <select id="single_tax_person2_filing_status" oninput="tax_adjust_person2_filing_status('single_tax');" >
         <option value="single">single filer</option>
-      </select>.
+      </select>
 
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
@@ -980,6 +1004,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="single_tax_options_container">
 
@@ -987,6 +1013,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="single_tax_screenshot_mode_switch" oninput="screenshot_mode('single_tax', 'marriage_penalty', ['values_point'], 'single_tax_person1_income', false);marriage_penalty_description_generator('single_tax', 'tax');">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='single_tax_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="single_tax_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('single_tax')">
         <span class="slider round"></span>
       </label>
         
@@ -1002,6 +1035,8 @@
   <div class="article_tag"><em>Program Page: <a href="../earned-income-tax-credit/index.html" target="_blank">Earned Income Tax Credit</a> </em></div>
 
   <div class = "chart" id="eitc_marriage_penalty_container">
+    <div class='screenshot_wrapper' id='eitc_marriage_penalty_screenshot_wrapper' >
+
     <h3 class='chart_title' id='eitc_marriage_penalty_title'>The EITC Creates Marriage Penalties</h3>
     <h4 class='chart_description long_description' id="eitc_marriage_penalty_title_description" style="display:none;"></h4>
     
@@ -1081,6 +1116,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="eitc_marriage_penalty_options_container">
 
@@ -1088,6 +1125,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="eitc_marriage_penalty_screenshot_mode_switch" oninput="screenshot_mode('eitc_marriage_penalty', 'marriage_penalty', ['values_point'], 'eitc_marriage_penalty_person1_income', false);marriage_penalty_description_generator('eitc_marriage_penalty', 'eitc');">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='eitc_marriage_penalty_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="eitc_marriage_penalty_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc_marriage_penalty')">
         <span class="slider round"></span>
       </label>
         
@@ -1719,7 +1763,7 @@
 
 <!-- Load d3.js and c3.js -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="../reference_files/c3-0.7.20/c3.min.js"></script>
+<script src="../reference_files/c3-0.7.20/c3-custom.js"></script>
 
 <!-- MathJax -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

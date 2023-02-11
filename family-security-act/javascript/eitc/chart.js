@@ -13,9 +13,9 @@ var eitc_chart = c3.generate({
         },
         columns: [
             ['x',        0, 10979, 18000, 26262, 33000, 49622, 54000, 60000],
-            ['FSA_EITC', 0, 1830,  3000,  3000,  3000,  625,   0,     0],
-            ['EITC',     0, 3733,  3733,  3733,  2666,  0,     0,     0],
-            ['dif',      0, -1903, -733, -733,  334,   625,   0,      0],
+            ['FSA_EITC', 0, 1830,  3000,  3000,  3000,  625,   0,],
+            ['EITC',     0, 3733,  3733,  3733,  2666,  0,],
+            ['dif',      0, -1903, -733, -733,  334,   625,    0,      0],
 
             ['x_point',         20000],
             ['current_point',   3733],
@@ -59,12 +59,13 @@ var eitc_chart = c3.generate({
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000]
             },
             padding: {left: 0, right: 0},
+            height: 45,
         },
         y: {
             label: {text: 'Benefit / Benefit Difference', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [-4000, -3000, -2000, -1000, 0, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
+                values: [-4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
             },
             padding: {bottom: 10},
         }
@@ -93,7 +94,7 @@ function eitc_only_difference_curve(){
     }
     else{
         eitc_chart.axis.labels({y: 'Benefit / Benefit Difference'});
-        if(eitc_hide_outputs_switch.checked){
+        if(eitc_hide_outputs_switch.checked || eitc_screenshot_mode_switch.checked){
             eitc_chart.show(['FSA_EITC', 'EITC']);
         }
         else{
@@ -103,13 +104,15 @@ function eitc_only_difference_curve(){
 }
 
 function eitc_hide_difference_curve(){
-    if(eitc_hide_difference_switch.checked == true){
+    if(eitc_hide_difference_switch.checked){
+        eitc_chart.internal.config.axis_y_padding = {bottom: 0};
         eitc_chart.axis.labels({y: 'Benefit'});
         eitc_chart.hide(['dif', 'difference_point']);
     }
     else{
+        eitc_chart.internal.config.axis_y_padding = {bottom: 10};
         eitc_chart.axis.labels({ y: 'Benefit / Benefit Difference'});
-        if(eitc_hide_outputs_switch.checked){
+        if(eitc_hide_outputs_switch.checked || eitc_screenshot_mode_switch.checked){
             eitc_chart.show(['dif']);
         }
         else{
@@ -130,8 +133,16 @@ function eitc_hide_outputs(){
     else {
         document.getElementById('eitc_outputs').style.display = 'block';
         document.getElementById('eitc_income_container').style.display = 'block';
-        eitc_chart.show(['current_point', 'fsa_point', 'difference_point']);
         eitc_chart.xgrids([{value: eitc_previous_income, text: 'Your income'}]);
+        if(eitc_only_difference_switch.checked){
+            eitc_chart.show(['difference_point']);
+        }
+        else if(eitc_hide_difference_switch.checked){
+            eitc_chart.show(['current_point', 'fsa_point']);
+        }
+        else{
+            eitc_chart.show(['current_point', 'fsa_point', 'difference_point']);
+        }
     }
 }
 

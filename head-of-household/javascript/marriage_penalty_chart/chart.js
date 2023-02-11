@@ -108,6 +108,7 @@ var marriage_penalty_chart = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 200000,
+            height: 45,
         },
         y: {
             label: {text: 'Tax Liability', position: 'outer-middle'},

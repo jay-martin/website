@@ -76,8 +76,8 @@ var mp_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 65,
-        right: 65,
+        left: 60,
+        right: 20,
     },
     legend: {
         position: 'bottom',
@@ -95,6 +95,7 @@ var mp_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 60000,
+            height: 45,
         },
         y: {
             show: true,

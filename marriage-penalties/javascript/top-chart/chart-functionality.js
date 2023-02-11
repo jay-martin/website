@@ -80,13 +80,13 @@ function top_chart_description_generator(){
     let person2_filing_status = capitalize_filing_status(top_chart_person2_filing_status.value);
     let person2_income = top_chart_person2_income.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     if(isActive['eitc'] && isActive['hoh']){
-        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a " + person1_filing_status + " with " + person1_children + "<br>When Their Partner is a " + person2_filing_status + " with " + person2_children + " and an Income Fixed at $" + person2_income;
+        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a " + person1_filing_status + " with " + person1_children + " When Their Partner is a " + person2_filing_status + " with " + person2_children + " and has an Income Fixed at $" + person2_income;
     }
     else if(isActive['eitc']){
-        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a Person with " + person1_children + "<br>When Their Partner Has " + person2_children + " and an Income Fixed at $" + person2_income;
+        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a Person with " + person1_children + " When Their Partner has " + person2_children + " and an Income Fixed at $" + person2_income;
     }
     else if(isActive['hoh']){
-        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a " + person1_filing_status + "<br>When Their Partner is a " + person2_filing_status + " with an Income Fixed at $" + person2_income;
+        document.getElementById('top_chart_title_description').innerHTML = "Marriage Penalties Incurred by a " + person1_filing_status + " When Their Partner is a " + person2_filing_status + " with an Income Fixed at $" + person2_income;
     }
 
 }

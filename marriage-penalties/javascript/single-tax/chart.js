@@ -105,6 +105,7 @@ var single_tax_chart = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 200000,
+            height: 45,
         },
         y: {
             label: {text: 'Tax Liability', position: 'outer-middle'},
@@ -124,7 +125,7 @@ var single_tax_chart = c3.generate({
             lines: [{value: 80000, text: 'Your income'}, {value: 40000, text: "Your partner's income"}, {value: 120000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 10921, text: "Married tax"}, {value: 12799, text: "Combined individual tax"}, ]
+            lines: [{value: 0}, {value: 12799, text: "Combined individual tax"}, {value: 10921, text: "Married tax", y_position: 'below'},]
         }
     },
 });

@@ -99,6 +99,7 @@ var marriage_penalty_chart = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 60000,
+            height: 45,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},

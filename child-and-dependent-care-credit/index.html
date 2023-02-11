@@ -446,6 +446,8 @@
   <div class="center">
 
     <div class="chart" id="top_container">
+      <div class='screenshot_wrapper' id='top_screenshot_wrapper' >
+
       <h3 class='chart_title' id="top_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Child and Dependent Care Credit</h3>
       <h4 class='chart_description' id="top_title_description" style="display:none;"></h4>
 
@@ -489,7 +491,7 @@
       <div id="top_chart"></div>
 
       <!-- Chart Title & Logo -->
-      <div class='chart_title_logo_container' id="top_chart_logo">
+      <div class='chart_title_logo_container' id="top_logo">
         <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
         <div>
           <div class='float_right'>
@@ -500,6 +502,8 @@
           </div>
         </div>
       </div>
+
+      </div> <!-- Screenshot wrapper -->
 
       <!-- Chart Options -->
       <div class="chart_options_container" id="top_options_container">
@@ -515,6 +519,13 @@
         <label class="switch">
           Screenshot mode:
           <input type="checkbox" id="top_screenshot_mode_switch" oninput="screenshot_mode('top', 'basic', ['point_credit_rate', 'point_credit_amount'], 'top_income', true);top_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='top_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="top_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top')">
           <span class="slider round"></span>
         </label>
 
@@ -687,7 +698,10 @@
   </div> <!--chart end-->
 
   <div class="chart" id="complexity_container">
-    <h3 class='chart_title'>The CDCC Is Needlessly Complicated</h3>
+    <div class='screenshot_wrapper' id='complexity_screenshot_wrapper' >
+
+    <h3 class='chart_title' id='complexity_title'>The CDCC Is Needlessly Complicated</h3>
+    <h4 class='chart_description long_description' id="complexity_title_description" style="display:none;">Value of Credit Available After Use of the Standard Deduction (2023)</h4>
 
       <!--User inputs------------------------------>
       <div class="user_inputs" id="complexity_inputs">
@@ -742,12 +756,25 @@
         </div>
       </div>
 
+      </div> <!-- Screenshot wrapper -->
+
       <!-- Chart Options -->
       <div class="chart_options_container">
 
-        <label>Screenshot Mode:
-        <input type="checkbox" id="complexity_screenshot_mode_switch" oninput="complexity_screenshot_mode();">
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="complexity_screenshot_mode_switch" oninput="screenshot_mode('complexity', 'basic', ['single_one_point', 'single_two_point','hoh_one_point', 'hoh_two_point','married_one_point', 'married_two_point',], 'complexity_income', false);">
+          <span class="slider round"></span>
         </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='complexity_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="complexity_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('complexity')">
+          <span class="slider round"></span>
+        </label>
+
       </div>
 
     </div> <!--chart end-->

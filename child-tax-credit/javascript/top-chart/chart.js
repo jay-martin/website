@@ -31,8 +31,8 @@ var top_chart_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 10,
-        left: 65,
-        right: 20,
+        left: 60,
+        right: 35,
     },
     legend: {
         position: 'bottom',
@@ -49,14 +49,15 @@ var top_chart_chart = c3.generate({
                 values: [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000]
             },
             padding: {left: 0, right: 10},
+            height: 45,
         },
         y: {
             label: {text: 'CTC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000,]
+                values: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500]
             },
-            padding: {top: 85, bottom: 0},
+            padding: {top: 61, bottom: 0},
         }
     },
     grid: {

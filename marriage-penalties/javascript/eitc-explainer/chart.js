@@ -73,6 +73,7 @@ var eitcExplainer = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 35000,
+            height: 45,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},

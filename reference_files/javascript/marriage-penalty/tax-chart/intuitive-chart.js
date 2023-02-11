@@ -113,16 +113,20 @@ function tax_intuitive_modify_income(chart_name){
     let combined_tax = p1_tax + p2_tax;
     let married_tax = tax_liability_2023('married', combined_income);
 
-    /* Move grids */
+    /* Move xgrids */
     chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
-    chart.ygrids([{value: 0}, {value: married_tax, text: "Married tax"}, {value: combined_tax, text: "Combined individual tax"}]);
 
     /* Move points */
     chart.load({columns: [ ['x_point1', p1_income] , ['point1', p1_tax], ['x_point2', p2_income], ['point2', p2_tax], ['x_point_married', combined_income], ['point_married', married_tax] ] });
 
     /* Move stacked eitc value curves */
     penalty = married_tax - p1_tax - p2_tax;
-    if(penalty > 0){
+    if(penalty.toFixed(0) == 0){ 
+        chart.hide(['combined_tax', 'tax_penalty', 'married_tax', 'tax_bonus']);
+        chart.ygrids([{value: 0}, {value: married_tax, text: "Combined individual tax/Married tax"}]);
+    }
+    else if(penalty > 0){
+        chart.ygrids([{value: 0}, {value: married_tax, text: "Married tax"}, {value: combined_tax, text: "Combined individual tax", y_position: 'below'}]);
         chart.show(['combined_tax',  'tax_penalty']);
         chart.hide(['married_tax',   'tax_bonus']);
         chart.load({
@@ -134,6 +138,7 @@ function tax_intuitive_modify_income(chart_name){
         });
     }
     else{
+        chart.ygrids([{value: 0}, {value: combined_tax, text: "Combined individual tax"}, {value: married_tax, text: "Married tax", y_position: 'below'},]);
         chart.hide(['combined_tax', 'tax_penalty']);
         chart.show(['married_tax',  'tax_bonus']);
         chart.load({

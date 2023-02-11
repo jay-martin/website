@@ -102,6 +102,7 @@ var existingEITC = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 100000,
+            height: 45,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},

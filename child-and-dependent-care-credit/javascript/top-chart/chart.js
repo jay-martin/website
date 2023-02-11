@@ -51,7 +51,7 @@ var top_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 65,
+        left: 50,
         right: 65,
     },
     legend: {
@@ -70,6 +70,7 @@ var top_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 60000,
+            height: 50,
         },
         y: {
             show: true,
@@ -101,5 +102,5 @@ var top_chart = c3.generate({
             lines: [{value: 20000, text: 'Your income'}],
             min: 0,
         },
-    }
+    },
 });

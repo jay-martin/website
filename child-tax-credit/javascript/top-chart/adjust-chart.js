@@ -35,6 +35,7 @@ function adjust_curve(){
 
     // Adjust x-axis tick values
     x_axis_ticks();
+    y_axis_tick();
 }
 
 /* Zooms on Lower Incomes */
@@ -44,6 +45,15 @@ function x_axis_ticks(){
     }
     else{
         top_chart_chart.internal.config.axis_x_tick_values = [0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000];
+    }
+}
+
+function y_axis_tick(){
+    if(top_chart_num_children.value === 'one'){
+        top_chart_chart.internal.config.axis_y_tick_values = [0, 500, 1000, 1500, 2000, 2500];
+    }
+    else {
+        top_chart_chart.internal.config.axis_y_tick_values = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000];
     }
 }
 

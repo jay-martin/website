@@ -103,6 +103,7 @@ var eitc_marriage_penalty_chart = c3.generate({
             },
             padding: {left: 0, right: 30},
             max: 60000,
+            height: 45,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},
@@ -118,7 +119,7 @@ var eitc_marriage_penalty_chart = c3.generate({
           front: false
         },
         x: {
-            lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}]
+            lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}],
             /*
             lines: [{value: 30000, text: 'Your income'}]
             */

@@ -434,7 +434,9 @@
   
   <!--Top Chart---------------------------------------------------->
   <div class = "chart" id="top_chart_container">
-    <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Family Security Act: Comparison with 2022 Policy</h3>
+    <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
+    <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Family Security Act:<br>Comparison with 2022 Policy</h3>
     <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
 
     <!--User inputs-->
@@ -517,6 +519,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="top_chart_options_container">
 
@@ -528,7 +532,7 @@
       </label>
 
       <!--Hide outputs switch-->
-      <label class="switch">
+      <label class="switch" id='top_chart_hide_outputs_switch_container'>
         Hide outputs:
         <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_inputs_outputs()">
         <span class="slider round"></span>
@@ -538,6 +542,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'top_chart_income', true);top_chart_description_generator();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='top_chart_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="top_chart_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top_chart')">
         <span class="slider round"></span>
       </label>
       </br>
@@ -743,6 +754,8 @@
   <h2 id="child_allowance">Child Benefit</h2>
 
   <div class="chart" id="child_benefit_container">
+    <div class='screenshot_wrapper' id='child_benefit_screenshot_wrapper' >
+
     <h3 class='chart_title' id='child_benefit_title'>The Family Security Act: Child Benefit</h3>
     <h4 class='chart_description' id="child_benefit_title_description" style="display:none;"></h4>
 
@@ -751,7 +764,7 @@
     
       <!--FSA 1.0 or 2.0-->
       <label for="fsa1_or_2_CA">Show me the: </label>
-      <select name="fsa1or2" id="fsa1_or_2_CA" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+      <select name="fsa1or2" id="fsa1_or_2_CA" oninput="adjust_child_benefit_chart();child_benefit_outputs();adjust_zoom_CA()">
         <option value="one">FSA 1.0</option>
         <option value="two" selected>FSA 2.0</option>
       </select>
@@ -759,17 +772,15 @@
 
       <!--Filing status-->
       <label for="child_benefit_filing_status">I am a</label>
-      <select id="child_benefit_filing_status" oninput="modifyCAGraph();new_benefits_CA();adjust_zoom_CA()">
+      <select id="child_benefit_filing_status" oninput="adjust_child_benefit_chart();child_benefit_outputs();adjust_zoom_CA()">
         <option value="married">married joint filer</option>
         <option value="hoh">head of household</option>
         <option value="single">single filer</option>
       </select>
-      .
-      </br>
 
       <!--Number of old children-->
-      <label for="child_benefit_old_children">I have</label>
-      <select id="child_benefit_old_children" oninput="modifyCAGraph();new_benefits_CA()">
+      <label for="child_benefit_old_children">who has </label>
+      <select id="child_benefit_old_children" oninput="adjust_child_benefit_chart();child_benefit_outputs()">
         <option value="none">no children</option>
         <option value="one" selected>1 child</option>
         <option value="two">2 children</option>
@@ -778,7 +789,7 @@
 
       <!--Number of young children-->
       <label for="child_benefit_young_children"></label>
-      <select id="child_benefit_young_children" oninput="modifyCAGraph();new_benefits_CA()">
+      <select id="child_benefit_young_children" oninput="adjust_child_benefit_chart();child_benefit_outputs()">
         <option value="none">no children</option>
         <option value="one">1 child</option>
         <option value="two">2 children</option>
@@ -789,7 +800,7 @@
       <div class="slidecontainer" id="child_benefit_income_container"> 
         <label for="child_benefit_income" class="slider-text"> I have an income of $<output id="child_benefit_income_output">60,000</output>.</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="child_benefit_income" oninput="child_benefit_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome_CA();new_benefits_CA()">
+          <input type="range" min="0" max="600000" value="60000" step="1000" class="slider" id="child_benefit_income" oninput="child_benefit_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');child_benefit_modify_income();child_benefit_outputs()">
         </div>
       </div>
 
@@ -818,6 +829,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="child_benefit_options_container">
 
@@ -836,7 +849,7 @@
       </label>
 
       <!--Hide outputs switch-->
-      <label class="switch">
+      <label class="switch" id='child_benefit_hide_outputs_switch_container'>
         Hide outputs:
         <input type="checkbox" id="child_benefit_hide_outputs_switch" oninput="child_benefit_hide_outputs()">
         <span class="slider round"></span>
@@ -846,6 +859,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="child_benefit_screenshot_mode_switch" oninput="screenshot_mode('child_benefit', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'child_benefit_income', false);child_benefit_description_generator();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='child_benefit_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="child_benefit_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('child_benefit')">
         <span class="slider round"></span>
       </label>
 
@@ -879,10 +899,13 @@
 
 <!------------------Head of Household -------------------------------------------------------------------------------------------------------------->
 <section class = 'center_no_side_elements' id='hoh'>
-  <h2 id="hoh_title">Head of household filing status</h2>
+  <h2>Head of household filing status</h2>
   
   <div class="chart" id='hoh_container'>
-    <h3 class='chart_title'>The Head of Household Filing Status (2022)</h3>
+    <div class='screenshot_wrapper' id='hoh_screenshot_wrapper' >
+
+    <h3 class='chart_title' id='hoh_title'>Head of Household Tax Savings (2022)</h3>
+    <h4 class='chart_description long_description' id="hoh_title_description" style="display:none;">Using the Standard Deduction</h4>
 
     <!--User inputs-->
     <div class="user_inputs" id="hoh_inputs">
@@ -912,7 +935,7 @@
     </div>
 
     <!--HOH Chart-->
-    <div id="HOHchart"></div>
+    <div id="hoh_chart"></div>
 
     <!-- Chart Title & Logo -->
     <div class='chart_title_logo_container' id="hoh_chart_logo">
@@ -927,6 +950,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="hoh_options_container">
       <!--Zoom switch-->
@@ -939,9 +964,17 @@
       <!--Screenshot mode switch-->
       <label class="switch">
         Screenshot mode:
-        <input type="checkbox" id="hoh_screenshot_mode_switch" oninput="hoh_screenshot_mode()">
+        <input type="checkbox" id="hoh_screenshot_mode_switch" oninput="screenshot_mode('hoh', 'basic', ['point'], 'myRange_HOH', false);">
         <span class="slider round"></span>
       </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='hoh_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="hoh_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('hoh')">
+        <span class="slider round"></span>
+      </label>
+
     </div>
 
   </div> <!-----HOH Chart------->
@@ -957,7 +990,9 @@
   
   <!--Chart-->
   <div class="chart" id="eitc_container">
-    <h3 class='chart_title' id="eitc_title">Family Security Act: Earned Income Tax Credit</h3>
+    <div class='screenshot_wrapper' id='eitc_screenshot_wrapper' >
+
+    <h3 class='chart_title' id="eitc_title">The Family Security Act:<br> Earned Income Tax Credit</h3>
     <h4 class='chart_description' id="eitc_title_description" style="display:none;"></h4>
 
     <!--User inputs-->
@@ -1015,11 +1050,13 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container" id="eitc_options_container">
 
       <!--Hide inputs/outputs switch-->
-      <label class="switch">
+      <label class="switch" id='eitc_hide_outputs_switch_container'>
         Hide outputs:
         <input type="checkbox" id="eitc_hide_outputs_switch" oninput="eitc_hide_outputs()">
         <span class="slider round"></span>
@@ -1029,6 +1066,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="eitc_screenshot_mode_switch" oninput="screenshot_mode('eitc', 'basic', ['current_point', 'fsa_point', 'difference_point'], 'eitc_income', false);eitc_description_generator();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='eitc_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="eitc_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc')">
         <span class="slider round"></span>
       </label>
 

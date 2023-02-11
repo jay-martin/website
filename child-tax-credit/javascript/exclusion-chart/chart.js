@@ -55,6 +55,7 @@ var exclusion_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 50000,
+            height: 45,
         },
         y: {
             label: {text: 'Credit Value', position: 'outer-middle'},

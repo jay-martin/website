@@ -442,6 +442,8 @@
   <div class="center">
 
     <div class="chart" id="top_chart_container">
+      <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
       <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Child Tax Credit (2023)</h3>
       <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
 
@@ -509,6 +511,8 @@
         </div>
       </div>
 
+      </div> <!-- Screenshot wrapper -->
+
       <!-- Chart Options -->
       <div class="chart_options_container">
 
@@ -517,7 +521,7 @@
         </label>
 
         <!--Hide outputs switch-->
-        <label class="switch">
+        <label class="switch" id="top_chart_hide_outputs_switch_container">
           Hide outputs:
           <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
           <span class="slider round"></span>
@@ -527,6 +531,13 @@
         <label class="switch">
           Screenshot mode:
           <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'top_chart_income', true);top_chart_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='top_chart_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="top_chart_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top_chart')">
           <span class="slider round"></span>
         </label>
 
@@ -746,7 +757,10 @@
   <div class="article_tag"><em>See also: <a href="../administrative-burdens/index.html" target="_blank">Administrative Burdens</a> </em></div>
 
   <div class="chart" id="complexity_container">
-    <h3 class='chart_title'>The CTC Is Needlessly Complicated</h3>
+    <div class='screenshot_wrapper' id='complexity_screenshot_wrapper' >
+
+    <h3 class='chart_title' id='complexity_title'>The CTC Is Needlessly Complicated</h3>
+    <h4 class='chart_description long_description' id="complexity_title_description" style="display:none;">Phase-Ins for Families with 1–4 Children</h4>
 
     <!--User inputs------------------------------>
     <div class="user_inputs" id="complexity_inputs">
@@ -813,6 +827,8 @@
       </div>
     </div>
 
+    </div> <!-- Screenshot wrapper -->
+
     <!-- Chart Options -->
     <div class="chart_options_container">
 
@@ -820,6 +836,13 @@
       <label class="switch">
         Screenshot mode:
         <input type="checkbox" id="complexity_screenshot_mode_switch" oninput="screenshot_mode('complexity', 'basic', ['point1S', 'point1H', 'point1M', 'point2S', 'point2H', 'point2M', 'point3S', 'point3H', 'point3M', 'point4S', 'point4H', 'point4M',], 'complexity_income', false);">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='complexity_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="complexity_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('complexity')">
         <span class="slider round"></span>
       </label>
 

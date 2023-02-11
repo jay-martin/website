@@ -434,7 +434,9 @@
 
     <!--Chart--------------------------------------------->
     <div class="chart" id="top_chart_container">
-      <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Effective Marginal Tax Rates (2023)</h3>
+      <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
+      <h3 class='chart_title smaller_mobile_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">Effective Marginal Tax Rates (2023)</h3>
       <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
 
       <!--User inputs--------------------------->
@@ -530,7 +532,7 @@
     -->
 
       <!--c3.js chart-->
-      <div class="chart_actual" id="top_chart"></div>
+      <div id="top_chart"></div>
 
       <!-- Chart Title & Logo -->
       <div class='chart_title_logo_container' id="top_chart_logo">
@@ -545,13 +547,15 @@
         </div>
       </div>
 
+      </div> <!-- Screenshot wrapper -->
+
       <!-- Chart Options -->
       <div class="chart_options_container" id="top_chart_options_container">
 
         <!--Zoom selection-->
         <div class="dropdown" id="zoom_dropdown_container">
           <label>Show higher/lower income:
-          <select class="dropdown" name="zoom_level" id="zoom_dropdown" oninput="zoom_chart()">
+          <select class="dropdown" id="zoom_dropdown" oninput="top_chart_zoom()">
             <option value="lower">Lower</option>
             <option value="default" selected>Default</option>
             <option value="higher">Higher</option>
@@ -578,7 +582,7 @@
           <span class="checkmark"></span>
         </label>
 
-        <!--Arbitrary zoom switch-->
+        <!--Arbitrary axes-->
         <label class="switch_label" id="adjust_axes_switch_label">
           Adjust axes:
           <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
@@ -586,7 +590,7 @@
         </label>
 
         <!--Hide outputs switch-->
-        <label class="switch">
+        <label class="switch" id="top_chart_hide_outputs_switch_container">
           Hide outputs:
           <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
           <span class="slider round"></span>
@@ -595,7 +599,14 @@
         <!--Screenshot mode switch-->
         <label class="switch">
           Screenshot mode:
-          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();">
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();additional_screenshot_modes_changes();">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='top_chart_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="top_chart_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top_chart')">
           <span class="slider round"></span>
         </label>
 

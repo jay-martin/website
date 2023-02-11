@@ -1,6 +1,6 @@
 /*DEFAULT GRAPH: Standard deduction for both single filer & HOH */
-var HOHchart = c3.generate({
-    bindto: '#HOHchart',
+var hoh_chart = c3.generate({
+    bindto: '#hoh_chart',
     data: {
         xs: {
             'HOH_Savings' : 'x',
@@ -42,6 +42,7 @@ var HOHchart = c3.generate({
                 values: [0, 100000, 200000, 300000, 400000, 500000, 600000]
             },
             padding: {left: 0, right: 0},
+            height: 45,
         },
         y: {
             label: {text: 'Tax Savings', position: 'outer-middle'},
@@ -70,16 +71,16 @@ function zoomHOHGraph(){
     if(zoom_switch_HOH.checked === true){
         myRange_HOH.max = "100000";
             setTimeout(function () {
-                HOHchart.axis.max({x: 100000});
+                hoh_chart.axis.max({x: 100000});
         }, );
-        HOHchart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
+        hoh_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
     }
     else{
         myRange_HOH.max = "600000";
             setTimeout(function () {
-                HOHchart.axis.max({x: 600000});
+                hoh_chart.axis.max({x: 600000});
         }, );
-        HOHchart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+        hoh_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
     }
 }
 
@@ -87,11 +88,11 @@ function zoomHOHGraph(){
 function modifyIncome_HOH(){
     let income = myRange_HOH.value;
     setTimeout(function () {
-        HOHchart.xgrids([{value: income, text:'Your income'}]);
+        hoh_chart.xgrids([{value: income, text:'Your income'}]);
     }, );
 
     difference = taxDifferenceatIncomeValue(income, myRange_ID.value);
-    HOHchart.load({ 
+    hoh_chart.load({ 
         columns: [
             ['x_point', income],
             ['point', difference],
@@ -107,7 +108,7 @@ function modifyGraph_HOH(){
     tax_dif = data[1];
     tax_dif.unshift('HOH_Savings');
 
-    HOHchart.load({
+    hoh_chart.load({
         columns: [
             combined_brackets,
             tax_dif
@@ -122,14 +123,14 @@ function hoh_screenshot_mode(){
         document.getElementById('hoh_inputs').style.display = 'none';
         document.getElementById('hoh_outputs').style.display = 'none';
         $('#hoh_container').css('border', 'none');
-        HOHchart.hide(['point']);
-        HOHchart.xgrids([]);
+        hoh_chart.hide(['point']);
+        hoh_chart.xgrids([]);
     }
     else {
         document.getElementById('hoh_inputs').style.display = 'block';
         document.getElementById('hoh_outputs').style.display = 'block';
         $('#hoh_container').css('border', 'solid');
-        HOHchart.show(['point']);
-        HOHchart.xgrids([{value: hoh_previous_income, text: 'Your income'}]);
+        hoh_chart.show(['point']);
+        hoh_chart.xgrids([{value: hoh_previous_income, text: 'Your income'}]);
     }
 }

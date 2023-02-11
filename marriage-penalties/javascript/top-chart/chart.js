@@ -115,7 +115,7 @@ var top_chart_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 0,
-        left: 75,
+        left: 65,
         right: 20,
     },
     legend: {
@@ -132,11 +132,12 @@ var top_chart_chart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000]
             },
-            padding: {left: 0, right: 30},
+            padding: {left: 0, right: 0},
             max: 70000,
+            height: 45,
         },
         y: {
-            label: {text: 'Marriage Penalty', position: 'outer-middle'},
+            label: {text: 'Marriage Penalty / Bonus', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
                 // values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]

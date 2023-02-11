@@ -80,7 +80,7 @@ var top_chart_chart = c3.generate({
         bottom: 0,
         top: 0,
         left: 55,
-        right: 10,
+        right: 20,
     },
     legend: {
         position: 'bottom',
@@ -98,6 +98,7 @@ var top_chart_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 100000,
+            height: 45,
         },
         y: {
             label: {text: 'Effective Marginal Tax Rate', position: 'outer-middle'},
@@ -107,7 +108,7 @@ var top_chart_chart = c3.generate({
                     },
                 values: [-60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
             },
-            padding: {top: 10, bottom: 5},
+            padding: {top: 10, bottom: 0},
         }
     },
     grid: {

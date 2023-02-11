@@ -122,6 +122,7 @@ var complexity_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 65000,
+            height: 45,
         },
         y: {
             label: {text: 'EITC Value', position: 'outer-middle'},

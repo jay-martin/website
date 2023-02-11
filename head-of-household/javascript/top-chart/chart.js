@@ -52,8 +52,8 @@ var top_chart_chart = c3.generate({
     padding: {
         bottom: 0,
         top: 10,
-        left: 65,
-        right: 20,
+        left: 60,
+        right: 10,
     },
     legend: {
         position: 'bottom',
@@ -71,6 +71,7 @@ var top_chart_chart = c3.generate({
             },
             padding: {left: 0, right: 0},
             max: 620000,
+            height: 45,
         },
         y: {
             label: {text: 'Tax Savings', position: 'outer-middle'},

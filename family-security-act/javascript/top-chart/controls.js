@@ -117,14 +117,26 @@ function top_chart_zoom(){
 /* Hides or shows benefit curves based on user input*/
 function top_chart_only_show_difference_curve(){
     if(top_chart_only_difference_switch.checked === true){
+        top_chart_chart.axis.labels({y: 'Benefit Difference'});
         top_chart_chart.hide(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
     }
     else{
         if(top_chart_filing_status.value === 'hoh'){
-            top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
+            top_chart_chart.axis.labels({y: 'Benefit / Benefit Difference'});
+            if(top_chart_screenshot_mode_switch.checked || top_chart_hide_outputs_switch.checked){
+                 top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'ctc', 'eitc', 'hoh',]);
+            }
+            else{
+                 top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'hoh', 'current_point']);
+            }
         }
         else{
-            top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'current_point',]);
+            if(top_chart_screenshot_mode_switch.checked || top_chart_hide_outputs_switch.checked){
+                top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'ctc', 'eitc', ]);
+            }
+            else{
+                top_chart_chart.show(['fsa_ca', 'fsa_eitc', 'fsa_point', 'ctc', 'eitc', 'current_point',]);
+            }
         }
     }
 }
@@ -132,10 +144,17 @@ function top_chart_only_show_difference_curve(){
 /* Hides or shows difference curve based on user input*/
 function top_chart_hide_difference_curve(){
     if(top_chart_hide_difference_switch.checked === true){
+        top_chart_chart.axis.labels({y: 'Benefit'});
         top_chart_chart.hide(['difference', 'difference_point']);
     }
     else{
-        top_chart_chart.show(['difference', 'difference_point']);
+        top_chart_chart.axis.labels({y: 'Benefit / Benefit Difference'});
+        if(top_chart_screenshot_mode_switch.checked || top_chart_hide_outputs_switch.checked){
+            top_chart_chart.show(['difference']);
+        }
+        else{
+            top_chart_chart.show(['difference', 'difference_point']);
+        }
     }
 }
 

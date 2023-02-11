@@ -60,15 +60,16 @@ function arbitrary_y_axis(min, max){
 
 /* Power Users: Reveals the axis sliders */
 function show_adjust_axes(){
-    if(adjust_axes_switch.checked === true){
+    if(adjust_axes_switch.checked){
         x_axis_slider_container.style.display = 'block';
         y_axis_slider_container.style.display = 'block';
         y_axis_slider_container_ei.style.display = 'block';
     }
-    else{
+    else {
         x_axis_slider_container.style.display = 'none';
         y_axis_slider_container.style.display = 'none';
         y_axis_slider_container_ei.style.display = 'none';
+        top_chart_chart.internal.config.axis_y_max = undefined;
     }
 }
 
@@ -99,8 +100,8 @@ function adjust_arbitrary_income(){
 }
 
 /* Zooms on lower incomes */
-function zoom_top_chart_chart(){
-    if(top_chart_chart_type.value === 'EMTR'){
+function top_chart_zoom(){
+    if(top_chart_type.value === 'EMTR'){
         if(zoom_dropdown.value === 'default'){
             user_income.max = "100000";
             top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
@@ -203,6 +204,17 @@ function top_chart_hide_outputs(){
         $('#income_slider_container').css('display', 'block');
         top_chart_chart.xgrids([{value: top_chart_previous_income, text: 'Your income'}]);
         top_chart_chart.show(['point']);
+    }
+}
+
+function additional_screenshot_modes_changes(){
+    if(top_chart_screenshot_mode_switch.checked){
+        $('#top_chart_notes_button').css('display', 'none');
+        $('#arbitrary_income_label').css('display', 'none');
+    }
+    else {
+        $('#top_chart_notes_button').css('display', 'block');
+        $('#arbitrary_income_label').css('display', 'inline-block');
     }
 }
 
