@@ -269,6 +269,7 @@ svg.navbar-logo {
   width: 100%;
   padding-top: 56px;
   z-index: 1;
+  transition: all 1s ease !important;
 }
 .mobile_dropdown a {
   margin-bottom: 10px;

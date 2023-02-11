@@ -3,7 +3,7 @@
  * (1) Toggles between light, sepia, and dark modes
  * (2) Adjust the position of the left sidebar on scroll
  * (3) Adjust the color of social media icons
- * (4) Expands the mobile dropdown
+ * (4) Expands the mobile dropdown & makes navbar appear/disappear on scroll
  * (5) Highlights a reference or note when a citation is clicked
  * (6) Expands and collapses the list of programs/bills in the page list
  * (7) Opens and closes the top chart highlights
@@ -187,7 +187,21 @@ function text_color(id, color){
 	document.getElementById(id).style.color = color;
 }
 
-/******************************** 4. Mobile Dropdown *********************************/
+/******************************** 4. Mobile Dropdown & Navbar *********************************/
+previous_scroll_position = window.pageYOffset;
+window.onscroll = function() {
+  var current_scroll_position = window.pageYOffset;
+  if(previous_scroll_position < current_scroll_position && current_scroll_position > 100){
+    document.getElementById("mobile_navbar").style.marginTop = "-80px";
+    document.getElementById("mobile_dropdown").style.marginTop = "-80px";
+  } 
+  else {
+    document.getElementById("mobile_navbar").style.marginTop = "0";
+    document.getElementById("mobile_dropdown").style.marginTop = "0";
+  }
+  previous_scroll_position = current_scroll_position;
+}
+
 // Listens for when the user presses the menu icon and then triggers reveal_dropdown()
 $(document).ready(function(){
 	$('#navigation_bar_button').click(function(){
@@ -234,6 +248,14 @@ function reveal_dropdown(){
     // Page pulls up with the dropdown menu animation
     $('body').removeClass('push_down_page');
     $('body').addClass('push_up_page');
+
+    // remove transitions after completed
+    setTimeout(function(){
+      document.body.style.marginTop = '0vh';
+      $('#mobile_navbar').removeClass('maintain_navbar_position_up');
+      $('#mobile_dropdown').removeClass('collapse_dropdown');
+      $('body').removeClass('push_up_page');
+    }, 1000);
 
     //enable scroll
     //document.body.classList.remove("stop-scrolling");
