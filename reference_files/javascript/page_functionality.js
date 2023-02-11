@@ -196,7 +196,7 @@ $(document).ready(function(){
 	});
 });
 
-// Used to keep track of whether the dropdown is currently open or currently closes
+// Used to keep track of whether the dropdown is currently open or currently closed
 navbarClicked = false;
 
 // Opens and closes the dropdown menu when the open/close icon is clicked
@@ -257,6 +257,19 @@ function close_dropdown(){
   setTimeout(function(){
     $('html').css('scroll-behavior', 'smooth');
   }, 100);
+}
+
+function close_dropdown_immediate(){
+  $('#mobile_dropdown').removeClass('reveal_dropdown');
+  $('#mobile_dropdown').removeClass('collapse_dropdown');
+  $('#mobile_dropdown').css('height', '0');
+  $('#mobile_navbar').removeClass('maintain_navbar_position_down');
+  $('#mobile_navbar').removeClass('maintain_navbar_position_up');
+  $('#mobile_navbar').css('margin-top', '0vh');
+  $('body').removeClass('push_down_page');
+  $('body').removeClass('push_up_page');
+  $('body').css('margin-top', '0vh');
+  navbarClicked = false;
 }
 
 /*************************** 5. References/Notes Highlighting ******************************/

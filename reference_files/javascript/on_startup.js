@@ -50,8 +50,8 @@ for (var i = 0; i < highlights.length; i++) {
 }
 
 //Determine whether to initialize desktop or mobile page
-//Wait until page is fully loaded
 var displayWidth = window.innerWidth;
+//Wait until page is fully loaded
 $(document).ready(function(){
 	desktop_or_mobile_intialize(); // Kept as a separate function because the function is needed for window resize events
 	set_transition_settings(); // Transitions must be set at 0s initially or when the page is first loaded (i.e. CSS is not cached) it initially loads the wrong colors then very visibly transtions to the correct colors
@@ -66,6 +66,10 @@ $(window).on('resize', function() {
     		mobile_prepare_resize();
     	}
     	else{
+    		// close mobile dropdown in case of: mobile with dropdown open --> desktop --> mobile
+    		close_dropdown_immediate();
+    		$('#navigation_bar_button').removeClass('open');
+    		// now run resize
     		desktop_prepare_resize();
     	}
   	}
