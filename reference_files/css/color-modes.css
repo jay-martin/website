@@ -207,6 +207,18 @@ input[type=submit].small_button:disabled:hover {
 input[type=submit].selected_button {
   background-color: var(--small-button-hover);
 }
+/*** Jquery UI Slider ***/
+.ui-slider {
+  background-color: var(--base-background) !important;
+  border-color: var(--base-border) !important;
+}
+.ui-slider-range {
+  background-color: var(--small-button-hover) !important;
+}
+.ui-slider-handle {
+  border-color: var(--base-border) !important;
+  background-color: var(--small-button-disabled-background) !important;
+}
 /********** Tables ******************/
 table,  th,  tr,  td {
   border-color: var(--base-border);

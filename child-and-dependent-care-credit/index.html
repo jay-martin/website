@@ -456,7 +456,7 @@
 
         <!--Filing Status-->
         <label>I am a
-        <select id="top_filing_status" oninput="build_cdcc_amount_chart(top_chart, 'top_filing_status', 'top_num_children');top_chart_adjust_y_axis();top_modify_income();top_chart_outputs()">
+        <select id="top_filing_status" oninput="top_adjust_chart();top_chart_outputs()">
           <option value="single" selected>single filer</option>
           <option value="hoh">head of household</option>
           <option value="married">married joint filer</option>
@@ -465,7 +465,7 @@
 
         <!--Number of children-->
         <label>and I have
-        <select id="top_num_children" oninput="build_cdcc_amount_chart(top_chart, 'top_filing_status', 'top_num_children');top_modify_income();top_chart_adjust_y_axis();top_chart_outputs();">
+        <select id="top_num_children" oninput="top_adjust_chart();top_chart_outputs();">
           <option value="one" selected>1 child</option>
           <option value="two">2+ children</option>
         </select> under the age of 13.

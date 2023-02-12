@@ -2,6 +2,16 @@
  * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
+//Determine height & x tick values  depending on screen width
+if(window.innerWidth < 800){
+    top_xTick  = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
+    chart_height = 300;
+}
+else{
+    top_xTick = [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000];
+    chart_height = 380;
+}
+
 var top_chart_chart = c3.generate({
     bindto: '#topchart',
     data: {
@@ -46,7 +56,7 @@ var top_chart_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000]
+                values: top_xTick,
             },
             padding: {left: 0, right: 10},
             height: 45,

@@ -696,10 +696,20 @@ h2.power_users_header {
 input.arbitrary_income {
   width: 80px;
 }
-.power_users_sliders_container {
+.axis_sliders_container {
   display: none;
-  padding-right: 20px;
-  padding-bottom: 10px;
+  margin-top: 5px;
+}
+.axis_sliders_border {
+  border: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  border-color: var(--base-border);
+  padding: 5px;
+  padding-left: 10px;
+}
+.power_users_sliders {
+  margin-bottom: 10px;
 }
 input.download_button {
   font-family: "Computer Modern Sans";

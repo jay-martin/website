@@ -6,10 +6,12 @@
 //Mobile screens require fewer ticks
 var windowWidth = window.innerWidth;
 if(windowWidth < 800){
-    xTick = [0, 20000, 40000, 60000, 80000, 100000];
+    xTick  = [0, 20000, 40000, 60000, 80000, 100000];
+    chart_height = 300;
 }
 else{
-    xTick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000,];
+    xTick = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000];
+    chart_height = 380;
 }
 
 var top_chart_chart = c3.generate({
@@ -89,6 +91,9 @@ var top_chart_chart = c3.generate({
     tooltip: {
         show: false
     },
+    size: {
+        height: chart_height,
+    },
     axis: {
         x: {
             label: {text: 'Employment Income', position: 'outer-center'},
@@ -108,7 +113,7 @@ var top_chart_chart = c3.generate({
                     },
                 values: [-60, -50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
             },
-            padding: {top: 10, bottom: 0},
+            padding: {top: 10, bottom: 7.5},
         }
     },
     grid: {

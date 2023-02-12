@@ -9,7 +9,7 @@ var exclusion_chart = c3.generate({
         columns: [
             ['x',           0,    2500, 23833, 27700, 35700, 400000, 480000],
             ['ctc',         0,    0,    3200,  3200,  4000,  4000,   0],
-            ['max_benefit', 4000, 4000,  800,  800,   0,     0,      4000],
+            ['max_benefit', 4000, 4000,  800,  800,   0,],
 
             ['x_line',          15000, 15000],
             ['difference_line', 1875,  4000],
@@ -51,7 +51,7 @@ var exclusion_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 80000, 90000, 100000]
+                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
             },
             padding: {left: 0, right: 0},
             max: 50000,

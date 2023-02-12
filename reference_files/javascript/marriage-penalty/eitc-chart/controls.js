@@ -57,7 +57,7 @@ function switch_eitc_marriage_penalty_chart_type_to_values(chart_name){
 	// axis
 	chart.internal.config.axis_y_max = undefined;
 	chart.internal.config.axis_x_max = 70000;
-	chart.internal.config.axis_y_tick_values = [-10000, -9000, -8000, -7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+	chart.internal.config.axis_y_tick_values = [-11000, -10000, -9000, -8000, -7000, -6000, -5000, -4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
 	chart.internal.config.axis_y_padding = 10;
 	chart.axis.labels({y: 'Marriage Penalty/Bonus'});
 

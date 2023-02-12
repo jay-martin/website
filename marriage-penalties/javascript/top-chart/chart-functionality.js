@@ -1,4 +1,5 @@
-/* Power Users: Reveals the arbitrary income input */
+/**************************** Arbitrary Income **********************************************************/
+// Reveals the arbitrary income input
 function show_arbitrary_income(){
     if(arbitrary_income_switch.checked){
         document.getElementById('person1_arbitrary_income_container').style.display = 'block';
@@ -14,7 +15,7 @@ function show_arbitrary_income(){
     }
 }
 
-/* Power Users: Adjusts the income slider if arbitrary input box is adjusted */
+// Adjusts the income slider if arbitrary input box is adjusted
 function arbitrary_income_input(){
     person1Income = person1_arbitray_income.value;
     person2Income = person2_arbitray_income.value;
@@ -26,12 +27,13 @@ function arbitrary_income_input(){
     top_chart_person2_income_output.innerText = person2Income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-/* Power Users: adjusts arbitrary input box if income slider is moved */
+// Adjusts arbitrary input box if income slider is moved
 function adjust_arbitrary_income(){
     person1_arbitray_income.value = top_chart_person1_income.value;
     person2_arbitray_income.value = top_chart_person2_income.value;
 }
 
+/**************************** Hide Outputs **********************************************************/
 var top_chart_current_income = 0;
 function top_chart_hide_outputs(){
     top_chart_current_income = top_chart_person1_income.value;
@@ -46,9 +48,11 @@ function top_chart_hide_outputs(){
         $('#top_chart_person1_income_container').css('display', 'block');
         top_chart_chart.xgrids([{value: top_chart_current_income, text: 'Your income'}]);
         top_chart_chart.show(['values_point']);
+        top_chart_adjust_person1_income();
     }
 }
 
+/**************************** Screenshot Mode **********************************************************/
 function top_chart_description_generator(){
     let policies_active = "";
     if(isActive['eitc'] && isActive['hoh']){

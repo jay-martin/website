@@ -12,6 +12,7 @@
  * (10) Opens and closed center explanation box breakdowns
  * (11) Hide inputs/outputs on chart
  * (12) Tooltip functionality
+ * (13) Set axes to auto button
  * ****************************************************************************************/
 var is_open = new Object(); //dictionary to keep track of states of elements that open and close
 
@@ -530,4 +531,26 @@ $('.tooltip').mouseover(function(){
   }
 });
 
+/******************************** 13. Set axes to auto ******************************/
+function set_axes_to_undefined(chart, axes, force_adjust, adjust_chart_function){
+  if(axes.includes('y')){
+    chart.internal.config.axis_y_max = undefined;
+    chart.internal.config.axis_y_min = undefined;
+  }
+
+  if(axes.includes('y2')){
+    chart.internal.config.axis_y2_max = undefined;
+    chart.internal.config.axis_y2_min = undefined;
+  }
+
+  if(axes.includes('x')){
+    chart.internal.config.axis_x_max = undefined;
+    chart.internal.config.axis_x_min = undefined;
+  }
+
+  if(force_adjust == true){
+    adjust_chart_function();
+  }
+
+}
 

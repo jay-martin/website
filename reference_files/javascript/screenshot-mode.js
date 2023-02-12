@@ -78,7 +78,7 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
         }
         else{
             // push down chart options
-            $(options_container_id).css('margin-top', '40px');
+            $(options_container_id).css('margin-top', '20px');
         }
     }
     else {
@@ -120,6 +120,21 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
           $(outputs_id).css('display', 'block');
           $(inputs_id).css('display', 'block');
         }
+    }
+}
+
+function screenshot_mode_axis_sliders(chart_name){
+    let screenshot_mode_switch = eval(chart_name + '_screenshot_mode_switch');
+    let axis_sliders_switch    = eval(chart_name + '_adjust_axes_switch');
+    let axes_sliders_id        = '#' + chart_name + '_axis_sliders_container';
+
+    if(screenshot_mode_switch.checked){
+        if(axis_sliders_switch.checked){
+            $(axes_sliders_id).addClass('axis_sliders_border');
+        }
+    }
+    else {
+        $(axes_sliders_id).removeClass('axis_sliders_border');
     }
 }
 

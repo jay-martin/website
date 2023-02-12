@@ -13,6 +13,14 @@ function top_modify_income(){
     });
 }
 
+function top_adjust_chart(){
+    build_cdcc_amount_chart(top_chart, 'top_filing_status', 'top_num_children');
+    top_chart_adjust_y_axis();
+    if(top_hide_outputs_switch.checked == false){
+        top_modify_income();
+    }
+}
+
 function top_description_generator(){
     let filing_status = capitalize_filing_status(top_filing_status.value);
     let num_children  = cdcc_format_num_children(top_num_children.value);

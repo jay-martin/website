@@ -103,7 +103,7 @@ function top_chart_switch_chart_type(){
 	}
 }
 
-/**************** Change Benefit Chart ******************************************************************************/
+/**************** Add/Remove Benefits ******************************************************************************/
 // Highlights button and initiates the function that changes the chart
 function push_benefit_button(benefit){
 	let id = '#' + benefit + '_button';
@@ -157,8 +157,10 @@ function top_chart_change_benefit(){
 
 	if(top_chart_chart_type.value === 'values'){
 		multiple_policies_marriage_penalty_values_adjust_chart('top_chart');
-		multiple_policies_marriage_penalty_values_modify_income('top_chart');
 		multiple_policies_marriage_penalty_values_adjust_axes();
+		if(top_chart_hide_outputs_switch.checked == false){
+			multiple_policies_marriage_penalty_values_modify_income('top_chart');
+		}
 	}
 	else if(top_chart_chart_type.value === 'intuitive'){
 		multiple_policies_marriage_penalty_intuitive_switch_benefit();
@@ -173,12 +175,10 @@ function multiple_policies_marriage_penalty_values_adjust_axes(){
 	else if(isActive['eitc']){
 		top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000];
 		top_chart_chart.axis.max({x: 70000});
-		eitc_marriage_penalty_values_modify_income('top_chart');
 	}
 	else if(isActive['hoh']){
 		top_chart_chart.internal.config.axis_x_tick_values = hoh_fix_tick;
 		top_chart_chart.axis.max({x: 200000});
-		tax_values_modify_income('top_chart');
 	}
 }
 

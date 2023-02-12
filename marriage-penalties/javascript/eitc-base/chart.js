@@ -120,15 +120,9 @@ var eitc_marriage_penalty_chart = c3.generate({
         },
         x: {
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}],
-            /*
-            lines: [{value: 30000, text: 'Your income'}]
-            */
         },
         y: {
             lines: [{value: 0}, {value: 2097, text: "Your married EITC"}, {value: 3231, text: "Combined individual EITC's"}, ]  
-            /*
-            lines: [{value: 0}, ]
-            */
         }
     },
 });

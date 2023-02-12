@@ -2,6 +2,16 @@
  * This file contains the function creating the c3.js chart for the Top Chart
  * ****************************************************************************************/
 
+//Determine height & x tick values  depending on screen width
+if(window.innerWidth < 800){
+    xTick  = [0, 10000, 20000, 30000, 40000, 50000, 60000];
+    top_chart_height = 300;
+}
+else{
+    xTick = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000];
+    top_chart_height = 380;
+}
+
 var top_chart = c3.generate({
     bindto: '#top_chart',
     data: {
@@ -66,7 +76,7 @@ var top_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000]
+                values: xTick,
             },
             padding: {left: 0, right: 0},
             max: 60000,
@@ -77,7 +87,7 @@ var top_chart = c3.generate({
             label: {text: 'Credit Rate', position: 'outer-middle'},
             tick: {
                 format: d3.format('.0%'),
-                values: [0, .05, .1, .15, .2, .25, .3, .35, .4]
+                values: [0, .05, .1, .15, .2, .25, .3, .35, .4],
             },
             max: .4,
             min: 0,
@@ -88,7 +98,7 @@ var top_chart = c3.generate({
             label: {text: 'Credit Amount', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250]
+                values: [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250],
             },
             max: 1200,
             padding: {top: 0, bottom: 0},

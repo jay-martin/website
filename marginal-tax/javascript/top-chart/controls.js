@@ -21,6 +21,9 @@ function modifyIncome(){
     else if(top_chart_type.value === 'EI'){
         add_tangent_line(income, num_children.value);
     }
+
+    // update custom axes sliders & arbitrary income input
+    adjust_arbitrary_income();
 }
 
 /******************************************************** Controls for benefit buttons *******************************************************/
@@ -31,12 +34,15 @@ function add_benefit(benefit){
 		isActive[benefit] = false;
 		$(id).removeClass('selected_button');
 		load_data();
-		//top_chart_chart.unload(benefit);
 	}
 	else {
 		isActive[benefit] = true;
 		$(id).addClass('selected_button');
 		load_data();
+	}
+	top_chart_outputs();
+	if(top_chart_hide_outputs_switch.checked == false){
+		modifyIncome();
 	}
 }
 
@@ -69,7 +75,6 @@ function disable_healthcare(){
 function load_data(){
 	if(top_chart_type.value === 'EMTR'){
 		load_emtr_data();
-		emtr_modify_income();
 	}
 	else{
 		load_ei_data();

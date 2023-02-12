@@ -3,7 +3,7 @@
  * the range of the axes, disabling/enabling policy buttons based on user inputs
  * ****************************************************************************************/
 
-/* Power Users: Function for JQuery UI slider that enables the user to manipulate the ranges of the x and y axes */
+/********************************** Adjust Axes *********************************************************************************************************/
 $( function() {
     $( "#x_axis_range" ).slider({
       range: true,
@@ -46,34 +46,75 @@ $( function() {
 
 } );
 
-/* Power Users: Adjusts x-axis range in response to JQuery x-axis range slider */
+// Adjusts x-axis range in response to JQuery x-axis range slider
 function arbitrary_x_axis(min, max){
+    adjust_x_axis_ticks(max);
     top_chart_chart.axis.max({x: max});
     top_chart_chart.axis.min({x: min});
 }
 
-/* Power Users: Adjusts y-axis range in response to JQuery y-axis range slider */
+// Adjusts y-axis range in response to JQuery y-axis range slider
 function arbitrary_y_axis(min, max){
+    top_chart_chart.internal.config.axis_y_padding = {top: 10, bottom: 0}; // no padding on custom axis
     top_chart_chart.axis.max({y: max});
     top_chart_chart.axis.min({y: min});
 }
 
-/* Power Users: Reveals the axis sliders */
 function show_adjust_axes(){
-    if(adjust_axes_switch.checked){
-        x_axis_slider_container.style.display = 'block';
-        y_axis_slider_container.style.display = 'block';
-        y_axis_slider_container_ei.style.display = 'block';
+    if(top_chart_adjust_axes_switch.checked){
+        $('#top_chart_axis_sliders_container').css('display', 'block');
+        if(top_chart_screenshot_mode_switch.checked){
+            $('#top_chart_axis_sliders_container').addClass('axis_sliders_border');
+        }
     }
     else {
-        x_axis_slider_container.style.display = 'none';
-        y_axis_slider_container.style.display = 'none';
-        y_axis_slider_container_ei.style.display = 'none';
+        $('#top_chart_axis_sliders_container').css('display', 'none');
         top_chart_chart.internal.config.axis_y_max = undefined;
+        top_chart_chart.internal.config.axis_y_min = undefined;
+        top_chart_chart.internal.config.axis_y_padding = {top: 10, bottom: 7.5};
     }
 }
 
-/* Power Users: Reveals the arbitrary income input */
+function adjust_x_axis_ticks(x_max){
+    // mobile
+    if(window.innerWidth < 700){
+        if(x_max < 50000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000];
+        }
+        else if(x_max < 110000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000];
+        }
+        else if(x_max < 300000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 50000, 100000, 150000, 200000, 250000];
+        }
+        else if(x_max <= 600000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
+        }
+    }
+    // desktop
+    else {
+        if(x_max < 50000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000];
+        }
+        else if(x_max < 140000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000];
+        }
+        else if(x_max < 240000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 20000, 40000, 60000, 80000, 100000, 120000, 140000, 160000, 180000, 200000, 220000, 240000];
+        }
+        else if(x_max <= 600000){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 550000, 600000];
+        }
+    }
+}
+
+function top_chart_reset_y_padding(){
+    top_chart_chart.internal.config.axis_y_padding = {top: 10, bottom: 7.5};
+}
+
+/********************************** Arbitrary Income *********************************************************************************************************/
+
+// Reval arbitrary income when switch is pressed
 function show_arbitrary_income(){
     if(arbitrary_income_switch.checked){
         arbitray_income_container.style.display = 'block';
@@ -85,7 +126,7 @@ function show_arbitrary_income(){
     }
 }
 
-/* Power Users: Adjusts the income slider if arbitrary input box is adjusted */
+// Adjusts the income slider if arbitrary input box is adjusted 
 function arbitrary_income_input(){
     let income = arbitray_income.value;
     user_income.value = income;
@@ -93,29 +134,24 @@ function arbitrary_income_input(){
     user_income.step = "1";
 }
 
-/* Power Users: adjusts arbitrary input box if income slider is moved */
+// Adjusts arbitrary input box if income slider is moved
 function adjust_arbitrary_income(){
     let income = arbitray_income.value;
     arbitray_income.value = income;
 }
 
-/* Zooms on lower incomes */
+// Zooms on lower incomes 
 function top_chart_zoom(){
+    let x_max = 0;
     if(top_chart_type.value === 'EMTR'){
         if(zoom_dropdown.value === 'default'){
-            user_income.max = "100000";
-            top_chart_chart.internal.config.axis_x_tick_values = [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000];
-            top_chart_chart.axis.max({x: 100000});
+            x_max = 100000;
         }
         else if(zoom_dropdown.value === 'higher'){
-            user_income.max = "600000";
-            top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000];
-            top_chart_chart.axis.max({x: 600000});
+            x_max = 600000;
         }
         else if(zoom_dropdown.value === 'lower'){
-            user_income.max = "40000";
-            top_chart_chart.internal.config.axis_x_tick_values = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000];
-            top_chart_chart.axis.max({x: 40000});
+            x_max = 40000;
         }
     }
     else {
@@ -153,14 +189,13 @@ function top_chart_zoom(){
             }, 500);
         }
     }
-    /* adjust for particular selection of top_chart_charts */
-    /*
-    setTimeout(function () {
-        adjust_y_axis_ei();
-    }, 500);
-    */
+
+    user_income.max = x_max;
+    adjust_x_axis_ticks(x_max);
+    top_chart_chart.axis.max({x: x_max});
 }
 
+/********************************** Screenshot Mode *********************************************************************************************************/
 const policy_names = {
     income_tax : 'Income Tax',
     fica       : 'Payroll Tax',
@@ -190,6 +225,18 @@ function top_chart_description_generator(){
     document.getElementById('top_chart_title_description').innerHTML = caption;
 }
 
+function additional_screenshot_modes_changes(){
+    if(top_chart_screenshot_mode_switch.checked){
+        $('#top_chart_notes_button').css('display', 'none');
+        $('#arbitrary_income_label').css('display', 'none');
+    }
+    else {
+        $('#top_chart_notes_button').css('display', 'block');
+        $('#arbitrary_income_label').css('display', 'inline-block');
+    }
+}
+
+/********************************** Hide Outputs *********************************************************************************************************/
 var top_chart_previous_income = 15000;
 function top_chart_hide_outputs(){
     top_chart_previous_income = user_income.value;
@@ -204,17 +251,6 @@ function top_chart_hide_outputs(){
         $('#income_slider_container').css('display', 'block');
         top_chart_chart.xgrids([{value: top_chart_previous_income, text: 'Your income'}]);
         top_chart_chart.show(['point']);
-    }
-}
-
-function additional_screenshot_modes_changes(){
-    if(top_chart_screenshot_mode_switch.checked){
-        $('#top_chart_notes_button').css('display', 'none');
-        $('#arbitrary_income_label').css('display', 'none');
-    }
-    else {
-        $('#top_chart_notes_button').css('display', 'block');
-        $('#arbitrary_income_label').css('display', 'inline-block');
     }
 }
 

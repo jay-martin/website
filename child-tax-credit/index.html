@@ -452,7 +452,7 @@
 
         <!--Filing Status-->
         <label>I am a
-        <select id="top_chart_filing_status" oninput="adjust_curve();modify_income();top_chart_outputs();">
+        <select id="top_chart_filing_status" oninput="adjust_curve();top_chart_outputs();">
           <option value="single">single filer</option>
           <option value="hoh">head of household</option>
           <option value="married" selected>married joint filer</option>
@@ -461,7 +461,7 @@
 
         <!--Number of children-->
         <label>and I have
-        <select id="top_chart_num_children" oninput="adjust_curve();modify_income();top_chart_outputs();">
+        <select id="top_chart_num_children" oninput="adjust_curve();top_chart_outputs();">
           <option value="one" selected>1 child</option>
           <option value="two">2 children</option>
           <option value="three">3 children</option>
@@ -760,7 +760,7 @@
     <div class='screenshot_wrapper' id='complexity_screenshot_wrapper' >
 
     <h3 class='chart_title' id='complexity_title'>The CTC Is Needlessly Complicated</h3>
-    <h4 class='chart_description long_description' id="complexity_title_description" style="display:none;">Phase-Ins for Families with 1–4 Children</h4>
+    <h4 class='chart_description long_description' id="complexity_title_description" style="display:none;">Phase-Ins for Families with 1–4 Children by Filing Status</h4>
 
     <!--User inputs------------------------------>
     <div class="user_inputs" id="complexity_inputs">

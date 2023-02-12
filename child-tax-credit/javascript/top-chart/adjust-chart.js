@@ -36,15 +36,35 @@ function adjust_curve(){
     // Adjust x-axis tick values
     x_axis_ticks();
     y_axis_tick();
+
+    // modify income if not hiding outputs
+    if(top_chart_hide_outputs_switch.checked == false){
+        modify_income();
+    }
 }
 
 /* Zooms on Lower Incomes */
 function x_axis_ticks(){
-    if(top_chart_filing_status.value === 'married'){
-        top_chart_chart.internal.config.axis_x_tick_values = [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000];
+    if(window.innerWidth < 800){
+        if(top_chart_filing_status.value === 'married'){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000, 500000, 600000, 700000];
+        }
+        else{
+            if(top_chart_num_children.value === 'three'){
+                top_chart_chart.internal.config.axis_x_tick_values = [0, 100000, 200000, 300000, 400000];
+            }
+            else{
+                top_chart_chart.internal.config.axis_x_tick_values = [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000];
+            }
+        }
     }
-    else{
-        top_chart_chart.internal.config.axis_x_tick_values = [0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000];
+    else {
+        if(top_chart_filing_status.value === 'married'){
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000];
+        }
+        else{
+            top_chart_chart.internal.config.axis_x_tick_values = [0, 25000, 50000, 75000, 100000, 125000, 150000, 175000, 200000, 225000, 250000, 275000, 300000, 325000];
+        }
     }
 }
 

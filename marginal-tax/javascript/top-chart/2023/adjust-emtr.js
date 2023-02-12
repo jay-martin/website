@@ -11,6 +11,9 @@ function load_emtr_data(){
 	}
 	else{
 		top_chart_chart.show();
+		if(top_chart_hide_outputs_switch.checked){
+			top_chart_chart.hide(['point']);
+		}
 	}
 
 	let numChildren  = num_children.value;

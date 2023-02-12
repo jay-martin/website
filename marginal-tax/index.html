@@ -444,13 +444,13 @@
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
-          <input type="submit" class="small_button selected_button" id='income_tax_button' value="Personal Income Tax" onClick="add_benefit('income_tax'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
-          <input type="submit" class="small_button" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
-          <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
-          <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
-          <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap'); modifyIncome(); adjust_y_axis(); top_chart_outputs()">
-          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');modifyIncome(); adjust_y_axis();top_chart_outputs();">
-          <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');modifyIncome(); adjust_y_axis(); top_chart_outputs()">
+          <input type="submit" class="small_button selected_button" id='income_tax_button' value="Personal Income Tax" onClick="add_benefit('income_tax');">
+          <input type="submit" class="small_button" id="fica_button" value="FICA Payroll Taxes" onclick="add_benefit('fica');">
+          <input type="submit" class="small_button" id="eitc_button" value="Earned Income Tax Credit" onclick="add_benefit('eitc');">
+          <input type="submit" class="small_button" id="ctc_button" value="Child Tax Credit" onclick="add_benefit('ctc');">
+          <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap');">
+          <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');">
+          <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');">
         </div>
 
         <!--Filing status-->
@@ -477,7 +477,7 @@
         <div class="slidecontainer" id="income_slider_container"> 
           <label for="user_income" class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">15,000</output> this year:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();top_chart_outputs();adjust_arbitrary_income();">
+            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();top_chart_outputs();">
           </div>
         </div>
 
@@ -564,7 +564,7 @@
         </div>
 
         <!--Type of chart-->
-        <div class="dropdown" id="chart_type_dropdown_container" style="visibility:hidden;">
+        <div class="dropdown" id="chart_type_dropdown_container" style="display:none;">
           <label>Show chart as:
           <select class="dropdown" id="top_chart_type" oninput="switch_chart()">
             <option value="EMTR" selected>effective marginal tax rates</option>
@@ -585,7 +585,7 @@
         <!--Arbitrary axes-->
         <label class="switch_label" id="adjust_axes_switch_label">
           Adjust axes:
-          <input type="checkbox" id="adjust_axes_switch" oninput="show_adjust_axes();">
+          <input type="checkbox" id="top_chart_adjust_axes_switch" oninput="show_adjust_axes();">
           <span class="checkmark"></span>
         </label>
 
@@ -599,7 +599,7 @@
         <!--Screenshot mode switch-->
         <label class="switch">
           Screenshot mode:
-          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();additional_screenshot_modes_changes();">
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'user_income', true);top_chart_description_generator();screenshot_mode_axis_sliders('top_chart');additional_screenshot_modes_changes();">
           <span class="slider round"></span>
         </label>
 
@@ -610,23 +610,30 @@
           <span class="slider round"></span>
         </label>
 
-        <!--JQuery X-Axis Slider-->
-        <div class="power_users_sliders_container" id="x_axis_slider_container"> 
-          <div class="slider-text" id="axis_slider_text">X-Axis Range: $<output id="x_axis_output_start">0</output>–$<output id="x_axis_output_end">100,000</output>.</div>
-          <div id="x_axis_range" onclick="arbitrary_x_axis()"></div>
-        </div>
+        <div class='axis_sliders_container' id='top_chart_axis_sliders_container'>
 
-        <!--JQuery Y-Axis Slider: EMTR-->
-        <div class="power_users_sliders_container" id="y_axis_slider_container"> 
-          <div class="slider-text" id="axis_slider_text">Y-Axis Range: <output id="y_axis_output_start">0</output>%–<output id="y_axis_output_end">60</output>%</div>
-          <div id="y_axis_range" onclick="arbitrary_y_axis()"></div>
-        </div>
+          <!--JQuery X-Axis Slider-->
+          <div class="power_users_sliders" id="x_axis_slider_container"> 
+            <div class="slider-text" id="axis_slider_text">X-Axis Range: $<output id="x_axis_output_start">0</output>–$<output id="x_axis_output_end">100,000</output>.</div>
+            <div id="x_axis_range" onclick="arbitrary_x_axis()"></div>
+          </div>
 
-        <!--JQuery Y-Axis Slider: EI-->
-        <div class="power_users_sliders_container" id="y_axis_slider_container_ei"> 
-          <div class="slider-text" id="axis_slider_text">Y-Axis Range: $<output id="y_axis_output_start_ei">0</output>–$<output id="y_axis_output_end_ei">20,000</output></div>
-          <div id="y_axis_range_ei" onclick="arbitrary_y_axis()"></div>
-        </div>
+          <!--JQuery Y-Axis Slider-->
+          <div class="power_users_sliders" id="y_axis_slider_container"> 
+            <div class="slider-text" id="axis_slider_text">Y-Axis Range: <output id="y_axis_output_start">0</output>%–<output id="y_axis_output_end">60</output>%</div>
+            <div id="y_axis_range" onclick="arbitrary_y_axis()"></div>
+          </div>
+
+          <input type="submit" id='top_chart_reset_axes' value="Auto Adjust Y Axis" onClick="top_chart_reset_y_padding();set_axes_to_undefined(top_chart_chart, ['y'], true, modifyIncome)">
+
+          <!--JQuery Y-Axis Slider: EI-->
+          <!--
+          <div class="power_users_sliders" id="y_axis_slider_container_ei"> 
+            <div class="slider-text" id="axis_slider_text">Y-Axis Range: $<output id="y_axis_output_start_ei">0</output>–$<output id="y_axis_output_end_ei">20,000</output></div>
+            <div id="y_axis_range_ei" onclick="arbitrary_y_axis()"></div>
+          </div>
+          -->
+        </div> <!-- axis sliders -->
 
       </div>
 
