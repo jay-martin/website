@@ -1,5 +1,9 @@
 @media screen and (max-width: 700px) {
 
+table.dropdown_menu {
+	font-size: 13.5px;
+}
+
 /*************** Title Section ****************************************************************************/
 svg.mobile_logo_svg {
 	display: block;

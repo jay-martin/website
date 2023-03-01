@@ -130,16 +130,8 @@ function dropdown_functionality(menuID){
 			temp = currentExpanded; //currentExpanded gets mixed up when reveal_dropdown is called
 			clearTimeout(closeTimeout); // End timeout for display none if the user clicks to reveal dropdown while the dropdown is closing
 			closeTimeout = null;
-			if(menuID === '#table_container_overview' || menuID === '#table_container_problems' || menuID === '#table_container_bills' || menuID === '#table_container_programs'){
-				$('.table_container').css('transition', 'height .5s');
-				$('.table_container').css('height', '83.75px');
-			}
-			/*
-			else if(menuID === '#table_container_programs'){
-				$('.table_container').css('transition', 'height 1s');
-				$('.table_container').css('height', '117.5px');
-			}
-			*/
+			$('.table_container').css('transition', 'height .5s');
+			$('.table_container').css('height', '92.5px');
 
 			//switch to new dropdown text after height has been adjusted
 			$('.table_container').on("transitionend", function(e){
@@ -196,30 +188,21 @@ function reveal_dropdown(revealID){
 	// For some reason, the animation only moves smoothly if contained in a setTimeout
 	setTimeout(function () {
 		if(deviceWidth >= 700){
-			if(revealID == '#table_container_overview' || revealID == '#table_container_bills' || revealID == '#table_container_problems' || revealID == '#table_container_programs'){
-				$('.table_container').css('height', '83.75px');
-			}
-			/*
-			else{
-				$('.table_container').css('height', '117.5px');
-			}
-			*/
+			$('.table_container').css('height', '92.5px');
 		}
 		else{
 			if(revealID === '#mobile_table_container_overview'){
-				$('.table_container').css('height', '85px');
+				$('.table_container').css('height', '110px');
 			}
-			else if(revealID === '#mobile_table_container_problems' || revealID === '#mobile_table_container_programs'){
-				$('.table_container').css('height', '117.5px');
+			else if(revealID === '#mobile_table_container_problems'){
+				$('.table_container').css('height', '140px');
+			}
+			else if(revealID === '#mobile_table_container_programs'){
+				$('.table_container').css('height', '125px');
 			}
 			else if(revealID === '#mobile_table_container_bills'){
-				$('.table_container').css('height', '135px');
+				$('.table_container').css('height', '140px');
 			}
-			/*
-			else if(revealID === '#mobile_table_container_programs'){
-				$('.table_container').css('height', '150px');
-			}
-			*/
 		}
 	}, 0);
 }
