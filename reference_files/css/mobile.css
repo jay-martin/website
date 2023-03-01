@@ -431,15 +431,9 @@ svg.mobile_page_color_icon {
   to { margin-top: 0vh }
 }
 /*********************** Highlights ****************************************************************************/
-#mobile_highlights {
-  display: inline-block;
-  width: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
-}
 .mobile_highlights {
   font-family: 'Computer Modern Serif';
-  width: 100%;
+  width: 99.25%;
   display: inline-block;
   text-align: center;
   border: none;
@@ -447,6 +441,7 @@ svg.mobile_page_color_icon {
   border-width : 1.5px !important;
   margin-left: 0px;
   margin-right: 0px;
+  border-color: var(--base-border) !important;
 }
 /* Hide during page initialization */
 #mobile_highlights_content {

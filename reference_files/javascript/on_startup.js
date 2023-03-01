@@ -159,14 +159,9 @@ function initialize_mobile_page(){
 
 	// make highlights visible
 	setTimeout(function () {
-		// Allow smooth height transitions for the highlights container
-		$('.mobile_explanation_and_animation_button_container, .appendix').css('transition', 'height .5s ease');
-
 		// Adjust the borders of the highlights container
-		$('#mobile_highlights').css({
+		$('.mobile_highlights').css({
 			'border'       : 'solid',
-			'border-color' : '#adadad',
-			'border-width' : '1.5px'
 		});
 		$('#mobile_highlights_title').css({
 			'border'        : 'none',
@@ -176,6 +171,9 @@ function initialize_mobile_page(){
 		// Remove the loader and make the content visible
 		$('#mobile_loader_container').css('display', 'none');
 		$('#mobile_highlights_content').css('visibility', 'visible');
+
+		// Allow smooth height transitions for the highlights container
+		$('.mobile_explanation_and_animation_button_container, .appendix').css('transition', 'height .5s ease');
 	}, 100);
 }
 

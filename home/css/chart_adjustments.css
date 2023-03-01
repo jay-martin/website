@@ -1,4 +1,5 @@
 /******************* Hide Points ******************************/
+/************* Problems *****************/
 /* Two Tiers Chart */
 .c3-circles-total, .c3-circles-no_exclusion, .c3-circles-total_hidden, .c3-circles-ctc, .c3-circles-eitc, .c3-circles-hoh, .c3-circles-no_exclusion_end, .c3-circles-loss_in_benefits{
   display: none;
@@ -9,6 +10,7 @@
   display: none;
 }
 
+/************* Programs *****************/
 /* EITC Chart */
 .c3-circles-childless, .c3-circles-childless_married, .c3-circles-one_child, .c3-circles-one_child_married, .c3-circles-two_child, .c3-circles-two_child_married, .c3-circles-three_child, .c3-circles-three_child_married {
   display: none;
@@ -21,6 +23,12 @@
 
 /* CDCC Chart */
 .c3-circles-credit_rate, .c3-circles-credit_amount {
+  display: none;
+}
+
+/************* Bills *****************/
+/* Family Security Act */
+.c3-circles-ctc, .c3-circles-eitc, .c3-circles-fsa_ca, .c3-circles-fsa_eitc, .c3-circles-difference {
   display: none;
 }
 

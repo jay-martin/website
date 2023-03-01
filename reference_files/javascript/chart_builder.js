@@ -164,6 +164,88 @@ function married_eitc_builder_2022(chartName, xName, dataName, numChildren){
 	}
 }
 
+/** Loads to a c3.js chart a curve for the 2019 single/hoh eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function single_eitc_builder_2019(chartName, xName, dataName, numChildren){
+    if(numChildren === "none"){
+        chartName.load({
+            columns: [
+                [xName,      0, 6920, 8650, 15570],
+                [dataName,   0, 529,  529,  0]
+            ]
+        });
+    }
+    else if(numChildren === "one"){
+        chartName.load({
+            columns: [
+                [xName,      0, 10370, 19030, 41094],
+                [dataName,   0, 3526,  3526,  0]
+            ]
+        });
+    }
+    else if(numChildren === "two"){
+        chartName.load({
+            columns: [
+                [xName,      0, 14570, 19030, 46703],
+                [dataName,   0, 5828,  5828,  0]
+            ]
+        });
+    }
+    else if (numChildren === "three"){
+        chartName.load({
+            columns: [
+                [xName,      0, 14570, 19030, 50162],
+                [dataName,   0, 6557,  6557,  0]
+            ]
+        });
+    }
+}
+
+/** Loads to a c3.js chart a curve for the 2019 married eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function married_eitc_builder_2019(chartName, xName, dataName, numChildren){
+    if(numChildren === "none"){
+        chartName.load({
+            columns: [
+                [xName,      0, 6920, 14450, 21370],
+                [dataName,   0, 529,  529,  0]
+            ]
+        });
+    }
+    else if(numChildren === "one"){
+        chartName.load({
+            columns: [
+                [xName,      0, 10370, 24820, 46884],
+                [dataName,   0, 3526,  3526,  0]
+            ]
+        });
+    }
+    else if(numChildren === "two"){
+        chartName.load({
+            columns: [
+                [xName,      0, 14570, 24820, 52493],
+                [dataName,   0, 5828,  5828,  0]
+            ]
+        });
+    }
+    else if (numChildren === "three"){
+        chartName.load({
+            columns: [
+                [xName,      0, 14570, 24820, 55952],
+                [dataName,   0, 6557,  6557,  0]
+            ]
+        });
+    }
+}
+
 /************************* Tax Brackets ****************************************************************************************************/
 
 /** Loads to a c3.js chart a curve of the 2023 tax liability (including standard deduction) of a single taxpayer

@@ -12,11 +12,13 @@ h1 {
   font-weight: 800;
 }
 h2 {
-  font-family: 'Zen Old Mincho', serif;
+  /* font-family: 'Zen Old Mincho', serif; */
+  font-family: 'Computer Modern Serif';
   font-weight: 900;
   line-height: 1em;
   margin-top: 0px;
   text-align: center;
+  margin-bottom: 13px;
 }
 p {
   font-family: 'Latin Modern Sans';
@@ -133,7 +135,7 @@ a.bottom_social_links {
 .top_bar {
   font-family: 'Zen Old Mincho', serif;
   font-weight: 900;
-  font-size: 80%;
+  font-size: 87.5%;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -151,12 +153,6 @@ tr {
 th.top_bar_item:hover {
   cursor: pointer;
   text-decoration: underline;
-}
-.top_bar_dropdown {
-  font-family: 'Zen Old Mincho', serif;
-  font-weight: 900;
-  display: inline-block;
-  margin-right: 16%;
 }
 /**Social Links**/
 .social_links_container {
@@ -177,7 +173,7 @@ a.social_link {
 table.dropdown_menu {
   font-family: 'Zen Old Mincho', serif;
   font-weight: 900;
-  font-size: 12px;
+  font-size: 13.5px;
   width: 90%;
   margin-left: 5%;
   border-spacing: 15px;
@@ -213,7 +209,8 @@ th.dropdown_menu_column_bottom {
 .box_title_topbox {
   display: inline-block;
   vertical-align: top;
-  font-family: 'Zen Old Mincho', serif;
+  /* font-family: 'Zen Old Mincho', serif; */
+  font-family: 'Computer Modern Serif';
   font-weight: 900;
   width: 25%;
   height: 100%;
@@ -268,13 +265,15 @@ th.dropdown_menu_column_bottom {
   margin-bottom: 20px;
 }
 .box_title{
-  font-family: 'Zen Old Mincho', serif;
+  /* font-family: 'Zen Old Mincho', serif; */
+  font-family: 'Computer Modern Serif';
   font-weight: 900;
   font-size: 140%;
-  line-height: 150%;
+  line-height: 1em;
   display: block;
   padding-left: 15px;
   padding-top: 0px;
+  margin-top: 10px;
   padding-bottom: 10px;
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -348,15 +347,17 @@ a.cc_link {
 
 /***********************Blog promotion ********************************************************************/
 .blog_container {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 25px;
   position: relative;
-  width: 100%;
   height: 185px;
   border: none;
   border-radius: 10px;
   display: grid;
   grid-template-columns: .75fr .1fr 1fr .1fr 1fr .1fr 1fr .1fr 1fr;
+  width: 99.5%;
+  margin-left: auto;
+  margin-right: auto;
 
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;

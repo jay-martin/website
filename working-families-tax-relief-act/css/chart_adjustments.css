@@ -1,0 +1,5 @@
+/******************* Hide Points ******************************/
+/* Top Chart */
+.c3-circles-current_eitc, .c3-circles-reformed_eitc {
+  display: none;
+}
