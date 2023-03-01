@@ -33,15 +33,16 @@
   var color_preference = localStorage.getItem("color-mode");
   if(color_preference === 'dark'){
     document.body.className = 'dark-mode';
+    document.body.classList.add("dark-toggle-position");
     document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
-  }
-  else if(color_preference === 'sepia'){
-    document.body.className = 'sepia';
-    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
   }
   else if(color_preference === 'light'){
     document.body.className = 'light-mode';
+    document.body.classList.add("light-toggle-position");
     document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else {
+    document.body.classList.add("auto-toggle-position");
   }
 </script>
 
@@ -50,7 +51,7 @@
 <div class="page_color_toggle_container">
   <div class="page_color_button_group">
     <button onclick="toggle_page_color('light')">Light</button>
-    <button onclick="toggle_page_color('sepia')">Sepia</button>
+    <button onclick="toggle_page_color('auto')">Auto</button>
     <button onclick="toggle_page_color('dark')">Dark</button>
     <div class="page_color_toggler"></div>
   </div>
@@ -330,7 +331,7 @@
 <!-- Mobile Page Color Toggle -->
 <div class="mobile_page_color_button_group">
   <button onclick="toggle_page_color('light')">Light</button>
-  <button onclick="toggle_page_color('sepia')">Sepia</button>
+  <button onclick="toggle_page_color('auto')">Auto</button>
   <button onclick="toggle_page_color('dark')">Dark</button>
   <div class="page_color_toggler"></div>
 </div>

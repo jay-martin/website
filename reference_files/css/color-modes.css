@@ -21,9 +21,6 @@
 
     --box-color: #f5f3f2;
     --slider: #d3d3d3;
-
-    --toggle-position: 0px;
-    --mobile-toggle-position: 0px;
     --toggle-color: #545454;
 
     --category-color: #582cfc;
@@ -52,9 +49,6 @@
 
     --box-color: #474747;
     --slider: #d3d3d3;
-
-    --toggle-position: 100px;
-    --mobile-toggle-position: 168px;
     --toggle-color: #dbdbdb;
 
     --category-color: #b19cff;
@@ -83,12 +77,13 @@
 
   --box-color: #f5f3f2;
   --slider: #d3d3d3;
-
-  --toggle-position: 0px;
-  --mobile-toggle-position: 0px;
   --toggle-color: #545454;
 
   --category-color: #582cfc;
+}
+.light-toggle-position {
+  --toggle-position: 0px;
+  --mobile-toggle-position: 0px;
 }
 
 .sepia {
@@ -120,6 +115,11 @@
   --category-color: #582cfc;
 }
 
+.auto-toggle-position {
+  --toggle-position: 49px;
+  --mobile-toggle-position: 84px;
+}
+
 .dark-mode {
   --base-background: #242424;
   --base-text: #dbdbdb;
@@ -141,12 +141,13 @@
 
   --box-color: #474747;
   --slider: #d3d3d3;
-
-  --toggle-position: 100px;
-  --mobile-toggle-position: 168px;
   --toggle-color: #dbdbdb;
 
   --category-color: #b19cff;
+}
+.dark-toggle-position {
+  --toggle-position: 100px;
+  --mobile-toggle-position: 168px;
 }
 
 /*********************** Color Settings ***************************************************************************************************************/

@@ -12,9 +12,6 @@
     --c3-grid-line: #949494;
 
     --top-lines-color: black;
-
-    --toggle-position: 0px;
-    --mobile-toggle-position: 0;
     --toggle-color: grey;
   }
 
@@ -32,9 +29,6 @@
     --c3-grid-line: #dbdbdb;
 
     --top-lines-color: #dbdbdb;
-
-    --toggle-position: 100px;
-    --mobile-toggle-position: 66.7%;
     --toggle-color: #dbdbdb;
   }
 }
@@ -58,10 +52,11 @@
   --c3-grid-line: #949494;
 
   --top-lines-color: black;
-
+  --toggle-color: #545454;
+}
+.light-toggle-position {
   --toggle-position: 0px;
   --mobile-toggle-position: 0;
-  --toggle-color: #545454;
 }
 
 .sepia {
@@ -76,10 +71,11 @@
   --c3-grid-line: #949494;
 
   --top-lines-color: #b5a177;
-
+  --toggle-color: #594e35;
+}
+.auto-toggle-position {
   --toggle-position: 49px;
   --mobile-toggle-position: 33.3%;
-  --toggle-color: #594e35;
 }
 
 .dark-mode {
@@ -94,10 +90,11 @@
   --c3-grid-line: #dbdbdb;
 
   --top-lines-color: #dbdbdb;
-
+  --toggle-color: #dbdbdb;
+}
+.dark-toggle-position {
   --toggle-position: 100px;
   --mobile-toggle-position: 66.7%;
-  --toggle-color: #dbdbdb;
 }
 
 /*************** Color Settings ****************************************************************************/

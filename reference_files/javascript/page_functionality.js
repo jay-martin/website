@@ -28,6 +28,7 @@ function toggle_page_color(mode){
 
   if(mode === 'dark'){
     document.body.className = 'dark-mode';
+    $('body').removeClass(['light-toggle-position', 'auto-toggle-position']).addClass('dark-toggle-position');
     localStorage.setItem('color-mode', 'dark');
 
     // Page specific changes
@@ -52,6 +53,7 @@ function toggle_page_color(mode){
   }
   else if(mode === 'light'){
     document.body.className = 'light-mode';
+    $('body').removeClass(['dark-toggle-position', 'auto-toggle-position']).addClass('light-toggle-position');
     localStorage.setItem('color-mode', 'light');
 
     // Page specific changes
@@ -62,6 +64,9 @@ function toggle_page_color(mode){
       document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
     }, 200);
   }
+  else if(mode === 'auto'){
+    toggle_auto();
+  }
 
   //reset social icon transition speed
   setTimeout( function(){
@@ -69,6 +74,36 @@ function toggle_page_color(mode){
     $('button, .small_button, input[type=submit].animation_button, input[type=submit].end_animation').css('transition', 'background-color .1s ease');
     $('.mobile_dropdown').css('transition', 'all 0s');
   }, 1000);
+}
+
+// watch for color scheme change
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if(localStorage.getItem("color-mode") === 'auto'){
+      toggle_auto();
+    }
+});
+
+function toggle_auto(){
+  $('body').removeClass(['light-toggle-position', 'dark-toggle-position']).addClass('auto-toggle-position');
+  localStorage.setItem('color-mode', 'auto');
+
+  // adjust to user's color scheme preference
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    $('body').removeClass('light-mode').addClass('dark-mode');
+    page_color_mode('dark');
+    // Change browser default rendering to dark
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+    }, 200);
+  }
+  else {
+    $('body').removeClass('dark-mode').addClass('light-mode');
+    page_color_mode('light');
+    // Change browser default rendering to dark
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 200);
+  }
 }
 
 function mobile_page_toggle(){

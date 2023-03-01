@@ -17,6 +17,7 @@ function toggle_page_color(mode){
 
   if(mode === 'dark'){
     document.body.className = 'dark-mode';
+    $('body').removeClass(['light-toggle-position', 'auto-toggle-position']).addClass('dark-toggle-position');
     localStorage.setItem('color-mode', 'dark');
 
     // Page specific changes
@@ -31,10 +32,14 @@ function toggle_page_color(mode){
   }
   else if(mode === 'light'){
     document.body.className = 'light-mode';
+    $('body').removeClass(['dark-toggle-position', 'auto-toggle-position']).addClass('light-toggle-position');
     localStorage.setItem('color-mode', 'light');
 
     // Page specific changes
     page_color_mode('light');
+  }
+  else if(mode === 'auto'){
+    toggle_auto();
   }
 
   //reset social icon transition speed
@@ -42,6 +47,28 @@ function toggle_page_color(mode){
     $('.social_icon').css('transition', 'fill .15s ease');
     $('button').css('transition', 'background-color .1s ease');
   }, 1000);
+}
+
+// watch for color scheme change
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if(localStorage.getItem("color-mode") === 'auto'){
+      toggle_auto();
+    }
+});
+
+function toggle_auto(){
+  $('body').removeClass(['light-toggle-position', 'dark-toggle-position']).addClass('auto-toggle-position');
+  localStorage.setItem('color-mode', 'auto');
+
+  // adjust to user's color scheme preference
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    $('body').removeClass('light-mode').addClass('dark-mode');
+    page_color_mode('dark');
+  }
+  else {
+    $('body').removeClass('dark-mode').addClass('light-mode');
+    page_color_mode('light');
+  }
 }
 
 /******************************** 2. Twitter & Substack Icons **********************************/
