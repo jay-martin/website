@@ -85,8 +85,9 @@ var top_chart_chart = c3.generate({
         right: 20,
     },
     legend: {
-        position: 'bottom',
-        hide: ['point', 'income_tax_and_transfer', 'tangent_line'],
+        show: false,
+        //position: 'bottom',
+        //hide: ['point', 'income_tax_and_transfer', 'tangent_line'],
     },
     tooltip: {
         show: false

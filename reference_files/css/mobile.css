@@ -11,7 +11,7 @@ body.no-scroll {
   border-bottom: solid;
   border-width: 1px;
   border-color: var(--base-border);
-  transition: all 1s ease;
+  transition: all .5s ease;
 }
 a.navbar_logo {
   color: var(--base-text) !important;
@@ -149,9 +149,6 @@ h4.chart_description {
   width: 90%;
   font-size: 13px;
 }
-h3.smaller_mobile_title {
-  font-size: 19px;
-}
 .chart_byline {
   margin-top: 0;
 }
@@ -273,7 +270,7 @@ svg.navbar-logo {
   width: 100%;
   padding-top: 56px;
   z-index: 1;
-  transition: all 1s ease !important;
+  transition: all .5s ease !important;
 }
 .mobile_dropdown a {
   margin-bottom: 10px;
@@ -514,6 +511,12 @@ h2, h3, h4 {
   padding-left: 0;
   padding-right: 0;
 }
+h3.chart_title {
+  font-size: 26px;
+}
+h4.chart_description {
+  font-size: 17px;
+}
 /*********************** Navbar **************************************************************************/
 a.navbar_logo {
   font-size: 24px;
@@ -614,5 +617,12 @@ section.page_bottom {
 }
 
 } /***** End Tablet Media Query *******/
+
+/* mobile only–no tablets */
+@media screen and (max-width: 700px) {
+  h3.smaller_mobile_title {
+    font-size: 18px;
+  }
+}
 
 
