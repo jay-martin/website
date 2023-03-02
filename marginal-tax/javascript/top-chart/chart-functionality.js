@@ -197,15 +197,22 @@ function top_chart_zoom(){
 
 /********************************** Screenshot Mode *********************************************************************************************************/
 const policy_names = {
-    income_tax : 'Income Tax',
+    income_tax : 'Federal Income Tax',
     fica       : 'Payroll Tax',
     eitc       : 'EITC',
     ctc        : 'CTC',
     snap       : 'SNAP',
     ssi        : 'SSI',
-    ptc        : 'Premium Tax Credits',      
+    ptc        : 'Premium Tax Credits',   
+    ca_income_tax : 'California Income Tax',
+    ca_eitc       : 'CalEITC',
+    ca_yctc       : 'California Young Child Tax Credit',   
 }
 function top_chart_description_generator(){
+    let year  = select_year.value;
+    let title = "Effective Marginal Tax Rates (" + year + ")";
+    document.getElementById('top_chart_title').innerHTML = title;
+
     let caption = "";
 
     // filing status & number of children
@@ -254,4 +261,41 @@ function top_chart_hide_outputs(){
     }
 }
 
+/********************************** Reveal State Policies *********************************************************************************************************/
+function reveal_select_state(){
+    if(select_year.value === '2022'){
+        $('#select_state_container').css('display', 'inline-block');
+    }
+    else{
+        $('#select_state_container').css('display', 'none');
+        select_state.value = 'none';
+
+        //reset all state benefits
+        let button_name = '';
+        for(benefit of state_benefit_names){
+            isActive[benefit] = false;
+            button_name = '#' + benefit + '_button';
+            $(button_name).css('display', 'none');
+            $(button_name).removeClass('selected_button');
+        }
+    }
+}
+
+function reveal_state_policies(){
+    // reset all state benefits
+    let button_name = '';
+    for(benefit of state_benefit_names){
+        isActive[benefit] = false;
+        button_name = '#' + benefit + '_button';
+        $(button_name).css('display', 'none');
+        $(button_name).removeClass('selected_button');
+    }
+
+    let state = select_state.value;
+    if(state == 'california'){
+        $('#ca_income_tax_button, #ca_eitc_button, #ca_yctc_button').css('display', 'inline-block');
+    }
+
+    load_data();
+}
 

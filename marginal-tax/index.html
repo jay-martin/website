@@ -442,6 +442,7 @@
 
       <!--User inputs--------------------------->
       <div class="user_inputs" id="top_chart_inputs">
+
         <!--Benefits selection-->
         <div class="many_select_container" id="benefits_selection_container">
           Select which policies to display:
@@ -452,40 +453,58 @@
           <input type="submit" class="small_button" id="snap_button" value="SNAP (Food Stamps)" onclick="add_benefit('snap');">
           <input type="submit" class="small_button" id="ssi_button" value="Supplemental Security Income" onclick="add_benefit('ssi');">
           <input type="submit" class="small_button" id="ptc_button" value="Premium Tax Credits" onclick="add_benefit('ptc');">
+          <input type="submit" class="small_button" id="ca_income_tax_button" value="California Income Tax" onclick="add_benefit('ca_income_tax');" style="display:none;">
+          <input type="submit" class="small_button" id="ca_eitc_button" value="CalEITC" onclick="add_benefit('ca_eitc');" style="display:none;">
+          <input type="submit" class="small_button" id="ca_yctc_button" value="California Young Child Tax Credit" onclick="add_benefit('ca_yctc');" style="display:none;">
         </div>
+
+        <!--Year-->
+        <label for="select_year">Year: </label>
+        <select id="select_year" oninput="reveal_select_state();load_data();">
+          <option value="2022">2022 (State & Federal)</option>
+          <option value="2023" selected>2023 (Federal Only)</option>
+        </select>
+
+        <br>
 
         <!--Filing status-->
         <label for="filingstatus">I am a</label>
-        <select id="filingstatus" oninput="load_data();top_chart_outputs();">
+        <select id="filingstatus" oninput="load_data();">
           <option value="married">married joint filer</option>
           <option value="hoh">head of household</option>
           <option value="single" selected>single filer</option>
         </select>
 
         <!--Number of children-->
-        <div class="dropdown" id="num_children_container">
-          <label>who has
-          <select class="dropdown" id="num_children" oninput="load_data();top_chart_outputs();">
-            <option value="none">no children</option>
-            <option value="one" selected>1 child</option>
-            <option value="two">2 children</option>
-            <option value="three">3 children</option>
-          </select> under the age of 18.
-          </label>
-        </div>
+        <label>who has
+        <select class="dropdown" id="num_children" oninput="load_data();">
+          <option value="none">no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3 children</option>
+        </select> under the age of 18
+        </label>
+
+        <!-- State -->
+        <label id="select_state_container" style="display: none;">and I live in
+        <select id="select_state" oninput="reveal_state_policies()">
+          <option value="none">No State Selected</option>
+          <option value="california">California</option>
+        </select>
+        </label>
 
         <!--Income slider-->
         <div class="slidecontainer" id="income_slider_container"> 
           <label for="user_income" class="slider-text" id="income_slider_text">So far, I have made $<output id="user_income_output">15,000</output> this year:</label>
           <div class="slider-actual">
-            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();top_chart_outputs();">
+            <input type="range" min="0" max="100000" value="15000" step="500" class="slider" id="user_income" oninput="user_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');modifyIncome();">
           </div>
         </div>
 
         <!--Power Users: Arbitrary income-->
         <div class="arbitray_income_container" id="arbitray_income_container">
           <label for="arbitray_income">Input income:</label>
-          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modifyIncome();top_chart_outputs();">
+          <input type="number" class="arbitrary_income" id="arbitray_income" name="arbitray_income" min="0" max="600000" oninput="arbitrary_income_input();modifyIncome();">
           (Income slider now moves in dollar increments)
         </div>
 
@@ -510,6 +529,8 @@
                 <li class="breakdown_item" id="snap_marginal"></li>
                 <li class="breakdown_item" id="ssi_marginal"></li>
                 <li class="breakdown_item" id="ptc_marginal"></li>
+                <li class="breakdown_item" id="ca_eitc_marginal"></li>
+                <li class="breakdown_item" id="ca_yctc_marginal"></li>
               </ul>
           </ul>
           <!--<p id="rounding_disclaimer">*Numbers would be rounded when filing taxes or receiving benefits</p>-->
@@ -2012,7 +2033,9 @@
 
       <li class="ref_item" id="Aussenberg-2022B">Aussenberg, Randy Allison; Falk, Gene (February 25, 2022). <a href=https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">"The Supplemental Nutrition Assistance Program (SNAP): Categorical Eligibility"</a> <i class="fa fa-file-pdf-o"></i>. <em>Congressional Research Service</em>. <a href=https://web.archive.org/web/20220704025011/https://crsreports.congress.gov/product/pdf/R/R42054 target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on July 4, 2022. </li>
 
-      <li class="ref_item" id="TXHHS-2022"><a href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a> (October 2022). <em>Texas Health and Human Services Commission</em>. <a href="https://web.archive.org/web/20230201234631/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on February 1, 2023.</li>
+      <li class="ref_item" id="FTB-2023"><a href=https://www.ftb.ca.gov/about-ftb/newsroom/caleitc/eligibility-and-credit-information.html target="_blank">"CalEITC: Eligibility and Credit Information"</a> (January 24, 2023). <em>State of California Franchise Tax Board</em>. <a href=https://web.archive.org/web/20230221063452/https://www.ftb.ca.gov/about-ftb/newsroom/caleitc/eligibility-and-credit-information.html target="_blank">Archived</a> from the original on February 21, 2023.</li>
+
+      <li class="ref_item" id="FTB-2022"><a href=https://www.ftb.ca.gov/about-ftb/data-reports-plans/California-Earned-Income-Tax-Credit-and-Young-Child-Tax-credit-Report.pdf target="_blank">"California Earned Income Tax Credit and Young Child Tax Credit Report: Economic and Statistical Research"</a> <i class="fa fa-file-pdf-o"></i> (June 2022). <em>State of California Franchise Tax Board</em>. <a href=https://web.archive.org/web/20221028054624/https://www.ftb.ca.gov/about-ftb/data-reports-plans/California-Earned-Income-Tax-Credit-and-Young-Child-Tax-credit-Report.pdf target="_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on October 28, 2022.</li>
 
       <li class="ref_item" id="Chien-2019">Chien, Nina; Macartney, Suzanne (March 2019). <a href=https://aspe.hhs.gov/topics/poverty-economic-mobility/marginal-tax-rate-series target="_blank">"Marginal Tax Rate Series"</a>. <em>Office of the Assistant Secretary for Planning and Evaluation</em>.</li>
 
@@ -2036,7 +2059,11 @@
 
       <li class="ref_item" id="USDA-2022"><a href="https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">"SNAP – Fiscal Year 2023 Cost-of-Living Adjustments"</a> <i class="fa fa-file-pdf-o"></i> (August 2022). <em>United States Department of Agriculture (USDA)</em>. <a href="https://web.archive.org/web/20221006005505/https://fns-prod.azureedge.us/sites/default/files/resource-files/snap-fy-2023-cola-adjustments.pdf" target="_blank">Archived</a> from the original on October 6, 2022.</li>
 
+      <li class="ref_item" id="TXHHS-2022"><a href='https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program' target="_blank">"Texas Works Handbook: C-120, Supplemental Nutrition Assistance"</a> (October 2022). <em>Texas Health and Human Services Commission</em>. <a href="https://web.archive.org/web/20230201234631/https://www.hhs.texas.gov/handbooks/texas-works-handbook/c-120-supplemental-nutrition-assistance-program" target="=_blank">Archived</a> from the original on February 1, 2023.</li>
+
       <li class="ref_item" id="ARPA"><a href='https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf#page=181' target="_blank">Text of the American Rescue Plan Act of 2021</a> <i class="fa fa-file-pdf-o"></i>. <em>Congress.gov</em>. <a class='tooltip_link' href="https://web.archive.org/web/20230106212115/https://www.congress.gov/117/plaws/publ2/PLAW-117publ2.pdf" target="=_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 6, 2023.</li>
+
+      <li class="ref_item" id="FTB-Form-2022"><a href='https://www.ftb.ca.gov/forms/2022/2022-3514.pdf' target="_blank">"2022 Form 3514: California Earned Income Tax Credit"</a> <i class="fa fa-file-pdf-o"></i> (2022). <em>State of California Franchise Tax Board</em>. <a href="https://web.archive.org/web/20230119130553/https://www.ftb.ca.gov/forms/2022/2022-3514.pdf" target="=_blank">Archived</a> <i class="fa fa-file-pdf-o"></i> from the original on January 19, 2023.</li>
 
       <li class="ref_item" id="VCU"><a href=https://vcu-ntdc.org/resources/resourceDetail.cfm?id=1 target="_blank">"Understanding the Supplemental Security Income (SSI) Program"</a> (2022). <em>Virginia Commonwealth University</em>.</li>
 
@@ -2156,15 +2183,23 @@
 <!-- Calculation Files -->
 <script type="text/javascript" src="./javascript/calculate/shared.js"></script>
 <script type="text/javascript" src="./javascript/calculate/2023/2023-marginal-tax-values.js"></script>
+<script type="text/javascript" src="./javascript/calculate/2022/2022-marginal-tax-values.js"></script>
 
-<!-- Top Chart -->
+<!-- Top Chart: Basic Files -->
 <script type="text/javascript" src="./javascript/top-chart/chart-functionality.js"></script>
 <script type="text/javascript" src="./javascript/top-chart/controls.js"></script>
 
 <script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+
+<!-- Top Chart: 2023 Files -->
 <script type="text/javascript" src="./javascript/top-chart/2023/adjust-emtr.js"></script> 
 <script type="text/javascript" src="./javascript/top-chart/2023/outputs.js"></script>
-<!-- Animations -->
+
+<!-- Top Chart: 2022 Files -->
+<script type="text/javascript" src="./javascript/top-chart/2022/adjust-emtr.js"></script> 
+<script type="text/javascript" src="./javascript/top-chart/2022/outputs.js"></script>
+
+<!-- Top Chart: Animations -->
 <script type="text/javascript" src="./javascript/top-chart/animations/universal.js"></script>
 
 </body>

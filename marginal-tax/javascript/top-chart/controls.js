@@ -6,27 +6,49 @@ var isActive = {
 	snap       : false,
 	ssi        : false,
 	ptc        : false,
+	ca_income_tax  : false,
+	ca_eitc    : false,
+	ca_yctc    : false,
 };
 
-/******************************************************** Move the income slider *******************************************************/
+var state_benefit_names = ['ca_income_tax', 'ca_eitc', 'ca_yctc'];
+
+/************************ Move the income slider *******************************************************/
 function modifyIncome(){
     let income = user_income.value;
     
     // move xgrid 
     top_chart_chart.xgrids([{value: income, text:'Your income'}]);
 
-    if(top_chart_type.value === 'EMTR'){
-        emtr_modify_income();
+    if(select_year.value === '2023'){
+        emtr_modify_income_2023();
     }
+    else if(select_year.value === '2022'){
+    	emtr_modify_income_2022();
+    }
+
+    /*
     else if(top_chart_type.value === 'EI'){
         add_tangent_line(income, num_children.value);
     }
+    */
 
-    // update custom axes sliders & arbitrary income input
+    // update outputs and arbitrary income
     adjust_arbitrary_income();
+    top_chart_outputs();
 }
 
-/******************************************************** Controls for benefit buttons *******************************************************/
+/************************ Outputs *******************************************************/
+function top_chart_outputs(){
+	if(select_year.value === '2023'){
+		top_chart_outputs_2023();
+	}
+	else{
+		top_chart_outputs_2022();
+	}
+}
+
+/************************* Controls for benefit buttons *******************************************************/
 function add_benefit(benefit){
 	id = '#' + benefit + '_button';
 
@@ -40,45 +62,23 @@ function add_benefit(benefit){
 		$(id).addClass('selected_button');
 		load_data();
 	}
+
 	top_chart_outputs();
 	if(top_chart_hide_outputs_switch.checked == false){
 		modifyIncome();
 	}
 }
 
-/* Disables/Enables the SSI button based upon whether the user selects that they are not disabled/disabled */
-function disable_ssi(){
-    if(disability_status.value === 'disabled'){
-        ssi_button.disabled = false;
-    }
-    else{
-        ssi_button.disabled = true;
-        isActive['ssi'] = false;
-    }
-}
-
-/* Disables/Enables the Medicaid/PCT button & CSR button based upon whether the user selects that they have/do not have employer-sponsored healthcare */
-function disable_healthcare(){
-    if(healthcare_status.value === 'no_employer'){
-        ptc_button.disabled = false;
-        cost_sharing_button.disabled = false;
-    }
-    else{
-        ptc_button.disabled = true;
-        cost_sharing_button.disabled = true;
-        isActive['ptc'] = false;
-    }
-}
-
-/******************************************************** Controls for top_chart_chart loading *******************************************************/
-/* Controls whether EMTR or EI data will be loaded */
+/********************** Controls data loading *******************************************************/
+/* Controls the loading of data to the chart based on year and chart type */
 function load_data(){
-	if(top_chart_type.value === 'EMTR'){
-		load_emtr_data();
+	if(select_year.value === '2022'){
+		load_emtr_data_2022();
 	}
 	else{
-		load_ei_data();
+		load_emtr_data_2023();
 	}
+	modifyIncome();
 }
 
 /* Controls the switch from the EMTR top_chart_chart to the EI top_chart_chart & vice versa */
@@ -99,7 +99,7 @@ function switch_to_emtr(){
 		adjust_axis_labels();
 	}, 500);
 	setTimeout(function () {
-		load_emtr_data();
+		load_data();
 		modifyIncome();
 	}, 1000);
 
@@ -124,3 +124,5 @@ function adjust_y_axis(){
 		//adjust_y_axis_ei();
 	}
 }
+
+

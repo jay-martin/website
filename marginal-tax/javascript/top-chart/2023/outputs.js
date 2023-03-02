@@ -9,14 +9,13 @@ document.getElementById('tax_liability').innerHTML = '<b>12¢</b> in income tax.
 document.getElementById('benefit_loss_text').innerHTML = 'You have not selected any benefits.';
 
 // Outputs to screen the marginal tax rate
-function top_chart_outputs(){
+function top_chart_outputs_2023(){
 	let income        = user_income.value;
 	let filing_status = filingstatus.value;
     let numChildren   = num_children.value;
     let householdSize = household_size('single', numChildren);
 
     let marginal_tax_rates = marginal_tax_rates_at_income_2023(income, numChildren, filing_status);
-    //console.log(marginal_tax_rates);
     let personal = marginal_tax_rates['personal_income_tax'];
     let fica     = marginal_tax_rates['fica'];
     let eitc     = marginal_tax_rates['eitc'];
@@ -32,7 +31,6 @@ function top_chart_outputs(){
     // format taxRate that there is a decimal if values are not a whole number, but no decimal if it is a whole number
     if(taxRate.toFixed(2) - Math.floor(taxRate) !== 0){
     	taxRate_formatted = taxRate.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    	//document.getElementById('rounding_disclaimer').style.display = 'block';
     }
     else{
     	taxRate_formatted = taxRate.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -42,7 +40,6 @@ function top_chart_outputs(){
     // Format taxLiability
     if(taxLiability.toFixed(2) - Math.floor(taxLiability) !== 0){
     	taxLiability_formatted = taxLiability.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    	//document.getElementById('rounding_disclaimer').style.display = 'block';
     }
     else{taxLiability_formatted = taxLiability.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
 
@@ -98,7 +95,7 @@ function top_chart_outputs(){
 	}
 }
 
-function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
+function benefits_breakdown(eitc, ctc, snap, ptc, ssi, ca_eitc, ca_yctc){
 	if(isActive['eitc']){
 		document.getElementById('eitc_marginal').style.display = 'list-item';
 		if(eitc >=0 ){
@@ -163,5 +160,25 @@ function benefits_breakdown(eitc, ctc, snap, ptc, ssi){
 	}
 	else{
 		document.getElementById('ssi_marginal').style.display = 'none';
+	}
+
+	if(isActive['ca_eitc']){
+		if(ca_eitc.toFixed(2) - Math.floor(ca_eitc) !== 0){ ca_eitc_formatted = ca_eitc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+		else{ca_eitc_formatted = ca_eitc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
+		document.getElementById('ca_eitc_marginal').innerHTML = '<b>CalEITC:</b> ' + ca_eitc_formatted + '¢ benefit loss';
+		document.getElementById('ca_eitc_marginal').style.display = 'list-item';
+	}
+	else{
+		document.getElementById('ca_eitc_marginal').style.display = 'none';
+	}
+
+	if(isActive['ca_yctc']){
+		if(ca_yctc.toFixed(2) - Math.floor(ca_yctc) !== 0){ ca_yctc_formatted = ca_yctc.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+		else{ca_yctc_formatted = ca_yctc.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
+		document.getElementById('ca_yctc_marginal').innerHTML = '<b>California Young Child Tax Credit:</b> ' + ca_yctc_formatted + '¢ benefit loss';
+		document.getElementById('ca_yctc_marginal').style.display = 'list-item';
+	}
+	else{
+		document.getElementById('ca_yctc_marginal').style.display = 'none';
 	}
 }
