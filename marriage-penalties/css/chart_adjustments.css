@@ -28,7 +28,7 @@
 }
 
 /* Comparison */
-.c3-circles-married_value, .c3-circles-combined {
+.c3-circles-married_value, .c3-circles-penalty, .c3-circles-combined, .c3-circles-bonus {
   display: none;
 }
 

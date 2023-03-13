@@ -114,7 +114,15 @@ function tax_intuitive_modify_income(chart_name){
     let married_tax = tax_liability_2023('married', combined_income);
 
     /* Move xgrids */
-    chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
+    if(p1_income == 0){
+        chart.xgrids([{value: p1_income, text:'Your income'},{value: combined_income, text:"Combined income / Person 2 income"}]);
+    }
+    else if(p2_income == 0){
+        chart.xgrids([{value: combined_income, text:"Combined income / Person 1 income"}]);
+    }
+    else{
+        chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
+    }
 
     /* Move points */
     chart.load({columns: [ ['x_point1', p1_income] , ['point1', p1_tax], ['x_point2', p2_income], ['point2', p2_tax], ['x_point_married', combined_income], ['point_married', married_tax] ] });

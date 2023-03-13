@@ -123,7 +123,7 @@ var existingEITC = c3.generate({
             lines: [{value: 15000, text: 'Your income'}, {value: 20000, text: "Your partner's income"}, {value: 35000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 5155, text: "Married EITC"}, {value: 7990, text: "Combined Individual EITC's"} ]
+            lines: [{value: 5155, text: "Married EITC", y_position: 'below'}, {value: 7990, text: "Combined Individual EITC's"} ]
         }
     },
 });

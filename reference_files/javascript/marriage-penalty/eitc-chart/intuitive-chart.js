@@ -71,19 +71,27 @@ function eitc_marriage_penalty_intuitive_modify_income(chart_name){
     let married_eitc  = eitc_value_2023(combined_income, 'married', num_children);
 
     /* Move xgrids */
-    chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
+    if(p1_income == 0){
+        chart.xgrids([{value: p1_income, text:'Your income'},{value: combined_income, text:"Combined income / Person 2 income"}]);
+    }
+    else if(p2_income == 0){
+        chart.xgrids([{value: combined_income, text:"Combined income / Person 1 income"}]);
+    }
+    else{
+        chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
+    }
 
     /* Move points */
     chart.load({columns: [ ['x_point1', p1_income] , ['point1', p1_eitc], ['x_point2', p2_income], ['point2', p2_eitc], ['x_point_married', combined_income], ['point_married', married_eitc], ] });
 
     /* Move stacked eitc value curves */
     penalty = combined_eitc - married_eitc;
-    if(penalty < 10 && penalty > -10){ //exact values sometimes does not equal zero because income threshold values are rounded to the nearest whole number (I've put a $20 buffer but the actual discrepancy is a small fraction of a dollar)
-        chart.hide(['combined_eitc', 'bonus', 'married_eitc', 'penalty']);
+    if(penalty == 0){ //exact values sometimes does not equal zero because income threshold values are rounded to the nearest whole number (I've put a $20 buffer but the actual discrepancy is a small fraction of a dollar)
+        chart.hide(['combined_eitc', 'bonus_eitc', 'married_eitc', 'penalty_eitc']);
         chart.ygrids([{value: 0}, {value: married_eitc, text: "Combined Individual EITC's/Married EITC"}]);
     }
     else if(penalty > 0){
-        chart.ygrids([{value: 0}, {value: married_eitc, text: "Your married EITC"}, {value: combined_eitc, text: "Combined individual EITC's"}]);
+        chart.ygrids([{value: 0}, {value: combined_eitc, text: "Combined individual EITC's"}, {value: married_eitc, text: "Your married EITC", y_position: 'below'}]);
         chart.show(['married_eitc',  'penalty_eitc']);
         chart.hide(['combined_eitc', 'bonus_eitc']);
         chart.load({
@@ -95,7 +103,7 @@ function eitc_marriage_penalty_intuitive_modify_income(chart_name){
         });
     }
     else{
-        chart.ygrids([{value: 0}, {value: married_eitc, text: "Your married EITC"}, {value: combined_eitc, text: "Combined individual EITC's"}]);
+        chart.ygrids([{value: 0}, {value: married_eitc, text: "Your married EITC"}, {value: combined_eitc, text: "Combined individual EITC's", y_position: 'below'}]);
         chart.hide(['married_eitc',  'penalty_eitc']);
         chart.show(['combined_eitc', 'bonus_eitc']);
         chart.load({

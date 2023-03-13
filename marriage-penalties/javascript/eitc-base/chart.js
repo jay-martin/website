@@ -111,7 +111,7 @@ var eitc_marriage_penalty_chart = c3.generate({
                 format: d3.format('$,'),
                 values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000]
             },
-            padding: {bottom: 10, top: 10},
+            padding: {bottom: 0, top: 10},
         }
     },
     grid: {
@@ -122,7 +122,7 @@ var eitc_marriage_penalty_chart = c3.generate({
             lines: [{value: 30000, text: 'Your income'}, {value: 10000, text: "Your partner's income"}, {value: 40000, text: 'Combined income'}],
         },
         y: {
-            lines: [{value: 0}, {value: 2097, text: "Your married EITC"}, {value: 3231, text: "Combined individual EITC's"}, ]  
+            lines: [{value: 0}, {value: 3231, text: "Combined individual EITC's"}, {value: 2097, text: "Your married EITC", y_position: 'below'}]  
         }
     },
 });

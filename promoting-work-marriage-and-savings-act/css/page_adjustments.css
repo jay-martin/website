@@ -1,0 +1,9 @@
+.ctc_switch {
+  display: inline-block;
+}
+#num_children_container {
+  display: none;
+}
+.children_dropdown {
+  display: inline-block;
+}

@@ -27,12 +27,6 @@ var top_chart_chart = c3.generate({
 
         },
         columns: [
-            /*
-            ['x_green1', 0, 1750, 10030.29411764706],
-            ['y_green1', 2815.3, 2815.3, 0],
-            ['x_red1', 10030.29411764706, 11750, 18120, 21560, 43120, 46560, 70000],
-            ['y_red1', 0, -584.6999999999998, -584.6999999999998, -1134.4119999999998, -1134.412, -584.7, -584.7],
-            */
             ['x_green1', 0, 7392.108843537416],
             ['y_green1', 3694.576, 0],
             ['x_red1', 7392.108843537416, 11750, 21560, 23120, 46560, 70000],
@@ -40,30 +34,31 @@ var top_chart_chart = c3.generate({
 
             ['x_values_point',  30000],
             ['values_point',    -2646],
-            //['values_point',    -1134],
-            /* 
-            ['x3',       0, 11750, 28120, 53120],
-            ['married',  0, 3995,  3995,  0],
-            ['x1',       0, 11750, 21560, 46560],
-            ['person1',  0, 3995,  3995,  0],
-            ['x2',       0, 7840, 9800, 17640],
-            ['person2',  0, 600,  600,  0],
-            ['person2_dashed', 0, 600,  600,  0],
 
-            ['x_horizontal',  0,    60000],
-            ['married_eitc',  2097, 2097],
-            ['penalty_eitc',  1134, 1134],
+            ['x3',],
+            ['married'],
+            ['x2', 0],
+            ['person2',],
+            ['x1',],
+            ['person1',],
+            ['person2_dashed',0],
 
+            ['x_horizontal',],
+            ['married_tax',],
+            ['tax_bonus',],
+            ['combined_tax',],
+            ['tax_penalty',],
+            ['married_eitc',],
+            ['penalty_eitc',],
             ['combined_eitc',],
             ['bonus_eitc',],
 
-            ['x_point1', 30000],
-            ['point1',   2646],
-            ['x_point2', 10000],
-            ['point2',   585],
-            ['x_point_married', 40000],
-            ['point_married',   2097],
-            */
+            ['x_point1',],
+            ['point1',],
+            ['x_point2',],
+            ['point2',],
+            ['x_point_married',],
+            ['point_married',],
         ],
         types: {
             'married_eitc'  : 'area',
@@ -127,7 +122,7 @@ var top_chart_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'person2_dashed', 'y_green2', 'y_green3', 'y_green4', 'y_red2', 'y_red3', 'y_red4' ],
+        hide: ['person1', 'person2', 'married', 'values_point', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married', 'married_tax', 'tax_bonus', 'combined_tax', 'tax_penalty', 'person2_dashed', 'y_green2', 'y_green3', 'y_green4', 'y_red2', 'y_red3', 'y_red4' ],
     },
     tooltip: {
         show: false

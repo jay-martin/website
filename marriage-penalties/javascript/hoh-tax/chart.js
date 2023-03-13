@@ -41,6 +41,8 @@ var hoh_tax_chart = c3.generate({
             ['x_horizontal', 0,    200000],
             ['combined_tax', 9718, 9718],
             ['tax_penalty',  1203, 1203],
+            ['married_tax',],
+            ['tax_bonus',],
 
             ['x_point1', 80000],
             ['point1',   6800],

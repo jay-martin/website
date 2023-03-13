@@ -25,7 +25,6 @@ function base_screenshot_mode_functionality(chart_name, is_top_chart){
     let hide_outputs_switch  = '#' + chart_name + '_hide_outputs_switch';
     let hide_outputs_switch_container = '#' + chart_name + '_hide_outputs_switch_container';
 
-    let chart                = eval(chart_name + '_chart');
     let chart_container      = '#' + chart_name + '_container';
     let title_id             = '#' + chart_name + '_title';
     let title_description_id = '#' + chart_name + '_title_description';

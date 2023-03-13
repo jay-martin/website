@@ -33,7 +33,7 @@ function switch_tax_chart_type_to_values(chart_name){
 
 	// legend
 	chart.legend.hide(['person1', 'person2', 'person2_dashed', 'married']);
-	chart.legend.show(['values']);
+	chart.legend.show(['y_red1', 'y_green1']);
 
 	// y & x grids
 	chart.ygrids([ {value: 0,} ]);
@@ -62,7 +62,7 @@ function switch_tax_chart_type_to_intuitive(chart_name){
 
 	// legend
 	chart.legend.show(['person1', 'person2', 'person2_dashed', 'married']);
-	chart.legend.hide(['values']);
+	chart.legend.hide(['y_red1', 'y_green1']);
 
 	// curves
 	chart.hide(eitc_marriage_penalty_values_data_names);

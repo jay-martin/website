@@ -1287,21 +1287,15 @@
   </p>
 
   <!-------- Reformed EITC Chart -------->
-  <div class = "chart_wide">
+  <div class = "chart_wide" id='eitc_comparison_container'>
+    <div class='screenshot_wrapper' id='eitc_comparison_screenshot_wrapper' >
+
+    <h3 class='chart_title' id='eitc_comparison_title' style="display:none;">"Doubling" the Single EITC For Married Couples Largely Eliminates Marriage Penalties</h3>
+    <h4 class='chart_description long_description' id="eitc_comparison_title_description" style="display:none;"></h4>
 
     <input type="submit" class="small_button wide_show_values_button" id="eitc_fix_outputs_button" value="Show Values" onclick="show_eitc_fix_values();" >
 
-    <div class="wide_inputs">
-      <!--EITC Type-->
-    <!--
-      <label for="eitc_reform_type">Show: </label>
-      <select name="eitc_reform_type" id="eitc_reform_type" oninput="eitc_reform_adjust_married();eitc_reform_modify_income();eitc_reform_outputs();">
-        <option value="default">Default</option>
-        <option value="slope">Slope Marriage Bonus</option>
-        <option value="value">Larger EITC Marriage Bonus</option>
-        <option value="both">Both Marriage Bonuses</option>
-      </select>
-    -->
+    <div class="wide_inputs" id="eitc_comparison_inputs">
 
       <!--Person 1 number of old children-->
       <label for="eitc_fix_person1_numchildren">I have</label>
@@ -1334,17 +1328,6 @@
     </div> <!-- wide inputs -->
 
     <div class="inner_chart_left">
-      <h3 class='chart_wide_name'>Reformed EITC</h3>
-      <div class="center_explanation_box" id='eitc_fix_outputs' hidden>
-        <p class="explanation_text" id="eitc_reform_individual"></p>
-        <p class="explanation_text" id="eitc_reform_married"></p>
-        <p class="explanation_text" id="eitc_reform_penalty"></p>
-      </div>
-
-      <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
-    </div> <!--Inner left chart container-->
-
-    <div class="inner_chart_right">
       <h3 class='chart_wide_name'>Current EITC</h3>
       <div class="center_explanation_box" id='existing_outputs' hidden>
         <p class="explanation_text" id="existing_individual"></p>
@@ -1353,7 +1336,39 @@
       </div>
 
       <div id="exisiting_eitc_chart"></div> <!--Div for reformed eitc chart-->
+    </div> <!--Inner left chart container-->
+
+    <div class="inner_chart_right">
+      <h3 class='chart_wide_name'>Reformed EITC</h3>
+      <div class="center_explanation_box" id='eitc_fix_outputs' hidden>
+        <p class="explanation_text" id="eitc_reform_individual"></p>
+        <p class="explanation_text" id="eitc_reform_married"></p>
+        <p class="explanation_text" id="eitc_reform_penalty"></p>
+      </div>
+
+      <div id="reformed_eitc_chart"></div> <!--Div for reformed eitc chart-->
     </div> <!--Inner right chart container-->
+
+    </div> <!-- Screenshot wrapper -->
+
+    <!-- Chart Options -->
+    <div class="chart_options_container" id="eitc_comparison_options_container">
+
+      <!--Screenshot mode switch-->
+      <label class="switch">
+        Screenshot mode:
+        <input type="checkbox" id="eitc_comparison_screenshot_mode_switch" oninput="base_screenshot_mode_functionality('eitc_comparison', false);eitc_comparison_additional_screenshot_mode();">
+        <span class="slider round"></span>
+      </label>
+
+      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+      <label class="switch" id='eitc_comparison_screenshot_frame_switch_container' style="display:none">
+        Hide screenshot frame guide:
+        <input type="checkbox" id="eitc_comparison_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc_comparison')">
+        <span class="slider round"></span>
+      </label>
+        
+    </div>
   
   </div> <!-- chart container -->
 
@@ -1362,7 +1377,7 @@
   </p>
 
   <p>
-    This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we'll need a more substantial reform of the EITC.
+    This means that, with the EITC's current design, the only way Congress can get out the pickle it has put itself into—to get out of the business of discouraging marriage—is either to raise benefits for married people or to slash benefits for single people. The latter option is clearly undesirable: Congress would be throwing millions of single parents into poverty. So it's either a big EITC boost for married couples, or we consider a major re-thinking of the EITC.
   </p>
 
   <h3>There are more issues</h3>
@@ -1381,7 +1396,7 @@
   </br>
 
   <p>
-    The way in which the EITC differentiates benificiaries by the number of children that they have makes it quite difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations (16, to be exact). A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's separate EITC's for one, two, and three+ children, so we have to consider married couples with one, two, three, four, five, and six+ children.
+    The way in which the EITC differentiates benificiaries by the number of children that they have makes it difficult to construct a benefit schedule that is both free of marriage penalties and easy to understand. Remember that when we dealt with the one-child EITC, we were really solving for the problem of when a person with one child marries someone else who also has one child, and so they bump up to the married <em>two</em> child EITC. The fact that we have to add together children to determine the married EITC complicates things substantially, because it creates a large number of child combinations (16, to be exact). A couple can have two children, for instance, not only when one partner has one child and the other also has one, but also when one has two children and the other has none. So our two-child married EITC will need to take into account both possibilities, or else we'll end up with marriage penalties for one of the two groups. And that's only for two children: there's separate EITC's for one, two, and three+ children, so we have to consider married couples with one, two, three, four, five, and six+ children.
   </p>
 
   <p>
@@ -1393,11 +1408,11 @@
   </p>
 
   <p>
-    This necessity to deal with the worst-case itself creates some complications. Notice that if a parent with two children married another parent with two children, then they have <em>four</em> children. The current EITC doesn't have a married four-child EITC—it shoves them into the 3+ children EITC. But if we were to construct the married 3+ children curve around the idea of the couple having three children, then couples with more than three children would face marriage penalties. And as the number of children increases (up to six), these marriage penalties grow larger and larger, until they're stupid large. Under the current EITC, for instance, when a parent with three or more children marries another parent with three or more children, they can face marriage penalties of over <b>$10,000</b>!
+    This necessity to deal with the worst-case itself creates some complications. Notice that if a parent with two children married another parent with two children, then they have <em>four</em> children. The current EITC doesn't have a married four-child EITC—it shoves them into the 3+ children EITC. But if we were to construct the married 3+ children curve around the idea of the couple having three children, then couples with more than three children would face marriage penalties. And as the number of children increases (up to six), these marriage penalties grow larger and larger, until they're stupid large. Under the current EITC, when a parent with three or more children marries another parent with three or more children, they can face marriage penalties of over <b>$10,000</b>!
   </p>
 
   <p>
-    This means that, if we really want to eliminate marriage penalties, we'll either need to create married EITC's for people with four, five, and six or more children, or we'll have to set the married three+ children EITC at the worst case possibility of 6+ children. The former would cost less but would substantially increase the complexity of the EITC, so I'll consider the latter possibility. Either way, however, the largest married EITC (for 6+ children) is going to have to be much, much larger than the current largest EITC.
+    This means that, if we really want to eliminate marriage penalties, we'll either need to create married EITC's for people with four, five, and six or more children, or we'll have to set the married three+ children EITC equal the worst case possibility of 6+ children. The former would cost less but would substantially increase the complexity of the EITC, so I'll consider the latter possibility. Either way, however, the largest married EITC (for 6+ children) is going to have to be much, much larger than the current largest EITC.
   </p>
 
   <p>
@@ -1465,11 +1480,11 @@
   </p>
 
   <p>
-    This is a feature that is unique to childless people: they are the only group that can be taxed into poverty.<span class="tooltip" data-ref_name="Marr, Huang 2020" data-ref_link="Marr-2020"><a class="refs" href="#notes"><sup>[Marr-2]</sup></a><span class="tooltiptext">Marr, Chuck; Huang, Yixuan (March 2, 2020). <a href='https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">"Childless Adults Are Lone Group Taxed Into Poverty"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">Archived</a> from the original on December 21, 2022.</span></span> People with children who have incomes above the poverty line are spared this fate by the child tax credit and the much larger EITC's that they are eligible for. The childless EITC, by contrast, just isn't up for the job.
+    This is a feature that is unique to childless people: they are the only group that can be taxed into poverty.<span class="tooltip" data-ref_name="Marr, Huang 2020" data-ref_link="Marr-2020"><a class="refs" href="#notes"><sup>[Marr-2]</sup></a><span class="tooltiptext">Marr, Chuck; Huang, Yixuan (March 2, 2020). <a href='https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">"Childless Adults Are Lone Group Taxed Into Poverty"</a>. <em>Center on Budget and Policy Priorities</em>. <a href='https://web.archive.org/web/20221221065645/https://www.cbpp.org/research/federal-tax/childless-adults-are-lone-group-taxed-into-poverty' target="_blank">Archived</a> from the original on December 21, 2022.</span></span> People with children who have incomes above the poverty line are spared this fate by the child tax credit and the much larger EITC's that they are eligible for. The childless EITC, by contrast, just isn't up to the job.
   </p>
 
   <p>
-    This is a problem that should be remedied: no one who works enough to keep themselves out of poverty should see the federal government shove them back down into it. The simplest solution, naturally, is to raise the childless EITC, as has been proposed by Senators Sherrod Brown, Michael Bennet, Richard Durbin, and Ron Wyden in the <a href='https://www.brown.senate.gov/imo/media/doc/Working%20Families%20Tax%20Relief%20Act_Press%20OnePager_FINAL.pdf' target='_blank'>Working Families Tax Relief Act</a>. This is a worthwhile reform, and it should be supported. This page, however, is principally about eliminating marriage penalties, and this targeted reform would not do that. So instead we will remedy this deleterious feature of the EITC within a broader reform that is designed to simultaneously reduce marriage penalties while also addressing all of the criticisms I have laid out above.
+    This is a problem that should be remedied: no one who works enough to keep themselves out of poverty should see the federal government shove them back down into it. The simplest solution, naturally, is to raise the childless EITC, as was done for one year under the <a href="https://en.wikipedia.org/wiki/American_Rescue_Plan_Act_of_2021" target="_blank">American Rescue Plan Act of 2021</a> and as has been proposed in the <a href="../build-back-better/index.html" target="_blank">Build Back Better Act</a> and the <a href='../working-families-tax-relief-act/index.html' target='_blank'>Working Families Tax Relief Act</a>. This is a worthwhile reform, and it should be supported. This page, however, is principally about eliminating marriage penalties, and these targeted reforms of the EITC would not do that (in fact it would make them worse). So instead we will remedy this deleterious feature of the EITC within a broader reform that is designed to simultaneously reduce marriage penalties while also addressing all of the criticisms laid out above.
   </p>
 
   <h4>The Proposal</h4>
@@ -1492,7 +1507,7 @@
   <div class="article_tag"><em>See also: <a href="../family-security-act/index.html" target="_blank">Analysis of the Family Security Act</a> </em></div>
 
   <p class="top">
-    You might notice that this reform is similar in nature to the EITC Mitt Romney proposed in the <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both proposals simplify the EITC, and accompany it with an increased child benefit. And as I also will advocate later in this page, Romney proposes eliminating the head of household filing status and putting the savings towards the child benefit. There are, however, some differences between the two proposals, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
+    You might notice that this reform is similar in nature to the EITC proposed by Mitt Romney in his <a href="https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf" target="_blank">Family Security Act</a>. Both proposals simplify the EITC and accompany it with an increased child benefit. And as I also will advocate later in this page, Romney proposes eliminating the head of household filing status and putting the savings towards the child benefit. There are, however, some differences between the two proposals, particulary as it relates to the EITC. For reference, this is Romney's proposed EITC:
   </p>
 
   <h3 class='chart_wide_name' style="margin-bottom: 15px">Family Security Act EITC</h3>
@@ -1825,6 +1840,7 @@
 <script type="text/javascript" src="./javascript/eitc-comparison/current-eitc-chart.js"></script>
 <script type="text/javascript" src="./javascript/eitc-comparison/adjust-chart.js"></script>
 <script type="text/javascript" src="./javascript/eitc-comparison/outputs.js"></script>
+<script type="text/javascript" src="./javascript/eitc-comparison/screenshot-mode.js"></script>
 
 <!-- Static Charts -->
 <script type="text/javascript" src="./javascript/static-charts/2023-eitc/chart.js"></script>

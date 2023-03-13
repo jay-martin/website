@@ -31,6 +31,7 @@ function switch_eitc_marriage_penalty_chart_type_to_intuitive(chart_name){
 
 	//axis
 	chart.axis.labels({y: 'EITC Value'});
+	chart.internal.config.axis_y_padding = 0;
 	
 	// curves
 	chart.hide(tax_marriage_penalty_values_data_names);

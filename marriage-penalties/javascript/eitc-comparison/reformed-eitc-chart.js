@@ -61,9 +61,9 @@ var eitcReform = c3.generate({
         groups: [ ['combined', 'bonus'], ['married_value', 'penalty'] ], 
         order: false,
         names: {
-            person1: "Single EITC (You)",
-            person2: "Single EITC (Your Partner)",
-            married: "Married EITC",
+            person1: "Single One-Child EITC",
+            person2: "Single One-Child EITC",
+            married: "Married Two-Child EITC",
         },
         colors: {
             person1        : '#6ab6fc',
@@ -123,7 +123,7 @@ var eitcReform = c3.generate({
             lines: [{value: 15000, text: 'Your income'}, {value: 20000, text: "Your partner's income"}, {value: 35000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 7990, text: "Combined Individual EITC's/Married EITC"}, ]
+            lines: [{value: 7990, text: "Combined Individual EITC's/Married EITC"}, ]
         }
     },
 });

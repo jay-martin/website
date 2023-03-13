@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Promoting Work, Marriage and Savings Act</title>
+  <meta name="description" content="For Too Long We've Discouraged Work, Discouraged Marriage, and Discouraged Saving"/>
+
+  <!-- Page basics -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Promoting Work, Marriage and Savings Act"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="For Too Long We've Discouraged Work, Discouraged Marriage, and Discouraged Saving" />
+  <meta property="og:image" content=""/> <!-- Add path to image -->
+  <meta property="og:site_name" content="The Welfare of Families"/>
+
+  <!-- Preload Fonts -->
+  <link rel="stylesheet preload" href="../reference_files/css/fonts/fonts.css" as="style"></link>
+  
+  <!-- Base CSS -->
+  <link rel="stylesheet" href="../reference_files/css/base_style.css" type="text/css" />
+  <link rel="stylesheet" href="../reference_files/css/mobile.css" type="text/css" />
+  <link rel="stylesheet" href="./css/page_adjustments.css" type="text/css" />
+
+  <!-- Color CSS -->
+  <link rel="stylesheet" href="../reference_files/css/color-modes.css" type="text/css" />
+
+  <!-- Chart CSS -->
+  <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
+
+</head>
+
+<body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.body.classList.add("dark-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.body.classList.add("light-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else {
+    document.body.classList.add("auto-toggle-position");
+  }
+</script>
+
+<!-- Logo -->
+<div class="logo">
+  <a class="top_logo_link" href="../index.html" aria-label="Go to Homepage">
+    <svg class="top-logo logo-color" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;"><tspan x="183.97852" y="418.98599"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'">of Families</tspan></tspan></text>
+    </svg>
+  </a>
+</div>
+
+<!-- Page Color Toggle -->
+<div class="page_color_toggle_container">
+  <div class="page_color_button_group">
+    <button onclick="toggle_page_color('light')">Light</button>
+    <button onclick="toggle_page_color('auto')">Auto</button>
+    <button onclick="toggle_page_color('dark')">Dark</button>
+    <div class="page_color_toggler"></div>
+  </div>
+</div>
+
+<!-- Mobile navbar -->
+<div class="mobile_navbar" id='mobile_navbar'>
+  <a href="../index.html" class="navbar_logo" aria-label="Go to Homepage">
+    <svg class='logo-color navbar-logo' viewBox="0 0 240 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" style="overflow:visible">
+      <text xml:space="preserve" x="-0.16252223" y="15.940749">
+        <tspan style="font-size:21.1667px;font-family:'Zen Antique Soft';stroke-width:.8;"
+          x="-0.16252223" y="15.940749">The Welfare of Families
+        </tspan>
+      </text>
+    </svg>
+  </a>
+  <div class="navigation_button_container">
+    <div class="open_close_button" id="navigation_bar_button">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div><!--Mobile Navbar-->
+
+<!--Mobile dropdown-->
+<div class='mobile_dropdown' id='mobile_dropdown'>
+
+  <div class='mobile_dropdown_header' id='top_mobile_dropdown_header'><b>Jump To Page Section</b></div>
+  <div class="mobile_dropdown_jump_to">
+    <a href="#overview" onclick="close_dropdown();">1. Overview</a>
+    <a href="#promoting-work" onclick="close_dropdown();">2. Promoting Work</a>
+    <a href="#reducing-marriage-penalties" onclick="close_dropdown();">3. Reducing Marriage Penalties</a>
+    <a href="#encouraging-saving" onclick="close_dropdown();">4. Encouraging Saving</a>
+    <a href="#references" onclick="close_dropdown();">5. References</a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Overview Pages</b></div>
+  <div class="mobile_dropdown_jump_to">
+    <a href="../introduction/index.html">Introduction</a>
+    <a href="../why-we-need-family-benefits/index.html">Why We Need Family Benefits</a>
+    <a href="../problems-overview/index.html">The Major Problems</a>
+    <a href="../fixing-family-benefits/index.html">Fixing Family Benefits</a>
+    <a href="../promoting-work-marriage-and-saving-act/index.html">Promoting Work, Marriage & Saving</a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Problems</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../two-tiers-of-welfare/index.html">Two Tiers of Welfare</a></td>
+      <td><a href="../marriage-penalties/index.html">Marriage Penalties</a></td>
+    </tr>
+    <tr>
+      <td><a href="../marginal-tax/index.html">Marginal Tax Rates</a></td>
+      <td><a href="../asset-tests/index.html">Asinine Asset Tests</a></td>
+    </tr>
+    <tr>
+      <td><a href="../administrative-burdens/index.html">Administrative Burdens</a></td>
+      <td><a href="../over-reliance-on-tax-code/index.html">Over-Reliance on Tax Code</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Programs</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../child-tax-credit/index.html">Child Tax Credit</a></td>
+      <td><a href="../earned-income-tax-credit/index.html">Earned Income Tax Credit</a></td>
+    </tr>
+    <tr>
+      <td><a href="../head-of-household/index.html">Head of Household</a></td>
+      <td><a href="../child-and-dependent-care-credit/index.html">CDCC</a></td>
+    </tr>
+    <tr>
+      <td><a href="../snap/index.html">SNAP (Food Stamps)</a></td>
+      <td><a href="../temporary-assistance-for-needy-families/index.html">TANF</a></td>
+    </tr>
+    <tr>
+      <td><a href="../women-infants-and-children/index.html">WIC</a></td>
+      <td><a href="../medicaid/index.html">Medicaid & CHIP</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class='mobile_dropdown_header'><b>Bills</b></div>
+  <table class='mobile_dropdown_table'>
+    <tr>
+      <td><a href="../family-security-act/index.html">Family Security Act</a></td>
+      <td><a href="../build-back-better/index.html">Build Back Better</a></td>
+    </tr>
+    <tr>
+      <td><a href="../working-families-tax-relief-act/index.html">Working Families Tax<br>Relief Act</a></td>
+      <td><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></td>
+    </tr>
+    <tr>
+      <td><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></td>
+    </tr>
+  </table>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+
+  <div class="mobile_dropdown_socials_left">
+    <div class="mobile_dropdown_socials_text"><b>Share Article</b></div>
+    <br>
+    <a class="mobile_dropdown_link" id="mobile_dropdown_twitter_share_icon" href="https://twitter.com/intent/tweet?text=I tell ya what, this child tax credit could really do some good. So why they go and muck it up with a phase-in?&url=https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit&via=jaydavidmartin1" target="_blank" aria-label="Share Article on Twitter">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a>
+
+    <a class="mobile_dropdown_link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit" target="_blank" aria-label="Share Article on Facebook">
+      <svg class='mobile_dropdown_icon' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1365.3333 1365.3333" xml:space="preserve">
+        <g id="g26" transform="matrix(1.3333333,0,0,-1.3333333,0,1365.3333)">
+          <g id="g28" transform="scale(0.1)">
+            <path class="social_icon social-base-color st0"
+               d="m 10240,5120 c 0,2827.7 -2292.3,5120 -5120,5120 C 2292.3,10240 0,7947.7 0,5120 0,2564.46 1872.31,446.301 4320,62.1992 V 3640 H 3020 v 1480 h 1300 v 1128 c 0,1283.2 764.38,1992 1933.9,1992 560.17,0 1146.1,-100 1146.1,-100 V 6880 H 6754.38 C 6118.35,6880 5920,6485.33 5920,6080.43 V 5120 H 7340 L 7113,3640 H 5920 V 62.1992 C 8367.69,446.301 10240,2564.46 10240,5120"/>
+            <path class="st1" 
+               d="m 7113,3640 227,1480 H 5920 v 960.43 c 0,404.9 198.35,799.57 834.38,799.57 H 7400 v 1260 c 0,0 -585.93,100 -1146.1,100 C 5084.38,8240 4320,7531.2 4320,6248 V 5120 H 3020 V 3640 H 4320 V 62.1992 C 4580.67,21.3008 4847.84,0 5120,0 c 272.16,0 539.33,21.3008 800,62.1992 V 3640 h 1193" />
+          </g>
+        </g>
+      </svg>
+    </a>
+
+    <a class="mobile_dropdown_link" href="https://www.linkedin.com/sharing/share-offsite/?url={https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit}" target="_blank" aria-label="Share Article on LinkedIn">
+      <svg 
+        class='mobile_dropdown_icon social-base-color' 
+        enable-background="new 0 0 48 48" 
+        id="Layer_1" 
+        version="1.1" 
+        viewBox="0 0 48 48" 
+        xml:space="preserve" xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+          <circle class='st0' cx="24" cy="24" r="24"/>
+          <path class="st1" d="M17.4,34.9h-4.6V20.1h4.6V34.9z M14.9,18.2L14.9,18.2c-1.7,0-2.8-1.1-2.8-2.6c0-1.5,1.1-2.6,2.8-2.6  c1.7,0,2.8,1.1,2.8,2.6C17.7,17.1,16.7,18.2,14.9,18.2z M35.9,34.9h-5.3v-7.7c0-2-0.8-3.4-2.6-3.4c-1.4,0-2.1,0.9-2.5,1.8  c-0.1,0.3-0.1,0.8-0.1,1.2v8h-5.2c0,0,0.1-13.6,0-14.8h5.2v2.3c0.3-1,2-2.5,4.6-2.5c3.3,0,5.9,2.1,5.9,6.7V34.9z" fill="#FFFFFF"/>
+      </svg>
+    </a> 
+
+    <a class="mobile_dropdown_link" href="https://reddit.com/submit?url={https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit}&title={Child Tax Credit}" target="_blank" aria-label="Share Article on Reddit">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="85.45 85.45 170.9 170.9" style="enable-background:new 0 0 341.8 341.8;" xml:space="preserve">
+        <circle class="st0" cx="170.9" cy="170.9" r="85.5"/>
+        <path class="st1" d="M227.9,170.9c0-6.9-5.6-12.5-12.5-12.5c-3.4,0-6.4,1.3-8.6,3.5c-8.5-6.1-20.3-10.1-33.3-10.6l5.7-26.7
+        l18.5,3.9c0.2,4.7,4.1,8.5,8.9,8.5c4.9,0,8.9-4,8.9-8.9c0-4.9-4-8.9-8.9-8.9c-3.5,0-6.5,2-7.9,5l-20.7-4.4c-0.6-0.1-1.2,0-1.7,0.3
+        c-0.5,0.3-0.8,0.8-1,1.4l-6.3,29.8c-13.3,0.4-25.2,4.3-33.8,10.6c-2.2-2.1-5.3-3.5-8.6-3.5c-6.9,0-12.5,5.6-12.5,12.5
+        c0,5.1,3,9.4,7.4,11.4c-0.2,1.2-0.3,2.5-0.3,3.8c0,19.2,22.3,34.7,49.9,34.7s49.9-15.5,49.9-34.7c0-1.3-0.1-2.5-0.3-3.7
+        C224.8,180.4,227.9,176,227.9,170.9z M142.4,179.8c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9c0,4.9-4,8.9-8.9,8.9
+        C146.4,188.7,142.4,184.7,142.4,179.8z M192.1,203.3c-6.1,6.1-17.7,6.5-21.1,6.5c-3.4,0-15.1-0.5-21.1-6.5c-0.9-0.9-0.9-2.4,0-3.3
+        c0.9-0.9,2.4-0.9,3.3,0c3.8,3.8,12,5.2,17.9,5.2s14-1.4,17.9-5.2c0.9-0.9,2.4-0.9,3.3,0C193,201,193,202.4,192.1,203.3z
+         M190.5,188.7c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9C199.4,184.7,195.4,188.7,190.5,188.7z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="mobile_dropdown_socials_right">
+    <div class="mobile_dropdown_socials_text"><b>Follow</b></div>
+    <br>
+    <a class="mobile_dropdown_link" id="mobile_dropdown_twitter_follow_icon" href="https://twitter.com/jaydavidmartin1" target="_blank" aria-label="Follow the Author on Twitter">
+      <svg class='mobile_dropdown_icon social-base-color' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a>
+    <a class="mobile_dropdown_link" href="https://twitter.com/jaydavidmartin1" target="_blank" aria-label="Read the Author's Substack Blog">
+      <svg class='mobile_dropdown_icon social-base-color' viewBox="0 0 185.22762 182.55765" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs2" />
+        <g id="layer1" transform="translate(-5.9926524,-25.078399)">
+         <ellipse class="st0" style="stroke:#ffffff;stroke-width:3.54801" cx="99.419487" cy="117.98199" rx="72.991524" ry="70.789192" />
+         <ellipse class="st0" style="stroke:#ffffff;stroke-width:0;stroke-dasharray:none" cx="98.606461" cy="116.35722" rx="92.613808" ry="91.278824" />
+          <path class="st1" d="M 146.00158,102.18036 H 52.63849 V 89.619127 h 93.36761 v 12.561233 z m -93.36309,11.38305 v 58.41223 l 46.683811,-26.0879 46.683799,26.0879 V 113.56341 Z M 146.0061,65.674815 H 52.63849 v 12.561252 h 93.36761 z" style="stroke-width:4.42919" />
+        </g>
+      </svg>
+    </a>
+  </div>
+
+  <div class="mobile_dropdown_horizontal_line"></div>
+  <div class='mobile_dropdown_header'><b>Page Color</b></div>
+
+  <!-- Mobile Page Color Toggle -->
+  <div class="page_color_button_group">
+    <button class="page_color_button_mobile_color" onclick="mobile_page_toggle();toggle_page_color('light');">Light</button>
+    <button class="page_color_button_mobile_color" onclick="mobile_page_toggle();toggle_page_color('auto');">Auto</button>
+    <button class="page_color_button_mobile_color" onclick="mobile_page_toggle();toggle_page_color('dark');">Dark</button>
+    <div class="mobile_page_color_toggler"></div>
+  </div>
+
+</div> <!-- mobile_dropdown -->
+
+<!--Left side bar-------------------------------------------------------------------------------------------------------------->
+<div class="left_side_bar">
+
+  <div class="left_side_bar_title_text">Jump To:</div>
+  <div class="left_side_bar_horizontal_line"></div>
+  <ul class="left_side_bar_list">
+    <li><a class="sidebar_links" href="#top">Top</a></li>
+    <li><a class="sidebar_links" href="#overview">Overview</a></li>
+    <li><a class="sidebar_links" href="#promoting-work">Promoting Work</a></li>
+    <li><a class="sidebar_links" href="#reducing-marriage-penalties">Reducing Marriage Penalties</a></li>
+    <li><a class="sidebar_links" href="#encouraging-saving">Encouraging Saving</a></li>
+    <li><a class="sidebar_links" href="#references">References</a></li>
+  </ul>
+
+  <div class="left_side_bar_title_text">Share:</div>
+  <div class="left_side_bar_horizontal_line"></div>
+
+<div class="left_side_bar_social_icons_container">
+
+    <a class="left_sidebar_social_icons_link" href="https://twitter.com/intent/tweet?text=I tell ya what, this child tax credit could really do some good. So why they go and muck it up with a phase-in?&url=https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit&via=jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#twitter_svg_left_side_bar');" aria-label="Share Article on Twitter">
+      <svg class='social_icon social-base-color left_side_bar_social_logos' id='twitter_svg_left_side_bar' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
+        <circle class="st0" cx="200" cy="200" r="200"/>
+        <path class="st1" id='twitter_svg_left_side_bar_path' d="M163.4,305.5c88.7,0,137.2-73.5,137.2-137.2c0-2.1,0-4.2-0.1-6.2c9.4-6.8,17.6-15.3,24.1-25
+        c-8.6,3.8-17.9,6.4-27.7,7.6c10-6,17.6-15.4,21.2-26.7c-9.3,5.5-19.6,9.5-30.6,11.7c-8.8-9.4-21.3-15.2-35.2-15.2
+        c-26.6,0-48.2,21.6-48.2,48.2c0,3.8,0.4,7.5,1.3,11c-40.1-2-75.6-21.2-99.4-50.4c-4.1,7.1-6.5,15.4-6.5,24.2
+        c0,16.7,8.5,31.5,21.5,40.1c-7.9-0.2-15.3-2.4-21.8-6c0,0.2,0,0.4,0,0.6c0,23.4,16.6,42.8,38.7,47.3c-4,1.1-8.3,1.7-12.7,1.7
+        c-3.1,0-6.1-0.3-9.1-0.9c6.1,19.2,23.9,33.1,45,33.5c-16.5,12.9-37.3,20.6-59.9,20.6c-3.9,0-7.7-0.2-11.5-0.7
+        C110.8,297.5,136.2,305.5,163.4,305.5"/>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit" target="_blank" onmouseenter="change_social_fill_forward('facebook', '#facebook_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#facebook_svg_left_side_bar');" aria-label="Share Article on Facebook">
+      <svg 
+        class='left_side_bar_social_logos' 
+        version="1.1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        x="0px" y="0px" 
+        viewBox="0 0 1365.3333 1365.3333"
+        xml:space="preserve">
+        <g id="g26" transform="matrix(1.3333333,0,0,-1.3333333,0,1365.3333)">
+          <g id="g28" transform="scale(0.1)">
+            <path class="social_icon social-base-color st0" id="facebook_svg_left_side_bar"
+               d="m 10240,5120 c 0,2827.7 -2292.3,5120 -5120,5120 C 2292.3,10240 0,7947.7 0,5120 0,2564.46 1872.31,446.301 4320,62.1992 V 3640 H 3020 v 1480 h 1300 v 1128 c 0,1283.2 764.38,1992 1933.9,1992 560.17,0 1146.1,-100 1146.1,-100 V 6880 H 6754.38 C 6118.35,6880 5920,6485.33 5920,6080.43 V 5120 H 7340 L 7113,3640 H 5920 V 62.1992 C 8367.69,446.301 10240,2564.46 10240,5120"/>
+            <path class="st1" id='facebook_svg_left_side_bar_path'
+               d="m 7113,3640 227,1480 H 5920 v 960.43 c 0,404.9 198.35,799.57 834.38,799.57 H 7400 v 1260 c 0,0 -585.93,100 -1146.1,100 C 5084.38,8240 4320,7531.2 4320,6248 V 5120 H 3020 V 3640 H 4320 V 62.1992 C 4580.67,21.3008 4847.84,0 5120,0 c 272.16,0 539.33,21.3008 800,62.1992 V 3640 h 1193" />
+          </g>
+        </g>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://www.linkedin.com/sharing/share-offsite/?url={https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit}" target="_blank" onmouseenter="change_social_fill_forward('linkedin', '#linkedin_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#linkedin_svg_left_side_bar');" aria-label="Share Article on LinkedIn">
+      <svg 
+        class='social_icon social-base-color left_side_bar_social_logos' 
+        id='linkedin_svg_left_side_bar'
+        enable-background="new 0 0 48 48" 
+        id="Layer_1" 
+        version="1.1" 
+        viewBox="0 0 48 48" 
+        xml:space="preserve" xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+          <circle class='st0' cx="24" cy="24" r="24"/>
+          <path class="st1" id='linkedin_svg_left_side_bar_path' d="M17.4,34.9h-4.6V20.1h4.6V34.9z M14.9,18.2L14.9,18.2c-1.7,0-2.8-1.1-2.8-2.6c0-1.5,1.1-2.6,2.8-2.6  c1.7,0,2.8,1.1,2.8,2.6C17.7,17.1,16.7,18.2,14.9,18.2z M35.9,34.9h-5.3v-7.7c0-2-0.8-3.4-2.6-3.4c-1.4,0-2.1,0.9-2.5,1.8  c-0.1,0.3-0.1,0.8-0.1,1.2v8h-5.2c0,0,0.1-13.6,0-14.8h5.2v2.3c0.3-1,2-2.5,4.6-2.5c3.3,0,5.9,2.1,5.9,6.7V34.9z" fill="#FFFFFF"/>
+      </svg>
+    </a> 
+
+    <a class="left_sidebar_social_icons_link" href="https://reddit.com/submit?url={https%3A%2F%2Fwelfare-of-families.org%2Fchild-tax-credit}&title={Child Tax Credit}" target="_blank" onmouseenter="change_social_fill_forward('reddit', '#reddit_svg_left_side_bar');" onmouseleave="change_social_fill_backward('#reddit_svg_left_side_bar');" aria-label="Share Article on Reddit">
+    <svg class='social_icon social-base-color left_side_bar_social_logos' id='reddit_svg_left_side_bar' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="85.45 85.45 170.9 170.9" style="enable-background:new 0 0 341.8 341.8;" xml:space="preserve">
+        <circle class="st0" cx="170.9" cy="170.9" r="85.5"/>
+        <path class="st1" id='reddit_svg_left_side_bar_path' d="M227.9,170.9c0-6.9-5.6-12.5-12.5-12.5c-3.4,0-6.4,1.3-8.6,3.5c-8.5-6.1-20.3-10.1-33.3-10.6l5.7-26.7
+        l18.5,3.9c0.2,4.7,4.1,8.5,8.9,8.5c4.9,0,8.9-4,8.9-8.9c0-4.9-4-8.9-8.9-8.9c-3.5,0-6.5,2-7.9,5l-20.7-4.4c-0.6-0.1-1.2,0-1.7,0.3
+        c-0.5,0.3-0.8,0.8-1,1.4l-6.3,29.8c-13.3,0.4-25.2,4.3-33.8,10.6c-2.2-2.1-5.3-3.5-8.6-3.5c-6.9,0-12.5,5.6-12.5,12.5
+        c0,5.1,3,9.4,7.4,11.4c-0.2,1.2-0.3,2.5-0.3,3.8c0,19.2,22.3,34.7,49.9,34.7s49.9-15.5,49.9-34.7c0-1.3-0.1-2.5-0.3-3.7
+        C224.8,180.4,227.9,176,227.9,170.9z M142.4,179.8c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9c0,4.9-4,8.9-8.9,8.9
+        C146.4,188.7,142.4,184.7,142.4,179.8z M192.1,203.3c-6.1,6.1-17.7,6.5-21.1,6.5c-3.4,0-15.1-0.5-21.1-6.5c-0.9-0.9-0.9-2.4,0-3.3
+        c0.9-0.9,2.4-0.9,3.3,0c3.8,3.8,12,5.2,17.9,5.2s14-1.4,17.9-5.2c0.9-0.9,2.4-0.9,3.3,0C193,201,193,202.4,192.1,203.3z
+         M190.5,188.7c-4.9,0-8.9-4-8.9-8.9c0-4.9,4-8.9,8.9-8.9c4.9,0,8.9,4,8.9,8.9C199.4,184.7,195.4,188.7,190.5,188.7z"/>
+      </svg>
+    </a> 
+
+  </div> <!-- left side bar social icons -->
+
+</div> <!--Left side bar-->
+
+<!-- Title -->
+<div class="title_container">
+  <div class="category">Bills</div>
+  <svg class="page-title-two-line logo-color" viewBox="0 0 290 71.355385" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <g class='transform-title'>
+      <text class='page-title-text' xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,0,0)" style="white-space:pre;display:inline;stroke-width:3.02362;stroke-dasharray:none">
+        <tspan x="0" y="0"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';">Promoting Work, Marriage</tspan></tspan>
+        <tspan x="0" y="150"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';">and Saving Act</tspan></tspan>
+    </g>
+  </svg>
+
+  <div class="name">By Jay Martin 
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" id="twitter_black" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg');" onmouseleave="change_social_fill_backward('#twitter_svg');" aria-label="Follow the Author on Twitter">
+      <svg class='social_icon social-base-color top_social_icons' id='twitter_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+        <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+          C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+          c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+          c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+          c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+          c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+        </svg></a> 
+
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" id="substack_black" onmouseenter="change_social_fill_forward('substack', '#substack_svg');" onmouseleave="change_social_fill_backward('#substack_svg');" aria-label="Read the Author's Blog on Substack">
+      <svg class='social_icon social-base-color top_social_icons' id='substack_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+      </svg></a>
+  </div>
+  
+  <div class="page_description"><em>For Too Long We've Discouraged Work, Discouraged Marriage, and Discouraged Saving</em></div>
+</div><!--Title container-->
+
+<!--Top section containing page links (left), chart module (center), and highlights (right)-------------------------------------------->
+<section class = "top">
+  
+  <!--Left side-------------------------------------------------->
+  <div class="left_side">
+    <div class="other_pages" id='other_pages_id'>
+      <a href="../index.html">Home</a>
+      <a href="../introduction/index.html">Introduction</a>
+      <a href="../why-we-need-family-benefits/index.html">Why We Need Family Benefits</a>
+      <a href="../problems-overview/index.html">The Major Problems</a>
+      <a href="../fixing-family-benefits/index.html">Fixing Family Benefits</a>
+      <a href="../promoting-work-marriage-and-saving-act/index.html">Promoting Work, Marriage<br>& Saving</a>
+      <a href="../two-tiers-of-welfare/index.html">Two Tiers of Welfare</a>
+      <a href="../marriage-penalties/index.html">Marriage Penalties</a>
+      <a href="../marginal-tax/index.html">Marginal Tax Rates</a>
+      <a href="../asset-tests/index.html">Asinine Asset Tests</a>
+      <a href="../administrative-burdens/index.html">Administrative Burdens</a>
+      <a href="../over-reliance-on-tax-code/index.html">Over-Reliance on Tax Code</a>
+      <div class="programs_container" id="programs_container">
+        <div class="programs_title" id="programs_title">
+          <div class="programs_title_text">Programs <div class="programs_title_symbol">&#x25BC;</div></div>
+        </div>
+        <div class="programs" id="programs">
+          <a href="../child-tax-credit/index.html">The Child Tax Credit</a>
+          <a href="../earned-income-tax-credit/index.html">The Earned Income Tax</br>Credit</a>
+          <a href="../head-of-household/index.html">The Head of Household</br>Filing Status</a>
+          <a href="../child-and-dependent-care-credit/index.html">The Child & Dependent</br>Care Credit</a>
+          <a href="../snap/index.html">SNAP (Food Stamps)</a>
+          <a href="../temporary-assistance-for-needy-families/index.html">Temporary Assistance for</br>Needy Families</a>
+          <a href="../women-infants-and-children/index.html">WIC</a>
+          <a href="../medicaid/index.html">Medicaid & CHIP</a>
+        </div>
+      </div><!--Programs container-->
+      <div class="programs_container" id="bills_container">
+        <div class="programs_title" id="bills_title">
+          <div class="programs_title_text">Bills <div class="programs_title_symbol">&#x25BC;</div></div>
+        </div>
+        <div class="programs" id="bills">
+          <a href="../family-security-act/index.html">Family Security Act</a>
+          <a href="../build-back-better/index.html">Build Back Better Act</a>
+          <a href="../working-families-tax-relief-act/index.html">Working Families Tax<br>Relief Act</a>
+          <a href="../end-child-poverty-act/index.html">End Child Poverty Act</a>
+          <a href="../ssi-restoration-act/index.html">SSI Restoration Act</a>
+        </div>
+      </div><!--Bills container-->
+    </div>
+  </div>
+
+  <!--Center------------------------------------------------------>
+  <div class="center">
+
+    <div class="chart" id="top_chart_container">
+      <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
+      <h3 class='chart_title' id="top_chart_title" style="display:none;text-decoration:none;margin-bottom: 0px;line-height:1em;margin-top:10px">The Working Families Tax Relief Act:<br>Comparison with 2019 Policy</h3>
+      <h4 class='chart_description' id="top_chart_title_description" style="display:none;"></h4>
+
+      <!--User inputs------------------------------>
+      <div class="user_inputs" id="top_chart_inputs">
+
+        <!--Filing Status-->
+        <label>I am a
+        <select id="top_chart_filing_status" oninput="top_chart_adjust_curve();top_chart_outputs();">
+          <option value="single">single filer</option>
+          <option value="hoh">head of household</option>
+          <option value="married" selected>married joint filer</option>
+        </select>
+        </label>
+
+        <!--Number of children-->
+        <label>and I have
+        <select id="top_chart_num_children" oninput="top_chart_adjust_curve();top_chart_outputs();">
+          <option value="none" selected>no children</option>
+          <option value="one" selected>1 child</option>
+          <option value="two">2 children</option>
+          <option value="three">3 children</option>
+        </select></label>.
+        
+        <!--Income slider-->
+        <div class="slidecontainer" id="top_chart_income_container"> 
+          <label for="top_chart_income" class="slider-text"> I have an income of $<output id="income_output">20,000</output>:</label>
+          <div class="slider-actual">
+            <input type="range" min="0" max="250000" value="20000" step="1000" class="slider" id="top_chart_income" oninput="income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');top_chart_modify_income();top_chart_outputs()">
+          </div>
+        </div>
+
+      </div> <!--user_inputs container-->
+
+      <!-- Outputs -->
+      <div class="center_explanation_box" id="top_chart_outputs"> 
+        <p class="explanation_text" id="ctc_output">Your child tax credit is worth <b>$1,600</b></p>
+
+        <p class="explanation_text" id="explanation_line1"></p>
+        <p class="explanation_text" id="explanation_line2"></p>
+        <p class="explanation_text" id="explanation_line3"></p>
+        <p class="explanation_text" id="explanation_line4"></p>
+        <p class="explanation_text" id="explanation_line5"></p>
+        <p class="explanation_text" id="explanation_line6"></p>
+        <p class="explanation_text" id="explanation_line7"></p>
+        <p class="explanation_text" id="explanation_line8"></p>
+        <p class="explanation_text" id="explanation_line9"></p>
+      </div>
+
+      <!--End animation button-->
+      <input type="submit" class="end_animation" id="end_animation_button" value="Revert" onclick="end_animation()" disabled>
+
+      <!-- Top Chart -->
+      <div id="topchart"></div>
+
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="top_chart_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      </div> <!-- Screenshot wrapper -->
+
+      <!-- Chart Options -->
+      <div class="chart_options_container">
+
+        <label>Zoom on lower incomes:
+        <input type="checkbox" id="top_chart_zoom" oninput='zoom_top_chart()'>
+        </label>
+
+        <!--Hide outputs switch-->
+        <label class="switch" id="top_chart_hide_outputs_switch_container">
+          Hide outputs:
+          <input type="checkbox" id="top_chart_hide_outputs_switch" oninput="top_chart_hide_outputs()">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="top_chart_screenshot_mode_switch" oninput="screenshot_mode('top_chart', 'basic', ['point'], 'top_chart_income', true);top_chart_description_generator();">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='top_chart_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="top_chart_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('top_chart')">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
+
+    </div> <!--chart end-->
+
+    <!-- Mobile Highlights -->
+    <div class = "mobile_highlights" id="mobile_highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="mobile_highlights_title">Highlights</div>
+
+      <div class="loader_container" id="mobile_loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="mobile_highlights_content">
+        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child tax credit? </button>
+        <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container1">
+          <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
+          <input type="submit" class="small_button animation_button" id="animation1_button_mobile" value="Play animation" onclick="initialize_animation()" />
+        </div>
+
+        <button type="button" onclick="show_explanation(2)">Are poor families excluded from benefits?</button>
+        <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container2">
+          <p class="explanation" id="poor_people_explanation">Yes, poor families are excluded from benefits. The HOH filing status does not provide any benefit to single parents who make less than the single standard deduction ($12,950 in 2022). When considered in conjunction with the child tax credit, HOH provides no benefit to single parents with one child with an income below $18,950, to single parents with two children with an income below $24,662, and to single parents with three children with an income below $29,662 (see "How do tax credits affect HOH?"). Furthermore, benefits for working class people are substantially smaller than those for parents with higher incomes (see "Is HOH regressive?").</p>
+          <input type="submit" class="small_button animation_button" id="animation2_button_mobile" value="Play animation" onclick="animation2()" />
+        </div>
+
+        <button type="button" class="bottom_button"  onclick="show_explanation(3)">Does the CTC produce marriage penalties?</button>
+        <div class="mobile_explanation_and_animation_button_container" id="mobile_highlights_container3">
+          <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
+          <input type="submit" class="small_button animation_button" id="animation3_button_mobile" value="Play animation" onclick="animation3()"/>
+        </div> 
+
+      </div> <!--highlights_content-->
+
+    </div> <!--highlights box-->
+
+  </div> <!--Center-->
+
+  <!--Right side-------------------------------------------->
+  <div class = "right_side">
+
+    <!---Highlights-->
+    <div class = "highlights" id="highlights"> <!--Subcontainter for highlights-->
+      <div class = "highlights_title" id="highlights_title">Highlights</div>
+
+      <div class="loader_container" id="loader_container">
+        <div class="loader" id="highlights_loader"></div>
+        Loading
+      </div>
+
+      <div class="highlights_content" id="highlights_content">
+        <button type="button" class="top_button" onclick="show_explanation(1)">What is the child tax credit? </button>
+        <div class="explanation_and_animation_button_container" id="highlights_container1">
+          <p class="explanation" id="hoh_explanation"> The head of household filing status is a family benefit for single parents who pay for more than half of their household expenses. It provides a larger standard deduction and preferential tax rates.</p>
+          <input type="submit" class="small_button animation_button" id="animation1_button" value="Play animation" onclick="initialize_animation()" />
+        </div>
+
+        <button type="button" onclick="show_explanation(2)">Are poor families excluded from benefits?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container2">
+          <p class="explanation" id="poor_people_explanation">Yes, poor families are excluded from benefits. The HOH filing status does not provide any benefit to single parents who make less than the single standard deduction ($12,950 in 2022). When considered in conjunction with the child tax credit, HOH provides no benefit to single parents with one child with an income below $18,950, to single parents with two children with an income below $24,662, and to single parents with three children with an income below $29,662 (see "How do tax credits affect HOH?"). Furthermore, benefits for working class people are substantially smaller than those for parents with higher incomes (see "Is HOH regressive?").</p>
+          <input type="submit" class="small_button animation_button" id="animation2_button" value="Play animation" onclick="animation2()" />
+        </div>
+
+        <button type="button" class="bottom_button"  onclick="show_explanation(3)">Does the CTC produce marriage penalties?</button>
+        <div class="explanation_and_animation_button_container" id="highlights_container3">
+          <p class="explanation" id="marriage_penalty_explanation">Yes. When a head of household marries a singler filer or another head of household, the amount of tax they owe as joint filers is generally going to be higher than the sum of their individual taxes when they were not married.</p>
+          <input type="submit" class="small_button animation_button" id="animation3_button" value="Play animation" onclick="animation3()"/>
+        </div> 
+
+      </div> <!--highlights_content-->
+
+    </div> <!--highlights box-->
+
+  </div> <!--right_side-->
+
+</section> <!--Top section-->
+
+<section class = 'center_no_side_elements' id="exclusion">
+  <h2>Encouraging Work By Reducing Marginal Tax Rates</h2>
+  <div class="article_tag"><em>Learn More: <a href="../marginal-tax/index.html" target="_blank">Marginal Tax Rates</a> </em></div>
+
+  <div class="chart" id="top_chart_container">
+      <div class='screenshot_wrapper' id='top_chart_screenshot_wrapper' >
+
+      <h3 class='chart_title'>Reducing Marginal Tax Rates</h3>
+      <h4 class='chart_description' id="phase_out_reform_description" style="display:none;"></h4>
+
+      <!-- Chart -->
+      <div id="phase_out_reform"></div>
+
+      <!-- Chart Title & Logo -->
+      <div class='chart_title_logo_container' id="phase_out_reform_logo">
+        <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
+        <div>
+          <div class='float_right'>
+            <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
+              <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      </div> <!-- Screenshot wrapper -->
+
+      <!-- Chart Options -->
+      <div class="chart_options_container">
+
+        <!--Hide outputs switch-->
+        <label class="switch" id="phase_out_reform_hide_outputs_switch_container">
+          Hide outputs:
+          <input type="checkbox" id="phase_out_reform_hide_outputs_switch" >
+          <span class="slider round"></span>
+        </label>
+
+        <!--Screenshot mode switch-->
+        <label class="switch">
+          Screenshot mode:
+          <input type="checkbox" id="phase_out_reform_screenshot_mode_switch" oninput="screenshot_mode('phase_out_reform', 'basic', [], '', false);">
+          <span class="slider round"></span>
+        </label>
+
+        <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+        <label class="switch" id='phase_out_reform_screenshot_frame_switch_container' style="display:none">
+          Hide screenshot frame guide:
+          <input type="checkbox" id="phase_out_reform_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('phase_out_reform')">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
+
+    </div> <!--chart end-->
+
+</section>
+
+<!-- Blog Promotion ----------------------------------------------------------------------------------------------------------------------------------------->
+<div class = 'center_no_side_elements'>
+
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank" aria-label="Read the Author's Blog on Substack">
+    <div class='blog_container'>
+      <div class='blog_grid_item blog_grid_item_left'>
+        <svg
+           class="blog_svg"
+           viewBox="0 0 174.41969 171.98259"
+           version="1.1"
+           id="svg5"
+           xmlns="http://www.w3.org/2000/svg"
+           xmlns:svg="http://www.w3.org/2000/svg">
+          <defs
+             id="defs2" />
+          <g
+             id="layer1"
+             transform="translate(-18.804621,-47.23762)">
+            <ellipse
+               style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+               id="path788"
+               cx="106.01447"
+               cy="133.22891"
+               rx="83.221352"
+               ry="82.002792" />
+            <text
+               class="blog_logo_J"
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+               x="66.595787"
+               y="182.87247"
+               id="text1014"><tspan
+                 id="tspan1012"
+                 style="stroke-width:6"
+                 x="66.595787"
+                 y="182.87247">J</tspan></text>
+          </g>
+        </svg>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>A splendid little Substack newsletter</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Covering economics, the welfare state, and more</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Arrives right in your inbox, as if by magic</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item blog_grid_item_right'>
+        <div class='blog_text'>Click here for delectable insights</div>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<section class = 'center_no_side_elements' id="complexity">
+  <h2>Reducing Marriage Penalties</h2>
+  <div class="article_tag"><em>Learn More: <a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a> </em></div>
+</section>
+
+<section class = 'center_no_side_elements' id="tax-code-administration">
+  <h2>Eliminating Barriers to Saving</h2>
+  <div class="article_tag"><em>Learn More: <a href="../asset-tests/index.html" target="_blank">Asinine Asset Tests</a> </em></div>
+</section>
+
+<!--References section---------------------------------------------------------------------------------------------->
+<section class=center_no_side_elements id="references">
+
+  <div class="notes">
+    <h2 id="notes">Notes</h2>
+    <ol class="notes_list">
+      <li><a class="refs" href="#note1">^</a> Note 1</li>
+      <li><a class="refs" href="#note2">^</a> Note 2</li>
+      <li><a class="refs" href="#note3">^</a> Note 3</li>
+    </ol>
+  </div>
+
+  <div class="references" id="references">
+    <h2>References</h2>
+    <ul class="references_list" id="references_list">
+
+      <li class="ref_item" id="Maag-2019">Maag, Elaine (September 26, 2019). <a href='https://www.taxpolicycenter.org/taxvox/working-families-tax-relief-act-provides-substantial-benefits-and-misses-opportunity' target="_blank">"Working Families Tax Relief Act Provides Substantial Benefits - And Misses Opportunity"</a>. <em>Tax Policy Center</em>. <a href='https://web.archive.org/web/20221031105031/https://www.taxpolicycenter.org/taxvox/working-families-tax-relief-act-provides-substantial-benefits-and-misses-opportunity' target="_blank">Archived</a> from the original on October 31, 2022.</li>
+
+    </ul>
+  </div>
+
+</section> <!--References section-->
+
+<!--Bottom section---------------------------------------------------------------------------------------------->
+<section class="page_bottom">
+  <div id="bottom_socials">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#twitter_bottom_svg');" aria-label="Follow the Author on Twitter">
+       <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='twitter_bottom_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+          <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+            C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+            c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+            c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+            c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+            c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+      </svg></a> 
+
+    <a class="my_socials" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('substack', '#substack_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#substack_bottom_svg');" aria-label="Read the Author's Blog on Substack">
+      <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='substack_bottom_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    </svg></a>
+
+  </div> <!-- bottom social logos -->
+
+  <div id="bottom_logo">The Welfare of Families</div>
+  <div id="bottom_name">A Project by Jay Martin</div>
+
+  <div id="cc_container">
+
+    <div id="cc_logos">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" aria-label="Licensed Under a Creative Commons Attribution 4.0 International License">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+        <g>
+          <circle class="cc-circle" cx="37.785" cy="28.501" r="28.836"/>
+          <path class="st0" d="M37.441-3.5c8.951,0,16.572,3.125,22.857,9.372c3.008,3.009,5.295,6.448,6.857,10.314
+            c1.561,3.867,2.344,7.971,2.344,12.314c0,4.381-0.773,8.486-2.314,12.313c-1.543,3.828-3.82,7.21-6.828,10.143
+            c-3.123,3.085-6.666,5.448-10.629,7.086c-3.961,1.638-8.057,2.457-12.285,2.457s-8.276-0.808-12.143-2.429
+            c-3.866-1.618-7.333-3.961-10.4-7.027c-3.067-3.066-5.4-6.524-7-10.372S5.5,32.767,5.5,28.5c0-4.229,0.809-8.295,2.428-12.2
+            c1.619-3.905,3.972-7.4,7.057-10.486C21.08-0.394,28.565-3.5,37.441-3.5z M37.557,2.272c-7.314,0-13.467,2.553-18.458,7.657
+            c-2.515,2.553-4.448,5.419-5.8,8.6c-1.354,3.181-2.029,6.505-2.029,9.972c0,3.429,0.675,6.734,2.029,9.913
+            c1.353,3.183,3.285,6.021,5.8,8.516c2.514,2.496,5.351,4.399,8.515,5.715c3.161,1.314,6.476,1.971,9.943,1.971
+            c3.428,0,6.75-0.665,9.973-1.999c3.219-1.335,6.121-3.257,8.713-5.771c4.99-4.876,7.484-10.99,7.484-18.344
+            c0-3.543-0.648-6.895-1.943-10.057c-1.293-3.162-3.18-5.98-5.654-8.458C50.984,4.844,44.795,2.272,37.557,2.272z M37.156,23.187
+            l-4.287,2.229c-0.458-0.951-1.019-1.619-1.685-2c-0.667-0.38-1.286-0.571-1.858-0.571c-2.856,0-4.286,1.885-4.286,5.657
+            c0,1.714,0.362,3.084,1.085,4.113c0.724,1.029,1.791,1.544,3.201,1.544c1.867,0,3.181-0.915,3.944-2.743l3.942,2
+            c-0.838,1.563-2,2.791-3.486,3.686c-1.484,0.896-3.123,1.343-4.914,1.343c-2.857,0-5.163-0.875-6.915-2.629
+            c-1.752-1.752-2.628-4.19-2.628-7.313c0-3.048,0.886-5.466,2.657-7.257c1.771-1.79,4.009-2.686,6.715-2.686
+            C32.604,18.558,35.441,20.101,37.156,23.187z M55.613,23.187l-4.229,2.229c-0.457-0.951-1.02-1.619-1.686-2
+            c-0.668-0.38-1.307-0.571-1.914-0.571c-2.857,0-4.287,1.885-4.287,5.657c0,1.714,0.363,3.084,1.086,4.113
+            c0.723,1.029,1.789,1.544,3.201,1.544c1.865,0,3.18-0.915,3.941-2.743l4,2c-0.875,1.563-2.057,2.791-3.541,3.686
+            c-1.486,0.896-3.105,1.343-4.857,1.343c-2.896,0-5.209-0.875-6.941-2.629c-1.736-1.752-2.602-4.19-2.602-7.313
+            c0-3.048,0.885-5.466,2.658-7.257c1.77-1.79,4.008-2.686,6.713-2.686C51.117,18.558,53.938,20.101,55.613,23.187z"/>
+        </g>
+      </svg></a>
+
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" aria-label="Licensed Under a Creative Commons Attribution 4.0 International License">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+          <g>
+            <circle class="cc-circle" cx="37.637" cy="28.806" r="28.276"/>
+            <g>
+              <path class="st0" d="M37.443-3.5c8.988,0,16.57,3.085,22.742,9.257C66.393,11.967,69.5,19.548,69.5,28.5c0,8.991-3.049,16.476-9.145,22.456
+                C53.879,57.319,46.242,60.5,37.443,60.5c-8.649,0-16.153-3.144-22.514-9.43C8.644,44.784,5.5,37.262,5.5,28.5
+                c0-8.761,3.144-16.342,9.429-22.742C21.101-0.415,28.604-3.5,37.443-3.5z M37.557,2.272c-7.276,0-13.428,2.553-18.457,7.657
+                c-5.22,5.334-7.829,11.525-7.829,18.572c0,7.086,2.59,13.22,7.77,18.398c5.181,5.182,11.352,7.771,18.514,7.771
+                c7.123,0,13.334-2.607,18.629-7.828c5.029-4.838,7.543-10.952,7.543-18.343c0-7.276-2.553-13.465-7.656-18.571
+                C50.967,4.824,44.795,2.272,37.557,2.272z M46.129,20.557v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557
+                c0-0.572,0.2-1.057,0.599-1.457c0.401-0.399,0.887-0.6,1.457-0.6h13.144c0.533,0,1.01,0.2,1.428,0.6
+                C45.918,19.5,46.129,19.986,46.129,20.557z M33.042,12.329c0-3.008,1.485-4.514,4.458-4.514s4.457,1.504,4.457,4.514
+                c0,2.971-1.486,4.457-4.457,4.457S33.042,15.3,33.042,12.329z"/>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div> <!-- CC logos -->
+
+    <div id="cc_description">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</br>You are free to share, copy, and adapt the material for any purpose, including commercial purposes, so long as appropriate credit is given.</div>
+
+  </div> <!-- CC container -->
+
+</section> <!-- Bottom section -->
+
+<!-------------- Render-Blocking Resources ------------------------------------->
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/ca0c7f000f.js" crossorigin="anonymous"></script>
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!-- Load d3.js and c3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../reference_files/c3-0.7.20/c3.min.js"></script>
+
+<!-------------------- Page Functionality -------------------------------------->
+<!-- Reference Javascript -->
+<script type="text/javascript" src="../reference_files/javascript/on_startup.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/page_functionality.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/screenshot-mode.js"></script>
+
+<!-- Chart Reference Files -->
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
+
+<!-- Page Specific Funcionality -->
+<script type="text/javascript" src="./javascript/chart-functionality.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
+
+<!-- Top Chart Javascript files -->
+<script type="text/javascript" src="./javascript/top-chart/chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/adjust-chart.js"></script>
+<script type="text/javascript" src="./javascript/top-chart/outputs.js"></script>
+
+<!-- Phase-Out Reform Javascript files -->
+<script type="text/javascript" src="./javascript/phase-out-reform/chart.js"></script>
+
+</body>
+</html>
