@@ -16,9 +16,9 @@ function benefit_comparison_adjust_current_benefits(filing_status, num_children)
 }
 
 function benefit_comparison_adjust_reformed_benefits(filing_status, num_children){
-	build_reformed_eitc(benefits_comparison_reformed_benefits, filing_status, num_children);
-	build_reformed_snap(benefits_comparison_reformed_benefits, filing_status, num_children);
-	build_reformed_ctc(benefits_comparison_reformed_benefits, num_children);
+	build_reformed_eitc(benefits_comparison_reformed_benefits, 'x_eitc', 'eitc', filing_status, num_children);
+	build_reformed_snap(benefits_comparison_reformed_benefits, 'x_snap', 'snap', filing_status, num_children);
+	build_reformed_ctc(benefits_comparison_reformed_benefits, 'x_ctc', 'ctc', num_children);
 	build_reformed_snap_eitc_xgrid(benefits_comparison_reformed_benefits, filing_status, num_children);
 	fit_y_axis_to_reformed_snap(benefits_comparison_reformed_benefits, filing_status, num_children);
 }

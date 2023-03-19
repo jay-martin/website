@@ -29,8 +29,8 @@ function phase_out_reform_adjust_current_benefits(filing_status, num_children){
 }
 
 function phase_out_reform_adjust_reformed_benefits(filing_status, num_children){
-	build_reformed_eitc(phase_out_reform_benefits_chart, filing_status, num_children);
-	build_reformed_snap(phase_out_reform_benefits_chart, filing_status, num_children);
+	build_reformed_eitc(phase_out_reform_benefits_chart, 'x_eitc', 'eitc', filing_status, num_children);
+	build_reformed_snap(phase_out_reform_benefits_chart, 'x_snap', 'snap', filing_status, num_children);
 	build_reformed_snap_eitc_xgrid(phase_out_reform_benefits_chart, filing_status, num_children);
 	fit_y_axis_to_reformed_snap(phase_out_reform_benefits_chart, filing_status, num_children);
 }

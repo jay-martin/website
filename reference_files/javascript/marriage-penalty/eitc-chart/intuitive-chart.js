@@ -56,21 +56,23 @@ function eitc_marriage_penalty_intuitive_adjust_married(chart_name){
 function eitc_marriage_penalty_intuitive_modify_income(chart_name){
     let chart = eval(chart_name + '_chart');
 
+    // income
     let p1_income       = eval(chart_name + '_person1_income').value;
     let p2_income       = eval(chart_name + '_person2_income').value;
     let combined_income = parseInt(p1_income) + parseInt(p2_income);
 
-    let p1_children  = eval(chart_name + '_person1_children').value;
-    let p2_children  = eval(chart_name + '_person2_children').value;
-    let num_children = sum_children(p1_children, p2_children);
+    // number of children
+    let p1_children       = eval(chart_name + '_person1_children').value;
+    let p2_children       = eval(chart_name + '_person2_children').value;
+    let combined_children = sum_children(p1_children, p2_children);
 
     // EITC values
     let p1_eitc       = eitc_value_2023(p1_income, 'single', p1_children);
     let p2_eitc       = eitc_value_2023(p2_income, 'single', p2_children);
     let combined_eitc = p1_eitc + p2_eitc;
-    let married_eitc  = eitc_value_2023(combined_income, 'married', num_children);
+    let married_eitc  = eitc_value_2023(combined_income, 'married', combined_children);
 
-    /* Move xgrids */
+    // Move xgrids
     if(p1_income == 0){
         chart.xgrids([{value: p1_income, text:'Your income'},{value: combined_income, text:"Combined income / Person 2 income"}]);
     }
@@ -81,10 +83,10 @@ function eitc_marriage_penalty_intuitive_modify_income(chart_name){
         chart.xgrids([{value: p1_income, text:'Your income'},{value: p2_income, text:"Your partner's income"},{value: combined_income, text:"Combined income"}]);
     }
 
-    /* Move points */
+    // Move points
     chart.load({columns: [ ['x_point1', p1_income] , ['point1', p1_eitc], ['x_point2', p2_income], ['point2', p2_eitc], ['x_point_married', combined_income], ['point_married', married_eitc], ] });
 
-    /* Move stacked eitc value curves */
+    // Move stacked eitc value curves 
     penalty = combined_eitc - married_eitc;
     if(penalty == 0){ //exact values sometimes does not equal zero because income threshold values are rounded to the nearest whole number (I've put a $20 buffer but the actual discrepancy is a small fraction of a dollar)
         chart.hide(['combined_eitc', 'bonus_eitc', 'married_eitc', 'penalty_eitc']);
@@ -115,7 +117,7 @@ function eitc_marriage_penalty_intuitive_modify_income(chart_name){
         });
     }
 
-    /* Adjust chart x-axis max in case combined income exceeds current x-axis max */
+    // Adjust chart x-axis max in case combined income exceeds current x-axis max
     if(combined_income > 60000 && combined_income <80000){
         chart.axis.max({x: 80000});
     }
@@ -129,7 +131,7 @@ function eitc_marriage_penalty_intuitive_modify_income(chart_name){
         chart.axis.max({x: 60000});
     }
     
-    /* Adjust chart y-axis max in case combined income exceeds current y-axis max */
+    // Adjust chart y-axis max in case combined income exceeds current y-axis max
     eitc_marriage_penalty_intuitive_adjust_y_axis(chart, p1_children, p2_children, combined_eitc);
 }
 

@@ -1,15 +1,72 @@
 var wide_chart_height = 260;
 
 /********************************* EITC ******************************************************************************************************************/
-function build_reformed_eitc(chart_name, filing_status, num_children){
+function build_reformed_eitc(chart, x_name, data_name, filing_status, num_children){
 	let xy_pairs = get_reformed_eitc_values(filing_status, num_children);
 
 	//format
-	xy_pairs['x_vals'].unshift('x_eitc');
-	xy_pairs['y_vals'].unshift('eitc');
+	xy_pairs['x_vals'].unshift(x_name);
+	xy_pairs['y_vals'].unshift(data_name);
 
 	//load
-	chart_name.load({ columns: [xy_pairs['x_vals'], xy_pairs['y_vals']] });
+	chart.load({ columns: [xy_pairs['x_vals'], xy_pairs['y_vals']] });
+}
+
+function build_overlapping_reformed_single_eitcs(chart, p1_num_children, p2_num_children){
+	let p1_x_vals = get_reformed_eitc_values('single', p1_num_children)['x_vals'];
+	let p1_y_vals = get_reformed_eitc_values('single', p1_num_children)['y_vals'];
+	let p2_x_vals = get_reformed_eitc_values('single', p2_num_children)['x_vals'];
+	let p2_y_vals = get_reformed_eitc_values('single', p2_num_children)['y_vals'];
+
+	// start dashed curve 
+	let p2_dashed_x_vals = [ p2_x_vals[0], p2_x_vals[1]  /* tbd */    ]; 
+	let p2_dashed_y_vals = [ p2_y_vals[0], p2_y_vals[1], p2_y_vals[2] ];
+
+	// start non-dashed curve
+	let p2_non_dashed_x_vals = [ /* tbd */     p2_x_vals[2], p2_x_vals[3] ];
+	let p2_non_dashed_y_vals = [ p2_y_vals[2], p2_y_vals[2], p2_y_vals[3] ];
+
+	// calculate endpoint/first point for dashed/non-dashed curves
+	let p1_plateau_end = p1_x_vals[2];
+	let p2_plateau_end = p2_x_vals[2];
+	let dashed_plateau_end = 0;
+	if(p1_plateau_end < p2_plateau_end){
+		dashed_plateau_end = p1_plateau_end;
+	}
+	else{
+		dashed_plateau_end = p2_plateau_end;
+	}
+	p2_dashed_x_vals.push(dashed_plateau_end);
+	p2_non_dashed_x_vals.unshift(dashed_plateau_end);
+
+	// format
+	p1_x_vals.unshift('x_person1');
+	p1_y_vals.unshift('person1');
+	p2_non_dashed_x_vals.unshift('x_person2');
+	p2_non_dashed_y_vals.unshift('person2');
+	p2_dashed_x_vals.unshift('x_person2_dashed');
+	p2_dashed_y_vals.unshift('person2_dashed');
+
+	// load to chart
+	chart.load({
+		columns: [
+			p1_x_vals, p1_y_vals,
+			p2_dashed_x_vals, p2_dashed_y_vals,
+			p2_non_dashed_x_vals, p2_non_dashed_y_vals,
+		]
+	});
+
+	// if both curves are the same: over-write p2_dashed
+	if(p1_num_children == p2_num_children){
+		p2_dashed_x_vals = p2_x_vals;
+		p2_dashed_y_vals = p2_y_vals;
+		p2_dashed_x_vals.unshift('x_person2_dashed');
+		p2_dashed_y_vals.unshift('person2_dashed');
+
+		setTimeout(function(){
+			chart.load({ columns: [p2_dashed_x_vals, p2_dashed_y_vals] });
+		}, 300);
+	}
 }
 
 function get_reformed_eitc_values(filing_status, num_children){
@@ -29,6 +86,18 @@ function get_reformed_eitc_values(filing_status, num_children){
 	// Married Three Child EITC
 	const married_three_child_eitc_x_vals = [0, 20000, 62500, 87500];
 	const married_three_child_eitc_y_vals = [0, 6330,  6330,  0];
+
+	// Married Four Child EITC
+	const married_four_child_eitc_x_vals = [0, 20000, 75000, 100000];
+	const married_four_child_eitc_y_vals = [0, 6330,  6330,  0];
+
+	// Married Five Child EITC
+	const married_five_child_eitc_x_vals = [0, 20000, 87500, 112500];
+	const married_five_child_eitc_y_vals = [0, 6330,  6330,  0];
+
+	// Married Six Child EITC
+	const married_six_child_eitc_x_vals = [0, 20000, 100000, 125000];
+	const married_six_child_eitc_y_vals = [0, 6330,  6330,  0];
 
 	/*********************** EITC: Single & HOH ************************************/
 	// Single No Child EITC
@@ -60,12 +129,12 @@ function get_reformed_eitc_values(filing_status, num_children){
 }
 
 /********************************* SNAP ******************************************************************************************************************/
-function build_reformed_snap(chart_name, filing_status, num_children){
+function build_reformed_snap(chart_name, x_name, data_name, filing_status, num_children){
 	let xy_pairs = get_reformed_snap_values(filing_status, num_children);
 
 	//format
-	xy_pairs['x_vals'].unshift('x_snap');
-	xy_pairs['y_vals'].unshift('snap');
+	xy_pairs['x_vals'].unshift(x_name);
+	xy_pairs['y_vals'].unshift(data_name);
 
 	//load
 	chart_name.load({ columns: [xy_pairs['x_vals'], xy_pairs['y_vals']] });
@@ -102,12 +171,12 @@ function get_reformed_snap_values(filing_status, num_children){
 }
 
 /********************************* CTC ******************************************************************************************************************/
-function build_reformed_ctc(chart_name, num_children){
+function build_reformed_ctc(chart_name, x_name, data_name, num_children){
 	let xy_pairs = get_reformed_ctc_values(num_children);
 
 	//format
-	xy_pairs['x_vals'].unshift('x_ctc');
-	xy_pairs['y_vals'].unshift('ctc');
+	xy_pairs['x_vals'].unshift(x_name);
+	xy_pairs['y_vals'].unshift(data_name);
 
 	chart_name.load({ columns: [xy_pairs['x_vals'], xy_pairs['y_vals']] });
 }
@@ -214,91 +283,3 @@ function get_summed_reformed_benefit_values(include_eitc, include_ctc, include_s
 		y_vals : y_values,
 	}
 }
-
-function reformed_eitc_value_at_income(income, filing_status, num_children){
-	// Phase-in x-value and max benefit
-	let phase_in = 0, max_benefit = 0;
-	if(filing_status === 'married'){
-		phase_in    = 20000;
-		max_benefit = 6330;
-	}
-	else{
-		phase_in    = 10000;
-		max_benefit = 3135;
-	}
-
-	// End of Plateau
-	let max_snap_value = reformed_snap_value_at_income(0, filing_status, num_children);
-	let plateau_end    = max_snap_value / .24;
-
-	// Phase-out x-value
-	let phase_out = 0;
-	if(filing_status === 'married'){phase_out = plateau_end + 25000;}
-	else{phase_out = plateau_end + 12500;}
-
-	// calculate eitc value
-	if(income < phase_in){
-		return .3165 * income;
-	}
-	else if(income <= plateau_end){
-		return max_benefit;
-	}
-	else if(income < phase_out){
-		return max_benefit - .2532 * (income - plateau_end);
-	}
-	else{
-		return 0;
-	}
-}
-
-function reformed_ctc_value_at_income(income, num_children){
-	if(num_children == 'none'){
-		return 0;
-	}
-	else if(num_children == 'one'){
-		return 3000;
-	}
-	else if(num_children == 'two'){
-		return 6000;
-	}
-	else if(num_children == 'three'){
-		return 9000;
-	}
-}
-
-function reformed_snap_value_at_income(income, filing_status, num_children){
-	let household_size = integer_household_size(filing_status, num_children);
-	let max_benefit    = household_size * 3000;
-	let end_value      = max_benefit / .24;
-
-	if(income < end_value){
-		return max_benefit - (.24 * income);
-	}
-	else{
-		return 0;
-	}
-}
-
-function integer_household_size(filing_status, num_children){
-    if(filing_status === 'married'){
-        if(num_children == 'none'){ return 2;}
-        else if(num_children == 'one'){ return 3;}
-        else if(num_children == 'two'){ return 4;}
-        else if(num_children == 'three'){return 5;}
-    }
-    else{
-        if(num_children == 'none'){return 1;}
-        else if(num_children == 'one'){return 2;}
-        else if(num_children == 'two'){return 3;}
-        else if(num_children == 'three'){return 4;}
-    }
-}
-
-function integer_num_children(num_children){
-    if(num_children == 'none'){ return 0;}
-    else if(num_children == 'one'){ return 1;}
-    else if(num_children == 'two'){ return 2;}
-    else if(num_children == 'three'){return 3;}
-}
-
-

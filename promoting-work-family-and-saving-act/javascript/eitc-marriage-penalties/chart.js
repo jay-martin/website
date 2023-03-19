@@ -2,8 +2,9 @@ var eitc_marriage_penalty_chart = c3.generate({
     bindto: '#eitc_marriage_penalty_chart',
     data: {
         xs: {
-            'person1'        : 'x_single',
-            'person2'        : 'x_single',
+            'person1'        : 'x_person1',
+            'person2'        : 'x_person2',
+            'person2_dashed' : 'x_person2_dashed',
             'married'        : 'x_married',
 
             'point1'         : 'x_point1',
@@ -17,23 +18,29 @@ var eitc_marriage_penalty_chart = c3.generate({
         },
         columns: [
             ['x_married', 0, 20000, 50000, 75000],
-            ['married',   0, 6000,  6000,  0],
-            ['x_single',  0, 10000, 25000, 37500],
-            ['person1',   0, 3000,  3000,  0],
-            ['person2',   0, 3000,  3000,  0],
+            ['married',   0, 6330,  6330,  0],
+
+            // person2 goes first to hide it underneath person1
+            // person2_dashed goes after person1 so it sits on top of person1
+            ['x_person2', 10000, 25000, 37500],
+            ['person2',   3165,  3165,  0],
+            ['x_person1', 0, 10000, 25000, 37500],
+            ['person1',   0, 3165,  3165,  0],
+            ['x_person2_dashed', 0, 10000, 25000, 37500],
+            ['person2_dashed',   0, 3165,  3165,  0],
 
             ['x_horizontal',  0,    80000],
             ['married_eitc',  ],
             ['penalty_eitc',  ],
-            ['combined_eitc', 4500, 4500],
-            ['bonus_eitc',    1500, 1500],
+            ['combined_eitc', 4747.5, 4747.5],
+            ['bonus_eitc',    1582.5, 1582.5],
 
             ['x_point1', 20000],
-            ['point1',   3000],
+            ['point1',   3165],
             ['x_point2', 5000],
-            ['point2',   1500],
+            ['point2',   1582.5],
             ['x_point_married', 25000],
-            ['point_married',   6000],
+            ['point_married',   6330],
         ],
         types: {
             'married_eitc'  : 'area',
@@ -42,13 +49,13 @@ var eitc_marriage_penalty_chart = c3.generate({
             'bonus_eitc'    : 'area',
         },
         regions: {
-            person2: [ {'style':'dashed'}, ],
+            person2_dashed: [ {'style':'dashed'}, ],
         },
         groups: [['married_eitc', 'penalty_eitc'], ['combined_eitc', 'bonus_eitc'], ], 
         order: false,
         names: {
             person1        : 'Your EITC',
-            person2        : "Your Partner's EITC",
+            person2_dashed : "Your Partner's EITC",
             married        : 'EITC if you get married',
         },
         colors: {
@@ -56,6 +63,7 @@ var eitc_marriage_penalty_chart = c3.generate({
             point1         : '#6ab6fc',
 
             person2        : purple_shade,
+            person2_dashed : purple_shade,
             point2         : purple_shade,
 
             married        : white_or_black,
@@ -76,7 +84,7 @@ var eitc_marriage_penalty_chart = c3.generate({
     },
     legend: {
         position: 'bottom',
-        hide: ['married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married',],
+        hide: ['person2', 'married_eitc', 'penalty_eitc', 'combined_eitc', 'bonus_eitc', 'point1', 'point2', 'point_married',],
     },
     tooltip: {
         show: false
@@ -110,7 +118,7 @@ var eitc_marriage_penalty_chart = c3.generate({
             lines: [{value: 20000, text: 'Your income'}, {value: 5000, text: "Your partner's income"}, {value: 25000, text: 'Combined income'}]
         },
         y: {
-            lines: [{value: 0}, {value: 6000, text: "Your married EITC"}, {value: 4500, text: "Combined individual EITC's"}, ]
+            lines: [{value: 0}, {value: 6330, text: "Your married EITC"}, {value: 4747.5, text: "Combined individual EITC's"}, ]
         }
     },
 });

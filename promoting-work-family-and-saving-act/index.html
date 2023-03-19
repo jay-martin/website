@@ -704,7 +704,7 @@
 </section>
 
 <section class = 'center_no_side_elements' id="exclusion">
-  <h2>Encouraging Work By Reducing Marginal Tax Rates</h2>
+  <h2>Encouraging Work By Eliminating Cliffs & Reducing Marginal Tax Rates</h2>
   <div class="article_tag"><em>Learn More: <a href="../marginal-tax/index.html" target="_blank">Marginal Tax Rates</a> </em></div>
 
   <p>
@@ -868,50 +868,6 @@
   <h2>Reducing Marriage Penalties</h2>
   <div class="article_tag"><em>Learn More: <a href="../marriage-penalties/index.html" target="_blank">Marriage Penalties</a> </em></div>
 
-  <div class="chart" id="eitc_reform_container">
-    <div class='screenshot_wrapper' id='eitc_reform_screenshot_wrapper' >
-
-    <h3 class='chart_title' id='eitc_reform_title'>An EITC That Rewards, Not Penalizes, Marriage</h3>
-
-    <!-- Chart -->
-    <div id="eitc_reform_chart"></div>
-
-    <!-- Chart Title & Logo -->
-    <div class='chart_title_logo_container' id="eitc_reform_logo">
-      <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
-      <div>
-        <div class='float_right'>
-          <svg class="chart-logo" viewBox="0 0 204 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-49.078416,-84.285338)" id="text222" style="white-space:pre;shape-inside:url(#rect224);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="logo-span1"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="tspan320">The Welfare</tspan></tspan></text>
-            <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-47.660386,-49.812566)" id="text222-4" style="white-space:pre;shape-inside:url(#rect224-7);display:inline;fill:#000000"><tspan x="183.97852" y="418.98599" id="tspan326"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal'" id="logo-span2">of Families</tspan></tspan></text>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    </div> <!-- Screenshot wrapper -->
-
-    <!-- Chart Options -->
-    <div class="chart_options_container">
-
-      <!--Screenshot mode switch-->
-      <label class="switch">
-        Screenshot mode:
-        <input type="checkbox" id="eitc_reform_screenshot_mode_switch" oninput="screenshot_mode('eitc_reform', 'basic', [], '', false);">
-        <span class="slider round"></span>
-      </label>
-
-      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
-      <label class="switch" id='eitc_reform_screenshot_frame_switch_container' style="display:none">
-        Hide screenshot frame guide:
-        <input type="checkbox" id="eitc_reform_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc_reform')">
-        <span class="slider round"></span>
-      </label>
-
-    </div>
-
-  </div> <!--chart end-->
-
   <div class = "chart" id="eitc_marriage_penalty_container">
     <div class='screenshot_wrapper' id='eitc_marriage_penalty_screenshot_wrapper' >
 
@@ -921,11 +877,29 @@
     <!--User inputs-->
     <div class="user_inputs" id="eitc_marriage_penalty_inputs">
 
+      <!--Person 1 number of old children-->
+      <label for="eitc_marriage_penalty_person1_children">I have</label>
+      <select id="eitc_marriage_penalty_person1_children" oninput="reformed_eitc_marriage_penalty_adjust_chart();">
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3 children</option>
+      </select>
+
+      <!--Person 2 number of old children-->
+      <label for="eitc_marriage_penalty_person2_children">and my partner has</label>
+      <select id="eitc_marriage_penalty_person2_children" oninput="reformed_eitc_marriage_penalty_adjust_chart();" >
+        <option value="none">no children</option>
+        <option value="one" selected>1 child</option>
+        <option value="two">2 children</option>
+        <option value="three">3 children</option>
+      </select>
+
       <!--Person 1 income slider-->
       <div class="slidecontainer"> 
         <label for="eitc_marriage_penalty_person1_income" class="slider-text"> I have an income of $<output id="eitc_marriage_penalty_person1_income_output">20,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="eitc_marriage_penalty_person1_income" oninput="eitc_marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');reformed_eitc_marriage_penalty_modify_income('eitc_marriage_penalty');">
+          <input type="range" min="0" max="60000" value="20000" step="1000" class="slider" id="eitc_marriage_penalty_person1_income" oninput="eitc_marriage_penalty_person1_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');reformed_eitc_marriage_penalty_modify_income();">
         </div>
       </div>
 
@@ -933,7 +907,7 @@
       <div class="slidecontainer"> 
         <label for="eitc_marriage_penalty_person2_income" class="slider-text"> My partner has an income of $<output id="eitc_marriage_penalty_person2_income_output">5,000</output>:</label>
         <div class="slider-actual">
-          <input type="range" min="0" max="60000" value="5000" step="1000" class="slider" id="eitc_marriage_penalty_person2_income" oninput="eitc_marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');reformed_eitc_marriage_penalty_modify_income('eitc_marriage_penalty');">
+          <input type="range" min="0" max="60000" value="5000" step="1000" class="slider" id="eitc_marriage_penalty_person2_income" oninput="eitc_marriage_penalty_person2_income_output.innerText = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');reformed_eitc_marriage_penalty_modify_income();">
         </div>
       </div>
 
@@ -941,12 +915,12 @@
 
     <!--Center Explanation Box-->
     <div class="center_explanation_box" id="eitc_marriage_penalty_outputs">
-      <p class="explanation_text inline-block" id="eitc_marriage_penalty_penalty"><button class="show_all_button" id="eitc_marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('eitc_marriage_penalty_breakdown', 'eitc_marriage_penalty_breakdown_button');">Show All</button>
+      <p class="explanation_text inline-block" id="reformed_eitc_marriage_penalty_penalty"><button class="show_all_button" id="reformed_eitc_marriage_penalty_breakdown_button" onclick="open_and_close_breakdown('reformed_eitc_marriage_penalty_breakdown', 'reformed_eitc_marriage_penalty_breakdown_button');">Show All</button>
       </p>
-      <ul class="center_box_breakdown" id="eitc_marriage_penalty_breakdown" style="display:none">
-        <li id="eitc_marriage_penalty_individual"></li>
-        <li id="eitc_marriage_penalty_married"></li>
-        <li id="eitc_marriage_penalty_explanation_line"></li>
+      <ul class="center_box_breakdown" id="reformed_eitc_marriage_penalty_breakdown" style="display:none">
+        <li id="reformed_eitc_marriage_penalty_individual"></li>
+        <li id="reformed_eitc_marriage_penalty_married"></li>
+        <li id="reformed_eitc_marriage_penalty_explanation_line"></li>
       </ul>
     </div>
 
@@ -1119,6 +1093,7 @@
 <script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
 <script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
 <script type="text/javascript" src="./javascript/chart_builder.js"></script>
+<script type="text/javascript" src="./javascript/calculate.js"></script>
 
 <!-- Page Specific Funcionality -->
 <script type="text/javascript" src="./javascript/chart-functionality.js"></script>

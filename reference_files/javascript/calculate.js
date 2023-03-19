@@ -574,6 +574,29 @@ function calculate_household_size(filing_status, num_children){
     }
 }
 
+/** Returns an integer of the number of people in a household given filing status and number of children
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {integer} - number of people in household
+ * */
+function integer_household_size(filing_status, num_children){
+    if(filing_status === 'married'){
+        if(num_children == 'none'){ return 2;}
+        else if(num_children == 'one'){ return 3;}
+        else if(num_children == 'two'){ return 4;}
+        else if(num_children == 'three'){return 5;}
+        else if(num_children == 'four'){return 6;}
+        else if(num_children == 'five'){return 7;}
+        else if(num_children == 'six'){return 8;}
+    }
+    else{
+        if(num_children == 'none'){return 1;}
+        else if(num_children == 'one'){return 2;}
+        else if(num_children == 'two'){return 3;}
+        else if(num_children == 'three'){return 4;}
+    }
+}
+
 /** Returns a string representing the number of children for the purposes of calculating the married EITC
  * When the number of children is three or greater, 'three' is returned. This is because their is only one EITC curve for families with more three or more children.
  * @param {string} - string representing the filing status ('married', 'hoh', 'single')
@@ -594,4 +617,27 @@ function sum_children(person1Children, person2Children){
 	else{
 		return 'three';
 	}
+}
+
+function sum_children_no_cap(p1_num_children, p2_num_children){
+	let int_combined_children = integer_num_children(p1_num_children) + integer_num_children(p2_num_children);
+
+	if(int_combined_children == 0){return 'none';}
+	else if(int_combined_children == 1){return 'one';}
+	else if(int_combined_children == 2){return 'two';}
+	else if(int_combined_children == 3){return 'three';}
+	else if(int_combined_children == 4){return 'four';}
+	else if(int_combined_children == 5){return 'five';}
+	else if(int_combined_children == 6){return 'six';}
+}
+
+/** Returns an integer of the number of children given a string of the number of children
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {integer} - number of children
+ * */
+function integer_num_children(num_children){
+    if(num_children == 'none'){ return 0;}
+    else if(num_children == 'one'){ return 1;}
+    else if(num_children == 'two'){ return 2;}
+    else if(num_children == 'three'){return 3;}
 }

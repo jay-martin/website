@@ -25,7 +25,7 @@
 }
 
 /* EITC Marriage Penalties */
-.c3-circles-combined_eitc, .c3-circles-bonus_eitc, .c3-circles-person1, .c3-circles-person2, .c3-circles-married {
+.c3-circles-combined_eitc, .c3-circles-bonus_eitc, .c3-circles-person1, .c3-circles-person2, .c3-circles-person2_dashed, .c3-circles-married {
   display: none;
 }
 
