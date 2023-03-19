@@ -13,13 +13,13 @@ function show_eitc_fix_values(){
     if(eitc_fix_outputs_isClicked){
         document.getElementById('eitc_fix_outputs').style.display = 'none';
         document.getElementById('existing_outputs').style.display = 'none';
-        document.getElementById('eitc_fix_outputs_button').value = 'Show Values'
+        document.getElementById('eitc_fix_outputs_button').value = 'Show Outputs'
         eitc_fix_outputs_isClicked = false;
     }
     else{
         document.getElementById('eitc_fix_outputs').style.display = 'block';
         document.getElementById('existing_outputs').style.display = 'block';
-        document.getElementById('eitc_fix_outputs_button').value = 'Hide Values'
+        document.getElementById('eitc_fix_outputs_button').value = 'Hide Outputs'
         eitc_fix_outputs_isClicked = true;
     }
 }

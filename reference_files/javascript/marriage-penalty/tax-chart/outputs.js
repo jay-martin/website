@@ -79,7 +79,7 @@ function tax_append_button(chart_name, penalty_text){
     let show_all_text = eval(chart_name + '_show_all_button_text');
     let collapse_text = eval(chart_name + '_collapse_button_text');
 
-    if(is_open[breakdown_id] === 'open'){
+    if(is_open[breakdown_id] == true){
         return penalty_text + collapse_text;
     }
     else {

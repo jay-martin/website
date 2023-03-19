@@ -4,7 +4,6 @@ function eitc_comparison_additional_screenshot_mode(){
 	}
 	else{
 		$('#eitc_fix_outputs_button').css('display','inline-block');
-		$('#eitc_comparison_title').css('display','none');
 	}
 	eitc_comparison_description_generator();
 }

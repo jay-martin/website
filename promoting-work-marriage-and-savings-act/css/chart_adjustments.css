@@ -3,3 +3,39 @@
 .c3-circles-current_eitc, .c3-circles-reformed_eitc {
   display: none;
 }
+
+/* Benefits curves */
+.c3-circles-eitc, .c3-circles-snap, .c3-circles-ctc, .c3-circles-ssi {
+  display: none;
+}
+
+/* Benefit comparison chart */
+.c3-circles-total_benefit {
+  display: none;
+}
+
+/* Marginal Tax EMTR Chart */
+.c3-circles-total {
+  display: none;
+}
+
+/* EITC Reform */
+.c3-circles-single_zero, .c3-circles-single_one, .c3-circles-single_two, .c3-circles-single_three, .c3-circles-married_zero, .c3-circles-married_one, .c3-circles-married_two, .c3-circles-married_three {
+  display: none;
+}
+
+/* EITC Marriage Penalties */
+.c3-circles-combined_eitc, .c3-circles-bonus_eitc, .c3-circles-person1, .c3-circles-person2, .c3-circles-married {
+  display: none;
+}
+
+/******************* Dashed xgrid ******************************/
+.c3-xgrid-line.dashed line {
+  stroke-dasharray: 3,3;
+}
+
+/******************* Opacity ******************************/
+/* EITC Marriage Penalties */
+.c3-area-combined_eitc, .c3-area-married_married_eitc, .c3-area-married_eitc, .c3-area-married_penalty_eitc {
+  opacity: 0 !important;
+}

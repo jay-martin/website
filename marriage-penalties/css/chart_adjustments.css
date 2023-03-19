@@ -42,6 +42,11 @@
   display: none;
 }
 
+/* Phase-Out - Tax Equivalence */
+.c3-circles-benefit, .c3-circles-tax, .c3-circles-eitc, .c3-circles-dashed_top {
+  display: none;
+}
+
 /* Standard Credit */
 .c3-circles-tax {
   display: none;

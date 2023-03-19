@@ -12,8 +12,8 @@ else{
     chart_height = 380;
 }
 
-var phase_out_reform = c3.generate({
-    bindto: '#phase_out_reform',
+var current_benefits_chart = c3.generate({
+    bindto: '#current_benefits_chart',
     data: {
         xs: {
             'ssi'   : 'x_ssi',
@@ -21,11 +21,11 @@ var phase_out_reform = c3.generate({
             'eitc'  : 'x_eitc',
         },
         columns: [
-            ['x_snap', 0,     35000],
-            ['snap',   7000,  0],   
+            ['x_eitc', 0, 16510, 28120, 59478],
+            ['eitc',   0, 6604,  6604,  0],
 
-            ['x_eitc', 0,  12000, 35000, 55000],
-            ['eitc',   0,  4000,  4000,  0],      
+            ['x_snap', 0,     2895,  36083, 36084],
+            ['snap',   11268, 11268, 3303,  0], 
         ],
         names: {
             ssi:  'SSI',
@@ -33,8 +33,7 @@ var phase_out_reform = c3.generate({
             eitc: 'EITC',
         },
         colors: {
-            //ssi  : '#6ab6fc',
-            snap : '#f7c22f',
+            snap : purple_shade,
             eitc : '#6ab6fc',
         },
     },
@@ -54,24 +53,28 @@ var phase_out_reform = c3.generate({
     tooltip: {
         show: false
     },
+    size: {
+        height: wide_chart_height,
+    },
     axis: {
         x: {
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000],
+                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000],
             },
             padding: {left: 0, right: 10},
             height: 45,
-            max: 60000,
+            max: 100000,
         },
         y: {
             label: {text: 'Benefit Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000]
             },
-            padding: {top: 40, bottom: 0},
+            padding: {top: 0, bottom: 0},
+            max: 12000,
         }
     },
     grid: {

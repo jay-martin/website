@@ -1,4 +1,19 @@
 /************************* EITC ****************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2023 eitc for a given number of children and filing status
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @param {string} - string representing the filing status ('single', 'hoh', 'married')
+ * */
+function eitc_builder_2023(chartName, xName, dataName, filingStatus, numChildren){
+    if(filingStatus === 'married'){
+        married_eitc_builder_2023(chartName, xName, dataName, numChildren);
+    }
+    else{
+        single_eitc_builder_2023(chartName, xName, dataName, numChildren);
+    }
+}
 
 /** Loads to a c3.js chart a curve for the 2023 single/hoh eitc for a given number of children
  * @param {string} - variable name of the c3.js chart
@@ -7,38 +22,45 @@
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * */
 function single_eitc_builder_2023(chartName, xName, dataName, numChildren){
-	if(numChildren === 'three'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 16510, 21560, 56838],
-    			[dataName, 0, 7430,  7430,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'two'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 16510, 21560, 52918],
-    			[dataName, 0, 6604,  6604,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'one'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 11750, 21560, 46560],
-    			[dataName, 0, 3995,  3995,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'none'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 7840, 9800, 17640],
-    			[dataName, 0, 600,  600,  0],
-			]
-    	});
-	}
+	let xy_pairs = single_eitc_values_2023(numChildren);
+
+    // format
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+/** Returns the x and y values for the 2023 single eitc
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {object of two arrays}
+ * */
+function single_eitc_values_2023(numChildren){
+    if(numChildren === 'three'){
+        return {
+            x_vals : [0, 16510, 21560, 56838],
+            y_vals : [0, 7430,  7430,  0],
+        }
+    }
+    else if(numChildren === 'two'){
+        return {
+            x_vals : [0, 16510, 21560, 52918],
+            y_vals : [0, 6604,  6604,  0],
+        }
+    }
+    else if(numChildren === 'one'){
+        return {
+            x_vals : [0, 11750, 21560, 46560],
+            y_vals : [0, 3995,  3995,  0],
+        }
+    }
+    else if(numChildren === 'none'){
+        return {
+            x_vals : [0, 7840, 9800, 17640],
+            y_vals : [0, 600,  600,  0],
+        }
+    }
 }
 
 /** Loads to a c3.js chart a curve for the 2023 married eitc for a given number of children
@@ -48,38 +70,54 @@ function single_eitc_builder_2023(chartName, xName, dataName, numChildren){
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * */
 function married_eitc_builder_2023(chartName, xName, dataName, numChildren){
-	if(numChildren === 'three'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 16510, 28120, 63398],
-    			[dataName, 0, 7430,  7430,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'two'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 16510, 28120, 59478],
-    			[dataName, 0, 6604,  6604,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'one'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 11750, 28120, 53120],
-    			[dataName, 0, 3995,  3995,  0],
-			]
-    	});
-	}
-	else if(numChildren === 'none'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 7840, 16370, 24210],
-    			[dataName, 0, 600,  600,   0],
-			]
-    	});
-	}
+    let xy_pairs = married_eitc_values_2023(numChildren);
+
+    // format
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+/** Returns the x and y values for the 2023 married eitc
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {object of two arrays}
+ * */
+function married_eitc_values_2023(numChildren){
+    if(numChildren === 'three'){
+        return {
+            x_vals : [0, 16510, 28120, 63398],
+            y_vals : [0, 7430,  7430,  0],
+        }
+    }
+    else if(numChildren === 'two'){
+        return {
+            x_vals : [0, 16510, 28120, 59478],
+            y_vals : [0, 6604,  6604,  0],
+        }
+    }
+    else if(numChildren === 'one'){
+        return {
+            x_vals : [0, 11750, 28120, 53120],
+            y_vals : [0, 3995,  3995,  0],
+        }
+    }
+    else if(numChildren === 'none'){
+        return {
+            x_vals : [0, 7840, 16370, 24210],
+            y_vals : [0, 600,  600,   0],
+        }
+    }
+}
+
+function eitc_values_2023(filingStatus, numChildren){
+    if(filingStatus == 'married'){
+        return married_eitc_values_2023(numChildren);
+    }
+    else {
+        return single_eitc_values_2023(numChildren);
+    }
 }
 
 /** Loads to a c3.js chart a curve for the 2022 single/hoh eitc for a given number of children
@@ -335,6 +373,24 @@ function married_tax_liability_builder_2022(chartName, xName, dataName){
 }
 
 /************************* CTC ****************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2023 single CTC for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the filing status ('single', 'hoh', 'married')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function ctc_builder_2023(chartName, xName, dataName, filingStatus, numChildren){
+    if(filingStatus == 'single'){
+        single_ctc_builder_2023(chartName, xName, dataName, numChildren);
+    }
+    else if(filingStatus == 'hoh'){
+        hoh_ctc_builder_2023(chartName, xName, dataName, numChildren);
+    }
+    else if(filingStatus == 'married'){
+        married_ctc_builder_2023(chartName, xName, dataName, numChildren);
+    }
+}
 
 /** Loads to a c3.js chart a curve for the 2023 single CTC for a given number of children
  * @param {string} - variable name of the c3.js chart
@@ -343,38 +399,45 @@ function married_tax_liability_builder_2022(chartName, xName, dataName){
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * */
 function single_ctc_builder_2023(chartName, xName, dataName, numChildren){
-	if(numChildren === 'three'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 13850,  24850,  30581, 200000, 320000],
-    			[dataName, 0, 0,    1702.5, 4452.5, 6000,  6000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'two'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 13850,  23040, 200000, 280000],
-    			[dataName, 0, 0,    1702.5, 4000,  4000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'one'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 13167, 13850, 17850, 200000, 240000],
-    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'none'){
-		chartName.load({
-    		columns: [
-    			[xName,    0,],
-    			[dataName, 0,],
-			]
-    	});
-	}
+    let xy_pairs = single_ctc_values_2023(numChildren);
+
+    // format
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+/** Returns the x and y values for the 2023 single ctc
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {object of two arrays}
+ * */
+function single_ctc_values_2023(numChildren){
+    if(numChildren === 'three'){
+        return {
+            x_vals : [0, 2500, 13850,  24850,  30581, 200000, 320000],
+            y_vals : [0, 0,    1702.5, 4452.5, 6000,  6000,   0],
+        }
+    }
+    else if(numChildren === 'two'){
+        return {
+            x_vals : [0, 2500, 13850,  23040, 200000, 280000],
+            y_vals : [0, 0,    1702.5, 4000,  4000,   0],
+        }
+    }
+    else if(numChildren === 'one'){
+        return {
+            x_vals : [0, 2500, 13167, 13850, 17850, 200000, 240000],
+            y_vals : [0, 0,    1600,  1600,  2000,  2000,   0],
+        }
+    }
+    else if(numChildren === 'none'){
+        return {
+            x_vals : [0],
+            y_vals : [0],
+        }
+    }
 }
 
 /** Loads to a c3.js chart a curve for the 2023 HOH CTC for a given number of children
@@ -384,38 +447,45 @@ function single_ctc_builder_2023(chartName, xName, dataName, numChildren){
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * */
 function hoh_ctc_builder_2023(chartName, xName, dataName, numChildren){
-	if(numChildren === 'three'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 20800, 33820, 200000, 320000],
-    			[dataName, 0, 0,    2745,  6000,  6000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'two'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 20800, 23833,   28800, 200000, 280000],
-    			[dataName, 0, 0,    2745,  3503.25, 4000,  4000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'one'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 13167, 20800, 24800, 200000, 240000],
-    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'none'){
-		chartName.load({
-    		columns: [
-    			[xName,    0,],
-    			[dataName, 0,],
-			]
-    	});
-	}
+    let xy_pairs = hoh_ctc_values_2023(numChildren);
+
+    // format
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+/** Returns the x and y values for the 2023 hoh ctc
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {object of two arrays}
+ * */
+function hoh_ctc_values_2023(numChildren){
+    if(numChildren === 'three'){
+        return {
+            x_vals : [0, 2500, 20800, 33820, 200000, 320000],
+            y_vals : [0, 0,    2745,  6000,  6000,   0],
+        }
+    }
+    else if(numChildren === 'two'){
+        return {
+            x_vals : [0, 2500, 20800, 23833,   28800, 200000, 280000],
+            y_vals : [0, 0,    2745,  3503.25, 4000,  4000,   0],
+        }
+    }
+    else if(numChildren === 'one'){
+        return {
+            x_vals : [0, 2500, 13167, 20800, 24800, 200000, 240000],
+            y_vals : [0, 0,    1600,  1600,  2000,  2000,   0],
+        }
+    }
+    else if(numChildren === 'none'){
+        return {
+            x_vals : [0],
+            y_vals : [0],
+        }
+    }
 }
 
 /** Loads to a c3.js chart a curve for the 2023 married CTC for a given number of children
@@ -425,38 +495,154 @@ function hoh_ctc_builder_2023(chartName, xName, dataName, numChildren){
  * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
  * */
 function married_ctc_builder_2023(chartName, xName, dataName, numChildren){
-	if(numChildren === 'three'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 27700, 34500, 39700, 400000, 520000],
-    			[dataName, 0, 0,    3780,  5480,  6000,  6000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'two'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 23833, 27700, 35700, 400000, 480000],
-    			[dataName, 0, 0,    3200,  3200,  4000,  4000,   0],
-			]
-    	});
-	}
-	else if(numChildren === 'one'){
-		chartName.load({
-    		columns: [
-    			[xName,    0, 2500, 13167, 27700, 31700, 400000, 440000],
-    			[dataName, 0, 0,    1600,  1600,  2000,  2000,   0 ],
-			]
-    	});
-	}
-	else if(numChildren === 'none'){
-		chartName.load({
-    		columns: [
-    			[xName,    0,],
-    			[dataName, 0,],
-			]
-    	});
-	}
+    let xy_pairs = married_ctc_values_2023(numChildren);
+
+    // format
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+/** Returns the x and y values for the 2023 married ctc
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {object of two arrays}
+ * */
+function married_ctc_values_2023(numChildren){
+    if(numChildren === 'three'){
+        return {
+            x_vals : [0, 2500, 27700, 34500, 39700, 400000, 520000],
+            y_vals : [0, 0,    3780,  5480,  6000,  6000,   0],
+        }
+    }
+    else if(numChildren === 'two'){
+        return {
+            x_vals : [0, 2500, 23833, 27700, 35700, 400000, 480000],
+            y_vals : [0, 0,    3200,  3200,  4000,  4000,   0],
+        }
+    }
+    else if(numChildren === 'one'){
+        return {
+            x_vals : [0, 2500, 13167, 27700, 31700, 400000, 440000],
+            y_vals : [0, 0,    1600,  1600,  2000,  2000,   0],
+        }
+    }
+    else if(numChildren === 'none'){
+        return {
+            x_vals : [0],
+            y_vals : [0],
+        }
+    }
+}
+
+function ctc_values_2023(filingStatus, numChildren){
+    if(filingStatus == 'married'){
+        return married_ctc_values_2023(numChildren);
+    }
+    else if(filingStatus == 'hoh'){
+        return hoh_ctc_values_2023(numChildren);
+    }
+    else if(filingStatus == 'single'){
+        return single_ctc_values_2023(numChildren);
+    }
+}
+
+/************************* SNAP ****************************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2019 married eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the filing status ('single', 'hoh', 'married')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * */
+function snap_builder_2023(chartName, xName, dataName, filingStatus, numChildren){
+    let xy_pairs = snap_values_2023(filingStatus, numChildren);
+
+    // add xName and dataName
+    xy_pairs['x_vals'].unshift(xName);
+    xy_pairs['y_vals'].unshift(dataName);
+
+    // load to chart
+    chartName.load({ columns: [ xy_pairs['x_vals'], xy_pairs['y_vals'] ] });
+}
+
+function snap_values_2023(filingStatus, numChildren){
+    // SNAP Household Size: One
+    const one_snap_x_vals  = [0,    2895, 16944];
+    const one_snap_y_vals  = [3372, 3372, 0];
+
+    // SNAP Household Size: Two
+    const two_snap_x_vals   = [0,    2895,  23808, 23809];
+    const two_snap_y_vals   = [6192, 6192,  1713,  0];
+
+    // SNAP Household Size: Three
+    const three_snap_x_vals = [0,    2895,  29940, 29941,];
+    const three_snap_y_vals = [8880, 8880,  2250,  0];
+
+    // SNAP Household Size: Four
+    const four_snap_x_vals  = [0,     2895,  36084, 36085,];
+    const four_snap_y_vals  = [11268, 11268, 3303,  0];
+
+    // SNAP Household Size: Five
+    const five_snap_x_vals  = [0,     2895,  42216, 42217,];
+    const five_snap_y_vals  = [13392, 13392, 4070,  0];
+
+    // select and return values
+    let household_size = calculate_household_size(filingStatus, numChildren);
+    return {
+        x_vals : eval(household_size + '_snap_x_vals'),
+        y_vals : eval(household_size + '_snap_y_vals'),
+    }
+}
+
+/************************* Summed Benefit Chart **************************************************************************************************/
+/** Loads to a c3.js chart a curve for the 2019 married eitc for a given number of children
+ * @param {string} - variable name of the c3.js chart
+ * @param {string} - variable name of the x variable
+ * @param {string} - variable name of the dependent variable
+ * @param {string} - string representing the filing status ('single', 'hoh', 'married')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @param {object} - key-value pairs indicating whether a benefit should be added (e.g. {ctc: true, eitc: true})
+ * */
+function build_summed_benefits_chart_2023(chart_name, x_name, data_name, filing_status, num_children, benefits_active){
+    // x values
+    let x_vals = [];
+    if(benefits_active['eitc']){
+        x_vals = x_vals.concat(eitc_values_2023(filing_status, num_children)['x_vals']);
+    }
+    if(benefits_active['ctc']){
+        x_vals = x_vals.concat(ctc_values_2023(filing_status, num_children)['x_vals']);
+    }
+    if(benefits_active['snap']){
+        x_vals = x_vals.concat(snap_values_2023(filing_status, num_children)['x_vals']);
+    }
+
+    // remove duplicates and sort
+    let set = new Set(x_vals);
+    x_vals = Array.from(set).sort(function(a,b){return a-b;});
+
+    // y values
+    let y_vals = [], new_y_val = 0;
+    for(income of x_vals){
+        new_y_val = 0;
+        if(benefits_active['eitc']){
+            new_y_val += eitc_value_2023(income, filing_status, num_children);
+        }
+        if(benefits_active['ctc']){
+            new_y_val += ctc_value_2023(income, filing_status, num_children);
+        }
+        if(benefits_active['snap']){
+            new_y_val += snap_value_2023(income, filing_status, num_children);
+        }
+        y_vals.push(new_y_val);
+    }
+
+    // format
+    x_vals.unshift(x_name);
+    y_vals.unshift(data_name);
+
+    chart_name.load({ columns: [x_vals, y_vals] });
 }
 
 /************************* Marriage Penalties ****************************************************************************************************/
@@ -500,14 +686,10 @@ function marriage_penalty_values_region_builder(x_vals, y_vals, x_max){
         current_color = 'red';
     }
 
-    let array_of_x_val_arrays = [];
-    let array_of_y_val_arrays = [];
-    let current_x_vals = [];
-    let current_y_vals = [];
+    let array_of_x_val_arrays = [], array_of_y_val_arrays = [], current_x_vals = [], current_y_vals = [];
+    let green_number = 1, red_number = 1;
     let y_previous = y_vals[0];
     let x_previous = x_vals[0];
-    let green_number = 1;
-    let red_number = 1;
     let i = 0;
     while(i < y_vals.length){
         if(y_previous > 0 && y_vals[i] < 0 || y_previous < 0 && y_vals[i] > 0){

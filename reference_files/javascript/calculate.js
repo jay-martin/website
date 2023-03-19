@@ -491,7 +491,88 @@ function ctc_value_2023(income, filingStatus, numChildren){
 	}
 }
 
-/********************** Sum Children ****************************************************************************************************/
+/********************** SNAP ****************************************************************************************************/
+/** Returns the value of the 2023 CTC at a given income for a given filing status and number of children
+ * @param {integer} - income
+ * @param {string} - string representing the filing status ('married', 'hoh', 'single')
+ * @param {string} - string representing the number of children ('none', 'one', 'two', 'three')
+ * @return {float} - value of CTC
+ * */
+function snap_value_2023(income, filing_status, num_children){
+	let household_size = calculate_household_size(filing_status, num_children);	
+
+	if(household_size == 'one'){
+		if(income < 2895){
+			return 3372;
+		}
+		else if(income < 16945){
+			return 3372 - .3 * (.8 * income - 2316);
+		}
+		else{
+			return 0;
+		}
+	}
+	else if(household_size == 'two'){
+		if(income < 2895){
+			return 6192;
+		}
+		else if(income <= 23808){
+			return 6192 - .3 * (.8 * income - 2316);
+		}
+		else{
+			return 0;
+		}
+	}
+	else if(household_size == 'three'){
+		if(income < 2895){
+			return 8880;
+		}
+		else if(income <= 29940){
+			return 8880 - .3 * (.8 * income - 2316);
+		}
+		else{
+			return 0;
+		}
+	}
+	else if(household_size == 'four'){
+		if(income < 2895){
+			return 11268;
+		}
+		else if(income <= 36084){
+			return 11268 - .3 * (.8 * income - 2316);
+		}
+		else{
+			return 0;
+		}
+	}
+	else if(household_size == 'five'){
+		if(income < 2895){
+			return 13392;
+		}
+		else if(income <= 42216){
+			return 13392 - .3 * (.8 * income - 2316);
+		}
+		else{
+			return 0;
+		}
+	}
+}
+
+/********************** Household Size & Sum Children ****************************************************************************************************/
+function calculate_household_size(filing_status, num_children){
+    if(filing_status === 'married'){
+        if(num_children == 'none'){ return 'two';}
+        else if(num_children == 'one'){ return 'three';}
+        else if(num_children == 'two'){ return 'four';}
+        else if(num_children == 'three'){return 'five';}
+    }
+    else{
+        if(num_children == 'none'){return 'one';}
+        else if(num_children == 'one'){return 'two';}
+        else if(num_children == 'two'){return 'three';}
+        else if(num_children == 'three'){return 'four';}
+    }
+}
 
 /** Returns a string representing the number of children for the purposes of calculating the married EITC
  * When the number of children is three or greater, 'three' is returned. This is because their is only one EITC curve for families with more three or more children.
