@@ -31,6 +31,9 @@ var equals_eitc_chart = c3.generate({
     tooltip: {
         show: false
     },
+    size: {
+        height: wide_chart_height,
+    },
     axis: {
         x: {
             label: {text: 'Employment Income', position: 'outer-center'},

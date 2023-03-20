@@ -2,6 +2,7 @@
  * This file contains the functions the make page-specific color changes when the user
  * switches between light, sepia, and dark modes
  * ****************************************************************************************/
+var wide_chart_height = 260;
 
 /**** Page Load Colors *******/
 if(color_preference === 'dark'){

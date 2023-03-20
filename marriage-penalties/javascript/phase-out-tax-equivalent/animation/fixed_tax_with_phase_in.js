@@ -1,41 +1,28 @@
-var tax_equivalent_chart = c3.generate({
-    bindto: '#tax_equivalent_chart',
+var fixed_tax_with_phase_in = c3.generate({
+    bindto: '#fixed_tax_with_phase_in',
     data: {
         xs: {
-            'benefit'    : 'x1',
-            'tax'        : 'x2',
-            'dashed_top' : 'x3',
+            'tax' : 'x2',
         },
         axes: {
-            'benefit'    : 'y',
-            'dashed_top' : 'y',
-            'tax'        : 'y2',
+            'tax' : 'y2',
         },
         columns: [
-            ['x1',      0, 11750,              80000],
-            ['benefit', 0, 4000,               4000],
             ['x2',      0,        21560, 46560, 80000],
             ['tax',     0, 0,     4000,  4000],
-            ['x3',         11750, 21560],
-            ['dashed_top', 4000,  4000],
 
         ],
         types: {
-            'benefit'    : 'area',
             'tax'        : 'area',
-            'dashed_top' : 'line',
         },
         regions: {
             dashed_top : [ {'style':'dashed'}, ],
         },
         order: false,
         names: {
-            benefit: "EITC Without Phase-Out",
-            tax: "Phased-In Fixed Tax",
+            tax: "Tax",
         },
         colors: {
-            benefit     : '#6ab6fc',
-            dashed_top  : '#6ab6fc',
             tax         : '#eb3734',
         },
     },
@@ -46,14 +33,12 @@ var tax_equivalent_chart = c3.generate({
         right: 65,
     },
     legend: {
+        show: false,
         position: 'bottom',
         hide: ['dashed_top'],
     },
     tooltip: {
         show: false
-    },
-    size: {
-        height: wide_chart_height,
     },
     axis: {
         x: {
@@ -67,6 +52,7 @@ var tax_equivalent_chart = c3.generate({
             height: 45,
         },
         y: {
+            show: false,
             label: {text: 'EITC Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),

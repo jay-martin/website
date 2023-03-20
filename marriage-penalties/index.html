@@ -1328,7 +1328,7 @@
     </div> <!-- wide inputs -->
 
     <div class="inner_chart_left">
-      <h3 class='chart_wide_name'>Current EITC</h3>
+      <h3 class='chart_wide_name'>2023 EITC</h3>
       <div class="center_explanation_box" id='existing_outputs' hidden>
         <p class="explanation_text" id="existing_individual"></p>
         <p class="explanation_text" id="existing_married"></p>
@@ -1363,27 +1363,27 @@
     </div>
 
     </div> <!-- Screenshot wrapper -->
-
-    <!-- Chart Options -->
-    <div class="chart_options_container" id="eitc_comparison_options_container">
-
-      <!--Screenshot mode switch-->
-      <label class="switch">
-        Screenshot mode:
-        <input type="checkbox" id="eitc_comparison_screenshot_mode_switch" oninput="base_screenshot_mode_functionality('eitc_comparison', false);eitc_comparison_additional_screenshot_mode();">
-        <span class="slider round"></span>
-      </label>
-
-      <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
-      <label class="switch" id='eitc_comparison_screenshot_frame_switch_container' style="display:none">
-        Hide screenshot frame guide:
-        <input type="checkbox" id="eitc_comparison_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc_comparison')">
-        <span class="slider round"></span>
-      </label>
-        
-    </div>
   
   </div> <!-- chart container -->
+
+  <!-- Chart Options -->
+  <div class="chart_options_container" id="eitc_comparison_options_container" style="margin-left: -8%">
+
+    <!--Screenshot mode switch-->
+    <label class="switch">
+      Screenshot mode:
+      <input type="checkbox" id="eitc_comparison_screenshot_mode_switch" oninput="base_screenshot_mode_functionality('eitc_comparison', false);eitc_comparison_additional_screenshot_mode();">
+      <span class="slider round"></span>
+    </label>
+
+    <!--Desktop Screenshot Mode: Hide Screenshot Frame Guide-->
+    <label class="switch" id='eitc_comparison_screenshot_frame_switch_container' style="display:none">
+      Hide screenshot frame guide:
+      <input type="checkbox" id="eitc_comparison_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('eitc_comparison')">
+      <span class="slider round"></span>
+    </label>
+      
+  </div>
 
   <p>
     One thing that you'll notice is that the reformed married EITC is quite a bit larger than the existing married EITC: the max benefit is over $1,000 more and the phaseout is extended substantially. Importantly, this is not because I've slyly tried to fit a big benefit boost in for married people—this is the bare minimum required to eliminate marriage penalties (except for those intrinsic to phaseouts). Marriage penalties, it turns out, save a lot of money. And by all appearances, Congress has prioritized saving money over ensuring marriage is not discouraged. 
@@ -1587,6 +1587,20 @@
 
     <h3 class='chart_title' id='phase_out_tax_equivalent_title'>The EITC Phase-Out is Just a Tax that Concentrates Positive Marginal Tax Rates On Working-Class Families</h3>
 
+  <!--
+    <div style="position: absolute;font-size: 30px;margin-left: 47%;margin-top:13%;">+</div>
+
+    <div class="inner_chart_left">
+      <h3 class='chart_wide_name' style="text-decoration: none;font-size: 16px;">An EITC without a Phase-Out</h3>
+      <div id="eitc_without_phase_out"></div>
+    </div>
+
+    <div class="inner_chart_right">
+      <h3 class='chart_wide_name' style="text-decoration: none;font-size: 16px;">Plus a Phased-In Fixed Tax</h3>
+      <div id="fixed_tax_with_phase_in"></div> 
+    </div>
+  -->
+
     <div class="inner_chart_left">
       <h3 class='chart_wide_name' style="text-decoration: none;font-size: 16px;">A Phased-In Fixed Tax on an EITC Without a Phase-Out...</h3>
       <div id="tax_equivalent_chart"></div>
@@ -1597,8 +1611,16 @@
       <div id="equals_eitc_chart"></div> 
     </div> <!--Inner right chart container-->
 
+    <div class="inner_chart_left" id='eitc_plus_tax_emtr_container'>
+      <div id="eitc_plus_tax_emtr_chart"></div>
+    </div> <!--Inner left chart container-->
+
+    <div class="inner_chart_right" id='eitc_emtr_container'>
+      <div id="eitc_emtr_chart"></div> 
+    </div> <!--Inner right chart container-->
+
     <!-- Chart Title & Logo -->
-    <div class='chart_title_logo_container' id="phase_out_tax_equivalent_logo" style="display:grid;margin-bottom:0;padding-bottom:0;">
+    <div class='chart_title_logo_container' id="phase_out_tax_equivalent_logo" style="display:grid;margin-bottom:0;padding-bottom:0;display: none;">
       <div class='chart_byline'>Chart by @jaydavidmartin1<br>CC BY 4.0</div>
       <div>
         <div class='float_right'>
@@ -1615,12 +1637,11 @@
   </div> <!-- chart container -->
 
   <!-- Chart Options -->
-<!--
   <div class="chart_options_container" id="phase_out_tax_equivalent_options_container" style="margin-left: -8%">
 
     <label class="switch">
       Screenshot mode:
-      <input type="checkbox" id="phase_out_tax_equivalent_screenshot_mode_switch" oninput="base_screenshot_mode_functionality('phase_out_tax_equivalent', false)">
+      <input type="checkbox" id="phase_out_tax_equivalent_screenshot_mode_switch" oninput="base_screenshot_mode_functionality('phase_out_tax_equivalent', false);phase_out_equivalence_screenshot_mode();">
       <span class="slider round"></span>
     </label>
 
@@ -1629,9 +1650,14 @@
       <input type="checkbox" id="phase_out_tax_equivalent_hide_screenshot_frame_switch" oninput="hide_screenshot_frame_guide('phase_out_tax_equivalent')">
       <span class="slider round"></span>
     </label>
+
+    <label class="switch">
+      Show EMTR Charts:
+      <input type="checkbox" id="phase_out_tax_equivalent_show_emtr_switch" oninput="show_phase_out_equivalent_charts();" checked>
+      <span class="slider round"></span>
+    </label>
       
   </div>
--->
 
   <h4>All Together</h4>
   <p>
@@ -1916,6 +1942,13 @@
 <!-- Phase Out—Tax Equivalent Chart -->
 <script type="text/javascript" src="./javascript/phase-out-tax-equivalent/tax-equivalent-chart.js"></script>
 <script type="text/javascript" src="./javascript/phase-out-tax-equivalent/equals-eitc-chart.js"></script>
+<script type="text/javascript" src="./javascript/phase-out-tax-equivalent/eitc_plus_tax_emtr_chart.js"></script>
+<script type="text/javascript" src="./javascript/phase-out-tax-equivalent/eitc_emtr_chart.js"></script>
+<script type="text/javascript" src="./javascript/phase-out-tax-equivalent/show_emtr_charts.js"></script>
+
+
+<script type="text/javascript" src="./javascript/phase-out-tax-equivalent/animation/eitc_without_phase_out.js"></script>
+<script type="text/javascript" src="./javascript/phase-out-tax-equivalent/animation/fixed_tax_with_phase_in.js"></script>
 
 <!-- Standard Credit -->
 <script type="text/javascript" src="./javascript/standard-credit/chart.js"></script>
