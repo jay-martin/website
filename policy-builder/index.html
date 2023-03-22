@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Policy Builder</title>
+  <meta name="description" content="Build Your Own Policy Reform"/>
+  
+  <!-- Page basics -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Policy Builder"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Build Your Own Policy Reform" />
+  <meta property="og:image" content=""/> <!-- Add path to image -->
+  <meta property="og:site_name" content="The Welfare of Families"/>
+
+  <!-- Preload Fonts -->
+  <link rel="stylesheet preload" href="../reference_files/css/fonts/fonts.css" as="style"></link>
+
+  <!-- Page CSS -->
+  <link href="../home/css/color-modes.css" type="text/css" rel="stylesheet" />
+  <link href="../home/css/style.css" type="text/css" rel="stylesheet" />
+  <link href="../home/css/mobile.css" type="text/css" rel="stylesheet" />
+  <link href="./css/page_adjustments.css" type="text/css" rel="stylesheet" />
+
+  <!-- Charts CSS -->
+  <link href="../reference_files/c3-0.7.20/c3.css" rel="stylesheet">
+  <link href="./css/chart_adjustments.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="../reference_files/images/logo/favicon.png">
+</head>
+
+<body>
+<script type="text/javascript">
+  var color_preference = localStorage.getItem("color-mode");
+  if(color_preference === 'dark'){
+    document.body.className = 'dark-mode';
+    document.body.classList.add("dark-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+  }
+  else if(color_preference === 'light'){
+    document.body.className = 'light-mode';
+    document.body.classList.add("light-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+  }
+  else {
+    document.body.classList.add("auto-toggle-position");
+  }
+</script>
+
+<!--Top--------------------------------------------------------------------------------------------------------------->
+<!-- Desktop Page Color Toggle -->
+<div class="page_color_toggle_container">
+  <div class="page_color_button_group">
+    <button onclick="toggle_page_color('light')">Light</button>
+    <button onclick="toggle_page_color('auto')">Auto</button>
+    <button onclick="toggle_page_color('dark')">Dark</button>
+    <div class="page_color_toggler"></div>
+  </div>
+</div>
+
+<section class="top">
+
+  <div class='top_logo_container'>
+    <!-- Desktop & Tablet Logo -->
+    <svg class='top_logo_svg' viewBox="0 0 240 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+      <text xml:space="preserve" x="-0.16252223" y="15.940749">
+        <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.1667px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.5;stroke-dasharray:none;stroke-opacity:1"
+          x="-0.16252223" y="15.940749">The Welfare of Families
+        </tspan>
+      </text>
+    </svg>
+
+    <!-- Mobile Logo -->
+    <svg class="mobile_logo_svg" viewBox="0 0 290 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <g transform="translate(150, 25)">
+      <text text-anchor="middle" xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,0,0)" style="white-space:pre;display:inline;stroke-width:3.02362;stroke-dasharray:none">
+        <tspan x="0" y="0"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';">The Welfare of</tspan></tspan>
+        <tspan x="0" y="120"><tspan style="font-size:133.333px;font-family:'Zen Antique Soft';">Families</tspan></tspan>
+    </g>
+  </svg>
+
+  <div class="name">A Project by Jay Martin
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" id="twitter_black" onmouseenter="change_social_fill_forward('twitter', '#twitter_svg');" onmouseleave="change_social_fill_backward('#twitter_svg');" aria-label="Follow the Author on Twitter">
+      <svg class='social_icon social-base-color top_social_icons' id='twitter_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+        <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+          C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+          c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+          c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+          c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+          c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+        </svg></a> 
+
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" id="substack_black" onmouseenter="change_social_fill_forward('substack', '#substack_svg');" onmouseleave="change_social_fill_backward('#substack_svg');" aria-label="Read the Author's Blog on Substack">
+      <svg class='social_icon social-base-color top_social_icons' id='substack_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+      </svg></a>
+  </div>
+
+  <div class="horizontal_line_top"></div>
+
+  <table class="top_bar" id="desktop_top_bar">
+    <tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_overview')">Overview</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_problems')">Problems</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#table_container_bills')">Bills</th>
+    </tr>
+  </table>
+
+  <table class="top_bar" id="mobile_top_bar">
+    <tr>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_overview')">Overview</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_problems')">Problems</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_programs')">Programs</th>
+      <th class="top_bar_item" onclick="dropdown_functionality('#mobile_table_container_bills')">Bills</th>
+    </tr>
+  </table>
+
+  <div class="horizontal_line"></div>
+
+    <div class="desktop_dropdown">
+      <!-- Overview -->
+      <div class="table_container" id="table_container_overview">
+        <table class="dropdown_menu" id="overview_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../introduction/index.html">Introduction</a></th>
+            <th class="dropdown_menu_column_top"><a href="../why-we-need-family-benefits/index.html">Why We Need Family Benefits</a></th>
+            <th class="dropdown_menu_column_top"><a href="../problems-overview/index.html">The Major Problems</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../fixing-family-benefits/index.html">Fixing Family Benefits</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="table_container_problems">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../two-tiers-of-welfare/index.html">Two Tiers of Welfare</a></th>
+            <th class="dropdown_menu_column_top"><a href="../marriage-penalties/index.html">Marriage Penalties</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../marginal-tax/index.html">Marginal Tax Rates</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../asset-tests/index.html">Asinine Asset Tests</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../administrative-burdens/index.html">Administrative Burdens</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../over-reliance-on-tax-code/index.html">Over-Reliance on the Tax Code</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Programs -->
+      <div class="table_container" id="table_container_programs">
+        <table class="dropdown_menu" id="problems_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../child-tax-credit/index.html">The Child Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="../earned-income-tax-credit/index.html">The Earned Income Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="../head-of-household/index.html">Head of Household</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../child-and-dependent-care-credit/index.html">The Child and Dependent Care Credit</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../supplemental-nutrition-assistance-program/index.html">SNAP (Food Stamps)</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../temporary-assistance-for-needy-families/index.html">Temporary Assistance for Needy Families</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="table_container_bills">
+        <table class="dropdown_menu" id="bills_dropdown" >
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="../build-back-better/index.html">Build Back Better</a></th>
+            <th class="dropdown_menu_column_top"><a href="../working-families-tax-relief-act/index.html">Working Families Tax Relief Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
+            
+          </tr>
+        </table>
+     </div>
+
+    </div> <!-- Desktop dropdown -->
+
+    <div class="mobile_dropdown">
+
+      <!-- Overview -->
+      <div class="table_container" id="mobile_table_container_overview">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../introduction/index.html">Introduction</a></th>
+            <th class="dropdown_menu_column_top"><a href="../problems-overview/index.html">Problems Overview</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="../why-we-need-family-benefits/index.html">Why We Need Family Benefits</a></th>
+            <th class="dropdown_menu_column_bottom"><a href="../fixing-family-benefits/index.html">Fixing Family Benefits</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Problems -->
+      <div class="table_container" id="mobile_table_container_problems">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top">Two Tiers of Welfare</th>
+            <th class="dropdown_menu_column_top"><a href="../marriage-penalties/index.html">Marriage Penalties</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle">Marginal Tax Rates</th>
+            <th class="dropdown_menu_column_middle">Asinine Asset Tests</th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom">Administrative Burdens</th>
+            <th class="dropdown_menu_column_bottom">Tax Code Over-Reliance</th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Programs -->
+      <div class="table_container" id="mobile_table_container_programs">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../child-tax-credit/index.html">Child Tax Credit</a></th>
+            <th class="dropdown_menu_column_top"><a href="../earned-income-tax-credit/index.html">EITC</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../head-of-household/index.html">Head of Household</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../child-and-dependent-care-credit/index.html">CDCC</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../supplemental-nutrition-assistance-program/index.html">SNAP (Food Stamps)</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../temporary-assistance-for-needy-families/index.html">TANF</a></th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div class="table_container" id="mobile_table_container_bills">
+        <table class="dropdown_menu">
+          <tr>
+            <th class="dropdown_menu_column_top"><a href="../family-security-act/index.html">Family Security Act</a></th>
+            <th class="dropdown_menu_column_top"><a href="../build-back-better/index.html">Build Back Better</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_middle"><a href="../end-child-poverty-act/index.html">End Child Poverty Act</a></th>
+            <th class="dropdown_menu_column_middle"><a href="../ssi-restoration-act/index.html">SSI Restoration Act</a></th>
+          </tr>
+          <tr>
+            <th class="dropdown_menu_column_bottom"><a href="../working-families-tax-relief-act/index.html">Working Families Tax Relief Act</a></th>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+  <div class="horizontal_line"></div>
+</section>
+
+<!--Pages Container------------------------------------------------------------------------------------------------------------------------->
+<div class="box_container"> <!-- simply sets the width at 90% with equal margins -->
+
+  <div class="policy_adder_container">
+    <h2 class="policy_adder_title"><em>Create Your Own Policy Reforms</em></h2>
+
+    <div class='policy'>
+      <div class='policy_left_side'>
+        <div class='button_label_container'>
+          <button class="policy_button little_button minus_button"></button>
+          <h3 class='policy_label_header'>Child Tax Credit</h3>
+        </div>
+      </div>
+
+      <div class='policy_right_side'>
+
+        <!-- CTC Credit Value -->
+        <div class='ctc_item1'>
+          <label>Credit value per child:
+            $<input type="number" id="ctc_value" min="0" max="50000" step="500" value="2000" oninput="">
+          </label>
+          <br>
+          <label>Young Child Credit:
+            <input type="checkbox" id="ctc_young_child_credit_checkbox" oninput="">
+          </label>
+          <br>
+          <label style="display:none">Credit value per young child:
+            $<input type="number" id="ctc_young_child_credit_value" min="0" max="50000" step="500" value="3000" oninput="">
+          </label>
+
+        </div>
+
+        <!--Refundable-->
+        <div class='ctc_item2'>
+          <label>Refundable:
+            <input type="checkbox" id="ctc_refundable_checkbox" oninput="" checked>
+          </label>
+          <br>
+          <label>Amount Refundable:
+            $<input type="number" id="ctc_amount_refundable" min="0" max="50000" step="100" value="1600" oninput="">
+          </label>
+          <br>
+          <label>Refundability Threshold:
+            $<input type="number" id="ctc_refundability_threshold" min="0" max="1000000" step="500" value="2500" oninput="">
+          </label>
+          <br>
+          <label>Refundable Phase-In Rate:
+            <input type="number" id="ctc_phase_in_rate" min="0" max="100" step="1" value="15" oninput="">%
+          </label>
+        </div>
+
+        <!-- Phase-Out -->
+        <div class='ctc_item3'>
+          <label>Phase-Out:
+            <input type="checkbox" id="ctc_phase_out_checkbox" oninput="" checked>
+          </label>
+          <br>
+          <label>Phase-out begins at:
+            $<input type="number" id="ctc_phase_out_income" min="0" max="1000000" step="1000" value="200000" oninput="">
+          </label>
+          <br>
+          <label>Phase-Out Rate:
+            <input type="number" id="ctc_phase_out_rate" min="0" max="100" step="1" value="5" oninput="">%
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='policy' policy-key="1">
+      <div class='policy_left_side'>
+        <div class='button_label_container'>
+          <button class="policy_button little_button minus_button" onclick="remove_policy(this)"></button>
+          <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 1</textarea>
+        </div>
+      </div>
+
+      <div class='policy_right_side'>
+
+        <!-- Benefit Type & Value -->
+        <div class='byop_item1'>
+          <label>Benefit Type: 
+            <select id="byop_benefit_type" oninput="set_benefit_type(this)" >
+              <option value="tax-credit">Tax Credit</option>
+              <option value="direct-spending" disabled>Direct Spending</option>
+            </select>
+          </label>
+          <br>
+          <label>Credit Value:
+            $<input type="number" id="byop_benefit_value" min="0" max="20000" step="500" value="2000" oninput="update_byop_simple(this);">
+          </label>
+        </div>
+
+        <!-- Phase-In -->
+        <div class='byop_item2'>
+          <label>Refundable:
+            <input type="checkbox" id="byop_refundable_checkbox" oninput="update_byop_simple(this);" checked disabled>
+          </label>
+          <label>Phased In:
+            <input type="checkbox" id="byop_phase_in_checkbox" oninput="update_byop_simple(this);remove_phase_in_inputs(this);" checked>
+          </label>
+          <br>
+          <label>Refundability Threshold:
+            $<input type="number" id="byop_refundability_threshold" min="0" max="1000000" step="500" value="0" oninput="update_byop_simple(this)">
+          </label>
+          <br>
+          <label>Phase-In Rate:
+            <input type="number" id="byop_phase_in_rate" min="0" max="100" step="1" value="40" oninput="update_byop_simple(this)">%
+          </label>
+        </div>
+
+        <!-- Phase-Out -->
+        <div class='byop_item3'>
+          <label>Phase-Out:
+            <input type="checkbox" id="byop_phase_out_checkbox" oninput="update_byop_simple(this);remove_phase_out_inputs(this)" checked>
+          </label>
+          <br>
+          <label>Phase-out begins at:
+            $<input type="number" id="byop_phase_out_income" min="0" max="1000000" step="1000" value="50000" oninput="update_byop_simple(this)">
+          </label>
+          <br>
+          <label>Phase-Out Rate:
+            <input type="number" id="byop_phase_out_rate" min="0" max="100" step="1" value="20" oninput="update_byop_simple(this)">%
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='policy' policy-key="2">
+      <div class='policy_left_side'>
+        <div class='button_label_container'>
+          <button class="policy_button little_button minus_button" onclick="remove_policy(this)"></button>
+          <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 2</textarea>
+        </div>
+      </div>
+
+      <div class='policy_points_right_side'>
+
+        <div class='point_container' data-index="0">
+          <div class='endpoints'></div>  
+          <div class='point_inputs_container'>
+            <label>Income:
+              $<input type="number" min="0" max="1000000" step="100" value="0" data-value_type='x' oninput="update_point(this);" disabled>
+            </label>
+            <label>Value:
+              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+            </label>
+          </div>
+        </div>
+        <div class='point_container' data-index="1">
+          <button class="policy_button little_button plus_button" onclick='point_button_click(this)'></button>
+          <div class='point_inputs_container dashed-border'>
+            <label class='hidden'>Income:
+              $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);">
+            </label>
+            <label class='hidden'>Value:
+              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+            </label> 
+          </div>  
+        </div>
+        <div class='point_container' data-index="end">
+          <div class="endpoints"></div> 
+          <div class='point_inputs_container'>
+            <label>Income:
+              $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);" disabled>
+            </label>
+            <label>Value:
+              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+            </label> 
+          </div>
+        </div>
+
+      </div> <!-- right side -->
+
+    </div> <!-- policy container -->
+
+    <div class='policy dashed-border'>
+      <div class='policy_left_side'>
+        <div class='button_label_container'>
+          <button class="policy_button little_button plus_button add_policy"></button>
+          <h3 class='policy_label_header italic'>Add a Policy</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+ <!-- Benefits Chart------------------------------------------------------------------------------------------------------------> 
+ <div class="chart">
+
+    <!-- Left: Benefits Chart -->
+    <div class='inner_chart_left'>
+      <h3 class='chart_name'>Benefits</h3>
+      <div id="benefits_chart"></div>
+    </div>
+
+    <!-- Right: Summed Benefits Chart -->
+    <div class='inner_chart_right'>
+      <h3 class='chart_name'>Sum of Benefits</h3>
+      <div id="summed_benefits_chart"></div>
+    </div>
+
+  </div> <!--chart end--> 
+
+  <!-- Desktop/Tablet Blog Promotion------------------------------------------------------------------------------------------------------------>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank" aria-label="Read the Author's Blog on Substack">
+    <div class='blog_container'>
+      <div class='blog_grid_item blog_grid_item_left'>
+        <svg
+           class="blog_svg"
+           viewBox="0 0 174.41969 171.98259"
+           version="1.1"
+           id="svg5"
+           xmlns="http://www.w3.org/2000/svg"
+           xmlns:svg="http://www.w3.org/2000/svg">
+          <defs
+             id="defs2" />
+          <g
+             id="layer1"
+             transform="translate(-18.804621,-47.23762)">
+            <ellipse
+               style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+               id="path788"
+               cx="106.01447"
+               cy="133.22891"
+               rx="83.221352"
+               ry="82.002792" />
+            <text
+               class="blog_logo_J"
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+               x="66.595787"
+               y="182.87247"
+               id="text1014"><tspan
+                 id="tspan1012"
+                 style="stroke-width:6"
+                 x="66.595787"
+                 y="182.87247">J</tspan></text>
+          </g>
+        </svg>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>A splendid little Substack newsletter</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Covering economics, the welfare state, and more</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item'>
+        <div class='blog_text'>Arrives right in your inbox, as if by magic</div>
+      </div>
+      <div class='blog_grid_item vertical_line'></div>
+      <div class='blog_grid_item blog_grid_item_right'>
+        <div class='blog_text'>Click here for delectable insights</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Mobile Blog Promotion------------------------------------------------------------------------------------------------------------>
+  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank" aria-label="Read the Author's Blog on Substack">
+  <div class='mobile_blog_container'>
+    <div class='mobile_blog_logo_container'>
+      <svg
+         class="mobile_blog_svg"
+         viewBox="0 0 174.41969 171.98259"
+         version="1.1"
+         id="svg5"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:svg="http://www.w3.org/2000/svg">
+        <defs
+           id="defs2" />
+        <g
+           id="layer1"
+           transform="translate(-18.804621,-47.23762)">
+          <ellipse
+             style="fill:none;stroke-width:7.977;stroke-dasharray:none"
+             id="path788"
+             cx="106.01447"
+             cy="133.22891"
+             rx="83.221352"
+             ry="82.002792" />
+          <text
+             class="blog_logo_J"
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
+             x="66.595787"
+             y="182.87247"
+             id="text1014"><tspan
+               id="tspan1012"
+               style="stroke-width:6"
+               x="66.595787"
+               y="182.87247">J</tspan></text>
+        </g>
+      </svg>
+      <div class="mobile_blog_text large_font old_mincho">A Splendid Little Newsletter</div>
+      <div class="mobile_blog_horizontal_line"></div>
+      <div class="mobile_blog_text small_font classical_serif"><em>Covering Economics, the Welfare State, and More</em></div>
+      <div class="mobile_blog_horizontal_line"></div>
+      <div class="mobile_blog_text small_font old_mincho">Subscribe on Substack</div>
+    </div>
+  </div>
+</a>
+
+</div> <!-- box container-->
+
+<!-- Mobile Page Color Toggle -->
+<div class="mobile_page_color_button_group">
+  <button onclick="toggle_page_color('light')">Light</button>
+  <button onclick="toggle_page_color('auto')">Auto</button>
+  <button onclick="toggle_page_color('dark')">Dark</button>
+  <div class="page_color_toggler"></div>
+</div>
+
+<!--Bottom section---------------------------------------------------------------------------------------------------------------------------------->
+<section class="page_bottom">
+  <div id="bottom_socials">
+    <a class="bottom_social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('twitter', '#twitter_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#twitter_bottom_svg');" aria-label="Follow the Author on Twitter">
+       <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='twitter_bottom_svg' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" xml:space="preserve">
+          <path d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04
+            C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66
+            c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64
+            c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76
+            c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26
+            c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/>
+      </svg></a> 
+
+    <a class="social_links" href="https://twitter.com/jaydavidmartin1" target="_blank" onmouseenter="change_social_fill_forward('substack', '#substack_bottom_svg');" onmouseleave="page_bottom_change_social_fill_backward('#substack_bottom_svg');" aria-label="Read the Author's Blog on Substack">
+      <svg class='social_icon social-page-bottom-base-color bottom_social_logos' id='substack_bottom_svg' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    </svg></a>
+
+  </div> <!-- bottom social logos -->
+
+  <div id="bottom_logo">The Welfare of Families</div>
+  <div id="bottom_name">A Project by Jay Martin</div>
+
+  <div id="cc_container">
+
+    <div id="cc_logos">
+      <a class="social_links" rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" aria-label="Licensed Under a Creative Commons Attribution 4.0 International License">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+        <g>
+          <circle class="cc-circle" cx="37.785" cy="28.501" r="28.836"/>
+          <path class="st0" d="M37.441-3.5c8.951,0,16.572,3.125,22.857,9.372c3.008,3.009,5.295,6.448,6.857,10.314
+            c1.561,3.867,2.344,7.971,2.344,12.314c0,4.381-0.773,8.486-2.314,12.313c-1.543,3.828-3.82,7.21-6.828,10.143
+            c-3.123,3.085-6.666,5.448-10.629,7.086c-3.961,1.638-8.057,2.457-12.285,2.457s-8.276-0.808-12.143-2.429
+            c-3.866-1.618-7.333-3.961-10.4-7.027c-3.067-3.066-5.4-6.524-7-10.372S5.5,32.767,5.5,28.5c0-4.229,0.809-8.295,2.428-12.2
+            c1.619-3.905,3.972-7.4,7.057-10.486C21.08-0.394,28.565-3.5,37.441-3.5z M37.557,2.272c-7.314,0-13.467,2.553-18.458,7.657
+            c-2.515,2.553-4.448,5.419-5.8,8.6c-1.354,3.181-2.029,6.505-2.029,9.972c0,3.429,0.675,6.734,2.029,9.913
+            c1.353,3.183,3.285,6.021,5.8,8.516c2.514,2.496,5.351,4.399,8.515,5.715c3.161,1.314,6.476,1.971,9.943,1.971
+            c3.428,0,6.75-0.665,9.973-1.999c3.219-1.335,6.121-3.257,8.713-5.771c4.99-4.876,7.484-10.99,7.484-18.344
+            c0-3.543-0.648-6.895-1.943-10.057c-1.293-3.162-3.18-5.98-5.654-8.458C50.984,4.844,44.795,2.272,37.557,2.272z M37.156,23.187
+            l-4.287,2.229c-0.458-0.951-1.019-1.619-1.685-2c-0.667-0.38-1.286-0.571-1.858-0.571c-2.856,0-4.286,1.885-4.286,5.657
+            c0,1.714,0.362,3.084,1.085,4.113c0.724,1.029,1.791,1.544,3.201,1.544c1.867,0,3.181-0.915,3.944-2.743l3.942,2
+            c-0.838,1.563-2,2.791-3.486,3.686c-1.484,0.896-3.123,1.343-4.914,1.343c-2.857,0-5.163-0.875-6.915-2.629
+            c-1.752-1.752-2.628-4.19-2.628-7.313c0-3.048,0.886-5.466,2.657-7.257c1.771-1.79,4.009-2.686,6.715-2.686
+            C32.604,18.558,35.441,20.101,37.156,23.187z M55.613,23.187l-4.229,2.229c-0.457-0.951-1.02-1.619-1.686-2
+            c-0.668-0.38-1.307-0.571-1.914-0.571c-2.857,0-4.287,1.885-4.287,5.657c0,1.714,0.363,3.084,1.086,4.113
+            c0.723,1.029,1.789,1.544,3.201,1.544c1.865,0,3.18-0.915,3.941-2.743l4,2c-0.875,1.563-2.057,2.791-3.541,3.686
+            c-1.486,0.896-3.105,1.343-4.857,1.343c-2.896,0-5.209-0.875-6.941-2.629c-1.736-1.752-2.602-4.19-2.602-7.313
+            c0-3.048,0.885-5.466,2.658-7.257c1.77-1.79,4.008-2.686,6.713-2.686C51.117,18.558,53.938,20.101,55.613,23.187z"/>
+        </g>
+      </svg></a>
+
+      <a class="social_links" rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" aria-label="Licensed Under a Creative Commons Attribution 4.0 International License">
+        <svg class="social_icon social-page-bottom-base-color" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="20px" height="20px" viewBox="5.5 -3.5 64 64" enable-background="new 5.5 -3.5 64 64" xml:space="preserve">
+          <g>
+            <circle class="cc-circle" cx="37.637" cy="28.806" r="28.276"/>
+            <g>
+              <path class="st0" d="M37.443-3.5c8.988,0,16.57,3.085,22.742,9.257C66.393,11.967,69.5,19.548,69.5,28.5c0,8.991-3.049,16.476-9.145,22.456
+                C53.879,57.319,46.242,60.5,37.443,60.5c-8.649,0-16.153-3.144-22.514-9.43C8.644,44.784,5.5,37.262,5.5,28.5
+                c0-8.761,3.144-16.342,9.429-22.742C21.101-0.415,28.604-3.5,37.443-3.5z M37.557,2.272c-7.276,0-13.428,2.553-18.457,7.657
+                c-5.22,5.334-7.829,11.525-7.829,18.572c0,7.086,2.59,13.22,7.77,18.398c5.181,5.182,11.352,7.771,18.514,7.771
+                c7.123,0,13.334-2.607,18.629-7.828c5.029-4.838,7.543-10.952,7.543-18.343c0-7.276-2.553-13.465-7.656-18.571
+                C50.967,4.824,44.795,2.272,37.557,2.272z M46.129,20.557v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557
+                c0-0.572,0.2-1.057,0.599-1.457c0.401-0.399,0.887-0.6,1.457-0.6h13.144c0.533,0,1.01,0.2,1.428,0.6
+                C45.918,19.5,46.129,19.986,46.129,20.557z M33.042,12.329c0-3.008,1.485-4.514,4.458-4.514s4.457,1.504,4.457,4.514
+                c0,2.971-1.486,4.457-4.457,4.457S33.042,15.3,33.042,12.329z"/>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div> <!-- CC logos -->
+
+    <div id="cc_description">This work is licensed under a Creative Commons Attribution 4.0 International License.</br>You are free to share, copy, and adapt the material for any purpose, including commercial purposes, so long as appropriate credit is given.</div>
+
+  </div> <!-- CC container -->
+
+</section> <!-- Bottom section -->
+
+</body>
+
+<!-------------- Render-Blocking Resources ------------------------------------->
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<!-- Load d3.js and c3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../reference_files/c3-0.7.20/c3.min.js"></script>
+
+<!-------------------- Page Functionality -------------------------------------->
+<script src="../home/javascript/page_functionality.js"></script>
+
+<!-- Universal Charts Scripts -->
+<script type="text/javascript" src="../reference_files/javascript/calculate.js"></script>
+<script type="text/javascript" src="../reference_files/javascript/chart_builder.js"></script>
+<script type="text/javascript" src="./javascript/color-changes.js"></script>
+
+<!-- Policy Adder -->
+<script type="text/javascript" src="./javascript/policy-adder.js"></script>
+<script type="text/javascript" src="./javascript/byop-simple.js"></script>
+<script type="text/javascript" src="./javascript/byop-advanced.js"></script>
+
+<!--- All Charts ---->
+<script type="text/javascript" src="./javascript/adjust-charts.js"></script>
+
+<!-- Charts -->
+<script type="text/javascript" src="./javascript/charts/benefits-chart.js"></script>
+<script type="text/javascript" src="./javascript/charts/summed-benefits-chart.js"></script>
+
+</html>

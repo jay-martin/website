@@ -7,6 +7,7 @@
   <!-- Page basics -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="The Welfare of Families"/>
@@ -37,10 +38,12 @@
   if(color_preference === 'dark'){
     document.body.className = 'dark-mode';
     document.body.classList.add("dark-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
   }
   else if(color_preference === 'light'){
     document.body.className = 'light-mode';
     document.body.classList.add("light-toggle-position");
+    document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
   }
   else {
     document.body.classList.add("auto-toggle-position");

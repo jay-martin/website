@@ -158,10 +158,10 @@ var complexity_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000]
+                values: [0, 10000, 20000, 30000, 40000, 50000, 60000]
             },
             padding: {left: 0, right: 0},
-            max: 50000,
+            max: 60000,
             height: 45,
         },
         y: {

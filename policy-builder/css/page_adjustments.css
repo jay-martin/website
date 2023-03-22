@@ -1,0 +1,280 @@
+/*********** Policy Adder **********************************************************************************/
+.policy_adder_container {
+	/*
+	border: solid;
+	border-color: var(--base-border);
+	border-radius: 5px;
+	padding: 5px;
+	*/
+	border: none;
+	padding: 0px;
+}
+h2.policy_adder_title {
+	text-decoration: none;
+	font-size: 30px;
+}
+.policy {
+	display: grid;
+	grid-template-columns: 200px auto;
+	border: solid;
+	border-width: 1.5px;
+	border-color: var(--base-border);
+	border-radius: 5px;
+	padding: 0px;
+	margin-bottom: 5px;
+}
+.dashed-border {
+	border: dashed !important;
+	border-width: 1.5px !important;
+	border-color: var(--base-border) !important;
+}
+.display_none {
+	display: none;
+}
+
+/*********** Policy Adder: Left Side**************************************/
+.policy_left_side {
+	padding: 5px;
+	padding-top: 0;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+
+	background-color: var(--soft-background);
+	border-right: solid;
+	border-width: 1.5px;
+	border-color: var(--base-border);
+}
+.button_label_container {
+	display: inline-grid;
+	grid-template-columns: 30px auto;
+	align-items: center;
+	gap: 7.5px;
+	height: 100%;
+}
+/*** policy add/subtract buttons ***/
+button.policy_button {
+	position: relative;
+	padding: 0px;
+
+	font-size: 16px;
+	font-style: bold;
+	text-align: center;
+
+	border: solid;
+	border-width: 2px;
+	border-radius: 100%;
+
+	background-color: var(--soft-background);
+}
+button.policy_button:hover {
+	transform: scale(1.1);
+	transition: 0.1s;
+}
+button.plus_button:hover {
+	background-color: #10c20a;
+	transition: 0.1s;
+}
+button.minus_button:hover {
+	background-color: red;
+	transition: 0.1s;
+}
+/* Plus/Minus Symbols */
+button.plus_button {
+	border-color: #10c20a;
+	color: #10c20a;
+}
+button.plus_button::after, button.plus_button::before {
+	background: #10c20a;
+}
+button.minus_button {
+	border-color: red;
+	color: red;
+}
+button.minus_button::after {
+	background: red;
+}
+button.plus_button::after, button.minus_button::after, button.plus_button::before {
+	position: absolute;
+	content: '';
+}
+button.plus_button:hover::after, button.plus_button:hover::before, button.minus_button:hover::after {
+	background: white;
+	transition: 0.1s;
+}
+/* Big Button */
+button.big_button {
+	width: 30px;
+	height: 30px;
+}
+button.big_button.plus_button::after, button.big_button.minus_button::after {
+	height: 3px;
+    width: 50%;
+    top: 45%;
+    left: 25%;
+}
+button.big_button.plus_button::before {
+	height: 50%;
+    width: 3px;
+    top: 26%;
+    left: 44%;
+}
+/* Little Button */
+button.little_button {
+	width: 17.5px;
+	height: 17.5px;
+}
+button.little_button.plus_button::after, button.little_button.minus_button::after {
+	height: 1.5px;
+    width: 49%;
+    top: 45%;
+    left: 25%;
+}
+button.little_button.plus_button::before {
+	height: 50%;
+    width: 1.5px;
+    top: 26%;
+    left: 44%;
+}
+/***Policy Label ***/
+h3.policy_label_header {
+	font-family: 'Computer Modern Serif';
+	font-size: 16px;
+	padding: 0;
+	margin: 0;
+	margin-top: 4px;
+}
+textarea.byop_policy_label {
+	font-family: 'Computer Modern Serif';
+	font-weight: bold;
+	font-size: 16px;
+	width: 97.5%;
+	background-color: var(--soft-background);
+	border: none;
+	height: 18px;
+
+	resize: none;
+	overflow: hidden;
+
+	color: var(--base-text);
+}
+.italic {
+	font-style: italic;
+}
+/*********** Policy Adder: Right Side**************************************/
+.policy_right_side {
+	display: inline-grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 5px;
+	padding: 5px;
+}
+.policy_points_right_side {
+	display: inline-grid;
+	grid-template-columns: 1fr;
+	grid-gap: 10px;
+	padding: 10px;
+}
+h4.policy_item_header {
+	font-family: 'Computer Modern Serif';
+	font-size: 16px;
+	text-decoration: underline;
+	padding: 0;
+	margin: 0;
+}
+/******* Policy Adder: Points ********/
+.point_container {
+	display: inline-grid;
+	grid-template-columns: 15px auto;
+	align-items: center;
+	gap: 7.5px;
+	height: 100%;
+}
+.point_inputs_container {
+	border: solid;
+	border-color: var(--base-border);
+	border-width: 1px !important;
+	border-radius: 5px;
+	padding-top: 2.5px;
+	padding-bottom: 2.5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.hidden {
+	visibility: hidden;
+}
+.endpoints {
+	position: relative;
+	padding: 0px;
+	margin-left: 3px;
+
+	border: solid;
+	border-width: 2px;
+	border-radius: 100%;
+
+	width: 5px;
+	height: 5px;
+
+	border-color: var(--base-text);
+	background-color: var(--base-text);
+}
+
+
+
+
+/********** Chart *************/
+.chart {
+	/*
+  border-width: 1.5px !important;
+  border-radius: 5px !important;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-color: var(--base-border) !important;
+  */
+
+	border: none;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+.inner_chart_left {
+  display: inline-block;
+  width: 48.5%;
+  margin-right: 20px;
+}
+.inner_chart_right {
+  display: inline-block;
+  width: 48.5%;
+}
+h3.chart_name {
+	font-family: 'Computer Modern Serif';
+	font-size: 20px;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1em;
+}
+
+/********** Chart Logo *************/
+.chart_title_logo_container {
+  grid-template-columns: 1fr 1fr;
+  margin-left: 30px;
+  margin-right: 5px;
+  margin-bottom: 2.5px;
+}
+.chart_byline {
+  font-family: "Computer Modern Serif";
+  font-size: 12px;
+  color: var(--base-text);
+  margin-top: 5px;
+  line-height: 1.3em;
+}
+h3.chart_title {
+  vertical-align: top;
+  margin-top: 0;
+  font-size: 24px;
+}
+svg.chart-logo {
+  width: 100px;
+  margin-top: 0;
+}
+

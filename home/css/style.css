@@ -103,7 +103,8 @@ svg.top_logo_svg {
 }
 .name {
   font-family: 'Zen Old Mincho', serif;
-  font-weight: 900;
+  font-weight: 600;
+  /* font-family: 'Computer Modern Serif'; */
   line-height: 2em;
   font-size: 120%;
   text-align: center;

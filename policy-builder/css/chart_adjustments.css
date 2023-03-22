@@ -1,0 +1,10 @@
+/******************* Hide Points ******************************/
+/* Top Chart */
+.c3-circles-ctc {
+  display: none;
+}
+
+/******************* Opacity Settings ******************************/
+.c3-area-ctc {
+  opacity: 0 !important;
+}

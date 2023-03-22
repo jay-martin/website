@@ -22,6 +22,11 @@ function toggle_page_color(mode){
 
     // Page specific changes
     page_color_mode('dark');
+
+     // Change browser default rendering to dark
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+    }, 300);
   }
   else if(mode === 'sepia'){
     document.body.className = 'sepia';
@@ -29,6 +34,11 @@ function toggle_page_color(mode){
 
     // Page specific changes
     page_color_mode('light');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 300);
   }
   else if(mode === 'light'){
     document.body.className = 'light-mode';
@@ -37,6 +47,11 @@ function toggle_page_color(mode){
 
     // Page specific changes
     page_color_mode('light');
+
+    // Change browser default rendering to light
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 300);
   }
   else if(mode === 'auto'){
     toggle_auto();
