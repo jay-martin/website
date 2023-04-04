@@ -1,3 +1,6 @@
+const new_byop_advanced_x = [0,    1000000];
+const new_byop_advanced_y = [3000, 3000];
+
 /*************************** Update Points *********************************/
 function update_point(input){
     let policy_container = input.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -112,7 +115,7 @@ const point_element_start =
 
 const point_element_end =
 `'>
-<button class="policy_button little_button plus_button" onclick='point_button_click(this)'></button>
+<button class="policy_button plus_button" onclick='point_button_click(this)'></button>
 <div class='point_inputs_container dashed-border'>
     <label class='hidden'>Income:
       $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);">
@@ -130,7 +133,7 @@ const policy_html_start = `<div class='policy' policy-key='`;
 const byop_advanced_hmtl_start = `'>
     <div class='policy_left_side'>
         <div class='button_label_container'>
-          <button class="policy_button little_button minus_button" onclick="remove_policy(this)"></button>
+          <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
           <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy `;
 
 const byop_advanced_html_end = `</textarea>
@@ -151,7 +154,7 @@ const byop_advanced_html_end = `</textarea>
           </div>
         </div>
         <div class='point_container' data-index="1">
-          <button class="policy_button little_button plus_button" onclick='point_button_click(this)'></button>
+          <button class="policy_button plus_button" onclick='point_button_click(this)'></button>
           <div class='point_inputs_container dashed-border'>
             <label class='hidden'>Income:
               $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);">

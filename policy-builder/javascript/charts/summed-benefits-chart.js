@@ -1,7 +1,3 @@
-/******************************************************************************************
- * This file contains the function creating the c3.js chart for the Top Chart
- * ****************************************************************************************/
-
 var summed_benefits_chart = c3.generate({
     bindto: '#summed_benefits_chart',
     data: {
@@ -9,8 +5,8 @@ var summed_benefits_chart = c3.generate({
             'summed_benefits' : 'x_summed_benefits',
         },
         columns: [
-            ['x_summed_benefits', 0,    5000, 50000, 60000, 1000000],
-            ['summed_benefits',   3000, 5000, 5000,  3000,   3000],
+            ['x_summed_benefits', 0, 2500, 13167, 13850, 17850, 200000, 240000, 1000000],
+            ['summed_benefits',   0, 0,    1600,  1600,  2000,  2000,   0,      0],   
         ],
         names: {
             'summed_benefits': 'Sum of Benefits',
@@ -25,11 +21,14 @@ var summed_benefits_chart = c3.generate({
     point: {
       show: false,
     },
+    size: {
+        height: 320,
+    },
     padding: {
         bottom: 0,
         top: 10,
-        left: 60,
-        right: 35,
+        left: 70,
+        right: 20,
     },
     legend: {
         position: 'bottom',
@@ -43,7 +42,7 @@ var summed_benefits_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000],
+                values: [0, 20000, 40000, 60000, 80000, 100000],
             },
             padding: {left: 0, right: 10},
             height: 45,
@@ -53,7 +52,7 @@ var summed_benefits_chart = c3.generate({
             label: {text: 'Benefit Value', position: 'outer-middle'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500]
+                values: [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000]
             },
             padding: {top: 40, bottom: 0},
             min: 0,

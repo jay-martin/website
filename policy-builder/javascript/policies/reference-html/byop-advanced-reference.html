@@ -1,0 +1,47 @@
+<div class='policy' policy-key="1">
+  <div class='policy_left_side'>
+    <div class='button_label_container'>
+      <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
+      <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>Advanced 1</textarea>
+    </div>
+  </div>
+
+  <div class='policy_points_right_side'>
+
+    <div class='point_container' data-index="0">
+      <div class='endpoints'></div>  
+      <div class='point_inputs_container'>
+        <label>Income:
+          $<input type="number" min="0" max="1000000" step="100" value="0" data-value_type='x' oninput="update_point(this);" disabled>
+        </label>
+        <label>Value:
+          $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+        </label>
+      </div>
+    </div>
+    <div class='point_container' data-index="1">
+      <button class="policy_button plus_button" onclick='point_button_click(this)'></button>
+      <div class='point_inputs_container dashed-border'>
+        <label class='hidden'>Income:
+          $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);">
+        </label>
+        <label class='hidden'>Value:
+          $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+        </label> 
+      </div>  
+    </div>
+    <div class='point_container' data-index="end">
+      <div class="endpoints"></div> 
+      <div class='point_inputs_container'>
+        <label>Income:
+          $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);" disabled>
+        </label>
+        <label>Value:
+          $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
+        </label> 
+      </div>
+    </div>
+
+  </div> <!-- right side -->
+
+</div> <!-- policy container -->

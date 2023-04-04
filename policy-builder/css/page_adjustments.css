@@ -8,6 +8,11 @@
 	*/
 	border: none;
 	padding: 0px;
+	font-size: 14px;
+	line-height: 1.9em;
+}
+input {
+	font-size: 12px;
 }
 h2.policy_adder_title {
 	text-decoration: none;
@@ -15,7 +20,7 @@ h2.policy_adder_title {
 }
 .policy {
 	display: grid;
-	grid-template-columns: 200px auto;
+	grid-template-columns: 160px auto;
 	border: solid;
 	border-width: 1.5px;
 	border-color: var(--base-border);
@@ -46,10 +51,12 @@ h2.policy_adder_title {
 }
 .button_label_container {
 	display: inline-grid;
-	grid-template-columns: 30px auto;
+	grid-template-columns: 20px auto;
 	align-items: center;
-	gap: 7.5px;
+	gap: 5px;
+	margin-left: 2.5px;
 	height: 100%;
+	margin-bottom: 5px;
 }
 /*** policy add/subtract buttons ***/
 button.policy_button {
@@ -63,6 +70,9 @@ button.policy_button {
 	border: solid;
 	border-width: 2px;
 	border-radius: 100%;
+
+	width: 17.5px;
+	height: 17.5px;
 
 	background-color: var(--soft-background);
 }
@@ -101,39 +111,77 @@ button.plus_button:hover::after, button.plus_button:hover::before, button.minus_
 	background: white;
 	transition: 0.1s;
 }
-/* Big Button */
-button.big_button {
-	width: 30px;
-	height: 30px;
-}
-button.big_button.plus_button::after, button.big_button.minus_button::after {
-	height: 3px;
-    width: 50%;
-    top: 45%;
-    left: 25%;
-}
-button.big_button.plus_button::before {
-	height: 50%;
-    width: 3px;
-    top: 26%;
-    left: 44%;
-}
-/* Little Button */
-button.little_button {
-	width: 17.5px;
-	height: 17.5px;
-}
-button.little_button.plus_button::after, button.little_button.minus_button::after {
+button.plus_button::after, button.minus_button::after {
 	height: 1.5px;
-    width: 49%;
-    top: 45%;
-    left: 25%;
+  width: 49%;
+  top: 45%;
+  left: 25%;
 }
-button.little_button.plus_button::before {
+button.plus_button::before {
 	height: 50%;
-    width: 1.5px;
-    top: 26%;
-    left: 44%;
+  width: 1.5px;
+  top: 26%;
+  left: 44%;
+}
+/***** Policy Adder: Dropdown Menu ********/
+#policy_adder_button {
+	top: -3.5px;
+}
+#add_policy_header {
+	margin-top: 8px;
+}
+.policy_adder_dropdown_content {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 35px;
+  margin-left: -27px;
+  min-width: 160px;
+  z-index: 1;
+
+  background-color: var(--soft-background);
+  border: solid;
+  border-radius: 5px;
+  border-color: var(--base-border);
+}
+.policy_adder_dropdown_content::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent var(--base-border) transparent;
+
+  left: 11px;
+}
+button.policy_select_button {
+	display: block;
+	text-align: left;
+	width: 100%;
+
+	border: none;
+	border-radius: 3px;
+	border-bottom: solid;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-color: var(--base-border);
+	background-color: var(--soft-background);
+}
+button.bottom_button {
+	border: none;
+	border-radius: 3px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+}
+button.policy_select_button:hover {
+	background-color: var(--soft-background-hover);
+}
+#add_policy_button_container:hover #policy_adder_button {
+	background-color: #10c20a;
+	transform: scale(1.1);
+}
+#add_policy_button_container:hover button.plus_button::after, #add_policy_button_container:hover button.plus_button::before {
+	background: white;
+	transition: 0.1s;
 }
 /***Policy Label ***/
 h3.policy_label_header {
@@ -142,12 +190,13 @@ h3.policy_label_header {
 	padding: 0;
 	margin: 0;
 	margin-top: 4px;
+	line-height: 1.2em;
 }
 textarea.byop_policy_label {
 	font-family: 'Computer Modern Serif';
 	font-weight: bold;
 	font-size: 16px;
-	width: 97.5%;
+	width: 90%;
 	background-color: var(--soft-background);
 	border: none;
 	height: 18px;
@@ -162,9 +211,6 @@ textarea.byop_policy_label {
 }
 /*********** Policy Adder: Right Side**************************************/
 .policy_right_side {
-	display: inline-grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 5px;
 	padding: 5px;
 }
 .policy_points_right_side {
@@ -216,24 +262,62 @@ h4.policy_item_header {
 	border-color: var(--base-text);
 	background-color: var(--base-text);
 }
+/********** Policy Adder: EITC *********/
+.eitc_right_side {
+	display: inline-grid;
+	grid-template-columns: 15px auto;
+	align-items: center;
+	grid-gap: 7.5px;
+	row-gap: 12.5px;
+	padding: 10px;
+	padding-right: 5px;
+}
+.eitc_child_container {
+	display: grid;
+	grid-template-columns: 70px auto;
+	align-items: center;
+	gap: 7.5px;
+	height: 100%;
 
+	border: solid;
+	border-color: var(--base-border);
+	border-width: 1px !important;
+	border-radius: 5px;
+	padding-top: 2.5px;
+	padding-bottom: 2.5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.child_label {
+	font-weight: bold;
+}
+.eitc_inputs_container {
+	display: grid;
+	grid-template-columns: 110px auto;
+	align-items: center;
 
-
+	border: solid;
+	border-color: var(--base-border);
+	border-width: 1px !important;
+	border-radius: 5px;
+	padding-top: 2.5px;
+	padding-bottom: 2.5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+/********* Random adjustments ******/
+.ubi_container {
+	padding-top: 10px;
+}
 
 /********** Chart *************/
-.chart {
-	/*
-  border-width: 1.5px !important;
-  border-radius: 5px !important;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-style: solid;
-  border-color: var(--base-border) !important;
-  */
-
+.chart_container {
 	border: none;
-  margin-top: 20px;
+	padding: 10px;
+  margin-top: 0px;
   margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .inner_chart_left {
   display: inline-block;
@@ -253,7 +337,10 @@ h3.chart_name {
   margin-bottom: 5px;
   line-height: 1em;
 }
-
+/********** Chart Options *************/
+label.label_margin_left {
+	margin-left: 10px;
+}
 /********** Chart Logo *************/
 .chart_title_logo_container {
   grid-template-columns: 1fr 1fr;

@@ -264,14 +264,13 @@
 
 <!--Pages Container------------------------------------------------------------------------------------------------------------------------->
 <div class="box_container"> <!-- simply sets the width at 90% with equal margins -->
-
+  <h2 class="policy_adder_title"><em>Create Your Own Policy Reforms</em></h2>
   <div class="policy_adder_container">
-    <h2 class="policy_adder_title"><em>Create Your Own Policy Reforms</em></h2>
 
-    <div class='policy'>
+    <div class='policy' policy-key='0'>
       <div class='policy_left_side'>
         <div class='button_label_container'>
-          <button class="policy_button little_button minus_button"></button>
+          <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
           <h3 class='policy_label_header'>Child Tax Credit</h3>
         </div>
       </div>
@@ -279,52 +278,39 @@
       <div class='policy_right_side'>
 
         <!-- CTC Credit Value -->
-        <div class='ctc_item1'>
-          <label>Credit value per child:
-            $<input type="number" id="ctc_value" min="0" max="50000" step="500" value="2000" oninput="">
+        <div class='ctc_credit_value'>
+          <label>Credit Value Per Child:
+            $<input type="number" id="ctc_value" min="0" max="50000" step="500" value="2000" oninput="update_ctc(this)">
           </label>
-          <br>
-          <label>Young Child Credit:
-            <input type="checkbox" id="ctc_young_child_credit_checkbox" oninput="">
-          </label>
-          <br>
-          <label style="display:none">Credit value per young child:
-            $<input type="number" id="ctc_young_child_credit_value" min="0" max="50000" step="500" value="3000" oninput="">
-          </label>
-
         </div>
 
         <!--Refundable-->
-        <div class='ctc_item2'>
-          <label>Refundable:
-            <input type="checkbox" id="ctc_refundable_checkbox" oninput="" checked>
+        <div class='ctc_refundability'>
+          <label>Phased In:<input type="checkbox" id="ctc_phased_in_checkbox" oninput="update_ctc(this);hide_phased_in_inputs(this)" checked>
           </label>
-          <br>
           <label>Amount Refundable:
-            $<input type="number" id="ctc_amount_refundable" min="0" max="50000" step="100" value="1600" oninput="">
+            $<input type="number" id="ctc_amount_refundable" min="0" max="50000" step="100" value="1600" oninput="update_ctc(this)">
           </label>
-          <br>
-          <label>Refundability Threshold:
-            $<input type="number" id="ctc_refundability_threshold" min="0" max="1000000" step="500" value="2500" oninput="">
+          <label>Refund Threshold:
+            $<input type="number" id="ctc_refundability_threshold" min="0" max="1000000" step="500" value="2500" oninput="update_ctc(this)">
           </label>
-          <br>
           <label>Refundable Phase-In Rate:
-            <input type="number" id="ctc_phase_in_rate" min="0" max="100" step="1" value="15" oninput="">%
+            <input type="number" id="ctc_phase_in_rate" min="0" max="100" step="1" value="15" oninput="update_ctc(this)">%
           </label>
         </div>
 
         <!-- Phase-Out -->
-        <div class='ctc_item3'>
-          <label>Phase-Out:
-            <input type="checkbox" id="ctc_phase_out_checkbox" oninput="" checked>
+        <div class='ctc_phase_out'>
+          <label>Phased Out:<input type="checkbox" id="ctc_phase_out_checkbox" oninput="update_ctc(this);hide_phase_out_inputs(this);" checked>
           </label>
-          <br>
-          <label>Phase-out begins at:
-            $<input type="number" id="ctc_phase_out_income" min="0" max="1000000" step="1000" value="200000" oninput="">
+          <label>Single/HOH Phase-out:
+            $<input type="number" id="ctc_single_phase_out_income" min="0" max="1000000" step="1000" value="200000" oninput="update_ctc(this)">
           </label>
-          <br>
+          <label>Married Phase-out:
+            $<input type="number" id="ctc_married_phase_out_income" min="0" max="1000000" step="1000" value="400000" oninput="update_ctc(this)">
+          </label>
           <label>Phase-Out Rate:
-            <input type="number" id="ctc_phase_out_rate" min="0" max="100" step="1" value="5" oninput="">%
+            <input type="number" id="ctc_phase_out_rate" min="0" max="100" step="1" value="5" oninput="update_ctc(this)">%
           </label>
         </div>
 
@@ -332,126 +318,128 @@
     </div>
 
     <div class='policy' policy-key="1">
-      <div class='policy_left_side'>
-        <div class='button_label_container'>
-          <button class="policy_button little_button minus_button" onclick="remove_policy(this)"></button>
-          <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 1</textarea>
-        </div>
-      </div>
+  <div class='policy_left_side'>
+    <div class='button_label_container'>
+      <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
+      <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 1</textarea>
+    </div>
+  </div>
 
-      <div class='policy_right_side'>
+  <div class='policy_right_side'>
 
-        <!-- Benefit Type & Value -->
-        <div class='byop_item1'>
-          <label>Benefit Type: 
-            <select id="byop_benefit_type" oninput="set_benefit_type(this)" >
-              <option value="tax-credit">Tax Credit</option>
-              <option value="direct-spending" disabled>Direct Spending</option>
-            </select>
-          </label>
-          <br>
-          <label>Credit Value:
-            $<input type="number" id="byop_benefit_value" min="0" max="20000" step="500" value="2000" oninput="update_byop_simple(this);">
-          </label>
-        </div>
-
-        <!-- Phase-In -->
-        <div class='byop_item2'>
-          <label>Refundable:
-            <input type="checkbox" id="byop_refundable_checkbox" oninput="update_byop_simple(this);" checked disabled>
-          </label>
-          <label>Phased In:
-            <input type="checkbox" id="byop_phase_in_checkbox" oninput="update_byop_simple(this);remove_phase_in_inputs(this);" checked>
-          </label>
-          <br>
-          <label>Refundability Threshold:
-            $<input type="number" id="byop_refundability_threshold" min="0" max="1000000" step="500" value="0" oninput="update_byop_simple(this)">
-          </label>
-          <br>
-          <label>Phase-In Rate:
-            <input type="number" id="byop_phase_in_rate" min="0" max="100" step="1" value="40" oninput="update_byop_simple(this)">%
-          </label>
-        </div>
-
-        <!-- Phase-Out -->
-        <div class='byop_item3'>
-          <label>Phase-Out:
-            <input type="checkbox" id="byop_phase_out_checkbox" oninput="update_byop_simple(this);remove_phase_out_inputs(this)" checked>
-          </label>
-          <br>
-          <label>Phase-out begins at:
-            $<input type="number" id="byop_phase_out_income" min="0" max="1000000" step="1000" value="50000" oninput="update_byop_simple(this)">
-          </label>
-          <br>
-          <label>Phase-Out Rate:
-            <input type="number" id="byop_phase_out_rate" min="0" max="100" step="1" value="20" oninput="update_byop_simple(this)">%
-          </label>
-        </div>
-
-      </div>
+    <!-- Credit Value -->
+    <div>
+      <label>Single/HOH Credit Value:
+        $<input type="number" min="0" max="20000" step="500" value="3000" oninput="update_non_refundable(this);">
+      </label>
+      <label>Married Credit Value:
+        $<input type="number" min="0" max="40000" step="500" value="6000" oninput="update_non_refundable(this);" disabled>
+      </label>
     </div>
 
-    <div class='policy' policy-key="2">
+    <!-- Phase-In -->
+    <div>
+      <label>Phased In:<input type="checkbox" id="byop_phase_in_checkbox" oninput="update_non_refundable(this);hide_phase_in_inputs(this);"></label>
+      <label style='display: none;'>Refund Threshold:
+        $<input type="number" min="0" max="1000000" step="500" value="0" oninput="update_non_refundable(this)">
+      </label>
+      <label style='display: none;'>Phase-In Rate:
+        <input type="number" min="0" max="100" step="1" value="40" oninput="update_non_refundable(this)">%
+      </label>
+    </div>
+
+    <!-- Phase-Out -->
+    <div>
+      <label>Phased Out:<input type="checkbox" oninput="update_non_refundable(this);hide_phase_out_inputs(this)"></label>
+      <label style='display: none;'>Single/HOH Phase-out Begins:
+        $<input type="number" min="0" max="1000000" step="1000" value="40000" oninput="update_non_refundable(this)">
+      </label>
+      <label style='display: none;'>Married Phase-out Begins:
+        $<input type="number" min="0" max="1000000" step="1000" value="80000" oninput="update_non_refundable(this)" disabled>
+      </label>
+      <label style='display: none;'>Phase-Out Rate:
+        <input type="number" min="0" max="100" step="1" value="20" oninput="update_non_refundable(this)">%
+      </label>
+    </div>
+
+    <!-- Adjust with children checkboxes -->
+    <div>
+      <label>Automatically Adjust for Married:<input type="checkbox" oninput="update_non_refundable(this);disable_married_credit_value_input(this)" checked>
+      </label>
+      <label>Increase with Number of Children:<input type="checkbox" oninput="update_non_refundable(this);hide_child_adjustments(this);">
+      </label>
+      <label style='display: none;'>Scale Automatically:<input type="checkbox" oninput="update_non_refundable(this);hide_child_adjustments(this);" checked>
+      </label>
+    </div>
+
+    <!-- Child Adjustments -->
+    <div style='display: none;'>
+      <label>One Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_non_refundable(this)" disabled>
+      </label>
+      <label>Two Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_non_refundable(this)" disabled>
+      </label>
+      <label>Three Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_non_refundable(this)" disabled>
+      </label>
+    </div>
+
+  </div> <!-- right side -->
+</div> <!-- policy container -->
+
+    <div class='policy dashed-border' id='add_policy_container'>
       <div class='policy_left_side'>
         <div class='button_label_container'>
-          <button class="policy_button little_button minus_button" onclick="remove_policy(this)"></button>
-          <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 2</textarea>
-        </div>
-      </div>
-
-      <div class='policy_points_right_side'>
-
-        <div class='point_container' data-index="0">
-          <div class='endpoints'></div>  
-          <div class='point_inputs_container'>
-            <label>Income:
-              $<input type="number" min="0" max="1000000" step="100" value="0" data-value_type='x' oninput="update_point(this);" disabled>
-            </label>
-            <label>Value:
-              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
-            </label>
+          <div id='add_policy_button_container'>
+            <button id='policy_adder_button' class="policy_button plus_button add_policy"></button>
+            <span id='policy_adder_dropdown_content' class='policy_adder_dropdown_content'>
+              <button class='policy_select_button' data-policy='ctc'>Child Tax Credit</button>
+              <button class='policy_select_button' data-policy='eitc'>Earned Income Tax Credit</button>
+              <button class='policy_select_button' data-policy='snap'>SNAP (Food Stamps)</button>
+              <button class='policy_select_button' data-policy='ubi'>Universal Basic Income</button>
+              <button class='policy_select_button' data-policy='refundable'>Refundable Credit</button>
+              <button class='policy_select_button' data-policy='non-refundable'>Non-Refundable Credit</button>
+              <button class='policy_select_button' data-policy='direct-spending'>Direct Spending Program</button>
+              <button class='policy_select_button bottom_button' data-policy='byop-advanced'>Build Your Own Policy: Advanced</button>
+            </span>
           </div>
-        </div>
-        <div class='point_container' data-index="1">
-          <button class="policy_button little_button plus_button" onclick='point_button_click(this)'></button>
-          <div class='point_inputs_container dashed-border'>
-            <label class='hidden'>Income:
-              $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);">
-            </label>
-            <label class='hidden'>Value:
-              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
-            </label> 
-          </div>  
-        </div>
-        <div class='point_container' data-index="end">
-          <div class="endpoints"></div> 
-          <div class='point_inputs_container'>
-            <label>Income:
-              $<input type="number" min="0" max="1000000" step="100" value="1000000" data-value_type='x' oninput="update_point(this);" disabled>
-            </label>
-            <label>Value:
-              $<input type="number" min="0" max="1000000" step="100" value="3000" data-value_type='y' oninput="update_point(this);">
-            </label> 
-          </div>
-        </div>
-
-      </div> <!-- right side -->
-
-    </div> <!-- policy container -->
-
-    <div class='policy dashed-border'>
-      <div class='policy_left_side'>
-        <div class='button_label_container'>
-          <button class="policy_button little_button plus_button add_policy"></button>
-          <h3 class='policy_label_header italic'>Add a Policy</h3>
-        </div>
-      </div>
+          <h3 class='policy_label_header italic' id='add_policy_header'>Add a Policy</h3>
+        </div> <!-- button+label container -->
+      </div> <!-- left side -->
     </div>
 
   </div>
 
- <!-- Benefits Chart------------------------------------------------------------------------------------------------------------> 
- <div class="chart">
+  <!------ Chart options ---------->
+  <div style='margin-top:10px;margin-bottom:0px;margin-left:10px'>
+    <label>Filing Status:
+      <select id="filing_status" oninput="update_charts();" >
+        <option value="single">Single Filer</option>
+        <option value="hoh">Head of Household</option>
+        <option value="married">Married Joint</option>
+      </select>
+    </label>
+
+    <label class='label_margin_left'>Number of Dependent Children in Household:
+      <select id="num_children" oninput="update_charts();" >
+        <option value="none">Zero</option>
+        <option value="one" selected>One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+    </label>
+
+    <label class='label_margin_left'>Charts Size:
+      <select id="chart_size_input" oninput="make_charts_small();" >
+        <option value="standard">Standard</option>
+        <option value="small">Small</option>
+      </select>
+    </label>
+  </div>
+
+  <!------ Charts ---------->
+ <div class="chart_container">
 
     <!-- Left: Benefits Chart -->
     <div class='inner_chart_left'>
@@ -465,108 +453,19 @@
       <div id="summed_benefits_chart"></div>
     </div>
 
+    <!-- Left: Marginal Tax Chart -->
+    <div class='inner_chart_left'>
+      <h3 class='chart_name'>Effective Marginal Tax Rates</h3>
+      <div id="marginal_tax_chart"></div>
+    </div>
+
+    <!-- Right: Marriage Penalty Chart -->
+    <div class='inner_chart_right'>
+      <h3 class='chart_name'>Marriage Penalties</h3>
+      <div id="marriage_penalty_chart"></div>
+    </div>
+
   </div> <!--chart end--> 
-
-  <!-- Desktop/Tablet Blog Promotion------------------------------------------------------------------------------------------------------------>
-  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank" aria-label="Read the Author's Blog on Substack">
-    <div class='blog_container'>
-      <div class='blog_grid_item blog_grid_item_left'>
-        <svg
-           class="blog_svg"
-           viewBox="0 0 174.41969 171.98259"
-           version="1.1"
-           id="svg5"
-           xmlns="http://www.w3.org/2000/svg"
-           xmlns:svg="http://www.w3.org/2000/svg">
-          <defs
-             id="defs2" />
-          <g
-             id="layer1"
-             transform="translate(-18.804621,-47.23762)">
-            <ellipse
-               style="fill:none;stroke-width:7.977;stroke-dasharray:none"
-               id="path788"
-               cx="106.01447"
-               cy="133.22891"
-               rx="83.221352"
-               ry="82.002792" />
-            <text
-               class="blog_logo_J"
-               xml:space="preserve"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
-               x="66.595787"
-               y="182.87247"
-               id="text1014"><tspan
-                 id="tspan1012"
-                 style="stroke-width:6"
-                 x="66.595787"
-                 y="182.87247">J</tspan></text>
-          </g>
-        </svg>
-      </div>
-      <div class='blog_grid_item vertical_line'></div>
-      <div class='blog_grid_item'>
-        <div class='blog_text'>A splendid little Substack newsletter</div>
-      </div>
-      <div class='blog_grid_item vertical_line'></div>
-      <div class='blog_grid_item'>
-        <div class='blog_text'>Covering economics, the welfare state, and more</div>
-      </div>
-      <div class='blog_grid_item vertical_line'></div>
-      <div class='blog_grid_item'>
-        <div class='blog_text'>Arrives right in your inbox, as if by magic</div>
-      </div>
-      <div class='blog_grid_item vertical_line'></div>
-      <div class='blog_grid_item blog_grid_item_right'>
-        <div class='blog_text'>Click here for delectable insights</div>
-      </div>
-    </div>
-  </a>
-
-  <!-- Mobile Blog Promotion------------------------------------------------------------------------------------------------------------>
-  <a class='blog_promotion_link_container' href='https://twitter.com/jaydavidmartin1' target="_blank" aria-label="Read the Author's Blog on Substack">
-  <div class='mobile_blog_container'>
-    <div class='mobile_blog_logo_container'>
-      <svg
-         class="mobile_blog_svg"
-         viewBox="0 0 174.41969 171.98259"
-         version="1.1"
-         id="svg5"
-         xmlns="http://www.w3.org/2000/svg"
-         xmlns:svg="http://www.w3.org/2000/svg">
-        <defs
-           id="defs2" />
-        <g
-           id="layer1"
-           transform="translate(-18.804621,-47.23762)">
-          <ellipse
-             style="fill:none;stroke-width:7.977;stroke-dasharray:none"
-             id="path788"
-             cx="106.01447"
-             cy="133.22891"
-             rx="83.221352"
-             ry="82.002792" />
-          <text
-             class="blog_logo_J"
-             xml:space="preserve"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:133.986px;font-family:'Zen Antique Soft';-inkscape-font-specification:'Zen Antique Soft, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:2;stroke-dasharray:none"
-             x="66.595787"
-             y="182.87247"
-             id="text1014"><tspan
-               id="tspan1012"
-               style="stroke-width:6"
-               x="66.595787"
-               y="182.87247">J</tspan></text>
-        </g>
-      </svg>
-      <div class="mobile_blog_text large_font old_mincho">A Splendid Little Newsletter</div>
-      <div class="mobile_blog_horizontal_line"></div>
-      <div class="mobile_blog_text small_font classical_serif"><em>Covering Economics, the Welfare State, and More</em></div>
-      <div class="mobile_blog_horizontal_line"></div>
-      <div class="mobile_blog_text small_font old_mincho">Subscribe on Substack</div>
-    </div>
-  </div>
-</a>
 
 </div> <!-- box container-->
 
@@ -677,8 +576,11 @@
 
 <!-- Policy Adder -->
 <script type="text/javascript" src="./javascript/policy-adder.js"></script>
-<script type="text/javascript" src="./javascript/byop-simple.js"></script>
-<script type="text/javascript" src="./javascript/byop-advanced.js"></script>
+<script type="text/javascript" src="./javascript/policies/ctc.js"></script>
+<script type="text/javascript" src="./javascript/policies/eitc.js"></script>
+<script type="text/javascript" src="./javascript/policies/ubi.js"></script>
+<script type="text/javascript" src="./javascript/policies/refundable.js"></script>
+<script type="text/javascript" src="./javascript/policies/byop-advanced.js"></script>
 
 <!--- All Charts ---->
 <script type="text/javascript" src="./javascript/adjust-charts.js"></script>
@@ -686,5 +588,7 @@
 <!-- Charts -->
 <script type="text/javascript" src="./javascript/charts/benefits-chart.js"></script>
 <script type="text/javascript" src="./javascript/charts/summed-benefits-chart.js"></script>
+<script type="text/javascript" src="./javascript/charts/marginal-tax-chart.js"></script>
+<script type="text/javascript" src="./javascript/charts/marriage-penalty-chart.js"></script>
 
 </html>

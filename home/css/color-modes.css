@@ -15,6 +15,7 @@
     --toggle-color: grey;
 
     --soft-background: #f2f2f2;
+    --soft-background-hover: #dedede;
   }
 
 }
@@ -34,6 +35,7 @@
     --toggle-color: #dbdbdb;
 
     --soft-background: #383838;
+    --soft-background-hover: #4d4d4d;
   }
 }
 
@@ -59,10 +61,33 @@
   --toggle-color: #545454;
 
   --soft-background: #f2f2f2;
+  --soft-background-hover: #dedede;
 }
 .light-toggle-position {
   --toggle-position: 0px;
   --mobile-toggle-position: 0;
+}
+
+.dark-mode {
+  --base-background: #242424;
+  --base-text: #dbdbdb;
+  --base-border: #dbdbdb;
+  --base-link: #86acf0;
+  --base-link-visited: #bd86f1;
+  --low-emphasis-color: #dbdbdb;
+  --infobox-hover-color: rgba(239, 239, 240, 0.05);
+
+  --c3-grid-line: #dbdbdb;
+
+  --top-lines-color: #dbdbdb;
+  --toggle-color: #dbdbdb;
+
+  --soft-background: #383838;
+  --soft-background-hover: #4d4d4d;
+}
+.dark-toggle-position {
+  --toggle-position: 100px;
+  --mobile-toggle-position: 66.7%;
 }
 
 .sepia {
@@ -82,27 +107,6 @@
 .auto-toggle-position {
   --toggle-position: 49px;
   --mobile-toggle-position: 33.3%;
-}
-
-.dark-mode {
-  --base-background: #242424;
-  --base-text: #dbdbdb;
-  --base-border: #dbdbdb;
-  --base-link: #86acf0;
-  --base-link-visited: #bd86f1;
-  --low-emphasis-color: #dbdbdb;
-  --infobox-hover-color: rgba(239, 239, 240, 0.05);
-
-  --c3-grid-line: #dbdbdb;
-
-  --top-lines-color: #dbdbdb;
-  --toggle-color: #dbdbdb;
-
-  --soft-background: #383838;
-}
-.dark-toggle-position {
-  --toggle-position: 100px;
-  --mobile-toggle-position: 66.7%;
 }
 
 /*************** Color Settings ****************************************************************************/

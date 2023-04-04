@@ -1,27 +1,19 @@
-/******************************************************************************************
- * This file contains the function creating the c3.js chart for the Top Chart
- * ****************************************************************************************/
-
 var benefits_chart = c3.generate({
     bindto: '#benefits_chart',
     data: {
         xs: {
+            '0' : 'x0',
             '1' : 'x1',
             '2' : 'x2',
             '3' : 'x3',
             '4' : 'x4',
         },
         columns: [
-            ['x1', 0, 0, 5000, 50000, 60000, 1000000],
-            ['1',  0, 0, 2000, 2000, 0,      0],
-
-            ['x2', 0,    1000000],
-            ['2',  3000, 3000],
-            
+            ['x0', 0, 2500, 13167, 13850, 17850, 200000, 240000, 1000000],
+            ['0',  0, 0,    1600,  1600,  2000,  2000,   0,      0],   
         ],
         names: {
-            '1': 'New Policy 1',
-            '2': 'New Policy 2',
+            '0': 'Child Tax Credit',
         },
         colors: {
         },
@@ -32,11 +24,14 @@ var benefits_chart = c3.generate({
     point: {
       show: false,
     },
+    size: {
+        height: 320,
+    },
     padding: {
         bottom: 0,
         top: 10,
         left: 60,
-        right: 35,
+        right: 30,
     },
     legend: {
         position: 'bottom',
@@ -50,7 +45,7 @@ var benefits_chart = c3.generate({
             label: {text: 'Employment Income', position: 'outer-center'},
             tick: {
                 format: d3.format('$,'),
-                values: [0, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000],
+                values: [0, 20000, 40000, 60000, 80000, 100000],
             },
             padding: {left: 0, right: 10},
             height: 45,

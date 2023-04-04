@@ -79,10 +79,16 @@ function toggle_auto(){
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     $('body').removeClass('light-mode').addClass('dark-mode');
     page_color_mode('dark');
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'dark');
+    }, 300);
   }
   else {
     $('body').removeClass('dark-mode').addClass('light-mode');
     page_color_mode('light');
+    setTimeout(function(){
+      document.querySelector('meta[name="color-scheme"]').setAttribute('content',  'light');
+    }, 300);
   }
 }
 

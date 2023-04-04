@@ -1,0 +1,51 @@
+<div class='policy' policy-key='0'>
+  <div class='policy_left_side'>
+    <div class='button_label_container'>
+      <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
+      <h3 class='policy_label_header'>Child Tax Credit</h3>
+    </div>
+  </div>
+
+  <div class='policy_right_side'>
+
+    <!-- CTC Credit Value -->
+    <div class='ctc_credit_value'>
+      <label>Credit value per child:
+        $<input type="number" id="ctc_value" min="0" max="50000" step="500" value="2000" oninput="update_ctc(this)">
+      </label>
+    </div>
+
+    <!--Refundable-->
+    <div class='ctc_refundability'>
+      <label>Phased-In:
+        <input type="checkbox" id="ctc_phased_in_checkbox" oninput="update_ctc(this);hide_phased_in_inputs(this)" checked>
+      </label>
+      <label>Amount Refundable:
+        $<input type="number" id="ctc_amount_refundable" min="0" max="50000" step="100" value="1600" oninput="update_ctc(this)">
+      </label>
+      <label>Refund Threshold:
+        $<input type="number" id="ctc_refundability_threshold" min="0" max="1000000" step="500" value="2500" oninput="update_ctc(this)">
+      </label>
+      <label>Refundable Phase-In Rate:
+        <input type="number" id="ctc_phase_in_rate" min="0" max="100" step="1" value="15" oninput="update_ctc(this)">%
+      </label>
+    </div>
+
+    <!-- Phase-Out -->
+    <div class='ctc_phase_out'>
+      <label>Phase-Out:
+        <input type="checkbox" id="ctc_phase_out_checkbox" oninput="update_ctc(this);hide_phase_out_inputs(this);" checked>
+      </label>
+      <label>Single/HOH Phase-out:
+        $<input type="number" id="ctc_single_phase_out_income" min="0" max="1000000" step="1000" value="200000" oninput="update_ctc(this)">
+      </label>
+      <label>Married Phase-out:
+        $<input type="number" id="ctc_married_phase_out_income" min="0" max="1000000" step="1000" value="400000" oninput="update_ctc(this)">
+      </label>
+      <label>Phase-Out Rate:
+        <input type="number" id="ctc_phase_out_rate" min="0" max="100" step="1" value="5" oninput="update_ctc(this)">%
+      </label>
+    </div>
+
+  </div>
+</div>

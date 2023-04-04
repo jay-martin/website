@@ -1,0 +1,74 @@
+<div class='policy' policy-key="1">
+  <div class='policy_left_side'>
+    <div class='button_label_container'>
+      <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
+      <textarea class='byop_policy_label' cols="40" rows="1" oninput='adjust_name(this);'>New Policy 1</textarea>
+    </div>
+  </div>
+
+  <div class='policy_right_side'>
+
+    <!-- Automatic Adjustment: Marriage -->
+    <div>
+      <label>Automatically Adjust for Married:<input type="checkbox" oninput="update_refundable(this);disable_married_credit_value_input(this)" checked>
+      </label>
+    </div>
+
+    <!-- Credit Value -->
+    <div>
+      <label>Single/HOH Credit Value:
+        $<input type="number" min="0" max="20000" step="500" value="3000" oninput="update_refundable(this);">
+      </label>
+      <label>Married Credit Value:
+        $<input type="number" min="0" max="40000" step="500" value="6000" oninput="update_refundable(this);" disabled>
+      </label>
+    </div>
+
+    <!-- Phase-In -->
+    <div>
+      <label>Phased In:<input type="checkbox" id="byop_phase_in_checkbox" oninput="update_refundable(this);hide_phase_in_inputs(this);"></label>
+      <label style='display: none;'>Refund Threshold:
+        $<input type="number" min="0" max="1000000" step="500" value="0" oninput="update_refundable(this)">
+      </label>
+      <label style='display: none;'>Phase-In Rate:
+        <input type="number" min="0" max="100" step="1" value="40" oninput="update_refundable(this)">%
+      </label>
+    </div>
+
+    <!-- Phase-Out -->
+    <div>
+      <label>Phased Out:<input type="checkbox" oninput="update_refundable(this);hide_phase_out_inputs(this)"></label>
+      <label style='display: none;'>Single/HOH Phase-out Begins:
+        $<input type="number" min="0" max="1000000" step="1000" value="40000" oninput="update_refundable(this)">
+      </label>
+      <label style='display: none;'>Married Phase-out Begins:
+        $<input type="number" min="0" max="1000000" step="1000" value="80000" oninput="update_refundable(this)" disabled>
+      </label>
+      <label style='display: none;'>Phase-Out Rate:
+        <input type="number" min="0" max="100" step="1" value="20" oninput="update_refundable(this)">%
+      </label>
+    </div>
+
+    <!-- Adjust with children checkboxes -->
+    <div>
+      <label>Increase with Number of Children:<input type="checkbox" oninput="update_refundable(this);hide_child_adjustments(this);">
+      </label>
+      <label style='display: none;'>Scale Automatically:<input type="checkbox" oninput="update_refundable(this);hide_child_adjustments(this);" checked>
+      </label>
+    </div>
+
+    <!-- Child Adjustments -->
+    <div style='display: none;'>
+      <label>One Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_refundable(this)" disabled>
+      </label>
+      <label>Two Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_refundable(this)" disabled>
+      </label>
+      <label>Three Child Adjustment:
+        $<input type="number" min="0" max="20000" step="100" value="0" oninput="update_refundable(this)" disabled>
+      </label>
+    </div>
+
+  </div> <!-- right side -->
+</div> <!-- policy container -->

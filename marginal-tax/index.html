@@ -1172,7 +1172,7 @@
     -->
 
       <p>
-        Next, we need to determine whether \(I_{max} \) is less than the income \(I_{zero}\) at which the benefit \(B\) reaches zero. We simply solve \(B(I) = 0 = B_{max} -.3(.8I_{zero} - SD ) \). This results in \( I_{zero} = 1.25( \frac{10}{3} B_{max} + SD ) \). We compare this with \(I_{max}\) by plugging in the relevant values. The results of these calculations are listed in the table below.
+        Next, we need to determine whether \(I_{max} \) is less than the income \(I_{zero}\) at which the benefit \(B\) reaches zero. We solve \(B(I) = 0 = B_{max} -.3(.8I_{zero} - SD ) \). This results in \( I_{zero} = 1.25( \frac{10}{3} B_{max} + SD ) \). We compare this with \(I_{max}\) by plugging in the relevant values. The results of these calculations are listed in the table below.
       </p>
 
       <table style="width:100%">
@@ -1209,7 +1209,7 @@
       </table>
 
       <p>
-        Rather unsurprisingly, the gross income limit does indeed tend work as a limit—for all household sizes except single-person households, benefits cut off before the calculated benefit reaches $0. This means that households with more than one person face a <b>benefit cliff</b> at the gross income limit. On our chart, this manifests as a vertical line: an additional dollar of income over the gross income limits results in much more than a dollar reduction in SNAP benefits (to keep the axes reasonable, the actual EMTR of the benefit cliff—which is over 100,000%, is not depicted in its entirety). We can calculate the size of the benefit cliff by plugging \( I_{max} \) into the benefit formula, i.e. \( B(I_{max}) = B_{max} - .3 (.8 I_{max} - SD ) \), for households with more than one person. These values are shown in the table below:
+        Unsurprisingly, the gross income limit does indeed tend to work as a limit: for all household sizes except single-person households, benefits cut off before the calculated benefit reaches $0. This means that households with more than one person face a <b>benefit cliff</b> at the gross income limit. On the marginal tax chart, this manifests as a vertical line: an additional dollar of income over the gross income limits results in much more than a dollar reduction in SNAP benefits (to keep the axes reasonable, the actual EMTR of the benefit cliff—which is over 100,000%, is not depicted in its entirety). We can calculate the size of the benefit cliff by plugging \( I_{max} \) into the benefit formula, i.e. \( B(I_{max}) = B_{max} - .3 (.8 I_{max} - SD ) \), for households with more than one person. These values are shown in the table below:
       </p>
 
       <table style="width:100%">
@@ -1250,7 +1250,7 @@
       </p>
 
       <p>
-        Now we have all that we need to fully describe the marginal tax rates of the SNAP program under our assumptions. From \( $0 \) to $1 below \(1.25SD\), the marginal tax rate is 0%, since net income is less than $0 and hence the benefit remains \(B_{max}\). For households with more than one person, from \(1.25SD\) to $1 below the gross income limit (\(1.3PL \)), the marginal tax rate is 24%, since a dollar of additional income results in a 24 cent reduction in benefits. For single-person households, from \(1.25SD\) to $16,945 (the income at which the calculated benefit reaches $0), the marginal tax rate is 24%. For households with more than one person, at the gross income limit the marginal tax rate is some very large number, since a dollar of additional income results in thousands of dollars of lost benefits. Above the gross income limit/$16,945, the marginal tax rate is 0%, since there are no benefits to lose. The precise values are listed in the tables below:
+        Now we have all that we need to fully describe the marginal tax rates of the SNAP program under our assumptions. From $0 to $1 below \(1.25SD\), the marginal tax rate is 0%, since net income is less than $0 and hence the benefit remains \(B_{max}\). For households with more than one person, from \(1.25SD\) to $1 below the gross income limit (\(1.3PL \)), the marginal tax rate is 24%, since a dollar of additional income results in a 24 cent reduction in benefits. For single-person households, from \(1.25SD\) to $16,945 (the income at which the calculated benefit reaches $0), the marginal tax rate is 24%. For households with more than one person, at the gross income limit the marginal tax rate is some very large number, since a dollar of additional income results in thousands of dollars of lost benefits. Above the gross income limit/$16,945, the marginal tax rate is 0%, since there are no benefits to lose. The precise values are listed in the tables below:
       </p>
 
       <table style="width:49%">
@@ -1421,11 +1421,11 @@
       </p>
 
       <p>
-        Several assumptions I've made will affect the marginal tax rates we calculate. First, this chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, I will not include the $20 exclusion, which can be applied to non-labor income. So, for our calculations, only the first $65 of monthly income plus one-half of additional monthly income is exempted. 
+        Several assumptions I've made will affect the marginal tax rates we calculate. First, this chart deals specifically with labor income, which means that it is assumed that the income the user inputs is entirely earned income. To keep things entirely within the realm of labor income, I will not include the $20 exclusion, which can be applied to non-labor income. So, for our calculations, the first $65 of monthly income plus one-half of additional monthly income is exempted. 
       </p>
 
       <p>
-        Second, the chart looks at income on an annual basis, while SSI benefit amounts are based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this means our calculations can deviate from people's actual benefits. A person who makes all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. The consequence of this is that the amount of income subject to a 0% marginal tax rate is slightly extended. In practice, though, these discrepancies are small enough that they would hardly be visible on the chart.
+        Second, the chart looks at income on an annual basis, while SSI benefit amounts are based on monthly income. This requires some simplifications to make the monthly benefit appear as a single, annual curve. I assume that income is uniform over the year, i.e. if someone has an income of $12,000 then it is assumed that they made $1,000 each month. This allows us to take the monthly benefit and monthly exemptions and multiply them by 12 to get annual figures. Note that this means our calculations can deviate from people's actual benefits. A person who makes all of their annual income in one month and none in the remaining 11, for instance, would only get to exclude $65 and one-half of the remaining, while under our assumptions we would calculate that they were able to exclude $780 and one-half of the remaining. The consequence of this is two-fold: (1) the amount of income subject to a 0% marginal tax rate from the $65/month exclusion is slightly extended, and more importantly (2) benefit values will differ substantially if income is not uniform over the year.
       </p>
 
       <p>
@@ -1483,7 +1483,7 @@
       </p>
 
       <p>
-        The SSI benefit is calculated by subtracting countable income from the maximum benefit. Since it is assumed that annual income is uniform over the year, the annual exclusion on earned income is \($65 \times 12 = $780 \). And since 50% of earned income after the first-of-the-month is exempted, i.e. countable income rises by only $0.50 for every dollar of labor income, the benefit \(B\) at gross income \(I\), with \(B_{max}\) denoting the max benefit, is: $$B(I) = B_{max} \text{ if } I \leq \$780 $$ $$B(I) = B_{max} - .5 (I - 780) \text{ if } I> \$780$$
+        The SSI benefit is calculated by subtracting countable income from the maximum benefit. Since it is assumed that annual income is uniform over the year, the annual exclusion on earned income is \($65 \times 12 = $780 \). And since 50% of earned income after $780 is exempted, i.e. countable income rises by only $0.50 for every dollar of labor income, the benefit \(B\) at gross income \(I\), with \(B_{max}\) denoting the max benefit, is: $$B(I) = B_{max} \text{ if } I \leq \$780 $$ $$B(I) = B_{max} - .5 (I - 780) \text{ if } I> \$780$$
       </p>
 
       <p>
@@ -1762,7 +1762,7 @@
     -->
 
       <p>
-        Note that here household incomes refers to modified adjusted gross income (MAGI), so income used to determine the required contribution does <em>not</em> include the standard deduction/itemized deductions. Note also that for the purposes of this chart, we assume that users have no untaxed foreign income and no tax-exempt interest, so MAGI equals AGI. We also assume that user's gross income equals their AGI, so the income users input into the chart is assumed to be exactly the income used to calculate the the required contribution.
+        Note that household incomes refers to modified adjusted gross income (MAGI), so the income used to determine the required contribution does <em>not</em> include the standard deduction/itemized deductions. Note also that for the purposes of this chart, we assume that users have no untaxed foreign income and no tax-exempt interest, so MAGI equals AGI. We also assume that user's gross income equals their AGI, so the income users input into the chart is assumed to be exactly the income used to calculate the the required contribution.
       </p>
 
       <p>
@@ -1774,7 +1774,7 @@
       </p>
 
       <p>
-        The primary consequence of this equation is that it was very tedious for me to type it into Javascript, wasting 15 minutes that could have been spent on more productive activities like wage labor or rewatching Dune. Additionally, there are two important secondary consequences. First, this equation is quadratic: within an income tier, the higher your income, the more dollars you have to contribute to the premium as a result of an additional dollar of income. Intuitively, this occurs simply because the premium grows by a constant <em>percentage of income</em> for every dollar of additional income; so as income grows, the dollar value of this percentage grows. Second, the equation demonstrates that it is actually quite complicated for people to determine the value of their premium tax credit. This is made more complicated still by the fact that the advance premium tax credits paid out in a given year to insurers on behalf of a recipient is based upon the recipient's <em>expected</em> income in that year. So anyone attempting to plan around the premium tax credit has to compare the benefit they are currently receiving, which the IRS determines by guessing what their income will be that year, with the true value that will be determined at the end of the year when they file their taxes and their precise annual income is known.
+        The primary consequence of this equation is that it was very tedious for me to type it into Javascript, wasting 15 minutes that could have been spent on more productive activities like wage labor or rewatching Dune. Additionally, there are two important secondary consequences. First, this equation is quadratic. Intuitively, this occurs simply because the premium grows by a constant <em>percentage of income</em> for every dollar of additional income; so as income grows, the dollar value of this percentage grows. Second, the equation demonstrates that it is actually quite complicated for people to determine the value of their premium tax credit. This is made more complicated still by the fact that the advance premium tax credits paid out in a given year to insurers on behalf of a recipient is based upon the recipient's <em>expected</em> income in that year. So anyone attempting to plan around the premium tax credit has to compare the benefit they are currently receiving, which the IRS determines by guessing what their income will be that year, with the true value that will be determined at the end of the year when they file their taxes and their precise annual income is known.
       </p>
 
       <p>

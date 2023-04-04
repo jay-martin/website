@@ -23,20 +23,18 @@ function eitc_marriage_penalty_values_modify_income(chart_name){
 
     // Move point 
     let penalty = married_eitc - combined_eitc;
-    // red point if marriage penalty
-    if(penalty <= 0){
-        chart.load({
-            columns : [ ['x_values_point', p1_income] , ['values_point', penalty], ],
-            colors  : {'values_point' : '#eb3734'},
-        });
+    let point_color = '#eb3734';
+    if(penalty > 0){
+        point_color = '#36D903';
     }
-    // green point if marriage bonus
-    else {
-        chart.load({
-            columns : [ ['x_values_point', p1_income] , ['values_point', penalty], ],
-            colors  : {'values_point' : '#36D903'},
-        });
+    else if(penalty == 0){
+        point_color = white_or_black;
     }
+
+    chart.load({
+        columns : [ ['x_values_point', p1_income] , ['values_point', penalty], ],
+        colors  : {'values_point' : point_color},
+    });
 }
 
 /** Adjusts curves of c3.js chart in response to user inputs

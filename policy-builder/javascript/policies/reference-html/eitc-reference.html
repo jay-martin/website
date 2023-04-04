@@ -1,0 +1,185 @@
+<div class='policy' policy-key="1">
+  <div class='policy_left_side'>
+    <div class='button_label_container'>
+      <button class="policy_button minus_button" onclick="remove_policy(this)"></button>
+      <h3 class='policy_label_header'>EITC</h3>
+    </div>
+  </div>
+
+  <div class='eitc_right_side'>
+    <!-- Zero Children -->
+    <div class='endpoints'></div> 
+    <div class='eitc_child_container' num-child="none">
+      <div class='child_label'>Childless:</div>  
+      <div class='right_side'>
+        <div class='eitc_inputs_container' filing-status="single" style="margin-bottom: 5px;">
+          <label><b>Single/HOH:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="600" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="7.65" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="9800" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="7.65" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+        <div class='eitc_inputs_container' filing-status="married">
+          <label><b>Married:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="600" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="7.65" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="16370" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="7.65" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- One Child -->
+    <div class='endpoints'></div> 
+    <div class='eitc_child_container' num-child="one">
+      <div class='child_label'>1 Child:</div>  
+      <div class='right_side'>
+        <div class='eitc_inputs_container' filing-status="single" style="margin-bottom: 5px;">
+          <label><b>Single/HOH:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="3995" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="34" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="21560" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="15.98" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+        <div class='eitc_inputs_container' filing-status="married">
+          <label><b>Married:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="3995" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="34" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="28120" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="15.98" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 2 Children -->
+    <div class='endpoints'></div> 
+    <div class='eitc_child_container' num-child="two">
+      <div class='child_label'>2 Child:</div>  
+      <div class='right_side'>
+        <div class='eitc_inputs_container' filing-status="single" style="margin-bottom: 5px;">
+          <label><b>Single/HOH:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="6604" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="40" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="21560" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="21.06" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+        <div class='eitc_inputs_container' filing-status="married">
+          <label><b>Married:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="6604" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="40" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="28120" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="21.06" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Three Children -->
+    <button class="policy_button minus_button"></button>
+    <div class='eitc_child_container' num-child="three">
+      <div class='child_label'>3+ Child:</div>  
+      <div class='right_side'>
+        <div class='eitc_inputs_container' filing-status="single" style="margin-bottom: 5px;">
+          <label><b>Single/HOH:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="7430" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="45" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="21560" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="21.06" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+        <div class='eitc_inputs_container' filing-status="married">
+          <label><b>Married:</b></label>
+          <div>
+            <label>Credit Value:
+              $<input type="number" min="0" max="50000" step="100" value="7430" data-value_type='credit-value' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-In Rate:
+              <input type="number" min="0" max="100" step="1.00" value="45" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+            <br>
+            <label>Phase-Out Begins:
+              $<input type="number" min="0" max="500000" step="500" value="28120" data-value_type='phase-out-income' oninput="update_eitc(this);">
+            </label>
+            <label>Phase-Out Rate:
+              <input type="number" min="0" max="100" step="1.00" value="21.06" data-value_type='phase-in-rate' oninput="update_eitc(this);">%
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- right side -->
+
+</div> <!-- policy container -->
